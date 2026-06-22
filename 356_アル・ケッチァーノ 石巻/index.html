@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アル・ケッチァーノ 石巻 | 地産地消の本格イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #b39359;
+            --dark-olive: #1a2a1a;
+            --deep-black: #0d0d0d;
+            --soft-cream: #fcfaf5;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--soft-cream);
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+        /* テクスチャ背景 */
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+        /* ヒーローエリアのカスタマイズ */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('images/terrace.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        /* 縦書きテキスト */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        /* 装飾的な線 */
+        .gold-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--primary-gold), transparent);
+            margin: 0 auto;
+        }
+        /* 写真のオーバーラップ効果 */
+        .overlap-img {
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        .overlap-img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- ナビゲーション -->
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference text-white">
+        <div class="text-2xl serif tracking-tighter font-bold">Al che-cciano <span class="text-sm">Ishinomaki</span></div>
+        <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase">
+            <a href="#concept" class="hover:opacity-60">Concept</a>
+            <a href="#menu" class="hover:opacity-60">Menu</a>
+            <a href="#story" class="hover:opacity-60">Story</a>
+            <a href="#access" class="hover:opacity-60">Access</a>
+        </div>
+    </nav>
+
+    <!-- FVエリア -->
+  <header class="relative min-h-screen hero-section flex items-center overflow-hidden py-24">
+    <div class="absolute left-10 md:left-20 top-1/2 -translate-y-1/2 z-10 hidden md:block">
+        <p class="vertical-text serif text-white text-2xl tracking-[0.5em] leading-relaxed">
+            石巻の恵を、一皿の芸術に。
+        </p>
+    </div>
+    <div class="container mx-auto px-6 flex flex-col items-center justify-center text-center text-white relative z-10">
+        <h1 class="serif text-3xl md:text-5xl mb-8 leading-tight tracking-tight">
+            世界が認めた<br>「地産地消」の最高峰。
+        </h1>
+        <div class="gold-line mb-8"></div>
+        <p class="text-base md:text-xl tracking-[0.15em] md:tracking-[0.2em] mb-12 opacity-80 font-light">
+            奥田政行プロデュース | アル・ケッチァーノ 石巻
+        </p>
+        <a href="#cta" class="bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-none font-bold text-base md:text-lg hover:bg-transparent hover:text-white border border-white transition-all duration-300">
+            RESERVATION
+        </a>
+    </div>
+</header>
+
+    <!-- リード文セクション -->
+    <section id="concept" class="py-16 md:py-24 bg-white relative">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+        <span class="text-[#b39359] tracking-[0.3em] text-sm mb-6 block uppercase">Introduction</span>
+        <h2 class="serif text-2xl md:text-4xl leading-loose mb-10 md:mb-12">
+            目の前の海、<br class="md:hidden">足元の土から生まれる<br>
+            ここにしかないイタリアン。
+        </h2>
+        <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center text-left">
+
+            <!-- スマホでは画像を先に表示（order-first） -->
+            <div class="md:w-1/2 w-full order-first md:order-last">
+                <div class="relative overlap-img mx-4 mb-4 md:mx-0 md:mb-0">
+                    <img src="images/pasta.png" alt="料理イメージ" class="rounded-sm shadow-xl w-full">
+                    <div class="absolute -bottom-4 -right-4 w-full h-full border border-[#b39359] -z-10"></div>
+                </div>
+            </div>
+
+            <!-- テキスト -->
+            <div class="md:w-1/2 w-full order-last md:order-first pt-6 md:pt-0">
+                <p class="leading-loose text-gray-600 text-sm md:text-base">
+                    石巻は、世界三大漁場の一つに数えられる豊かな海の街です。私たちは、その日の海に育まれた魚介、大地の力強さを感じる里の野菜を主役に据えます。<br><br>
+                    素材の持ち味を最大限に引き出すため、味付けは極めてシンプルに。余計なものを削ぎ落とした先に現れる「本物の味」をご堪能ください。
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- イチオシメニュー -->
+    <section id="menu" class="py-16 md:py-24 bg-[#1a2a1a] text-white">
+    <div class="container mx-auto px-6">
+
+        <!-- セクションヘッダー -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-16">
+            <div>
+                <span class="text-[#b39359] tracking-[0.3em] text-sm mb-4 block uppercase">Signature Dish</span>
+                <h2 class="serif text-3xl md:text-4xl">石巻の恵みを、<br>豪快に、繊細に。</h2>
+            </div>
+            <p class="text-gray-400 max-w-sm mt-4 md:mt-0 text-sm md:text-base">
+                一皿一皿に石巻の風景を。シェフが自ら厳選した素材だけが、テーブルへと運ばれます。
+            </p>
+        </div>
+
+        <!-- 料理グリッド -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+
+            <!-- 商品1 -->
+            <div class="group">
+                <div class="overflow-hidden mb-6 md:mb-8">
+                    <img src="images/peperoncino.jpg" alt="さんまのペペロンチーノ"
+                         class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                </div>
+                <h3 class="serif text-xl md:text-2xl mb-3 md:mb-4 text-[#b39359]">【イチオシ】さんまのペペロンチーノ</h3>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    石巻の秋の象徴「さんま」を贅沢に使用。脂の乗った旨味と、香ばしいニンニクの風味がパスタに絡み合い、一度食べたら忘れられない奥深い味わいを生み出します。
+                </p>
+            </div>
+
+            <!-- 商品2（スマホではオフセットなし） -->
+            <div class="group md:mt-24">
+                <div class="overflow-hidden mb-6 md:mb-8">
+                    <img src="images/pescatore.jpg" alt="魚介のペスカトーレ"
+                         class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                </div>
+                <h3 class="serif text-xl md:text-2xl mb-3 md:mb-4 text-[#b39359]">石巻産魚介たっぷり！ペスカトーレ</h3>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    タラ、蛤、エビなど、その日の水揚げによって具材が変わる、まさに「石巻を食べる」一皿。素材から出る出汁（旨味）だけで仕上げた贅沢な逸品です。
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- ストーリー：高橋シェフ -->
+  <section id="story" class="py-16 md:py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-16">
+
+            <!-- シェフ写真 -->
+            <div class="md:w-1/2 w-full relative">
+                <img src="images/chef.png" alt="高橋シェフ"
+                     class="w-full rounded-sm grayscale hover:grayscale-0 transition duration-500">
+                <!-- 装飾ボックス：大画面のみ表示 -->
+                <div class="absolute top-10 -left-10 bg-[#b39359] p-8 hidden lg:block">
+                    <p class="vertical-text serif text-white text-xl tracking-[0.2em] h-64">
+                        食で、この街を元気に。
+                    </p>
+                </div>
+            </div>
+
+            <!-- テキストエリア -->
+            <div class="md:w-1/2 w-full">
+                <span class="text-[#b39359] tracking-[0.3em] text-sm mb-4 md:mb-6 block uppercase">Our Chef</span>
+                <h2 class="serif text-2xl md:text-3xl mb-6 md:mb-8 leading-snug">
+                    震災から十年。<br>
+                    想いと共に、この地へ。
+                </h2>
+                <p class="leading-loose text-gray-600 mb-6 md:mb-8 italic border-l-4 border-gray-100 pl-5 md:pl-6 text-sm md:text-base">
+                    「いつか石巻に来る」。<br>
+                    震災時の炊き出し支援で心に決めた誓い。<br>
+                    山形本店での修行を経て、今、その約束を果たします。
+                </p>
+                <p class="leading-loose text-gray-700 text-sm md:text-base">
+                    石巻店シェフ・高橋 博は、被災した家族を助けるために石巻に入り、奥田シェフと共に炊き出しを行ったことが始まりでした。この街の食材の素晴らしさを再発見し、全国へ発信する拠点として「アル・ケッチァーノ 石巻」を切り盛りしています。
+                </p>
+                <div class="mt-8 md:mt-12">
+                    <p class="serif text-base md:text-lg font-bold">石巻店シェフ：高橋 博</p>
+                    <p class="text-sm text-gray-500 mt-2">監修・プロデュース：奥田 政行</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- クチコミ -->
+   <section class="py-16 md:py-24 bg-texture border-y border-gray-100">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="serif text-2xl md:text-3xl mb-10 md:mb-16">ご来店いただいた皆様の声</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto text-left">
+
+            <!-- クチコミ1 -->
+            <div class="bg-white p-6 md:p-10 border-t-2 border-[#b39359] shadow-sm">
+                <div class="flex text-[#b39359] mb-4 text-xs gap-1">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm leading-loose text-gray-600 mb-6">
+                    「石巻のランチ店をたくさん行きましたが、ここは胸を張って美味しいと薦められます。接客の笑顔や、パスタを取り分けてくれる気配りまで完璧でした。」
+                </p>
+                <span class="text-xs font-bold tracking-widest text-gray-400">SATISFIED CUSTOMER</span>
+            </div>
+
+            <!-- クチコミ2（スマホではオフセットなし） -->
+            <div class="bg-white p-6 md:p-10 border-t-2 border-[#b39359] shadow-sm md:mt-12">
+                <div class="flex text-[#b39359] mb-4 text-xs gap-1">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm leading-loose text-gray-600 mb-6">
+                    「素材の良さを引き立てて美味い最高。スタッフの接客も良く、またお伺わせていただきます。特にボロネーゼやモンブランが気になります。」
+                </p>
+                <span class="text-xs font-bold tracking-widest text-gray-400">SATISFIED CUSTOMER</span>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-10 md:mt-16">
+            <p class="serif text-lg md:text-xl">満足度 98%以上の評価</p>
+        </div>
+    </div>
+</section>
+
+    <!-- インフォメーション & アクセス -->
+   <section id="access" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+
+            <!-- 店舗情報 -->
+            <div>
+                <span class="text-[#b39359] tracking-[0.3em] text-sm mb-4 md:mb-6 block uppercase">Information</span>
+                <h2 class="serif text-2xl md:text-3xl mb-8 md:mb-10">店舗概要</h2>
+                <table class="w-full text-left text-sm">
+                    <tr class="border-b">
+                        <th class="py-3 md:py-4 serif w-1/4 align-top">店名</th>
+                        <td class="py-3 md:py-4">アル・ケッチァーノ 石巻</td>
+                    </tr>
+                    <tr class="border-b">
+                        <th class="py-3 md:py-4 serif align-top">住所</th>
+                        <td class="py-3 md:py-4 break-all">〒986-0824 宮城県石巻市立町2丁目5-5</td>
+                    </tr>
+                    <tr class="border-b">
+                        <th class="py-3 md:py-4 serif align-top">電話</th>
+                        <td class="py-3 md:py-4">
+                            <a href="tel:0225256603" class="underline underline-offset-2 hover:text-[#b39359] transition">
+                                0225-25-6603
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="border-b">
+                        <th class="py-3 md:py-4 serif align-top">定休日</th>
+                        <td class="py-3 md:py-4">火曜日</td>
+                    </tr>
+                    <tr class="border-b">
+                        <th class="py-3 md:py-4 serif align-top">備考</th>
+                        <td class="py-3 md:py-4 text-xs text-gray-500 leading-relaxed">
+                            ペット可（テラス席のみ）<br class="md:hidden">/ 記念日対応可 / 最大30名様
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 地図 -->
+            <div class="w-full overflow-hidden shadow-lg rounded-sm grayscale hover:grayscale-0 transition duration-1000">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3125.3772564566025!2d141.30336877479039!3d38.432754173988286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89a3e37fabdf61%3A0x417f7e57819f4b24!2z44Ki44Or44O744Kx44OD44OB44Kh44O844OOIOefs-W3uw!5e0!3m2!1sja!2sjp!4v1773016669451!5m2!1sja!2sjp"
+                    width="100%"
+                    height="300"
+                    class="md:[height:450px] block"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- 最終CTA -->
+    <section id="cta" class="py-20 md:py-32 bg-[#1a2a1a] text-white text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/pinstripe.png')]"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <h2 class="serif text-3xl md:text-5xl mb-8 md:mb-12 leading-tight">
+            特別な時間を、<br>石巻の特等席で。
+        </h2>
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center">
+            <a href="tel:0225256603"
+               class="w-full md:w-auto bg-transparent border border-white px-8 md:px-12 py-4 md:py-5 font-bold tracking-normal md:tracking-widest hover:bg-white hover:text-black transition duration-300 text-sm md:text-base">
+                CALL: 0225-25-6603
+            </a>
+            <a href="https://www.asatte-ishinomaki.com/alchecciano" target="_blank"
+               class="w-full md:w-auto bg-[#b39359] border border-[#b39359] px-8 md:px-12 py-4 md:py-5 font-bold tracking-normal md:tracking-widest hover:bg-transparent transition duration-300 text-sm md:text-base">
+                VISIT WEBSITE
+            </a>
+        </div>
+        <p class="mt-6 md:mt-8 text-xs md:text-sm text-gray-500 tracking-wide md:tracking-widest">
+            ※6,000円以上のコースは事前予約が必要です
+        </p>
+    </div>
+</section>
+
+    <!-- フッター -->
+    <footer class="py-12 bg-black text-white/40 text-xs text-center tracking-[0.2em]">
+        <div class="flex justify-center gap-8 mb-8 text-lg text-white/60">
+            <a href="https://www.facebook.com/people/%E3%82%A2%E3%83%AB%E3%82%B1%E3%83%83%E3%83%81%E3%82%A1%E3%83%BC%E3%83%8E-%E7%9F%B3%E5%B7%BB/pfbid06tLt4nKfEV2Fy397BB5WwHigcsmuw1jq2AXPgTVqYSvwF19Lqtp8y5QwEqB1Ydjrl/" target="_blank" class="hover:text-[#b39359] transition-colors"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <p>&copy; 2024 AL CHE-CCIANO ISHINOMAKI. PRODUCED BY MASAYUKI OKUDA.</p>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

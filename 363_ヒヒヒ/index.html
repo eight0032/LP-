@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒヒヒ | 仙台・五橋のフレンチビストロと1300本のナチュラルワイン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-wine: #5c161e;
+            --color-gold: #c5a059;
+            --color-bg: #fdfbf8;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: #2d241e;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .en-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-wine { background-color: var(--color-wine); }
+        .text-wine { color: var(--color-wine); }
+        .text-gold { color: var(--color-gold); }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto 0;
+        }
+
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Map responsive container */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                padding-bottom: 0;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="bg-wine text-white text-xs sm:text-sm">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-2">
+        <a href="../../../" class="inline-flex items-center whitespace-nowrap hover:text-gold transition-colors">
+            <svg class="w-4 h-4 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            トップページへ戻る
+        </a>
+    </div>
+</header>
+
+    <!-- FLOATING CTA (Mobile) -->
+    <div class="sticky-cta md:hidden">
+        <a href="tel:0223956656" class="flex items-center justify-center bg-orange-600 text-white font-bold py-4 px-6 rounded-full shadow-2xl">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+            今すぐ電話で予約する
+        </a>
+    </div>
+
+    <!-- FV AREA -->
+   <section class="relative h-[70vh] sm:h-[85vh] md:h-screen flex items-center justify-center">
+    <div class="absolute inset-0 z-0">
+        <img src="images/wine.jpg" class="w-full h-full object-cover brightness-50">
+    </div>
+    
+    <div class="relative z-10 text-center text-white px-4">
+        <div class="mb-6">
+            <p class="en-serif italic text-gold text-base sm:text-lg md:text-xl tracking-wide sm:tracking-widest mb-2">Since 2016</p>
+            <div class="w-12 h-px bg-gold mx-auto"></div>
+        </div>
+        <h1 class="text-xl sm:text-2xl md:text-5xl font-bold mb-6 sm:mb-8 serif leading-snug">
+            <span class="text-sm sm:text-base md:text-xl block mb-4 font-normal tracking-wide sm:tracking-widest">ミシュラン・ビブグルマンが贈る</span>
+            至高の<span class="text-gold">ラムチョップ</span>と、<br>
+            1300本の自然派ワイン。
+        </h1>
+        <p class="text-sm sm:text-base md:text-lg mb-8 sm:mb-12 font-light tracking-widest">
+            仙台・北目町の路地裏で出会う、<br class="md:hidden">心震えるマリアージュ。
+        </p>
+        <div class="hidden md:block">
+            <a href="#booking" class="inline-block border-2 border-gold text-gold hover:bg-gold hover:text-white transition-all font-bold py-4 px-12 rounded-sm text-lg tracking-widest">
+                RESERVE
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- HIGHLIGHT (Numbers) -->
+    <section class="py-12 bg-white relative -mt-10 z-20 mx-4 md:mx-auto max-w-5xl rounded-sm shadow-xl grid grid-cols-2 md:grid-cols-4 gap-4 px-6">
+        <div class="text-center">
+            <p class="text-gray-400 text-xs mb-1 uppercase tracking-tighter">Stock</p>
+            <p class="text-3xl font-bold text-wine serif">1300<span class="text-sm">本</span></p>
+            <p class="text-[10px] text-gray-500">ワインセラー完備</p>
+        </div>
+        <div class="text-center border-l border-gray-100">
+            <p class="text-gray-400 text-xs mb-1 uppercase tracking-tighter">Award</p>
+            <p class="text-3xl font-bold text-wine serif">Bib</p>
+            <p class="text-[10px] text-gray-500">ビブグルマン選出</p>
+        </div>
+        <div class="text-center border-l border-gray-100">
+            <p class="text-gray-400 text-xs mb-1 uppercase tracking-tighter">Rating</p>
+            <p class="text-3xl font-bold text-wine serif">4.8</p>
+            <p class="text-[10px] text-gray-500">Googleクチコミ平均</p>
+        </div>
+        <div class="text-center border-l border-gray-100">
+            <p class="text-gray-400 text-xs mb-1 uppercase tracking-tighter">Access</p>
+            <p class="text-3xl font-bold text-wine serif">8<span class="text-sm">分</span></p>
+            <p class="text-[10px] text-gray-500">五橋駅より徒歩</p>
+        </div>
+    </section>
+
+    <!-- ICHIOSHI: LAMB CHOP -->
+    <section class="py-24 bg-[#fdfbf8]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-gold z-0"></div>
+                    <img src="images/lamp chop.jpg">
+                    <div class="absolute -bottom-8 -right-8 bg-wine text-white p-6 z-20 hidden md:block">
+                        <p class="serif text-2xl">看板メニュー</p>
+                        <p class="en-serif text-gold">Lamb Chops</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-5xl font-bold serif mb-8 leading-tight">
+                        ひと口で、<br>
+                        この店の虜になる。
+                    </h2>
+                    <p class="text-gray-600 mb-8 leading-loose">
+                        「ヒヒヒ」に来たら、まずはこれ。厳選されたラムチョップを絶妙な火加減で焼き上げます。外側の香ばしさと、溢れ出す肉汁。それに寄り添うスパイシーなソース。そして、セラーから選び抜いた一杯との衝撃的な出会いをお楽しみください。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="text-gold mt-1 mr-3">◆</span>
+                            <p class="text-sm">ワインが進む、計算し尽くされた味付け</p>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-gold mt-1 mr-3">◆</span>
+                            <p class="text-sm">旬の野菜を添えた、彩り豊かな一皿</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CELLER EXPERIENCE -->
+    <section class="py-12 sm:py-16 md:py-24 bg-zinc-900 text-white overflow-hidden relative">
+    <div class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none">
+        <div class="w-full h-full border-l border-zinc-700 transform skew-x-12"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-10 md:mb-16">
+            <span class="en-serif text-gold tracking-widest block mb-4 italic">Experience</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl serif section-title">セラーで選ぶ、一期一会。</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+            <div class="text-center hover-card">
+                <div class="mb-6 inline-block p-4 border border-zinc-700 rounded-full">
+                    <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 serif">1300本の物語</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed">常時1300本以上のストックを誇るセラー。シェフが直接生産者を訪ねて仕入れる希少なキュヴェも。</p>
+            </div>
+            <div class="text-center hover-card">
+                <div class="mb-6 inline-block p-4 border border-zinc-700 rounded-full">
+                    <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 serif">自分で選ぶ愉しみ</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed">セラーの中へお客様をご案内。ラベルのデザインやインスピレーションで、今夜のパートナーを決められます。</p>
+            </div>
+            <div class="text-center hover-card">
+                <div class="mb-6 inline-block p-4 border border-zinc-700 rounded-full">
+                    <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-4 serif">至福のペアリング</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed">お選びいただいたワインに合わせ、シェフが料理を微調整することも。ビストロならではのライブ感を。</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- STORY -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 order-2 md:order-1">
+                <span class="en-serif text-wine tracking-widest block mb-4">Chef Story</span>
+                <h2 class="text-3xl font-bold mb-8 serif">
+                    「宮城の恵みを、<br>
+                    等身大のフランス料理で」
+                </h2>
+                <div class="space-y-6 text-gray-600 leading-loose">
+                    <p>
+                        オーナーシェフ、伊藤久之。地元・宮城県を愛し、東京や静岡での修行を経て、2016年にこの北目町に「ヒヒヒ」を構えました。
+                    </p>
+                    <p>
+                        目指したのは、敷居の高いレストランではなく、カウンターで肩を寄せ合って、本当に美味しいワインと料理を楽しめる場所。
+                    </p>
+                    <p>
+                        東名浜の牡蠣、宮城産の新鮮な野菜。地元の生産者と歩みを共にしながら、一本のボトルと一皿の料理が起こす「奇跡」を毎日お届けしています。
+                    </p>
+                </div>
+                <div class="mt-10 border-l-4 border-gold pl-6">
+                    <p class="serif text-xl italic font-bold">伊藤 久之</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Owner Chef / Sommelier</p>
+                </div>
+            </div>
+            <div class="md:w-1/2 order-1 md:order-2">
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="images/chef.png" class="w-full grayscale hover:grayscale-0 transition duration-300">
+                    <img src="images/pasta.png" class="w-full grayscale hover:grayscale-0 transition duration-300 mt-8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-24 bg-zinc-50">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl serif mb-16 section-title">お客様の感動体験</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+                <div class="bg-white p-10 rounded-sm shadow-sm border-t-4 border-wine relative">
+                    <div class="absolute -top-4 left-6 text-wine text-6xl font-serif opacity-10">“</div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed">「パテを一口食べて悶絶。ねっとり系でたまらない。赤ワインのボトルがすぐ空いてしまいました。やっぱり食べることに関しては鼻が利く私でも、このお店は絶賛せざるを得ません。」</p>
+                    <p class="font-bold text-sm">— 仙台旅 1日目の夜に（女性）</p>
+                </div>
+                <div class="bg-white p-10 rounded-sm shadow-sm border-t-4 border-wine relative">
+                    <div class="absolute -top-4 left-6 text-wine text-6xl font-serif opacity-10">“</div>
+                    <p class="text-gray-700 mb-6 italic leading-relaxed">「ザ・ビストロという雰囲気。スープドポワソンが最高でした。自分でボトルを選べる体験は贅沢そのもの。残ったボトルを持ち帰らせてくれる心遣いも嬉しい。」</p>
+                    <p class="font-bold text-sm">— ワイン愛好家（男性）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP INFO with GOOGLE MAP -->
+    <section class="py-24 bg-white" id="booking">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="border-2 border-gold overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Text Info -->
+                    <div class="md:w-1/2 p-8 md:p-16">
+                        <h2 class="text-3xl serif mb-12">INFORMATION</h2>
+                        <div class="space-y-10">
+                            <div>
+                                <p class="text-gold text-xs font-bold tracking-widest mb-2 uppercase">Access</p>
+                                <p class="text-gray-700 leading-loose">
+                                    〒980-0023 宮城県仙台市青葉区北目町３−１０<br>
+                                    ペルソーレ １階<br>
+                                    <span class="text-sm opacity-60">五橋駅 徒歩8分 / 仙台駅 徒歩15分</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gold text-xs font-bold tracking-widest mb-2 uppercase">Business Hours</p>
+                                <p class="text-gray-700">
+                                    17:00 〜 LATE<br>
+                                    <span class="text-sm opacity-60">定休日：水曜日（不定休あり）</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gold text-xs font-bold tracking-widest mb-2 uppercase">Reserve</p>
+                                <p class="text-3xl font-bold mb-1 serif">022-395-6656</p>
+                                <p class="text-xs text-gray-500 italic mt-2">※お電話でのご予約が最もスムーズです</p>
+                            </div>
+                            <div class="pt-4">
+                                <a href="https://instagram.com/hihihi0604?igshid=YmMyMTA2M2Y=" target="_blank" class="inline-flex items-center text-sm font-bold tracking-widest hover:text-gold transition-colors">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                                    INSTAGRAM
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Google Map -->
+                    <div class="md:w-1/2 bg-zinc-100">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.052143079532!2d140.87316507478013!3d38.25509668434859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28143d6c30d7%3A0x89d61f5317ec1d93!2z44OS44OS44OS!5e0!3m2!1sja!2sjp!4v1773019245426!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-zinc-900 text-white/20 text-center text-xs tracking-widest uppercase">
+        <p class="mb-2">Bistro hihihi</p>
+        <p>&copy; 2024 hihihi. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

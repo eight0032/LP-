@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北海道イタリアン ミアアンジェラ 長町南 | 極上のペペロンチーノ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@700&display=swap');
+
+        :root {
+            --primary-red: #9e0c0f;
+            --accent-gold: #c3a465;
+            --bg-cream: #f9f6f1;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1a1a1a;
+            background-color: var(--bg-cream);
+            overflow-x: hidden;
+        }
+
+        .font-serif-jp { font-family: 'Noto Serif JP', serif; }
+        .font-mincho { font-family: 'Shippori Mincho', serif; }
+
+        /* 和モダンな背景テクスチャ */
+        .bg-washi {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        /* 筆文字風アクセント */
+        .fude-text {
+            position: relative;
+            display: inline-block;
+        }
+        .fude-text::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: var(--accent-gold);
+            opacity: 0.3;
+            transform: skewX(-30deg);
+            z-index: -1;
+        }
+
+        /* アニメーション */
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* フローティング予約ボタン */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: 90%;
+            max-width: 400px;
+            display: none;
+        }
+
+        /* 縦書きセクションタイトル */
+        .section-title {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            border-right: 2px solid var(--accent-gold);
+            padding-right: 1rem;
+            height: fit-content;
+        }
+
+        .gold-border {
+            border: 1px solid var(--accent-gold);
+            position: relative;
+        }
+        .gold-border::before {
+            content: "";
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid var(--accent-gold);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* FV画像フルカバー */
+        .fv-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 画像のオブジェクトフィット */
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-washi">
+
+    <!-- フローティングCTA (スクロールで表示) -->
+    <div id="floatingBtn" class="floating-cta">
+        <a href="https://mia-angela.eastone.co.jp/shop/nagamachiminami" target="_blank"
+           class="block bg-red-700 text-white text-center py-4 rounded-full shadow-2xl font-bold text-lg border-2 border-white">
+            <i class="fa-solid fa-calendar-check mr-2"></i> 特典付きで今すぐ予約
+        </a>
+    </div>
+
+    <!-- 1. FVエリア -->
+    <section class="relative h-screen flex items-center justify-end overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/sogen.jpg" class="fv-img" alt="北海道イタリアン ミアアンジェラ 長町南">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start justify-between h-full py-20">
+            <div class="text-white fade-in" style="writing-mode: vertical-rl;">
+                <h1 class="text-3xl md:text-5xl font-mincho leading-none tracking-[0.2em]">
+                    北海道の、<span class="text-yellow-400">生命</span>を<br>
+                    <span class="mt-8">一皿の、究極に。</span>
+                </h1>
+                <p class="mt-8 text-lg md:text-xl font-serif-jp tracking-widest opacity-90 border-r-2 border-yellow-400 pr-4">
+                    北海道イタリアン ミアアンジェラ 長町南
+                </p>
+            </div>
+
+            <div class="mt-auto md:mb-20 bg-white p-8 gold-border text-center fade-in">
+                <p class="text-red-800 font-bold text-sm mb-1 tracking-tighter">【期間限定・ネット予約限定】</p>
+                <p class="text-2xl font-serif-jp font-bold text-gray-900 leading-tight">
+                    北海道産モッツァレラ<br>無料プレゼント
+                </p>
+                <div class="mt-4 flex flex-col gap-2">
+                    <a href="https://mia-angela.eastone.co.jp/shop/nagamachiminami"
+                       class="bg-red-700 text-white py-3 px-8 font-bold hover:bg-red-800 transition-all">予約して受け取る</a>
+                    <p class="text-[10px] text-gray-500">※本ページよりネット予約された方限定</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 店舗の雰囲気・アクセス（短文でテンポ良く） -->
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
+                <div class="flex flex-col items-center">
+                    <span class="text-xs font-bold mb-1 tracking-widest" style="color:var(--accent-gold)">ACCESS</span>
+                    <span class="text-xl font-bold font-serif-jp">長町南駅 徒歩1分</span>
+                </div>
+                <div class="flex flex-col items-center border-x border-gray-200 px-8">
+                    <span class="text-xs font-bold mb-1 tracking-widest" style="color:var(--accent-gold)">RESERVE</span>
+                    <span class="text-xl font-bold font-serif-jp">24時間ネット予約可</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-xs font-bold mb-1 tracking-widest" style="color:var(--accent-gold)">PARKING</span>
+                    <span class="text-xl font-bold font-serif-jp">300円キャッシュバック</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 商品訴求：究極のペペロンチーノ -->
+    <section class="py-24 overflow-hidden bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 border-t-2 border-l-2 z-0" style="border-color:var(--accent-gold)"></div>
+                    <img src="images/peperoncino.jpg" class="relative z-10 w-full object-cover" alt="極上ペペロンチーノ">
+                    <div class="absolute -bottom-6 -right-6 bg-white py-4 px-8 shadow-xl z-20 font-serif-jp border border-gray-100">
+                        <span class="font-bold text-sm" style="color:var(--primary-red)">看板メニュー</span>
+                        <p class="text-2xl font-bold">極上ペペロンチーノ</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-mincho mb-8 leading-tight">
+                        <span class="fude-text">「シンプルだからこそ、」</span><br>
+                        素材の暴力的なまでの旨味。
+                    </h2>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        茹で上げのスパゲティに絡むのは、北海道産の厳選ニンニクと香り高いオイル。一口含めば、小麦の香りと刺激的な辛みが口いっぱいに広がります。
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        デリバリーでは決して味わえない「出来立ての温度」と「アルデンテの食感」。単品注文だからこそ味わえる、ミアアンジェラが誇る最高傑作です。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="images/pasta.jpg" class="w-full aspect-square object-cover" alt="パスタ1">
+                        <img src="images/pasta2.jpg" class="w-full aspect-square object-cover" alt="パスタ2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 信頼の証（食材へのこだわり） -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative">
+    <div class="absolute inset-0 opacity-20 bg-cover"
+         style="background-image:url('https://images.unsplash.com/photo-1534938665420-4193effeabb4?auto=format&fit=crop&q=80&w=2000')"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+        <div class="text-center mb-10 md:mb-16">
+            <span class="font-bold tracking-[0.3em] mb-4 block" style="color:var(--accent-gold)">INGREDIENTS</span>
+            <h3 class="text-2xl md:text-5xl font-mincho">北海道、その大地を味わう。</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div class="text-center group">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 border border-white/20 group-hover:bg-white/20 transition-all">
+                    <i class="fa-solid fa-cow text-2xl md:text-3xl" style="color:var(--accent-gold)"></i>
+                </div>
+                <h4 class="text-lg md:text-xl font-bold mb-2 md:mb-4 font-serif-jp">十勝ハーブ牛</h4>
+                <p class="text-sm text-gray-400 leading-relaxed">厳しい寒さの中で育まれた、きめ細やかな肉質と濃厚な旨味。</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 border border-white/20 group-hover:bg-white/20 transition-all">
+                    <i class="fa-solid fa-cheese text-2xl md:text-3xl" style="color:var(--accent-gold)"></i>
+                </div>
+                <h4 class="text-lg md:text-xl font-bold mb-2 md:mb-4 font-serif-jp">自家製モッツァレラ</h4>
+                <p class="text-sm text-gray-400 leading-relaxed">北海道産生乳100%。ミルキーでとろけるような食感を実現。</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 border border-white/20 group-hover:bg-white/20 transition-all">
+                    <i class="fa-solid fa-wheat-awn text-2xl md:text-3xl" style="color:var(--accent-gold)"></i>
+                </div>
+                <h4 class="text-lg md:text-xl font-bold mb-2 md:mb-4 font-serif-jp">北海道産小麦</h4>
+                <p class="text-sm text-gray-400 leading-relaxed">パスタの命である「コシ」と「香り」を極限まで追求した自社ブレンド。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 5. 接客と空間 -->
+   <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-10 md:gap-16">
+        <div class="w-full md:w-1/3">
+
+            <!-- 縦書きタイトル：スマホは横書き、PCは縦書き -->
+            <div class="md:section-title border-b-2 md:border-b-0 md:border-r-2 pb-4 md:pb-0"
+                 style="border-color:var(--accent-gold)">
+                <h3 class="text-2xl md:text-3xl font-mincho leading-tight
+                           [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl]">
+                    心地よい空間と、<br>温かなもてなし。
+                </h3>
+            </div>
+
+            <p class="mt-6 md:mt-8 text-gray-600 leading-relaxed text-sm md:text-base">
+                お一人様からご家族まで。ゆったりとしたソファー席や、周囲を気にせず語らえる個室をご用意しております。
+            </p>
+            <div class="mt-6 md:mt-8 flex gap-2">
+                <img src="images/sofa.jpg" class="w-1/2 aspect-square object-cover" alt="ソファー席">
+                <img src="images/kositu.jpg" class="w-1/2 aspect-square object-cover" alt="個室">
+            </div>
+        </div>
+        <div class="w-full md:w-2/3 grid gap-4 md:gap-6">
+    <div class="bg-gray-50 pt-5 pb-3 px-5 md:pt-6 md:pb-4 md:px-6 rounded border-l-4 flex gap-3 md:gap-4 shadow-sm"
+         style="border-color:var(--accent-gold)">
+        <div class="text-xl md:text-2xl shrink-0" style="color:var(--accent-gold)">
+            <i class="fa-solid fa-quote-left"></i>
+        </div>
+        <div>
+            <p class="font-bold mb-2 text-sm md:text-base">「接客が明るく活発で、楽しい時間を過ごせました」</p>
+            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">味はもちろんですが、スタッフさんの対応がリピートしたくなる一番の理由です。気軽に本格イタリアンを楽しめるのが嬉しい。（50代女性）</p>
+        </div>
+    </div>
+            <div class="bg-gray-50 pt-5 pb-1 px-5 md:pt-6 md:pb-2 md:px-6 rounded border-l-4 flex gap-3 md:gap-4 shadow-sm"
+     style="border-color:var(--accent-gold)">
+                <div class="text-xl md:text-2xl shrink-0" style="color:var(--accent-gold)">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <div>
+                    <p class="font-bold mb-2 text-sm md:text-base">「地下鉄駅からすぐ。ショッピング帰りにも便利」</p>
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed">モール隣接で駐車場代も気にならないのが助かります。夜の予算もリーズナブルで、女子会にもぴったりです。（30代女性）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 7. 地図セクション -->
+    <section class="py-12 md:py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h3 class="text-xl md:text-2xl font-serif-jp font-bold mb-6 md:mb-8">アクセス</h3>
+        <div class="w-full h-[280px] md:h-[450px] shadow-lg rounded-xl overflow-hidden border-2 border-white">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.3678327367347!2d140.87255657477843!3d38.2245710861248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a26369b0827ef%3A0xbaadb53e83b6a724!2z5YyX5rW36YGT44Kk44K_44Oq44Ki44OzIOODn-OCouOCouODs-OCuOOCp-ODqSDplbfnlLrljZc!5e0!3m2!1sja!2sjp!4v1773017458250!5m2!1sja!2sjp"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="mt-4 text-xs md:text-sm text-gray-600">地下鉄長町南駅から徒歩1分 / ラズガーデン隣接</p>
+    </div>
+</section>
+
+    <!-- 6. 最終CTA -->
+    <section class="py-32 bg-cover bg-fixed relative" style="background-image:url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&q=80&w=2000')">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+            <h3 class="text-4xl md:text-6xl font-mincho mb-8 leading-tight">
+                今夜、長町南で<br>最高の一皿に出会う。
+            </h3>
+            <div class="bg-white/10 backdrop-blur-lg p-10 gold-border">
+                <p class="text-xl font-bold mb-6 italic text-yellow-300">WEB限定：北海道産モッツァレラチーズ サービス中</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="https://mia-angela.eastone.co.jp/shop/nagamachiminami" target="_blank"
+                       class="bg-red-700 hover:bg-red-800 text-white text-2xl font-bold py-6 px-12 rounded-sm shadow-2xl transition-all">
+                        今すぐネット予約
+                    </a>
+                    <a href="tel:0223045567"
+                       class="bg-white text-red-900 text-2xl font-bold py-6 px-12 rounded-sm shadow-2xl transition-all flex items-center justify-center">
+                        <i class="fa-solid fa-phone mr-3"></i> 022-304-5567
+                    </a>
+                </div>
+                <p class="mt-8 text-sm opacity-80 leading-relaxed">
+                    宮城県仙台市太白区長町7-24-26（長町南駅 徒歩1分）<br>
+                    営業時間：ランチ 11:00〜 / ディナー 17:00〜
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-stone-900 text-white border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <p class="text-xl font-serif-jp font-bold tracking-widest">ミアアンジェラ 長町南</p>
+                <p class="text-[10px] opacity-50 mt-1 uppercase tracking-[0.2em]">Hokkaido Italian Mia Angela</p>
+            </div>
+            <div class="flex gap-6 text-2xl">
+                <a href="https://x.com/mia_nagamachi" class="hover:opacity-70 transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://mia-angela.eastone.co.jp/shop/nagamachiminami" class="hover:opacity-70 transition-colors"><i class="fa-solid fa-globe"></i></a>
+            </div>
+            <p class="text-[10px] opacity-50">&copy; 2024 Eastone Co., Ltd.</p>
+        </div>
+    </footer>
+
+    <script>
+        const floatingBtn = document.getElementById('floatingBtn');
+        window.addEventListener('scroll', () => {
+            floatingBtn.style.display = window.scrollY > 600 ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山形の店とおうちイタリアン Tavola（ターボラ）| 仙台で味わう山形郷土イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700;800&display=swap');
+
+        :root {
+            --tavola-red: #8e1c19;
+            --tavola-gold: #c2a162;
+            --tavola-beige: #f9f6f1;
+            --tavola-dark: #2a2a2a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--tavola-beige);
+            color: var(--tavola-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .font-serif-jp {
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+        }
+
+        /* 和紙テクスチャ */
+        .washi-bg {
+            background-color: var(--tavola-beige);
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .text-tavola-red { color: var(--tavola-red); }
+        .bg-tavola-red { background-color: var(--tavola-red); }
+        .text-tavola-gold { color: var(--tavola-gold); }
+        .border-tavola-red { border-color: var(--tavola-red); }
+        .border-tavola-gold { border-color: var(--tavola-gold); }
+
+        /* 縦書き */
+        .writing-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 装飾タイトル */
+        .title-ornament {
+            position: relative;
+            display: inline-block;
+            padding: 0 48px;
+        }
+        .title-ornament::before,
+        .title-ornament::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 32px;
+            height: 1px;
+            background-color: var(--tavola-gold);
+        }
+        .title-ornament::before { left: 0; }
+        .title-ornament::after { right: 0; }
+
+        /* CTAボタン */
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(135deg, #b91c1c 0%, #8e1c19 100%);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 20px 30px -10px rgba(142, 28, 25, 0.45);
+        }
+
+        /* ヒーロー写真カード */
+        .photo-card {
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .photo-card:hover {
+            transform: rotate(0deg) !important;
+        }
+
+        /* スクロールアニメ */
+        @keyframes scrollDown {
+            0% { transform: translateY(0); opacity: 1; }
+            80% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 0; }
+        }
+        .scroll-arrow { animation: scrollDown 2s ease-in-out infinite; }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 食材カード */
+        .ingredient-card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .ingredient-card:hover {
+            box-shadow: 0 24px 48px -12px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+        }
+        .ingredient-card:hover .card-img {
+            transform: scale(1.08);
+        }
+        .card-img {
+            transition: transform 0.6s ease;
+        }
+        .ingredient-card:hover .card-num {
+            opacity: 1;
+        }
+        .card-num {
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+        }
+
+        /* マップグレースケール */
+        .map-wrapper {
+            filter: grayscale(0.5);
+            transition: filter 0.5s ease;
+        }
+        .map-wrapper:hover {
+            filter: grayscale(0);
+        }
+
+        /* テレフォンホバー */
+        .tel-link {
+            transition: color 0.25s ease;
+        }
+        .tel-link:hover {
+            color: var(--tavola-red);
+        }
+
+        /* フォトフレーム背景サークル */
+        .story-circle {
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+            width: 16rem;
+            height: 16rem;
+            background-color: var(--tavola-beige);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .title-ornament { padding: 0 28px; }
+            .title-ornament::before,
+            .title-ornament::after { width: 20px; }
+        }
+
+        @media (max-width: 380px) {
+            .title-ornament { padding: 0 20px; }
+            .title-ornament::before,
+            .title-ornament::after { width: 14px; }
+        }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- ===== トップページへ戻るリンク ===== -->
+    <a
+        href="../../../"
+        class="fixed top-0 left-0 z-50 bg-tavola-dark/85 hover:bg-tavola-red text-white text-[10px] sm:text-xs md:text-sm px-3 sm:px-4 py-2 sm:py-2.5 tracking-widest flex items-center gap-1.5 sm:gap-2 transition-colors duration-300"
+    >
+        <i class="fas fa-chevron-left text-[10px]"></i>
+        <span>トップページへ戻る</span>
+    </a>
+
+    <!-- ===== HERO ===== -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 pb-10 px-4">
+
+        <!-- 背景オーバーレイ -->
+        <div class="absolute inset-0 z-0">
+            <img
+                src="images/soup.jpg"
+                alt="自家製スープ"
+                class="w-full h-full object-cover opacity-25"
+                loading="eager"
+            >
+        </div>
+
+        <!-- 縦書きキャッチ（右端） -->
+        <div class="absolute right-6 top-20 hidden md:block z-20">
+            <p class="writing-vertical font-serif-jp text-xl tracking-[0.5em] font-bold text-tavola-red leading-loose">
+                仙台・荒巻で出逢う、旬の山形。
+            </p>
+        </div>
+
+        <!-- メインコンテンツ -->
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+
+            <!-- バッジ -->
+            <div class="mb-6 flex justify-center">
+                <span class="bg-tavola-red text-white text-[10px] sm:text-xs md:text-sm px-4 sm:px-5 py-1.5 tracking-[0.15em] sm:tracking-[0.25em] font-bold uppercase text-center">
+                    んめぇ山形を、仙台の日常に。
+                </span>
+            </div>
+
+            <!-- メインタイトル -->
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-serif-jp font-extrabold mb-6 leading-[1.4] text-gray-900">
+                山形出身シェフが贈る<br>
+                <span class="text-tavola-red">「おうちイタリアン」</span>の最高峰
+            </h1>
+
+            <p class="text-xs sm:text-sm md:text-base text-gray-600 mb-10 md:mb-12 tracking-wide max-w-xl mx-auto px-2">
+                2012年創業。山形の伝承野菜、米の娘豚、地酒——<br>
+                本物の素材だけを仙台の食卓へ。
+            </p>
+
+            <!-- 写真カード2枚 -->
+            <div class="flex flex-col md:flex-row gap-8 justify-center items-center md:items-end">
+
+                <!-- カード1 -->
+                <div class="relative group w-full max-w-xs sm:max-w-sm">
+                    <div class="absolute -top-3 -right-1 sm:-top-4 sm:-right-4 bg-tavola-gold text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold leading-tight rotate-12 z-20 shadow-lg">
+                        看板<br>メニュー
+                    </div>
+                    <div class="bg-white p-3 shadow-2xl rounded-sm photo-card" style="transform: rotate(-2deg);">
+                        <div class="w-full aspect-[4/3] bg-gray-200 overflow-hidden">
+                            <img
+                                src="images/nasu.png"
+                                alt="茄子ごんげ"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 card-img"
+                            >
+                        </div>
+                        <p class="mt-3 font-serif-jp font-bold text-base sm:text-lg">伝説の、茄子ごんげ。</p>
+                    </div>
+                </div>
+
+                <!-- カード2 -->
+                <div class="relative group hidden md:block w-full max-w-xs sm:max-w-sm">
+                    <div class="bg-white p-3 shadow-2xl rounded-sm photo-card" style="transform: rotate(3deg);">
+                        <div class="w-full aspect-[4/3] bg-gray-200 overflow-hidden">
+                            <img
+                                src="images/meatloaf.png"
+                                alt="自家製ミートローフ"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 card-img"
+                            >
+                        </div>
+                        <p class="mt-3 font-serif-jp font-bold text-base sm:text-lg">自家製ミートローフ</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- スクロール誘導 -->
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-tavola-gold">
+            <p class="text-[10px] tracking-[0.3em] mb-3 uppercase">Scroll</p>
+            <div class="scroll-arrow w-px h-8 sm:h-10 bg-tavola-gold"></div>
+        </div>
+
+    </header>
+
+    <!-- ===== CTA 1: Instagram ===== -->
+    <section class="relative bg-tavola-red py-12 sm:py-16 px-4 sm:px-6 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none"
+             style="background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');"></div>
+        <div class="max-w-3xl mx-auto text-center relative z-10 reveal">
+            <h2 class="text-2xl md:text-3xl font-serif-jp font-bold mb-4 leading-relaxed">
+                旬の山形、最新の「んめぇ」を。
+            </h2>
+            <p class="text-base md:text-lg opacity-85 mb-8">
+                Instagramで日々、郷土の風をお届けしています。
+            </p>
+            <a
+                href="https://www.instagram.com/tavola_yamagata/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cta-button inline-flex items-center bg-white text-white px-6 sm:px-10 py-3.5 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-bold shadow-2xl border-2 border-white/20 gap-2 sm:gap-3 text-center"
+            >
+                <i class="fab fa-instagram text-xl sm:text-2xl flex-shrink-0"></i>
+                <span>Tavola 公式Instagramを見る</span>
+            </a>
+            <div class="mt-7 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold opacity-75 px-2">
+                <span class="hidden sm:block w-8 h-px bg-white"></span>
+                <span>お電話でのご予約：022-223-5115</span>
+                <span class="hidden sm:block w-8 h-px bg-white"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ストーリー ===== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+
+            <!-- 写真 -->
+            <div class="w-full md:w-1/2 relative reveal">
+                <div class="story-circle"></div>
+                <div class="aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                    <img
+                        src="images/chef.png"
+                        alt="オーナーシェフ 梶原章弘"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                    >
+                </div>
+                <!-- 縦書きアクセント -->
+                <div class="absolute -left-4 top-10 bg-white shadow-xl px-4 py-5 hidden md:block">
+                    <p class="writing-vertical font-serif-jp text-sm tracking-[0.35em] leading-loose text-gray-700">
+                        山形に魅了され、食の伝道師となった元テレビマンの情熱。
+                    </p>
+                </div>
+            </div>
+
+            <!-- テキスト -->
+            <div class="w-full md:w-1/2 reveal">
+                <div class="mb-5">
+                    <span class="text-tavola-gold font-serif-jp text-base tracking-[0.25em] border-b border-tavola-gold pb-1">
+                        創業者物語
+                    </span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp font-bold mb-6 sm:mb-8 leading-snug">
+                    「山形の凄さ」を伝えたい。<br>
+                    その一心で、包丁を握りました。
+                </h3>
+                <div class="space-y-5 text-gray-700 leading-[1.9] sm:leading-[2] text-sm md:text-base">
+                    <p>山形県出身。数多くの料理を経験する中で、私は確信しました。山形の食材には、人を感動させる力がある、と。</p>
+                    <p>かつて山形の放送局でテレビマンとして活動していた頃、取材を通じて出会った生産者の方々の情熱。土の香り、水の清らかさ、受け継がれる知恵——それらすべてが皿の上で調和する「イタリアン」という自由な表現で、山形の魅力を仙台の方々へ届けたい。</p>
+                    <p>2012年の創業以来、変わらぬ想いで今日も厨房に立ちます。ここは、仙台で一番「山形に近い」場所です。</p>
+                </div>
+
+                <!-- シェフ情報 -->
+                <div class="mt-10 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                        <img
+                            src="images/chef.png"
+                            alt="シェフ顔写真"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div>
+                        <p class="text-xs text-tavola-gold font-bold tracking-widest mb-0.5">Tavola オーナーシェフ</p>
+                        <p class="font-serif-jp font-bold text-xl leading-tight">
+                            梶原 章弘
+                            <span class="text-sm font-normal text-gray-500 ml-2">Akihiro Kajiwara</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== こだわり食材 ===== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 washi-bg">
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <p class="text-xs tracking-[0.35em] text-tavola-gold font-bold uppercase mb-4">
+                    Excellence of Ingredients
+                </p>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif-jp font-bold title-ornament">
+                    こだわり抜いた、山形の至宝
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+
+                <!-- カード1 -->
+                <div class="bg-white shadow-sm border-t-4 border-tavola-red ingredient-card reveal">
+                    <div class="p-6 sm:p-8">
+                        <div class="text-4xl font-serif-jp text-tavola-gold mb-5 card-num font-bold">01</div>
+                        <h4 class="text-xl font-serif-jp font-bold mb-3">伝承野菜の生命力</h4>
+                        <p class="text-sm text-gray-600 leading-[1.9]">
+                            だだちゃ豆、甚五右衛門芋、勘次郎胡瓜。山形の風土が育んだ「伝承野菜」を産地直送。力強い素材の味をイタリアンの技法で引き出します。
+                        </p>
+                    </div>
+                    <div class="h-44 overflow-hidden">
+                        <img
+                            src="images/vegetables.jpg"
+                            alt="伝承野菜"
+                            class="w-full h-full object-cover card-img"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+
+                <!-- カード2 -->
+                <div class="bg-white shadow-sm border-t-4 border-tavola-red ingredient-card reveal" style="transition-delay: 0.1s;">
+                    <div class="p-6 sm:p-8">
+                        <div class="text-4xl font-serif-jp text-tavola-gold mb-5 card-num font-bold">02</div>
+                        <h4 class="text-xl font-serif-jp font-bold mb-3">米の娘豚の甘み</h4>
+                        <p class="text-sm text-gray-600 leading-[1.9]">
+                            金山牧場が育む「米の娘豚」。通常の4倍のビタミンEを含み、とろけるような脂の甘みが特徴。ステーキやメインでその違いを実感してください。
+                        </p>
+                    </div>
+                    <div class="h-44 overflow-hidden">
+                        <img
+                            src="images/poke.jpg"
+                            alt="米の娘豚"
+                            class="w-full h-full object-cover card-img"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+
+                <!-- カード3 -->
+                <div class="bg-white shadow-sm border-t-4 border-tavola-red ingredient-card reveal" style="transition-delay: 0.2s;">
+                    <div class="p-6 sm:p-8">
+                        <div class="text-4xl font-serif-jp text-tavola-gold mb-5 card-num font-bold">03</div>
+                        <h4 class="text-xl font-serif-jp font-bold mb-3">山形直送の地酒</h4>
+                        <p class="text-sm text-gray-600 leading-[1.9]">
+                            お酒も山形産にこだわり抜いています。希少な地酒や、料理に寄り添うワインを店主自らセレクト。料理とのペアリングが生む感動をご提供します。
+                        </p>
+                    </div>
+                    <div class="h-44 overflow-hidden">
+                        <img
+                            src="images/zixake.jpg"
+                            alt="地酒・ワイン"
+                            class="w-full h-full object-cover card-img"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== お客様の声 ===== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute right-0 top-0 w-64 h-64 bg-tavola-red opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute left-0 bottom-0 w-48 h-48 bg-tavola-gold opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-center text-xl sm:text-2xl md:text-4xl font-serif-jp font-bold mb-12 sm:mb-16 underline decoration-tavola-gold decoration-1 underline-offset-8 reveal px-2">
+                「感動した」その声が、私たちの力です。
+            </h2>
+
+            <div class="space-y-12">
+
+                <!-- 声1 -->
+                <div class="flex flex-col md:flex-row gap-4 sm:gap-6 items-start border-l-2 border-tavola-gold pl-5 sm:pl-8 reveal">
+                    <div class="flex-shrink-0 flex gap-1 text-tavola-gold pt-1">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-base sm:text-lg md:text-xl font-serif-jp italic mb-4 leading-relaxed">
+                            「なすのごんげ丼がめちゃくちゃおいしくてハマりました！家で真似してみたけど、やはり違う…。マスターが楽しかった！」
+                        </p>
+                        <p class="text-xs opacity-50 tracking-widest">— 初めて山形料理を召し上がったお客様</p>
+                    </div>
+                </div>
+
+                <!-- 声2 -->
+                <div class="flex flex-col md:flex-row gap-4 sm:gap-6 items-start border-l-2 border-tavola-gold pl-5 sm:pl-8 reveal">
+                    <div class="flex-shrink-0 flex gap-1 text-tavola-gold pt-1">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-base sm:text-lg md:text-xl font-serif-jp italic mb-4 leading-relaxed">
+                            「店主までもが山形産という、山形に取り付かれたようなお店。こだわり抜いた食材だからこそ感動させられると思います。」
+                        </p>
+                        <p class="text-xs opacity-50 tracking-widest">— 1名様でご来店の常連様</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== アクセス・コンタクト ===== -->
+    <section class="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-tavola-beige p-6 sm:p-8 md:p-14 rounded-sm shadow-inner border border-gray-100 flex flex-col md:flex-row gap-8 sm:gap-12">
+
+                <!-- 左：店舗情報 + マップ -->
+                <div class="w-full md:w-1/2 reveal">
+                    <h3 class="text-2xl sm:text-3xl font-serif-jp font-bold mb-6 sm:mb-8 border-b-2 border-tavola-red inline-block pb-2">
+                        店舗のご案内
+                    </h3>
+                    <div class="space-y-6 sm:space-y-7">
+                        <div>
+                            <p class="text-xs text-tavola-gold font-bold uppercase tracking-[0.25em] mb-1">Address</p>
+                            <p class="text-base leading-relaxed">〒981-0965 宮城県仙台市青葉区荒巻神明町22-8</p>
+                            <p class="text-sm text-gray-500 mt-1">JR仙山線「北山駅」より徒歩12分（駐車場1台完備）</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-tavola-gold font-bold uppercase tracking-[0.25em] mb-1">Business Hours</p>
+                            <p class="text-base leading-relaxed">ランチ・ディナー営業<br><span class="text-sm text-gray-500">完全予約制ではございませんが、お電話がスムーズです。</span></p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-tavola-gold font-bold uppercase tracking-[0.25em] mb-1">Capacity</p>
+                            <p class="text-base">14席（最大宴会20名まで）/ カウンター席あり</p>
+                            <p class="text-sm text-gray-500 mt-1">※店内完全禁煙</p>
+                        </div>
+                    </div>
+
+                    <!-- Google Map -->
+                    <div class="mt-6 sm:mt-8 rounded-sm overflow-hidden shadow-md border border-gray-200 map-wrapper">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.6977170575947!2d140.85386447478191!3d38.28649948252011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40762f8d979a2c99%3A0x9331fefb0df4eb83!2z5bGx5b2i44Go44GK44GG44Gh44Kk44K_44Oq44Ki44OzIFRhdm9sYe-8iCDjgr_jg7zjg5zjg6nvvIk!5e0!3m2!1sja!2sjp!4v1773030964003!5m2!1sja!2sjp"
+                            width="100%"
+                            height="220"
+                            class="sm:h-[280px]"
+                            style="border:0; display:block;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Tavola 地図"
+                        ></iframe>
+                    </div>
+                </div>
+
+                <!-- 右：電話・CTA -->
+                <div class="w-full md:w-1/2 flex flex-col justify-center items-center bg-white p-6 sm:p-8 md:p-10 shadow-2xl rounded-sm reveal">
+                    <p class="text-tavola-red font-bold mb-4 sm:mb-5 flex items-center gap-2 sm:gap-3 text-xs sm:text-sm tracking-widest text-center">
+                        <span class="block w-5 sm:w-6 h-px bg-tavola-red"></span>
+                        ご予約・お問い合わせ
+                        <span class="block w-5 sm:w-6 h-px bg-tavola-red"></span>
+                    </p>
+                    <a href="tel:0222235115" class="text-3xl sm:text-4xl md:text-5xl font-serif-jp font-black tel-link tracking-tight whitespace-nowrap">
+                        022-223-5115
+                    </a>
+
+                    <div class="mt-8 sm:mt-10 text-center space-y-4 sm:space-y-5 w-full">
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            お一人様から団体様まで、<br>心よりお待ち申し上げております。
+                        </p>
+                        <a
+                            href="https://www.instagram.com/tavola_yamagata/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="cta-button w-full block text-white font-bold py-4 rounded-sm tracking-widest shadow-lg text-sm text-center"
+                        >
+                            <i class="fab fa-instagram mr-2"></i>Instagramで最新状況を確認
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-gray-100 py-8 sm:py-10 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="font-serif-jp font-bold text-lg mb-2 tracking-wide">
+                山形の店とおうちイタリアン Tavola
+            </p>
+            <p class="text-xs text-gray-400 tracking-widest">© 2024 Tavola All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- スクロールアニメーション JS -->
+    <script>
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン シンフォニー | ウェスティンホテル仙台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.4)), url('https://images.unsplash.com/photo-1550966841-3ee4ad6b10d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=90');
+            background-size: cover;
+            background-position: center;
+        }
+        .gold-text {
+            color: #b1976b;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #b1976b 0%, #8a7452 100%);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(177, 151, 107, 0.3);
+            filter: brightness(1.1);
+        }
+        section {
+            overflow: hidden;
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- FVエリア -->
+   <header class="relative min-h-screen flex items-start md:items-center pt-24 md:pt-0 overflow-hidden">
+  <div class="absolute inset-0 hero-bg"></div>
+
+  <!-- 上位階層（トップページ）へのリンク -->
+  <div class="absolute top-4 left-4 md:top-6 md:left-6 z-30">
+    <a href="../../../" class="inline-flex items-center gap-2 text-xs md:text-sm font-bold tracking-wider text-stone-700 bg-white/80 backdrop-blur-sm px-4 py-2 md:px-5 md:py-2.5 rounded-full shadow-sm hover:text-[#b1976b] transition-colors no-underline">
+      <span aria-hidden="true">&larr;</span>
+      トップページへ戻る
+    </a>
+  </div>
+
+  <!-- 縦書きキャッチコピー（PC・タブレット表示のみ） -->
+  <div class="absolute right-[10%] top-20 z-20 hidden md:block">
+    <h1 class="serif vertical-text text-stone-900 text-2xl lg:text-3xl font-black leading-relaxed tracking-widest">
+      地<span class="gold-text">上</span>一一〇メートル、<br>
+      五感で<span class="gold-text">奏</span>でる至福の一刻。
+    </h1>
+  </div>
+
+  <div class="container mx-auto px-6 z-10">
+    <div class="max-w-2xl">
+      <p class="text-xs sm:text-sm md:text-base mb-3 md:mb-4 tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.4em] gold-text font-bold">
+        WESTIN SENDAI | RESTAURANT SYMPHONY
+      </p>
+      <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-6 md:mb-8 text-stone-900">
+        極致の「スズキのポワレ」を、<br>仙台の空高く。
+      </h2>
+      <div class="w-16 md:w-24 h-[1px] bg-[#b1976b] mb-6 md:mb-8"></div>
+      <p class="text-base md:text-xl mb-4 md:mb-10 text-stone-700 leading-relaxed md:leading-loose">
+        都内なら五万円を下らない、<br>
+        最高級のクオリティを誇るモダンフレンチ。
+      </p>
+    </div>
+  </div>
+
+  <div class="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+    <div class="w-[1px] h-16 bg-stone-400"></div>
+  </div>
+</header>
+
+    <!-- CTA 1 -->
+    <section class="bg-[#fcfaf7] py-12 md:py-16 border-y border-stone-100">
+    <div class="container mx-auto px-6 text-center">
+        <p class="serif text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 tracking-wider sm:tracking-widest gold-text font-bold">
+            特別な一日の、ご予約を承ります。
+        </p>
+        <a href="https://www.the-westin-sendai.com/rest/sym/" target="_blank" rel="noopener noreferrer"
+           class="cta-button block w-full sm:inline-block sm:w-auto text-white text-base sm:text-lg font-bold py-4 sm:py-5 px-6 sm:px-12 md:px-16 rounded shadow-lg no-underline">
+            空席確認・WEB予約
+        </a>
+        <div class="mt-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm text-stone-500">
+            <p>定休日：なし</p>
+            <span class="hidden md:inline">|</span>
+            <p>住所：宮城県仙台市青葉区一番町1-9-1</p>
+            <span class="hidden md:inline">|</span>
+            <p>電話：<a href="tel:0227221234" class="hover:text-[#b1976b] transition-colors">022-722-1234</a></p>
+        </div>
+    </div>
+</section>
+
+    <!-- 料理のこだわりセクション -->
+<section class="py-12 md:py-24 bg-white">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="text-center mb-12 md:mb-20">
+            <span class="serif gold-text tracking-[0.2em] sm:tracking-[0.3em] uppercase block mb-3 md:mb-4 text-sm md:text-base">The Masterpiece</span>
+            <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-bold text-stone-900 mb-4 md:mb-6">イチオシの逸品「スズキのポワレ」</h2>
+            <div class="w-16 h-[2px] bg-[#b1976b] mx-auto"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="relative">
+                <div class="rounded-sm shadow-xl overflow-hidden aspect-[4/3] bg-stone-100 flex items-center justify-center">
+                    <img src="images/suzuki.jpg" alt="スズキのポワレ" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-8 -right-8 bg-[#b1976b] p-8 hidden md:block shadow-lg">
+                    <p class="serif vertical-text text-white font-bold text-xl tracking-tighter">
+                        皮目は<span class="text-2xl">パリッ</span>と、<br>
+                        身は<span class="text-2xl">ふっくら</span>と。
+                    </p>
+                </div>
+            </div>
+            <div class="space-y-6 md:space-y-8">
+                <div>
+                    <h3 class="serif text-xl md:text-2xl gold-text mb-3 md:mb-4">01. 厳選された素材</h3>
+                    <p class="text-stone-600 leading-relaxed md:leading-loose">
+                        その日一番の状態のスズキを厳選。豊かな海が育んだ脂ののりと、上品な白身の旨みを最大限に引き出します。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="serif text-xl md:text-2xl gold-text mb-3 md:mb-4">02. 究極の火入れ</h3>
+                    <p class="text-stone-600 leading-relaxed md:leading-loose">
+                        低温でじっくりと皮目から焼き上げ、身にストレスを与えず、極限まで柔らかく仕上げる職人技。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="serif text-xl md:text-2xl gold-text mb-3 md:mb-4">03. 視覚をも満たす盛り付け</h3>
+                    <p class="text-stone-600 leading-relaxed md:leading-loose">
+                        一皿がまるで一枚の絵画のように。シンフォニーの名に相応しい、色彩やかな旋律がテーブルを彩ります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- 権威性・ロケーションセクション -->
+<section class="py-12 md:py-24 bg-[#fcfaf7]">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-stretch">
+            <div class="w-full md:w-1/3 bg-white p-8 md:p-12 flex flex-col justify-center shadow-sm">
+                <span class="uppercase text-xs tracking-widest gold-text mb-4 font-bold">Exclusivity</span>
+                <h2 class="serif text-2xl sm:text-3xl font-bold mb-6 md:mb-8 text-stone-900">仙台の「迎賓館」として</h2>
+                <p class="leading-relaxed text-stone-600 mb-6 md:mb-8">
+                    接待、誕生日、プロポーズ。<br>
+                    大切な瞬間にこそ、選ばれる理由があります。<br>
+                    都内と同等のサービスとクオリティを、仙台ならではの開放感とともに。
+                </p>
+                <div class="gold-text serif italic font-bold">
+                    "特別な日を、最高のステイに。"
+                </div>
+            </div>
+            <div class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-stone-200 rounded overflow-hidden aspect-square shadow-md flex items-center justify-center">
+                    <img src="images/geihinnkan.jpg" alt="ホテルの外観" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-stone-200 rounded overflow-hidden flex flex-col shadow-md">
+                    <div class="h-full">
+                        <img src="images/panorama.jpg" alt="37Fからのパノラマビュー" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-[#b1976b] p-4 text-white font-bold text-center text-sm">
+                        37Fからのパノラマビュー
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- クチコミ -->
+<section class="py-12 md:py-24 bg-[#f9f7f4]">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <h2 class="serif text-center text-2xl gold-text mb-10 md:mb-16 tracking-widest font-bold">VOICE</h2>
+        <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+            <div class="bg-white p-6 md:p-10 border-t-4 border-[#b1976b] shadow-sm">
+                <div class="flex gap-1 mb-4 gold-text">★★★★★</div>
+                <p class="text-stone-700 leading-relaxed italic mb-4 md:mb-6">「はじめての接待でしたが、大きな窓から遠くの山々まで見渡せる素晴らしいロケーションで、入店した瞬間から特別な気分になれました。このクオリティをこのお値段でいただけるなんて最高です。」</p>
+                <p class="text-xs text-stone-400">— 接待利用のお客様</p>
+            </div>
+            <div class="bg-white p-6 md:p-10 border-t-4 border-[#b1976b] shadow-sm">
+                <div class="flex gap-1 mb-4 gold-text">★★★★★</div>
+                <p class="text-stone-700 leading-relaxed italic mb-4 md:mb-6">「サンリオファンの方はもちろん、それ以外の私たちでも世界観に思わず可愛い！と心躍る雰囲気でした。食事はスイーツ、セイボリーとも一品一品工夫が凝らされており美味しく頂けました。」</p>
+                <p class="text-xs text-stone-400">— アフタヌーンティー利用のお客様</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- アクセス・MAPセクション -->
+<section class="py-12 md:py-24 bg-white">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <div class="text-center mb-8 md:mb-12">
+            <h2 class="serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-widest">ACCESS</h2>
+            <div class="w-12 h-1 bg-[#b1976b] mx-auto mt-4"></div>
+        </div>
+        <div class="rounded-lg shadow-2xl overflow-hidden border border-stone-100">
+            <div class="map-container relative w-full aspect-[4/3] sm:aspect-[16/9] h-auto">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.9881151271043!2d140.87355007478024!3d38.25658168426218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2816631dae73%3A0x8e934a25accc2568!2z44Km44Kn44K544OG44Kj44Oz44Ob44OG44Or5LuZ5Y-wIOODrOOCueODiOODqeODsyDjgrfjg7Pjg5Xjgqnjg4vjg7w!5e0!3m2!1sja!2sjp!4v1773018246130!5m2!1sja!2sjp"
+                    class="absolute inset-0 w-full h-full"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+        <div class="mt-6 md:mt-8 grid md:grid-cols-2 gap-6 md:gap-8 text-stone-600">
+            <div>
+                <h4 class="font-bold text-stone-900 mb-2">お車でお越しの方</h4>
+                <p class="text-sm">東北自動車道 仙台宮城ICより約15分。ホテル専用駐車場をご利用いただけます（レストラン利用による割引あり）。</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-stone-900 mb-2">電車でお越しの方</h4>
+                <p class="text-sm">JR仙台駅 西口より徒歩約9分。地下鉄南北線 仙台駅 南2出口より徒歩約6分。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- CTA 2 (Footer) -->
+    <footer class="bg-stone-900 text-white pt-24 pb-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-16">
+                <p class="serif text-2xl md:text-4xl mb-12 tracking-widest leading-relaxed">
+                    心に、風景と美味が<br>
+                    いつまでも響き渡る。
+                </p>
+                <div class="max-w-md mx-auto">
+                    <!-- フッターの予約ボタン -->
+                    <a href="https://www.the-westin-sendai.com/rest/sym/" target="_blank" rel="noopener noreferrer" class="cta-button block text-xl font-bold py-6 px-12 rounded shadow-xl mb-6 text-white no-underline">
+                        今すぐ空席を確認する
+                    </a>
+                    <p class="text-stone-400 text-sm mb-4">お急ぎの方、団体様はお電話ください</p>
+                    <p class="serif text-3xl tracking-widest mb-12">022-722-1234</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 text-left border-t border-white/10 pt-16 mb-16">
+                <div>
+                    <h5 class="serif gold-text mb-6">SHOP INFO</h5>
+                    <p class="text-sm leading-loose opacity-70">
+                        ウェスティンホテル仙台 レストラン シンフォニー<br>
+                        〒980-0811 宮城県仙台市青葉区一番町1-9-1<br>
+                        営業時間：HPをご確認ください<br>
+                        定休日：なし
+                    </p>
+                </div>
+                <div>
+                    <h5 class="serif gold-text mb-6">CONNECT</h5>
+                    <div class="flex gap-6">
+                        <a href="https://x.com/WestinSendai" target="_blank" rel="noopener noreferrer" class="hover:gold-text transition text-sm text-stone-400">X (Twitter)</a>
+                        <a href="https://www.the-westin-sendai.com/rest/sym/" target="_blank" rel="noopener noreferrer" class="hover:gold-text transition text-sm text-stone-400">Official HP</a>
+                    </div>
+                </div>
+                <div class="md:text-right">
+                    <p class="serif text-lg opacity-40">SYMPHONY</p>
+                </div>
+            </div>
+
+            <p class="text-[10px] opacity-30 tracking-widest uppercase">&copy; Westin Sendai Restaurant Symphony All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
