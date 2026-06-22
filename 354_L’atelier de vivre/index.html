@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'atelier de vivre | 仙台・本町の創造的フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b38e44;
+            --dark-gold: #8e6d2f;
+            --bg-light: #ffffff;
+            --bg-off-white: #f9f8f6;
+            --text-dark: #1a1a1a;
+            --text-muted: #4a4a4a;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .fade-in { animation: fadeIn 2s ease forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .gold-line {
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .gold-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .bg-washi-light {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+            background-color: var(--bg-off-white);
+        }
+
+        .btn-premium {
+            background: var(--gold);
+            color: #fff;
+            letter-spacing: 0.2em;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid var(--gold);
+        }
+        .btn-premium:hover {
+            background: transparent;
+            color: var(--gold);
+            box-shadow: 0 5px 15px rgba(179, 142, 68, 0.2);
+        }
+
+        .img-placeholder {
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-placeholder::after {
+            content: "Loading...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+
+        section { padding: 100px 0; }
+        @media (max-width: 768px) { section { padding: 60px 0; } }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(0.5) contrast(1.1);
+        }
+
+        .social-icon-btn {
+            transition: all 0.3s ease;
+            color: var(--gold);
+        }
+        .social-icon-btn:hover {
+            transform: translateY(-3px);
+            color: var(--text-dark);
+        }
+
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        .text-muted { color: var(--text-muted); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- FVエリア -->
+    <section id="fv" class="relative h-screen flex items-center justify-center p-0 overflow-hidden bg-white">
+    <a href="../../../" class="absolute top-4 left-4 z-50 text-[10px] md:text-sm underline text-stone-600 hover:text-black">
+        トップページに戻る
+    </a>
+
+    <div id="img-fv" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0 scale-105"></div>
+    
+    <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent md:bg-gradient-to-r md:from-white/90 md:via-white/50"></div>
+    
+    <div class="relative w-full max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div class="fade-in w-full md:w-auto">
+            <div class="flex items-center gap-4 mb-4">
+                <p class="font-cinzel text-sm md:text-lg tracking-[0.2em] md:tracking-[0.4em] text-gold">L'atelier de vivre</p>
+                <a href="https://www.instagram.com/vivre_yoshida/" target="_blank" class="social-icon-btn" aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-5 h-5 md:w-6 md:h-6"></i>
+                </a>
+            </div>
+            <h1 class="text-3xl md:text-7xl font-black leading-tight mb-8 text-black">
+                端城の滋味を、<br>
+                <span class="text-gold">記憶に刻む。</span>
+            </h1>
+            <p class="text-xs md:text-lg tracking-widest text-muted border-l border-gold pl-4 md:pl-6 leading-relaxed">
+                完全予約制 仙台・本町の隠れ家フレンチ<br>
+                伝説のテリーヌと、地産地消の真髄。
+            </p>
+        </div>
+        
+        <div class="hidden md:block vertical-text text-2xl tracking-[0.5em] font-light border-r border-gold/30 pr-8 h-80 text-black">
+            食材に宿る物語を、一皿に。
+        </div>
+    </div>
+    
+    <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-40">
+        <span class="text-[9px] tracking-widest mb-2 text-black">SCROLL</span>
+        <div class="w-[1px] h-12 md:h-16 bg-gradient-to-b from-gold to-transparent"></div>
+    </div>
+</section>
+
+    <!-- CTA 1 -->
+  <section class="py-16 md:py-24 bg-washi-light border-y border-zinc-100">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-gold text-xs tracking-[0.3em] mb-4 uppercase">Reservation Privilege</p>
+        
+        <h3 class="text-lg md:text-2xl mb-8 font-semibold text-black leading-relaxed">
+            <span class="md:hidden">【期間限定】初回来店のお客様へ、<br>端城の希少な地酒またはノンアルを<br>一杯進呈いたします。</span>
+            <span class="hidden md:block">【期間限定】初回来店のお客様へ、端城の希少な地酒またはノンアルを一杯進呈いたします。</span>
+        </h3>
+        
+        <button onclick="window.open('https://www.instagram.com/vivre_yoshida/')" 
+                class="btn-premium inline-flex items-center gap-3 px-8 md:px-12 py-4 md:py-5 text-xs md:text-sm font-bold rounded-sm shadow-sm transition-transform hover:scale-105 active:scale-95">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+            公式Instagramで空席を確認
+        </button>
+    </div>
+</section>
+
+    <!-- メインコンテンツ -->
+    <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <div class="w-full md:w-1/2 order-2 md:order-1">
+                <span class="text-gold font-cinzel tracking-tighter text-sm">Recommended Menu</span>
+                <h2 class="text-2xl md:text-3xl font-bold mt-2 mb-6 gold-line text-black">焼きおにぎりフォアグラソース添え</h2>
+                <p class="text-muted mb-8 leading-loose text-sm md:text-base">
+                    和の魂が宿る「おにぎり」と、フランス料理の象徴「フォアグラ」。<br class="hidden md:block">
+                    炭火で香ばしく焼き上げた端城産のお米に、濃厚なソースが絡み合う。一口食べれば、そこには国境を超えた美食の景色が広がります。
+                </p>
+                <div class="text-sm border-t border-zinc-100 pt-6 italic text-zinc-400">
+                    「伝説のテリーヌ」と並び、多くのお客様に愛される当店のシグネチャーです。
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/2 order-1 md:order-2">
+                <div class="relative aspect-[4/5] md:aspect-[4/5] overflow-hidden group img-placeholder rounded-sm shadow-lg">
+                    <img src="images/onigiri.jpg" alt="焼きおにぎりフォアグラソース添え" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 border-[15px] md:border-[20px] border-white/10 pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 自己紹介 -->
+   <section class="py-16 md:py-24 bg-washi-light">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 items-start">
+        <div class="md:col-span-1 hidden md:flex justify-center">
+            <div class="vertical-text text-gold text-xs tracking-[0.5em] opacity-50">STORY OF CHEF YOSHIDA</div>
+        </div>
+        
+        <div class="md:col-span-5 mb-12 md:mb-0">
+            <div class="relative w-full h-[320px] md:h-[600px] img-placeholder rounded-sm shadow-xl overflow-hidden">
+                <div id="img-chef" 
+                     class="w-full h-full bg-cover bg-center filter brightness-105"
+                     style="background-image: url('images/chef.png');">
+                </div>
+            </div>
+        </div>
+        
+        <div class="md:col-span-6 md:pl-20">
+            <h3 class="text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] text-gold mb-2">吉田 刹信</h3>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-black leading-tight">
+                生産者の想いを、<br class="hidden md:block">一皿の「翻訳」に込めて。
+            </h2>
+            
+            <div class="space-y-6 text-muted font-light leading-relaxed text-sm md:text-base">
+                <p>
+                    阪神淡路大震災を神戸で、東日本大震災を仙台で。二度の震災を経て私が行き着いたのは、目の前にある食材の尊さ、そしてそれを作る生産者の情熱でした。
+                </p>
+                <p>
+                    端城には、驚くほど豊かな海と山があります。私の仕事は、複雑な調理で素材を隠すことではありません。フレンチの技法という「言葉」を使い、端城の食材が持つポテンシャルを最大限に引き出す。それが、私たちが掲げる「創造的フレンチ」の正体です。
+                </p>
+            </div>
+            
+            <div class="mt-10 md:mt-12 flex gap-8 md:gap-12">
+                <div>
+                    <p class="text-2xl md:text-3xl font-cinzel text-gold">13</p>
+                    <p class="text-[9px] md:text-[10px] tracking-widest text-zinc-400">YEARS HISTORY</p>
+                </div>
+                <div>
+                    <p class="text-2xl md:text-3xl font-cinzel text-gold">200</p>
+                    <p class="text-[9px] md:text-[10px] tracking-widest text-zinc-400">VINS NATURES</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 店舗情報 & アクセス -->
+   <section class="bg-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 md:mb-16">
+            <span class="text-gold tracking-[0.5em] text-xs">ACCESS</span>
+            <h2 class="text-2xl md:text-3xl font-bold mt-4 text-black italic">店舗情報</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            <!-- 情報エリア -->
+            <div class="space-y-6 md:space-y-8 text-black">
+                <div class="border-b border-zinc-100 pb-5 md:pb-6">
+                    <h4 class="text-gold font-bold mb-2">所在地</h4>
+                    <p class="text-base md:text-lg">〒980-0014 宮城県仙台市青葉区本町1丁目10-15</p>
+                    <p class="text-xs md:text-sm text-zinc-500 mt-2">
+                        ※仙台駅から徒歩15分。大通りに面しており、隣には大きな有料パーキングがございます。
+                    </p>
+                </div>
+                <div class="border-b border-zinc-100 pb-5 md:pb-6">
+                    <h4 class="text-gold font-bold mb-2">営業時間 / 予約について</h4>
+                    <p class="text-base md:text-lg">おまかせコース制（完全予約制）</p>
+                    <p class="text-xs md:text-sm text-zinc-500 mt-2">
+                        ※一品ずつ丁寧に仕上げるため、お時間に余裕を持ってご予約ください。
+                    </p>
+                </div>
+                <div class="pb-5 md:pb-6">
+                    <h4 class="text-gold font-bold mb-2">お問い合わせ・SNS</h4>
+                    <p class="text-xl md:text-2xl font-cinzel mb-4">022-263-2113</p>
+                    <a href="https://www.instagram.com/vivre_yoshida/" target="_blank"
+                       class="inline-flex items-center gap-2 text-gold hover:text-black transition-colors">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                        <span class="text-sm tracking-widest">@vivre_yoshida</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- マップエリア -->
+            <div class="shadow-2xl rounded-sm overflow-hidden border border-zinc-100">
+                <div class="relative w-full" style="padding-top: 66.67%;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.5691306736276!2d140.8746899747808!3d38.26629798369653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a282664e5d20d%3A0x81a6286d86082452!2sL%E2%80%99atelier%20de%20vivre!5e0!3m2!1sja!2sjp!4v1772774866858!5m2!1sja!2sjp"
+                        class="absolute inset-0 w-full h-full"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 特典・CTA 2 -->
+    <section class="bg-washi-light relative py-20 md:py-32 overflow-hidden text-center">
+    <div id="img-cta" class="absolute inset-0 bg-cover bg-center opacity-10"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="mb-10 md:mb-12">
+            <span class="text-gold tracking-[0.5em] text-xs">OFFER</span>
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mt-4 mb-6 md:mb-8 text-black leading-snug">
+                物語の続きは、<br>ぜひカウンターで。
+            </h2>
+            <p class="text-muted mb-10 md:mb-12 text-sm md:text-base leading-relaxed">
+                初回来店のお客様へ、ウェルカムドリンクと<br class="hidden sm:inline">「伝説のテリーヌ」の特別提供を準備してお待ちしております。
+            </p>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+            <button
+                onclick="window.open('https://www.latelier-de-vivre.com/')"
+                class="btn-premium w-full sm:w-auto px-8 md:px-12 py-4 md:py-6 text-sm font-bold rounded-sm shadow-lg">
+                公式サイトで予約する
+            </button>
+            <button
+                onclick="window.open('https://www.instagram.com/vivre_yoshida/')"
+                class="bg-black text-white w-full sm:w-auto px-8 md:px-12 py-4 md:py-6 text-sm font-bold rounded-sm shadow-lg hover:bg-zinc-800 transition-colors inline-flex items-center justify-center gap-3">
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+                Instagramを見る
+            </button>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-zinc-50 border-t border-zinc-100 text-center">
+        <div class="flex justify-center gap-6 mb-6">
+            <a href="https://www.instagram.com/vivre_yoshida/" target="_blank" class="social-icon-btn">
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+        </div>
+        <p class="font-cinzel tracking-widest text-gold mb-4">L'atelier de vivre</p>
+        <p class="text-zinc-400 text-[10px] tracking-widest uppercase">&copy; 2024 L'atelier de vivre. Crafted for Gastronomy.</p>
+    </footer>
+
+    <script>
+        const apiKey = ""; // ← ここにGemini APIキーを入力してください
+
+        // Lucideアイコンの初期化
+        lucide.createIcons();
+
+        async function generateImage(prompt, elementId, isBackground = true) {
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        instances: [{ prompt: prompt }],
+                        parameters: { sampleCount: 1 }
+                    })
+                });
+
+                if (!response.ok) throw new Error('Generation failed');
+                
+                const data = await response.json();
+                const imageUrl = `data:image/png;base64,${data.predictions[0].bytesBase64Encoded}`;
+                const element = document.getElementById(elementId);
+                
+                if (isBackground) {
+                    element.style.backgroundImage = `url('${imageUrl}')`;
+                    element.style.opacity = elementId === 'img-fv' ? "1" : (elementId === 'img-cta' ? "0.1" : "1");
+                } else {
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+                    img.className = element.className;
+                    element.parentNode.replaceChild(img, element);
+                }
+            } catch (error) {
+                console.error('Image generation error:', error);
+                document.getElementById(elementId).style.backgroundColor = "#f0f0f0";
+            }
+        }
+
+        window.onload = () => {
+            generateImage("Elegant high-end French cuisine dish, bright natural morning light, soft shadows, white tablecloth, minimalist aesthetic, 8k, professional food photography.", "img-fv");
+            generateImage("French fusion dish: grilled rice ball with foie gras, gourmet plating, bright kitchen lighting, warm and inviting atmosphere, macro photo.", "img-dish");
+            generateImage("Portrait of a smiling professional Japanese chef in a clean white uniform, bright modern restaurant background, soft daylight, friendly and trustworthy.", "img-chef");
+            generateImage("Blurred bright interior of a sophisticated modern restaurant, sunbeams through windows, white and wood decor, peaceful ambiance.", "img-cta");
+        };
+    </script>
+
+</body>
+</html>
