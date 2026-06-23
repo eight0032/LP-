@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trattoria Blair Marina | 塩竈湾を望む絶景イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-red: #9e2a2b;
+            --ocean-blue: #0077b6;
+            --beige-bg: #fdfaf5;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            color: #333;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* 縦書きの装飾 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .bg-fv {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("images/terrace.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cta-btn {
+            background-color: var(--primary-red);
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            background-color: #7a1f20;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Google Maps responsive container */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header Navigation -->
+  <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4 flex items-center" id="main-header">
+    <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+        <div class="text-white font-bold text-xl serif tracking-widest transition-colors duration-300" id="header-logo">
+            Blair Marina
+        </div>
+        <nav class="hidden md:flex gap-8 text-white text-sm font-medium tracking-widest transition-colors duration-300" id="header-nav">
+            <a href="#about" class="hover:opacity-70">CONCEPT</a>
+            <a href="#menu" class="hover:opacity-70">MENU</a>
+            <a href="#access" class="hover:opacity-70">ACCESS</a>
+        </nav>
+        
+        <a href="https://www.blair-blair.com/contact" target="_blank" rel="noopener noreferrer" class="bg-white text-stone-900 border border-transparent px-4 py-2 text-xs font-bold tracking-tighter transition-all duration-300" id="header-btn">
+            RESERVATION
+        </a>
+    </div>
+</header>
+
+    <!-- FV Area -->
+ <section class="relative h-auto min-h-screen md:h-screen flex flex-col justify-between bg-fv overflow-hidden py-4 md:py-0">
+    <div class="absolute inset-0 bg-black/30 z-0"></div>
+
+    <div class="relative z-50 px-6 w-full pt-2">
+        <a href="../../../" class="text-xs md:text-sm underline text-white/80 hover:text-white md:text-stone-600 md:hover:text-black transition-colors">
+            トップページに戻る
+        </a>
+    </div>
+
+    <div class="container mx-auto px-6 md:px-12 relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end flex-1 pt-12 pb-20 md:pb-32 gap-8">
+        
+        <div class="text-white">
+            <p class="text-xs md:text-base tracking-[0.3em] mb-3 md:mb-4 opacity-80 serif uppercase">
+                Trattoria Blair Marina
+            </p>
+            <h1 class="text-3xl md:text-5xl serif leading-snug md:leading-tight tracking-wider">
+                海を愛でる、<br>イタリアの風。
+            </h1>
+        </div>
+
+        <div class="text-white/80 serif text-sm md:text-lg tracking-[0.2em] md:tracking-[0.5em] leading-relaxed md:leading-loose md:vertical-text md:h-1/2 max-w-sm md:max-w-none">
+            潮風が運ぶ、本場の香りと豊潤な時間。
+        </div>
+        
+    </div>
+
+    <div class="relative md:absolute md:bottom-10 md:left-1/2 md:-translate-x-1/2 text-white/50 text-xs tracking-widest uppercase z-10 text-center pb-4 md:pb-0">
+        Scroll Down
+    </div>
+</section>
+
+    <div class="relative md:absolute md:bottom-10 md:left-1/2 md:-translate-x-1/2 text-white/50 text-xs tracking-widest uppercase z-10 text-center pb-4 md:pb-0">
+        Scroll Down
+    </div>
+</section>
+
+    <!-- Concept Section -->
+   <section id="about" class="py-16 md:py-40 bg-[#fdfaf5]">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+        <span class="text-red-800 text-xs tracking-[0.4em] uppercase mb-6 md:mb-8 block font-bold">
+            Experience the Ocean
+        </span>
+        
+        <h2 class="text-2xl md:text-4xl serif leading-relaxed md:leading-loose mb-8 md:mb-12 text-stone-800">
+            塩竈湾、マリンゲート2階。<br>
+            そこには、日常を脱ぎ捨てる<br class="md:hidden">絶景が待っています。
+        </h2>
+        
+        <p class="text-stone-600 leading-loose md:leading-8 text-sm md:text-base max-w-2xl mx-auto text-justify md:text-center">
+            2000年の創業以来、私たちは「景色もご馳走のひとつ」と考えてきました。窓一面に広がるのは、表情を変え続ける松島湾。ランチは開放的な日差しの中で豊やかに。ディナーは照明を落としたムーディーな空間で。特別な日のサプライズや、大切な方との語らいを、職人が焼き上げるピザと共にお楽しみください。
+        </p>
+    </div>
+</section>
+
+    <!-- Visual Divider -->
+    <section class="h-[60vh] bg-fixed bg-center bg-cover" style="background-image: url('images/pizza.png');"></section>
+
+    <!-- Features Section -->
+   <section class="py-16 md:py-32 bg-white">
+    <div class="container mx-auto px-6 max-w-5xl"> <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+            
+            <div class="w-full md:w-1/2">
+                <img src="images/terrace.jpg" alt="View" class="w-full h-auto rounded-sm shadow-xl md:shadow-2xl">
+            </div>
+            
+            <div class="w-full md:w-1/2">
+                <h3 class="text-2xl md:text-3xl serif mb-6 md:mb-8 leading-snug text-stone-800">
+                    忙しい日々に、<br>
+                    「何もしない豊潤」を。
+                </h3>
+                
+                <ul class="space-y-6 md:space-y-8">
+                    <li class="flex items-start gap-4">
+                        <span class="text-red-800 font-serif italic text-xl md:text-2xl pt-0.5">01</span>
+                        <div>
+                            <h4 class="font-bold mb-1 md:mb-2 text-stone-800 text-base">都会の喧騒を離れて</h4>
+                            <p class="text-stone-500 text-sm leading-relaxed">海を一望するパノラマビューが、あなたの心を解きほぐします。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-red-800 font-serif italic text-xl md:text-2xl pt-0.5">02</span>
+                        <div>
+                            <h4 class="font-bold mb-1 md:mb-2 text-stone-800 text-base">五感を満たす本格イタリアン</h4>
+                            <p class="text-stone-500 text-sm leading-relaxed">地元塩竈の新鮮な魚介と、40年以上受け継がれる秘伝の技。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-red-800 font-serif italic text-xl md:text-2xl pt-0.5">03</span>
+                        <div>
+                            <h4 class="font-bold mb-1 md:mb-2 text-stone-800 text-base">記憶に残るサプライズ</h4>
+                            <p class="text-stone-500 text-sm leading-relaxed">お席で選ぶデザートワゴンや、パティシエ特製のプレートでお祝いを。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 md:py-24 bg-[#f9f9f9]">
+    <div class="container mx-auto px-6 max-w-5xl"> <div class="text-center mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-4xl serif tracking-widest italic">Signature</h2>
+            <div class="w-12 h-[1px] bg-red-800 mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 border border-stone-200">
+            
+            <div class="bg-white p-6 md:p-12 flex flex-col justify-center items-center text-center">
+                <span class="text-xs tracking-widest text-red-800 mb-3 md:mb-4 font-bold uppercase">Pizza Margherita</span>
+                <h3 class="text-xl md:text-2xl serif mb-4 md:mb-6 text-stone-800">マルゲリータ</h3>
+                <p class="text-stone-500 text-sm leading-relaxed md:leading-loose mb-6 md:mb-8 max-w-md">
+                    当店の顔とも言える一枚。職人が生地の呼吸に合わせ、高温の石窯で一気に焼き上げます。トマト、モッツァレラ、バジルのシンプルな調和。
+                </p>
+                <img src="images/margherita.jpg" alt="Pizza" class="w-full h-56 md:h-64 object-cover rounded-sm">
+            </div>
+
+            <div class="bg-white p-6 md:p-12 flex flex-col justify-center items-center text-center">
+                <span class="text-xs tracking-widest text-red-800 mb-3 md:mb-4 font-bold uppercase">Fresh Seafood Pasta</span>
+                <h3 class="text-xl md:text-2xl serif mb-4 md:mb-6 text-stone-800">塩竈湾直送 魚介のパスタ</h3>
+                <p class="text-stone-500 text-sm leading-relaxed md:leading-loose mb-6 md:mb-8 max-w-md">
+                    その日の朝、市場で仕入れた魚介を豊潤に。素材の持ち味を最大限に引き出す絶妙な塩加減とアルデンテの食感をご堪能ください。
+                </p>
+                <img src="images/pasta.jpg" alt="Pasta" class="w-full h-56 md:h-64 object-cover rounded-sm">
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <!-- Access Section -->
+    <section id="access" class="py-16 md:py-24 bg-[#fbfaf8]">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-3xl serif mb-8 md:mb-12 tracking-widest uppercase text-center md:text-left border-b border-stone-200 pb-4 md:pb-6 text-stone-800">
+                Information
+            </h2>
+
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20">
+                
+                <div class="w-full lg:w-5/12 order-2 lg:order-1">
+                    <div class="space-y-6 md:space-y-8 text-sm md:text-base">
+                        
+                        <div class="flex flex-col md:flex-row md:items-start border-b border-stone-200 pb-5 md:pb-6 text-stone-700">
+                            <span class="w-full md:w-32 text-stone-400 font-bold mb-1 md:mb-0 uppercase tracking-widest text-xs pt-0.5">Address</span>
+                            <p class="leading-relaxed">〒985-0000 宮城県塩竈市海岸1丁目4-1<br>マリンゲート塩竈 2F</p>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row md:items-center border-b border-stone-200 pb-5 md:pb-6 text-stone-700">
+                            <span class="w-full md:w-32 text-stone-400 font-bold mb-1 md:mb-0 uppercase tracking-widest text-xs">Tel</span>
+                            <p class="font-bold text-xl text-stone-900">022-361-6131</p>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row md:items-center border-b border-stone-200 pb-5 md:pb-6 text-stone-700">
+                            <span class="w-full md:w-32 text-stone-400 font-bold mb-1 md:mb-0 uppercase tracking-widest text-xs">Open</span>
+                            <p>11:00 - 21:00 (L.O. 20:30)</p>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row md:items-center border-b border-stone-200 pb-5 md:pb-6 text-stone-700">
+                            <span class="w-full md:w-32 text-stone-400 font-bold mb-1 md:mb-0 uppercase tracking-widest text-xs">Holiday</span>
+                            <p>毎週木曜日</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="mt-8 md:mt-12 bg-white p-6 md:p-8 shadow-sm border border-stone-100 rounded-sm">
+                        <p class="text-center serif text-base md:text-lg mb-4 md:mb-6 tracking-widest text-stone-800">ご予約・お問い合わせ</p>
+                        <a href="https://www.blair-blair.com/contact" target="_blank" class="cta-btn bg-red-800 text-white text-center block py-4 font-bold tracking-[0.2em] mb-4 text-xs md:text-sm transition-all hover:bg-red-900 shadow-sm rounded-sm">
+                            RESERVATION FORM
+                        </a>
+                        <p class="text-[10px] text-stone-400 text-center uppercase tracking-widest leading-relaxed">
+                            We recommend booking in advance to secure an ocean-view seat.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12 order-1 lg:order-2">
+                    <div class="map-container w-full aspect-[4/3] md:aspect-video shadow-md grayscale hover:grayscale-0 transition-all duration-700 rounded-sm overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3130.2771582576142!2d141.02742787478385!3d38.31941218060249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8985134a4a5287%3A0xe6d4ec179bf31167!2zVHJhdHRvcmlhIEJsYWlyIE1hcmluYSjjg5bjg6zjgqLjg57jg6rjg7zjg4op!5e0!3m2!1sja!2sjp!4v1772773685138!5m2!1sja!2sjp" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="mt-3 flex justify-between items-center text-[10px] tracking-widest text-stone-400 uppercase font-medium">
+                        <span>Salt Cauldron Harbor View</span>
+                        <a href="https://www.blair-blair.com/access/blair_marina" target="_blank" class="hover:text-red-800 transition-colors underline decoration-dotted">Google Maps <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="py-12 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-xs tracking-widest text-gray-400 serif">Trattoria Blair Marina Since 2000</p>
+            <div class="mt-8 flex justify-center gap-8">
+                <a href="https://www.instagram.com/blairmarina_/" target="_blank" class="text-gray-400 hover:text-red-800 transition"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="https://www.blair-blair.com/access/blair_marina" target="_blank" class="text-gray-400 hover:text-red-800 transition"><i class="fas fa-home text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('main-header');
+        const logo = document.getElementById('header-logo');
+        const nav = document.getElementById('header-nav');
+        const btn = document.getElementById('header-btn');
+        
+        // 100px以上スクロールしたら変化させる
+        if (window.scrollY > 100) {
+            // ヘッダー全体を白背景にして影をつける
+            header.classList.add('bg-white/95', 'shadow-md', 'backdrop-blur-sm');
+            header.classList.remove('py-4');
+            header.classList.add('py-3'); // スクロール時は少しだけ細くしてスマートに
+            
+            // ロゴとメニューの文字色を濃い茶・黒系に変える
+            logo.classList.remove('text-white');
+            logo.classList.add('text-stone-800');
+            nav.classList.remove('text-white');
+            nav.classList.add('text-stone-800');
+            
+            // ボタンを「えんじ色背景・白文字」に変えて白い背景でも目立たせる
+            btn.classList.remove('bg-white', 'text-stone-900');
+            btn.classList.add('bg-red-800', 'text-white');
+            
+        } else {
+            // 元の状態（トップに戻ったとき）に戻す
+            header.classList.remove('bg-white/95', 'shadow-md', 'backdrop-blur-sm', 'py-3');
+            header.classList.add('py-4');
+            
+            logo.classList.remove('text-stone-800');
+            logo.classList.add('text-white');
+            nav.classList.remove('text-stone-800');
+            nav.classList.add('text-white');
+            
+            btn.classList.remove('bg-red-800', 'text-white');
+            btn.classList.add('bg-white', 'text-stone-900');
+        }
+    });
+</script>
+</body>
+</html>
