@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山の洋食屋 ざびえる | 伝統の牛タンシチューと至福の洋食</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --deep-brown: #1a120b;
+            --accent-red: #8b0000;
+            --bg-cream: #f9f6f0;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--deep-brown);
+        }
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        /* 縦書きのクラス */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-gold { background-color: var(--primary-gold); }
+        .text-gold { color: var(--primary-gold); }
+        .bg-deep { background-color: var(--deep-brown); }
+        .text-deep { color: var(--deep-brown); }
+
+        /* 参考サイト風の高級感ある装飾 */
+        .gold-border {
+            position: relative;
+            padding: 20px;
+        }
+        .gold-border::before {
+            content: "";
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid var(--primary-gold);
+            pointer-events: none;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(26, 18, 11, 0.9) 0%, rgba(26, 18, 11, 0.4) 50%, rgba(26, 18, 11, 0) 100%);
+        }
+
+        .btn-premium {
+            background: var(--primary-gold);
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        .btn-premium:hover::after {
+            left: 120%;
+        }
+
+        /* アニメーション用 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeIn 0.8s ease forwards; }
+
+        /* 画像ローディング用のスタイル */
+        .image-container {
+            background-color: #eee;
+            position: relative;
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <header class="relative h-screen flex items-center overflow-hidden bg-black">
+    <a href="../../../" class="absolute top-6 left-6 z-50 text-xs md:text-sm underline text-white/60 hover:text-white bg-black/40 backdrop-blur-sm px-3 py-2 rounded-sm transition-all">
+        ← トップページに戻る
+    </a>
+    
+    <div id="img-hero" class="absolute inset-0 z-0">
+        <img src="images/gyutan.jpg" alt="FV背景画像" class="w-full h-full object-cover opacity-70">
+    </div>
+    <div class="absolute inset-0 hero-gradient"></div>
+        
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+        <div class="max-w-2xl animate-in">
+            <div class="flex items-center gap-3 md:gap-4 mb-6">
+                <span class="w-8 md:w-12 h-[1px] bg-gold"></span>
+                <span class="text-gold tracking-[0.2em] md:tracking-[0.3em] font-bold text-xs md:text-sm">SENDAI KAWAUCHI / SINCE 2022</span>
+            </div>
+            
+            <h1 class="font-serif text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 md:mb-8">
+                その一口に、<br class="sm:hidden"> <span class="text-gold">三日間の情熱</span>を。
+            </h1>
+            
+            <p class="text-white/80 text-base md:text-xl mb-8 md:mb-10 leading-relaxed font-light max-w-xl">
+                ミシュラン・ビブグルマン受賞の親店「鶴」から受け継ぐ、<br class="hidden md:block">
+                最高級牛タンと熟練シェフが織りなす「山の洋食」。
+            </p>
+            
+            <div class="flex flex-wrap gap-4">
+                <a href="#menu" class="btn-premium px-8 py-4 md:px-10 md:py-5 rounded-sm font-bold tracking-widest text-base md:text-lg">MENU VIEW</a>
+            </div>
+        </div>
+    </div>
+        
+    <div class="absolute bottom-10 right-10 z-20 hidden xl:flex flex-col gap-4">
+        <div class="bg-white/10 backdrop-blur-md border border-gold/30 p-4 flex items-center gap-4 rounded-sm">
+            <div class="text-gold text-2xl font-bold">Award</div>
+            <div class="text-white text-xs leading-tight">ミシュランガイド<br>ビブグルマン受賞グループ</div>
+        </div>
+    </div>
+</header>
+
+    <!-- 2. CTA (1回目) -->
+   <section class="py-4 md:py-6 bg-deep text-white sticky top-0 z-50 border-b border-gold/20 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
+        
+        <div class="flex items-center gap-3 md:gap-4">
+            <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gold flex items-center justify-center text-gold shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+            </div>
+            <div>
+                <p class="text-[10px] md:text-xs text-gold font-bold tracking-wider">RESERVATION</p>
+                <a href="tel:0223026721" class="text-lg md:text-xl font-bold tracking-tighter hover:text-gold transition-colors">022-302-6721</a>
+            </div>
+        </div>
+        
+        <div class="hidden md:block flex-1 max-w-md border-l border-white/20 pl-6 md:pl-8 mx-4">
+            <p class="text-[10px] md:text-xs text-gold mb-0.5 font-bold">TODAY'S STATUS</p>
+            <p class="text-xs md:text-sm truncate">【数量限定】仙台牛ローストビーフ、残りわずかです。</p>
+        </div>
+
+        <a href="tel:0223026721" class="btn-premium w-full md:w-auto text-center px-6 py-3 md:px-12 md:py-4 rounded-sm font-bold text-xs md:text-sm tracking-widest shadow-lg transition-transform active:scale-95">
+            お電話で席を予約する
+        </a>
+    </div>
+</section>
+
+    <!-- 3. シズルビジュアルセクション -->
+   <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        
+        <div class="w-full lg:w-3/5 relative">
+            <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 bg-gold/10 -z-0"></div>
+            
+            <div id="img-visual-static" class="aspect-video relative overflow-hidden shadow-[15px_15px_0px_0px_rgba(197,160,89,0.1)] md:shadow-[30px_30px_0px_0px_rgba(197,160,89,0.1)] group">
+                <img src="images/roast beef.jpg" alt="ローストビーフ" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="mt-6 md:mt-8 flex gap-6 md:gap-8">
+                <div class="text-center">
+                    <span class="block text-xl md:text-2xl font-serif font-bold text-gold">3 Days</span>
+                    <span class="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-wider">Slow Cooking</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-xl md:text-2xl font-serif font-bold text-gold">A5 Rank</span>
+                    <span class="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-wider">Beef Quality</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="w-full lg:w-2/5">
+            <span class="text-gold font-bold tracking-widest block mb-2 md:mb-4 text-sm md:text-base">&mdash; VISION &mdash;</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-6 md:mb-8 leading-tight">
+                手間を惜しまない、<br class="hidden sm:block">それこそが最高の調味料。
+            </h2>
+            <p class="text-gray-600 text-sm md:text-base leading-loose mb-6 md:mb-8">
+                「鶴」の牛タン料理で培った目利きと、「ざびえる」独自の洋食技法。私たちが提供するのは、ただの食事ではありません。
+                3日間かけて野菜の滋味を引き出し、肉の旨みを閉じ込めた、記憶に残る「時間」です。
+            </p>
+            
+            <div class="w-full h-36 md:h-48 relative overflow-hidden shadow-lg grayscale hover:grayscale-0 transition-all duration-500">
+                <img src="images/chef.png" alt="シェフ" class="w-full h-full object-cover">
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+    <!-- 4. メニュー紹介 -->
+  <section id="menu" class="py-16 md:py-24 bg-stone-100">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12 md:mb-20">
+            <h2 class="text-sm font-bold text-gold tracking-[0.5em] mb-4 uppercase">Popular Menu</h2>
+            <p class="text-3xl md:text-4xl font-serif font-bold">看板メニュー</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+            
+            <div class="bg-white gold-border shadow-xl">
+                <div id="img-menu1" class="aspect-video overflow-hidden relative">
+                     <img src="images/shicyu.jpg" alt="シチュー" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="mb-4">
+                        <h3 class="text-xl md:text-2xl font-serif font-bold">特製牛タンシチュー</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-loose mb-6">
+                        「鶴」系列ならではの最高品質の牛タンを3日間かけて煮込みました。箸で崩れるほどの柔らかさと、ビターでコクのあるデミグラスソースが絶妙。
+                    </p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold">看板メニュー</span>
+                        <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold">予約推奨</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white gold-border shadow-xl">
+                <div id="img-menu2" class="aspect-video overflow-hidden relative">
+                    <img src="images/steak.jpg" alt="ステーキ" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="mb-4">
+                        <h3 class="text-xl md:text-2xl font-serif font-bold">仙台牛ローストビーフステーキ</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-loose mb-6">
+                        毎日4-5時間かけて低温ロースト。300gの大ボリュームで提供されるグランデコースは、肉好きを唸らせるリピート率 No.1メニューです。
+                    </p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold">東北初上陸</span>
+                        <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold">数量限定</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <!-- 5. 信頼と安心のセクション -->
+    <section class="py-16 md:py-24 bg-deep text-white">
+    <div class="max-w-5xl mx-auto px-6">
+        <h3 class="text-gold text-center font-bold tracking-[0.2em] md:tracking-[0.3em] mb-8 md:mb-12 italic text-sm md:text-base px-2">
+            "本当においしいものは、隠れ家にある。"
+        </h3>
+        
+        <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+            <div class="p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+                <div class="flex text-gold mb-3 md:mb-4">★★★★★</div>
+                <p class="text-sm italic leading-relaxed mb-4">「仙台で牛タンと洋食をお安く楽しみたい方におすすめ。このクオリティで1650円は本当にお得だと思います。」</p>
+                <p class="text-[10px] text-white/50">&mdash; Google クチコミより抜粋</p>
+            </div>
+            <div class="p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
+                <div class="flex text-gold mb-3 md:mb-4">★★★★★</div>
+                <p class="text-sm italic leading-relaxed mb-4">「牛タンは驚くほど柔らかく、ほろほろと崩れます。濃厚なシチューはコクがあり、牛タンとの相性も抜群。」</p>
+                <p class="text-[10px] text-white/50">&mdash; Google クチコミより抜粋</p>
+            </div>
+        </div>
+
+        <div class="mt-12 md:mt-20 p-6 md:p-10 bg-white text-deep gold-border">
+            <h4 class="font-serif font-bold text-xl md:text-2xl mb-6 md:mb-8 text-center">安心して楽しんでいただくために</h4>
+            
+            <div class="space-y-6">
+                <div class="flex gap-3 md:gap-4 items-start">
+                    <span class="text-gold font-bold text-base md:text-lg leading-none mt-0.5">Q.</span>
+                    <p class="text-sm font-bold text-deep leading-snug">「ハンバーグがレアで少し心配…」というお客様へ</p>
+                </div>
+                <p class="text-sm text-gray-600 pl-5 md:pl-8 border-l-2 border-gold/30 leading-relaxed">
+                    当店の黒毛和牛ハンバーグは、信頼できるルートから仕入れた鮮度の高いお肉のみを使用し、適切な温度管理のもとレアで提供しております。これこそが肉本来の旨味を最も感じていただける状態です。
+                </p>
+                
+                <div class="flex gap-3 md:gap-4 items-start pt-4">
+                    <span class="text-gold font-bold text-base md:text-lg leading-none mt-0.5">Q.</span>
+                    <p class="text-sm font-bold text-deep leading-snug">「ナイフとフォークは苦手。お箸で食べたい」というお客様へ</p>
+                </div>
+                <p class="text-sm text-gray-600 pl-5 md:pl-8 border-l-2 border-gold/30 leading-relaxed">
+                    学生街の気軽さを大切にする当店では、全席にお箸をご用意しております。アジフライやカツレツも、お気兼ねなくお箸でお召し上がりください。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 6. アクセス・店舗情報 -->
+   <section id="access" class="py-16 md:py-24 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="text-sm font-bold text-gold tracking-[0.5em] mb-4 uppercase">Access & Info</h2>
+            <p class="text-3xl md:text-4xl font-serif font-bold">店舗概要・地図</p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+            
+            <div class="w-full lg:w-3/5 bg-white shadow-lg border border-gold/20 overflow-hidden flex flex-col">
+                <div class="relative w-full h-[300px] sm:h-[400px] lg:h-full">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.722745336997!2d140.84356757478056!3d38.26273588390397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a29d88e7274c9%3A0xa9d54a84ad757cf5!2z5bGx44Gu5rSL6aOf5bGLIOOBluOBs-OBiOOCiw!5e0!3m2!1sja!2sjp!4v1772770248150!5m2!1sja!2sjp" 
+                        class="absolute inset-0 w-full h-full"
+                        style="border:0; display:block;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-2/5 flex flex-col justify-between">
+                <div class="bg-deep text-white p-6 md:p-8 h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-serif text-xl md:text-2xl mb-6 md:mb-8 border-b border-gold/50 pb-4">山の洋食屋 ざびえる</h3>
+                        
+                        <dl class="space-y-5 md:space-y-6 text-sm">
+                            <div class="flex gap-4">
+                                <dt class="text-gold font-bold shrink-0 w-16">所在地</dt>
+                                <dd class="text-white/80 leading-relaxed">
+                                    〒980-0866<br>
+                                    宮城県仙台市青葉区川内三十人町１８－９<br>
+                                    地下鉄東西線「川内駅」より徒歩6分
+                                </dd>
+                            </div>
+                            <div class="flex gap-4 border-t border-white/10 pt-5 md:pt-6">
+                                <dt class="text-gold font-bold shrink-0 w-16">電話番号</dt>
+                                <dd class="text-white font-bold text-lg leading-none">
+                                    <a href="tel:0223026721" class="hover:text-gold transition-colors">022-302-6721</a>
+                                </dd>
+                            </div>
+                            <div class="flex gap-4 border-t border-white/10 pt-5 md:pt-6">
+                                <dt class="text-gold font-bold shrink-0 w-16">営業時間</dt>
+                                <dd class="text-white/80 leading-relaxed">
+                                    ランチ：11:30 ～ 14:30<br>
+                                    ディナー：17:00 ～ 20:00<br>
+                                    <span class="text-[10px] text-white/50 block mt-1">※完売次第終了となる場合がございます</span>
+                                </dd>
+                            </div>
+                            <div class="flex gap-4 border-t border-white/10 pt-5 md:pt-6">
+                                <dt class="text-gold font-bold shrink-0 w-16">定休日</dt>
+                                <dd class="text-white/80">水曜日</dd>
+                            </div>
+                            <div class="flex gap-4 border-t border-white/10 pt-5 md:pt-6">
+                                <dt class="text-gold font-bold shrink-0 w-16">駐車場</dt>
+                                <dd class="text-white/80 leading-relaxed">
+                                    近遠に専用スペースあり(2台)<br>
+                                    <span class="text-white/60 text-xs">満車の場合はコインパーキングをご利用ください</span>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="mt-8 md:mt-10">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=山の洋食屋+ざびえる" target="_blank" class="block text-center border border-gold text-gold hover:bg-gold hover:text-white transition-all py-4 font-bold tracking-widest text-xs uppercase active:scale-[0.98]">
+                            Google Map で経路を調べる
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <!-- 7. 特典と予約 -->
+    <section class="py-16 md:py-24 relative overflow-hidden bg-white">
+    <div id="img-interior" class="absolute inset-0 z-0 opacity-15 pointer-events-none">
+         </div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <span class="text-gold font-bold tracking-[0.2em] mb-3 md:mb-4 block text-sm md:text-base">GIFT FOR YOU</span>
+        
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-8 md:mb-10 leading-tight">
+            すべてのランチに、<br>「喜び」を添えて。
+        </h2>
+        
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-12 md:mb-16">
+            <div class="flex-1 p-5 md:p-6 border border-gold/30 bg-white/90 backdrop-blur-sm shadow-sm">
+                <p class="text-[10px] md:text-xs font-bold text-gold mb-1 md:mb-2">Benefit 01</p>
+                <p class="font-bold text-sm md:text-base text-deep">全セット スープ・サラダ付</p>
+            </div>
+            <div class="flex-1 p-5 md:p-6 border border-gold/30 bg-white/90 backdrop-blur-sm shadow-sm">
+                <p class="text-[10px] md:text-xs font-bold text-gold mb-1 md:mb-2">Benefit 02</p>
+                <p class="font-bold text-sm md:text-base text-deep">ライス大盛り・おかわり無料</p>
+            </div>
+        </div>
+        
+        <div class="bg-deep text-white p-6 sm:p-8 md:p-12 shadow-2xl rounded-sm">
+            <h3 class="text-lg sm:text-xl md:text-2xl font-serif mb-6 leading-relaxed">
+                予約推奨。お電話一本で、<br class="md:hidden">最高のランチをお約束します。
+            </h3>
+            
+            <a href="tel:0223026721" class="btn-premium block md:inline-block w-full md:w-auto px-6 py-4 md:px-16 md:py-6 rounded-sm font-bold text-xl sm:text-2xl tracking-tighter mb-6 transition-all active:scale-[0.98]">
+                022-302-6721
+            </a>
+            
+            <p class="text-[11px] md:text-xs text-white/50 leading-loose text-left md:text-center max-w-2xl mx-auto">
+                定休日：水曜日 | 営業時間内のみ受付<br>
+                <span class="block mt-1">※お車でお越しの方は、近くの専用駐車スペース(2台)またはコインパーキングをご利用ください。</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- フッター -->
+    <footer class="py-20 bg-deep text-stone-500 px-6 border-t border-gold/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="max-w-xs">
+                <h3 class="text-white text-2xl font-serif font-bold mb-6 italic">山の洋食屋 ざびえる</h3>
+                <p class="text-sm leading-relaxed mb-6">
+                    〒980-0866 宮城県仙台市青葉区川内三十人町１８－９<br>
+                    地下鉄川内駅より徒歩6分
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/youshoku_xavier/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:text-gold hover:border-gold transition-all" aria-label="Instagram">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-16">
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-xs uppercase tracking-widest">General</h4>
+                    <ul class="space-y-4 text-xs">
+                        <li><a href="#" class="hover:text-white transition-colors">HOME</a></li>
+                        <li><a href="#menu" class="hover:text-white transition-colors">MENU</a></li>
+                        <li><a href="#access" class="hover:text-white transition-colors">ACCESS</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">RESERVE</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-xs uppercase tracking-widest">Kaku Group</h4>
+                    <p class="text-[10px] leading-relaxed">
+                        株式会社鶴が展開する、<br>伝統と革新を融合させた<br>新しい洋食ブランド。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-20 pt-8 border-t border-white/5 text-center text-[10px]">
+            &copy; 山の洋食屋 ざびえる All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
