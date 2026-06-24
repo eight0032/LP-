@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイダイニング 葡萄蔵 一番町店 | 仙台の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght=400;700;900&family=Noto+Sans+JP:wght=400;700&display=swap');
+
+    :root {
+        --wine-red: #8e2a2a;
+        --gold: #b38b1d;
+        --soft-beige: #fdfaf5;
+        --warm-white: #ffffff;
+    }
+
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: var(--soft-beige);
+        color: #333;
+    }
+
+    .serif { font-family: 'Noto Serif JP', serif; }
+
+    /* 明るい背景に映えるゴールドグラデーション */
+    .text-gold-grade {
+        background: linear-gradient(to bottom, #d4af37 0%, #a67c00 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .border-gold {
+        border: 1px solid var(--gold);
+    }
+
+    /* 💡 元のhero-bgを、手元の画像（terrace.png）に直接書き換えました */
+    .hero-bg {
+        background: linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0.1)), url('images/terrace.png') center/cover !important;
+    }
+
+    /* 艶のあるボタンアニメーション */
+    .shine-button {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(45deg, #8e2a2a, #b33939);
+        transition: transform 0.3s;
+    }
+    .shine-button::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255,255,255,0.2);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+    }
+    @keyframes shine {
+        0% { left: -150%; }
+        100% { left: 150%; }
+    }
+    .shine-button:hover {
+        transform: scale(1.05);
+    }
+
+    /* カラー定義（Tailwind拡張用） */
+    .text-wine-red { color: var(--wine-red); }
+    .text-gold { color: var(--gold); }
+    .bg-soft-beige { background-color: var(--soft-beige); }
+    .border-wine-red { border-color: var(--wine-red); }
+</style>
+
+</head>
+<body class="antialiased bg-texture">
+
+    <!-- HERO SECTION -->
+  <header class="relative h-screen flex items-center hero-bg">
+        <a href="../../../" class="absolute top-4 left-4 z-50 text-sm underline text-stone-600 hover:text-black">
+      トップページに戻る
+    </a>
+    <div class="container mx-auto px-4 sm:px-6 md:px-8 z-10">
+        <div class="max-w-3xl">
+            <p class="animate__animated animate__fadeInDown text-wine-red font-bold tracking-[0.2em] sm:tracking-[0.3em] mb-3 md:mb-4 text-sm sm:text-base md:text-lg">
+                SENDAI IBIANCHO / SINCE 19XX
+            </p>
+            
+            <h1 class="animate__animated animate__fadeInLeft text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 leading-tight serif text-white drop-shadow-md">
+                とろける。<br>
+                <span class="text-gold-grade">究極のチーズ</span>を<br>
+                隠れ家で。
+            </h1>
+            
+            <p class="animate__animated animate__fadeInUp animate__delay-1s text-base sm:text-lg md:text-xl lg:text-2xl mb-8 md:mb-10 text-white md:text-gray-700 leading-relaxed border-l-4 pl-4 md:pl-6 drop-shadow-sm md:drop-shadow-none" style="border-color: var(--gold)">
+                ビルの奥底、扉を開ければ別世界。<br>
+                五感を揺さぶる濃厚な誘惑。
+            </p>
+            
+            <div class="animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="https://budougura.jp/" class="shine-button inline-block text-white font-black py-4 px-8 md:py-5 md:px-14 rounded-full text-lg sm:text-xl md:text-2xl shadow-xl transition-all">
+                    至福の席を予約する <i class="fas fa-chevron-right ml-2 text-xs sm:text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-wine-red animate-bounce opacity-70 z-10">
+        <p class="text-[9px] md:text-[10px] tracking-widest mb-1 md:mb-2 uppercase">Scroll Down</p>
+        <div class="text-center">
+            <i class="fas fa-mouse text-base md:text-lg"></i>
+        </div>
+    </div>
+</header>
+
+    <!-- FLOATING CTA FOR MOBILE -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/90 backdrop-blur-md p-4 border-t" style="border-color: rgba(179,139,29,0.3)">
+        <a href="https://budougura.jp/" class="shine-button block text-center text-white font-bold py-4 rounded-full text-lg">
+            空席を確認・予約する
+        </a>
+    </div>
+
+    <!-- REASON SECTION -->
+  <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4 text-center mb-10 md:mb-16">
+        <h2 class="text-gray-900 text-3xl sm:text-4xl md:text-5xl font-black serif mb-4">選ばれる三つの理由</h2>
+        <div class="w-24 h-1 mx-auto" style="background-color: var(--gold)"></div>
+    </div>
+
+    <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 text-gray-800">
+        
+        <div class="group text-center p-6 md:p-8 rounded-2xl bg-soft-beige shadow-sm transition-all hover:shadow-md">
+            <div class="relative mb-4 md:mb-6 inline-block">
+                <span class="relative text-5xl md:text-6xl font-black italic opacity-20" style="color: var(--gold)">01</span>
+                <h3 class="text-xl md:text-2xl font-bold mt-2 text-gray-900">中毒性のある濃厚チーズ</h3>
+            </div>
+            <p class="text-sm md:text-base text-gray-600 leading-relaxed">独自配合のチーズは、鋭利な香りと深みのあるコクが自慢。一口食べれば、もう離れません。</p>
+        </div>
+
+        <div class="group text-center p-6 md:p-8 rounded-2xl bg-soft-beige shadow-sm transition-all hover:shadow-md">
+            <div class="relative mb-4 md:mb-6 inline-block">
+                <span class="relative text-5xl md:text-6xl font-black italic opacity-20" style="color: var(--gold)">02</span>
+                <h3 class="text-xl md:text-2xl font-bold mt-2 text-gray-900">一番町の「深処」に潜む</h3>
+            </div>
+            <p class="text-sm md:text-base text-gray-600 leading-relaxed">雑居ビルの最奥、看板のない隠れ家。その秘匿性が、特別な夜をさらに特別なものに変えます。</p>
+        </div>
+
+        <div class="group text-center p-6 md:p-8 rounded-2xl bg-soft-beige shadow-sm transition-all hover:shadow-md col-span-1 sm:col-span-2 md:col-span-1 sm:max-w-md sm:mx-auto md:max-w-none">
+            <div class="relative mb-4 md:mb-6 inline-block">
+                <span class="relative text-5xl md:text-6xl font-black italic opacity-20" style="color: var(--gold)">03</span>
+                <h3 class="text-xl md:text-2xl font-bold mt-2 text-gray-900">五感を満たす半個室空間</h3>
+            </div>
+            <p class="text-sm md:text-base text-gray-600 leading-relaxed">木漏れ日のような灯りと木の温もり。他人の視線を気にせず、語らいに没頭できる座席。</p>
+        </div>
+
+    </div>
+</section>
+
+    <!-- VISUAL EXPERIENCE -->
+    <section class="py-0 relative">
+        <div class="flex flex-col md:flex-row h-auto md:h-[600px]">
+            <div class="w-full md:w-1/2 overflow-hidden">
+                <img src="images/cheese.jpg" alt="Cheesefondue" class="w-full h-full object-cover hover:scale-110 transition duration-700">
+            </div>
+            <div class="w-full md:w-1/2 flex items-center justify-center p-12 md:p-24 bg-white">
+                <div class="max-w-md">
+                    <span class="font-bold tracking-widest mb-4 block" style="color: var(--gold)">THE SPECIALTY</span>
+                    <h2 class="text-3xl md:text-5xl font-black serif mb-6 leading-tight text-gray-900">
+                        これぞ、名物。<br><span class="text-gold-grade text-4xl">王道のフォンデュ</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        厳選されたチーズと、宴を彩る旬の食材。新鮮な野菜が, 濃厚なチーズの海にダイブする。その瞬間, 最高の「志味」が蘇げます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICE -->
+   <section class="py-16 md:py-24 bg-soft-beige overflow-hidden">
+    <div class="container mx-auto px-4">
+        
+        <h2 class="text-center text-gray-900 text-2xl sm:text-3xl font-black serif mb-10 md:mb-16 uppercase tracking-widest">Guest Voice</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <div class="bg-white p-6 md:p-8 rounded-tr-[40px] md:rounded-tr-[50px] border-l-4 shadow-lg relative" style="border-color: var(--wine-red)">
+                <div class="absolute top-4 right-6 md:right-8 text-5xl md:text-6xl opacity-10" style="color: var(--gold)"><i class="fas fa-quote-right"></i></div>
+                <div class="flex text-xs mb-3 md:mb-4" style="color: var(--gold)">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-4 md:mb-6 italic">「ひっそりと隠れ家的なお店。雰囲気が落ち着くし、お気に入りのお店になりました。」</p>
+                <div class="text-xs md:text-sm font-bold text-wine-red">30代 女性 / 接待・女子会利用</div>
+            </div>
+            
+            <div class="bg-white p-6 md:p-8 rounded-tr-[40px] md:rounded-tr-[50px] border-l-4 shadow-lg relative" style="border-color: var(--wine-red)">
+                <div class="absolute top-4 right-6 md:right-8 text-5xl md:text-6xl opacity-10" style="color: var(--gold)"><i class="fas fa-quote-right"></i></div>
+                <div class="flex text-xs mb-3 md:mb-4" style="color: var(--gold)">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-4 md:mb-6 italic">「チーズフォンデュうまかったぁ！接客も抜群。仙台来たらまた来たい！」</p>
+                <div class="text-xs md:text-sm font-bold text-wine-red">40代 男性 / 観光での初来店</div>
+            </div>
+            
+            <div class="bg-white p-6 md:p-8 rounded-tr-[40px] md:rounded-tr-[50px] border-l-4 shadow-lg relative md:hidden lg:block" style="border-color: var(--wine-red)">
+                <div class="absolute top-4 right-6 md:right-8 text-5xl md:text-6xl opacity-10" style="color: var(--gold)"><i class="fas fa-quote-right"></i></div>
+                <div class="flex text-xs mb-3 md:mb-4" style="color: var(--gold)">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-4 md:mb-6 italic">「場所は一瞬迷子になりそうでしたがwww 信じて進みましょう！最高の隠れ家です。」</p>
+                <div class="text-xs md:text-sm font-bold text-wine-red">20代 女性 / デート利用</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- LIMITED OFFER -->
+    <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4 max-w-4xl border-2 md:border-4 p-6 sm:p-10 md:p-12 text-center bg-soft-beige shadow-inner" style="border-color: var(--gold)">
+        
+        <h3 class="font-black text-base sm:text-lg md:text-xl mb-3 md:mb-4 tracking-[0.3em] sm:tracking-[0.5em]" style="color: var(--gold)">SPECIAL COUPON</h3>
+        
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black mb-6 md:mb-8 serif text-gray-900 leading-tight">
+            泡沫の<span class="text-gold-grade">泡</span>、一本。<br class="hidden sm:inline">
+            心からの贈り物。
+        </h2>
+        
+        <div class="bg-white block sm:inline-block px-4 sm:px-10 py-3 sm:py-4 mb-6 md:mb-8 shadow-sm" style="border: 1px solid var(--gold)">
+            <p class="text-base sm:text-lg md:text-xl font-bold text-wine-red tracking-wider">スパークリングワイン1本無料</p>
+        </div>
+        
+        <p class="text-gray-600 text-sm sm:text-base lg:text-lg mb-8 md:mb-10 leading-relaxed">
+            このページからご予約いただいたお客様限定。<br>
+            特別な夜の始まりに、芳やかな泡沫を。
+        </p>
+        
+        <a href="https://budougura.jp/" class="shine-button inline-block text-white font-black py-3 px-8 sm:py-4 sm:px-12 rounded-full text-base sm:text-lg md:text-xl shadow-lg transition-all">
+            クーポンを利用して予約
+        </a>
+        
+        <p class="mt-5 md:mt-6 text-[11px] md:text-[12px] text-gray-400 italic font-bold leading-normal">
+            ※ディナータイム・コース予約、または「LPを見た」とお伝えください。
+        </p>
+    </div>
+</section>
+
+    <!-- INFO & MAP -->
+   <section class="py-16 md:py-24 bg-soft-beige overflow-hidden">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        
+        <div class="space-y-6 md:space-y-8 text-gray-800 text-center md:text-left">
+            <div>
+                <h2 class="text-gold-grade text-2xl sm:text-3xl md:text-4xl font-black serif mb-3 md:mb-6">葡萄蔵 一番町店</h2>
+                <p class="text-sm sm:text-base text-gray-600 font-medium mb-0">仙台の隠れ家で、あなたをお待ちしております。</p>
+            </div>
+            
+            <div class="space-y-4 md:space-y-6 text-base md:text-lg text-left max-w-md mx-auto md:mx-0">
+                <div class="flex items-start">
+                    <i class="fas fa-map-marker-alt mt-1 mr-4 w-5 text-center" style="color: var(--wine-red)"></i>
+                    <p class="leading-relaxed">〒980-0811<br>宮城県仙台市青葉区一番町2丁目5-12<br>中藤ビル 1階（奥）</p>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-phone mr-4 w-5 text-center" style="color: var(--wine-red)"></i>
+                    <p>022-215-9202</p>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-calendar-times mr-4 w-5 text-center" style="color: var(--wine-red)"></i>
+                    <p>定休日：日曜日</p>
+                </div>
+            </div>
+            
+            <div class="pt-4 md:pt-6">
+                <a href="https://www.instagram.com/budougura_sendai/" target="_blank" rel="noopener noreferrer" class="text-3xl text-gray-400 hover:text-wine-red transition-colors mr-6" title="Instagramを開く">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://budougura.jp/" target="_blank" rel="noopener noreferrer" class="text-3xl text-gray-400 hover:text-wine-red transition-colors" title="公式サイトを開く">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="h-[280px] sm:h-[350px] md:h-[400px] rounded-2xl overflow-hidden border-2 md:border-4 border-white shadow-xl">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.8797500292235!2d140.86939347478037!3d38.25909488411583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a283dcd1b8291%3A0x6a5444552775bde2!2z44Oe44Kk44OA44Kk44OL44Oz44KwIOiRoeiQhOiUtSDkuIDnlarnlLrlupc!5e0!3m2!1sja!2sjp!4v1772689642496!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    </div>
+</section>
+
+    <footer class="py-12 bg-white border-t border-gray-100 text-center">
+        <p class="text-gray-400 text-sm tracking-widest uppercase">&copy; 2024 MY DINING BUDOUGURA. DEEP TASTE IN THE DEEP PLACE.</p>
+    </footer>
+
+</body>
+</html>
