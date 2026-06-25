@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガレ ド リヨン | 仙台・一番町の隠れ家本格フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8f5f0;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-washi {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+        .hero-bg {
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%), url('images/french.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .cta-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #aa8412 100%);
+            color: #fff;
+        }
+        .border-elegant {
+            border-image: linear-gradient(to bottom, #d4af37, transparent) 1;
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-stone-900">
+
+    <!-- FVエリア -->
+ <section class="hero-bg min-h-screen flex items-center px-4 md:px-20 relative overflow-hidden py-20 md:py-0">
+    <div class="absolute top-6 left-4 md:left-20 z-20">
+        <a href="../../../" class="serif text-stone-300 hover:text-yellow-500 transition-colors duration-300 text-sm md:text-base flex items-center gap-1">
+            <span>←</span> トップページへ戻る
+        </a>
+    </div>
+
+    <div class="max-w-4xl z-10 fade-in w-full">
+        <div class="mb-4 md:mb-6 flex items-center gap-4">
+            <span class="h-[1px] w-12 bg-yellow-500"></span>
+            <p class="serif text-yellow-500 tracking-[0.3em] uppercase text-sm md:text-base">Gare de Lyon</p>
+        </div>
+        <h1 class="serif text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight text-white">
+            <span class="block text-xl md:text-3xl font-normal mb-2 text-stone-300">一番町の路地裏、階段を上がれば。</span>
+            至福を覚る、<br>本格フレンチ。
+        </h1>
+        <div class="serif text-white text-lg md:text-3xl border-l-4 border-yellow-600 pl-4 md:pl-6 mb-6 md:mb-10">
+            <p>夜のフルコース <span class="text-3xl md:text-5xl font-bold text-yellow-500">3,500</span> <span class="text-base md:text-lg">円（税別）</span></p>
+            <p class="text-xs md:text-lg mt-2 opacity-80">創業十八年、変わらぬ情熱と価格で。</p>
+        </div>
+    </div>
+    <div class="hidden lg:block vertical-text absolute right-20 top-1/2 -translate-y-1/2 text-white/40 serif text-2xl tracking-[0.5em]">
+        仙台・一番町 隠れ家ビストロ
+    </div>
+</section>
+
+    <section class="bg-stone-900 py-12 md:py-16 text-white text-center shadow-2xl relative">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="serif text-yellow-500 mb-4 tracking-widest italic text-sm md:text-base">Experience the Masterpiece</p>
+            <h2 class="serif text-xl md:text-3xl font-bold mb-8">熟練シェフが織る一瞬を、今すぐ予約。</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+                <a href="tel:0227216303" class="group relative px-6 md:px-10 py-4 md:py-5 bg-white text-stone-900 rounded-sm font-bold text-lg md:text-xl transition-all hover:bg-stone-100 overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center">
+                        📞 <span class="ml-1 md:ml-0">022-721-6303</span>
+                    </span>
+                </a>
+                <a href="https://garedelyon.owst.jp/" target="_blank" class="group relative px-6 md:px-10 py-4 md:py-5 cta-gold rounded-sm font-bold text-lg md:text-xl transition-all hover:brightness-110 shadow-lg flex items-center justify-center">
+                    <span class="relative z-10">WEBから席を確保する</span>
+                </a>
+            </div>
+            <p class="mt-6 text-xs md:text-sm text-stone-400">※お席に限りがございます。お早めのご連絡を。</p>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-24 bg-washi relative">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-red-900/10 rounded-full blur-3xl"></div>
+                <img src="images/samon.jpg" alt="サーモンのムニエル" class="relative z-10 w-full h-[300px] md:h-[500px] object-cover rounded-sm shadow-2xl grayscale-[0.2] hover:grayscale-0 transition-all duration-700">
+                <div class="absolute -bottom-4 -right-4 bg-white p-4 shadow-xl z-20 md:hidden block border border-stone-100">
+                    <p class="serif text-stone-500 text-xs uppercase tracking-widest">Signiture Dish</p>
+                    <p class="serif text-xl font-bold">サーモンのムニエル</p>
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl z-20 md:block hidden">
+                    <p class="serif text-stone-500 text-sm uppercase tracking-widest">Signiture Dish</p>
+                    <p class="serif text-2xl font-bold">サーモンのムニエル</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="serif text-red-800 text-lg md:text-xl block mb-2 font-bold italic">絶品、という答え。</span>
+                <h2 class="serif text-2xl md:text-5xl font-bold mb-4 md:mb-8 leading-tight">一口でわかる、<br>素材の鮮度と火入れ。</h2>
+                <p class="text-base md:text-lg leading-relaxed text-stone-700 mb-6 md:mb-8">
+                    フレンチの要、魚料理。当店が誇る「サーモンのムニエル」は、表面はパリッと香ばしく、中はしっとりとレアの食感を残す絶妙な火入れ。熟練のシェフがソースの一滴までこだわり抜いた、他では味わえない一皿です。
+                </p>
+                <div class="border-l-4 border-stone-300 pl-4 md:pl-6 italic text-stone-500 text-sm md:text-base">
+                    「このソース、パンで最後まで食べたい。」<br>お客様から最も多くいただく言葉です。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-24 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative">
+                        <img src="images/chef.png" alt="シェフ篠原" class="w-full grayscale shadow-2xl">
+                        <div class="absolute -bottom-4 -left-4 bg-stone-900 text-white p-4 block md:hidden">
+                            <p class="serif text-xl font-bold mb-1">篠原 博昭</p>
+                            <p class="text-yellow-500 tracking-widest text-xs italic">Owner Chef</p>
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 bg-stone-900 text-white p-10 hidden md:block">
+                            <p class="serif text-3xl font-bold mb-2">篠原 博昭</p>
+                            <p class="text-yellow-500 tracking-widest text-sm italic">Owner Chef</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+                    <span class="serif text-yellow-600 block mb-2 md:mb-4 tracking-widest font-bold text-sm md:text-base">SINCE 2008</span>
+                    <h2 class="serif text-2xl md:text-4xl mb-4 md:mb-8 leading-tight">「リヨン駅」から始まる、<br>気取らない美食の旅。</h2>
+                    <div class="space-y-4 md:space-y-6 text-stone-700 leading-relaxed text-base md:text-lg">
+                        <p>2008年、仙台・一番町のビル2階に小さな店をつくりました。その名は「ガレ ド リヨン」。お客様が日常の喧騒を離れ、一皿の料理を通じて幸せな時間へと旅立つことができる場所でありたいという想いを込めています。</p>
+                        <p>十八年、変わらぬ情熱で厨房に立ち続けてきました。フレンチという言葉に構える必要はありません。私が目指すのは、一皿一皿に真心を込め、納得のボリュームと品質を、誰もが楽しめる価格で提供すること。それが職人としての、私の誓りです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-24 bg-stone-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="serif text-xl md:text-3xl text-center mb-10 md:text-center md:mb-16 relative px-4">
+                <span class="relative z-10 italic block md:inline">本格フレンチ、もっと身近に。</span>
+                <span class="absolute left-1/2 -translate-x-1/2 -bottom-4 w-12 h-1 bg-red-900"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
+                <div class="bg-white p-6 md:p-10 text-center hover:bg-stone-50 transition">
+                    <p class="text-xs text-stone-400 mb-2 md:mb-4">Case 01</p>
+                    <p class="font-bold text-base md:text-lg mb-3 md:mb-4">特別な日を<br class="hidden md:block">祝いたいけれど</p>
+                    <p class="text-sm text-stone-500 leading-relaxed text-left md:text-center">「高い店は緊張する…」そんな方にこそ。窮屈張らない温かい空間で、本格コースをお楽しみください。</p>
+                </div>
+                <div class="bg-white p-6 md:p-10 text-center hover:bg-stone-50 transition">
+                    <p class="text-xs text-stone-400 mb-2 md:mb-4">Case 02</p>
+                    <p class="font-bold text-base md:text-lg mb-3 md:mb-4">美味しいものを<br class="hidden md:block">お腹いっぱい</p>
+                    <p class="text-sm text-stone-500 leading-relaxed text-left md:text-center">「フレンチは量が少ない」という常識を覆すボリューム。肉と魚の両方を楽しめるフルコースが定番です。</p>
+                </div>
+                <div class="bg-white p-6 md:p-10 text-center hover:bg-stone-50 transition">
+                    <p class="text-xs text-stone-400 mb-2 md:mb-4">Case 03</p>
+                    <p class="font-bold text-base md:text-lg mb-3 md:mb-4">仲間内での<br class="hidden md:block">小さな集まりに</p>
+                    <p class="text-sm text-stone-500 leading-relaxed text-left md:text-center">8〜14名様での貸切も可能です。ビルの2階、隠れ家ならではの一体感あるパーティーを演出します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-24 bg-washi">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white border border-red-900 p-1 md:p-2 relative mt-4">
+                <div class="border border-red-900/30 p-6 md:p-16 text-center">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-red-900 text-white px-4 md:px-8 py-1.5 md:py-2 serif tracking-widest text-xs md:text-base whitespace-nowrap">WEB予約限定特典</div>
+                    <h2 class="serif text-xl md:text-5xl font-bold mb-6 md:mb-8 text-red-950 mt-4 md:mt-0 leading-tight">絶品「自家製前菜」を、<br>一皿多く。</h2>
+                    <p class="text-base md:text-xl text-stone-700 leading-relaxed mb-8 md:mb-10 text-left md:text-center">
+                        「前菜だけでコースが食べたい」とまで言われるシェフ渾身の一皿。<br class="hidden md:block">
+                        当ページよりご予約いただいたお客様に、<br class="hidden md:block">
+                        その日の厳選素材を使った「スペシャリテ」を無料進呈。
+                    </p>
+                    <div class="flex justify-center gap-4 md:gap-8 mb-8 md:mb-10">
+                        <img src="images/zensai1.jpg" alt="前菜特典" class="w-24 h-24 md:w-48 md:h-48 rounded-full object-cover shadow-2xl border-4 border-white">
+                        <img src="images/zensai2.jpg" alt="前菜特典2" class="w-24 h-24 md:w-48 md:h-48 rounded-full object-cover shadow-2xl border-4 border-white mt-6 md:mt-20">
+                    </div>
+                    <a href="https://garedelyon.owst.jp/" target="_blank" class="inline-block cta-gold px-6 md:px-12 py-4 md:py-6 rounded-sm text-lg md:text-2xl font-black serif shadow-2xl hover:scale-105 transition max-w-full text-center">今すぐ特典付きで予約する</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-24 bg-stone-900 text-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="serif text-center text-2xl md:text-4xl mb-10 md:mb-16">美食家たちの声。</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div class="border-elegant border-l-2 pl-4 md:pl-8 py-2">
+                    <div class="text-yellow-500 mb-2 md:mb-4 tracking-tighter">★★★★★</div>
+                    <p class="text-base md:text-lg leading-relaxed mb-4 md:mb-6 italic">「仙台でお薦めのフレンチレストランはどこ？と聞いたら〚ガレ ド リヨンのパテドカンパーニュは絶品だよ〛と教えて貰ったのがキッカケ. 前菜が本当に大好き. お肉もお魚もソースが美味しくて、いつもパンでソースまで残さず食べてしまいます。」</p>
+                    <p class="text-sm md:text-stone-500 serif text-stone-400">－ リピーター様より</p>
+                </div>
+                <div class="border-elegant border-l-2 pl-4 md:pl-8 py-2">
+                    <div class="text-yellow-500 mb-2 md:mb-4 tracking-tighter">★★★★★</div>
+                    <p class="text-base md:text-lg leading-relaxed mb-4 md:mb-6 italic">「このご時世にフルコースを3,500円で食べれるなんて. 素敵なシェフが手書きの達筆なメニューを見せてくれ、ボリュームもあり、とても心地よい空間でした。」</p>
+                    <p class="text-sm md:text-stone-500 serif text-stone-400">－ 初来店のお客様より</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-24 bg-stone-100 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center
+
+    <footer class="py-12 bg-white text-stone-400 text-center text-xs tracking-widest">
+        <p class="serif mb-4 text-stone-900">GARE de Lyon</p>
+        <p>&copy; 2024 GARE de Lyon. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
