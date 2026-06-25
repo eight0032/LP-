@@ -107,7 +107,6 @@
 <body class="antialiased">
 
     <!-- HEADER NAVIGATION -->
-   <!-- ナビゲーションバー（z-indexを最高値の z-[100] に引き上げ） -->
 <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md shadow-sm">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <div class="text-xl font-bold tracking-tighter flex items-center gap-2">
@@ -125,9 +124,7 @@
     </div>
 </nav>
 
-<!-- FV AREA（header自体が邪魔をしないよう pointer-events-none を追加） -->
-<header class="absolute top-0 left-0 w-full z-50 px-4 md:px-6 py-4 pointer-events-none">
-    <!-- リンク部分だけ pointer-events-auto でクリックできるようにします -->
+<header class="absolute top-16 left-0 w-full z-[110] px-4 md:px-6 py-4 pointer-events-none">
     <div class="max-w-5xl mx-auto flex justify-start pl-4 sm:pl-32 md:pl-40 pointer-events-auto">
         <a href="../../../" class="text-white/70 hover:text-white transition duration-300 text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 font-medium bg-black/20 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-full backdrop-blur-sm sm:backdrop-blur-none">
             <i class="fas fa-chevron-left text-[10px] sm:text-xs"></i> トップページへ戻る

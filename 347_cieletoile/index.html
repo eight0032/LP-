@@ -72,38 +72,39 @@
 <body class="leading-relaxed">
 
     <!-- Header -->
-    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-    <div class="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
-        <div class="flex flex-col text-left">
+  <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <div class="container mx-auto px-4 md:px-6 h-auto min-h-[5rem] py-3 md:py-0 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <!-- 店名エリア -->
+        <div class="flex flex-col text-center sm:text-left w-full sm:w-auto">
             <span class="text-xs tracking-[0.3em] text-gray-400 font-light text-[10px]">ISHINOMAKI FRENCH</span>
             <div class="text-xl md:text-2xl font-bold tracking-widest text-navy serif">Ciel &Eacute;toile</div>
         </div>
+
+        <!-- PC用ナビゲーション -->
         <nav class="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
             <a href="#concept" class="hover:text-gold transition text-left">Concept</a>
             <a href="#menu" class="hover:text-gold transition text-left">Menu</a>
             <a href="#story" class="hover:text-gold transition text-left">Story</a>
             <a href="#access" class="hover:text-gold transition text-left">Access</a>
         </nav>
-        <a href="tel:0225904566" class="bg-navy text-white px-4 md:px-6 py-2.5 md:py-3 rounded-none text-xs md:text-sm font-bold hover:bg-gold transition shadow-xl text-left flex items-center gap-2 whitespace-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 md:hidden">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a12.035 12.035 0 0 1-7.108-7.108c-.154-.441.012-.928.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.75Z" />
-            </svg>
-            <span class="md:hidden">電話予約</span>
-            <span class="hidden md:inline">RESERVATION</span>
-        </a>
+
+        <!-- ボタンエリア（戻るボタンと予約ボタンを右側にまとめ、スマホ時は店名の下に並べます） -->
+        <div class="flex items-center justify-center sm:justify-end gap-4 w-full sm:w-auto border-t border-gray-100 pt-2 sm:pt-0 sm:border-0">
+            <a href="../../../" class="text-xs sm:text-sm underline text-stone-600 hover:text-black transition-colors whitespace-nowrap py-2">
+                トップページに戻る
+            </a>
+            <a href="tel:0225-90-4566" class="bg-navy text-white px-4 md:px-6 py-2.5 md:py-3 rounded-none text-xs md:text-sm font-bold hover:bg-gold transition shadow-xl text-left whitespace-nowrap">
+                <span>RESERVATION</span>
+            </a>
+        </div>
     </div>
 </header>
 
+<!-- FV Area -->
 <section class="relative min-h-screen flex flex-col justify-between overflow-hidden pt-20">
     <div class="absolute inset-0 z-0">
         <img src="images/teracce.png" alt="料理の俯瞰写真" class="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite]">
         <div class="absolute inset-0 bg-black/30"></div>
-    </div>
-
-    <div class="relative md:absolute top-0 left-0 w-full md:w-auto z-50 pt-4 md:pt-0 px-6 md:top-8 md:left-12">
-        <a href="../../../" class="inline-block text-sm underline text-white/80 hover:text-white transition-colors whitespace-nowrap">
-            トップページに戻る
-        </a>
     </div>
         
     <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between text-white my-auto pt-6 md:pt-24 pb-20 md:pb-0">
@@ -166,41 +167,45 @@
     </div>
 </section>
 
-<section id="menu" class="py-16 md:py-24 bg-navy text-white parallax-bg" style="background-image: url('images/roast%20beef.png');">
+<section id="menu" class="py-16 md:py-24 bg-navy text-white parallax-bg relative" style="background-image: url('images/roast%20beef.png');">
     <div class="absolute inset-0 bg-navy/80"></div>
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="text-center mb-12 md:mb-16">
-            <span class="en-serif text-gold text-lg md:text-xl block mb-2 text-center">Signature</span>
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <div class="text-center mb-10 md:mb-16">
+            <span class="en-serif text-gold text-base md:text-xl block mb-2 text-center">Signature</span>
             <h2 class="serif text-2xl md:text-3xl font-bold tracking-widest text-center">看板メニュー</h2>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
-            <div class="group bg-white/5 backdrop-blur-sm border border-white/10 p-2 overflow-hidden text-left">
-                <div class="aspect-[4/3] overflow-hidden text-left">
-                    <img src="images/pasta.jpg" alt="サルシッチャのパスタ" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                </div>
-                <div class="p-6 md:p-8 text-left">
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 gap-2 text-left">
-                        <h4 class="serif text-xl md:text-2xl text-left">自家製サルシッチャのパスタ</h4>
-                        <span class="text-gold serif text-left"></span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+            <div class="group bg-white/5 backdrop-blur-sm border border-white/10 p-2 overflow-hidden text-left flex flex-col justify-between">
+                <div>
+                    <div class="aspect-[4/3] overflow-hidden text-left">
+                        <img src="images/pasta.jpg" alt="サルシッチャのパスタ" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
-                    <p class="text-xs md:text-sm text-gray-400 leading-loose text-left text-justify">
-                        当店のシグネチャー。ハーブと香辛料が効いた自家製ソーセージ（サルシッチャ）を崩し、肉の旨味をソースに溶け込ませた逸品。ワインとの相性も抜群です。
-                    </p>
+                    <div class="p-4 sm:p-6 md:p-8 text-left">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 gap-1 text-left">
+                            <h4 class="serif text-lg sm:text-xl md:text-2xl text-left font-semibold tracking-wide">自家製サルシッチャのパスタ</h4>
+                            <span class="text-gold serif text-left"></span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-300 leading-loose text-left text-justify opacity-90">
+                            当店のシグネチャー。ハーブと香辛料が効いた自家製ソーセージ（サルシッチャ）を崩し、肉の旨味をソースに溶け込ませた逸品。ワインとの相性も抜群です。
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="group bg-white/5 backdrop-blur-sm border border-white/10 p-2 overflow-hidden text-left">
-                <div class="aspect-[4/3] overflow-hidden text-left">
-                    <img src="images/french.jpg" alt="地元食材のフレンチコース" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                </div>
-                <div class="p-6 md:p-8 text-left">
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 gap-2 text-left">
-                        <h4 class="serif text-xl md:text-2xl text-left">シェフおまかせコース</h4>
-                        <span class="text-gold serif text-left"></span>
+            <div class="group bg-white/5 backdrop-blur-sm border border-white/10 p-2 overflow-hidden text-left flex flex-col justify-between">
+                <div>
+                    <div class="aspect-[4/3] overflow-hidden text-left">
+                        <img src="images/french.jpg" alt="地元食材のフレンチコース" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
-                    <p class="text-xs md:text-sm text-gray-400 leading-loose text-left text-justify">
-                        その日石巻に揚がった鮮魚や、地元の山野草をメインに構成するフルコース。ベテランシェフがインスピレーションで描く、季節の物語をお楽しみください。
-                    </p>
+                    <div class="p-4 sm:p-6 md:p-8 text-left">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 gap-1 text-left">
+                            <h4 class="serif text-lg sm:text-xl md:text-2xl text-left font-semibold tracking-wide">シェフおまかせコース</h4>
+                            <span class="text-gold serif text-left"></span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-300 leading-loose text-left text-justify opacity-90">
+                            その日石巻に揚がった鮮魚や、地元の山野草をメインに構成するフルコース。ベテランシェフがインスピレーションで描く、季節の物語をお楽しみください。
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -287,7 +292,7 @@
                     苦手な食材やアレルギー、記念日の演出など、お気軽にご相談ください。
                 </p>
                 
-                <a href="tel:0225904566" class="inline-block bg-gold text-white px-6 py-4 md:px-8 md:py-5 text-lg md:text-xl font-bold shadow-2xl hover:scale-105 transition duration-300 mb-8 md:mb-12 text-center whitespace-nowrap">
+                <a href="tel:0225-90-4566" class="inline-block bg-gold text-white px-6 py-4 md:px-8 md:py-5 text-lg md:text-xl font-bold shadow-2xl hover:scale-105 transition duration-300 mb-8 md:mb-12 text-center whitespace-nowrap">
                     📞 0225-90-4566
                 </a>
                 
