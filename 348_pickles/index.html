@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン ピクルス | 伝説のバジリコと肉汁ハンバーグ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap');
+        
+        :root {
+            --color-italian-red: #b91c1c;
+            --color-italian-green: #14532d;
+            --color-warm-beige: #fdfaf6;
+        }
+
+        html {
+            scroll-behavior: smooth; /* スムーススクロールを追加 */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-warm-beige);
+            color: #2d2d2d;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* 紙の質感を追加 */
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .hero-title {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            letter-spacing: 0.15em;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('images/hanbagu.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+        }
+
+        .brush-accent {
+            position: relative;
+            display: inline-block;
+        }
+        .brush-accent::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 8px;
+            background: rgba(185, 28, 28, 0.2);
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+
+        .cta-button {
+            background: linear-gradient(to right, #b91c1c, #991b1b);
+            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--color-italian-green);
+        }
+
+        .ribbon {
+            background: var(--color-italian-red);
+            color: white;
+            padding: 4px 15px;
+            position: relative;
+            clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%, 0 0);
+        }
+
+        /* Map styling */
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER NAVIGATION -->
+   <!-- ナビゲーションバー（z-indexを最高値の z-[100] に引き上げ） -->
+<nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="text-xl font-bold tracking-tighter flex items-center gap-2">
+            <span class="text-red-700"><i class="fas fa-utensils"></i></span>
+            <span class="font-serif text-lg md:text-xl">Restaurant Pickles</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="#menu" class="hover:text-red-700 transition cursor-pointer">MENU</a>
+            <a href="#story" class="hover:text-red-700 transition cursor-pointer">STORY</a>
+            <a href="#access" class="hover:text-red-700 transition cursor-pointer">ACCESS</a>
+        </div>
+        <a href="tel:022-372-7594" class="bg-red-700 text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold animate-pulse">
+            予約：022-372-7594
+        </a>
+    </div>
+</nav>
+
+<!-- FV AREA（header自体が邪魔をしないよう pointer-events-none を追加） -->
+<header class="absolute top-0 left-0 w-full z-50 px-4 md:px-6 py-4 pointer-events-none">
+    <!-- リンク部分だけ pointer-events-auto でクリックできるようにします -->
+    <div class="max-w-5xl mx-auto flex justify-start pl-4 sm:pl-32 md:pl-40 pointer-events-auto">
+        <a href="../../../" class="text-white/70 hover:text-white transition duration-300 text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 font-medium bg-black/20 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-full backdrop-blur-sm sm:backdrop-blur-none">
+            <i class="fas fa-chevron-left text-[10px] sm:text-xs"></i> トップページへ戻る
+        </a>
+    </div>
+</header>
+
+<section class="relative hero-bg flex items-center justify-center text-white px-4 pt-28 sm:pt-24 pb-12 sm:pb-16 min-h-[85vh] sm:min-h-[80vh]">
+    <div class="max-w-5xl text-center space-y-4 sm:space-y-6">
+        <div class="inline-block border border-white/40 px-4 sm:px-5 py-1 rounded-full backdrop-blur-sm text-[10px] sm:text-xs md:text-sm tracking-[0.15em] sm:tracking-[0.2em] mb-1 sm:mb-2 uppercase">
+            Sendai Izumi-ku Since 1990s
+        </div>
+        <h1 class="hero-title text-2xl sm:text-4xl md:text-6xl font-black leading-tight sm:leading-tight">
+            <span class="block mb-1 sm:mb-2">溢れる肉汁。</span>
+            <span class="text-red-500">伝説</span>のバジリコ。
+        </h1>
+        <p class="text-sm sm:text-base md:text-xl font-light opacity-90 max-w-2xl mx-auto leading-relaxed sm:leading-relaxed px-2 sm:px-0">
+            六本木「キャンティ」から仙台「フローレンス」へ。<br class="hidden sm:inline">
+            半世紀を超えて受け継がれる秘伝のレシピを、泉区の一軒家で。
+        </p>
+        <div class="pt-4 sm:pt-6">
+            <a href="#access" class="cta-button text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-full transition duration-300 text-base sm:text-lg inline-flex items-center gap-2 sm:gap-3">
+                至極のランチを体験する <i class="fas fa-chevron-right text-xs sm:text-sm"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- BANNER -->
+<div class="bg-gray-900 py-3 md:py-4 overflow-hidden whitespace-nowrap">
+    <div class="flex animate-marquee gap-6 md:gap-8 items-center text-white/60 text-[10px] sm:text-xs md:text-sm font-bold tracking-widest uppercase">
+        <span>● Traditional Italian Taste</span>
+        <span>● Homemade Hamburg Steak</span>
+        <span>● Special Basilico Pasta</span>
+        <span>● Local Favorite Place</span>
+        <span>● Since 30 Years Ago</span>
+        <span>● Traditional Italian Taste</span>
+    </div>
+</div>
+
+<!-- MAIN PRODUCT SECTION -->
+<section id="menu" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10 md:mb-16">
+            <span class="text-red-700 font-bold tracking-widest uppercase text-xs block mb-2">Our Signature</span>
+            <h2 class="text-3xl md:text-5xl font-bold section-title">看板メニューのご紹介</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+            <div class="space-y-4">
+                <div class="rounded-2xl overflow-hidden shadow-2xl relative">
+                    <img src="images/set.jpg" alt="イタリア風ハンバーグ" class="w-full hover:scale-105 transition duration-700">
+                    <div class="absolute top-4 left-4 md:top-6 md:left-6">
+                        <span class="ribbon text-xs font-bold">人気NO.1</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="images/pasta.jpg" alt="バジルパスタ" class="rounded-xl shadow-lg w-full object-cover">
+                    <img src="images/store.jpg" alt="店内雰囲気" class="rounded-xl shadow-lg w-full object-cover">
+                </div>
+            </div>
+
+            <div class="py-2 md:py-4">
+                <h3 class="text-xl md:text-3xl font-bold mb-4 md:mb-6 flex flex-wrap items-baseline gap-2 md:gap-4">
+                    <span class="brush-accent">イタリア風ハンバーグ Aセット</span>
+                </h3>
+                <p class="text-gray-600 leading-relaxed mb-6 md:mb-8 border-l-4 border-green-700 pl-4 md:pl-6 text-sm md:text-lg italic">
+                    「分厚いハンバーグにナイフを入れると、肉汁が決壊するように溢れ出す。デミソースの深いコクと、ニンニクの効いたバジリコパスタ。この二重奏こそがピクルスの真髄です。」
+                </p>
+                
+                <div class="space-y-4 md:space-y-6">
+                    <div class="flex items-start gap-3 md:gap-4">
+                        <div class="bg-green-100 text-green-800 p-2 rounded-lg text-xs md:text-sm shrink-0"><i class="fas fa-check"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm md:text-base">肉汁の黄金比率</h4>
+                            <p class="text-xs md:text-sm text-gray-500 mt-0.5">吟選された合挽き肉を使用。外はカリッと、中は極限までジューシーに焼き上げます。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 md:gap-4">
+                        <div class="bg-green-100 text-green-800 p-2 rounded-lg text-xs md:text-sm shrink-0"><i class="fas fa-check"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm md:text-base">伝説のバジリコパスタ</h4>
+                            <p class="text-xs md:text-sm text-gray-500 mt-0.5">東北にバジリコを広めたパイオニアの系譜。中毒性のあるニンニクの旨みをご堪能ください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 md:mt-12 bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-gray-100 italic text-xs md:text-sm text-gray-500">
+                    「初めて食べた時、昔食べた味に似ていて懐かしさと美味しさに涙しくなりました。」
+                    <div class="text-right mt-2 font-bold">— クチコミより</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STORY SECTION -->
+<section id="story" class="py-16 md:py-24 bg-stone-900 text-stone-100">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-red-500 font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs block mb-3 md:mb-4">Our History</span>
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 md:mb-12 leading-tight">継承される「フローレンス」の意志</h2>
+        
+        <div class="relative mb-6 md:mb-12">
+            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                <i class="fas fa-history text-[100px] sm:text-[150px] md:text-[200px]"></i>
+            </div>
+            <p class="text-base sm:text-lg md:text-xl leading-loose md:leading-loose font-serif font-light mb-6 md:mb-8 px-1 sm:px-0">
+                仙台イタリアンの黎明期を支えた名店「フローレンス」。<br class="hidden sm:inline">
+                そのルーツは、日本に本格イタリアンを根付かせた**六本木の伝説「キャンティ」**にありました。
+            </p>
+            <p class="text-sm sm:text-base md:text-lg leading-relaxed md:leading-relaxed text-stone-400 mb-6 md:mb-8 px-1 sm:px-0">
+                当店のシェフは、そのフローレンスで研鑽を積み、東北初のバジリコパスタのレシピを受け継ぎました。泉区の小さなお店ですが、一皿に込める情熱と歴史の重みは、都心の名店にも引けを取りません。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA AREA / ACCESS SECTION -->
+<section id="access" class="py-16 md:py-24 bg-stone-100">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="bg-white rounded-[24px] md:rounded-[40px] shadow-2xl overflow-hidden flex flex-col lg:flex-row">
+            <div class="lg:w-1/2 p-6 sm:p-10 lg:p-16 space-y-6 md:space-y-8 border-b lg:border-b-0 lg:border-r border-gray-100">
+                <div>
+                    <h2 class="text-xl md:text-3xl font-bold mb-3 md:mb-4">お席の確保はお早めに。</h2>
+                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed">お電話にて「LPを見た」とお伝えいただければ、スムーズなご案内が可能です。</p>
+                </div>
+                
+                <div class="space-y-4 md:space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-red-50 rounded-full flex items-center justify-center text-red-700 shrink-0">
+                            <i class="fas fa-clock text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-[9px] md:text-[10px] uppercase text-gray-400 font-bold tracking-wider">Closed</p>
+                            <p class="text-sm md:text-base font-bold">水曜日 定休</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-red-50 rounded-full flex items-center justify-center text-red-700 shrink-0">
+                            <i class="fas fa-map-marker-alt text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-[9px] md:text-[10px] uppercase text-gray-400 font-bold tracking-wider">Address</p>
+                            <p class="text-sm md:text-base font-bold">仙台市泉区泉5丁目21-5</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="tel:022-372-7594" class="cta-button text-white w-full py-4 md:py-5 rounded-xl md:rounded-2xl text-xl sm:text-2xl md:text-3xl font-black block text-center shadow-xl transform transition hover:scale-[1.02]">
+                    <i class="fas fa-phone-alt mr-2 md:mr-4 text-lg md:text-2xl"></i>022-372-7594
+                </a>
+                
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                    <p class="text-xs text-green-800 leading-relaxed">
+                        <i class="fas fa-info-circle mr-1"></i> 
+                        泉区の住宅街の中にございます。赤い看板を目印にお越しください。駐車場も完備しております。
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 map-container h-[300px] sm:h-[400px] lg:h-auto min-h-[300px] lg:min-h-full">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.8769777441153!2d140.91091307478442!3d38.32867958006224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f898154b66bf2c3%3A0x847de94a66feb8c3!2z44Os44K544OI44Op44OzIOODlOOCr-ODq-OCuQ!5e0!3m2!1sja!2sjp!4v1772688811447!5m2!1sja!2sjp" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 py-12 text-stone-500 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-xl font-serif text-white mb-6">Restaurant Pickles</div>
+            <div class="text-xs space-y-2">
+                <p>〒981-3108 宮城県仙台市泉区泉５丁目２１−５</p>
+                <p>TEL: 022-372-7594</p>
+            </div>
+            <p class="mt-8 text-[10px] opacity-50 uppercase tracking-widest">&copy; 2024 Restaurant Pickles | Tradition &amp; Innovation</p>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+
+</body>
+</html>
