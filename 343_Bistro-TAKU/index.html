@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro TAKU | 名取市の隠れ家ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #af9164;
+            --dark: #1c1917;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #f8f7f4; }
+        h1, h2, h3, .serif { font-family: 'Noto Serif JP', serif; }
+        .bg-gold { background-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        .bg-dark { background-color: var(--dark); }
+        
+        /* 装飾用：紙のような質感 */
+        .texture {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        /* チェック柄背景 (ギンガムチェック) */
+        .bg-checkered {
+            background-color: #f5f5f4; /* stone-100 */
+            background-image: linear-gradient(45deg, #ffffff 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff), 
+                              linear-gradient(45deg, #ffffff 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        /* 金色のグラデーション */
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f7ef8a 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* スクロールアニメーション用の基本設定 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 限定感のバッジ */
+        .badge-limited {
+            background: linear-gradient(45deg, #cc0000, #ff4444);
+            color: white;
+            padding: 4px 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            transform: rotate(-3deg);
+            display: inline-block;
+        }
+
+        /* マップのレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* FVのアニメーション（即時実行） */
+        .fv-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fvFadeIn 1.5s ease-out forwards 0.5s;
+        }
+        @keyframes fvFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-stone-800 antialiased texture">
+
+    <!-- 追従型ヘッダー -->
+ <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur shadow-sm py-2 md:py-3 px-4 md:px-6 flex justify-between items-center">
+    <div class="flex items-center gap-2 md:gap-4 overflow-hidden mr-2">
+        <a href="../../../" class="inline-flex items-center text-gray-600 hover:text-black transition-colors text-[11px] md:text-sm font-medium border border-gray-200 hover:border-gray-400 px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-gray-50 whitespace-nowrap">
+            <svg class="w-3 h-3 md:w-3.5 md:h-3.5 mr-0.5 md:mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            戻る
+            <span class="hidden sm:inline">ページへ</span>
+        </a>
+        <div class="text-base md:text-xl font-bold tracking-tighter serif whitespace-nowrap overflow-hidden text-ellipsis">Bistro TAKU</div>
+    </div>
+    
+    <a href="tel:022-207-3863" class="bg-gold text-white text-[11px] md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full font-bold transition-transform hover:scale-105 active:scale-95 whitespace-nowrap flex-shrink-0">電話予約</a>
+</header>
+
+<section class="relative min-h-screen flex items-center justify-center pt-12 md:pt-16 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="images/hanbagu.jpg" alt="極厚のデミグラスハンバーグ" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center text-white px-4 fv-reveal py-12">
+        <div class="badge-limited mb-4 md:mb-6 text-xs md:text-base shadow-xl inline-block">1日限定 10食のみ</div>
+        <h1 class="font-black mb-6 md:mb-8 leading-[1.3] md:leading-[1.2] serif">
+            <span class="text-lg md:text-3xl block mb-2 md:mb-4 font-normal opacity-90">名取の住宅街に潜む、極上の悦び。</span>
+            <span class="text-2xl md:text-5xl block">あふれ出す肉汁と、<br>
+            <span class="gold-gradient">16年の真髄。</span></span>
+        </h1>
+        <p class="text-sm md:text-xl mb-8 md:text-10 max-w-2xl mx-auto font-light leading-relaxed opacity-80">
+            東京・大阪で16年。正統派フレンチの技法を尽くした、<br class="hidden md:block">
+            デミグラスソースハンバーグの極致を。
+        </p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center max-w-xs mx-auto md:max-w-none">
+            <a href="#cta" class="bg-gold hover:bg-white hover:text-gold text-white font-bold py-4 md:py-5 px-8 md:px-12 rounded-lg transition-all text-lg md:text-xl shadow-2xl block text-center">
+                今すぐ空席を確認する
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white relative overflow-hidden reveal">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-10 md:mb-16">
+            <h2 class="text-xl md:text-4xl font-bold mb-3 md:mb-4 serif">こんな「悩み」はありませんか？</h2>
+            <div class="w-16 md:w-20 h-1 bg-gold mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16">
+            <div class="flex items-start gap-3 md:gap-4 p-5 md:p-6 border-l-4 border-stone-200 bg-stone-50 reveal">
+                <span class="text-stone-300 text-2xl md:text-3xl font-bold">01</span>
+                <p class="font-bold text-sm md:text-base">「フレンチは敷居が高くて、記念日でも気後れしてしまう…」</p>
+            </div>
+            <div class="flex items-start gap-3 md:gap-4 p-5 md:p-6 border-l-4 border-stone-200 bg-stone-50 reveal">
+                <span class="text-stone-300 text-2xl md:text-3xl font-bold">02</span>
+                <p class="font-bold text-sm md:text-base">「本格的な味を食べたいけど、都心まで行くのは億劫だ」</p>
+            </div>
+            <div class="flex items-start gap-3 md:gap-4 p-5 md:p-6 border-l-4 border-stone-200 bg-stone-50 reveal">
+                <span class="text-stone-300 text-2xl md:text-3xl font-bold">03</span>
+                <p class="font-bold text-sm md:text-base">「本当に美味しいものを、大切な人とゆっくり味わいたい」</p>
+            </div>
+            <div class="flex items-start gap-3 md:gap-4 p-5 md:p-6 border-l-4 border-stone-200 bg-stone-50 reveal">
+                <span class="text-stone-300 text-2xl md:text-3xl font-bold">04</span>
+                <p class="font-bold text-sm md:text-base">「人気店は騒がしくて、会話が楽しめないことが多い」</p>
+            </div>
+        </div>
+
+        <div class="bg-dark text-white p-6 md:p-16 rounded-2xl shadow-2xl text-center relative reveal mt-8">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold px-4 md:px-6 py-1.5 md:py-2 rounded font-bold text-xs md:text-base whitespace-nowrap">解決の場所</div>
+            <h3 class="text-lg md:text-4xl font-bold mb-4 md:mb-6 serif leading-relaxed">
+                住宅街の「隠れ家」だから叶う、<br class="block md:hidden">贅沢な時間と破格的なコスパ。
+            </h3>
+            <p class="text-stone-400 text-sm md:text-lg font-light leading-relaxed">
+                Bistro TAKUは、名取の閑静な住宅街に佇む18席のビストロ。<br class="hidden md:block">
+                気取らず、それでいて「本物」を。
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-[#fff5f5] overflow-hidden border-y border-stone-100">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="w-full md:w-1/2 reveal">
+            <img src="images/demigurasu.jpg" alt="こだわり抜いたデミグラスソース" class="w-full h-auto rounded-2xl shadow-2xl border-4 border-white transition-transform duration-700 hover:scale-105">
+        </div>
+        <div class="w-full md:w-1/2 reveal">
+            <h2 class="text-2xl md:text-5xl font-bold mb-4 md:mb-6 serif leading-tight">看板メニュー：<br><span class="text-gold">デミグラスソースハンバーグ</span></h2>
+            <p class="text-sm md:text-lg leading-relaxed text-stone-600 mb-6 md:mb-8">
+                16年のフランス料理修業で培った「ソース」へのこだわり。牛骨と香味野菜を何日も煮込み、深いコクを引き出した秘伝のデミグラスソースが、極厚でジューシーな肉の旨味を包み込みます。
+            </p>
+            <div class="space-y-3 md:space-y-4">
+                <div class="flex items-center gap-3 md:gap-4 bg-white p-3 md:p-4 rounded-xl shadow-sm transition-all hover:-translate-y-1 hover:shadow-md reveal">
+                    <div class="w-8 h-8 md:w-12 md:h-12 bg-gold/10 flex items-center justify-center rounded-full text-gold font-bold text-sm md:text-base flex-shrink-0">✓</div>
+                    <p class="font-bold text-xs md:text-base">1日10食限定：希少性が生む鮮度と品質</p>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 bg-white p-3 md:p-4 rounded-xl shadow-sm transition-all hover:-translate-y-1 hover:shadow-md reveal">
+                    <div class="w-8 h-8 md:w-12 md:h-12 bg-gold/10 flex items-center justify-center rounded-full text-gold font-bold text-sm md:text-base flex-shrink-0">✓</div>
+                    <p class="font-bold text-xs md:text-base">地産地消：蔵王の有機野菜を添えて</p>
+                </div>
+                <div class="flex items-center gap-3 md:gap-4 bg-white p-3 md:p-4 rounded-xl shadow-sm transition-all hover:-translate-y-1 hover:shadow-md reveal">
+                    <div class="w-8 h-8 md:w-12 md:h-12 bg-gold/10 flex items-center justify-center rounded-full text-gold font-bold text-sm md:text-base flex-shrink-0">✓</div>
+                    <p class="font-bold text-xs md:text-base">感動の価格：ランチ 1,500円前後の破格</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-dark text-white overflow-hidden relative text-center md:text-left">
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-gold/5 -skew-x-12 hidden md:block"></div>
+    <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10 flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+        <div class="w-full md:w-1/2 reveal">
+            <img src="images/chef.png" alt="調理に集中するシェフ" class="w-full h-auto rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000">
+        </div>
+        <div class="w-full md:w-1/2 reveal text-left">
+            <span class="text-gold font-bold tracking-[.3em] uppercase block mb-2 md:mb-4 text-xs md:text-sm text-center md:text-left">Master of French</span>
+            <h2 class="text-2xl md:text-5xl font-bold mb-4 md:mb-8 serif leading-tight text-center md:text-left">16年の修業が刻む、<br class="hidden md:block">嘘のない一皿。</h2>
+            <p class="text-stone-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                大阪、そして東京での11年。フランス料理の王道で心技体を磨き上げたシェフ高柳。2013年、その技術を地元・宮城県名取市へ還元するためにBistro TAKUをオープンしました。
+            </p>
+            <blockquote class="border-l-4 border-gold pl-4 md:pl-6 italic text-base md:text-xl mb-6 md:mb-8 font-light text-left">
+                「フランス料理は、愛情と時間の結晶です。地元食材の息吹を、私の16年間の経験で形にし、皆様の日常に小さな奇跡を運びたい。」
+            </blockquote>
+            <p class="text-right serif text-lg md:text-xl">— オーナーシェフ 高柳</p>
+        </div>
+    </div>
+</section>
+
+<section id="cta" class="py-16 md:py-24 bg-checkered px-4 border-y border-stone-200">
+    <div class="max-w-4xl mx-auto text-center reveal">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-gold/20 mb-12 md:mb-20">
+            <div class="w-full md:w-1/3 bg-gold p-8 md:p-12 text-center text-white flex flex-col justify-center">
+                <h3 class="text-xs tracking-widest mb-1 md:mb-2 font-bold opacity-80 uppercase">Limited Offer</h3>
+                <p class="text-xl md:text-3xl font-bold serif">ご予約限定<br class="hidden md:block">特典</p>
+            </div>
+            <div class="w-full md:w-2/3 p-6 md:p-16 text-left">
+                <div class="flex flex-col h-full justify-between">
+                    <div>
+                        <p class="text-stone-500 mb-1 md:mb-2 font-bold tracking-tight text-sm">インスタフォロー＆予約時に提示で</p>
+                        <h4 class="text-2xl md:text-4xl font-black mb-4 md:mb-6 serif text-stone-900 leading-tight">「自家製デザート」無料サービス</h4>
+                        <p class="text-xs md:text-sm text-stone-500 mb-6 md:mb-8 leading-relaxed">※1日10食限定ハンバーグは予約分で完売する可能性がございます。ぜひお早めのご予約をお勧めいたします。</p>
+                    </div>
+                    <div class="space-y-3">
+                        <a href="tel:022-207-3863" class="block w-full bg-dark text-white text-center py-4 rounded-lg text-xl md:text-2xl font-bold shadow-xl hover:bg-gold transition-all hover:scale-[1.02] active:scale-98">
+                            📞 022-207-3863
+                        </a>
+                        <p class="text-center text-[10px] md:text-xs text-stone-400">営業時間：11:30~ / 18:00~（定休日：月曜日）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto reveal text-left">
+            <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-8 serif text-center md:text-left">Access</h3>
+            <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white mb-4">
+                <div class="map-container relative aspect-video w-full">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3137.1061283293543!2d140.8989763747748!3d38.160972989821644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a23e8620cb88b%3A0x827569dd1d879ddf!2sBistro%20TAKU!5e0!3m2!1sja!2sjp!4v1772679274467!5m2!1sja!2sjp" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <p class="text-stone-500 text-xs md:text-sm leading-relaxed text-center md:text-left">宮城県名取市杜せきのした5丁目26−6（杜せきのした駅徒歩5分 / 駐車場4台完備）</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
+        <h2 class="text-2xl md:text-5xl font-bold mb-12 md:mb-20 serif tracking-tighter italic reveal">"至福のひととき"、続々と。</h2>
+        <div class="grid md:grid-cols-3 gap-8 md:gap-10 text-left">
+            <div class="relative p-6 md:p-8 bg-stone-50 rounded-2xl reveal border border-stone-100">
+                <div class="absolute -top-4 md:-top-6 left-6 md:left-8 text-4xl md:text-6xl text-gold opacity-30 serif">“</div>
+                <p class="text-stone-600 mb-4 md:mb-6 leading-relaxed relative z-10 text-xs md:text-sm">
+                    「この価格でこのクオリティは驚き。シェフが本当に料理が好きで事業していることが伝わる。文句なしの隠れ家です。」
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="text-gold text-xs">★★★★★</div>
+                    <span class="text-[10px] text-stone-400">Google 口コミより</span>
+                </div>
+            </div>
+            <div class="relative p-6 md:p-8 bg-stone-50 rounded-2xl reveal border border-stone-100">
+                <div class="absolute -top-4 md:-top-6 left-6 md:left-8 text-4xl md:text-6xl text-gold opacity-30 serif">“</div>
+                <p class="text-stone-600 mb-4 md:mb-6 leading-relaxed relative z-10 text-xs md:text-sm">
+                    「10食限定ハンバーグのために並びました。肉汁が溢れ出し、ソースとの相性抜群。特別な日の定番になりました。」
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="text-gold text-xs">★★★★★</div>
+                    <span class="text-[10px] text-stone-400">SNS 口コミより</span>
+                </div>
+            </div>
+            <div class="relative p-6 md:p-8 bg-stone-50 rounded-2xl reveal border border-stone-100">
+                <div class="absolute -top-4 md:-top-6 left-6 md:left-8 text-4xl md:text-6xl text-gold opacity-30 serif">“</div>
+                <p class="text-stone-600 mb-4 md:mb-6 leading-relaxed relative z-10 text-xs md:text-sm">
+                    「アレルギー対応も快く受けてくださり感謝。家族のお祝いで伺いましたが、最高の思い出になりました。」
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="text-gold text-xs">★★★★★</div>
+                    <span class="text-[10px] text-stone-400">Google 口コミより</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-12 md:py-20 px-4 md:px-6">
+    <div class="max-w-4xl mx-auto text-center">
+        <div class="mb-8 md:mb-12 reveal">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2 md:mb-4 serif">Bistro TAKU</h2>
+            <p class="text-gold tracking-[.5em] mb-6 md:mb-8 uppercase text-xs md:text-sm">Bistro Taku</p>
+            <p class="opacity-70 text-xs md:text-sm leading-loose">
+                宮城県名取市杜せきのした5丁目26−6<br>
+                杜せきのした駅徒歩5分 / 駐車場4台完備<br>
+                定休日：月曜日
+            </p>
+        </div>
+        <div class="flex justify-center gap-6 md:gap-8 mb-8 md:mb-12 reveal">
+            <a href="https://www.instagram.com/bistrotaku/" target="_blank" class="hover:text-gold transition-colors underline text-xs md:text-sm">Instagram</a>
+            <a href="https://www.bistro-taku.com/" target="_blank" class="hover:text-gold transition-colors underline text-xs md:text-sm">Official Site</a>
+        </div>
+        <p class="text-[9px] md:text-[10px] opacity-30 tracking-widest">© Bistro TAKU All Rights Reserved.</p>
+    </div>
+</footer>
+
+    <!-- スクロールアニメーション制御スクリプト -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 要素が10%見えたらトリガー
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
