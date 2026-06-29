@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ranpu＋（ランププラス）| 仙台の隠れ家フレンチ・オムライス</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary-gold: #c5a059;
+            --dark-stone: #1c1c1c;
+            --light-bg: #f9f7f2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--light-bg);
+            color: #333;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .text-gold { color: var(--primary-gold); }
+        .bg-gold { background-color: var(--primary-gold); }
+        .border-gold { border-color: var(--primary-gold); }
+
+        /* 参考LPを意識したグリッド・余白設定 */
+        .section-spacing { padding: 100px 0; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* アニメーション用 */
+        .fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* マップのスタイリング */
+        .map-container iframe {
+            filter: grayscale(1) contrast(1.2) opacity(0.8);
+            transition: filter 0.5s ease;
+        }
+        .map-container:hover iframe {
+            filter: grayscale(0) contrast(1) opacity(1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ヒーローセクション -->
+ <header class="relative min-h-[90vh] md:h-[90vh] flex flex-col justify-center overflow-hidden bg-white py-20 md:py-0">
+        <div class="w-full max-w-7xl mx-auto px-6 pt-6 absolute top-0 left-0 right-0 z-20">
+            <a href="../../../" class="inline-flex items-center text-xs tracking-widest text-stone-500 hover:text-gold transition-colors duration-300">
+                <i class="fas fa-chevron-left mr-2 text-[10px]"></i> トップページへ戻る
+            </a>
+        </div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 items-center gap-12 z-10 mt-8">
+            <div class="fade-in-up">
+                <span class="text-gold tracking-[0.3em] font-bold text-xs md:text-sm block mb-4">SINCE 2020 | SENDAI NISHIKIMACHI</span>
+                <h1 class="text-3xl md:text-5xl leading-[1.3] mb-6 text-stone-900">
+                    一皿に込めた<br>
+                    <span class="text-gold italic">Hotel Quality.</span>
+                </h1>
+                <p class="text-base md:text-lg text-stone-600 mb-10 leading-relaxed border-l-2 border-gold pl-6">
+                    ホテルで培った確かな技術と、端城の穏かな恵み。<br>
+                    カジュアルに楽しむ、最高究のフレンチ・オムライス。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#menu" class="bg-gold text-white px-10 py-4 rounded-sm font-bold hover:brightness-110 transition shadow-lg text-center">VIEW MENU</a>
+                    <a href="tel:05054921527" class="border border-stone-800 text-stone-800 px-10 py-4 rounded-sm font-bold hover:bg-stone-800 hover:text-white transition text-center">CALL NOW</a>
+                </div>
+            </div>
+            <div class="relative hidden md:block">
+                <div class="absolute -top-20 -right-20 w-80 h-80 bg-gold/5 rounded-full blur-3xl"></div>
+                <img src="images/omuraisu.png" alt="本格オムライスのアップ" class="rounded-tl-[100px] rounded-br-[100px] shadow-2xl relative z-10 w-full object-cover h-[600px]">
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-stone-900 py-12 md:py-16 text-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-gold font-serif text-3xl md:text-4xl mb-2">4.3</p>
+                    <p class="text-[10px] md:text-xs tracking-widest uppercase opacity-60">Google Rating</p>
+                </div>
+                <div>
+                    <p class="text-gold font-serif text-3xl md:text-4xl mb-2">1,000+</p>
+                    <p class="text-[10px] md:text-xs tracking-widest uppercase opacity-60">Custom Options</p>
+                </div>
+                <div>
+                    <p class="text-gold font-serif text-3xl md:text-4xl mb-2">100%</p>
+                    <p class="text-[10px] md:text-xs tracking-widest uppercase opacity-60">Miyagi Ingredients</p>
+                </div>
+                <div>
+                    <p class="text-gold font-serif text-3xl md:text-4xl mb-2">20yr+</p>
+                    <p class="text-[10px] md:text-xs tracking-widest uppercase opacity-60">Chef Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="text-gold font-bold tracking-widest uppercase text-xs">How to Order</span>
+                <h2 class="text-3xl md:text-4xl mt-4 italic">The Art of Customization</h2>
+                <p class="mt-4 text-sm md:text-base text-stone-500">あなたの直感で選ぶ、世界にひとつのオムライス。</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center p-6 md:p-8 glass-card rounded-2xl hover-lift">
+                    <span class="text-4xl font-serif text-gold/20 block mb-4 font-bold">01</span>
+                    <h3 class="font-bold mb-4">EGG STYLE</h3>
+                    <p class="text-sm text-stone-600">タンポポ、包み、乗せの3種から、理想の食感を選択。</p>
+                </div>
+                <div class="text-center p-6 md:p-8 glass-card rounded-2xl hover-lift">
+                    <span class="text-4xl font-serif text-gold/20 block mb-4 font-bold">02</span>
+                    <h3 class="font-bold mb-4">SAUCE</h3>
+                    <p class="text-sm text-stone-600">濃厚デミグラス、トマト、宮城のソースから選ぶ喜び。</p>
+                </div>
+                <div class="text-center p-6 md:p-8 glass-card rounded-2xl hover-lift">
+                    <span class="text-4xl font-serif text-gold/20 block mb-4 font-bold">03</span>
+                    <h3 class="font-bold mb-4">TOPPING</h3>
+                    <p class="text-sm text-stone-600">ハンバーグや旬のコンフィ。彩りを自分流にプラス。</p>
+                </div>
+                <div class="text-center p-6 md:p-8 glass-card rounded-2xl hover-lift">
+                    <span class="text-4xl font-serif text-gold/20 block mb-4 font-bold">04</span>
+                    <h3 class="font-bold mb-4">COMPLETE</h3>
+                    <p class="text-sm text-stone-600">サラダ、スープ、デザート。コース級の満足を。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-0 overflow-hidden rounded-3xl shadow-xl">
+                <div class="bg-stone-900 text-white p-8 sm:p-12 md:p-20 flex flex-col justify-center">
+                    <h2 class="text-3xl md:text-4xl mb-6 md:mb-8 leading-snug">端城を、<br>フレンチで再定義する。</h2>
+                    <p class="text-sm md:text-base text-stone-400 leading-relaxed mb-8">
+                        三陸の海介、地元の新鮮野菜。素材が持つポテンシャルを、フランス料理の技法で最大化します。
+                        例えば、小さなカップに凝縮されたマッシュルームのポタージュ。一口で「ranpu＋」の哲学を感じていただけるはずです。
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <img src="images/chef.png" class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-gold" alt="シェフ">
+                        <div>
+                            <p class="font-bold text-sm md:text-base">オーナーシェフ</p>
+                            <p class="text-xs md:text-sm text-gold">Hotel Trained Professional</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-[300px] md:h-auto">
+                    <img src="images/chef.png" class="w-full h-full object-cover" alt="調理風景">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl md:text-3xl text-center mb-12 md:mb-16">Guest Reviews</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 md:p-8 border border-stone-100 rounded-xl hover-lift">
+                    <div class="text-gold mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm leading-relaxed mb-6 italic">「ライスはほんのりピンク？志みがあって最高。デミグラスとハンバーグ、あっという間に完食してしまいました。」</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">— Dinner Guest</p>
+                </div>
+                <div class="p-6 md:p-8 border border-stone-100 rounded-xl hover-lift">
+                    <div class="text-gold mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm leading-relaxed mb-6 italic">「サラダのボリュームに驚き！中からお肉やキャロットラペが出てくる仕立てが楽しい。お腹いっぱいになります。」</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">— Lunch Guest</p>
+                </div>
+                <div class="p-6 md:p-8 border border-stone-100 rounded-xl hover-lift">
+                    <div class="text-gold mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="text-sm leading-relaxed mb-6 italic">「本格フレンチがカジュアルに。締めに出てくる焼き立てクレープが絶品で、お祝い事にもぴったりな空間です。」</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">— Anniversary Guest</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-stone-50 border-y border-stone-100">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-12 rounded-3xl shadow-sm border border-gold/20">
+                <h2 class="text-2xl md:text-3xl mb-6">特別な一皿を、プレゼント。</h2>
+                <p class="text-sm md:text-base text-stone-600 mb-8 md:mb-10 leading-relaxed">
+                    公式LINE登録、または「LPを見た」でご予約の方限定。<br class="hidden sm:inline">
+                    食後の余韻を楽しむ、自家製クレープ（ミニサイズ）をサービスいたします。
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                    <a href="https://r.gnavi.co.jp/rc7ftaft0000/" target="_blank" rel="noopener noreferrer" class="bg-stone-900 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-black transition shadow-xl text-sm md:text-base text-center">WEBで席を予約する</a>
+                    <a href="https://www.instagram.com/ranpu_plus/" target="_blank" rel="noopener noreferrer" class="border-2 border-stone-900 text-stone-900 px-8 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-stone-900 hover:text-white transition text-sm md:text-base text-center">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 md:py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-start border-b border-stone-100 pb-12 md:pb-20">
+                <div>
+                    <h3 class="text-2xl font-serif mb-6 md:mb-8 italic">ranpu＋</h3>
+                    <div class="space-y-4 text-sm md:text-base text-stone-600">
+                        <p class="flex items-start"><i class="fas fa-map-marker-alt w-8 text-gold mt-1"></i> <span class="flex-1">〒980-0012 宮城県仙台市青葉区錦町1丁目2-10 2F</span></p>
+                        <p class="flex items-center"><i class="fas fa-phone w-8 text-gold"></i> 050-5492-1527</p>
+                        <p class="flex items-start"><i class="fas fa-clock w-8 text-gold mt-1"></i> <span class="flex-1">Lunch: 11:30 - 14:30 / Dinner: 18:00 - 22:00</span></p>
+                        <p class="flex items-center"><i class="fas fa-calendar-times w-8 text-gold"></i> 定休日：不定休</p>
+                        <p class="flex items-center">
+                            <i class="fab fa-youtube w-8 text-gold"></i> 
+                            <a href="https://www.youtube.com/channel/UCCktthOzUlY6h3MGt00PfWA" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors duration-300">
+                                YouTube チャンネル
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="map-container h-64 md:h-72 rounded-2xl overflow-hidden shadow-inner bg-stone-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.5170246037087!2d140.8742395747809!3d38.26750618362624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a29bf72b010e5%3A0x56611881d7dbc631!2zcmFucHXvvIs!5e0!3m2!1sja!2sjp!4v1772684834552!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="mt-8 md:mt-12 text-center text-[10px] md:text-xs text-stone-400 tracking-widest">
+                © 2024 RANPU PLUS SENDAI. PRODUCED WITH ARTISAN SPIRIT.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
