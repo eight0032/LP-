@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロ ヴァンダンジュ | 登米のテロワールを、一皿の芸術に。</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Montserrat:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-gold: #b39151;
+            --dark-bg: #1a1a1a;
+            --soft-white: #fcfaf7;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: var(--soft-white);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .en-title {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .bg-gold { background-color: var(--primary-gold); }
+        .text-gold { color: var(--primary-gold); }
+        .border-gold { border-color: var(--primary-gold); }
+
+        /* FV Container */
+        .hero-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        /* 画像差し替え用プレースホルダー */
+        .img-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: repeating-linear-gradient(
+                45deg,
+                #e7e2d8,
+                #e7e2d8 10px,
+                #ddd6c7 10px,
+                #ddd6c7 20px
+            );
+            color: #8a7a5c;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--primary-gold);
+            margin: 1.5rem auto;
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Map responsive wrapper */
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+        }
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- First View -->
+    <header class="hero-container text-white relative overflow-hidden min-h-[100vh] flex flex-col justify-center items-center py-20">
+    <img src="images/kakuteru.png" alt="Bistro Vendange 店内" class="hero-img object-cover w-full h-full absolute inset-0 -z-10">
+    
+    <div class="absolute top-6 left-6 z-20">
+        <a href="../../../" class="text-xs md:text-sm tracking-widest text-gold hover:text-white transition-colors duration-300 flex items-center gap-2">
+            <i class="fas fa-chevron-left text-xs"></i> トップページへ戻る
+        </a>
+    </div>
+
+    <div class="text-center px-4 z-10 relative my-auto">
+        <p class="en-title text-xs md:text-base mb-4 tracking-[0.5em] animate-pulse">Bistro Vendange</p>
+        <h1 class="text-3xl md:text-7xl leading-tight mb-6 md:mb-8 break-keep">
+            登米のテロワールを、<br><span class="text-gold">一皿の芸術</span>に。
+        </h1>
+        <div class="w-px h-12 md:h-24 bg-white/50 mx-auto mb-6 md:mb-8"></div>
+        <p class="text-sm md:text-xl font-light tracking-widest leading-relaxed max-w-md md:max-w-none mx-auto">熟成チーズのクリームパスタと、<br class="md:hidden">厳選されたアルザスワイン</p>
+    </div>
+    <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-xs md:text-sm uppercase tracking-widest opacity-70 text-center">
+        Scroll <br> <i class="fas fa-chevron-down mt-1 md:mt-2"></i>
+    </div>
+</header>
+
+<section class="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div class="w-full md:w-1/2 relative h-[300px] md:min-h-[400px] md:h-auto">
+            <img src="images/french.jpg" 
+                 alt="登米の食材を使ったフレンチ料理" 
+                 class="rounded shadow-2xl relative z-10 w-full h-full md:h-[400px] object-cover">
+            <div class="absolute -top-4 -left-4 md:-top-6 -left-6 w-full h-full border border-gold z-0"></div>
+        </div>
+        
+        <div class="w-full md:w-1/2">
+            <p class="en-title text-gold text-sm mb-2 md:mb-4">The Concept</p>
+            <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-relaxed">
+                伝統に裏打ちされた技術と、<br>登米の良質な食材の融合。
+            </h2>
+            <p class="text-stone-600 text-sm md:text-base leading-loose mb-6 md:mb-8 text-justify">
+                私たちは、登米の生産者の努力を大切にし、その土地の個性をフランス伝統料理の技法で表現します。地元の味噌や醤油、旬の野菜を隠し味に。フランスの風を感じながらも、どこか懐かしさを覚える「和の心」を込めたフレンチをご堪能ください。
+            </p>
+            <div class="flex gap-8">               
+                <div class="text-left md:text-center">
+                    <span class="block text-2xl font-bold text-stone-800">20</span>
+                    <span class="text-xs text-stone-500 uppercase tracking-tighter">Seats Available</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-900 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10 md:mb-16">
+            <p class="en-title text-gold text-sm mb-2">Signature Dish</p>
+            <h2 class="text-3xl md:text-4xl font-bold section-title">至極の逸品</h2>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+            <div class="w-full md:w-3/5 relative h-[300px] md:min-h-[400px] md:h-auto">
+                <div class="relative group overflow-hidden rounded shadow-2xl h-full md:h-auto">
+                    <img src="images/pasta.jpg" 
+                         alt="熟成チーズのクリームパスタ" 
+                         class="w-full h-full md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700"></div>
+                </div>
+            </div>
+            <div class="w-full md:w-2/5">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 italic">熟成チーズの<br class="hidden md:block">クリームパスタ</h3>
+                <p class="text-stone-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8 text-justify">
+                    濃厚なチーズのコクと、自家製パンのほのかな甘みが溶け合う当店一番人気のメニュー。口に含んだ瞬間に広がる芳醇な香りと、生パスタの弾力ある食感は、ワインとの相性も抜群です。
+                </p>
+                <ul class="space-y-3 md:space-y-4 mb-8 text-sm md:text-base">
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-gold"></i> 厳選された3種の熟成チーズ使用</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-gold"></i> 登米産小麦の風味豊かな生パスタ</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-gold"></i> 焼き立て自家製パン付き</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 md:mb-16">
+            <p class="en-title text-gold text-sm mb-2">Voice of Guests</p>
+            <h2 class="text-3xl md:text-4xl font-bold">お客様からのお言葉</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 md:gap-10 items-start">
+            <div class="p-6 md:p-10 border border-stone-100 bg-stone-50 text-center flex flex-col items-center">
+                <div class="text-gold mb-4 md:mb-6"><i class="fas fa-quote-left text-3xl md:text-4xl opacity-20"></i></div>
+                <p class="text-stone-700 text-sm md:text-base mb-6 italic leading-relaxed">「鶏肉の煮込みがお肉ホロホロで感動しました。コーヒーも酸味が少なく深い味で、贅沢な時間を過ごせました。」</p>
+                <p class="font-bold text-sm">常連のお客様</p>
+                <div class="text-gold mt-3 md:mt-4 text-xs">★★★★★</div>
+            </div>
+            <div class="p-6 md:p-10 border border-stone-100 bg-stone-50 text-center flex flex-col items-center md:scale-105 shadow-xl relative z-10">
+                <div class="text-gold mb-4 md:mb-6"><i class="fas fa-quote-left text-3xl md:text-4xl opacity-20"></i></div>
+                <p class="text-stone-700 text-sm md:text-base mb-6 italic leading-relaxed">「仙台牛のロティは絶品。お料理のペース、ワインの飲み比べも最高で、贅沢な一夜に。コスパも素晴らしい。」</p>
+                <p class="font-bold text-sm">記念日利用のお客様</p>
+                <div class="text-gold mt-3 md:mt-4 text-xs">★★★★★</div>
+            </div>
+            <div class="p-6 md:p-10 border border-stone-100 bg-stone-50 text-center flex flex-col items-center">
+                <div class="text-gold mb-4 md:mb-6"><i class="fas fa-quote-left text-3xl md:text-4xl opacity-20"></i></div>
+                <p class="text-stone-700 text-sm md:text-base mb-6 italic leading-relaxed">「野菜がとにかく甘くて美味しい！料理を丁寧に作っているのが伝わります。パフェも絶品で、予約して正解でした。」</p>
+                <p class="font-bold text-sm">平日ランチ利用のお客様</p>
+                <div class="text-gold mt-3 md:mt-4 text-xs">★★★★★</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="relative py-24 md:py-40 px-6 text-white overflow-hidden min-h-[400px] md:min-h-[500px] flex items-center">
+    <div class="img-placeholder absolute inset-0 w-full h-full">CHEF IMAGE<br>（1920×800推奨）</div>
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="max-w-4xl mx-auto relative z-10 text-center">
+        <p class="en-title text-gold text-sm mb-4">Chef's Story</p>
+        <h2 class="text-2xl md:text-5xl font-bold mb-6 md:mb-8 leading-snug">テロワールを愛し、<br>伝統を守り抜く。</h2>
+        <p class="text-sm md:text-lg leading-loose mb-8 md:mb-10 text-stone-200 px-2 md:px-0">
+            「良い素材を、一番おいしい状態で食べていただきたい。」<br class="hidden md:block">
+            日本ソムリエ協会認定ソムリエとしての知識と、フランスで培った技術、 tender そして登米の恵み。そのすべてを一本の線でつなぐことが、私の使命です。
+        </p>
+        <p class="font-serif italic text-xl md:text-2xl">オーナーシェフ 佐藤 大典</p>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-50 px-6" id="access">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+            <div class="overflow-x-auto">
+                <h2 class="en-title text-2xl font-bold mb-6 md:mb-10 border-b-2 border-gold pb-4 inline-block">Information</h2>
+                <table class="w-full text-left text-sm md:text-base whitespace-normal md:whitespace-nowrap">
+                    <tr class="border-b border-stone-200">
+                        <th class="py-4 md:py-6 font-bold w-24 md:w-32 align-top">住所</th>
+                        <td class="py-4 md:py-6">〒987-0511<br>宮城県登米市迫町佐沼内町６３-４</td>
+                    </tr>
+                    <tr class="border-b border-stone-200">
+                        <th class="py-4 md:py-6 font-bold align-top">営業時間</th>
+                        <td class="py-4 md:py-6">
+                            ランチ &nbsp;&nbsp;11:00～15:00<br>
+                            ディナー 17:30～23:00
+                        </td>
+                    </tr>
+                    <tr class="border-b border-stone-200">
+                        <th class="py-4 md:py-6 font-bold">定休日</th>
+                        <td class="py-4 md:py-6">月曜日・日曜日</td>
+                    </tr>
+                    <tr class="border-b border-stone-200">
+                        <th class="py-4 md:py-6 font-bold">電話番号</th>
+                        <td class="py-4 md:py-6">0220-22-5028</td>
+                    </tr>
+                    <tr class="border-b border-stone-200">
+                        <th class="py-4 md:py-6 font-bold align-top">アクセス</th>
+                        <td class="py-4 md:py-6">登米市中心部・鹿ケ城公園前バス停すぐ<br>駐車場完備</td>
+                    </tr>
+                    <tr class="border-b border-stone-200">
+                        <th class="py-4 md:py-6 font-bold align-top">予約</th>
+                        <td class="py-4 md:py-6 italic text-gold">※人気店につき事前予約を推奨いたします。</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="h-[300px] md:h-[450px] rounded shadow-2xl overflow-hidden border-4 border-white w-full">
+                <div class="map-responsive h-full">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2401.2783596276963!2d141.19350085291993!3d38.69317294356127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f891cf47a8cbff9%3A0x72cc7e30a5da2242!2z44OT44K544OI44OtIOODtOOCoeODs-ODgOODs-OCuOODpQ!5e0!3m2!1sja!2sjp!4v1772674821059!5m2!1sja!2sjp"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-stone-900 text-white py-12 md:py-16 px-6 text-center">
+    <div class="mb-8 md:mb-10">
+        <p class="en-title text-xl md:text-2xl mb-2 tracking-widest">Bistro Vendange</p>
+        <p class="text-stone-500 text-xs md:text-sm">ビストロ ヴァンダンジュ</p>
+    </div>
+    <div class="flex justify-center gap-6 mb-8 md:mb-10">
+        <a href="https://www.facebook.com/vendange634/" target="_blank" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-colors">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+    <p class="text-stone-600 text-[10px] md:text-xs tracking-widest">© Bistro Vendange. All Rights Reserved.</p>
+</footer>
+        <!-- Floating Action Button (Mobile) -->
+        <div class="fixed bottom-0 left-0 right-0 p-4 md:p-6 z-50 pointer-events-none">
+            <div class="max-w-md mx-auto pointer-events-auto flex gap-4">
+                <a href="tel:0220225028" class="flex-1 bg-gold text-white text-center py-4 rounded shadow-2xl font-bold btn-hover transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-calendar-alt"></i> 電話で予約する
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
