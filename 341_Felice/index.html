@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧風食堂 Felice（フェリーチェ）| 仙台一番町のやさしいイタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+        .font-handwriting {
+            font-family: 'Homemade Apple', cursive;
+        }
+        .bg-felice-orange {
+            background-color: #F4811F;
+        }
+        .text-felice-orange {
+            color: #F4811F;
+        }
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+        .floating-img {
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+        }
+        /* Loading skeleton */
+        .img-skeleton {
+            background: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-skeleton::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: skeleton-loading 1.5s infinite;
+        }
+        @keyframes skeleton-loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body class="bg-[#faf9f6] text-stone-800 texture-bg">
+
+    <!-- 1. ファーストビュー -->
+    <section class="relative min-h-[90vh] flex items-center justify-center bg-stone-900 text-white overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="images/arabitaup.jpg" alt="欧風食堂 Felice 料理イメージ" class="w-full h-full object-cover opacity-60">
+    </div>
+
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-20">
+        <a href="../../../" class="inline-flex items-center text-stone-200 hover:text-felice-orange transition-colors text-xs md:text-sm font-medium tracking-wider drop-shadow-md">
+            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 mr-1.5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            トップページへ戻る
+        </a>
+    </div>
+
+    <div class="relative z-10 text-center px-4 max-w-5xl py-12">
+        <div class="mb-4 md:mb-6 inline-block">
+            <span class="font-handwriting text-felice-orange text-2xl md:text-3xl">Happy Dish, Happy Smile</span>
+        </div>
+        <p class="text-white font-bold tracking-[0.2em] md:tracking-[0.3em] mb-4 text-xs md:text-base">SINCE 2009 / SENDAI ICHIBANCHO</p>
+        <h1 class="text-2xl md:text-4xl font-serif font-bold mb-6 md:mb-8 leading-[1.5] md:leading-[1.4]">
+            一番町で16年。<br>
+            <span class="text-felice-orange underline decoration-white decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8 italic">幸せ</span>を届ける、<br>
+            街の欧風食堂。
+        </h1>
+        <p class="text-base md:text-xl mb-8 md:mb-12 opacity-95 leading-relaxed font-serif">
+            パスタも料理もデザートも、<br class="md:hidden">"いつもの一皿"がきっと見つかる。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
+            <a href="#cta" class="group relative bg-felice-orange text-white font-bold py-4 px-10 md:py-5 md:px-12 rounded-full transition-all shadow-2xl overflow-hidden text-lg md:text-xl w-full sm:w-auto text-center">
+                <span class="relative z-10">幸せの一皿を予約する</span>
+            </a>
+            <p class="text-xs md:text-sm border-l-2 border-felice-orange pl-4 text-left text-stone-200">
+                地下鉄東西線「青葉通一番町」駅から徒歩3分<br>
+                日曜定休
+            </p>
+        </div>
+    </div>
+</section>
+
+    <section class="py-16 md:py-24 relative overflow-hidden">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-1/2 relative px-4 md:px-0">
+                    <div class="absolute -top-6 -right-2 md:-top-10 md:-right-10 font-handwriting text-6xl md:text-8xl text-stone-100 -z-10 select-none">Pasta</div>
+                    <img 
+                      id="img-concept" 
+                      src="images/pasta.png" 
+                      alt="一番人気の絶品パスタ" 
+                      class="w-full aspect-[4/3] rounded-2xl md:rounded-3xl floating-img rotate-1 md:rotate-2 object-cover shadow-xl"
+                    >
+                </div>
+                <div class="w-full md:w-1/2 text-left">
+                    <h2 class="text-felice-orange font-serif text-xl md:text-2xl mb-2 font-bold italic tracking-wider">Concept</h2>
+                    <h3 class="text-2xl md:text-3xl font-serif font-bold mb-6 md:mb-8 leading-snug">
+                        誰と来ても、何度来ても、<br class="sm:hidden">安心して使える一軒。
+                    </h3>
+                    <div class="space-y-4 md:space-y-6 text-stone-600 leading-loose text-sm md:text-base">
+                        <p>店名の「Felice（フェリーチェ）」は、イタリア語で「幸せ」を意味します。</p>
+                        <p>2009年のオープン以来、一番町のビル地下で、幅広い世代の方々に"やさしい味"を届けてきました。</p>
+                        <p class="font-bold text-stone-800">「今日は美味しいものを食べて、幸せになりたい。」そんな素朴な願いに、私たちが全力でお応えします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-stone-100">
+        <div class="container mx-auto px-4 max-w-6xl text-center">
+            <h2 class="text-2xl md:text-3xl font-serif font-bold mb-12 md:mb-16 relative inline-block">
+                こだわりの「幸せ」メニュー
+                <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 md:w-20 h-0.5 md:h-1 bg-felice-orange"></span>
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+                <div class="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md md:shadow-lg transition-all hover:-translate-y-2">
+                    <img 
+                      id="img-menu-pasta" 
+                      src="images/arabiata.jpg" 
+                      alt="絶品アラビアータ" 
+                      class="w-full h-48 sm:h-56 md:h-64 object-cover"
+                    >
+                    <div class="p-6 md:p-8 text-left">
+                        <h4 class="text-lg md:text-xl font-bold mb-2 md:mb-3">絶品アラビアータ</h4>
+                        <p class="text-stone-500 text-xs md:text-sm mb-4 leading-relaxed">トマトの旨みを最大限に活かしつつ、しっかりとした辛みがアクセント。ワインが止まらなくなるFelice自慢の一皿。</p>
+                    </div>
+                </div>
+                <div class="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md md:shadow-lg transition-all hover:-translate-y-2">
+                    <img 
+                      id="img-menu-meat" 
+                      src="images/hanbagu.png" 
+                      alt="濃厚デミハンバーグ" 
+                      class="w-full h-48 sm:h-56 md:h-64 object-cover"
+                    >
+                    <div class="p-6 md:p-8 text-left">
+                        <h4 class="text-lg md:text-xl font-bold mb-2 md:mb-3">濃厚デミハンバーグ</h4>
+                        <p class="text-stone-500 text-xs md:text-sm mb-4 leading-relaxed">しっかりと焼かれた肉汁ごたえのある肉質。濃厚なデミグラスソースは「ご飯が欲しくなる」と大評判。</p>
+                    </div>
+                </div>
+                <div class="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md md:shadow-lg transition-all hover:-translate-y-2 sm:col-span-2 md:col-span-1">
+                    <img 
+                      id="img-menu-dessert" 
+                      src="images/gato.jpg" 
+                      alt="自家製ガトーショコラ" 
+                      class="w-full h-48 sm:h-56 md:h-64 object-cover"
+                    >
+                    <div class="p-6 md:p-8 text-left">
+                        <h4 class="text-lg md:text-xl font-bold mb-2 md:mb-3">自家製ガトーショコラ</h4>
+                        <p class="text-stone-500 text-xs md:text-sm mb-4 leading-relaxed">創業当時から作り続けている自慢のケーキ。食後のコーヒーと一緒に楽しむ贅沢なひととき。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">
+                <div class="w-full md:w-1/2 relative px-6 md:px-0 mb-6 md:mb-0">
+                    <img 
+                      id="img-chef" 
+                      src="images/chef.png" 
+                      alt="オーナーシェフ 山下 あゆみ" 
+                      class="w-full aspect-square rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl scale-105 md:scale-110 md:translate-x-12 translate-y-2 md:translate-y-6 object-cover"
+                    >
+                    <div class="absolute -top-4 -left-2 md:-top-6 md:-left-6 bg-felice-orange text-white p-4 md:p-6 rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center font-bold text-center text-sm md:text-base leading-tight rotate-12 shadow-lg select-none">Since<br>2009</div>
+                </div>
+                <div class="w-full md:w-1/2 text-left">
+                    <p class="font-handwriting text-felice-orange text-xl md:text-2xl mb-2 md:mb-4">Message from Chef</p>
+                    <h3 class="text-2xl md:text-3xl font-serif font-bold mb-6 md:mb-8 leading-snug">
+                        26歳の情熱から始まった、<br><span class="text-felice-orange">「幸せ」</span>を運ぶ挑戦。
+                    </h3>
+                    <div class="space-y-4 md:space-y-6 text-stone-600 leading-loose text-xs md:text-sm">
+                        <p>2009年。ただ「自分の手で作った料理で人を幸せにしたい」という想いだけで、この一番町の地下に店を構えました。</p>
+                        <p>最初は小さなカフェスタイルから。お客様の声に励まされ、気づけば16年。今では「欧風食堂」として、幅広い世代の方々にお越しいただける場所になりました。</p>
+                        <p class="text-stone-800 font-serif font-bold text-sm md:text-base mt-6">オーナーシェフ 山下 あゆみ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="py-12 md:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="bg-felice-orange p-6 sm:p-10 md:p-12 rounded-[2.5rem] md:rounded-[4rem] text-white relative shadow-3xl overflow-hidden">
+                <div class="text-center mb-8 md:mb-10">
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold mb-4 leading-snug">今日のごはんは、<br class="sm:hidden">Feliceにしませんか？</h2>
+                    <a href="tel:0222117933" class="inline-flex items-center gap-3 bg-white text-felice-orange text-xl md:text-2xl font-bold py-4 px-8 md:py-5 md:px-10 rounded-2xl md:rounded-3xl shadow-xl mt-2 hover:scale-105 transition-all w-full sm:w-auto justify-center">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-1C7.82 18 2 12.18 2 5V3z"></path></svg>
+                        022-211-7933
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    <div class="lg:col-span-1 space-y-6 bg-white/10 p-6 md:p-8 rounded-2xl md:rounded-3xl backdrop-blur-sm">
+                        <div>
+                            <h4 class="text-lg md:text-xl font-bold mb-2">ACCESS</h4>
+                            <p class="text-xs md:text-sm leading-relaxed opacity-90">
+                                〒980-0811<br>
+                                宮城県仙台市青葉区一番町1丁目6-22<br>
+                                シャンボール一番町ビルB1F
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg md:text-xl font-bold mb-2">OPENING HOURS</h4>
+                            <p class="text-xs md:text-sm leading-relaxed opacity-90">
+                                Lunch: 11:30 - 14:00<br>
+                                Dinner: 17:30 - 22:30<br>
+                                <span class="inline-block bg-white text-felice-orange px-2 py-0.5 rounded text-[10px] font-bold mt-1">日曜定休 / 祝日は不定休</span>
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg md:text-xl font-bold mb-2">WEB SITE</h4>
+                            <a href="https://felice2009.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-white/20 hover:bg-white hover:text-felice-orange transition-all px-4 py-2 rounded-xl text-xs md:text-sm font-bold group w-full sm:w-auto justify-center">
+                                <i data-lucide="globe" class="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform"></i>
+                                <span>公式サイトはこちら</span>
+                            </a>
+                        </div>
+                        <div class="pt-4 border-t border-white/20 text-[11px] md:text-xs opacity-80 leading-relaxed">
+                            地下鉄東西線「青葉通一番町」駅 南1出口より徒歩3分。<br>藤崎様から徒歩5分のビル地下1階です。
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 bg-stone-800/30 rounded-2xl md:rounded-[2.5rem] overflow-hidden min-h-[300px] lg:min-h-[400px] shadow-inner relative">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.9593212649083!2d140.8711668747804!3d38.257249484223216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2815fdfabee3%3A0xd077d06dc5567442!2z5qyn6aKo6aOf5aCCIEZlbGljZQ!5e0!3m2!1sja!2sjp!4v1772675529533!5m2!1sja!2sjp"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="absolute inset-0 grayscale invert opacity-90 transition-all hover:grayscale-0 hover:invert-0 hover:opacity-100 min-h-[300px] lg:min-h-[400px]">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <footer class="py-8 md:py-12 text-center text-stone-400 text-[11px] md:text-xs tracking-wider px-4">
+    &copy; 2009-2025 欧風食堂 Felice. All Rights Reserved.
+</footer>
+
+    <script>
+        // Lucideアイコンの初期化
+        lucide.createIcons();
+
+        // 画像プレースホルダー設定
+        // ※ Imagen等の画像生成APIを利用する場合はここを実際のAPI呼び出しに差し替えてください
+        const placeholders = {
+            "img-hero": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=1600&q=80",
+            "img-concept": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=1000&q=80",
+            "img-menu-pasta": "https://images.unsplash.com/photo-1572441713132-51c75654db73?w=800&q=80",
+            "img-menu-meat": "https://images.unsplash.com/photo-1599921841143-819065a55cc6?w=800&q=80",
+            "img-menu-dessert": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80",
+            "img-chef": "https://images.unsplash.com/photo-1577106263724-2c8e03bfe9cf?w=1000&q=80"
+        };
+
+        function loadImage(src, elementId, isBackground = false) {
+            const el = document.getElementById(elementId);
+            const img = new Image();
+            img.onload = () => {
+                if (isBackground) {
+                    el.style.backgroundImage = `url(${src})`;
+                    el.style.backgroundSize = 'cover';
+                    el.style.backgroundPosition = 'center';
+                } else {
+                    el.innerHTML = `<img src="${src}" class="w-full h-full object-cover transition-opacity duration-1000 opacity-0" onload="this.classList.remove('opacity-0')">`;
+                }
+                el.classList.remove('img-skeleton');
+            };
+            img.onerror = () => {
+                el.style.backgroundColor = isBackground ? '#1c1917' : '#e5e7eb';
+                el.classList.remove('img-skeleton');
+            };
+            img.src = src;
+        }
+
+        window.onload = () => {
+            loadImage(placeholders["img-hero"], "img-hero", true);
+            loadImage(placeholders["img-concept"], "img-concept");
+            loadImage(placeholders["img-menu-pasta"], "img-menu-pasta");
+            loadImage(placeholders["img-menu-meat"], "img-menu-meat");
+            loadImage(placeholders["img-menu-dessert"], "img-menu-dessert");
+            loadImage(placeholders["img-chef"], "img-chef");
+        };
+    </script>
+
+</body>
+</html>
