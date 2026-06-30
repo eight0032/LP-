@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヴァンヤジュテ アシガル | 古城の翳で味わう本格石窯ピザとワイン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-light {
+            background-color: #fdfcf9;
+            color: #333333;
+        }
+        .text-gold {
+            color: #b8860b;
+        }
+        .bg-gold {
+            background-color: #d4af37;
+        }
+        .border-gold {
+            border-color: #d4af37;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('images/sake.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: #d4af37;
+            margin: 1.5rem auto;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-color: #d4af37;
+        }
+        .accent-red {
+            color: #b91c1c;
+        }
+        .bg-accent-red {
+            background-color: #b91c1c;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Instagram Floating Button */
+        .insta-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 50;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        .insta-float:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Instagram Floating Button -->
+    <a href="https://www.instagram.com/ashigaru_vin_ya_jete/" target="_blank" rel="noopener noreferrer" class="insta-float shadow-xl" title="Instagramを見る">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- Section 1: FV Area -->
+  <header class="hero-gradient min-h-[90vh] flex items-center justify-center relative px-4 overflow-hidden py-16 md:py-0">
+        <!-- トップページへ戻るリンク（スマートフォンでの表示位置と余白を最適化） -->
+        <div class="absolute top-4 left-4 md:top-6 md:left-6 z-20">
+            <a href="../../../" class="text-white/80 hover:text-white text-xs md:text-sm font-bold tracking-wider flex items-center gap-2 transition-colors bg-black/20 backdrop-blur-sm py-2 px-3 md:px-4 rounded-full border border-white/20">
+                <i class="fa-solid fa-arrow-left text-[10px] md:text-xs"></i>トップページへ戻る
+            </a>
+        </div>
+
+        <div class="max-w-5xl text-center z-10 w-full mt-8 md:mt-0">
+            <div class="mb-4 inline-block bg-accent-red text-white py-1 px-4 text-xs md:text-sm font-bold tracking-widest uppercase">
+                Premium Italian &amp; Wine
+            </div>
+            <h1 class="font-black mb-6 leading-tight serif text-white">
+                <span class="text-white text-lg md:text-2xl block mb-2 md:mb-4 tracking-[0.2em] md:tracking-[0.3em] opacity-90">戦国時代の料理、石窯の粋。</span>
+                <span class="text-2xl sm:text-3xl md:text-5xl block leading-snug">
+                    とろける肉欲、<br class="hidden sm:block">至高のピザ体験。
+                </span>
+            </h1>
+            <div class="flex items-center justify-center gap-3 md:gap-4 mb-8 md:mb-10">
+                <div class="h-[1px] w-8 md:w-12 bg-white/50"></div>
+                <p class="text-base md:text-xl text-white serif tracking-widest italic">
+                    名物「サイコロステーキのピザ」
+                </p>
+                <div class="h-[1px] w-8 md:w-12 bg-white/50"></div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-sm sm:max-w-none mx-auto px-4 sm:px-0">
+                <a href="https://vinya-jete-ashigaru.foodre.jp/?utm_source=gbp&utm_medium=organic&utm_contents=web_site" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-accent-red hover:bg-red-800 text-white font-bold py-4 sm:py-5 px-8 sm:px-12 rounded-full text-lg sm:text-xl transition-all shadow-xl hover:scale-105 text-center">
+                    <i class="fa-solid fa-calendar-check mr-2"></i>今すぐ席を予約する
+                </a>
+                <a href="tel:05054616396" class="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold py-4 sm:py-5 px-6 sm:px-10 rounded-full text-lg sm:text-xl hover:bg-white hover:text-black transition-all text-center">
+                    <i class="fa-solid fa-phone mr-2"></i>電話で問い合わせ
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer opacity-80 hidden sm:block">
+            <a href="#intro"><i class="fa-solid fa-chevron-down text-white text-2xl"></i></a>
+        </div>
+    </header>
+
+    <!-- Section 2: Banner -->
+    <section id="intro" class="py-4 md:py-6 bg-gold text-white shadow-md overflow-hidden">
+        <div class="container mx-auto px-4">
+            <!-- スマホ時は折り返しを許可、または横スクロールを滑らかに -->
+            <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-between gap-x-6 gap-y-2 md:gap-12 font-bold text-xs md:text-base text-center md:text-left">
+                <span>● 戦国時代の料理を再生した情緒溢れる空間</span>
+                <span>● 石窯で焼き上げる本格ナポリ風ピザ</span>
+                <span>● ソムリエ厳選のワインペアリング</span>
+                <span>● 土日は予約必須の人気店</span>
+                <span class="sm:inline">● 端城郡大崎市古川の隠れ家</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Star Menu -->
+    <section class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="relative max-w-md mx-auto md:max-w-none w-full">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="images/pizza.jpg" alt="サイコロステーキのピザ" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-accent-red text-white p-4 md:p-6 rounded-full w-24 h-24 md:w-32 md:h-32 flex flex-col items-center justify-center float-anim shadow-2xl">
+                        <span class="text-[10px] md:text-xs">名物</span>
+                        <span class="text-base md:text-xl font-black">肉欲</span>
+                        <span class="text-[10px] md:text-xs">PIZZA</span>
+                    </div>
+                </div>
+                <div class="space-y-6 md:space-y-8 text-center md:text-left">
+                    <div class="inline-block border-l-4 border-gold pl-4 text-left">
+                        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight serif text-gray-800">
+                            噛むほどに溢れる、<br>
+                            <span class="text-gold">肉の旨味とチーズの共演。</span>
+                        </h2>
+                    </div>
+                    <p class="text-base md:text-lg text-gray-600 leading-relaxed text-left">
+                        看板メニュー「サイコロステーキのピザ」は、石窯の高温で一気に焼き上げることで、お肉のジューシーさを閉じ込めます。外はカリッと、中はモチモチの生地との相性は、一度食べれば忘れられない衝撃。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 card rounded-lg text-center">
+                            <span class="text-gold block text-xl md:text-2xl font-bold mb-1">500℃</span>
+                            <span class="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-wider">石窯の火力</span>
+                        </div>
+                        <div class="p-4 card rounded-lg text-center">
+                            <span class="text-gold block text-xl md:text-2xl font-bold mb-1">瞬成</span>
+                            <span class="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-wider">こだわり生地</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Chef's Authority -->
+    <section class="py-16 md:py-24 bg-[#f8f5f0] relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="shrink-0 relative">
+                    <div class="w-48 h-60 md:w-64 md:h-80 bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-700">
+                        <img src="images/chef.png" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="absolute -top-3 -left-3 md:-top-4 md:-left-4 border-2 border-gold/30 w-full h-full -z-10"></div>
+                </div>
+                <div class="space-y-4 md:space-y-6 text-center md:text-left w-full">
+                    <div class="inline-block border-l-4 border-gold pl-4 text-left">
+                        <h3 class="text-gold font-bold tracking-widest text-xs md:text-sm uppercase">Chef Profile</h3>
+                        <h2 class="text-2xl md:text-3xl font-bold serif text-gray-800">渡仏、そして全国の舞台へ。</h2>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed text-left">
+                        フランスでの修行、精度を極めたイタリア料理コンテスト全国ファイナリスト。確かな技術に裏打ちされた一皿は、ソムリエの視点から選ばれたワインと響き合います。地元の食材を愛し、その個性を石窯の炎で引き出す「身土不二」の哲学。
+                    </p>
+                    <div class="space-y-3 text-left">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm">
+                            <span class="bg-white text-gold border border-gold/20 py-1 px-3 rounded font-bold w-fit text-xs md:text-sm">Award</span>
+                            <span class="text-gray-700 font-medium text-xs md:text-sm">イタリア料理コンテスト 全国ファイナリスト</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm">
+                            <span class="bg-white text-gold border border-gold/20 py-1 px-3 rounded font-bold w-fit text-xs md:text-sm">Skill</span>
+                            <span class="text-gray-700 font-medium text-xs md:text-sm">日本ソムリエ協会公認ソムリエ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-0 right-0 p-10 md:p-20 opacity-5 playfair italic text-5xl md:text-8xl pointer-events-none">Vinya jete</div>
+    </section>
+
+    <!-- Section 5: Experience -->
+    <section class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-16 section-title serif text-gray-800">五感で楽しむ、古川の隠れ家</h2>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-16">
+                <div class="card p-6 md:p-8 rounded-2xl flex gap-4 md:gap-6 items-start">
+                    <i class="fa-solid fa-quote-left text-gold text-2xl md:text-3xl opacity-30 shrink-0"></i>
+                    <div>
+                        <p class="text-base md:text-lg leading-relaxed mb-4 text-gray-700">「料理を改装した店内は雰囲気が最高。特別な日のディナーで利用しましたが、シェフの説明も丁寧で感動しました。」</p>
+                        <span class="text-xs md:text-sm font-bold text-gold">20代 女性 (記念日利用)</span>
+                    </div>
+                </div>
+                <div class="card p-6 md:p-8 rounded-2xl flex gap-4 md:gap-6 items-start">
+                    <i class="fa-solid fa-quote-left text-gold text-2xl md:text-3xl opacity-30 shrink-0"></i>
+                    <div>
+                        <p class="text-base md:text-lg leading-relaxed mb-4 text-gray-700">「ピザのバジルのフレッシュ感に驚き！ランチはドリンク付きでコスパも最高。予約なしだと入れないこともあるので注意。」</p>
+                        <span class="text-xs md:text-sm font-bold text-gold">40代 男性 (ランチ利用)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                <img src="images/kakuteru.jpg" class="h-32 sm:h-48 w-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform">
+                <img src="images/wine.png" class="h-32 sm:h-48 w-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform">
+                <img src="images/pasta.png" class="h-32 sm:h-48 w-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform">
+                <img src="images/terrace.png" class="h-32 sm:h-48 w-full object-cover rounded-lg shadow-md hover:scale-105 transition-transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Menu Info -->
+    <section class="py-16 md:py-24 bg-[#fcfbf9] text-gray-800 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-accent-red font-bold tracking-tighter playfair italic text-3xl md:text-4xl">Menu</span>
+                <h2 class="text-2xl md:text-3xl font-bold mt-2 serif section-title">シーンで選べる愉しみ</h2>
+            </div>
+            <div class="space-y-6 md:space-y-8">
+                <div class="flex flex-col md:flex-row card rounded-2xl overflow-hidden">
+                    <div class="md:w-1/3 h-48 md:h-auto bg-gray-100">
+                        <img src="images/pizza.png" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6 md:p-8">
+                        <div class="flex justify-between items-end mb-3 md:mb-4">
+                            <h3 class="text-xl md:text-2xl font-bold serif text-gray-800">Lunch Set</h3>                           
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600横">石窯ピザ、または日替わりパスタにドリンクがセット。平日の満席が続く、古川で愛される本格味。</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row-reverse card rounded-2xl overflow-hidden">
+                    <div class="md:w-1/3 h-48 md:h-auto bg-gray-100">
+                        <img src="images/italian.png" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6 md:p-8">
+                        <div class="flex justify-between items-end mb-3 md:mb-4">
+                            <h3 class="text-xl md:text-2xl font-bold serif text-gray-800">Dinner Course</h3>                            
+                        </div>
+                        <p class="text-sm md:text-base text-gray-600 text-left">前菜からデザートまで。ソムリエの資格を持つシェフが提案する、ワインと料理のフルコース。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Final CTA & Access -->
+    <section id="reservation" class="py-16 md:py-24 px-4 bg-white text-gray-800 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-3 md:mb-4 serif text-gray-900">ご予約・アクセス</h2>
+                <p class="text-gold font-bold tracking-[0.1em] md:tracking-[0.2em] text-sm md:text-base">歴史ある「蔵元内」でお待ちしております。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 md:gap-12 items-start">
+                <!-- Reservation -->
+               <div class="lg:col-span-1 space-y-6 w-full">
+                    <div class="card p-6 md:p-8 rounded-2xl bg-[#fffaf5]">
+                        <h3 class="text-xl font-bold mb-6 border-l-4 border-accent-red pl-4">Reservation</h3>
+                        <div class="space-y-6">
+                            <a href="tel:05054616396" class="flex items-center gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-accent-red flex items-center justify-center text-white group-hover:scale-110 transition-transform shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-500 block font-bold">お電話</span>
+                                    <span class="text-lg md:text-xl font-bold group-hover:text-gold transition-colors">050-5461-6396</span>
+                                </div>
+                            </a>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-clock text-gold"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-500 block font-bold">営業時間</span>
+                                    <span class="text-sm font-bold block mb-1">11:30–14:00 / 17:30–21:00</span>
+                                    <!-- 定休日を追加 -->
+                                    <span class="text-xs text-red-600 block font-bold">定休日：月曜日</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info & Map -->
+                <div class="lg:col-span-2 space-y-6 w-full">
+                    <div class="card p-4 md:p-8 rounded-2xl overflow-hidden">
+                        <h3 class="text-xl font-bold mb-6 border-l-4 border-gold pl-4 text-gray-800">Access Map</h3>
+                        <div class="map-container rounded-lg mb-6 border border-gray-100 shadow-sm relative w-full aspect-video md:aspect-auto md:h-80 overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3119.1593222571173!2d140.95275357479872!3d38.576178765595394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8912bca7b2281b%3A0xa6bc024a0b47c596!2z44O044Kh44Oz44Ok44K444Ol44OGIOOCouOCt-OCrOODqw!5e0!3m2!1sja!2sjp!4v1772677168054!5m2!1sja!2sjp" style="border:0; position:absolute; top:0; left:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="text-sm md:text-base text-gray-600 space-y-1">
+                            <p><span class="font-bold text-gray-900">住所：</span>宮城県大崎市古川七日市3-10-9（蔵元内）</p>
+                            <p><span class="font-bold text-gray-900">アクセス：</span>JR古川駅から徒歩約15分。駐車場完備。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 md:py-12 bg-white border-t border-gray-100 text-center px-4">
+        <div class="flex justify-center gap-6 mb-6">
+            <!-- インターネットのマーク（ウェブサイトリンク）を追加 -->
+            <a href="https://vinya-jete-ashigaru.foodre.jp/?utm_source=gbp&utm_medium=organic&utm_contents=web_site" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-red-700 transition-colors" title="ウェブサイト">
+                <i class="fa-solid fa-globe"></i>
+            </a>
+            <a href="https://www.instagram.com/ashigaru_vin_ya_jete/" target="_blank" rel="noopener noreferrer" class="text-2xl text-gray-400 hover:text-pink-600 transition-colors" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+        <p class="text-gray-400 text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.2em] uppercase font-bold">&copy; Vin ya jete ASHIGARU. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
