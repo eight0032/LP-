@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メゾン・ド・フランス | 1日1組限定、至福の隠れ家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Noto+Serif+JP:wght@300;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+        :root {
+            --gold-primary: #af9662;
+            --gold-light: #f4f1ea;
+            --text-main: #333333;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-main);
+            background-color: #fff;
+            line-height: 1.8;
+        }
+
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .en-serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* 装飾的なライン */
+        .gold-line {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .gold-line::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background-color: var(--gold-primary);
+        }
+
+        .bg-gradient-soft {
+            background: linear-gradient(180deg, #fdfcf9 0%, #fff 100%);
+        }
+
+        .section-title-en {
+            display: block;
+            color: var(--gold-primary);
+            font-size: 1.25rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* プレミアムボタン */
+        .btn-premium {
+            background: var(--gold-primary);
+            color: white;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(175, 150, 98, 0.2);
+        }
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(175, 150, 98, 0.4);
+            opacity: 0.9;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .text-gold-primary { color: var(--gold-primary); }
+        .bg-gold-primary { background-color: var(--gold-primary); }
+        .bg-gold-light { background-color: var(--gold-light); }
+        .border-gold-primary { border-color: var(--gold-primary); }
+        .h-1px { height: 1px; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- FVエリア -->
+  <header class="relative min-h-screen flex items-center justify-center bg-white overflow-hidden py-20">
+        <div class="absolute top-6 left-6 z-20">
+            <a href="../../../" class="inline-flex items-center gap-2 text-xs md:text-sm tracking-widest text-stone-700 hover:text-stone-900 transition group bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full md:bg-transparent md:p-0">
+                <span class="transform group-hover:-translate-x-1 transition-transform">←</span> トップページへ戻る
+            </a>
+        </div>
+
+        <div class="absolute inset-0 z-0">
+            <img src="images/french.jpg" alt="フランス料理" class="w-full h-full object-cover opacity-80 scale-105">
+        </div>
+        <div class="absolute inset-0 bg-white/20"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto w-full">
+            <span class="section-title-en en-serif block mb-2 text-sm md:text-base">Maison de France</span>
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-light mb-6 md:mb-8 serif leading-snug tracking-wider text-stone-800 break-words">
+                一日のたった一組、<br class="hidden sm:block">
+                <span class="text-stone-900 font-semibold block sm:inline mt-2 sm:mt-0">あなただけの隠れ家フレンチ。</span>
+            </h1>
+            <p class="text-sm md:text-lg mb-8 md:text-10 tracking-widest font-light text-stone-600 leading-relaxed max-w-2xl mx-auto break-words">
+                宮城・利府の静かな森に佇む一軒家で、<br>
+                本場フランスの薫り漂う、丁寧な一皿を。
+            </p>
+            <div class="flex flex-col items-center gap-4 w-full">
+                <a href="#cta" class="btn-premium w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 rounded-full text-base md:text-lg font-medium tracking-widest text-center shadow-lg transition-all duration-300">
+                    ご予約・お問合せはこちら
+                </a>
+                <p class="text-xs md:text-sm text-stone-500 serif tracking-widest max-w-xs sm:max-w-none">予約困難な隠れ家につき、お早めにご相談ください。</p>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-40 hidden sm:block">
+            <div class="w-[1px] h-12 md:h-16 bg-stone-400 mx-auto"></div>
+        </div>
+    </header>
+
+    <section class="py-16 md:py-24 bg-white px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-12 md:mb-16">
+                <span class="section-title-en en-serif block mb-2">Concept</span>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-light serif gold-line leading-snug">「また行きたい」その声の理由は、<br>徹底したこだわりの一皿に。</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="order-2 md:order-1 text-left">
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 serif">五感を潤たす究極のオードブル</h3>
+                    <p class="text-stone-600 text-sm md:text-base mb-6 leading-loose">
+                        フランス修行で磨かれたシェフの感性が、一皿のオードブルに凝縮。素材本来の輝きを引き出し、盛り付けの美しさにお腹も目も大満足。初めての方も、一口食べればその「感動」の虜になります。
+                    </p>
+                    <ul class="space-y-3 text-xs md:text-sm text-stone-500">
+                        <li class="flex items-start gap-2"><i class="fas fa-plus text-[10px] text-gold-primary mt-1"></i> <span class="flex-1">旬の素材を活かした色鮮やかな演出</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-plus text-[10px] text-gold-primary mt-1"></i> <span class="flex-1">焼き立て自家製パンとの完璧な調和</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-plus text-[10px] text-gold-primary mt-1"></i> <span class="flex-1">デザートワゴンによる最高のフィナーレ</span></li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2 w-full">
+                    <img src="images/odoburu.jpg" alt="オードブル" class="rounded-sm shadow-xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-gradient-soft px-6 border-y border-stone-100">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-2/5 px-4 md:px-0">
+                    <div class="relative max-w-sm mx-auto md:max-w-none">
+                        <img src="images/chef.png" alt="オーナーシェフ" class="w-full aspect-[3/4] object-cover rounded-tr-[60px] rounded-bl-[60px] md:rounded-tr-[80px] md:rounded-bl-[80px] shadow-2xl">
+                        <div class="absolute -bottom-4 -right-4 md:-bottom-6 -right-6 w-24 h-24 md:w-32 md:h-32 bg-gold-light rounded-full -z-10"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-3/5">
+                    <span class="section-title-en en-serif block mb-2">Message</span>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-light serif mb-6 md:mb-8 leading-snug">オーナーシェフが全工程を担当する、<br>温かなパーソナルサービス。</h2>
+                    <p class="text-stone-600 text-sm md:text-base leading-loose mb-6">
+                        フランスでの厳しい修行から帰国し、この利府の地で静かにお店を営んでおります。
+                        私は少し目が不自由なため、お客様にはお料理の提供時などに、時にお手伝いをお願いすることもあるかもしれません。
+                    </p>
+                    <p class="text-stone-600 text-sm md:text-base leading-loose">
+                        しかし、だからこそ「一日のたった一組」に全ての情熱を注ぎ、気さくな会話と共に本格フレンチを楽しんでいただける、まるで友人の家に招かれたような時間を大切にしています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="section-title-en en-serif block mb-2">Voice</span>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-light serif">至福のひとときを過ごされた皆様の声</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="p-6 md:p-8 border border-stone-100 bg-white hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="text-gold-primary mb-4 italic text-xl md:text-2xl en-serif">Wonderful Experience</div>
+                        <p class="text-xs md:text-sm text-stone-600 leading-relaxed mb-6">「ナビと看板でなければ絶対に行けない隠れ家。オーナーシェフが一人で切り盛りされており、お料理の一つ一つが丁寧に作られ、本当に納得のいく食事でした。」</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 md:w-10 h-[1px] bg-gold-primary"></div>
+                        <span class="text-[10px] md:text-xs tracking-widest text-stone-400">利府町のお客様</span>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8 border border-stone-100 bg-white hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="text-gold-primary mb-4 italic text-xl md:text-2xl en-serif">Excellent Value</div>
+                        <p class="text-xs md:text-sm text-stone-600 leading-relaxed mb-6">「格安なランチですが全くチープではなく、仙台のホテルなら軽く1万円は超える内容。このお値段で大丈夫か疑うほどの満足度でした！」</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 md:w-10 h-[1px] bg-gold-primary"></div>
+                        <span class="text-[10px] md:text-xs tracking-widest text-stone-400">記念日ランチのお客様</span>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8 border border-stone-100 bg-white hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="text-gold-primary mb-4 italic text-xl md:text-2xl en-serif">Warm Atmosphere</div>
+                        <p class="text-xs md:text-sm text-stone-600 leading-relaxed mb-6">「素材の味が引き立つシンプルな味付け。盛り付けも美しく、自家製パンが美味しくてつい追加しました。お腹も目も大満足のひとときでした。」</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 md:w-10 h-[1px] bg-gold-primary"></div>
+                        <span class="text-[10px] md:text-xs tracking-widest text-stone-400">女子会のお客様</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="py-12 md:py-24 bg-stone-50 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto bg-white p-6 sm:p-8 md:p-16 rounded-sm shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-gold-primary text-white py-1.5 md:py-2 px-6 md:px-8 -rotate-45 translate-x-10 translate-y-4 md:translate-x-12 md:translate-y-6 shadow-md text-[10px] md:text-sm font-bold tracking-wider">
+                Special Present
+            </div>
+
+            <div class="text-center mb-10 md:mb-12 mt-4 sm:mt-0">
+                <span class="section-title-en en-serif block mb-2">Contact & Info</span>
+                <h2 class="text-2xl md:text-3xl font-light serif mb-4">一日の、特別のために。</h2>
+                <p class="text-xs md:text-base text-stone-500 leading-relaxed">ご予約時に「LPを見た」とお伝えいただいた方に<br><span class="text-stone-800 font-semibold border-b border-gold-primary inline-block mt-1">追加自家製パンを1つサービス</span>いたします。</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-start">
+                <div class="space-y-10 md:space-y-12">
+                    <div>
+                        <h3 class="font-semibold text-base md:text-lg mb-4 md:mb-6 flex items-center gap-2">
+                            <i class="fas fa-calendar-alt text-gold-primary"></i> ご予約について
+                        </h3>
+                        <div class="space-y-4">
+                            <p class="text-xs md:text-sm text-stone-600">※一日一組限定のため、事前のご予約が必須となります。</p>
+                            <a href="tel:022-356-5030" class="block bg-stone-900 text-white text-center py-3.5 md:py-4 rounded-sm text-xl md:text-2xl font-light tracking-widest hover:bg-gold-primary transition shadow-md">
+                                022-356-5030
+                            </a>
+                            <div class="text-center space-y-1">
+                                <p class="text-xs md:text-sm text-stone-700 font-medium">定休日：水曜日</p>
+                                <p class="text-[10px] md:text-xs text-stone-400 uppercase tracking-widest">Closed on Wednesday</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-base md:text-lg mb-4 md:mb-6 flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-gold-primary"></i> アクセス
+                        </h3>
+                        <address class="not-italic text-xs md:text-sm text-stone-600 space-y-1.5">
+                            <p>〒981-0134</p>
+                            <p>宮城県宮城郡利府町しらかし台2丁目4-7</p>
+                            <p class="pt-1.5 font-medium text-stone-700">※駐車場完備</p>
+                            <p class="text-[10px] md:text-xs text-stone-400 tracking-tighter leading-tight">（ナビをご活用ください。楽天イーグルス二軍球場近く）</p>
+                        </address>
+                    </div>
+                </div>
+
+                <div class="w-full h-full min-h-[250px] sm:min-h-[300px] lg:min-h-0">
+                    <div class="map-container shadow-inner border border-stone-100 h-full w-full rounded-sm overflow-hidden aspect-[4/3] lg:aspect-auto">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.1990050244053!2d140.95644767478535!3d38.34437577914702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89847f04312e09%3A0xafd6ba3dddc90987!2z44Oh44K-44Oz44O744OJ44O744OV44Op44Oz44K5!5e0!3m2!1sja!2sjp!4v1772672958942!5m2!1sja!2sjp" class="w-full h-full min-h-[250px] sm:min-h-[300px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 md:py-16 bg-white border-t border-stone-100 text-center px-6">
+        <div class="max-w-lg mx-auto">
+            <h2 class="en-serif text-2xl md:text-3xl text-gold-primary mb-3 md:mb-4">Maison de France</h2>
+            <p class="text-[10px] md:text-xs text-stone-400 tracking-widest leading-loose">
+                一軒家フレンチ メゾン・ド・フランス<br>
+                © 2024 MAISON DE FRANCE. ALL RIGHTS RESERVED.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
