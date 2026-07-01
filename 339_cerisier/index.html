@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La fleur de cerisier | 仙台・一番町のカジュアルフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&display=swap');
+
+        :root {
+            --color-primary: #8a1a1a; /* 上品な深い赤 */
+            --color-accent: #b89150;  /* 洗練されたアンティークゴールド */
+            --color-bg: #fdfaf6;      /* 柔らかなクリーム色 */
+            --color-brown: #4a3728;   /* 指定の茶色 */
+            --color-sakura: #fbe7e9;  /* 上品な桜色（サクラフレンチ） */
+            --font-main: 'Shippori Mincho', 'Noto Serif JP', serif;
+            --font-eng: 'Cormorant Garamond', serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: #2d2d2d;
+            background-color: var(--color-bg);
+            line-height: 1.8;
+        }
+
+        .font-eng { font-family: var(--font-eng); }
+
+        .deco-line {
+            position: relative;
+            display: inline-block;
+        }
+        .deco-line::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-accent);
+        }
+
+        .cta-btn {
+            background-color: var(--color-primary);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            letter-spacing: 0.1em;
+        }
+        .cta-btn:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .fv-image {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 145, 80, 0.2);
+        }
+
+        .text-brown { color: var(--color-brown); }
+        .border-brown { border-color: var(--color-brown); }
+        .bg-sakura { background-color: var(--color-sakura); }
+
+        /* 地図レスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .instagram-link {
+            transition: color 0.3s ease;
+        }
+        .instagram-link:hover {
+            color: #E1306C; /* Instagramカラー */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ファーストビュー -->
+<header class="fv-image min-h-screen flex flex-col items-center justify-center text-white text-center px-4 relative py-12" 
+        style="background-image: url('images/terrace.png'); background-size: cover; background-position: center;">
+        
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="relative z-10 w-full max-w-4xl mx-auto px-2">
+            
+            <div class="text-left mb-6 md:mb-4">
+                <a href="../../../" class="text-xs md:text-sm text-white opacity-80 hover:opacity-100 transition-opacity tracking-wider border-b border-white border-opacity-40 pb-0.5">
+                    &lt; トップページへ戻る
+                </a>
+            </div>
+
+            <p class="font-eng italic text-xl md:text-3xl mb-4 tracking-widest">Bistro French</p>
+            <div class="w-px h-12 md:h-16 bg-white mx-auto mb-6"></div>
+            <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-relaxed md:leading-relaxed tracking-tighter breakdown">
+                宮城の豊かな実りを、<br>
+                もっと身近に、軽やかに。
+            </h1>
+            <p class="text-xs sm:text-sm md:text-lg mb-8 md:mb-12 tracking-widest opacity-90 leading-loose">
+                ラ フルール ド スリジエ ── 街に咲く月のように、<br class="hidden md:block">
+                誰もが暖かく集える一番町の隠れ家。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center px-4 sm:px-0">
+                <a href="#reservation" class="cta-btn text-white py-4 px-12 rounded-full text-sm font-bold shadow-lg w-full sm:w-auto">VIEW MENU</a>
+            </div>
+        </div>
+</header>
+
+    <!-- 追従ナビゲーション -->
+    <nav class="sticky top-0 z-50 bg-white bg-opacity-95 shadow-sm border-b border-gray-100 px-4 md:px-6 py-3">
+        <div class="max-w-6xl mx-auto flex justify-between items-center gap-2">
+            <div class="flex flex-col min-w-0">
+                <span class="font-eng text-base sm:text-xl font-bold text-gray-800 truncate">La fleur de cerisier</span>
+                <span class="text-[9px] sm:text-[10px] tracking-tighter text-gray-500 truncate">仙台・一番町のカジュアルフレンチ</span>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="tel:0227247448" class="text-gray-800 font-bold text-xs sm:text-sm md:text-base flex items-center gap-1.5 whitespace-nowrap bg-gray-50 sm:bg-transparent px-2.5 py-1.5 sm:p-0 rounded-full border border-gray-200 sm:border-0">
+                    <i class="fas fa-phone-alt text-[10px] sm:text-xs text-[#b89150]"></i> 022-724-7448
+                </a>
+                <a href="https://cerisier1215.com/" target="_blank" class="hidden md:block cta-btn text-white px-6 py-2 rounded-full text-xs font-bold">RESERVATION</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 特徴 -->
+    <section class="py-16 md:py-24 px-4 overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="font-eng text-[#b89150] text-base md:text-lg block mb-2 italic">Specialite</span>
+                <h2 class="text-2xl md:text-3xl font-bold deco-line">至高の「パスタ」と宮城の旬</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-16 md:mb-24">
+                <div class="relative px-2 sm:px-0">
+                    <img src="images/pasta.png" alt="Pasta" class="w-full h-auto rounded-lg shadow-2xl relative z-10">
+                    <div class="absolute -top-3 -left-1 sm:-left-4 w-full h-full border border-[#b89150] opacity-30 rounded-lg"></div>
+                </div>
+                <div class="space-y-4 md:space-y-6 px-2">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 leading-snug">本格フレンチの技法を、<br class="hidden sm:block">一皿のパスタに込めて。</h3>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        当店のイチオシは、フレンチのソース作りを応用した深い味わいのパスタ。地元宮城の漁港から届く新鮮な魚介や、大地の恵みを感じる野菜を贅沢に使用。
+                    </p>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        「スープのお通し」から始まる、誠実な食材使い。ボリューム満点の「肉料理」や「鴨のコンフィ」まで、居酒屋感覚の気軽さで本格的な味わいをお約束します。
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="md:order-2 relative px-2 sm:px-0">
+                    <img src="images/kakuteru.png" alt="Wine" class="w-full h-auto rounded-lg shadow-2xl relative z-10">
+                    <div class="absolute -bottom-3 -right-1 sm:-right-4 w-full h-full border border-[#b89150] opacity-30 rounded-lg"></div>
+                </div>
+                <div class="md:order-1 space-y-4 md:space-y-6 md:text-right px-2">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 leading-snug">深夜1時まで、<br class="hidden sm:block">グラス一杯からの安らぎ。</h3>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        「美味しいものが食べたい、でも気取らずに過ごしたい。」<br>
+                        そんな夜に寄り充うのが私たちのスタイルです。
+                    </p>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        お一人様セットや充実したワインリストをご用意。カウンター席は、お仕事帰りの一人飲みや大切な方との語らいに最適です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ストーリー -->
+    <section class="py-16 md:py-24 bg-[#1a1a1a] text-white px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                <div class="w-full sm:w-2/3 md:w-1/3 max-w-[280px] md:max-w-none">
+                    <div class="aspect-[3/4] overflow-hidden rounded-sm grayscale hover:grayscale-0 transition duration-700">
+                        <img src="images/chef.png" alt="Chef" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 px-2">
+                    <span class="font-eng text-[#b89150] text-base md:text-lg block mb-2 italic">Concept &amp; Chef</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8">街に根ざし、月のように。</h2>
+                    <p class="text-sm md:text-base mb-4 md:mb-6 leading-loose opacity-80">
+                        29歳でフレンチの世界へ。仙台で研鑽を積み、40歳で開いたこの場所。店名に込めたのは、宮城への深い愛と、訪れる人を温かく迎える「月の花」の精神です。
+                    </p>
+                    <p class="text-sm md:text-base mb-6 md:mb-8 leading-loose opacity-80">
+                        本格的なフレンチを、もっと身近に、もっと楽しく。初めてのお客様も、お喋り好きな店主が温かくお迎えします。ここは、美味しい料理とワイン、そこで人の温もりが交差する場所です。
+                    </p>
+                    <p class="text-[#b89150] font-bold text-sm md:text-base">オーナーシェフ 佐藤 史</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社会的証明 -->
+    <section class="py-16 md:py-24 bg-[#f4f1ed] px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="font-eng text-[#b89150] text-base md:text-lg block mb-2 italic">Guest Voice</span>
+                <h2 class="text-2xl md:text-3xl font-bold deco-line">お客様の声</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="glass-card p-6 md:p-8 rounded-sm shadow-sm relative text-brown">
+                    <i class="fas fa-quote-left absolute top-4 left-4 text-[#b89150] opacity-20 text-2xl md:text-3xl"></i>
+                    <p class="text-xs md:text-sm leading-relaxed mb-6 italic relative z-10">
+                        「宮城の素材を活かしたこだわりのビストロ。東京からの接待でもハズレなし。オーナーシェフの人柄も魅力的です。」
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <div class="text-[#b89150] text-xs tracking-tighter">★★★★★</div>
+                        <span class="text-[10px] text-gray-400">接待でのご利用</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 md:p-8 rounded-sm shadow-sm relative text-brown">
+                    <i class="fas fa-quote-left absolute top-4 left-4 text-[#b89150] opacity-20 text-2xl md:text-3xl"></i>
+                    <p class="text-xs md:text-sm leading-relaxed mb-6 italic relative z-10">
+                        「ボリュームが凄くてお腹いっぱい！気軽にフランスのビストロのようにワインと料理が楽しめます。」
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <div class="text-[#b89150] text-xs tracking-tighter">★★★★★</div>
+                        <span class="text-[10px] text-gray-400">ディナーでのご利用</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 md:p-8 rounded-sm shadow-sm relative text-brown">
+                    <i class="fas fa-quote-left absolute top-4 left-4 text-[#b89150] opacity-20 text-2xl md:text-3xl"></i>
+                    <p class="text-xs md:text-sm leading-relaxed mb-6 italic relative z-10">
+                        「店主とのおしゃべりに癒やされました。仙台に来たら必ず寄りたくなるお店がまた一つ増えました。」
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <div class="text-[#b89150] text-xs tracking-tighter">★★★★★</div>
+                        <span class="text-[10px] text-gray-400">お一人様でのご利用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- インフォメーション -->
+    <section class="py-16 md:py-24 bg-white px-4" id="info">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div class="px-2">
+                <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 border-b border-[#b89150] pb-4 inline-block">Shop Information</h2>
+                <div class="space-y-4 md:space-y-6 text-sm md:text-base">
+                    <div class="flex border-b border-gray-100 pb-4">
+                        <span class="w-24 md:w-32 font-bold shrink-0">店名</span>
+                        <span>La fleur de cerisier（ラ フルール ド スリジエ）</span>
+                    </div>
+                    <div class="flex border-b border-gray-100 pb-4">
+                        <span class="w-24 md:w-32 font-bold shrink-0">住所</span>
+                        <span>〒980-0811 宮城県仙台市青葉区一番町１丁目１５−２０ 薗田ビル１階</span>
+                    </div>
+                    <div class="flex border-b border-gray-100 pb-4">
+                        <span class="w-24 md:w-32 font-bold shrink-0">電話番号</span>
+                        <a href="tel:0227247448" class="text-[#b89150] font-bold">022-724-7448</a>
+                    </div>
+                    <div class="flex border-b border-gray-100 pb-4">
+                        <span class="w-24 md:w-32 font-bold shrink-0">営業時間</span>
+                        <span>17:00 〜 翌1:00</span>
+                    </div>
+                    <div class="flex border-b border-gray-100 pb-4">
+                        <span class="w-24 md:w-32 font-bold shrink-0">定休日</span>
+                        <span>不定休</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Google Maps 埋め込み -->
+            <div class="rounded-sm overflow-hidden shadow-xl border border-gray-100 mx-2">
+                <div class="map-container relative w-full aspect-[4/3] sm:aspect-video lg:aspect-square">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.982346040561!2d140.86862117478023!3d38.256715484254364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a283e27e40001%3A0x568e2ad2a261fb55!2z44OpIOODleODq-ODvOODqyDjg4kg44K544Oq44K444KoIExhIGZsZXVyIGRlIGNlcmlzaWVy!5e0!3m2!1sja!2sjp!4v1772673535937!5m2!1sja!2sjp" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終コンバージョン -->
+    <section class="py-20 md:py-32 bg-sakura text-brown text-center relative overflow-hidden px-4" id="reservation">
+        <div class="absolute inset-0 opacity-10 md:opacity-20 pointer-events-none">
+            <span class="font-eng text-[30vw] md:text-[20vw] absolute -bottom-6 md:-bottom-10 -left-6 md:-left-10 leading-none text-[#d6b5b8]">Cerisier</span>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 md:mb-12 tracking-wider text-brown">
+                今宵、一番町で。
+            </h2>
+            <p class="text-sm md:text-xl mb-10 md:mb-12 leading-loose text-brown px-2">
+                大切な人と、あるいは自分へのご褒美に。<br>
+                宮城の食材が彩る、至富のひとときをご予約ください。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center max-w-md mx-auto sm:max-w-none px-4">
+                <a href="https://cerisier1215.com/" target="_blank" class="w-full sm:w-auto bg-[#4a3728] text-white font-bold py-4 md:py-5 px-10 md:px-16 rounded-full hover:bg-white hover:text-[#4a3728] transition duration-300 shadow-2xl tracking-widest text-xs md:text-sm text-center">
+                    WEB RESERVATION
+                </a>
+                <a href="tel:0227247448" class="w-full sm:w-auto border-2 border-brown text-brown py-3.5 md:py-4 px-8 md:px-12 rounded-full font-bold hover:bg-brown hover:text-white transition duration-300 text-xs md:text-sm text-center">
+                    <i class="fas fa-phone mr-2"></i> CALL NOW
+                </a>
+            </div>
+            <p class="mt-8 md:mt-12 text-[11px] md:text-xs opacity-90 text-brown">
+                お誕生日のサプライズや貸切（15名〜）のご相談も承ります。
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-[#111] text-white py-10 md:py-12 text-center px-4">
+        <div class="font-eng text-xl md:text-2xl mb-4 tracking-widest text-[#b89150]">La fleur de cerisier</div>
+
+        <!-- Instagram Link Updated -->
+        <div class="mb-6 md:mb-8">
+            <a href="https://www.instagram.com/fumihito.sato/" target="_blank" rel="noopener noreferrer" class="instagram-link text-white text-2xl md:text-3xl">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <p class="text-[9px] md:text-[10px] mt-2 opacity-50 tracking-widest uppercase">Follow us on Instagram</p>
+        </div>
+
+        <p class="text-[9px] md:text-[10px] opacity-30 tracking-widest uppercase">&copy; 2024 La fleur de cerisier. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
