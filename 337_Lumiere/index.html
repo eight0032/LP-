@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maison de charcuterie Lumiere | 仙台のカジュアルフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b2e11; /* 深みのある赤（ワイン） */
+            --accent: #d4af37;  /* ゴールド */
+            --bg-sand: #f9f6f2; /* サンドベージュ */
+            --text: #2d2a26;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: var(--text);
+            background-color: var(--bg-sand);
+            overflow-x: hidden;
+        }
+
+        .serif-en {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* 背景テクスチャ */
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* FVアニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .btn-luxe {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-luxe:hover {
+            color: white;
+            background: var(--primary);
+        }
+
+        .gold-line {
+            width: 50px;
+            height: 1px;
+            background: var(--accent);
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* アイコンのホバーアニメーション */
+        .icon-link {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .icon-link:hover {
+            transform: translateY(-3px);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body class="texture-bg">
+
+    <!-- 1. FVエリア -->
+ <header class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-20">
+        <a href="../../../" class="text-white/80 hover:text-orange-200 text-xs md:text-sm tracking-widest transition-colors duration-300 flex items-center gap-2 p-2">
+            <span>←</span> トップページへ戻る
+        </a>
+    </div>
+
+    <div class="absolute inset-0 z-0">
+        <img src="images/sosezi.jpg" alt="Main Visual" class="w-full h-full object-cover scale-105 opacity-80">
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    <div class="relative z-10 text-center text-white px-6 fade-in max-w-xl md:max-w-none">
+        <span class="serif-en italic text-xl md:text-2xl mb-4 block tracking-widest text-orange-200">Lumiere</span>
+        <div class="mb-6 flex items-center justify-center gap-2 md:gap-4">
+            <span class="gold-line hidden xs:block"></span>
+            <span class="text-[10px] md:text-xs tracking-[0.3em] uppercase whitespace-nowrap">Maison de Charcuterie</span>
+            <span class="gold-line hidden xs:block"></span>
+        </div>
+        <h1 class="text-xl sm:text-2xl md:text-5xl font-bold leading-snug mb-6 md:mb-8 tracking-widest break-keep">
+            一口で、物語が変わる。
+        </h1>
+        <p class="text-xs sm:text-sm md:text-lg tracking-widest opacity-80 font-light break-keep">
+            仙台・国分町発、自家製シャルキュトリーの灯火。
+        </p>
+        <div class="mt-8 md:mt-12">
+            <div class="w-px h-12 md:h-20 bg-white/50 mx-auto animate-bounce"></div>
+        </div>
+    </div>
+</header>
+
+    <section class="section-padding py-16 md:py-40 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-xl md:text-3xl font-bold mb-8 md:mb-12 tracking-widest leading-loose break-keep">
+                化学調味料を抑え、<br>
+                素材の呼吸を静かに写す。
+            </h2>
+            <p class="text-gray-600 leading-loose text-xs md:text-base mb-12 md:mb-16 break-keep">
+                店主自ら独学で磨き上げた製法。<br>
+                宮城県産の贅沢な豚肉、契約農家から届く力強い野菜。<br class="hidden sm:block">
+                「生産者からお客様へ」と繋ぐ食情の連鎖を、<br>
+                一枚のテリーヌ、一粒のソーセージに込めて。
+            </p>
+            <a href="#menu" class="btn-luxe inline-block py-4 px-8 md:px-12 tracking-widest text-xs md:text-sm">
+                VIEW CONCEPT
+            </a>
+        </div>
+    </section>
+
+    <section id="menu" class="py-16 md:py-24 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                <div class="w-full md:w-3/5 relative">
+                    <div class="aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
+                        <img src="images/curry.jpg" alt="Signature Dish" class="w-full h-full object-cover">
+                    </div>
+                    <div class="static md:absolute -bottom-10 -right-10 bg-white p-6 md:p-8 shadow-xl md:max-w-xs mt-4 md:mt-0 rounded-sm">
+                        <p class="text-[10px] md:text-xs text-orange-800 font-bold mb-1 md:mb-2">Signature Dish</p>
+                        <h4 class="text-lg md:text-xl font-bold mb-1 md:mb-2">シャルキュトリーカレー</h4>
+                        <p class="text-xs leading-relaxed text-gray-500">自家製ハムとソーセージの旨味が溶け出した、フレンチならではの深いコク。</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 md:pl-20 mt-4 md:mt-0">
+                    <h3 class="serif-en italic text-4xl md:text-5xl text-gray-200 mb-2 md:mb-4">01</h3>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 tracking-widest">贅沢を、<br>日常に添える。</h2>
+                    <p class="text-xs md:text-sm leading-loose text-gray-600 mb-6 md:mb-8 break-keep">
+                        ランチタイム限定の特別なプレートから、<br>
+                        夜のワインを彩る本格テリーヌまで。<br>
+                        忙しいオフィス街の喧騒を忘れさせる、<br>
+                        「光（Lumiere）」のようなひとときを。
+                    </p>
+                    <a href="https://www.lumiere-sendai.com/" target="_blank" class="text-xs md:text-sm font-bold border-b border-black pb-1 hover:border-orange-600 transition-colors inline-flex items-center gap-2">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        公式サイトでランチメニューを見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#2d2a26] text-white py-16 md:py-24">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="w-full order-2 md:order-1">
+                <span class="text-accent serif-en italic text-lg md:text-xl">The Craftsman</span>
+                <h2 class="text-2xl md:text-3xl font-bold mt-2 md:mt-4 mb-6 md:mb-8 tracking-[0.2em]">独学だからこそ、<br>辿り着いた答え。</h2>
+                <div class="space-y-4 md:space-y-6 text-xs md:text-sm opacity-80 leading-loose break-keep">
+                    <p>全国シャルキュトリーコンテスト・パテアンクルート部門決勝進出。</p>
+                    <p>既存の枠に囚われない独自製法を追求し、化学調味料や添加剤を極限まで排除しました。</p>
+                    <p>手作りだからこそ表現できる、繊細な温度感とテクスチャ。2020年の開業以来、変わらぬ情熱で板場に立ち続けています。</p>
+                </div>
+                <div class="mt-8 md:mt-10 pt-8 md:pt-10 border-t border-white/10">
+                    <p class="serif-en text-xl md:text-2xl italic">Shunji Sato</p>
+                    <p class="text-[10px] md:text-xs tracking-widest mt-1 opacity-50">Chef de Cuisine</p>
+                </div>
+            </div>
+            <div class="w-full order-1 md:order-2 max-w-md md:max-w-none">
+                <div class="aspect-[3/4] border border-white/20 p-2 md:p-4">
+                    <img src="images/chef.png" alt="Chef Portrait" class="w-full h-full object-cover grayscale opacity-90">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white">
+        <div class="text-center mb-12 md:mb-16">
+            <span class="text-[10px] md:text-xs tracking-[0.4em] text-gray-400 block mb-2 uppercase">Interior & Wine</span>
+            <h2 class="text-xl md:text-2xl font-bold tracking-widest">五感を潤たす空間</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-px bg-transparent md:bg-gray-100 border-y border-gray-100">
+            <div class="bg-white p-8 md:p-12 text-center group overflow-hidden relative border border-gray-50 md:border-none shadow-sm md:shadow-none rounded-sm">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="images/wine.png" class="w-full h-full object-cover" alt="Wine">
+                </div>
+                <h4 class="font-bold text-sm md:text-base mb-3 md:mb-4 relative z-10">厳選ワイン 10種以上</h4>
+                <p class="text-xs text-gray-500 leading-loose relative z-10">シャルキュトリーの脂の旨みを引き立てる、シェフ厳選のペアリングを。</p>
+            </div>
+            <div class="bg-white p-8 md:p-12 text-center group overflow-hidden relative border border-gray-50 md:border-none shadow-sm md:shadow-none rounded-sm">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="images/terrace.png" class="w-full h-full object-cover" alt="Interior">
+                </div>
+                <h4 class="font-bold text-sm md:text-base mb-3 md:mb-4 relative z-10">落ち着いた木目調</h4>
+                <p class="text-xs text-gray-500 leading-loose relative z-10">カウンター6席、テーブル席。大切な人との会話が弾む、静謐な時間。</p>
+            </div>
+            <div class="bg-white p-8 md:p-12 text-center group overflow-hidden relative border border-gray-50 md:border-none shadow-sm md:shadow-none rounded-sm">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img src="images/pafe.jpg" class="w-full h-full object-cover" alt="Dessert">
+                </div>
+                <h4 class="font-bold text-sm md:text-base mb-3 md:mb-4 relative z-10">こだわりの手作りデザート</h4>
+                <p class="text-xs text-gray-500 leading-loose relative z-10">季節の〆パフェ。最後の一口まで、手作りの温さを絶やさずに。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 max-w-4xl mx-auto px-6">
+        <div class="space-y-12 md:space-y-16">
+            <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+                <span class="serif-en italic text-4xl md:text-6xl text-orange-200 leading-none">“</span>
+                <div class="pt-0 md:pt-4">
+                    <p class="text-base md:text-lg leading-loose font-bold mb-2 md:mb-4">「何を食べてもとってもおいしい。自家製ソーセージは季節の野菜が入っていて毎回違う楽しみがあります。」</p>
+                    <p class="text-[10px] md:text-xs tracking-widest text-gray-400">— 遊び心満載の シャルキュトリー</p>
+                </div>
+            </div>
+            <div class="flex flex-col-reverse md:flex-row gap-4 md:gap-8 items-end md:items-start justify-end">
+                <div class="pt-0 md:pt-4 text-right">
+                    <p class="text-sm md:text-base leading-loose font-bold mb-2 md:mb-4">「お通しのハムがアイスクリームみたいでカワイイ！しかもアタリ！お酒もすすんじゃいますね。」</p>
+                    <p class="text-[10px] md:text-xs tracking-widest text-gray-400">— 至福のひととき</p>
+                </div>
+                <span class="serif-en italic text-4xl md:text-6xl text-orange-200 leading-none">”</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-16 md:pb-24 max-w-5xl mx-auto px-6">
+        <div class="map-container aspect-[16/9] w-full min-h-[250px] md:min-h-[400px]">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.5360955351575!2d140.8657097747809!3d38.267063983651944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a29f4a273fa5b%3A0xe079bab3d9fe3647!2zbWFpc29uIGRlIGNoYXJjdXRlcmllIEx1bWllcmXvvIjjg6Hjgr7jg7Mg44OJIOOCt-ODo-ODq-OCreODpeODiOODquODvCDjg6rjg6Xjg5_jgqjjg7zjg6vvvIk!5e0!3m2!1sja!2sjp!4v1772672148109!5m2!1sja!2sjp" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer class="bg-stone-50 border-t border-stone-200 pt-16 md:pt-24 pb-12 text-stone-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="serif-en italic text-3xl md:text-4xl mb-8 md:mb-12">Lumiere</h2>
+
+            <div class="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-12 text-left border-y border-stone-200 py-10 md:py-12 mb-12">
+                <div>
+                    <h5 class="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 text-stone-400">Information</h5>
+                    <ul class="text-xs md:text-sm space-y-4">
+                        <li class="flex flex-col sm:flex-row sm:justify-between border-b border-stone-100 pb-2 gap-1 sm:gap-0"><span>住所</span><span class="text-right sm:text-left">宮城県仙台市青葉区国分町3丁目9-1</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-2"><span>電話</span><span>022-302-7210</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-2"><span>定休日</span><span>日曜日</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 text-stone-400">Links & Social</h5>
+                    <p class="text-xs md:text-sm leading-relaxed mb-6 md:mb-8 opacity-70">
+                        最新の週替わりメニューや、旬の素材を活かしたシャルキュトリーの情報は各リンクよりご確認いただけます。
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://www.facebook.com/Lumiere.1125" target="_blank" class="btn-luxe flex-1 sm:flex-none text-center py-3 px-6 text-[10px] md:text-xs inline-flex justify-center items-center tracking-widest gap-2">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                            FACEBOOK
+                        </a>
+                        <a href="https://www.lumiere-sendai.com/" target="_blank" class="btn-luxe flex-1 sm:flex-none text-center py-3 px-6 text-[10px] md:text-xs inline-flex justify-center items-center tracking-widest border-stone-400 text-stone-600 hover:bg-stone-800 hover:border-stone-800 gap-2">
+                            <i data-lucide="globe" class="w-4 h-4"></i>
+                            OFFICIAL HP
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-8 mb-8 md:mb-12 text-stone-400">
+                <a href="https://www.facebook.com/Lumiere.1125" target="_blank" class="icon-link p-2" title="Facebook">
+                    <i data-lucide="facebook" class="w-5 h-5 md:w-6 md:h-6"></i>
+                </a>
+                <a href="https://www.lumiere-sendai.com/" target="_blank" class="icon-link p-2" title="Official Website">
+                    <i data-lucide="globe" class="w-5 h-5 md:w-6 md:h-6"></i>
+                </a>
+            </div>
+
+            <p class="text-[9px] md:text-[10px] tracking-widest text-stone-400 uppercase leading-relaxed">
+                © 2024 Check-in maison de charcuterie Lumiere. all rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Lucideアイコンの初期化
+        lucide.createIcons();
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
