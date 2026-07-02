@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丘の上のレストラン ショコレア | 石巻で味わう元総料理長の本格フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #2b2b2b;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 400;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-stone-fine {
+            background-color: #f9f8f6;
+        }
+        .cta-button {
+            background: #4a4238;
+            transition: all 0.4s ease;
+        }
+        .cta-button:hover {
+            background: #2d2822;
+            letter-spacing: 0.15em;
+        }
+        .gold-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, #d4a373, transparent);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(1) contrast(1.2) opacity(0.8);
+            transition: all 0.5s ease;
+        }
+        .map-container:hover iframe {
+            filter: grayscale(0) opacity(1);
+        }
+        .hero-img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- FVエリア -->
+ <header class="absolute top-0 left-0 w-full z-20 px-6 md:px-12 py-6">
+      <div class="container mx-auto">
+          <a href="../../../" class="text-white text-xs tracking-[0.2em] opacity-80 hover:opacity-100 transition-opacity flex items-center gap-2">
+              <span class="text-[10px]">←</span> トップページへ戻る
+          </a>
+      </div>
+  </header>
+
+  <section class="relative h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/restaurant.jpg" alt="丘の上のレストランの風景" class="hero-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-center md:justify-between items-start md:items-center relative z-10 h-full pt-16 md:pt-0">
+            <div class="text-white w-full">
+                <p class="text-[10px] md:text-sm mb-4 md:mb-6 tracking-[0.4em] font-light opacity-80 uppercase">Est. 2011 | Miyagi Ishinomaki</p>
+                <div class="vertical-text text-lg md:text-2xl leading-loose tracking-[0.3em] border-r border-white/20 pr-5 mr-5 h-fit opacity-90 float-left md:float-none">
+                    丘の上、<br>静寂と美食の<br>特等席。
+                </div>
+                <div class="mt-8 md:mt-12 clear-both md:clear-none">
+                    <h1 class="text-base md:text-xl font-light mb-3 md:mb-4 tracking-wider">元総料理長が紡ぐ、一皿の物語。</h1>
+                    <p class="text-[11px] md:text-sm opacity-70 leading-relaxed font-light">石巻・しらさぎ台の閑静な住宅街に佇む<br>本格フレンチ・イタリアン「ショコレア」</p>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white text-[10px] flex flex-col items-center gap-3 opacity-60">
+                <span class="tracking-[0.3em] uppercase">Scroll</span>
+                <div class="gold-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAエリア 1 -->
+    <section class="py-12 bg-stone-fine border-y border-stone-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="text-stone-400 text-[10px] mb-4 tracking-[0.4em] uppercase">Reservation</p>
+            <h2 class="text-base md:text-xl mb-6 md:mb-8 serif leading-relaxed">一日の席数に限りがございます。<br><span class="text-xs md:text-sm font-sans font-light text-stone-500 block mt-1">お電話にて空席状況をご確認ください。</span></h2>
+            <a href="tel:0225735154" class="cta-button text-white px-8 md:px-12 py-3.5 md:py-4 inline-block rounded-sm shadow-sm tracking-[0.2em] text-sm md:text-lg w-full sm:w-auto">
+                <i class="fa-solid fa-phone-flip mr-3 text-xs opacity-70"></i> 022-573-5154
+            </a>
+            <div class="mt-6 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-6 text-[11px] text-stone-400 tracking-wider">
+                <span>定休日：火曜日</span>
+                <span class="hidden sm:inline">|</span>
+                <span>駐車場：5台完備</span>
+                <span class="hidden sm:inline">|</span>
+                <span>石巻イオンより車で7分</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料理のシズル感 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-3/5 relative">
+                    <img src="images/pasta.jpg" alt="自慢のエビクリームパスタ" class="w-full shadow-xl md:shadow-2xl rounded-sm">
+                    <div class="mt-4 md:mt-0 md:absolute -bottom-10 -right-10 bg-stone-fine p-6 md:p-10 shadow-md md:shadow-xl border border-stone-100 max-w-full md:max-w-sm">
+                        <p class="serif text-sm md:text-base leading-relaxed text-stone-700">
+                            「エビクリームはスッキリとして、<br class="hidden md:block">最後まで素材の旨みが際立ちます。」
+                        </p>
+                        <p class="text-[10px] text-stone-400 mt-3 md:mt-4 tracking-widest uppercase">— Customer's Voice</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 px-0 md:px-0 mt-4 md:mt-0">
+                    <span class="text-stone-400 text-[10px] tracking-[0.4em] uppercase mb-3 block">Signature Dish</span>
+                    <h2 class="text-xl md:text-3xl mb-6 md:text-3xl serif leading-relaxed">記憶に残る、<br>エビクリームスパゲッティ。</h2>
+                    <p class="text-stone-600 text-xs md:text-sm leading-loose mb-6 md:mb-8 font-light">
+                        石巻の豊かな恵みと、熟練の技が交差する瞬間。<br>
+                        芳醇なレモンの風味が、濃厚なクリームのコクを<br class="hidden md:block">
+                        軽やかに引き立てる、ショコレア自慢の逸品です。
+                    </p>
+                    <a href="https://www.instagram.com/chocolea83/" target="_blank" class="text-[11px] border-b border-stone-800 pb-1 hover:opacity-50 transition-opacity tracking-widest uppercase inline-block">View Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロフィール -->
+    <section class="py-16 md:py-24 bg-stone-fine">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col-reverse md:flex-row-reverse gap-10 md:gap-16 items-center">
+            <div class="w-full md:w-1/2">
+                <img src="images/chef.png" alt="伏見敦昌シェフ" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 shadow-md md:shadow-lg">
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="text-stone-400 text-[10px] tracking-[0.4em] uppercase mb-3 block">Chef's History</span>
+                <h2 class="text-xl md:text-3xl mb-6 md:text-3xl serif leading-relaxed">石巻グランドホテル<br>元総料理長、伏見敦昌。</h2>
+                <p class="text-stone-600 text-xs md:text-sm leading-loose mb-6 md:mb-8 font-light">
+                    数十年にわたりホテルの厨房を統括してきた誇り。<br>
+                    全国の美食を巡り、研ぎ澄まされたその感性は、<br>
+                    今、この丘の上の小さなキッチンで<br>
+                    「一皿の芸術」へと昇華されます。
+                </p>
+                <div class="border-t border-stone-200 pt-6 md:pt-8 flex gap-8 md:gap-12">
+                    <div>
+                        <p class="text-lg md:text-2xl serif mb-1 text-stone-800">40</p>
+                        <p class="text-[9px] text-stone-400 tracking-[0.2em] uppercase">Years Experience</p>
+                    </div>
+                    <div>
+                        <p class="text-lg md:text-2xl serif mb-1 text-stone-800">Authentic</p>
+                        <p class="text-[9px] text-stone-400 tracking-[0.2em] uppercase">French & Italian</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 価値の再提示 -->
+    <section class="py-20 md:py-32 bg-white text-center px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.05] pointer-events-none">
+            <img src="images/store.jpg" class="w-full h-full object-cover" alt="店内の風景イメージ">
+        </div>
+        <div class="max-w-2xl mx-auto relative z-10">
+            <div class="inline-block mb-8 md:mb-12">
+                <div class="gold-line mx-auto mb-6 md:mb-8 opacity-50"></div>
+                <h2 class="text-base md:text-2xl serif leading-loose tracking-widest text-stone-800 px-4 md:px-0">
+                    喧騒を離れ、大切な人と向き合う時間を。
+                </h2>
+            </div>
+            <p class="text-stone-500 text-xs md:text-sm leading-loose mb-0 font-light px-2 md:px-0">
+                大きな窓から眺める、しらさぎ台の穏やかな景色。<br>
+                ここは、時計の針を少しだけ緩く進めるための場所です。<br>
+                特別な記念日も、何気ない日常のランチも。<br>
+                ショコレアは、皆様を至高の味わいでお迎えいたします。
+            </p>
+        </div>
+    </section>
+
+    <!-- New Services (Coming Soon) -->
+    <section class="py-16 md:py-24 bg-stone-fine border-t border-stone-200">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-stone-400 text-[10px] tracking-[0.4em] uppercase mb-3 block">New Services</span>
+                <h2 class="text-2xl md:text-3xl serif text-stone-800 tracking-wider">Coming Soon</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <!-- 01: 選べるパスタサイズ -->
+                <div class="bg-white p-6 md:p-10 shadow-sm border border-stone-200/60 rounded-sm relative overflow-hidden">
+                    <span class="text-[10px] text-stone-400 tracking-[0.2em] uppercase block mb-2 md:mb-3">01 / Volume Custom</span>
+                    <h3 class="text-lg md:text-xl serif mb-3 md:mb-4 text-stone-800">選べるパスタサイズ<br><span class="text-xs md:text-sm text-stone-500 font-sans font-light block mt-1">（ハーフサイズオプション）</span></h3>
+                    <p class="text-stone-600 text-xs md:text-sm leading-relaxed font-light">
+                        「いろいろな料理を楽しみたいけれど、パスタが少し多くて…」というお客様の声を大切に。メインの本格パスタの量を細かく調整できる、ハーフサイズ選択オプションを近日導入予定です。
+                    </p>
+                </div>
+                <!-- 02: ショコレアの味をご家庭で -->
+                <div class="bg-white p-6 md:p-10 shadow-sm border border-stone-200/60 rounded-sm relative overflow-hidden">
+                    <span class="text-[10px] text-stone-400 tracking-[0.2em] uppercase block mb-2 md:mb-3">02 / At Home Experience</span>
+                    <h3 class="text-lg md:text-xl serif mb-3 md:mb-4 text-stone-800">ショコレアの味をご家庭で<br><span class="text-xs md:text-sm text-stone-500 font-sans font-light block mt-1">（お持ち帰りソース、自家製ドレッシング）</span></h3>
+                    <p class="text-stone-600 text-xs md:text-sm leading-relaxed font-light">
+                        評判をいただいている当店自慢の「エビクリームソース」や「特製自家製ドレッシング」のテイクアウト・ボトル販売の準備を進めております。ご家庭の食卓でもホテルのクオリティを。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- インフォメーション -->
+    <section class="py-16 md:py-24 bg-white border-t border-stone-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+                <div>
+                    <h3 class="text-base md:text-lg serif mb-6 md:mb-10 border-b border-stone-200 pb-4 tracking-widest uppercase text-stone-700">Information</h3>
+                    <dl class="space-y-4 md:space-y-6 text-xs md:text-sm">
+                        <div class="flex border-b border-stone-100 pb-4">
+                            <dt class="w-20 md:w-32 text-stone-400 text-[11px] md:text-xs uppercase tracking-widest shrink-0">Address</dt>
+                            <dd class="text-stone-700 break-all">〒987-1221 宮城県石巻市貳江 字しらさぎ台2-14-23</dd>
+                        </div>
+                        <div class="flex border-b border-stone-100 pb-4">
+                            <dt class="w-20 md:w-32 text-stone-400 text-[11px] md:text-xs uppercase tracking-widest shrink-0">Parking</dt>
+                            <dd class="text-stone-700">5台完備（しらさぎ台 住宅街内）</dd>
+                        </div>
+                        <div class="flex border-b border-stone-100 pb-4">
+                            <dt class="w-20 md:w-32 text-stone-400 text-[11px] md:text-xs uppercase tracking-widest shrink-0">Holiday</dt>
+                            <dd class="text-red-800 font-normal">毎週火曜日</dd>
+                        </div>
+                        <div class="flex border-b border-stone-100 pb-4">
+                            <dt class="w-20 md:w-32 text-stone-400 text-[11px] md:text-xs uppercase tracking-widest shrink-0">Budget</dt>
+                            <dd class="text-stone-700">ランチ 950円〜 / ディナー 〜7,000円</dd>
+                        </div>
+                        <div class="flex pt-2">
+                            <dt class="w-20 md:w-32 text-stone-400 text-[11px] md:text-xs uppercase tracking-widest shrink-0">Social</dt>
+                            <dd>
+                                <a href="https://www.instagram.com/chocolea83/" target="_blank" class="hover:text-stone-400 transition-colors text-stone-700 inline-flex items-center">
+                                    <i class="fa-brands fa-instagram mr-2 text-sm"></i>chocolea83
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="flex flex-col">
+                    <div class="map-container bg-stone-200 aspect-video rounded-sm overflow-hidden shadow-md md:shadow-lg border border-stone-200 w-full">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3123.9119002156745!2d141.24205957479236!3d38.46659517201015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89a15268047cdd%3A0x8b288d25d7f1a648!2z5LiY44Gu5LiK44Gu44Os44K544OI44Op44OzIOOCt-ODp-OCs-ODrOOCog!5e0!3m2!1sja!2sjp!4v1772600853376!5m2!1sja!2sjp" style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p class="mt-4 md:mt-6 text-[11px] text-stone-400 leading-relaxed font-light">
+                        石巻イオンからお車で約7分。住宅街の丘の上に位置しております。<br>
+                        カーナビにて上記住所を設定の上、お気をつけてお越しください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="py-24 md:py-32 bg-stone-900 text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <img src="images/oka.jpg" class="w-full h-full object-cover" alt="Footer 背景画像">
+        </div>
+        <div class="relative z-10 max-w-xl mx-auto px-6">
+            <h2 class="text-lg md:text-xl md:text-3xl serif mb-8 md:mb-10 leading-loose tracking-widest">皆様のご来店を、<br>心よりお待ちしております。</h2>
+            <a href="tel:0225735154" class="inline-block border border-white/40 px-10 md:px-16 py-4 md:py-5 hover:bg-white hover:text-stone-900 transition-all duration-500 tracking-[0.3em] rounded-sm text-xs md:text-base w-full sm:w-auto">
+                022-573-5154
+            </a>
+            <p class="mt-6 md:mt-8 text-[10px] opacity-40 font-light tracking-[0.1em]">※少人数運営のため、事前のお電話をお願いしております。</p>
+        </div>
+    </section>
+
+    <footer class="py-8 md:py-12 bg-white text-center border-t border-stone-100">
+        <p class="text-[9px] tracking-[0.3em] sm:tracking-[0.5em] text-stone-400 uppercase px-4">丘の上のレストラン ショコレア &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
