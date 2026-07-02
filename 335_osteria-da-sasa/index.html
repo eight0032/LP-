@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オステリア ダ ササ | 五橋の名物トロトロラザニアと手打ちパスタ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Montserrat:wght@300;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #556b2f; /* Olive Green */
+            --accent: #d97706;  /* Orange */
+            --text-main: #2d2a26;
+            --bg-light: #f9f8f6;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; color: var(--text-main); }
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+        .font-en { font-family: 'Montserrat', sans-serif; }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/pasta.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin: 20px auto 0;
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+    </style>
+</head>
+<body class="bg-[#fcfbf9]">
+
+    <!-- ナビゲーション -->
+<nav class="fixed top-0 left-0 w-full z-[100] bg-white/90 backdrop-blur-md border-b border-stone-100 py-3">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <!-- 店名と戻るリンクをまとめるコンテナ -->
+            <div class="flex items-center gap-2 md:gap-4 min-w-0">
+                <div class="flex flex-col shrink-0">
+                    <span class="font-en text-[10px] md:text-xs tracking-[0.2em] text-stone-400">OSTERIA DA SASA</span>
+                    <span class="font-serif font-bold text-base md:text-lg leading-tight">オステリア ダ ササ</span>
+                </div>
+                <!-- 境界線 -->
+                <div class="h-5 md:h-6 w-px bg-stone-200 shrink-0"></div>
+                <!-- 独立した「トップページに戻る」リンク（スマホではテキストのみでスマートに） -->
+                <a href="../../../" class="text-[11px] md:text-xs text-stone-500 hover:text-amber-700 transition font-medium md:border md:border-stone-200 px-1 md:px-2.5 py-1 rounded md:bg-stone-50 md:hover:bg-stone-100 whitespace-nowrap truncate">
+                    トップページに戻る
+                </a>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#menu" class="hover:text-amber-700 transition">こだわり</a>
+                <a href="#chef" class="hover:text-amber-700 transition">シェフ紹介</a>
+                <a href="#access" class="hover:text-amber-700 transition">アクセス</a>
+            </div>
+            
+            <!-- 電話予約ボタン（スマホではアイコンのみ、またはコンパクトに収まるよう調整） -->
+            <a href="tel:022-398-4749" class="bg-amber-700 text-white px-3 md:px-5 py-2 rounded text-xs md:text-sm font-bold flex items-center gap-1 md:gap-2 shrink-0">
+                <i class="fas fa-phone-alt"></i> <span class="hidden xs:inline md:inline">電話予約</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- FV -->
+ <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10 text-white text-center">
+            <div class="inline-block mb-6 border border-white/40 px-4 py-1 text-sm tracking-widest font-light">SENDAI ITSUTSUBASHI</div>
+            <h1 class="font-serif leading-tight mb-8">
+                <span class="block text-xl md:text-2xl mb-4 font-light opacity-90 tracking-widest">一口で心がほどける、</span>
+                <span class="text-3xl md:text-5xl block">至高のトロトロラザニア</span>
+            </h1>
+            <p class="text-base md:text-lg font-light leading-relaxed mb-12 max-w-2xl mx-auto opacity-80">
+                27年のキャリアを凝縮した、ひまわり卵の手打ちパスタ。<br class="hidden md:block">
+                街路樹の緑を眺める静かな空間で、本格イタリアンを。
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#gift" class="bg-white text-stone-900 px-10 py-5 font-bold tracking-widest hover:bg-stone-100 transition shadow-2xl text-sm">
+                    WEB限定特典を見る
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- 特徴 -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="font-en text-amber-600 tracking-[0.3em] text-sm uppercase">Our Strengths</span>
+                <h2 class="text-3xl md:text-4xl font-serif mt-4 section-title">ササが愛される3つの理由</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-16">
+                <div class="group">
+                    <div class="relative overflow-hidden mb-6 bg-stone-100 aspect-[4/3]">
+                        <img src="images/pasta.jpg" alt="こだわりの手打ちパスタ" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/800x600?text=Handmade+Pasta'">
+                        <span class="absolute top-0 left-0 bg-amber-700 text-white font-en text-2xl px-4 py-2 italic">01</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">卵を込めた「黄金の手打ち」</h3>
+                    <p class="text-stone-500 leading-relaxed text-sm">イタリア産小麦と、宮城が誇る「ひまわり卵」を使用。鮮やかなオレンジ色とモチモチ感は、一度食べたら忘れられない体験に。</p>
+                </div>
+                <div class="group">
+                    <div class="relative overflow-hidden mb-6 bg-stone-100 aspect-[4/3]">
+                        <img src="images/razania.jpg" alt="名物トロトロラザニア" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/800x600?text=Lasagna'">
+                        <span class="absolute top-0 left-0 bg-amber-700 text-white font-en text-2xl px-4 py-2 italic">02</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">名物「トロトロラザニア」</h3>
+                    <p class="text-stone-500 leading-relaxed text-sm">手作りのトマトソースと濃厚チーズソース。フォークがスッと入るほどの柔らかさは、シェフが辿り着いたひとつの完成形です。</p>
+                </div>
+                <div class="group">
+                    <div class="relative overflow-hidden mb-6 bg-stone-100 aspect-[4/3]">
+                        <img src="images/store.jpg" alt="開放的な店内の雰囲気" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/800x600?text=Interior'">
+                        <span class="absolute top-0 left-0 bg-amber-700 text-white font-en text-2xl px-4 py-2 italic">03</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">緑を望む、開放的な隠れ家</h3>
+                    <p class="text-stone-500 leading-relaxed text-sm">北目町の街路樹が見える大きな窓。全20席の落ち着いた空間は、日常使いから特別なアニバーサリーまで心安らぐ時間を提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典オファー -->
+    <section id="gift" class="py-20 bg-stone-900 text-white relative">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-2xl md:text-3xl font-serif mb-8">WEB限定のご来店特典</h2>
+            <div class="max-w-2xl mx-auto border-2 border-amber-600 p-8 md:p-12 relative">
+                <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-600 px-6 py-1 text-sm font-bold tracking-widest">GIFT FOR YOU</span>
+                <p class="text-xl md:text-2xl font-bold mb-4 italic serif">「名物ラザニアのチーズソースがけ」</p>
+                <p class="text-stone-400 mb-6 uppercase tracking-tighter text-sm">をご注文の方に限り</p>
+                <div class="text-3xl md:text-5xl font-bold text-amber-500 mb-8 leading-tight">自家製フォカッチャを<br class="md:hidden">無料プレゼント</div>
+                <p class="text-sm opacity-60 mb-8">※ご来店時に「WEBサイトを見た」とお伝えください。ランチ・ディナーどちらでも承ります。</p>
+                <a href="tel:022-398-4749" class="cta-button inline-block bg-amber-700 text-white px-8 md:px-12 py-4 md:py-5 text-lg md:text-xl font-bold rounded-full max-w-full truncate">
+                    <i class="fas fa-phone-alt mr-2 md:mr-3"></i> 022-398-4749
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ストーリー -->
+    <section id="chef" class="py-24 bg-[#f9f8f6]">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative bg-stone-200 shadow-2xl overflow-hidden aspect-[4/5]">
+                        <img src="images/chef.png" alt="オーナーシェフ 笹原 恒" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/800x1000?text=Chef'">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-8 hidden md:block shadow-xl max-w-xs z-20">
+                            <p class="text-xs text-stone-400 mb-2 uppercase font-en">Owner Chef Profile</p>
+                            <h3 class="text-xl font-serif font-bold mb-2">笹原 恒</h3>
+                            <p class="text-xs text-stone-500 leading-loose">1980年山形県生まれ。27年のキャリアを持つソムリエシェフ。料理の力で人を幸せにすることを信条としています。</p>
+                        </div>
+                    </div>
+                    <!-- スマホ環境用のプロフィールテキスト -->
+                    <div class="bg-white p-6 mt-6 md:hidden shadow-xl">
+                        <p class="text-xs text-stone-400 mb-1 uppercase font-en">Owner Chef Profile</p>
+                        <h3 class="text-lg font-serif font-bold mb-2">笹原 恒</h3>
+                        <p class="text-xs text-stone-500 leading-relaxed">1980年山形県生まれ。27年のキャリアを持つソムリエシェフ。料理の力で人を幸せにすることを信条としています。</p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <span class="font-en text-amber-600 tracking-[0.3em] text-sm uppercase">Chef's Story</span>
+                    <h2 class="text-3xl md:text-4xl font-serif mt-4 mb-8">「料理の力で、<br>人を幸せにしたい。」</h2>
+                    <div class="space-y-6 text-stone-600 leading-[2] text-sm md:text-base">
+                        <p>山形・鎌山温泉の旅館で育ち、幼い頃から「おもてなし」を肌で感じてきました。イタリア料理の修行を積み27年。辿り着いたのは、地元の恵みを最大限活かすシンプルで力強い一皿です。</p>
+                        <p>山形の実家から届く新鮮な野菜、宮城の豊かな卵。それらを自慢の手打ちパスタと合わせ、ソムリエとしてワインとの調和も大切にしています。</p>
+                        <p>美味しい料理と静かな時間で、明日への活力を蓄えていただければ幸いです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス -->
+    <section id="access" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-0 bg-white shadow-2xl overflow-hidden rounded-xl border border-stone-100">
+                <div class="w-full md:w-1/2 p-6 sm:p-10 md:p-16">
+                    <h2 class="text-3xl font-serif mb-8 border-b border-stone-100 pb-4">Shop Info</h2>
+                    <dl class="space-y-6">
+                        <div class="flex flex-col">
+                            <dt class="text-xs font-bold text-amber-700 uppercase mb-1">Address</dt>
+                            <dd class="text-stone-600 text-sm">〒980-0023 宮城県仙台市青葉区北目町5-9 アトレ北目町 2F</dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt class="text-xs font-bold text-amber-700 uppercase mb-1">Access</dt>
+                            <dd class="text-stone-600 text-sm">地下鉄南北線「五橋駅」徒歩7分 / 「仙台駅」徒歩約12分</dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt class="text-xs font-bold text-amber-700 uppercase mb-1">Opening Hours</dt>
+                            <dd class="text-stone-600 text-sm">Lunch 11：30～13：30/ Dinner 18：00～21：00<br><span class="text-amber-800 font-bold">定休日：月曜日・火曜日</span></dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt class="text-xs font-bold text-amber-700 uppercase mb-1">Phone</dt>
+                            <dd class="text-xl md:text-2xl font-bold font-en">022-398-4749</dd>
+                        </div>
+                    </dl>
+
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <a href="https://osteria-da-sasa.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xs border border-stone-200 px-5 py-3 rounded-full hover:bg-stone-50 transition font-bold tracking-widest text-stone-700">
+                            <i class="fas fa-globe"></i> OFFICIAL HP
+                        </a>
+                        <a href="https://www.facebook.com/osteriadasasa" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xs border border-stone-200 px-5 py-3 rounded-full hover:bg-stone-50 transition font-bold tracking-widest text-stone-700">
+                            <i class="fab fa-facebook-f"></i> FACEBOOK
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 map-container bg-stone-100 min-h-[300px] md:min-h-auto">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.107502925632!2d140.87417787478017!3d38.25381268442338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8987da9f54d089%3A0x8da1b04bb3a6b1c0!2z44Kq44K544OG44Oq44KiIOODgCDjgrXjgrU!5e0!3m2!1sja!2sjp!4v1772603201038!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full min-h-[300px] md:min-h-full"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最後のCTA -->
+    <section class="py-24 bg-stone-900 text-white text-center">
+        <div class="container mx-auto px-6">
+            <p class="font-serif text-xl md:text-2xl mb-8 leading-relaxed">お席に限りがございますので、<br>早めのご予約をお勧めいたします。</p>
+            <a href="tel:022-398-4749" class="cta-button inline-block bg-amber-700 text-white px-10 md:px-16 py-5 md:py-6 text-xl md:text-2xl font-bold rounded-full max-w-full truncate">
+                <i class="fas fa-phone-alt mr-2 md:mr-4"></i> 022-398-4749
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-white py-12 border-t border-stone-100 text-center">
+        <div class="font-en text-sm tracking-[0.4em] mb-4">OSTERIA DA SASA</div>
+        <p class="text-[10px] text-stone-400 tracking-widest">&copy; 2024 OSTERIA DA SASA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+</body>
+</html>
