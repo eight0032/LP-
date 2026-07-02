@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>んbistro | 仙台銀座の隠れ家ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-primary: #1a1a1a;
+            --color-accent: #b08d57; /* 真鍮色 */
+            --color-bg: #f9f7f2;    /* 柔らかな生成り色 */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-primary);
+            background-color: var(--color-bg);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* 縦書きの指定 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 和紙のようなテクスチャ */
+        .washi-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        .btn-elegant {
+            background-color: var(--color-accent);
+            color: white;
+            transition: all 0.4s ease;
+            letter-spacing: 0.2em;
+        }
+
+        .btn-elegant:hover {
+            background-color: #8e6e3e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-accent);
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- 1. FVエリア -->
+ <section class="relative min-h-screen lg:h-screen flex items-center overflow-hidden bg-black text-white py-20 lg:py-0">
+    <header class="absolute top-0 left-0 w-full z-20 py-6">
+        <div class="container mx-auto px-4 md:px-6">
+            <a href="../../../" class="text-xs md:text-base tracking-wider hover:text-[var(--color-accent)] transition duration-300 inline-flex items-center gap-2">
+                <span>←</span> トップページへ戻る
+            </a>
+        </div>
+    </header>
+
+    <div class="absolute inset-0 opacity-60">
+        <img src="images/french.jpg" 
+             alt="新鮮な野菜のタワー" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/90 via-black/40 to-black/60 lg:to-transparent"></div>
+    
+    <div class="container mx-auto px-4 md:px-6 relative z-10 flex flex-col lg:flex-row justify-center lg:justify-between items-start lg:items-center h-full pt-16 gap-8">
+        <div class="max-w-2xl w-full">
+            <p class="serif text-lg md:text-2xl mb-4 md:mb-6 tracking-[0.2em] md:tracking-[0.3em] opacity-80">仙台銀座、大人の隠れ家。</p>
+            <h1 class="serif text-3xl md:text-7xl font-bold leading-tight mb-6 md:mb-8">
+                素材の息吹を、<br>
+                <span class="text-[var(--color-accent)]">一皿に込めて。</span>
+            </h1>
+            <p class="text-base md:text-xl font-light mb-8 lg:mb-12 max-w-md leading-relaxed">
+                市場直送の魚介と、力強い有機野菜。<br>
+                修行を重ねた技術が織りなす、<br>
+                心に響くフレンチ。
+            </p>
+        </div>
+        
+        <div class="hidden lg:block vertical-text serif text-3xl tracking-[0.5em] border-r border-white/30 pr-8 py-12">
+            とりば豚と新鮮野菜の至福
+        </div>
+        <div class="block lg:hidden serif text-xl tracking-[0.3em] border-l border-white/30 pl-4 py-2 opacity-90">
+            とりば豚と新鮮野菜の至福
+        </div>
+    </div>
+</section>
+
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-3 md:py-4">
+    <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+        <div class="serif text-xl md:text-2xl font-bold tracking-tighter">ん <span class="text-xs md:text-sm font-light tracking-normal ml-1 italic">bistro</span></div>
+        <div class="flex items-center gap-3 md:gap-6">
+            <a href="http://www.n-bistro.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[var(--color-accent)] transition duration-300 text-lg md:text-xl" title="公式サイト">
+                <i class="fas fa-globe"></i>
+            </a>
+            <a href="https://www.instagram.com/nbistro_sendai" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[var(--color-accent)] transition duration-300 text-lg md:text-xl" title="公式Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <span class="hidden lg:block text-xs tracking-widest text-red-600 font-bold">※平日ランチは連日満席につき予約推奨</span>
+            <a href="tel:022-211-1881" class="btn-elegant px-4 md:px-8 py-2.5 md:py-3 rounded-sm text-xs md:text-sm font-bold flex items-center shadow-sm">
+                <i class="fas fa-phone-alt mr-2 md:mr-3"></i> 席を予約する
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="py-16 md:py-32 overflow-hidden">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+            <div class="w-full lg:w-1/2 relative px-4 lg:px-0">
+                <div class="absolute -top-6 -left-2 md:-top-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 border-t border-l border-[var(--color-accent)] opacity-30"></div>
+                <div class="relative rounded-sm overflow-hidden shadow-2xl">
+                    <img src="images/poke.jpg" alt="とりばぶのソテー" class="w-full h-auto">
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2">
+                <h2 class="serif text-2xl md:text-4xl mb-6 md:mb-8 leading-relaxed section-title !text-left">
+                    「食べたことのない」を、<br class="hidden md:block">日常の贅沢に。
+                </h2>
+                <p class="text-gray-600 mb-4 md:mb-6 font-light text-sm md:text-base leading-relaxed">
+                    フランス料理の格式はそのままに、ビストロの親しみやすさを。丁寧に引いたダシ、力強い野菜の旨味、 tenderでジューシーな看板の「とりば豚」。
+                </p>
+                <p class="text-gray-600 mb-0 font-light text-sm md:text-base leading-relaxed">
+                    口コミで「驚きがあった」と評される独特の味付けは、食材への深い敬意から生まれます。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-32 bg-[#f0ede4]">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="max-w-5xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-10 md:gap-16">
+            <div class="w-full max-w-sm lg:w-2/5">
+                <img src="images/chef.png" alt="Owner Chef" class="w-full h-auto mx-auto grayscale hover:grayscale-0 transition duration-1000 shadow-lg rounded-sm">
+            </div>
+            <div class="w-full lg:w-3/5">
+                <span class="serif text-[var(--color-accent)] tracking-[0.3em] md:tracking-[0.5em] mb-3 md:mb-4 block text-sm md:text-base">創業者物語</span>
+                <h2 class="serif text-2xl md:text-3xl mb-6 md:mb-8">製麺所の魂、フレンチの技。</h2>
+                <div class="space-y-4 md:space-y-6 text-gray-700 text-sm md:text-base leading-loose font-light">
+                    <p>実家のラーメンの製麺所で小麦の香りに包まれて育った尾関克巳。彼の料理の原点は「職人の誠実さ」にあります。</p>
+                    <p>五反田〔ヌキテパ〕や銀座〔オザミデヴァファン〕。名だたる厨房で磨き上げたのは、世界に通用する洗練。しかし彼が故郷・仙台で形にしたのは、もっと人間味のある「食」でした。</p>
+                    <p>「ん」という名に込めた、完結と始まり。灯火の香りと共に、一期一会の味をお届けします。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-32">
+    <div class="container mx-auto px-4 md:px-6 text-center">
+        <h2 class="serif text-2xl md:text-3xl mb-10 md:mb-16 section-title">ん bistro が選ばれる理由</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-gray-200 rounded-sm overflow-hidden">
+            <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-gray-200 bg-white">
+                <span class="serif text-4xl md:text-5xl text-[var(--color-accent)] opacity-15 mb-3 md:mb-4 block font-bold">01</span>
+                <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 font-bold">圧倒的な満足感</h3>
+                <p class="text-xs md:text-sm text-gray-500 font-light leading-relaxed">「フレンチは足りない」という常識を覆す。肉厚なとりば豚と山盛りの有機野菜で心もお腹も満たします。</p>
+            </div>
+            <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-gray-200 bg-white">
+                <span class="serif text-4xl md:text-5xl text-[var(--color-accent)] opacity-15 mb-3 md:mb-4 block font-bold">02</span>
+                <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 font-bold">敷居を忘れる時間</h3>
+                <p class="text-xs md:text-sm text-gray-500 font-light leading-relaxed">マナーよりも会話を。スタッフの明るい接客で、大切な人との時間を等身大で楽しめます。</p>
+            </div>
+            <div class="p-8 md:p-12 bg-white">
+                <span class="serif text-4xl md:text-5xl text-[var(--color-accent)] opacity-15 mb-3 md:mb-4 block font-bold">03</span>
+                <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 font-bold">唯一無二の調味</h3>
+                <p class="text-xs md:text-sm text-gray-500 font-light leading-relaxed">市場直送の鮮魚を、ハーブやスパイスを駆使した未体験の味付けで。リピーターが絶えない理由です。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-32 bg-stone-100">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="max-w-4xl mx-auto bg-white p-6 md:p-20 shadow-sm border border-stone-200 relative pt-20 md:pt-20">
+            <div class="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-[var(--color-accent)] text-white flex items-center justify-center serif text-sm md:text-lg p-4 md:p-6 text-center leading-tight">
+                限定<br>特典
+            </div>
+            <h2 class="serif text-2xl md:text-3xl mb-6 md:mb-8">お席のご予約を<br class="md:hidden">承っております</h2>
+            <p class="mb-8 md:mb-10 text-gray-600 font-light text-sm md:text-base leading-relaxed">
+                現在、ランチタイムは大変混み合っております。確実にお席をご用意し、最高の状態で「とりば豚」を召し上がっていただくために、事前のご予約をおすすめしております。
+            </p>
+            <div class="bg-stone-50 p-5 md:p-8 border-l-4 border-[var(--color-accent)]">
+                <p class="font-bold mb-2 tracking-widest text-sm md:text-base">【WEB・電話予約特典】</p>
+                <p class="text-gray-700 text-sm md:text-base leading-relaxed">ご予約時に「LPを見た」とお伝えいただいたお客様には、当日入荷の<strong class="text-[var(--color-accent)]">「新鮮有機野菜の一品」を増量</strong>してサービスいたします。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-32">
+    <div class="container mx-auto px-4 md:px-6">
+        <h2 class="serif text-2xl md:text-3xl mb-10 md:mb-16 text-center section-title">Access</h2>
+        <div class="flex flex-col lg:flex-row gap-8 md:gap-12 max-w-6xl mx-auto">
+            <div class="w-full lg:w-1/2">
+                <div class="map-container rounded-sm shadow-md grayscale hover:grayscale-0 transition duration-500 relative aspect-[4/3] w-full overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.9017107041655!2d140.8740393747803!3d38.2585855841455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2817d7045653%3A0x1cbcb9371862e342!2z44KTIGJpc3Rybw!5e0!3m2!1sja!2sjp!4v1772601751723!5m2!1sja!2sjp" class="absolute top-0 left-0 w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                <dl class="space-y-4 md:space-y-6">
+                    <div>
+                        <dt class="serif text-[var(--color-accent)] font-bold mb-1 text-sm md:text-base">住所</dt>
+                        <dd class="text-gray-700 text-sm md:text-base">〒980-0021 宮城県仙台市青葉区中央3丁目10-3<br>（仙台銀座内）</dd>
+                    </div>
+                    <div>
+                        <dt class="serif text-[var(--color-accent)] font-bold mb-1 text-sm md:text-base">営業時間</dt>
+                        <dd class="text-gray-700 text-sm md:text-base leading-relaxed">
+                            ランチ 11:30～15:00<br>
+                            ディナー 17:30～22:00<br>
+                            <span class="text-xs md:text-sm text-gray-500">※ランチは平日でも予約推奨</span>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt class="serif text-[var(--color-accent)] font-bold mb-1 text-sm md:text-base">定休日</dt>
+                        <dd class="text-gray-700 text-sm md:text-base">月曜日</dd>
+                    </div>
+                    <div>
+                        <dt class="serif text-[var(--color-accent)] font-bold mb-1 text-sm md:text-base">お支払い</dt>
+                        <dd class="text-gray-700 text-sm md:text-base">クレジットカード可</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-32 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4 md:px-6 text-center relative z-10">
+        <h2 class="serif text-2xl md:text-4xl mb-8 md:mb-12">今宵、仙台銀座で。</h2>
+        <div class="max-w-xl mx-auto border-t border-b border-gray-200 py-8 md:py-12 mb-8 md:mb-12">
+            <p class="serif text-2xl md:text-4xl mb-3 md:mb-6 tracking-widest font-bold">022-211-1881</p>
+            <p class="text-gray-500 text-xs md:text-sm">（月曜定休）</p>
+        </div>
+        <div class="flex flex-col items-center gap-4 md:gap-6 w-full px-4 max-w-md mx-auto">
+            <a href="tel:022-211-1881" class="btn-elegant w-full py-4 md:py-6 text-lg md:text-xl rounded-sm shadow-lg font-bold">
+                電話で空席を確認する
+            </a>
+            <p class="text-[10px] md:text-xs text-gray-400">※ご予約時に「LPを見た」とお伝えください。</p>
+        </div>
+    </div>
+</section>
+
+<footer class="py-12 md:py-16 bg-[#1a1a1a] text-white">
+    <div class="container mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
+        <div class="text-center md:text-left w-full md:w-auto">
+            <div class="serif text-xl md:text-2xl mb-3 flex items-center justify-center md:justify-start gap-4">
+                ん bistro
+                <div class="flex gap-4 ml-2">
+                    <a href="http://www.n-bistro.com/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[var(--color-accent)] transition duration-300 text-base md:text-lg" title="公式サイト">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <a href="https://www.instagram.com/nbistro_sendai" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[var(--color-accent)] transition duration-300 text-base md:text-lg" title="公式Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 font-light leading-relaxed">
+                〒980-0021 宮城県仙台市青葉区中央3-10-3<br>
+                JR仙台駅より徒歩圏内・仙台銀座内
+            </p>
+        </div>
+        <div class="text-center md:text-right w-full md:w-auto border-t border-gray-800 md:border-t-0 pt-4 md:pt-0">
+            <p class="text-[9px] md:text-[10px] tracking-[0.2em] text-gray-600 uppercase">© n-bistro all rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
