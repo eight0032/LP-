@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チロル仙台店 | 創業48年 仙台の老舗イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Kaushan+Script&family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c0392b;
+            --secondary: #2c3e50;
+            --accent: #f39c12;
+            --bg-cream: #fdfcf0;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--bg-cream); }
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .accent-font { font-family: 'Kaushan Script', cursive; }
+
+        .text-vertical { writing-mode: vertical-rl; }
+        .bg-paper { background-image: url('https://www.transparenttextures.com/patterns/paper.png'); }
+        .marker { background: linear-gradient(transparent 60%, #ffeb3b 60%); }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .dish-shadow { filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3)); }
+
+        .stripe-bg {
+            background-image: repeating-linear-gradient(45deg, #fdfcf0, #fdfcf0 10px, #f9f7e8 10px, #f9f7e8 20px);
+        }
+
+        /* Google Map Responsive Wrapper */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Tailwind arbitrary color utilities for CSS variables */
+        .text-primary { color: var(--primary); }
+        .bg-primary { background-color: var(--primary); }
+        .border-primary { border-color: var(--primary); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+    </style>
+</head>
+<body class="text-gray-900 overflow-x-hidden">
+
+    <!-- FV: 圧倒的なシズル感 -->
+   <header class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white py-20">
+    <!-- 「トップページへ戻る」リンク -->
+    <div class="absolute top-6 left-6 z-20">
+        <a href="../../../" class="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+            トップページへ戻る
+        </a>
+    </div>
+
+    <div class="absolute top-16 md:top-10 left-1/2 -translate-x-1/2 text-[15vw] font-black text-gray-100 select-none accent-font opacity-50 uppercase pointer-events-none">
+        Tiroru
+    </div>
+
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10 gap-10 md:gap-4">
+        <div class="w-full md:w-1/2 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-4 mb-4 flex-wrap">
+                <span class="bg-black text-white px-3 py-1 text-xs tracking-widest font-bold uppercase">Since 1981</span>
+                <span class="text-primary font-bold tracking-tighter italic border-b-2 border-primary">創業48年の歴史</span>
+            </div>
+            <h1 class="serif text-4xl md:text-6xl font-black leading-tight text-gray-900">
+                <span class="block">記憶に残る、</span>
+                <span class="text-primary">究極のひと皿。</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl font-medium text-gray-600 leading-relaxed">
+                仙台クリスロードの地下に広がる、<br>本格イタリアンの聖域。
+            </p>
+            <div class="mt-8 flex justify-center md:justify-start">
+                <div class="text-vertical serif text-2xl font-bold border-r-2 border-primary pr-4 mr-4 leading-none">
+                    店主イチオシ
+                </div>
+                <div class="text-3xl font-black serif self-end">
+                    <span class="marker italic">ペスカトーレ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 relative max-w-md mx-auto md:max-w-none">
+            <!-- AI生成画像: ペスカトーレ -->
+            <img src="images/pesukatore.jpg" id="fv-image" alt="ペスカトーレ" class="w-full max-w-sm md:max-w-md mx-auto floating dish-shadow rounded-full aspect-square object-cover border-8 border-white">
+            <div class="absolute top-0 right-0 md:right-10 bg-accent text-white w-20 h-20 md:w-24 md:h-24 rounded-full flex flex-col items-center justify-center rotate-12 font-bold shadow-lg">
+                <span class="text-xs font-normal">濃厚!</span>
+                <span class="text-lg md:text-xl">魚介の</span>
+                <span class="text-lg md:text-xl">旨味</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-gray-400 text-xs md:text-sm tracking-[0.5em] animate-pulse">
+        SCROLL DOWN
+    </div>
+</header>
+
+    <!-- 第1 CTA: クーポン訴求 -->
+    <div class="bg-primary py-6 sticky top-0 z-50 shadow-xl">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-white text-center md:text-left">
+                <span class="text-xs border border-white px-2 py-0.5 mr-2 inline-block mb-1 md:mb-0">WEB限定</span>
+                <span class="font-bold text-base md:text-xl block md:inline">今なら画面提示で「ソフトドリンク1杯」無料プレゼント!</span>
+            </div>
+            <a href="tel:0222228577" class="w-full md:w-auto text-center bg-white text-primary font-black px-8 py-3 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg whitespace-nowrap">
+                📞 022-222-8577 で予約
+            </a>
+        </div>
+    </div>
+
+    <!-- 特集セクション: メメニュー紹介 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-stretch gap-0 border-4 md:border-8 border-gray-100">
+                <div class="w-full lg:w-2/3 bg-gray-50 p-6 md:p-10 flex flex-col justify-center">
+                    <span class="text-primary font-bold tracking-widest mb-4">MUST EAT MENU</span>
+                    <h2 class="serif text-3xl md:text-5xl font-black mb-6 md:text-left leading-tight">プリプリ海老と<br>濃厚トマトクリームの誘惑。</h2>
+                    <p class="text-base md:text-lg leading-loose mb-6 md:mb-10 text-gray-700">
+                        ランチで不動の人気を誇る『盛り合わせランチ』。ガーリックが香いた絶品ソースに絡む海老と、旬の野菜がふんだんに入った彩々のグラタン。手作りドレッシングのサラダを添えれば、それはもう至福のひと時。
+                    </p>
+                    <div class="flex items-baseline gap-4">
+                        
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/3 h-[300px] md:h-[500px] lg:h-auto overflow-hidden">
+                    <img src="images/guratan.jpg" id="lunch-image" alt="ランチセット" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ストーリー: 震災インタビュー風 -->
+    <section class="py-16 md:py-24 bg-paper relative overflow-hidden">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+                <div class="w-2/3 md:w-1/3 max-w-xs md:max-w-none">
+                    <img src="images/chef.png" id="chef-image" alt="店主 大川原" class="rounded shadow-2xl grayscale w-full">
+                </div>
+                <div class="w-full md:w-2/3 text-center md:text-left">
+                    <div class="inline-block bg-accent px-4 py-1 text-white font-bold mb-6 transform -rotate-2">
+                        創業者の想い：大川原
+                    </div>
+                    <h2 class="serif text-2xl md:text-5xl font-black mb-8 leading-tight">
+                        「震災の日、真っ暗な街で、<br class="hidden md:block">温かいパスタを作りました。」
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 text-gray-700 text-left leading-loose">
+                        <div>
+                            <p class="mb-4 font-bold">1981年の創業以来, 守り続けてきたのは「料理を通じた縁」です。</p>
+                            <p>東日本大震災の際、大川原は真っ先に炊き出しを行いました。食材も電気も限られた中、温かい料理を口にした方々の笑顔が、今の私たちの原動力になっています。</p>
+                        </div>
+                        <div>
+                            <p class="mb-4">「味が変わらない」「ここに来ると安心する」そんなお言葉をいただくために、今日も朝から無添加のソースを仕込み、丁寧にグラタンを焼き上げます。</p>
+                            <p class="font-bold border-b-2 border-accent inline-block">親子三代で通える、仙台のふるさとのような場所でありたい。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute -right-20 top-1/2 -translate-y-1/2 text-[30vw] font-black text-gray-200 accent-font opacity-10 md:opacity-20 pointer-events-none uppercase">
+            Story
+        </div>
+    </section>
+
+    <!-- クチコミセクション -->
+    <section class="py-16 md:py-24 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="serif text-center text-3xl md:text-5xl font-black mb-12 md:b-20">Voice of Customers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-5xl mx-auto">
+                <div class="border-2 border-white/20 p-6 md:p-8 relative">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-lg md:text-xl serif italic mb-6 leading-relaxed">「5月6日に家族3人で。仙台に行くと必ず伺う大好きなイタリアンです。特にグラタンが絶品！」</p>
+                    <p class="text-sm opacity-60">—— リピーターのA様</p>
+                </div>
+                <div class="border-2 border-white/20 p-6 md:p-8 relative">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-lg md:text-xl serif italic mb-6 leading-relaxed">「盛り合わせランチが1,350円で食べられるのは幸せ以外何ものでもありません。待ってでも食べるべき。」</p>
+                    <p class="text-sm opacity-60">—— 仕事で仙台にお越しのB様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON: あったらいいなと思うサービス -->
+    <section class="py-16 md:py-24 bg-white border-t border-b border-gray-100">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <span class="text-primary font-black tracking-[0.3em] uppercase text-sm block mb-4">Coming Soon</span>
+            <h2 class="serif text-2xl md:text-5xl font-black mb-8 leading-tight">
+                あの「感動のドレッシング」を、ご家庭で。<br>おうちでチロル定期便、始動。
+            </h2>
+            <div class="relative max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-2xl mb-8 md:mb-12 group">
+                <img src="images/bottle.jpg" alt="おうちでチロルイメージ" class="w-full h-80 md:h-96 object-cover group-hover:scale-105 transition-all duration-700">
+                <div class="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-white p-4 md:p-12">
+                    <span class="bg-accent text-white px-4 py-1 text-xs font-bold tracking-widest uppercase mb-4 rounded">2026年 冬 開始予定</span>
+                    <p class="text-xl md:text-2xl font-black mb-4">チロル特製ドレッシング＆無添加ソース定期便</p>
+                    <p class="text-xs md:text-base opacity-90 leading-relaxed max-w-md">
+                        「チロルのドレッシングを毎日サラダにかけたい」「あの味が恋しいけれど遠くて通えない」<br>
+                        そんな熱いご要望にお応えし、出来たてを急速冷凍・配送するサブスクリプションを現在開発中です。
+                    </p>
+                </div>
+            </div>
+            <p class="text-sm md:text-base text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed text-left md:text-center">
+                一本ずつ店舗の厨房で手作り、完全無添加にこだわるため、まずは【月先着100名様・会員限定】でのスタートを予定しております。販売開始や先行予約のアナウンスは、公式X（旧Twitter）にていち早くお届けします。
+            </p>
+            <a href="https://x.com/tirorusendai" target="_blank" class="inline-block bg-primary text-white font-black px-8 md:px-10 py-4 rounded-full shadow-lg hover:bg-black transition-all transform hover:scale-105 text-sm md:text-base">
+                最新情報を公式Xで待つ →
+            </a>
+        </div>
+    </section>
+
+    <!-- アクセス・マップセクション -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                    <div class="w-full lg:w-1/2">
+                        <span class="text-primary font-bold tracking-widest mb-4 block italic uppercase">Access Map</span>
+                        <h2 class="serif text-3xl md:text-4xl font-black mb-8">仙台駅西口から徒歩5分。<br>クリスロード内。</h2>
+                        <div class="space-y-6 text-gray-700">
+                            <div class="flex items-start gap-4">
+                                <span class="bg-primary text-white p-2 rounded shrink-0">住所</span>
+                                <p class="text-base md:text-lg">〒980-0021<br>宮城県仙台市青葉区中央2丁目6-6 多楽茶屋ビル B1階</p>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="bg-primary text-white p-2 rounded shrink-0">電話</span>
+                                <p class="text-xl md:text-2xl font-black">022-222-8577</p>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="bg-primary text-white p-2 rounded shrink-0">営業</span>
+                                <div class="space-y-2">
+                                    <p class="text-base md:text-lg font-bold">ランチ 11：30～15：45<br>ディナー 17：30～21：30</p>
+                                    <p class="text-sm text-gray-500">※休日は混雑が予想されます。事前予約を推奨します。地下への階段をお気をつけてお降りください。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 shadow-2xl rounded-xl overflow-hidden aspect-[4/3] lg:aspect-none lg:h-[450px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.758304277933!2d140.87548877478054!3d38.26191128395187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a282304a88f2d%3A0x883af7a1eb1aa23a!2z44OB44Ot44Or5LuZ5Y-w5bqX!5e0!3m2!1sja!2sjp!4v1772598651258!5m2!1sja!2sjp" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終 CTA -->
+    <section class="py-16 md:py-24 bg-primary text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="serif text-3xl md:text-6xl font-black mb-8 md:mb-12">今日、チロルで<br>心もお腹も満たしませんか？</h2>
+            <div class="max-w-2xl mx-auto bg-white text-gray-900 p-6 md:p-16 shadow-2xl transform md:rotate-1">
+                <p class="text-primary font-black text-xl md:text-2xl mb-2 md:mb-4 italic">Special Web Offer</p>
+                <p class="text-lg md:text-2xl font-bold mb-6 md:mb-10 leading-relaxed">
+                    お会計時にこの画面をご提示で<br>
+                    <span class="bg-yellow-200 px-2">ソフトドリンクを1杯無料</span>で<br>サービスいたします。
+                </p>
+                <a href="tel:0222228577" class="inline-block w-full bg-primary text-white font-black text-2xl md:text-3xl py-4 md:py-6 rounded-full shadow-xl hover:bg-black transition-all transform hover:-translate-y-2">
+                    📞 022-222-8577
+                </a>
+                <p class="mt-4 md:mt-6 text-xs opacity-60 italic">※ランチ・ディナーいずれも有効です。</p>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-30"></div>
+    </section>
+
+    <footer class="py-8 md:py-12 bg-gray-900 text-center text-gray-500 text-xs md:text-sm">
+        <p>&copy; 1981-2024 TIRORU SENDAI. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, header').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
