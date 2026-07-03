@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian Blair House(ブレアハウス)| 仙台の本格イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-gold: #bfa15f;
+            --color-dark: #1a1a1a;
+            --color-stone: #f8f5f0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: var(--color-stone);
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .accent-font {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+        .bg-gold {
+            background-color: var(--color-gold);
+        }
+        .text-gold {
+            color: var(--color-gold);
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .section-padding {
+            padding: 6rem 1.5rem;
+        }
+
+        .image-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .deco-border {
+            position: relative;
+            padding: 2rem;
+            border: 1px solid var(--color-gold);
+        }
+        .deco-border::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid var(--color-gold);
+            opacity: 0.3;
+        }
+
+        /* Google Maps responsive container */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-xs tracking-widest text-gold font-bold uppercase">Sendai Honcho</span>
+                <span class="serif text-xl font-bold tracking-tighter uppercase">Blair House</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
+                <a href="#concept" class="hover:text-gold transition-colors">Concept</a>
+                <a href="#menu" class="hover:text-gold transition-colors">Menu</a>
+                <a href="#coming-soon" class="hover:text-gold transition-colors">Coming Soon</a>
+                <a href="#access" class="hover:text-gold transition-colors">Access</a>
+                <a href="https://blair-blair.com/blairhouse.html" target="_blank" class="bg-gold text-white px-6 py-2 rounded-full hover:bg-zinc-800 transition-all">Reserve</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FV AREA -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden bg-zinc-900">
+        <div class="absolute top-24 left-4 md:left-8 z-50">
+            <a href="../../../" class="text-white hover:text-gold transition-colors text-xs md:text-sm tracking-widest uppercase flex items-center bg-black/40 px-3 py-2 md:px-4 md:py-2 rounded-full backdrop-blur-sm border border-white/10">
+                <i class="fas fa-chevron-left mr-1 md:mr-2"></i> トップページに戻る
+            </a>
+        </div>
+
+        <div class="absolute inset-0 image-overlay z-0">
+            <img src="images/pasta.png" alt="Special Pasta" class="w-full h-full object-cover scale-105">
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center text-white text-center px-4">
+            <span class="accent-font text-xl md:text-3xl text-gold mb-4 opacity-0 animate-[fadeIn_1s_forwards]">Authentic Italian</span>
+            <div class="relative py-10">
+                <div class="hidden md:block absolute -left-24 top-0 vertical-text serif text-xl tracking-[0.5em] text-white/80">
+                    四十年継ぐ、至福の刻
+                </div>
+                <h1 class="serif text-4xl md:text-7xl font-bold leading-[1.2] tracking-tighter mb-6">
+                    仙台で出逢う、<br>
+                    本物の<br class="md:hidden">
+                    イタリア。
+                </h1>
+            </div>
+            <p class="serif text-base md:text-xl tracking-widest mb-10 opacity-90 px-2">
+                自家製生パスタと、その場で削るチーズの薫り。
+            </p>
+            <div class="animate-bounce mt-4">
+                <i class="fas fa-chevron-down text-gold text-2xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section id="concept" class="section-padding bg-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div class="relative">
+                    <img src="images/italian.png" alt="Blair House Interior" class="w-full h-[300px] md:h-[550px] object-cover shadow-2xl rounded-sm">
+                    <div class="absolute -bottom-6 -left-6 bg-gold w-20 h-20 md:w-24 md:h-24 hidden md:flex items-center justify-center">
+                        <span class="text-white accent-font text-3xl md:text-4xl">B</span>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <span class="accent-font text-gold text-xl md:text-2xl">Hospitality</span>
+                    <h2 class="serif text-2xl md:text-4xl font-bold mt-4 mb-6 md:mb-8 leading-relaxed">
+                        都会の喧騒を忘れさせる<br>路地裏のリストランテ
+                    </h2>
+                    <p class="text-gray-600 leading-[2] mb-8 serif text-sm md:text-base">
+                        地下へ続く階段を降りれば、そこは非日常の空間。<br>
+                        1978年の創業以来、私たちは「本物の味」と<br>
+                        「心温まるおもてなし」を大切にしてきました。<br><br>
+                        熟練の職人が打つ自家譲生パスタは、<br>
+                        スパゲティ、リングイーネ、フェットチーネ。<br>
+                        その日の気分に合わせて、最適な一皿をお選びいただけます。
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-px bg-gold"></div>
+                        <span class="text-gold font-bold tracking-widest uppercase text-[10px] md:text-xs">Since 1978 Blair House</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE MENU -->
+    <section id="menu" class="bg-stone-50 section-padding overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 md:mb-16 px-6">
+                <div>
+                    <span class="accent-font text-gold text-xl md:text-2xl italic">Signature Dish</span>
+                    <h2 class="serif text-2xl md:text-4xl font-bold mt-2">至極の一皿、アペリティフサラダ</h2>
+                </div>
+                <p class="text-gray-500 serif mt-4 md:mt-0 text-sm">食欲を呼び覚ます、鮮やかな旬の恵み</p>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-0 shadow-2xl rounded-lg overflow-hidden mx-0 md:mx-6">
+                <div class="md:col-span-7 h-[300px] md:h-auto">
+                    <img src="images/salada.jpg" alt="Appetizer Salad" class="w-full h-full object-cover">
+                </div>
+                <div class="md:col-span-5 bg-zinc-900 text-white p-8 md:p-12 flex flex-col justify-center">
+                    <h3 class="serif text-xl md:text-2xl font-bold mb-6 text-gold">美食の幕開けに。</h3>
+                    <p class="leading-relaxed mb-8 opacity-80 serif text-sm md:text-base">
+                        「メインディッシュの前に、心躍る体験を」という想いから生まれたアペリティフサラダ。仙台の豊かな土地が育んだ地物野菜、厳選された旬の果実、そこで秘伝の自家譲ドレッシング。<br><br>
+                        ひとくち食べれば、野菜本来の甘みが口いっぱいに広がります。
+                    </p>
+                    <div class="deco-border">
+                        <p class="text-[10px] md:text-xs tracking-widest text-gold mb-2 uppercase font-bold">Featured Points</p>
+                        <ul class="text-xs md:text-sm space-y-2 serif opacity-90">
+                            <li>・契約農家から届く新鮮な旬野菜</li>
+                            <li>・季節で変わる自家製コンフィチュール</li>
+                            <li>・創業時から変わらぬ伝統のレシピ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEESE PERFORMANCE -->
+    <section class="section-padding bg-white relative px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="accent-font text-gold text-xl md:text-2xl">Craftsmanship</span>
+            <h2 class="serif text-2xl md:text-3xl font-bold mt-4 mb-8 md:mb-12">削りたての薫り、その瞬間に。</h2>
+
+            <div class="relative overflow-hidden rounded-2xl shadow-xl">
+                <img src="images/cheese.jpg" alt="Cheese Performance" class="w-full aspect-video object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-center pb-6 md:pb-8">
+                    <p class="text-white serif italic tracking-widest text-xs md:text-base">目の前で仕上げる、五感を刺激する演出</p>
+                </div>
+            </div>
+            <p class="mt-8 serif text-gray-600 max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
+                パスタの仕上げに削りたてのチーズを。テーブルに立ち込める芳醇な薫りは、本格イタリアンならではの愉しみです。素材と演出が織りなす、至福のひとときをご堪能ください。
+            </p>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section id="coming-soon" class="section-padding bg-stone-900 text-white relative overflow-hidden px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="accent-font text-gold text-xl md:text-2xl">Coming Soon</span>
+                <h2 class="serif text-2xl md:text-4xl font-bold mt-2">あったらいいな、をカタチに。<br>ブレアハウスの新しい挑戦。</h2>
+                <div class="w-16 h-1 bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <div class="bg-zinc-800/50 border border-zinc-700/50 p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl mb-6">
+                            <img src="images/otoriyose.png" alt="Meal Kit" class="w-full h-48 md:h-64 object-cover">
+                            <span class="absolute top-4 left-4 bg-gold text-white text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase">Meal Kit</span>
+                        </div>
+                        <h3 class="serif text-xl md:text-2xl font-bold text-gold mb-4">おうちで極上チーズ削り体験！<br>「おうちでブレア」生パスタお取り寄せ</h3>
+                        <p class="text-gray-400 text-xs md:text-sm leading-relaxed mb-6">
+                            熟練職人が打つ自家譲生パスタ、秘伝ソース、そして【ミニチーズ削り器・パルミジャーノ原木】をセットにしてお届けします。
+                        </p>
+                    </div>
+                    <div class="border-t border-zinc-700/50 pt-4 flex items-center justify-between">
+                        <span class="text-[10px] text-gold font-bold tracking-wider">SPOT ORDER SERVICE</span>
+                        <span class="text-[10px] text-gray-500">準備中</span>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-800/50 border border-zinc-700/50 p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl mb-6">
+                            <img src="images/nunkatu.png" alt="Afternoon Tea" class="w-full h-48 md:h-64 object-cover">
+                            <span class="absolute top-4 left-4 bg-gold text-white text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase">Oshikatsu Plan</span>
+                        </div>
+                        <h3 class="serif text-xl md:text-2xl font-bold text-gold mb-4">推し色で彩る贅沢なひととき。<br>「マイプレシャス・カラー」アフタヌーンティー</h3>
+                        <p class="text-gray-400 text-xs md:text-sm leading-relaxed mb-6">
+                            ご予約時にお選びいただいたイメージカラーで、プレートのジュレ、マカロン、オリジナルカクテルを美しくカスタマイズします。
+                        </p>
+                    </div>
+                    <div class="border-t border-zinc-700/50 pt-4 flex items-center justify-between">
+                        <span class="text-[10px] text-gold font-bold tracking-wider">CUSTOM AFTERNOON TEA</span>
+                        <span class="text-[10px] text-gray-500">準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS -->
+    <section id="access" class="section-padding bg-stone-100 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="accent-font text-gold text-xl md:text-2xl">Access</span>
+                <h2 class="serif text-2xl md:text-3xl font-bold mt-2">場所のご案内</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-stone-200">
+                        <h3 class="serif text-lg md:text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt text-gold mr-3"></i> 所在地
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed serif text-sm md:text-base">
+                            〒980-0014 宮城県仙台市青葉区本町2丁目3−10<br>
+                            仙台本町ビル B1階
+                        </p>
+                        <hr class="my-4 border-stone-100">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-[10px] text-gold font-bold uppercase mb-1">Station</p>
+                                <p class="text-sm">広瀬通駅 徒歩1分</p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gold font-bold uppercase mb-1">Phone</p>
+                                <p class="text-sm">022-262-2538</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900 text-white p-6 md:p-8 rounded-2xl shadow-sm">
+                        <h3 class="serif text-lg md:text-xl font-bold mb-4 flex items-center text-gold">
+                            <i class="fas fa-clock mr-3"></i> 営業時間
+                        </h3>
+                        <p class="opacity-80 serif text-sm leading-loose">
+                            ランチ：11:00～15:30<br>
+                            ディナー：17:00～22:30<br>
+                            定休日：不定休
+                        </p>
+                        <p class="mt-4 text-[10px] opacity-50">※ラストオーダー等の詳細は直接お問い合わせください</p>
+                    </div>
+                </div>
+
+                <div class="map-container shadow-2xl h-[300px] md:h-auto">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.703046629115!2d140.87126247478062!3d38.26319268387732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28253f8c9c2f%3A0xb7da10a50c3adcc7!2zSXRhbGlhbiBCbGFpciBIb3VzZe-8iOODluODrOOCouODj-OCpuOCue-8iQ!5e0!3m2!1sja!2sjp!4v1772597270400!5m2!1sja!2sjp" style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-900 text-white pt-20 md:pt-24 pb-28 md:pb-12 overflow-hidden relative px-6">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="serif text-3xl md:text-5xl font-bold mb-8 md:mb-10 italic">Buon Appetito!</h2>
+            <p class="serif text-base md:text-lg mb-10 md:mb-12 opacity-80 leading-relaxed">
+                40年以上変わらぬ哲学と、新しい感動を。<br>
+                本格的なイタリアの薫りを、仙台本町でお愉しみください。
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-12 md:mb-16">
+                <a href="https://blair-blair.com/blairhouse.html" target="_blank" class="bg-gold hover:bg-yellow-600 text-white font-bold py-5 md:py-6 rounded-lg transition-all text-lg md:text-xl shadow-lg">
+                    ご予約はこちら
+                </a>
+                <a href="tel:022-262-2538" class="bg-white text-zinc-900 hover:bg-stone-200 font-bold py-5 md:py-6 rounded-lg transition-all text-lg md:text-xl flex items-center justify-center">
+                    <i class="fas fa-phone mr-3"></i> 022-262-2538
+                </a>
+            </div>
+
+            <div class="flex justify-center space-x-12 border-t border-white/10 pt-10 md:pt-12 text-sm">
+                <a href="https://x.com/BlairHouse14" target="_blank" class="hover:text-gold flex items-center transition-colors">
+                    <i class="fab fa-x-twitter mr-2 text-gold"></i> SNS
+                </a>
+                <a href="https://blair-blair.com/blairhouse.html" target="_blank" class="hover:text-gold flex items-center transition-colors">
+                    <i class="fas fa-globe mr-2 text-gold"></i> Website
+                </a>
+            </div>
+
+            <p class="mt-16 md:mt-20 text-[10px] opacity-30 tracking-widest uppercase">&copy; Italian Blair House / SYP Group.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Action -->
+    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[92%] max-w-md md:hidden z-50">
+        <div class="bg-zinc-900 text-white rounded-full p-2 flex justify-between items-center shadow-2xl border border-white/10">
+            <a href="tel:022-262-2538" class="flex-1 text-center py-2 font-bold text-xs uppercase tracking-tighter">
+                <i class="fas fa-phone mr-1 text-gold"></i> Call
+            </a>
+            <div class="w-px h-6 bg-white/20"></div>
+            <a href="https://blair-blair.com/blairhouse.html" target="_blank" class="flex-[1.5] text-center py-2 bg-gold text-white font-bold rounded-full mx-2 text-xs uppercase tracking-widest">
+                Reserve
+            </a>
+        </div>
+    </div>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
