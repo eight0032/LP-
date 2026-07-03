@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Restaurant Plaisir | 仙台・大観の一軒家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&family=Alex+Brush&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #c19b67;
+            --soft-gold: #dfc7a7;
+            --deep-dark: #1a1a1a;
+            --bg-cream: #fcfaf7;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: var(--bg-cream);
+            color: #333;
+            overflow-x: hidden;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-script { font-family: 'Alex Brush', cursive; }
+
+        .section-slope {
+            clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+        }
+
+        .handwritten-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .handwritten-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 8px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="%23c19b67" stroke-width="2" fill="none"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            z-index: 1;
+            background: var(--primary-gold);
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: #b08956;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .gift-badge {
+            background: #e63946;
+            color: white;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: bold;
+            line-height: 1.2;
+            transform: rotate(-15deg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: absolute;
+            top: -50px;
+            right: 10px;
+        }
+
+        .img-placeholder {
+            background: linear-gradient(135deg, #e8e2d8, #d8cdb8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: #9c8a6e;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(0.3) contrast(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. FVエリア -->
+ <section id="hero" class="relative h-screen flex items-center justify-center text-white overflow-hidden bg-gray-900">
+    <!-- 追加箇所：トップページへ戻るリンク（左上に配置） -->
+    <a href="../../../" class="absolute top-6 left-6 z-20 text-xs md:text-sm font-cinzel tracking-[0.2em] uppercase opacity-70 hover:opacity-100 hover:text-[var(--soft-gold)] transition-all duration-300 flex items-center gap-2">
+        <span class="text-[10px]">&lt;</span> Return to Top
+    </a>
+
+    <!-- 変更箇所：プレースホルダーから img タグに変更 -->
+    <img id="hero-img" src="images/french.png" alt="Plaisirの料理イメージ" class="absolute inset-0 w-full h-full object-cover">
+    
+    <!-- 背景を暗くして文字を読みやすくするオーバーレイ（必要に応じて不透明度を調整してください） -->
+    <div class="absolute inset-0 hero-overlay bg-black/40"></div>
+
+    <div class="relative z-10 text-center px-4 max-w-4xl w-full">
+        <p class="font-script text-4xl md:text-6xl text-[var(--soft-gold)] mb-4">Welcome to Plaisir</p>
+        <span class="font-cinzel tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-lg mb-6 block uppercase opacity-80">French Restaurant Plaisir</span>
+        <h1 class="text-2xl md:text-6xl font-bold leading-snug mb-8 tracking-wide">
+            五感で味わう、<br>
+            仙台・大町の至福。
+        </h1>
+        <div class="flex items-center justify-center space-x-2 md:space-x-4 mb-10">
+            <span class="h-[1px] w-8 md:w-12 bg-white opacity-50"></span>
+            <p class="text-xs md:text-lg tracking-widest font-light">食べログ百名店2025 選出の名店</p>
+            <span class="h-[1px] w-8 md:w-12 bg-white opacity-50"></span>
+        </div>
+
+        <div class="relative inline-block group max-w-full">
+            <div class="bg-white text-black px-6 py-4 md:px-10 md:py-6 rounded-sm shadow-2xl">
+                <p class="text-[10px] md:text-xs text-[var(--primary-gold)] font-bold mb-1">PRESENTED FOR YOU</p>
+                <p class="text-sm md:text-xl font-bold leading-normal">公式LINE登録で乾杯の<br class="md:hidden">スパークリングを進呈</p>
+            </div>
+            <div class="gift-badge text-[10px] md:text-xs p-2">今だけ<br>限定</div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <span class="font-cinzel text-[9px] md:text-[10px] tracking-[0.3em] uppercase mb-2">Discovery</span>
+        <div class="w-[1px] h-10 md:h-16 bg-gradient-to-b from-white to-transparent"></div>
+    </div>
+</section>
+
+    <!-- 2. CTA(1回目) -->
+    <section class="relative z-20 -mt-8 md:mt-10 mb-16 md:mb-20">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="bg-[var(--deep-dark)] text-white p-6 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+                <div class="text-center md:text-left">
+                    <h2 class="text-lg md:text-2xl font-bold mb-2">1日13席、限られた方だけの特別席。</h2>
+                    <p class="text-xs md:text-sm opacity-70">大切な記念日や自分へのご褒美に、最高のフレンチを。</p>
+                </div>
+                <a href="https://ta13200.gorp.jp/" class="cta-button w-full md:w-auto inline-block text-white font-bold py-4 px-8 md:py-5 md:px-12 rounded-full text-center whitespace-nowrap text-sm md:text-base">
+                    今すぐお席を確保する
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 商品訴求 - じゃがいものスープ -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <!-- 左側：画像エリア -->
+                <div class="w-full md:w-1/2 relative min-h-[300px] md:min-h-[400px]" id="soup-img-container">
+                    <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 font-script text-[80px] md:text-[120px] text-gray-100 -z-10">Soup</div>
+                    
+                    <!-- 変更箇所：プレースホルダーを img タグに置き換え、親の高さに合わせるために「h-full」を追加しています -->
+                    <img src="images/soup.jpg" 
+                         alt="名物 じゃがいものスープ" 
+                         class="w-full h-[300px] md:h-full object-cover rounded-br-[60px] md:rounded-br-[100px] border-4 md:border-8 border-white shadow-lg">
+                </div>
+                
+                <!-- 右側：テキストエリア -->
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6 leading-relaxed">
+                        記憶に刻まれる一杯。<br>
+                        <span class="text-[var(--primary-gold)] handwritten-underline">「じゃがいもののスープ」</span>
+                    </h2>
+                    <p class="text-sm md:text-base text-gray-600 leading-loose mb-6 md:mb-8 text-justify">
+                        シンプルだからこそ誤魔化しがきかない。契約農家が土からこだわり育てたじゃがいもを、素材の甘みが極限まで引き立つ温度で仕上げました。リピーターの皆様が「また来年もこれを目当てに」と仰る、当店のシグネチャーです。
+                    </p>
+                    <div class="flex items-center space-x-4 text-xs md:text-sm font-bold">
+                        <span class="w-8 md:w-12 h-[1px] bg-[var(--primary-gold)]"></span>
+                        <span class="tracking-widest">A Masterpiece of Chef Sato</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ストーリーセクション -->
+    <section class="py-20 md:py-32 bg-[var(--bg-cream)] section-slope">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="font-script text-2xl md:text-3xl text-[var(--primary-gold)] block mb-2">Story</span>
+                <h2 class="text-2xl md:text-3xl font-bold tracking-widest">オーナーシェフ 佐藤 克典</h2>
+            </div>
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-12">
+                <!-- 右側（PC時）：画像エリア -->
+                <div class="w-full md:w-1/2 min-h-[300px] md:min-h-[400px]" id="chef-img-container">
+                    <!-- 変更箇所：プレースホルダーを img タグに置き換え -->
+                    <img src="images/chef.png" 
+                         alt="オーナーシェフ 佐藤 克典" 
+                         class="w-full h-[300px] md:h-full object-cover rounded-tl-[60px] md:rounded-tl-[100px] shadow-lg">
+                </div>
+                
+                <!-- 左側（PC時）：テキストエリア -->
+                <div class="w-full md:w-1/2">
+                    <p class="text-base md:text-lg leading-relaxed mb-4 md:mb-6 italic font-medium text-gray-800">
+                        「三陸の海で育ち、魚介料理に衝撃を受けた。その感動をフレンチに昇華させたい。」
+                    </p>
+                    <p class="text-xs md:text-sm text-gray-600 leading-loose mb-6 md:mb-8 text-justify">
+                        ホテルオークラで培ったフランス料理の真髄と、シンガポール大使館で得た国際的なもてなしの心。それらを地元・宮城の豊かな食材と融合させました。出過ぎない気配りと、驚きのある一工夫。13席という小さな店だからこそできる、濃密な体験をお届けします。
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
+                        <div class="p-3 md:p-4 bg-white shadow-sm rounded">
+                            <p class="text-[var(--primary-gold)] font-bold text-base md:text-lg mb-1">East 100</p>
+                            <p class="text-[9px] md:text-[10px] uppercase opacity-60">Tabelog 2025</p>
+                        </div>
+                        <div class="p-3 md:p-4 bg-white shadow-sm rounded">
+                            <p class="text-[var(--primary-gold)] font-bold text-base md:text-lg mb-1">Premium</p>
+                            <p class="text-[9px] md:text-[10px] uppercase opacity-60">13 Exclusive Seats</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. クチコミ -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-12 md:mb-16 handwritten-underline inline-block">心に響いた、お客様の声</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="relative p-6 md:p-10 bg-[var(--bg-cream)] rounded-2xl group transition-all duration-300 hover:-translate-y-2 text-left">
+                    <div class="absolute top-2 left-2 font-serif text-5xl md:text-6xl text-[var(--soft-gold)] opacity-50 italic">&ldquo;</div>
+                    <div class="text-[var(--primary-gold)] mb-3 text-xs md:text-sm tracking-widest pl-4">★★★★★</div>
+                    <p class="text-xs md:text-sm leading-loose text-gray-700 mb-4 md:mb-6 text-justify pl-4">「今回の仙台旅行で大当たりのお店。ありきたりではなく、どれも一工夫されていて楽しみながら食べられました。メインも最高です。」</p>
+                    <p class="text-[10px] md:text-xs font-bold opacity-40 pl-4">ランチ利用 / 観光客のお客様</p>
+                </div>
+                <div class="relative p-6 md:p-10 bg-[var(--bg-cream)] rounded-2xl group transition-all duration-300 hover:-translate-y-2 text-left">
+                    <div class="absolute top-2 left-2 font-serif text-5xl md:text-6xl text-[var(--soft-gold)] opacity-50 italic">&ldquo;</div>
+                    <div class="text-[var(--primary-gold)] mb-3 text-xs md:text-sm tracking-widest pl-4">★★★★★</div>
+                    <p class="text-xs md:text-sm leading-loose text-gray-700 mb-4 md:mb-6 text-justify pl-4">「繊細で丁寧に洗練されたパーフェクトフレンチ。カトラリーにも妥協がなく、気取りすぎず落ち着く最高の13席です。」</p>
+                    <p class="text-[10px] md:text-xs font-bold opacity-40 pl-4">ディナー利用 / リピーターのお客様</p>
+                </div>
+                <div class="relative p-6 md:p-10 bg-[var(--bg-cream)] rounded-2xl group transition-all duration-300 hover:-translate-y-2 text-left">
+                    <div class="absolute top-2 left-2 font-serif text-5xl md:text-6xl text-[var(--soft-gold)] opacity-50 italic">&ldquo;</div>
+                    <div class="text-[var(--primary-gold)] mb-3 text-xs md:text-sm tracking-widest pl-4">★★★★★</div>
+                    <p class="text-xs md:text-sm leading-loose text-gray-700 mb-4 md:mb-6 text-justify pl-4">「誕生日のサプライズに感動。とても親切で丁寧な接客に素敵で幸せな時間になりました。ありがとうございます。」</p>
+                    <p class="text-[10px] md:text-xs font-bold opacity-40 pl-4">記念日利用 / お誕生日のお客様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Coming Soon:新サービス -->
+    <section class="py-16 md:py-24 bg-gradient-to-b from-white to-[var(--bg-cream)] overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="font-cinzel text-[10px] md:text-xs tracking-[0.4em] text-[var(--primary-gold)] uppercase block mb-2">New Project</span>
+                <span class="font-script text-3xl md:text-4xl text-[var(--primary-gold)] block mb-2">Coming Soon</span>
+                <h2 class="text-xl md:text-3xl font-bold tracking-widest px-2">Plaisir Boutique &mdash; おうちで叶う、プレジールの至福。</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <!-- 左側：テキストエリア -->
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="inline-block bg-[var(--deep-dark)] text-white px-3 py-1 text-[10px] md:text-xs font-bold tracking-widest rounded mb-4">
+                        新サービス：本格フレンチ・デリカテッセン
+                    </div>
+                    <h3 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 leading-relaxed text-gray-800">
+                        あの名物スープやシェフ厳選の味を、<br class="hidden md:block">ご自宅のテーブルや大切な方へのギフトに。
+                    </h3>
+                    <p class="text-xs md:text-base text-gray-600 leading-loose mb-6 md:mb-8 text-justify">
+                        「特別な記念日だけでなく、普段のちょっと贅沢な食卓でもプレジールのスープを味わいたい」「仙台から離れた家族や友人に、この感動を贈りたい」という多くのお客様の声から、フレンチデリサービスが誕生します。<br><br>
+                        当店のシグネチャーである「じゃがいものスープ」のボトル詰めをはじめ、シェフ特選のコンフィや、いつものサラダがレストランの味に変わるオリジナル自家製ドレッシングなど、温めたり、お皿に並べたりするだけでおうちが極上レストランになるラインナップをお届けします。
+                    </p>
+                    <div class="border-l-2 border-[var(--primary-gold)] pl-3 text-[11px] md:text-xs text-gray-500 italic">
+                        ※2026年秋、店頭テイクアウトおよびオンラインお取り寄せショップを先行オープン予定です。最新情報は公式LINEにてお届けします。
+                    </div>
+                </div>
+
+                <!-- 右側：画像エリア -->
+                <div class="w-full md:w-1/2 order-1 md:order-2 relative min-h-[300px] md:min-h-[400px]" id="boutique-img-container">
+                    <div class="absolute -top-6 -right-6 md:-top-10 md:-right-10 font-script text-[80px] md:text-[120px] text-gray-100 -z-10">Boutique</div>
+                    
+                    <!-- 変更箇所：プレースホルダーを img タグに置き換え -->
+                    <img src="images/bottle.jpg" 
+                         alt="Plaisir Boutiqueの商品イメージ" 
+                         class="w-full h-[300px] md:h-full object-cover rounded-bl-[60px] md:rounded-bl-[100px] border-4 md:border-8 border-white shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 特典 & CTA -->
+    <section class="py-16 md:py-24 relative overflow-hidden bg-[var(--deep-dark)] text-white">
+        <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-[var(--primary-gold)] opacity-5 blur-[80px] md:blur-[100px]"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="mb-8 md:mb-10">
+                <span class="font-script text-3xl md:text-4xl text-[var(--primary-gold)] block mb-2 md:mb-4">Special Gift</span>
+                <h2 class="text-xl md:text-4xl font-bold mb-4 md:mb-6 leading-snug">今ならご予約特典として<br>「乾杯スパークリング」を1杯プレゼント。</h2>
+                <div class="w-12 h-[2px] bg-[var(--primary-gold)] mx-auto mb-6 md:mb-8"></div>
+                <p class="text-xs md:text-sm opacity-70 leading-relaxed mb-8 max-w-2xl mx-auto px-2">
+                    公式LINEをご登録いただき、予約時に「LPを見た」とお伝えください。<br class="hidden md:block">
+                    あなたの特別なひとときを、泡の煌めきと共に彩ります。
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto sm:max-w-none">
+                <a href="tel:050-5871-7856" class="w-full sm:w-auto text-center border border-white hover:bg-white hover:text-black transition-all py-4 px-8 md:py-5 md:px-10 rounded-full font-bold text-sm md:text-base">
+                    電話で相談する
+                </a>
+                <a href="https://ta13200.gorp.jp/" class="cta-button w-full sm:w-auto text-center py-4 px-10 md:py-5 md:px-12 rounded-full font-bold text-sm md:text-base">
+                    24時間WEB予約へ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. インフォメーション -->
+    <section class="py-16 md:py-24 bg-[var(--bg-cream)]">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+                <div>
+                    <h3 class="font-cinzel text-xl md:text-2xl font-bold mb-6 tracking-wide text-center md:text-left">Plaisir Access</h3>
+                    <dl class="space-y-4 text-xs md:text-sm text-gray-700">
+                        <div class="flex flex-col sm:flex-row border-b border-gray-200/50 pb-2 sm:border-0 sm:pb-0">
+                            <dt class="w-full sm:w-20 font-bold text-[var(--primary-gold)] sm:text-gray-900 mb-1 sm:mb-0">ADDRESS</dt>
+                            <dd class="flex-1">〒980-0804 宮城県仙台市青葉区大町2-3-23 駒井ビル 1F</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-gray-200/50 pb-2 sm:border-0 sm:pb-0">
+                            <dt class="w-full sm:w-20 font-bold text-[var(--primary-gold)] sm:text-gray-900 mb-1 sm:mb-0">ACCESS</dt>
+                            <dd class="flex-1">大町西公園駅 徒歩1分</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-gray-200/50 pb-2 sm:border-0 sm:pb-0">
+                            <dt class="w-full sm:w-20 font-bold text-[var(--primary-gold)] sm:text-gray-900 mb-1 sm:mb-0">OPEN</dt>
+                            <dd class="flex-1">12:00 - 14:30 / 18:00 - 22:30</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row pb-2 sm:pb-0">
+                            <dt class="w-full sm:w-20 font-bold text-[var(--primary-gold)] sm:text-gray-900 mb-1 sm:mb-0">CLOSED</dt>
+                            <dd class="flex-1">日曜日</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="map-container h-64 sm:h-80 rounded-lg shadow-2xl overflow-hidden border-4 border-white w-full">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.883307390771!2d140.86309737478044!3d38.2590123841208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2838d44c3f03%3A0x6746dfa781d5f28d!2sFrench%20Restaurant%20Plaisir!5e0!3m2!1sja!2sjp!4v1772600061813!5m2!1sja!2sjp" style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 md:py-12 bg-white border-t border-gray-100 text-center">
+        <p class="text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] opacity-40">&copy; FRENCH RESTAURANT PLAISIR. SENDAI JAPAN.</p>
+    </footer>
+
+</body>
+</html>
