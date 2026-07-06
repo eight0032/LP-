@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨーロッパ食堂 wacca | 長町駅徒歩1分の隠れ家レストラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-primary: #8e1d1d; /* 深みのあるボルドー */
+            --color-gold: #b39b6c;    /* 上品なゴールド */
+            --color-bg: #fdfaf5;      /* 漆喰のような温かみのある白 */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #222;
+            background-color: var(--color-bg);
+            line-height: 1.8;
+        }
+
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        /* 縦書きの装飾 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* ダイナミックなFV */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%),
+                        url('images/fish.jpg'); /* カルパッチョのイメージ */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 装飾的なライン */
+        .deco-line {
+            width: 1px;
+            height: 80px;
+            background: var(--color-gold);
+            margin: 0 auto;
+        }
+
+        .deco-line-sm {
+            width: 1px;
+            height: 48px;
+            background: var(--color-gold);
+            margin: 0 auto;
+            opacity: 0.3;
+        }
+
+        .btn-elegant {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 0;
+            display: inline-block;
+            transition: all 0.3s ease;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        .btn-elegant:hover {
+            background-color: #5d1212;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 1px;
+            background-color: var(--color-gold);
+        }
+
+        /* 背景テクスチャ */
+        .bg-shikkui {
+            background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+        }
+
+        .sizzle-card {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .text-gold { color: var(--color-gold); }
+        .text-primary { color: var(--color-primary); }
+        .bg-gold { background-color: var(--color-gold); }
+        .bg-primary { background-color: var(--color-primary); }
+        .border-gold { border-color: var(--color-gold); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-shikkui">
+
+    <!-- First View -->
+  <section class="hero-section relative flex items-center overflow-hidden">
+    <div class="absolute top-4 left-4 md:top-6 md:left-6 z-[100]">
+        <a href="../../../" class="text-white opacity-60 hover:opacity-100 transition-opacity text-xs md:text-sm tracking-[0.2em] flex items-center bg-black/20 md:bg-transparent px-3 py-2 rounded-full md:p-0 backdrop-blur-sm md:backdrop-blur-none">
+            <span class="mr-2">←</span>トップへ戻る
+        </a>
+    </div>
+
+    <div class="container mx-auto px-6 md:px-12 relative z-10">
+        <div class="flex flex-col md:flex-row items-start">
+            <div class="text-white order-2 md:order-1 animate-fade-in">
+                <p class="serif text-sm md:text-xl mb-6 tracking-[0.4em] opacity-80">長町駅南口 徒歩一分</p>
+                <div class="flex items-start">
+                    <h1 class="serif text-3xl md:text-6xl font-bold leading-tight tracking-[0.15em]">
+                        旬魚の<span class="text-white underline decoration-gold decoration-1 underline-offset-[10px]">煌めき</span>、<br>
+                        心解ける<span class="text-white">晩餐</span>。
+                    </h1>
+                </div>
+                <p class="mt-8 md:mt-10 text-sm md:text-lg max-w-xl leading-relaxed font-light opacity-80">
+                    キャリア二十年のシェフが選び抜いた旬の白身魚。<br>
+                    彩り豊かなヨーロッパ料理を、日常の価格で。<br>
+                    長町の夜に、記憶に残るひとときを。
+                </p>
+                <div class="mt-8 md:mt-10">
+                    <a href="#reserve" class="btn-elegant serif font-bold text-sm md:text-base">
+                        席を予約する
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block vertical-text serif text-xl ml-auto pt-4 tracking-[0.6em] text-white/40 order-2">
+                ヨーロッパ食堂 wacca
+            </div>
+        </div>
+    </div>
+    <!-- Scroll Down -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white text-center opacity-40">
+        <p class="text-[10px] tracking-[0.3em] mb-4">SCROLL</p>
+        <div class="w-[1px] h-16 bg-white mx-auto"></div>
+    </div>
+</section>
+
+    <!-- Intro / Concept -->
+    <section class="py-20 md:py-32 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-[-5%] opacity-5 pointer-events-none">
+            <h2 class="serif text-[10rem] md:text-[20rem] leading-none vertical-text text-gold">wacca</h2>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="deco-line mb-10"></div>
+            <h2 class="serif text-2xl md:text-5xl font-bold mb-12 md:mb-16 tracking-[0.2em] leading-snug">
+                美食と、語らい。<br>
+                大人たちが集う、長町の隠れ家。
+            </h2>
+            <div class="max-w-2xl mx-auto text-gray-600 leading-[2.2] serif text-base md:text-lg">
+                <p class="mb-8 md:mb-10">
+                    扉を開ければ、そこは駅前の喧騒を忘れるシックな空間。<br>
+                    シェフが自ら市場で選ぶ「白身魚のカルパッチョ」は、<br>
+                    素材の旨みを引き立てる自家製ソースと共に。
+                </p>
+                <p>
+                    イタリアンやフレンチの技法を巧みに操りながら、<br>
+                    気取らず、リーズナブルに。お一人でも、大切な方とでも。<br>
+                    店名「wacca(輪っか)」に込めた、<br>
+                    人と人を繋ぐ温かな食卓が、ここにあります。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- メイン商品:カルパッチョ -->
+    <section class="py-20 md:py-32 bg-shikkui overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20">
+                <div class="md:w-1/2 relative w-full">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-gold/10 -z-10 rounded-full"></div>
+                    <img src="images/karupaccyo.jpg" alt="厳選された白身魚のカルパッチョ" class="w-full sizzle-card rounded-sm">
+                </div>
+                <div class="md:w-1/2">
+                    <span class="serif text-gold tracking-[0.4em] block mb-6 font-bold text-xs md:text-sm">RECOMMENDED</span>
+                    <h2 class="serif text-3xl md:text-5xl font-bold mb-8 md:mb-10 leading-snug border-l-2 border-gold pl-6 md:pl-8">
+                        その日一番の<br>白身魚を、一皿に。
+                    </h2>
+                    <p class="text-gray-700 mb-8 md:mb-10 leading-loose text-base md:text-lg font-light">
+                        当店の代名詞「白身魚のカルパッチョ」。<br>
+                        繊細な身質を活かすため、その日の状態に合わせて岩塩、ハーブ、そして二十年の研鑽から生まれた特製ソースを使い分けます。冷えた白ワインとのマリアージュをご堪能ください。
+                    </p>
+                    <div class="flex items-center gap-4 text-gray-400">
+                        <div class="h-[1px] w-12 bg-gray-200"></div>
+                        <span class="serif italic text-sm">Fresh Catch of the Day</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 共感と解決 -->
+    <section class="py-20 md:py-32 bg-gray-900 text-white relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="serif text-xl md:text-4xl font-bold tracking-widest">長町で、心癒される夜を。</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-0 border border-white/10">
+                <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/5 transition">
+                    <h3 class="serif text-lg md:text-xl font-bold mb-6 text-gold">上質な料理を、日常に。</h3>
+                    <p class="text-sm opacity-70 leading-loose">コース料理だけでなくアラカルトも充実。お一人様分のパスタを小分けにするなど、小規模店ならではの柔軟なサービスを大切にしています。</p>
+                </div>
+                <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/5 transition">
+                    <h3 class="serif text-lg md:text-xl font-bold mb-6 text-gold">夜景と美食の調和。</h3>
+                    <p class="text-sm opacity-70 leading-loose">たいはっくるを望む窓辺席は、大切な方との語らいに。シックながらカジュアルな雰囲気で、肩の力を抜いて愉しめます。</p>
+                </div>
+                <div class="p-8 md:p-12 hover:bg-white/5 transition">
+                    <h3 class="serif text-lg md:text-xl font-bold mb-6 text-gold">徒歩一分の安心感。</h3>
+                    <p class="text-sm opacity-70 leading-loose">長町駅南2番出口からすぐ。仕事帰りや雨の日でも立ち寄りやすく、遅い時間までゆっくりとヨーロッパの味を堪能いただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典 -->
+    <section class="py-20 md:py-24 bg-shikkui">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto border border-gold/30 p-8 md:p-20 relative bg-white">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white px-6 md:px-8 py-1 text-[10px] tracking-widest uppercase font-bold">Special Gift</div>
+                <h2 class="serif text-2xl md:text-4xl font-bold mb-8 tracking-widest text-primary">ウェルカムドリンクの贈り物</h2>
+                <p class="text-gray-600 mb-8 md:mb-10 leading-loose text-sm md:text-base">
+                    「ホームページを見た」とのご予約、または入店時の画面提示で、<br>
+                    お料理に合わせたグラスドリンクを一杯サービスいたします。<br>
+                    <span class="text-xs md:text-sm mt-4 block text-gray-400 font-light">※ディナータイムにご利用の方限定</span>
+                </p>
+                <div class="deco-line-sm mb-8"></div>
+                <a href="tel:0227961021" class="text-xl md:text-3xl font-bold serif text-primary hover:opacity-70 transition">
+                    022-796-1021
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-20 md:py-32 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="serif text-gold tracking-[0.4em] block mb-4 font-bold text-xs md:text-sm">COMING SOON</span>
+                <h2 class="serif text-2xl md:text-4xl font-bold tracking-widest section-title">おうちで楽しむ、waccaの温かな食卓。</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16 max-w-6xl mx-auto">
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <h3 class="serif text-xl md:text-3xl font-bold mb-6 text-primary leading-snug">
+                        『wacca at Home』<br>本格お取り寄せキット、始動。
+                    </h3>
+                    <p class="text-gray-600 mb-8 leading-loose font-light text-sm md:text-base">
+                        「大切な記念日だけど、まだ子どもが小さくて夜の外出が難しい…」<br>
+                        「自宅でホームパーティーを開くので、プロの味でもてなしたい。」<br>
+                        そんなお客様のあたたかいお声から生まれた新サービスです。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="bg-gold/20 text-gold rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm mr-4 shrink-0 mt-1">1</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm md:text-base">極上ソースを急速冷凍でお届け</h4>
+                                <p class="text-xs md:text-sm text-gray-500">20年のキャリアが誇る、自家製パスタソースと本格前菜をご自宅に。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="bg-gold/20 text-gold rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm mr-4 shrink-0 mt-1">2</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm md:text-base">カルパッチョ専用の「秘伝ドレッシング」</h4>
+                                <p class="text-xs md:text-sm text-gray-500">お好きな白身魚を用意するだけで、一瞬にしてwaccaのカルパッチョが再現できます。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 order-1 lg:order-2 relative w-full">
+                    <div class="absolute -bottom-6 -right-6 w-full h-full border border-gold/30 -z-10"></div>
+                    <img src="images/bottle.jpg" alt="おうちディナーのイメージ" class="w-full shadow-2xl rounded-sm">
+                    <div class="absolute top-4 left-4 bg-gray-900/90 text-white px-4 md:px-6 py-2 md:py-3 tracking-widest serif text-xs">
+                        PREVIEW 2026
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & Map -->
+    <section id="reserve" class="py-20 md:py-32 bg-shikkui">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 md:gap-20 items-stretch">
+                <div class="lg:w-1/2">
+                    <h2 class="serif text-2xl md:text-3xl font-bold mb-8 md:mb-12 section-title">店舗情報</h2>
+                    <div class="space-y-6 md:space-y-8 serif text-sm md:text-base">
+                        <div class="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-4">
+                            <span class="w-32 font-bold text-gold mb-1 md:mb-0">店名</span>
+                            <span>ヨーロッパ食堂 wacca</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-start border-b border-gray-100 pb-4">
+                            <span class="w-32 font-bold text-gold mb-1 md:mb-0">所在地</span>
+                            <span class="flex-1 leading-relaxed">〒982-0011 宮城県仙台市太白区長町5丁目1-16 みつばビル 2F<br><span class="text-xs text-gray-400 mt-1 block">※長町駅 南2番出口より徒歩1分</span></span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-4">
+                            <span class="w-32 font-bold text-gold mb-1 md:mb-0">電話番号</span>
+                            <a href="tel:0227961021" class="font-bold">022-796-1021</a>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-4">
+                            <span class="w-32 font-bold text-gold mb-1 md:mb-0">定休日</span>
+                            <span class="text-primary font-bold">日曜日</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-4">
+                            <span class="w-32 font-bold text-gold mb-1 md:mb-0">SNS</span>
+                            <a href="http://www.instagram.com/wacca2/" target="_blank" class="flex items-center text-pink-700">
+                                <i class="fab fa-instagram mr-2"></i> @wacca2
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full h-[300px] md:min-h-[400px] shadow-2xl relative">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.2214619850247!2d140.8826462747786!3d38.22796808592722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a27477a501021%3A0xa1ec6c733398c82c!2z44Oo44O844Ot44OD44OR6aOf5aCCIHdhY2Nh!5e0!3m2!1sja!2sjp!4v1772592585151!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 md:py-20 bg-gray-900 text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="serif text-2xl md:text-3xl tracking-[0.6em] mb-6">wacca</h2>
+            <p class="text-[10px] opacity-40 tracking-[0.4em] uppercase">European Diner wacca &copy; All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA -->
+    <div class="md:hidden fixed bottom-6 right-6 z-50">
+        <a href="tel:0227961021" class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl">
+            <i class="fas fa-phone-alt text-xl"></i>
+        </a>
+    </div>
+
+</body>
+</html>
