@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante UEMON | 古川で一際記憶に残る、ドレスドオムライス</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --primary-gold: #c5a059;
+            --deep-red: #8b0000;
+            --stone-dark: #1c1917;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .english-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%),
+                        url('images/pasta.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            letter-spacing: 0.5em;
+        }
+
+        .sizzle-bg {
+            background: linear-gradient(135deg, #fff 0%, #fef3c7 100%);
+        }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 0px #92400e;
+        }
+        .cta-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0px #92400e;
+        }
+
+        .gold-border {
+            border: 1px solid var(--primary-gold);
+        }
+
+        .badge {
+            background: linear-gradient(45deg, #c5a059, #fef3c7, #c5a059);
+            color: #451a03;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            filter: grayscale(0.2) contrast(1.1);
+            border-radius: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+    <!-- FVエリア -->
+ <header class="hero-gradient h-screen relative flex items-center px-4 md:px-20 overflow-hidden">
+    <nav class="absolute top-6 left-6 md:top-8 md:left-20 z-20">
+        <a href="../../../" class="text-white/70 hover:text-amber-300 flex items-center gap-2 transition-colors font-bold text-sm md:text-base">
+            <i class="fas fa-arrow-left"></i> トップページへ戻る
+        </a>
+    </nav>
+
+    <div class="z-10 max-w-3xl animate-fade-in-up mt-12 md:mt-0">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="badge px-4 py-1 text-[10px] md:text-xs font-bold rounded-full shadow-lg">宮城・大崎市の隠れ家リストランテ</span>
+            <div class="h-[1px] w-12 md:w-20 bg-white/50"></div>
+        </div>
+        <h1 class="serif text-3xl md:text-5xl font-black text-white leading-tight mb-8 drop-shadow-2xl">
+            一瞬で、<br>
+            心が躍る。<br>
+            <span class="text-amber-300 text-2xl md:text-4xl block mt-4 font-bold">極上のドレスドオムライス</span>
+        </h1>
+        <p class="text-sm md:text-xl text-white/90 mb-10 serif leading-relaxed">
+            バター香るライス、黄金のドレスを纏った卵、<br class="hidden md:block">
+            そして時間をかけて煮込んだデミグラスソース。<br class="hidden md:block">
+            古川の街角で、最高に贅沢なひとときを.
+        </p>
+        <div class="flex flex-wrap gap-4">
+            <a href="tel:0229240065" class="cta-button bg-amber-600 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl flex items-center gap-3">
+                <i class="fas fa-phone"></i> 0229-24-0065
+            </a>
+        </div>
+    </div>
+    
+    <div class="absolute right-6 md:right-10 bottom-8 hidden lg:block vertical-text text-white/60 serif text-xl">
+        Ristorante UEMON Since 2011
+    </div>
+</header>
+
+<section class="py-10 bg-white border-b">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-200">
+            <div class="py-4 md:py-0">
+                <p class="text-gray-500 text-xs mb-1">大手サイト評価</p>
+                <p class="text-2xl md:text-3xl font-bold text-stone-800 english-serif">Score <span class="text-amber-600">4.5+</span></p>
+            </div>
+            <div class="py-4 md:py-0">
+                <p class="text-gray-500 text-xs mb-1">累計提供数</p>
+                <p class="text-2xl md:text-3xl font-bold text-stone-800 english-serif">Over <span class="text-amber-600">10,000</span> servings</p>
+            </div>
+            <div class="py-4 md:py-0">
+                <p class="text-gray-500 text-xs mb-1">アクセス</p>
+                <p class="text-2xl md:text-3xl font-bold text-stone-800 serif">古川駅 <span class="text-amber-600">徒歩圏内</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 sizzle-bg">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-amber-200/50 rounded-full blur-3xl -z-10"></div>
+                <img src="images/omuraisu.jpg" alt="ドレスドオムライス" class="rounded-[2rem] shadow-2xl gold-border p-2 bg-white w-full">
+                <div class="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 bg-white p-4 md:p-6 shadow-xl rounded-2xl max-w-[160px] md:max-w-[200px]">
+                    <p class="text-amber-800 font-bold text-sm md:text-base serif leading-tight">「この卵の曲線、まさに職人技」</p>
+                </div>
+            </div>
+            <div>
+                <h2 class="serif text-3xl md:text-5xl font-bold mb-8 leading-tight">
+                    ただのランチではない、<br>
+                    <span class="text-amber-700 underline decoration-amber-200">一皿のエンターテイメント</span>
+                </h2>
+                <p class="text-base md:text-lg text-gray-700 leading-relaxed">
+                    目の前に運ばれてきた瞬間、誰もが息を呑む。<br>
+                    ドレスのように優雅に波打つ卵の皮は、長年の修行を積んだシェフだけが成せる技です。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-900 text-white text-center">
+    <div class="container mx-auto px-4">
+        <h2 class="english-serif text-3xl md:text-5xl mb-12 text-amber-500">Menu Experience</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto" id="menu-container">
+            <div class="menu-item cursor-pointer bg-stone-800 p-6 md:p-8 rounded-3xl border border-stone-700 transition-all duration-300 hover:bg-amber-900/40 hover:border-amber-600" onclick="selectMenu(this)">
+                <img src="images/omuraisu.jpg" class="rounded-2xl mb-6 w-full" alt="ランチセット">
+                <h3 class="serif text-lg md:text-xl font-bold">ドレスドオムライスランチ</h3>
+            </div>
+            <div class="menu-item cursor-pointer bg-stone-800 p-6 md:p-8 rounded-3xl border border-stone-700 transition-all duration-300 hover:bg-amber-900/40 hover:border-amber-600" onclick="selectMenu(this)">
+                <img src="images/hanbagu.png" class="rounded-2xl mb-6 w-full" alt="ハンバーグ">
+                <h3 class="serif text-lg md:text-xl font-bold">肉汁溢れるハンバーグ</h3>
+            </div>
+            <div class="menu-item cursor-pointer bg-stone-800 p-6 md:p-8 rounded-3xl border border-stone-700 transition-all duration-300 hover:bg-amber-900/40 hover:border-amber-600" onclick="selectMenu(this)">
+                <img src="images/dinner.jpg" class="rounded-2xl mb-6 w-full" alt="ディナーコース">
+                <h3 class="serif text-lg md:text-xl font-bold">ディナーフルコース</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function selectMenu(element) {
+  const items = document.querySelectorAll('.menu-item');
+  items.forEach(item => {
+    item.classList.remove('bg-amber-900/40', 'border-amber-600');
+    item.classList.add('bg-stone-800', 'border-stone-700');
+  });
+  element.classList.remove('bg-stone-800', 'border-stone-700');
+  element.classList.add('bg-amber-900/40', 'border-amber-600');
+}
+</script>
+
+<section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 max-w-5xl">
+        <div class="text-center mb-10">
+            <h2 class="serif text-3xl md:text-4xl font-bold mb-4">Access</h2>
+            <p class="text-gray-500 text-sm md:text-base">宮城県大崎市古川七日町8-35</p>
+        </div>
+        <div class="map-container shadow-2xl overflow-hidden mb-12 aspect-video">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3119.1886272205584!2d140.95641297479864!3d38.575503865635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8913c33f96b3bd%3A0x893d4d2361ef9a26!2sRistorante%20UEMON!5e0!3m2!1sja!2sjp!4v1772591662444!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="serif text-2xl md:text-5xl font-bold mb-10 md:mb-12">大切なひとときに、<br>選ばれる場所でありたい。</h2>
+        <div class="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl p-6 md:p-8 rounded-[2rem] border border-white/10">
+            <p class="text-amber-500 font-bold mb-4 tracking-widest uppercase text-xs md:text-sm">Reservation</p>
+            <a href="tel:0229240065" class="text-3xl md:text-4xl font-black block mb-6 hover:text-amber-400 transition-colors">0229-24-0065</a>
+            <div class="text-stone-300 mb-8 space-y-1 text-sm md:text-base">
+                <p>Lunch 11：30～14：00 / Dinner 17：00～21：00</p>
+                <p>定休日：月曜日</p>
+            </div>
+            <div class="flex flex-col gap-3 md:flex-row justify-center md:gap-4">
+                <a href="tel:0229240065" class="bg-amber-600 text-white px-6 py-4 rounded-xl font-bold text-sm md:text-base">お電話で予約する</a>
+                <a href="http://www.uemon.jp/" target="_blank" rel="noopener noreferrer" class="bg-white/10 px-6 py-4 rounded-xl font-bold hover:bg-white/20 transition-colors text-sm md:text-base">公式サイトへ</a>
+                <a href="https://x.com/km_seed" target="_blank" rel="noopener noreferrer" class="bg-white/10 px-6 py-4 rounded-xl font-bold hover:bg-black hover:text-white transition-colors border border-white/10 text-sm md:text-base">Twitter (X)</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="py-10 bg-stone-950 text-stone-600 text-center px-4">
+    <h2 class="serif text-lg font-bold text-white mb-2">Ristorante UEMON</h2>
+    <p class="text-[10px] md:text-xs">&copy; 2024 Ristorante UEMON. Professional Italian &amp; Western Cuisine.</p>
+</footer>
+
+</body>
+</html>
