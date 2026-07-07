@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トン・ガリアーノ仙台駅前店 | 500℃窯焼きピッツァとワインの雰囲気なイタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@700&display=swap');
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        .bg-italian-green { background-color: #008C45; }
+        .bg-italian-red { background-color: #CD212A; }
+        .text-italian-red { color: #CD212A; }
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)); }
+        .badge-gold { background: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); color: #5d4110; }
+        .cta-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-shine::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 leading-relaxed">
+
+    <!-- FVエリア -->
+   <header class="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="images/pizza.jpg" alt="窯焼きピッツァのシズル感" class="w-full h-full object-cover scale-110">
+        <div class="absolute inset-0 hero-gradient"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 flex flex-col items-center">
+        <div class="badge-gold px-5 py-1 rounded-full text-xs md:text-sm font-black mb-6 shadow-lg text-center">
+            <i class="fas fa-crown mr-1"></i> 仙台駅前エリア満足度NO.1級の支持
+        </div>
+
+        <div class="text-center text-white mb-8">
+            <span class="block text-sm md:text-2xl font-bold tracking-widest mb-3 opacity-90">仙台駅西口徒歩3分・500℃本格窯</span>
+            <h1 class="text-3xl md:text-5xl font-black leading-tight mb-4 drop-shadow-2xl">
+                外はカリッ、<br class="md:hidden">
+                中は<span class="text-yellow-400">もちもち。</span>
+            </h1>
+            <p class="text-base md:text-xl font-medium tracking-wide">
+                25cmの本格ナポリピッツァ×厳選クラフトビール<br>
+                小上がり完備で、子連れランチから宴やかな夜まで.
+            </p>
+        </div>
+
+        <div class="w-full max-w-sm md:max-w-md bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/20">
+            <a href="#cta" class="cta-shine block text-center bg-italian-red hover:bg-red-700 text-white font-black py-4 md:py-5 px-4 rounded-xl text-lg md:text-2xl transition transform hover:scale-105 shadow-2xl">
+                <i class="fas fa-hand-pointer mr-2"></i> 24時間受付！予約はこちら
+            </a>
+        </div>
+        <p class="text-white text-[10px] md:text-xs mt-4 opacity-70">※持ち帰りピザのご注文もこちらから</p>
+    </div>
+</header>
+
+<section class="py-8 md:py-12 bg-white border-b shadow-sm">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-3 gap-2 md:gap-8 max-w-4xl mx-auto">
+            <div class="text-center">
+                <span class="font-oswald text-2xl md:text-5xl text-italian-red block">3<span class="text-[10px] md:text-sm font-bold ml-1 italic">min</span></span>
+                <p class="text-[9px] md:text-sm font-bold text-gray-500 uppercase">Access</p>
+                <p class="text-[10px] md:text-base font-black">仙台駅3分</p>
+            </div>
+            <div class="text-center border-x border-gray-100">
+                <span class="font-oswald text-2xl md:text-5xl text-italian-red block">500<span class="text-[10px] md:text-sm font-bold ml-1 italic">℃</span></span>
+                <p class="text-[9px] md:text-sm font-bold text-gray-500 uppercase">Kiln</p>
+                <p class="text-[10px] md:text-base font-black">本格窯焼き</p>
+            </div>
+            <div class="text-center">
+                <span class="font-oswald text-2xl md:text-5xl text-italian-red block">4.5<span class="text-[10px] md:text-sm font-bold ml-1 italic">★</span></span>
+                <p class="text-[9px] md:text-sm font-bold text-gray-500 uppercase">Review</p>
+                <p class="text-[10px] md:text-base font-black">高評価多数</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-5xl text-center">
+        <h2 class="inline-block bg-green-600 text-white text-lg md:text-2xl px-6 py-2 rounded-full font-black mb-10 md:mb-12 shadow-xl">
+            駅前でこんなお店を探していませんか？
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="p-6 md:p-8 rounded-3xl bg-white shadow-sm border-2 border-transparent hover:border-green-500 transition group">
+                <div class="bg-gray-50 w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner mb-6 mx-auto group-hover:bg-green-500 transition">
+                    <i class="fas fa-baby text-green-500 group-hover:text-white text-2xl transition"></i>
+                </div>
+                <h3 class="font-black text-lg md:text-xl mb-3">子連れでもゆっくり食事したい</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">小上がり席完備！ベビーカーでの入店も歓迎. 駅近とは思えない、ファミリーに優しい空間です.</p>
+            </div>
+            <div class="p-6 md:p-8 rounded-3xl bg-white shadow-sm border-2 border-transparent hover:border-red-500 transition group">
+                <div class="bg-gray-50 w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner mb-6 mx-auto group-hover:bg-red-500 transition">
+                    <i class="fas fa-glass-cheers text-red-500 group-hover:text-white text-2xl transition"></i>
+                </div>
+                <h3 class="font-black text-lg md:text-xl mb-3">急な飲み会、外さないお店がいい</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">仙台駅3分のソラリプラザ1F. 集合しやすく、ハズレのない本格クオリティ. 雨の日も安心.</p>
+            </div>
+            <div class="p-6 md:p-8 rounded-3xl bg-white shadow-sm border-2 border-transparent hover:border-yellow-500 transition group">
+                <div class="bg-gray-50 w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner mb-6 mx-auto group-hover:bg-yellow-500 transition">
+                    <i class="fas fa-heart text-yellow-500 group-hover:text-white text-2xl transition"></i>
+                </div>
+                <h3 class="font-black text-lg md:text-xl mb-3">サプライズで思い出を作りたい</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">記念日プレート対応. プロジェクター完備の貸切も可能. スタッフが全力で演出をサポートします.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-20 bg-gray-900 text-white overflow-hidden relative">
+    <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
+        <i class="fas fa-cut text-[10rem] md:text-[20rem] -mr-10 -mt-10 md:-mr-20 md:-mt-20 transform -rotate-12"></i>
+    </div>
+    <div class="container mx-auto px-4 max-w-5xl relative z-10">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div class="w-full md:w-1/2">
+                <h2 class="text-italian-green font-oswald text-lg md:text-xl tracking-widest mb-4 uppercase">Our Story</h2>
+                <h3 class="text-2xl md:text-3xl font-black leading-tight mb-6 md:mb-8 italic">
+                    「接客のプロ」が創る<br>陽気なイタリアン酒場.
+                </h3>
+                <div class="space-y-4 md:space-y-6 text-gray-400 text-sm md:text-lg">
+                    <p>私たちの原点は、美容室グループ「ブランシェ」.<br>お客様の心まで満足させる<strong>「接客力」</strong>のノウハウを飲食店に注ぎ込みました.</p>
+                    <p>「お帰りなさい」と迎える温かさと、妥協なき味の追求. 仙台の皆様に愛される「サードプレイス」を目指しています.</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 grid grid-cols-2 gap-3 md:gap-4">
+                <div class="space-y-3 md:space-y-4">
+                    <img src="images/pasta.png" alt="Kitchen" class="rounded-xl md:rounded-2xl shadow-xl border border-white/10">
+                    <img src="images/terrace.png" alt="Bar" class="rounded-xl md:rounded-2xl shadow-xl border border-white/10">
+                </div>
+                <div class="space-y-3 md:space-y-4 pt-6 md:pt-12">
+                    <img src="images/kakuteru.png" alt="Drink" class="rounded-xl md:rounded-2xl shadow-xl border border-white/10">
+                    <img src="images/italian.png" alt="Laughter" class="rounded-xl md:rounded-2xl shadow-xl border border-white/10">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 md:py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+        <div class="relative inline-block mb-8 md:mb-10">
+            <div class="absolute -top-4 -right-6 md:-top-6 md:-right-10 bg-italian-red text-white text-[10px] md:text-xs font-black p-2 md:p-3 rounded-full shadow-lg transform rotate-12 animate-pulse">
+                特別な一押し！
+            </div>
+            <h2 class="text-2xl md:text-4xl font-black">特別な夜を完璧にする<br>「記念日プレート」</h2>
+        </div>
+
+        <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-2 rounded-[2rem] md:rounded-[2.5rem] shadow-inner border border-gray-200">
+            <div class="bg-white rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-12 shadow-sm border border-gray-100">
+                <img src="images/cake.jpg" alt="Anniversary" class="w-full h-48 md:h-64 object-cover rounded-xl md:rounded-2xl mb-6 md:mb-8 shadow-md">
+                <p class="text-italian-red font-black text-xl md:text-2xl mb-3 md:mb-4 italic">Surprise Gift for You</p>
+                <p class="text-gray-600 font-bold text-sm md:text-base mb-6">
+                    大切な方へのメッセージを添えて. 事前予約で、心に残るデザートサプライズをお手伝いいたします.
+                </p>
+                <div class="flex justify-center gap-4 text-[10px] md:text-sm font-bold text-gray-400 uppercase tracking-widest">
+                    <span>Birthday</span> • <span>Wedding</span> • <span>Farewell</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 md:py-16 bg-gray-50 border-y border-gray-100">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+        <span class="text-italian-red font-oswald text-sm md:text-lg font-bold tracking-widest block mb-2 uppercase">Coming Soon</span>
+        <h2 class="text-2xl md:text-4xl font-black mb-6">「サロン帰りのご褒美イタリアン」構想</h2>
+        <div class="bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 text-left">
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+                <div class="w-24 md:w-1/3 flex-shrink-0">
+                    <img src="images/dessert.jpg" alt="Hair salon and dining" class="rounded-xl shadow-md w-full aspect-square object-cover">
+                </div>
+                <div>
+                    <span class="inline-block bg-italian-green text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full mb-3">美と食のコラボ</span>
+                    <p class="text-gray-700 font-bold text-sm md:text-base mb-3">
+                        「きれいになった余韻のまま、美味しい時間を」
+                    </p>
+                    <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                        ブランシェグループ系列サロンをご利用当日のご来店で、名物「こぼれスパークリング」等のプレゼントを企画中！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="cta" class="py-16 md:py-24 bg-gray-900 relative">
+    <div class="absolute inset-0 z-0 opacity-20">
+        <img src="images/salada.png" class="w-full h-full object-cover">
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-16 shadow-2xl text-gray-900">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-5xl font-black mb-4 md:mb-6 italic leading-tight">
+                    仙台駅前でのひとときを、<br>
+                    もっと陽気に、もっと美味しく.
+                </h2>
+                <p class="text-gray-500 font-bold text-sm md:text-base">500℃の窯とスタッフの笑顔がお待ちしております.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
+                <a href="https://tongalliano-sendai.owst.jp/" target="_blank" class="flex flex-col items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white py-6 md:py-8 rounded-2xl md:rounded-3xl transition shadow-xl">
+                    <i class="fas fa-calendar-check text-3xl md:text-4xl mb-1"></i>
+                    <span class="text-xl md:text-2xl font-black">今すぐネット予約</span>
+                    <span class="text-[10px] md:text-xs opacity-80 font-bold">24時間受付・空席確認可能</span>
+                </a>
+                <a href="https://www.instagram.com/tongalliano_sendai/" target="_blank" class="flex flex-col items-center justify-center gap-2 bg-white border-4 border-gray-100 hover:border-italian-green text-gray-800 py-6 md:py-8 rounded-2xl md:rounded-3xl transition shadow-xl">
+                    <i class="fab fa-instagram text-3xl md:text-4xl mb-1 text-pink-500"></i>
+                    <span class="text-xl md:text-2xl font-black">Instagram</span>
+                    <span class="text-[10px] md:text-xs text-gray-400 font-bold">最新の限定情報をチェック</span>
+                </a>
+            </div>
+
+            <div class="border-t border-gray-100 pt-8 md:pt-10">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="text-center md:text-left text-sm md:text-base">
+                        <p class="font-black text-lg">トン・ガリアーノ仙台駅前店</p>
+                        <p class="text-gray-500">ソララプラザビル1F（AER向かい）</p>
+                        <p class="text-gray-500">宮城県仙台市青葉区花京院１丁目２−１５</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-phone-alt text-2xl text-italian-red"></i>
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-400 uppercase">Call Us</p>
+                            <p class="text-xl md:text-2xl font-black font-oswald">022-797-5120</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-gray-100 py-10 md:py-12">
+    <div class="container mx-auto px-4 text-center">
+        <div class="flex justify-center gap-6 md:gap-8 mb-6 md:mb-8">
+            <a href="https://www.instagram.com/tongalliano_sendai/" target="_blank" class="text-gray-400 hover:text-pink-500 transition">
+                <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://tongalliano-sendai.owst.jp/" target="_blank" class="text-gray-400 hover:text-blue-500 transition">
+                <i class="fas fa-globe text-xl"></i>
+            </a>
+        </div>
+        <p class="text-gray-400 text-[10px] md:text-xs font-bold tracking-widest">
+            &copy; TON GALLIANO SENDAI. ALL RIGHTS RESERVED.<br>
+            PRODUCED BY BLANCHE GROUP.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
