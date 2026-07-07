@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三十季 | 仙台一番町の隠れ家ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b38e44;
+            --light-bg: #ffffff;
+            --soft-bg: #f9f8f4;
+            --text-main: #2d2d2d;
+            --text-sub: #666666;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.9;
+            letter-spacing: 0.05em;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+
+        /* 縦書き設定 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 洗練されたフェードイン */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 高級感のあるボタン(ライトモード用) */
+        .btn-luxury {
+            position: relative;
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            overflow: hidden;
+            transition: color 0.4s;
+            z-index: 1;
+            background: transparent;
+        }
+        .btn-luxury:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--gold);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+        .btn-luxury:hover { color: #fff; }
+        .btn-luxury:hover:before { left: 0; }
+
+        @keyframes subtle-zoom {
+            from { transform: scale(1.05); }
+            to { transform: scale(1.15); }
+        }
+        .animate-subtle-zoom {
+            animation: subtle-zoom 20s infinite alternate ease-in-out;
+        }
+
+        /* Google Map Responsive */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ナビゲーション -->
+ <nav class="fixed top-0 w-full z-50 px-6 md:px-8 py-4 md:py-6 flex justify-between items-center md:items-end bg-white/80 backdrop-blur-sm border-b border-zinc-100">
+        <div class="serif text-xl md:text-2xl tracking-widest text-zinc-900">三十季</div>
+        <div class="hidden md:flex space-x-8 text-xs tracking-widest text-zinc-600 uppercase">
+            <a href="#concept" class="hover:text-gold transition">Concept</a>
+            <a href="#menu" class="hover:text-gold transition">Menu</a>
+            <a href="#access" class="hover:text-gold transition">Access</a>
+            <a href="tel:022-797-6078" class="text-gold font-bold">Reservation</a>
+        </div>
+        <!-- スマホ用簡易ナビ（必要に応じて） -->
+        <div class="flex md:hidden space-x-4 text-[10px] tracking-widest text-zinc-600 uppercase font-medium">
+            <a href="#concept" class="hover:text-gold transition">Concept</a>
+            <a href="#menu" class="hover:text-gold transition">Menu</a>
+            <a href="#access" class="hover:text-gold transition">Access</a>
+        </div>
+    </nav>
+
+    <!-- FV -->
+    <header class="relative h-screen flex items-center justify-center">
+        <div class="absolute inset-0 overflow-hidden">
+            <img src="images/pirahu.jpg" alt="煌めくピラフ" class="w-full h-full object-cover animate-subtle-zoom">
+            <div class="absolute inset-0 bg-white/20"></div>
+        </div>      
+        
+        <!-- ナビゲーションの下に配置されるよう、スマホ時はtop-20、PC時はtop-28に調整 -->
+        <div class="absolute top-20 md:top-28 left-6 z-20">
+            <a href="../../../" class="text-[10px] md:text-xs uppercase tracking-widest text-zinc-900 bg-white/60 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 border border-white/40 rounded-full hover:bg-white/80 transition duration-300 flex items-center gap-2">
+                <span class="text-[8px]">←</span> トップページへ戻る
+            </a>
+        </div>
+        
+        <div class="relative z-10 flex flex-col items-center px-4 w-full">
+            <div class="vertical-text serif text-zinc-900 text-2xl md:text-5xl tracking-[0.4em] md:tracking-[0.5em] mb-8 md:mb-12 h-52 md:h-64 flex items-center bg-white/40 backdrop-blur-md p-4 md:p-6 border border-white/50等">
+                <span>和</span>
+                <span class="my-2 md:my-4">と</span>
+                <span>洋</span>
+                <span class="my-2 md:my-4">の</span>
+                <span>邂</span>
+                <span>逅</span>
+            </div>
+            <div class="text-center reveal active">
+                <h1 class="serif text-lg md:text-2xl text-gold tracking-[0.2em] mb-3 md:mb-4 drop-shadow-sm">SATOKI - SENDAI</h1>
+                <p class="text-xs md:text-sm tracking-widest text-zinc-800 font-medium break-all md:break-normal">一番町、三隠の隠れ家です。<br class="block md:hidden">至高のピラフと美酒を。</p>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-zinc-400">
+            <span class="text-[10px] uppercase tracking-widest mb-2">Scroll</span>
+            <div class="w-[1px] h-12 bg-zinc-200"></div>
+        </div>
+    </header>
+
+    <!-- Concept -->
+    <section id="concept" class="py-20 md:py-32 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 mb-12 md:mb-0 reveal flex justify-center md:block">
+                <div class="relative inline-block w-full max-w-sm md:max-w-none px-4 md:px-0">
+                    <img src="images/oden.jpg" alt="料理の盛り付け" class="w-full h-[400px] md:h-[600px] object-cover shadow-2xl">
+                    <div class="absolute -bottom-4 md:-bottom-8 -right-0 md:-right-8 w-48 md:w-64 h-64 md:h-80 bg-stone-100 -z-10"></div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 md:pl-20 flex flex-row-reverse md:flex-row justify-end md:justify-start reveal mt-8 md:mt-0">
+                <div class="vertical-text serif text-xl md:text-3xl text-zinc-800 ml-6 md:ml-0 md:mr-12 leading-relaxed">
+                    運び心を忘れない<br>ビストロの矜持
+                </div>
+                <div class="pt-4 md:pt-12 text-zinc-600 serif text-xs md:text-base leading-loose flex-1 md:flex-none">
+                    <p class="mb-6 md:mb-8">三陸の海の幸、宮城の豊かな土壌。<br>日替わりで仕入れる旬の食材を、<br>フレンチの確かな技法と<br>和の繊細な出汁で仕立てます。</p>
+                    <p class="mb-6 md:mb-8">仙台油麩が洋風おでんに姿を変え、<br>芳醇なバター香る煌めくピラフが<br>今宵の締めくくりを彩る。</p>
+                    <p>枠に囚われない「融合」の煌きを、<br>心ゆくまでご堪能ください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 md:py-32 bg-stone-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <h2 class="serif text-gold text-xs md:text-sm tracking-widest uppercase mb-4 font-bold">Course Menu</h2>
+                <div class="w-8 h-[1px] bg-gold mx-auto mb-6 md:mb-8"></div>
+                <p class="serif text-zinc-800 text-2xl md:text-3xl">至福を愉しむ</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-20">
+                <div class="reveal bg-white p-6 md:p-10 shadow-sm border border-stone-100">
+                    <h3 class="serif text-zinc-800 text-lg md:text-xl border-b border-stone-200 pb-4 mb-6">Seasonal Course</h3>
+                    <div class="flex justify-between items-baseline mb-4">
+                        <span class="text-zinc-800 font-bold text-sm md:text-base">旬の食材おまかせコース</span>                        
+                    </div>
+                    <p class="text-xs text-zinc-500 leading-relaxed">その日最も輝く食材を使用した、三十季のスタンダード。前菜から締めの一皿、デザートまで全7品。</p>
+                </div>
+                <div class="reveal bg-white p-6 md:p-10 shadow-sm border border-stone-100">
+                    <h3 class="serif text-zinc-800 text-lg md:text-xl border-b border-stone-200 pb-4 mb-6">Anniversary</h3>
+                    <div class="flex justify-between items-baseline mb-4">
+                        <span class="text-zinc-800 font-bold text-sm md:text-base">バースデープレート付コース</span>                        
+                    </div>
+                    <p class="text-xs text-zinc-500 leading-relaxed">大切な方との記念日に。メッセージを添えたデザートプレートで輝きの演出をお手伝いいたします。</p>
+                </div>
+            </div>
+
+            <div class="mt-16 md:mt-24 text-center reveal">
+                <p class="text-[11px] md:text-xs text-zinc-400 mb-8 md:mb-12 italic">※日替わりのアラカルトメニューも豊富にご用意しております。</p>
+                <a href="https://www.instagram.com/clown_sendai_" target="_blank" class="btn-luxury serif text-xs md:text-sm tracking-widest font-bold inline-block px-8 py-4 border border-zinc-900 hover:bg-zinc-950 hover:text-white transition">
+                    View Instagram Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-20 md:py-32 bg-stone-100/50 border-y border-stone-200">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <h2 class="serif text-gold text-xs md:text-sm tracking-widest uppercase mb-4 font-bold">Coming Soon</h2>
+                <div class="w-8 h-[1px] bg-gold mx-auto mb-6 md:mb-8"></div>
+                <p class="serif text-zinc-800 text-2xl md:text-3xl">あったらいいなを、形に。</p>
+            </div>
+            
+            <div class="bg-white p-6 md:p-16 shadow-xl rounded-2xl reveal flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12 border border-stone-100">
+                <div class="w-full md:w-1/2">
+                    <span class="text-[10px] md:text-xs text-gold uppercase tracking-widest font-bold block mb-2">New Project</span>
+                    <h3 class="serif text-xl md:text-2xl text-zinc-800 mb-4 md:mb-6 leading-relaxed">三十季のお取り寄せペアリングボックス<br><span class="text-base md:text-lg text-zinc-500 block mt-2">〜出汁と美酒をご自宅で(単発購入可能)〜</span></h3>
+                    <p class="text-xs md:text-sm text-zinc-600 leading-loose mb-6 md:mb-8">
+                        「自宅でも三十季の味を愉しみたい」「特別な日のディナーに極上のペアリングを」という多くのお客様の声にお応えし、オンラインショップを準備中です。<br><br>
+                        定期便のような回数縛りや契約のご心配は一切ございません。必要な時に、必要な分だけ、1回きりの単発購入(オーダー)が可能です。ソムリエ厳選のワインと、それに合わせて仕立てたシェフ特選のアラカルト、さらには大人気「煌めくピラフ」をご自宅で完璧に再現できる特選ミールキットをお届けします。
+                    </p>
+                    <div class="inline-block border-b border-gold pb-1 text-gold serif text-[10px] md:text-xs tracking-widest font-bold">
+                        LAUNCHING IN 2026 WINTER
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 relative">
+                    <img src="images/kit.jpg" alt="ペアリングボックスイメージ" class="w-full h-56 md:h-80 object-cover rounded-xl shadow-lg">
+                    <div class="absolute inset-0 bg-black/10 rounded-xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+                <div class="reveal border-l-2 border-stone-100 pl-6 md:pl-8 py-2 md:py-4">
+                    <div class="text-gold text-xs mb-3 tracking-tighter">★★★★★</div>
+                    <p class="text-xs md:text-sm text-zinc-600 italic mb-4 md:mb-6">「思いがけず美味しいクラフトビールに出逢えて幸せ。煌めくピラフがとても良いお味でした。」</p>
+                    <span class="text-[9px] md:text-[10px] text-zinc-400 uppercase tracking-widest">— 2022.10 Dinner</span>
+                </div>
+                <div class="reveal border-l-2 border-stone-100 pl-6 md:pl-8 py-2 md:py-4" style="transition-delay: 0.1s;">
+                    <div class="text-gold text-xs mb-3 tracking-tighter">★★★★★</div>
+                    <p class="text-xs md:text-sm text-zinc-600 italic mb-4 md:mb-6">「急な申し出により、コース料理にしていただき感謝。新しい店舗でも応援しています。」</p>
+                    <span class="text-[9px] md:text-[10px] text-zinc-400 uppercase tracking-widest">— Guest Review</span>
+                </div>
+                <div class="reveal border-l-2 border-stone-100 pl-6 md:pl-8 py-2 md:py-4" style="transition-delay: 0.2s;">
+                    <div class="text-gold text-xs mb-3 tracking-tighter">★★★★</div>
+                    <p class="text-xs md:text-sm text-zinc-600 italic mb-4 md:mb-6">「フレンチと和食の融合。雰囲気も良い。美味しいお店に出会えました。」</p>
+                    <span class="text-[9px] md:text-[10px] text-zinc-400 uppercase tracking-widest">— Guest Review</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section with Google Map -->
+    <section id="access" class="py-20 md:py-32 bg-stone-50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <h2 class="serif text-2xl md:text-3xl text-zinc-900 tracking-widest mb-4">Access</h2>
+                <p class="text-gold serif text-xs md:text-sm tracking-widest">三十季への道のり</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start mb-12 md:mb-20">
+                <div class="reveal">
+                    <h4 class="text-gold text-xs uppercase tracking-widest mb-4 md:mb-6 border-b border-stone-200 pb-2 font-bold">Information</h4>
+                    <address class="not-italic text-xs md:text-sm text-zinc-600 space-y-4 md:space-y-6">
+                        <div>
+                            <p class="text-zinc-900 font-bold mb-1 underline decoration-gold underline-offset-4">住所</p>
+                            <p>〒980-0811<br>宮城県仙台市青葉区一番町2丁目5-15 MKビル 3階</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-900 font-bold mb-1 underline decoration-gold underline-offset-4">最寄り駅</p>
+                            <p>青葉通一番町駅 徒歩2分</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-900 font-bold mb-1 underline decoration-gold underline-offset-4">電話番号</p>
+                            <p>Tel. 022-797-6078</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-900 font-bold mb-1 underline decoration-gold underline-offset-4">定休日</p>
+                            <p>火曜日</p>
+                        </div>
+                    </address>
+                </div>
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <h4 class="text-gold text-xs uppercase tracking-widest mb-4 md:mb-6 border-b border-stone-200 pb-2 font-bold">Location Map</h4>
+                    <div class="shadow-xl border border-stone-200 bg-white p-1">
+                        <!-- Google Maps Embed -->
+                        <div class="map-container relative aspect-video md:aspect-auto md:h-80 w-full overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.888874109584!2d140.86916747478037!3d38.2588832841281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2918b942dbdd%3A0x2490944ecf9504c6!2z5LiJ5Y2B5a2j!5e0!3m2!1sja!2sjp!4v1772589800510!5m2!1sja!2sjp" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mt-12 md:mt-16">
+                <a href="tel:022-797-6078" class="bg-zinc-900 text-white px-8 md:px-12 py-4 md:py-5 serif text-xs md:text-sm tracking-widest hover:bg-gold transition shadow-lg text-center">
+                    Reserve by Phone
+                </a>
+                <a href="https://www.instagram.com/clown_sendai_" target="_blank" class="bg-white border border-zinc-900 text-zinc-900 px-8 md:px-12 py-4 md:py-5 serif text-xs md:text-sm tracking-widest hover:bg-zinc-50 transition text-center">
+                    Visit Instagram
+                </a>
+            </div>
+            
+            <div class="mt-20 md:mt-32 text-center text-zinc-400 text-[9px] md:text-[10px] tracking-[0.3em] uppercase">
+                &copy; SATOKI SENDAI. All Rights Reserved.
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // スクロール時に要素を表示させるスクリプト
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
