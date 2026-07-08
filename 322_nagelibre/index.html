@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガレージハウス カフェレストラン | 北仙台の隠れ家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a5d4b;
+            --accent: #c69c6d;
+            --bg-creme: #f9f7f2;
+            --text-main: #2c3327;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-creme);
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+
+        /* FV Animation */
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)),
+                        url('images/yasai.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .gold-border {
+            border: 1px solid var(--accent);
+        }
+
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+   <header class="hero-bg flex flex-col justify-end items-center text-white pb-16 px-4 relative overflow-hidden min-h-[80vh]">
+    <div class="absolute top-6 left-6 md:top-10 md:left-10 border-l-2 border-white pl-4 py-2">
+        <p class="text-xs md:text-sm tracking-widest serif">SINCE 2011</p>
+        <p class="text-[10px] md:text-xs opacity-70">NORTH SENDAI</p>
+    </div>
+
+    <div class="max-w-4xl w-full text-center z-10 mb-10">
+        <span class="inline-block px-4 py-1 border border-white/50 rounded-full text-xs mb-4 tracking-widest bg-black/20 backdrop-blur-sm">2025.03 START RE-OPEN</span>
+        <h1 class="text-3xl md:text-5xl font-black mb-6 leading-tight serif tracking-tighter">
+            再会を祝う、<br>
+            一皿の「春」
+        </h1>
+        <p class="text-base md:text-2xl mb-10 font-light opacity-90 leading-relaxed">
+            契約農家が育む生命力溢れる野菜と、<br>
+            精魂を傾けた創作フレンチ。
+        </p>
+        <a href="#booking" class="inline-block bg-[#c69c6d] hover:bg-[#b58b5c] text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl font-bold transition-all shadow-2xl hover:-translate-y-1 floating">
+            お席のご予約はこちら
+        </a>
+    </div>
+    <div class="mb-4 animate-bounce opacity-50">
+        <p class="text-xs tracking-tighter">SCROLL</p>
+    </div>
+</header>
+
+<section class="section-padding py-16 md:py-24 bg-white relative">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12 md:mb-20 scroll-reveal">
+            <span class="text-[#c69c6d] font-bold tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm block mb-4">THREE REASONS</span>
+            <h2 class="text-2xl md:text-4xl font-bold serif border-b-2 border-[#f0e6d2] inline-block pb-4">選ばれ続ける3つの理由</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+            <div class="text-center scroll-reveal" style="transition-delay: 0.1s;">
+                <div class="mb-6 overflow-hidden rounded-2xl aspect-square bg-gray-100 shadow-xl">
+                    <img src="images/french.jpg" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-3 serif">01. 契約農家の素材美</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">低農薬野菜の持ち味を最大限に活かした創作フレンチ。素材の甘みと風味が口いっぱいに広がります。</p>
+            </div>
+            <div class="text-center scroll-reveal" style="transition-delay: 0.2s;">
+                <div class="mb-6 overflow-hidden rounded-2xl aspect-square bg-gray-100 shadow-xl">
+                    <img src="images/pasta.png" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-3 serif">02. 圧倒的な高揚感</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">コストパフォーマンスを追求しながら、一流の技術で感動の一皿を提供します。</p>
+            </div>
+            <div class="text-center scroll-reveal" style="transition-delay: 0.3s;">
+                <div class="mb-6 overflow-hidden rounded-2xl aspect-square bg-gray-100 shadow-xl">
+                    <img src="images/store.png" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-3 serif">03. 寛やかな時間</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">JAZZが流れる上質な空間。カウンター席もあり、お一人様でも自宅のようにリラックスしていただけます。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-100 texture-bg overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div class="w-full md:w-1/2 relative scroll-reveal">
+            <div class="absolute -top-4 -left-4 w-full h-full border-2 border-[#c69c6d] -z-10 rounded-2xl"></div>
+            <img src="images/hukinotou.jpg" class="rounded-2xl shadow-2xl w-full">
+            <div class="mt-6 md:absolute md:-bottom-8 md:-right-8 bg-white p-6 rounded-lg shadow-xl">
+                <p class="serif italic text-[#c69c6d] text-base md:text-lg font-bold">"研鑽の果てに辿り着いた、<br>昔の苦みと甘み。"</p>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2 scroll-reveal">
+            <h2 class="text-2xl md:text-4xl font-black mb-6 md:mb-8 serif leading-snug">待ちに待った再開。<br>磨き上げられた一皿.</h2>
+            <div class="space-y-4 md:space-y-6 text-gray-700 leading-loose text-sm md:text-base">
+                <p>
+                    病気休業という長い静寂を経て、2025年3月、私たちは再び厨房に立ちました。
+                    闘病中も研究と研鑽を重ねたシェフが辿り着いたのは、フキノトウのフリットのような、
+                    日常にありふれた素材の「真の芳醇さ」です。
+                </p>
+                <p>
+                    「味が落ちていないか」という不安は、最初の一口で感動へと変わるでしょう。
+                    一品一品に精魂を傾け、丁寧にお作りするため、完全予約制。
+                    ゆっくりと流れる時間の中で、至福のパスタをご堪能ください。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12 md:mb-16 scroll-reveal">
+            <h2 class="text-2xl md:text-3xl font-bold serif mb-2">Voice</h2>
+            <p class="text-gray-400 tracking-widest text-xs md:text-sm italic">お客様の声</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="bg-stone-50 p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm scroll-reveal">
+                <div class="flex text-yellow-500 mb-4">★★★★★</div>
+                <p class="text-sm mb-6 leading-relaxed italic">「どれも感動を新たにした。フキノトウがこんなにもうまいものだったとは。春の喜びと再開の喜びがともにこもっているように思えた。」</p>
+                <p class="text-xs font-bold text-gray-500">— 50代 男性 常連様</p>
+            </div>
+            <div class="bg-stone-50 p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm scroll-reveal">
+                <div class="flex text-yellow-500 mb-4">★★★★</div>
+                <p class="text-sm mb-6 leading-relaxed italic">「JAZZテイストなBGMで落ち着いた空間。上品なのにどこか自宅のようなリラックスした雰囲気です。パスタもコンポートもとても美味しい。」</p>
+                <p class="text-xs font-bold text-gray-500">— 50代 ご夫妻様</p>
+            </div>
+            <div class="bg-stone-50 p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm scroll-reveal">
+                <div class="flex text-yellow-500 mb-4">★★★★★</div>
+                <p class="text-sm mb-6 leading-relaxed italic">「テーブルに置かれたお料理全てで、目で楽しみ、舌で満足。次の予約はいつにしようかなとワクワクしながらお店を出ます。北仙台の大好きなお店。」</p>
+                <p class="text-xs font-bold text-gray-500">— 仙台在住 ご家族様</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-50 border-t border-b border-stone-200 texture-bg">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <span class="text-[#c69c6d] font-bold tracking-[0.2em] md:tracking-[0.3em] text-xs block mb-4 uppercase">Coming Soon</span>
+        <h2 class="text-2xl md:text-4xl font-bold serif mb-6 tracking-tight">おうちで味わう、NAGELIBREの余韻。</h2>
+        <div class="w-16 h-[2px] bg-[#c69c6d] mx-auto mb-8"></div>
+
+        <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12 text-sm">
+            「仙台へなかなか来られない遠方の大切な人へ贈りたい」「今日おうちで待つ家族と一緒に楽しみたい」
+            そんなお客様の温かい声にお応えし、ご自宅やお土産で本格創作フレンチのエッセンスを楽しめるサービスを現在企画・開発中です。
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-100">
+                <div class="w-12 h-12 bg-[#f9f7f2] rounded-2xl flex items-center justify-center text-[#c69c6d] mx-auto mb-4">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5z"></path></svg>
+                </div>
+                <h3 class="text-base md:text-lg font-bold mb-3 serif">焼き菓子のテイクアウト & お取り寄せ</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">シェフ自慢のオリジナル焼き菓子を真空パックでお届けできるように準備しています。</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-100">
+                <div class="w-12 h-12 bg-[#f9f7f2] rounded-2xl flex items-center justify-center text-[#c69c6d] mx-auto mb-4">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 22.08 12 12 3 6.92 3 17 12 22.08"></polygon></svg>
+                </div>
+                <h3 class="text-base md:text-lg font-bold mb-3 serif">特選フレンチ・パスタソースキット</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">お店で一番人気のパスタや、契約農家の素材を凝縮したスープをご自宅で再現できるミールキット。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="py-16 md:py-24 bg-[#4a5d4b] text-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16">
+        <div class="scroll-reveal">
+            <h2 class="text-2xl md:text-3xl font-bold serif mb-8 md:mb-10 border-l-4 border-[#c69c6d] pl-6">Information</h2>
+            <div class="space-y-4 md:space-y-6 text-sm">
+                <div class="flex gap-4 border-b border-white/10 pb-4">
+                    <span class="font-bold w-20 opacity-60">住所</span>
+                    <p>〒981-0913 宮城県仙台市青葉区昭和町2−23</p>
+                </div>
+                <div class="flex gap-4 border-b border-white/10 pb-4">
+                    <span class="font-bold w-20 opacity-60">アクセス</span>
+                    <p>北仙台駅 徒歩5分 <br> <span class="text-xs opacity-70">※近隣のコインパーキングをご利用ください</span></p>
+                </div>
+                <div class="flex gap-4 border-b border-white/10 pb-4">
+                    <span class="font-bold w-20 opacity-60">ランチ</span>
+                    <p>12:00〜14:00</p>
+                </div>
+            </div>
+            <div class="mt-8 md:mt-10">
+                <div class="map-container shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.0063355666503!2d140.86592057478157!3d38.27934598293669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89877c3a3fa9c5%3A0x3a8c398e87f35307!2z77yu77yh77yn77yl77ys77yp77yi77yy77ylIO-8q--8oe-8re-8qe-8ue-8oe-8re-8oQ!5e0!3m2!1sja!2sjp!4v1772584965275!5m2!1sja!2sjp" class="w-full h-64" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-reveal">
+            <h2 class="text-2xl md:text-3xl font-bold serif mb-8 md:mb-10 border-l-4 border-[#c69c6d] pl-6">Reservation</h2>
+            <div class="bg-white text-gray-900 p-6 md:p-8 rounded-3xl shadow-2xl">
+                <p class="text-center font-bold text-lg md:text-xl mb-6">ネットまたはお電話で承ります</p>
+                <a href="http://r.gnavi.co.jp/t083100/" target="_blank" class="block w-full bg-[#c69c6d] text-white text-center py-4 md:py-5 rounded-xl font-black text-lg mb-4">
+                    ぐるなびで今すぐ予約
+                </a>
+                <a href="tel:05054926807" class="block w-full border-2 border-[#c69c6d] text-[#c69c6d] text-center py-4 md:py-5 rounded-xl font-bold text-lg mb-8">
+                    050-5492-6807
+                </a>
+
+                <div class="flex justify-center mb-8">
+                    <a href="https://www.instagram.com/nagelibre/" target="_blank" class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 rounded-full border border-stone-300 flex items-center justify-center text-[#c69c6d]">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+                        </div>
+                        <span class="text-xs font-bold text-gray-500">Instagram</span>
+                    </a>
+                </div>
+
+                <div class="space-y-3 text-xs bg-stone-100 p-4 md:p-6 rounded-xl border-t-4 border-[#c69c6d]">
+                    <p class="flex items-center gap-2">スタンプ3つで限定デザート進呈中</p>
+                    <p class="flex items-center gap-2">各種カード・PayPay対応</p>
+                    <p class="flex items-center gap-2">貸切対応可（8〜12名個室あり）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="py-10 text-center bg-stone-100 text-gray-400 text-[10px] md:text-xs">
+    <p class="mb-2">ガレージハウス カフェレストラン</p>
+    <p>© 2025 NAGELIBRE KAMIYAMA All Rights Reserved.</p>
+</footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
