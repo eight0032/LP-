@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>和洋ビストロ 勝 まさる | 仙台・青葉区の創作ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --gold: #c5a059;
+            --dark-gold: #a67c37;
+            --black-matte: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fdfaf3;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+
+        .text-shadow-lg {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .gold-gradient {
+            background: linear-gradient(45deg, #c5a059, #f4e1a1, #c5a059);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .image-reveal {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .image-reveal:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-gold {
+            background: linear-gradient(to right, #c5a059, #a67c37);
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            opacity: 0.9;
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* 地図のレスポンシブ対応 - 高さを強調 */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-top: 60%; /* PC/タブレットで横長かつ十分な高さを確保 */
+        }
+        @media (max-width: 768px) {
+            .map-container {
+                padding-top: 100%; /* スマホでは正方形に近い形で見やすく */
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <!-- 1. FVエリア -->
+    <header class="relative h-[90vh] md:h-screen flex items-center bg-black overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/wayou.png" alt="[炭火焼きの炎]" class="w-full h-full object-cover opacity-70">
+        </div>
+
+        <div class="relative z-10 pl-8 md:pl-24 text-white max-w-4xl">
+            <p class="serif text-xl md:text-2xl mb-4 tracking-[0.3em] font-light">仙台・雨宮町</p>
+            <div class="w-16 h-1 bg-gold mb-8"></div>
+            <h2 class="text-5xl md:text-8xl font-black serif mb-6 tracking-tighter">和洋ビストロ 勝</h2>
+            <p class="text-lg md:text-xl font-light opacity-90 max-w-lg leading-loose">
+                和食の繊細さと、洋食の躍動。<br>
+                二人の職人が繰りなす、<br>
+                一皿に込めた至高の旋律。
+            </p>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white text-center">
+            <p class="text-[10px] tracking-[0.5em] mb-2 uppercase opacity-60">Scroll</p>
+            <div class="w-px h-16 bg-gradient-to-b from-gold to-transparent mx-auto"></div>
+        </div>
+    </header>
+
+    <!-- 2. 固定CTA -->
+    <div class="fixed bottom-0 left-0 w-full z-[100] md:bottom-8 md:left-auto md:right-8 md:w-auto p-4 md:p-0">
+        <div class="flex flex-row md:flex-col gap-2 shadow-2xl rounded-lg overflow-hidden md:rounded-2xl">
+            <a href="tel:0223413977" class="flex-1 bg-white text-black px-6 py-4 font-bold text-center flex items-center justify-center gap-2 border-r md:border-r-0 md:border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <i class="fas fa-phone text-gold"></i> <span class="hidden md:inline">電話で予約</span><span class="md:hidden">電話</span>
+            </a>
+            <a href="https://wayoubistromasaru.com/" target="_blank" class="flex-1 btn-gold text-white px-8 py-4 font-bold text-center flex items-center justify-center gap-2">
+                <i class="fas fa-calendar-alt"></i> <span class="hidden md:inline">公式サイト・予約</span><span class="md:hidden">予約</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. コンセプト -->
+    <section class="py-24 px-4 bg-[#fdfaf3] relative overflow-hidden">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div class="w-full md:w-1/2 relative">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-gold/10 rounded-full blur-3xl"></div>
+            <div class="relative z-10 aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                <img src="images/fish.jpg" alt="[職人の手仕事]" class="w-full h-full object-cover image-reveal">
+            </div>
+        </div>
+        <div class="w-full md:w-1/2">
+            <span class="text-gold serif tracking-widest text-sm">— CONCEPT —</span>
+            <h2 class="text-4xl md:text-5xl font-bold serif mt-4 mb-8 leading-tight">
+                食材に敬意を、調理に魂を。
+            </h2>
+            <p class="text-lg leading-loose text-gray-700 mb-6">
+                「勝（まさる）」の厨房には、妥協がありません。漁師から届く朝獲れの魚、農家が手塩にかけた野菜。
+            </p>
+            <p class="text-lg leading-loose text-gray-700">
+                和食の板前は素材の輪郭を際立たせ、洋食のシェフはソースに深みを宿す。相反する二つの技が、一皿の上で共鳴し、これまでにない感動を創出します。
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- 4. イチオシ逸品 -->
+    <section class="py-24 bg-black text-white relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-black serif mb-4 gold-gradient">極みの逸品。</h2>
+                <div class="w-24 h-px bg-gold mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="bg-gold text-white px-3 py-1 text-xs mb-4 inline-block">RECOMMENDED</span>
+                    <h3 class="text-3xl font-bold serif mb-6">和洋折衷・松花堂弁当</h3>
+                    <p class="text-gray-400 leading-loose mb-8">
+                        刺身、一口ヒレカツ、茶碗蒸し、牛頬肉の赤ワイン煮。和洋の境界を軽やかに飛び越える、当店一番人気のランチメニューです。一品一品に職人のプライドが宿ります。
+                    </p>
+                    <div class="flex items-baseline gap-4 mb-8">                        
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <img src="images/bento.jpg" alt="[松花堂弁当]" class="w-full rounded shadow-2xl border border-gray-800">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩み解決セクション -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold serif mb-16">「誰を連れてきても喜ばれる」<br>その理由。</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border-t border-gray-100 flex flex-col items-center">
+                    <div class="text-gold text-4xl mb-6"><i class="fas fa-users"></i></div>
+                    <h4 class="font-bold mb-4">多彩な客層</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">カウンターからソファー席まで。デート、会食、お一人様。あらゆるシーンに寄り添います。</p>
+                </div>
+                <div class="p-8 border-t border-gray-100 flex flex-col items-center">
+                    <div class="text-gold text-4xl mb-6"><i class="fas fa-utensils"></i></div>
+                    <h4 class="font-bold mb-4">和洋の共演</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">魚が食べたい人も、肉が食べたい人も。専門シェフがなたの我儘に応えます。</p>
+                </div>
+                <div class="p-8 border-t border-gray-100 flex flex-col items-center">
+                    <div class="text-gold text-4xl mb-6"><i class="fas fa-map-marked-alt"></i></div>
+                    <h4 class="font-bold mb-4">良好なアクセス</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">北仙台駅徒歩7分。静かな雨宮町で、都会の喧騒を忘れるひとときを。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ -->
+    <section class="py-24 bg-[#1a1a1a] text-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold serif text-center mb-16">本当は教えたくない店。</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-black/50 p-8 border border-white/10 rounded-sm">
+                    <div class="flex gap-1 text-gold mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic leading-loose opacity-80">「仙台でこのレベルの料理を出せるのは正直ビックリ。和食も洋食も楽しめる。毎日オーナーが食材を見てメニューを考えているそうで、素材、味付け、盛り付けなど文句なしです。」</p>
+                    <p class="mt-6 text-xs text-gold">— Google Map クチコミより</p>
+                </div>
+                <div class="bg-black/50 p-8 border border-white/10 rounded-sm">
+                    <div class="flex gap-1 text-gold mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic leading-loose opacity-80">「すべての料理に完璧な味つけがほどこされていて、完成度が高いです。魚の骨蒸し造り、ビーフシチュー、甘エビの出汁の味噌汁…。満足の内容です。また伺いたい。」</p>
+                    <p class="mt-6 text-xs text-gold">— Google Map クチコミより</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON（あればいいなと思うサービス） -->
+   <section class="py-24 px-4 bg-[#f4f1ea]">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold serif tracking-widest text-sm">— COMING SOON —</span>
+                <h2 class="text-4xl font-black serif mt-4 mb-4">「あればいいな」を、カタチに。</h2>
+                <p class="text-gray-600 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
+                    皆様の「勝でもっとこんな体験がしたい」という声にお応えする、企画・開発中の新たなサービスをご案内します。
+                </p>
+                <div class="w-16 h-px bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <!-- サービス案 1: オンライン冷凍ミールキット -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/pakkingu.jpg" alt="[おうちビストロミールキット]" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-[#1a1a1a] text-white text-xs px-3 py-1 rounded-full font-bold tracking-wider">ONLINE STORE</span>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold serif mb-4 text-[#1a1a1a]">「おうちで、勝（まさる）。」<br>極上冷凍ミールキットの全国配送</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                「遠方の家族に食べさせたい」「自宅での特別な記念日に使いたい」というご要望にお応えし、シェフ特選の「牛薫肉の赤ワイン煮」や「甘エビ出汁の特選和風ソース」をご自宅の冷凍だけで再現できるパッキング。贅沢おうちごはんをお届けします。
+                            </p>
+                        </div>
+                        <p class="text-gold font-bold text-xs uppercase tracking-widest border-t border-gray-100 pt-4 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span> 2026年秋・サービス開始予定
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 特典 / インフォメーション -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <img src="images/dessert.png" alt="[ステーキ]" class="w-full rounded shadow-2xl">
+            </div>
+            <div>
+                <span class="text-gold font-bold">LIMITED OFFER</span>
+                <h2 class="text-4xl font-bold serif mt-4 mb-6 underline decoration-gold decoration-4 underline-offset-8">ご来店特典</h2>
+                <p class="text-lg leading-loose mb-8">
+                    Instagramをフォロー、またはハッシュタグ投稿をしていただいたお客様に、<span class="font-bold text-gold">シェフ特選デザート</span>をサービスいたします。
+                </p>
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gold">
+                    <p class="font-bold mb-2 flex items-center gap-2 text-xl">
+                        <i class="fab fa-instagram"></i> @wayoubistromasaru
+                    </p>
+                    <a href="https://www.instagram.com/wayoubistromasaru/#" target="_blank" class="text-gold font-bold hover:underline">公式アカウントをチェック →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-20 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 border-b border-gray-800 pb-16">
+            <!-- 店舗概要 -->
+            <div class="col-span-1">
+                <h2 class="text-3xl font-bold serif mb-8">和洋ビストロ 勝</h2>
+                <p class="opacity-60 text-sm leading-loose mb-8">
+                    旬の食材と、和洋の技法。<br>
+                    唯一無二の美食体験を、<br>
+                    仙台・雨宮町から。
+                </p>
+                <div class="space-y-4 text-sm">
+                    <p><i class="fas fa-map-marker-alt text-gold mr-2 w-4"></i> 〒981-0914 宮城県仙台市青葉区堤通雨宮町4−11</p>
+                    <p><i class="fas fa-phone text-gold mr-2 w-4"></i> 022-341-3977</p>
+                    <p><i class="fas fa-clock text-gold mr-2 w-4"></i> 定休日：火曜日・水曜日</p>
+                    <p><i class="fas fa-car text-gold mr-2 w-4"></i> 駐車場：近隣コインパーキング利用</p>
+                </div>
+            </div>
+
+            <!-- 地図エリア（PC時に2カラム分使用して大きく表示） -->
+            <div class="col-span-1 md:col-span-2">
+                <h3 class="font-bold text-gold mb-6 tracking-widest uppercase text-sm">Location / Access map</h3>
+                <div class="map-container bg-gray-800 rounded-lg shadow-2xl border border-white/10 overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.088254611559!2d140.8653462747815!3d38.27744698304733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89870165a3ecb3%3A0x4b43ea37d44604f1!2z5ZKM5rSL44OT44K544OI44OtIOWLnSDjgb7jgZXjgos!5e0!3m2!1sja!2sjp!4v1772515591184!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] tracking-[0.2em] opacity-40 uppercase">
+            <p>&copy; 和洋ビストロ 勝 まさる</p>
+            <div class="flex gap-8">
+                <a href="https://wayoubistromasaru.com/" class="hover:text-gold">Official Site</a>
+                <a href="https://www.instagram.com/wayoubistromasaru/#" class="hover:text-gold">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
