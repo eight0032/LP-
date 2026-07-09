@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ルイーダのワイン食堂 | 仙台・榴ヶ岡の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-wine: #5c1414;
+            --color-gold: #b3924d;
+            --color-bg: #f9f6f2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: #2c2420;
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .en-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .bg-wine { background-color: var(--color-wine); }
+        .text-wine { color: var(--color-wine); }
+        .border-wine { border-color: var(--color-wine); }
+        .bg-gold { background-color: var(--color-gold); }
+
+        /* 装飾的なライン */
+        .deco-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .deco-line::before, .deco-line::after {
+            content: "";
+            height: 1px;
+            width: 50px;
+            background-color: var(--color-gold);
+        }
+
+        /* 料理画像のシズル感演出 */
+        .img-zoom {
+            overflow: hidden;
+        }
+        .img-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ふわっと浮き上がるアニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* マップのレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            filter: grayscale(0.3) contrast(1.1);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- FVエリア -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="images/pasta.png" alt="真夜のソテークローズアップ" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div class="relative z-10 text-center text-white px-4 fade-in">
+        <span class="en-title text-gold text-2xl md:text-3xl block mb-2">Luida no Wain Shokudo</span>
+        <div class="deco-line mb-6">
+            <span class="text-sm tracking-[0.3em] uppercase">Sendai Tsutsujigaoka</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-wider">
+            五感を揺さぶる、<br>
+            一期一会の創作イタリアン
+        </h1>
+        <p class="text-base md:text-2xl mb-12 font-light">
+            リストのないワインと、<br> あなたのために仕立てる即興料理
+        </p>
+        <a href="#concept" class="inline-block border border-white px-8 md:px-12 py-3 md:py-4 hover:bg-white hover:text-black transition-all duration-300 tracking-widest text-sm">
+            VIEW MORE
+        </a>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+        <i class="fas fa-chevron-down text-xl"></i>
+    </div>
+</section>
+
+<div id="cta" class="sticky top-0 z-50 bg-wine text-white py-3 shadow-2xl">
+    <div class="container mx-auto px-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="hidden md:block">
+            <h2 class="text-lg font-bold">限定特典配布中</h2>
+            <p class="text-xs opacity-70 italic">今すぐ公式Instagramフォローで最新の空席情報をチェック</p>
+        </div>
+        <div class="flex gap-2 w-full md:w-auto">
+            <a href="https://www.instagram.com/luida.winebar/" target="_blank" class="flex-1 md:flex-none bg-gradient-to-r from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90 text-white font-bold py-3 px-4 rounded text-center text-xs md:text-sm transition-all flex items-center justify-center gap-2">
+                <i class="fab fa-instagram text-lg"></i> Instagram
+            </a>
+            <a href="tel:0222570307" class="flex-1 md:flex-none bg-gold hover:opacity-90 text-white font-bold py-3 px-4 rounded text-center text-xs md:text-sm transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-phone"></i> 022-257-0307
+            </a>
+        </div>
+    </div>
+</div>
+
+<section id="concept" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+        <span class="en-title text-gold text-2xl mb-4 block">Concept</span>
+        <h2 class="text-2xl md:text-4xl font-bold mb-10 leading-relaxed">
+            「本当は秘密にしたい」<br>
+            けれど、語らずにはいられない味。
+        </h2>
+        <div class="space-y-6 text-gray-600 leading-loose tracking-widest text-sm md:text-base px-2">
+            <p>榴ヶ岡駅から徒歩1分。賑わいの先に佇むその扉を開けば、そこには大人の好奇心を刺激する「秘密基地」が広がっています。</p>
+            <p>私たちが大切にしているのは、レシピではなく「対話」。宮城の豊かな食材と、その日のあなたの気分。</p>
+            <p>型にはまらない即興の創作料理と、リストのないワインが、今夜、あなただけの特別な物語を紡ぎ出します。</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-24">
+            <div class="img-zoom rounded-2xl shadow-2xl overflow-hidden">
+                <img src="images/madai.jpg" alt="真鯛のソテー" class="w-full h-[300px] md:h-[500px] object-cover">
+            </div>
+            <div class="md:pl-10">
+                <span class="text-gold font-bold tracking-widest border-b border-gold pb-2 text-sm">RECOMMENDED</span>
+                <h3 class="text-2xl md:text-3xl font-bold mt-6 mb-4">香ばしく、しっとりと。<br>【真鯛のソテー】</h3>
+                <p class="text-gray-600 mb-6 text-sm md:text-base">
+                    その日一番の真鯛を、皮目はパリッと、身は驚くほどふっくらと。彩り豊かな季節の野菜を添えて、まるでアートのような一皿に仕上げます。ソースの香りが鼻をくすぐる、ルイーダ渾身の逸品です。
+                </p>
+                <ul class="text-sm text-gray-500 space-y-2 mb-8">
+                    <li><i class="fas fa-check text-gold mr-2"></i> 地元宮城の食材を厳選</li>
+                    <li><i class="fas fa-check text-gold mr-2"></i> 繊細な火入れが生む究極の食感</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center flex-row-reverse">
+            <div class="img-zoom rounded-2xl shadow-2xl overflow-hidden md:order-2">
+                <img src="images/paring.png" alt="ワインペアリング" class="w-full h-[300px] md:h-[500px] object-cover">
+            </div>
+            <div class="md:pr-10 md:order-1 text-left md:text-right">
+                <span class="text-gold font-bold tracking-widest border-b border-gold pb-2 text-sm">DRINK PAIRING</span>
+                <h3 class="text-2xl md:text-3xl font-bold mt-6 mb-4">リストのないワイン、<br>運命の一杯。</h3>
+                <p class="text-gray-600 mb-6 text-sm md:text-base">
+                    お客様の好みを伺い、その日の料理に最も寄り添う一本をご提案します。ワインリストという枠を取り払うことで、これまでにない味覚の発見と驚きをお届けします。
+                </p>
+                <div class="flex flex-wrap justify-start md:justify-end gap-4">
+                    <span class="bg-white px-4 py-2 text-xs border border-gray-200">ソムリエ厳選</span>
+                    <span class="bg-white px-4 py-2 text-xs border border-gray-200">常時数十種</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-wine text-white overflow-hidden">
+    <div class="container mx-auto px-4 text-center mb-10 md:mb-16">
+        <span class="en-title text-gold text-2xl block mb-2">Voice</span>
+        <h2 class="text-2xl md:text-3xl font-bold">隠れ家を愛する方々より</h2>
+    </div>
+    <div class="flex flex-col md:flex-row justify-center gap-8 px-4 max-w-5xl mx-auto">
+        <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-lg border border-white/20">
+            <div class="text-gold mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-sm italic mb-4 leading-loose">「ここでしか食べれない料理だと思う。とにかく旨みが凄い。必ず頼むのはケークサレ。トリッパとペペロンチーノもオススメ。」</p>
+            <span class="text-xs opacity-60">— 常連のA様</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-lg border border-white/20">
+            <div class="text-gold mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="text-sm italic mb-4 leading-loose">「2階席の大きなソファやテラス席は秘密基地のような楽しさ。スタッフの皆さんの明るく親近感のある接客も訪れる楽しみの一つです。」</p>
+            <span class="text-xs opacity-60">— ご家族でのご利用 B様</span>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-[#f0ede9] relative overflow-hidden">
+    <div class="container mx-auto px-4 max-w-5xl text-center relative z-10">
+        <span class="en-title text-gold text-2xl mb-2 block tracking-widest">Coming Soon</span>
+        <div class="deco-line mb-10">
+            <span class="text-sm tracking-[0.2em] uppercase text-gray-500">あればいいなを、カタチに。</span>
+        </div>
+        <div class="bg-white rounded-3xl p-6 md:p-16 shadow-xl border border-gold/20">
+            <span class="bg-wine text-white text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-full uppercase inline-block mb-6">New Private Experience</span>
+            <h3 class="text-xl md:text-4xl font-bold mb-6 text-[#2c2420] leading-snug">
+                好きな音楽と、極上の即興。<br>
+                4名から貸切る「大人の隠れ家プラン」始動。
+            </h3>
+            <p class="text-gray-600 text-sm md:text-base leading-loose mb-10">
+                「特別な集まりを、もっと身内で気兼ねなく楽しみたい」という声にお応えします。<br>
+                2階ソファ席・テラス席限定で、「4名様からの少人数」貸切をスタート。
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 text-left border-t border-gray-100 pt-8">
+                <div class="p-2">
+                    <div class="text-gold text-xl mb-2"><i class="fas fa-sliders-h"></i></div>
+                    <h4 class="font-bold text-sm mb-1 text-[#2c2420]">BGMを完全ジャック</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">専用スピーカーをお貸出し。お好みのBGMで自宅のように。</p>
+                </div>
+                <div class="p-2">
+                    <div class="text-gold text-xl mb-2"><i class="fas fa-utensils"></i></div>
+                    <h4 class="font-bold text-sm mb-1 text-[#2c2420]">テーマに合わせた即興</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">「ワインに合うこってりめ」など、グループの好みに即興で対応。</p>
+                </div>
+                <div class="p-2">
+                    <div class="text-gold text-xl mb-2"><i class="fas fa-music"></i></div>
+                    <h4 class="font-bold text-sm mb-1 text-[#2c2420]">音楽と食事のシンクロ</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">BGMからインスピレーションを得た限定おつまみプレートも登場。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white relative">
+    <div class="container mx-auto px-4 max-w-3xl">
+        <div class="bg-[#fdfaf6] border border-gold/30 p-8 md:p-16 rounded-3xl text-center shadow-sm relative">
+            <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold text-white px-6 py-2 rounded-full font-bold tracking-widest text-xs">GIFT FOR YOU</div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-wine">初回限定:シェフからの贈り物</h2>
+            <p class="text-lg md:text-xl font-serif mb-8 text-gray-700">【シェフおまかせ前菜一品】をプレゼント</p>
+            <div class="bg-white p-4 rounded-2xl mb-8 shadow-inner inline-block">
+                <img src="images/zensai.png" alt="前菜特典" class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full mx-auto">
+            </div>
+            <a href="https://www.instagram.com/luida.winebar/" target="_blank" class="block w-full bg-gradient-to-r from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white font-bold py-4 rounded-full shadow-lg hover:scale-[1.02] transition-transform text-sm">
+                <i class="fab fa-instagram mr-2"></i> Instagramをフォローして特典を受け取る
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-[#1a1513] text-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 mb-16 items-center">
+                <div>
+                    <span class="en-title text-gold text-2xl block mb-2">Access & Info</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-8">店舗情報・アクセス</h2>
+                    <div class="space-y-6 text-sm md:text-base opacity-90 mb-12">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-gold"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold mb-1">所在地</p>
+                                <p>〒983-0045 宮城県仙台市宮城野区宮城野1丁目4−34</p>
+                                <p class="text-xs text-gold mt-1">JR榴ヶ岡駅 徒歩1分 / 楽天モバイルパーク宮城至近</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-clock text-gold"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold mb-1">営業時間</p>
+                                <p>火〜土:17:00〜2:00</p>
+                                <p class="text-xs text-wine-300">定休日:月曜日</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-phone-alt text-gold"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold mb-1">ご予約・お問い合わせ</p>
+                                <p class="text-lg md:text-xl font-bold">022-257-0307</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="map-container shadow-2xl shadow-black/50">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.897269433104!2d140.89437697478039!3d38.25868858413962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a281d5e5d025b%3A0x536599e6d06ef2d6!2z44Or44Kk44O844OA44Gu44Ov44Kk44Oz6aOf5aCC!5e0!3m2!1sja!2sjp!4v1772517249909!5m2!1sja!2sjp" class="w-full h-[300px]" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center px-2">
+                        <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" class="text-xs text-gold hover:underline">
+                            <i class="fas fa-external-link-alt mr-1"></i> 大きな地図で見る
+                        </a>
+                        <div class="flex gap-4">
+                            <a href="https://akr2713910854.owst.jp/" target="_blank" class="text-xl opacity-60 hover:text-gold"><i class="fas fa-globe"></i></a>
+                            <a href="https://www.facebook.com/luidanowainshokudo" target="_blank" class="text-xl opacity-60 hover:text-gold"><i class="fab fa-facebook-square"></i></a>
+                            <a href="https://www.instagram.com/luida.winebar/" target="_blank" class="text-xl opacity-60 hover:text-gold"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-10 text-center text-xs opacity-40">
+                © Luida no Wain Shokudo. All rights reserved.
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
