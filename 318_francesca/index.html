@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フランチェスカ | 仙台・大町の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-brown: #2d2621;
+            --gold: #b08d57;
+            --light-beige: #f9f6f2;
+        }
+        body {
+            font-family: 'Shippori Mincho', serif;
+            background-color: var(--light-beige);
+            color: var(--dark-brown);
+            line-height: 1.8;
+        }
+        .serif-title {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.1em;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/italian.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        .btn-premium {
+            background: var(--dark-brown);
+            color: white;
+            border: 1px solid var(--gold);
+            transition: all 0.4s ease;
+            letter-spacing: 0.2em;
+        }
+        .btn-premium:hover {
+            background: var(--gold);
+            color: white;
+        }
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+        .framed-img {
+            position: relative;
+            padding: 15px;
+            border: 1px solid var(--gold);
+        }
+        .floating-text {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            background: var(--light-beige);
+            padding: 10px 20px;
+            border: 1px solid var(--gold);
+            font-size: 0.8rem;
+        }
+        .map-container {
+            filter: grayscale(0.2) contrast(1.1);
+            transition: filter 0.5s ease;
+        }
+        .map-container:hover {
+            filter: grayscale(0);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+  <header class="relative h-screen flex items-center justify-center hero-bg overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-between px-10 pointer-events-none">
+        <div class="vertical-text text-white opacity-40 text-sm tracking-[0.5em] hidden md:block">
+            ITALIAN RESTAURANT FRANCESCA
+        </div>
+        <div class="vertical-text text-white opacity-40 text-sm tracking-[0.5em] hidden md:block">
+            SENDAI OMachi 2F
+        </div>
+    </div>
+
+    <div class="text-center z-10 px-4">
+        <div class="mb-8 overflow-hidden">
+            <p class="text-white tracking-[0.4em] text-sm md:text-base animate-pulse">隠れ家で愉しむ、至福のイタリアン</p>
+        </div>
+        <h1 class="text-4xl md:text-7xl mb-10 leading-tight text-white serif-title font-light">
+            五感に響く、<br>
+            東北の恵み。
+        </h1>
+        <div class="flex justify-center mb-10 items-center">
+            <div class="w-8 md:w-12 h-[1px] bg-white"></div>
+            <p class="mx-3 md:mx-4 text-white text-base md:text-lg italic serif-title">Signature: イカ墨のパスタ</p>
+            <div class="w-8 md:w-12 h-[1px] bg-white"></div>
+        </div>
+        <a href="#booking" class="btn-premium px-8 md:px-12 py-4 md:py-5 rounded-sm text-sm uppercase font-bold shadow-2xl inline-block">
+            Reservation
+        </a>
+    </div>
+</header>
+
+<section class="py-20 md:py-32 px-4 relative">
+    <div class="max-w-4xl mx-auto text-center">
+        <span class="text-xs gold-text tracking-[0.3em] block mb-4 uppercase" style="color: var(--gold);">Concept</span>
+        <h2 class="text-2xl md:text-4xl serif-title mb-8 md:mb-12 leading-snug">都会の喧騒を離れ、<br>二階の静寂へ。</h2>
+        <div class="gold-line w-24 mx-auto mb-8 md:mb-12"></div>
+        <p class="text-gray-600 leading-[2.2] md:leading-[2.5] max-w-2xl mx-auto text-sm md:text-base">
+            仙台・大町のマンションの一角。<br>
+            階段を登り、扉を開ければ、そこはキャンドルが灯る大人の社交場。<br>
+            オーナー自ら狩で入手したジビエや、東北の豊かな大地が育んだ食材。<br>
+            その一つひとつが、シェフの繊細な技術によって<br class="hidden md:block">
+            目にも鮮やかな芸術へと姿を変えます。
+        </p>
+    </div>
+</section>
+
+<section class="py-20 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="relative flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-7/12 framed-img z-0">
+                <img src="images/pasta.jpg" alt="料理のイメージ" class="w-full grayscale hover:grayscale-0 transition duration-700">
+                <div class="floating-text serif-title" style="color: var(--gold);">Signature Dish</div>
+            </div>
+            <div class="w-full md:w-5/12 md:-ml-20 z-10 mt-8 md:mt-0 bg-[#fdf8f2] p-8 md:p-16 shadow-2xl border-l" style="border-color: var(--gold);">
+                <span class="text-xs tracking-widest opacity-60 block mb-4">THE TASTE</span>
+                <h3 class="text-2xl md:text-3xl serif-title mb-6 leading-relaxed">記憶に残る、<br>深いコクと海の香り。</h3>
+                <p class="text-sm text-gray-700 leading-loose mb-8">
+                    当店の看板メニュー「イカ墨のパスタ」。<br>
+                    濃厚な墨の旨みと、手打ちパスタの食感が絡み合う一皿は、<br>
+                    多くのお客様がこの味を求めて再訪されます。
+                </p>
+                <a href="https://www.francca.jp/" target="_blank" class="text-xs font-bold tracking-widest border-b pb-2 hover:opacity-70 transition" style="color: var(--gold); border-color: var(--gold);">VIEW MORE</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 md:py-24 bg-[#f9f6f2] px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex justify-between items-end mb-12 md:mb-16">
+            <div class="text-left">
+                <span class="text-xs tracking-[0.3em] block mb-2 uppercase" style="color: var(--gold);">Guest Voice</span>
+                <h2 class="text-2xl md:text-3xl serif-title">お客様の響き</h2>
+            </div>
+            <div class="text-right hidden md:block">
+                <p class="text-xs opacity-40 serif-title uppercase">Satisfied Moments</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+            <div class="border-l border-stone-300 pl-6 md:pl-8 relative">
+                <div class="absolute -left-2 md:-left-3 top-0 text-3xl serif-title" style="color: var(--gold);">“</div>
+                <p class="text-gray-700 mb-6 italic leading-relaxed text-sm md:text-base">
+                    ディナーで訪問。おしゃれな器で目でも楽しめて味も全て美味しく最高の時間でした。店内も静かで会話がしやすかったです。
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-[1px] bg-stone-300"></div>
+                    <span class="text-xs tracking-widest opacity-60">Dinner Guest</span>
+                </div>
+            </div>
+            <div class="border-l border-stone-300 pl-6 md:pl-8 relative">
+                <div class="absolute -left-2 md:-left-3 top-0 text-3xl serif-title" style="color: var(--gold);">“</div>
+                <p class="text-gray-700 mb-6 italic leading-relaxed text-sm md:text-base">
+                    去年のクリスマスに。ブランケットを手渡してくれる等小さな気遣いがとても好印象でした。コース料理のどれもが美味しくて満足以上でした。
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-[1px] bg-stone-300"></div>
+                    <span class="text-xs tracking-widest opacity-60">Christmas Guest</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 md:py-24 bg-white border-y border-stone-100 px-4">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 md:mb-16">
+            <span class="text-xs tracking-[0.3em] block mb-3 uppercase" style="color: var(--gold);">Coming Soon</span>
+            <h2 class="text-2xl md:text-4xl serif-title">お食事の余韻を持ち帰る、<br>新しいおもてなし。</h2>
+            <div class="gold-line w-24 mx-auto mt-8"></div>
+        </div>
+
+        <div class="bg-[#fcfaf7] border border-stone-200 p-6 md:p-12 rounded-sm relative overflow-hidden shadow-sm">
+            <div class="absolute right-0 top-0 bg-[#2d2621] text-white px-4 md:px-6 py-2 text-[10px] md:text-xs tracking-widest uppercase">
+                New Service
+            </div>
+            <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
+                <div class="w-full md:w-5/12">
+                    <div class="border border-stone-300 p-3 bg-white shadow-inner">
+                        <div class="border border-dashed border-stone-300 p-4 md:p-6 text-center">
+                            <span class="text-[10px] tracking-widest opacity-50 block mb-2">- Story Card -</span>
+                            <h4 class="serif-title text-sm md:text-base font-bold mb-4">本日の極上ジビエと<br>ペアリングの物語</h4>
+                            <div class="w-8 h-[1px] bg-stone-300 mx-auto mb-4"></div>
+                            <p class="text-[11px] text-gray-500 leading-relaxed text-left">
+                                ・蔵王産カラスのロースとその背景<br>
+                                ・青森産「嶽きみ」が持つ糖度の秘密<br>
+                                ・シェフが選ぶ本日の一杯
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-7/12">
+                    <h3 class="text-lg md:text-xl serif-title mb-4 font-bold" style="color: var(--gold);">「本日の食材ストーリーカード」</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                        「一品ずつのこだわりをもっと詳しく知りたい」というお客様の声から生まれました。<br><br>
+                        その日にご提供するお料理の背景を美しく綴ったオリジナルカードを各テーブルにご用意いたします。
+                    </p>
+                    <div class="flex flex-wrap gap-2 md:gap-4 text-[11px] md:text-xs">
+                        <span class="bg-[#2d2621] text-white px-3 py-1.5 rounded-sm">印刷カードプレゼント</span>
+                        <span class="bg-[#2d2621] text-white px-3 py-1.5 rounded-sm">デジタル版対応</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 md:py-24 px-4 bg-[#f9f6f2]">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-16 mb-16 md:mb-20">
+            <div>
+                <h4 class="text-xl serif-title mb-8 border-b border-stone-200 pb-4">Information</h4>
+                <dl class="text-sm space-y-6">
+                    <div class="flex border-b border-stone-100 pb-4 flex-col md:flex-row">
+                        <dt class="w-24 opacity-60 mb-1 md:mb-0">住所</dt>
+                        <dd>〒980-0804 宮城県仙台市青葉区大町2-5-3 2F</dd>
+                    </div>
+                    <div class="flex border-b border-stone-100 pb-4 flex-col md:flex-row">
+                        <dt class="w-24 opacity-60 mb-1 md:mb-0">電話</dt>
+                        <dd class="font-bold text-lg" style="color: var(--gold);">022-223-8216</dd>
+                    </div>
+                    <div class="flex border-b border-stone-100 pb-4 flex-col md:flex-row">
+                        <dt class="w-24 opacity-60 mb-1 md:mb-0">定休日</dt>
+                        <dd>月曜日</dd>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <dt class="w-24 opacity-60 mb-1 md:mb-0">営業時間</dt>
+                        <dd>Lunch: 12:00〜 / Dinner: 予約受付時間18:00〜19:30</dd>
+                    </div>
+                </dl>
+                <div class="mt-12 bg-[#332b2b] p-6 md:p-8 text-white relative overflow-hidden shadow-xl">
+                    <div class="absolute -right-4 -bottom-4 text-6xl opacity-10 serif-title">F</div>
+                    <h4 class="text-lg serif-title mb-4" style="color: var(--gold);">特別な日のおもてなし</h4>
+                    <p class="text-xs opacity-80 leading-loose mb-6">
+                        記念日のプレートやワインのご相談など、お気軽にお問い合わせください。
+                    </p>
+                    <a href="https://www.instagram.com/francesca_sendai/" target="_blank" class="text-[10px] tracking-[0.2em] border border-white border-opacity-30 px-6 py-3 hover:bg-white hover:text-[#332b2b] transition duration-300 inline-block">INSTAGRAM</a>
+                </div>
+            </div>
+            <div class="map-container relative">
+                <div class="framed-img bg-[#f9f6f2]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.852080002508!2d140.86474267478044!3d38.259736584078546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28394bd97a1b%3A0x7f52c24c29fa6413!2z44OV44Op44Oz44OB44Kn44K544Kr!5e0!3m2!1sja!2sjp!4v1772505680508!5m2!1sja!2sjp" width="100%" height="300" md:height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="shadow-inner grayscale-[0.3] contrast-[1.1]"></iframe>
+                    <div class="mt-4 text-right">
+                        <a href="https://www.google.com/maps/search/?api=1&query=フランチェスカ+仙台" target="_blank" class="text-[10px] tracking-widest border-b pb-1 hover:opacity-60 transition" style="color: var(--gold); border-color: var(--gold);">Google Mapsで大きな地図を見る</a>
+                    </div>
+                </div>
+                <p class="mt-4 text-[11px] text-gray-500 leading-relaxed italic">
+                    ※マンションの2階にございます。階段をご利用いただくため、お足元の不自由な方はご予約時にご相談ください。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="booking" class="bg-[#2d2621] text-white pt-20 pb-12 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl serif-title mb-12 italic tracking-tighter">Francesca</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 md:mb-16">
+            <a href="tel:022-223-8216" class="border py-6 flex flex-col items-center justify-center hover:bg-[#b08d57] transition group" style="border-color: var(--gold);">
+                <span class="text-xs opacity-60 group-hover:text-white mb-2 uppercase">Telephone</span>
+                <span class="text-xl font-bold tracking-wider">022-223-8216</span>
+            </a>
+            <a href="https://www.francca.jp/" target="_blank" class="py-6 flex flex-col items-center justify-center hover:bg-opacity-80 transition" style="background-color: var(--gold);">
+                <span class="text-xs opacity-60 text-white mb-2 uppercase">Web Booking</span>
+                <span class="text-xl font-bold tracking-wider">予約サイトへ</span>
+            </a>
+        </div>
+        <div class="gold-line w-full mb-12 opacity-30"></div>
+        <p class="text-[10px] opacity-40 tracking-[0.2em] uppercase mb-4 italic font-sans">仙台・大町の隠れ家レストラン フランチェスカ</p>
+        <p class="text-[10px] opacity-20">© FRANCESCA SENDAI. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
