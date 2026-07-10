@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nacrée (ナクレ) | 仙台のミシュラン1つ星フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@1,300;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b89550;
+            --gold-light: #d4af37;
+            --dark-bg: #121212;
+            --soft-white: #fcfaf7;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--soft-white);
+            color: #2d2d2d;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.05em;
+        }
+
+        .italic-serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-zoom-wrap {
+            overflow: hidden;
+        }
+        .image-zoom-wrap img {
+            transition: transform 10s ease;
+        }
+        .image-zoom-wrap:hover img {
+            transform: scale(1.1);
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            letter-spacing: 0.5em;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #b89550 0%, #d4af37 50%, #b89550 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
+            color: white;
+            box-shadow: 0 4px 15px rgba(184, 149, 80, 0.2);
+        }
+        .btn-gold:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(184, 149, 80, 0.4);
+        }
+
+        .ornament-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0 auto;
+        }
+
+        .bg-fixed-img {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .map-container {
+            filter: grayscale(1) contrast(1.2) invert(0.05);
+            transition: filter 0.5s ease;
+        }
+        .map-container:hover {
+            filter: grayscale(0) contrast(1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Cover -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-white flex items-center justify-center transition-opacity duration-1000">
+        <div class="text-center">
+            <div class="text-3xl font-light tracking-[0.5em] serif mb-2">nacrée</div>
+            <div class="w-12 h-[1px] bg-gold mx-auto scale-x-0 animate-scale"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-500 py-6" id="main-header">
+        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+            <div class="text-3xl font-black tracking-[0.3em] serif">nacrée</div>
+            <div class="hidden md:flex items-center space-x-12">
+                <nav class="flex space-x-8 text-[11px] uppercase tracking-[0.2em] font-bold">
+                    <a href="#concept" class="hover:text-gold transition">Concept</a>
+                    <a href="#chef" class="hover:text-gold transition">Chef</a>
+                    <a href="#menu" class="hover:text-gold transition">Menu</a>
+                    <a href="#access" class="hover:text-gold transition">Access</a>
+                </nav>
+                <a href="https://www.tablecheck.com/shops/nacree/reserve" target="_blank" rel="noopener noreferrer" class="btn-gold px-8 py-3 text-[10px] uppercase tracking-widest font-bold rounded-full text-center">
+                    Reservation
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- FV AREA -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/store.png" alt="nacrée Main Visual" class="w-full h-full object-cover scale-110 animate-kenburns">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4">
+            <div class="mb-6 overflow-hidden">
+                <span class="block italic-serif text-2xl md:text-3xl text-gold-light mb-2 animate-slideUp">L'art de la cuisine</span>
+            </div>
+            <h1 class="text-4xl md:text-8xl mb-8 leading-[1.2] serif font-black animate-slideUpDelay">
+    素材の真髄、<br><span class="text-gold-light">「引き算」</span>の美学。
+</h1>
+            <div class="flex justify-center items-center gap-4 animate-fadeIn mb-8">
+                <div class="h-[1px] w-12 bg-gold"></div>
+                <p class="text-sm tracking-[0.4em] uppercase">Michelin 1-Star Sendai</p>
+                <div class="h-[1px] w-12 bg-gold"></div>
+            </div>
+            <div class="animate-fadeIn">
+                <a href="https://www.tablecheck.com/shops/nacree/reserve" target="_blank" rel="noopener noreferrer" class="btn-gold px-12 py-4 text-xs uppercase tracking-widest font-bold rounded-full text-center">
+                    特別なひとときを予約する
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-4">
+            <span class="text-[9px] uppercase tracking-[0.3em] vertical-text h-20">Scroll Down</span>
+            <div class="w-[1px] h-12 bg-white/30 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-gold animate-scrollLine"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPT -->
+    <section id="concept" class="py-24 md:py-40 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-5 relative z-10 reveal">
+                    <div class="mb-12">
+                        <span class="italic-serif text-4xl text-gold/30 block -mb-4 ml-[-10px]">Philosophy</span>
+                        <h2 class="text-4xl md:text-5xl serif leading-tight">
+                            五感で味わう、<br>非日常の静寂。
+                        </h2>
+                    </div>
+                    <p class="text-gray-600 leading-[2.2] text-sm md:text-base mb-8">
+                        青葉フォーストタワー麓4階。扉を開ければ、そこは街の喧騒を忘れる別世界。オーナーシェフ緒方稔が描くのは、余計なものを削ぎ落とし、素材の「声」を届ける料理。<br><br>
+                        カトラリー一つ、グラスの曲線、そして細部まで宿る美意識。すべては、お客様の心に残る数時間のために。
+                    </p>
+                    <div class="flex gap-12 mt-12">
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold serif text-gold">10</span>
+                            <span class="text-[10px] text-gray-400 uppercase tracking-widest">Limited Seats</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold serif text-gold">1st</span>
+                            <span class="text-[10px] text-gray-400 uppercase tracking-widest">Michelin Star</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 relative">
+                    <div class="reveal image-zoom-wrap shadow-2xl relative z-0">
+                        <img src="images/french.png" alt="Cooking Scene" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-64 h-64 border border-gold/20 -z-10 hidden md:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEF -->
+    <section id="chef" class="bg-stone-900 text-white py-32 md:py-48 px-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 italic-serif text-[20vw] opacity-[0.03] leading-none pointer-events-none">Astrance</div>
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <div class="relative inline-block">
+                    <img src="images/chef.png" alt="Chef Ogata" class="grayscale hover:grayscale-0 transition-all duration-1000">
+                    <div class="absolute -top-6 -left-6 border border-gold w-full h-full -z-10"></div>
+                </div>
+            </div>
+
+            <div class="reveal">
+                <span class="text-gold tracking-[0.3em] uppercase text-xs mb-4 block">The Visionary</span>
+                <h2 class="text-4xl serif mb-8 leading-snug">緒方 稔 <br><span class="text-xl font-light text-gray-400 italic-serif uppercase tracking-widest">Minoru Ogata</span></h2>
+                <div class="space-y-6 text-gray-400 leading-relaxed font-light">
+                    <p>パリのミシュラン3つ星「アストランス」にて、常識を覆す革新的な料理技術を獲得。帰国後、2016年に仙台でnacréeを立ち上げる。</p>
+                    <p>彼の料理は「食べる芸術品」と称される。フレンチをベースに、日本の食材や調理法を巧みに融合。一口ごとに訪れる驚きと、どこか懐かしい安らぎの両立。それが緒方流の「裏切り」の正体です。</p>
+                </div>
+                <div class="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full border border-gold flex items-center justify-center">
+                        <svg class="w-6 h-6 text-gold fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="text-sm font-bold tracking-widest text-white uppercase">Gault & Millau Selection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE -->
+    <section id="menu" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto text-center mb-24 reveal">
+            <span class="italic-serif text-3xl text-gold mb-4 block">L'Inspiration</span>
+            <h2 class="text-4xl md:text-5xl serif mb-6">至高の火入れ、素材の極致。</h2>
+            <div class="ornament-line mb-8"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center reveal">
+                <div class="order-2 md:order-1">
+                    <div class="p-8 md:p-12 border border-stone-200 relative bg-white">
+                        <div class="absolute -top-4 -left-4 bg-soft-white px-4 text-gold italic-serif text-xl">Signature Dish</div>
+                        <h3 class="text-3xl serif mb-6">松島産 牡蠣の低温調理</h3>
+                        <p class="text-gray-600 leading-[2] mb-8 text-sm md:text-base">
+                            「仙台でこのレベルが味わえるとは」。美食家たちを驚愕させる一皿。<br>
+                            極限の低温で、組織を壊さず旨味だけを凝縮。生よりも甘く、蒸すよりも艶やか。日本の旬を、パリの技術で再定義しました。
+                        </p>
+                        <div class="bg-stone-50 p-6 flex items-center gap-4">
+                            <span class="text-[10px] text-gold font-bold tracking-widest uppercase">Pairing Recommendation</span>
+                            <p class="text-[10px] text-gray-500 font-bold uppercase">Vintage Champagne</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 image-zoom-wrap shadow-xl">
+                    <img src="images/kaki.jpg" alt="Oyster Specialty" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section class="py-32 bg-stone-900 text-white px-6 relative overflow-hidden">
+        <div class="absolute -top-10 -left-10 italic-serif text-[15vw] opacity-[0.02] leading-none pointer-events-none">New Experience</div>
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="italic-serif text-3xl text-gold mb-4 block">Coming Soon</span>
+                <h2 class="text-4xl serif mb-6">創造される、新たな食体験。</h2>
+                <p class="text-gray-400 text-sm tracking-widest uppercase">「あればいいな」をかたちにする、nacréeの新たな挑戦。</p>
+                <div class="w-12 h-[1px] bg-gold mx-auto mt-8"></div>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <!-- Service -->
+                <div class="bg-stone-800/30 border border-stone-800/80 p-8 md:p-12 rounded-sm relative reveal hover:border-gold/30 transition duration-500">
+                    <div class="absolute top-6 right-8 text-xs tracking-widest text-gold uppercase italic-serif">Gourmet Gift</div>
+                    <span class="text-gold italic-serif text-2xl block mb-2">Exclusive</span>
+                    <h3 class="text-2xl serif mb-4">nacrée Selection<br class="md:hidden"><span class="text-xs text-gray-400 block md:inline md:ml-2">（ナクレ・セレクション）</span></h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-8 font-light">
+                        「大切な方へ、五感で味わう芸術を贈る。」<br>
+                        当店イチオシの「松島産 牡蠣の低温調理」をはじめとするシグネチャーディッシュを、シニアソムリエが厳選したシャンパーニュやヴィンテージワインとともに。
+                        ご自宅で封を開けた瞬間に極上のマリアージュが完成する、完全受注生産のプレミアムギフトボックスです。
+                    </p>
+                    <span class="inline-block border border-gold/40 text-gold text-[10px] tracking-widest py-1 px-4 rounded-full uppercase font-bold">2027 Spring Release</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS SECTION WITH MAP -->
+    <section id="access" class="py-32 bg-stone-50 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                <div class="reveal flex flex-col justify-center">
+                    <span class="italic-serif text-3xl text-gold mb-4 block">Access</span>
+                    <h2 class="text-4xl serif mb-10">静謐なる、一番町の高層階へ。</h2>
+                    <div class="space-y-8 text-gray-600">
+                        <div class="border-l-2 border-gold pl-6">
+                            <p class="text-stone-900 font-bold mb-1">Address</p>
+                            <p class="text-sm">〒980-0811 宮城県仙台市青葉区一番町3丁目1-1<br>藤崎ファーストタワー館 4F</p>
+                        </div>
+                        <div class="border-l-2 border-gold pl-6">
+                            <p class="text-stone-900 font-bold mb-1">Contact</p>
+                            <p class="text-sm">TEL: 022-748-7115</p>
+                            <p class="text-sm">MAIL: info2@nacree.jp</p>
+                        </div>
+                        <div class="border-l-2 border-gold pl-6">
+                            <p class="text-stone-900 font-bold mb-1">Information</p>
+                            <p class="text-sm">LUNCH: 12:00〜15:00 / DINNER: 18:00〜22:00</p>
+                            <p class="text-sm">定休日: 水曜日</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal h-[450px] md:h-auto rounded-sm overflow-hidden shadow-xl map-container border border-stone-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.8270701342585!2d140.87180157478045!3d38.26031658404471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28138e9d0e95%3A0x70dc804be8fd97c3!2zbmFjcsOpZSAo44OK44Kv44OsKQ!5e0!3m2!1sja!2sjp!4v1772504188107!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / FINAL CTA -->
+    <section id="contact" class="py-32 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <span class="italic-serif text-2xl text-gold mb-4 block">Reservation</span>
+            <h2 class="text-4xl serif mb-12">特別な時間を、ここから。</h2>
+
+            <div class="bg-white border border-stone-100 p-8 md:p-16 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-8 h-8 border-t border-l border-gold"></div>
+                <div class="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-gold"></div>
+
+                <p class="text-sm text-gray-500 mb-12 leading-loose">
+                    当店は、一日にお迎えできるお客様を十名様に限っております。<br>
+                    食材の鮮度と最高のサービスをご提供するため、完全予約制とさせていただいております。
+                </p>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="https://www.tablecheck.com/shops/nacree/reserve" target="_blank" rel="noopener noreferrer" class="btn-gold px-12 py-5 rounded-full font-bold tracking-[0.2em] text-[11px]">
+                        ONLINE RESERVATION
+                    </a>
+                    <a href="tel:0227487115" class="px-12 py-5 rounded-full font-bold tracking-[0.2em] text-[11px] border border-stone-300 hover:bg-stone-50 transition">
+                        TEL: 022-748-7115
+                    </a>
+                </div>
+
+                <p class="mt-8 text-[10px] text-gray-400 tracking-widest uppercase">Dress code: Smart Casual</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-stone-50 border-t border-stone-100 text-center">
+        <div class="text-3xl font-black serif tracking-[0.3em] mb-8">nacrée</div>
+        <div class="flex justify-center gap-8 mb-12">
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/nacree_sendai/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Official Web Link -->
+            <a href="http://nacree.jp/" target="_blank" rel="noopener noreferrer" class="text-xs tracking-widest uppercase font-bold hover:text-gold transition">Official Web</a>
+        </div>
+        <p class="text-[9px] text-gray-400 tracking-[0.3em] uppercase">&copy; nacrée Sendai. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 1000);
+        };
+
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        window.onscroll = () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white/95', 'shadow-sm', 'py-4');
+                header.classList.remove('py-6');
+            } else {
+                header.classList.remove('bg-white/95', 'shadow-sm', 'py-4');
+                header.classList.add('py-6');
+            }
+        };
+    </script>
+
+    <style>
+        @keyframes scale { to { transform: scaleX(1); } }
+        .animate-scale { animation: scale 1.5s forwards ease-in-out; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slideUp { animation: slideUp 1s forwards ease-out; }
+        .animate-slideUpDelay { animation: slideUp 1.2s forwards ease-out 0.3s; opacity: 0; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fadeIn { animation: fadeIn 2s forwards ease-in 0.8s; opacity: 0; }
+
+        @keyframes kenburns {
+            from { transform: scale(1.1); }
+            to { transform: scale(1); }
+        }
+        .animate-kenburns { animation: kenburns 15s forwards linear; }
+
+        @keyframes scrollLine {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(200%); }
+        }
+        .animate-scrollLine { animation: scrollLine 2s infinite linear; }
+    </style>
+</body>
+</html>
