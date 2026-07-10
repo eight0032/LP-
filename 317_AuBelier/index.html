@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Au Bélier(オー・ベリエ)| 仙台・一番町 本格フランス郷土料理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --french-blue: #002395;
+            --french-red: #ed2939;
+            --deep-gold: #b38e44;
+            --paper-white: #fdfaf5;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #2d2d2d;
+            background-color: var(--paper-white);
+        }
+
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+        .font-en { font-family: 'Playfair Display', serif; }
+
+        .bg-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1550966842-286e5f84623c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--french-red) 0%, #c1202c 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px -5px rgba(237, 41, 57, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(237, 41, 57, 0.6);
+        }
+
+        .menu-card {
+            border-bottom: 1px solid #e5e5e5;
+            transition: background 0.3s ease;
+        }
+        .menu-card:hover { background-color: #f9f6f1; }
+
+        .badge-michelin {
+            background: linear-gradient(135deg, #f1c40f 0%, #d35400 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-french-blue { color: var(--french-blue); }
+        .text-french-red { color: var(--french-red); }
+        .text-deep-gold { color: var(--deep-gold); }
+        .bg-french-blue { background-color: var(--french-blue); }
+        .bg-french-red { background-color: var(--french-red); }
+        .border-french-blue { border-color: var(--french-blue); }
+        .border-french-red { border-color: var(--french-red); }
+        .border-deep-gold { border-color: var(--deep-gold); }
+        .bg-deep-gold { background-color: var(--deep-gold); }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- 1. FVエリア -->
+    <header class="hero-section h-screen flex flex-col items-center justify-center text-white px-4 relative text-center">
+        <div class="absolute top-10 flex flex-col items-center opacity-80">
+            <span class="font-en text-2xl tracking-widest border-b border-white pb-2 mb-2">Au Bélier</span>
+            <span class="text-xs tracking-[0.3em]">SENDAI ICHIBANCHO</span>
+        </div>
+
+        <div class="z-10">
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-8 leading-tight drop-shadow-lg">
+                五感で愉しむ、<br>格別な日常。
+            </h1>
+            <div class="bg-white/10 backdrop-blur-md px-8 py-4 border border-white/20 rounded-sm inline-block">
+                <p class="text-sm md:text-base font-light tracking-loose">
+                    ミシュランガイド掲載。自家製シャルキュトリーと至高の肉料理。
+                </p>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 animate-bounce">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- 2. CTA (Sticky) -->
+    <div class="bg-white/90 backdrop-blur-sm border-b border-gray-200 py-3 sticky top-0 z-50 px-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="hidden md:block text-left">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-tighter">Reservation</p>
+                <p class="text-lg font-serif font-bold text-french-blue">022-706-7914</p>
+            </div>
+            <div class="flex-1 md:flex-none text-center md:text-left">
+                <p class="text-[10px] md:text-xs text-french-red font-bold animate-pulse mb-1">
+                    <i class="fa-solid fa-circle-info mr-1"></i>現在、ランチ・ディナー共に事前予約を推奨しております
+                </p>
+                <a href="https://ta1r400.gorp.jp/" target="_blank" class="cta-btn text-white px-6 md:px-10 py-2 md:py-3 rounded-full font-bold text-sm md:text-base inline-block">
+                    空席確認・ネット予約
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Concept -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="font-en text-deep-gold tracking-[0.5em] text-sm block mb-4 uppercase">Experience</span>
+            <h2 class="font-serif text-3xl md:text-4xl mb-12 leading-relaxed">
+                手間を惜しまない。<br>それが、ビストロとしての誇り。
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center text-left">
+                <div class="relative">
+                    <img src="images/bistro.png" alt="料理イメージ" class="rounded shadow-2xl relative z-10">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-deep-gold opacity-30"></div>
+                </div>
+                <div class="space-y-6">
+                    <p class="leading-loose text-gray-600">「オー・ベリエ」の扉を開けると、そこに広がるのはフランスの街角にあるような温かな空間。</p>
+                    <p class="leading-loose text-gray-600">私たちの自慢は、職人技が光る<span class="font-bold text-black border-b border-deep-gold">自家熟成シャルキュトリー</span>。本場ロワールで習得した伝統の製法を忠実に守り、豚肉の旨みを最大限に引き出しています。</p>
+                    <p class="leading-loose text-gray-600">気取らず、力強く。本当に美味しいものを、心ゆくまで。そんな「ビストロノミー」を仙台の皆様にお届けします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Menu & Highlights -->
+    <section class="py-24 bg-[#f2ede4]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="font-en text-deep-gold tracking-[0.5em] text-sm block mb-4 uppercase">Specialties</span>
+                <h2 class="font-serif text-3xl md:text-4xl mb-4 text-center">至福を彩る一皿一皿</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-2 shadow-lg rounded-sm group">
+                    <div class="overflow-hidden aspect-square mb-6">
+                        <img src="images/staek.png" alt="牛ハラミステーキ" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="px-4 pb-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-left">牛ハラミのステーキ</h3>
+                        <p class="text-sm text-gray-500 mb-4 text-left">噛みしめるほどに溢れる肉の旨み。クリーミーなマッシュポテトと秘伝のソースの調和は絶品。</p>
+                        <span class="text-deep-gold font-bold block text-left">イチオシの逸品</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2 shadow-lg rounded-sm group text-left">
+                    <div class="overflow-hidden aspect-square mb-6 bg-gray-100">
+                        <img src="images/syarukyutori.jpg" alt="シャルキュトリー" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="px-4 pb-6 text-left">
+                        <h3 class="font-serif text-xl font-bold mb-2">自家熟成シャルキュトリー</h3>
+                        <p class="text-sm text-gray-500 mb-4">パテ・ド・カンパーニュ、ハム、ソーセージなど。すべて店内の工房で手作りされる、ワインが進む職人の味。</p>
+                        <span class="text-deep-gold font-bold">本場仕込みの技</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2 shadow-lg rounded-sm group text-left">
+                    <div class="overflow-hidden aspect-square mb-6 bg-gray-100">
+                        <img src="images/fish.png" alt="魚料理" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="px-4 pb-6">
+                        <h3 class="font-serif text-xl font-bold mb-2">季節の魚料理のポアレ</h3>
+                        <p class="text-sm text-gray-500 mb-4 text-left">皮目はパリッと、身はふっくらと。三陸の豊かな海の幸を、繊細なフレンチの技法で仕上げました。</p>
+                        <span class="text-deep-gold font-bold">ランチコース人気</span>
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </section>
+
+    <!-- 5. Profile -->
+    <section class="py-24 px-4 bg-white border-y border-gray-100">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute inset-0 bg-deep-gold transform translate-x-4 translate-y-4"></div>
+                    <div class="relative bg-gray-200 aspect-[4/5] overflow-hidden">
+                        <img src="images/chef.png" alt="佐山シェフ" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 text-left">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="badge-michelin font-en text-4xl"><i class="fa-solid fa-award"></i></span>
+                        <div>
+                            <p class="text-xs text-deep-gold tracking-widest font-bold">MICHELIN GUIDE SELECTION</p>
+                            <h3 class="font-serif text-2xl font-bold">佐山 直嗣 <span class="text-base font-normal text-gray-400 ml-2">Naotsugu Sayama</span></h3>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-gray-600 text-sm leading-loose">
+                        <p>1977年宮城県生まれ。地元の名店「もんこばん あずまや」で基礎を学び渡仏。パリの人気ビストロでモダンなスパイス使いを、ロワールでは本格シャルキュトリー技術を習得。</p>
+                        <p>「本場の美味しさを、もっと身近に。」その想いを胸に、2015年、故郷仙台にオー・ベリエをオープンしました。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Review -->
+    <section class="py-24 bg-texture">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-serif text-3xl text-center mb-16 underline decoration-deep-gold decoration-4 underline-offset-8">お客様の声</h2>
+            <div class="space-y-8">
+                <div class="bg-white p-8 rounded shadow-sm border-l-8 border-french-blue text-left">
+                    <div class="flex text-yellow-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="italic text-gray-600 mb-4">「お値段は手頃なのにクオリティが抜群に高く、非常に満足でした。ランチ・ディナー共に再訪したいです。」</p>
+                    <p class="text-xs text-gray-400 text-right">— 30代女性</p>
+                </div>
+                <div class="bg-white p-8 rounded shadow-sm border-l-8 border-french-red text-left">
+                    <div class="flex text-yellow-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="italic text-gray-600 mb-4">「牛ハラミの焼き加減とソースが絶品。パンの追加を尋ねてくれる心配りも嬉しかった。」</p>
+                    <p class="text-xs text-gray-400 text-right">— 40代男性</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5. Coming Soon: お取り寄せ通販 -->
+    <section class="py-24 bg-white border-t border-gray-100 text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <span class="font-en text-french-red tracking-[0.3em] text-sm font-bold block mb-2 uppercase animate-pulse">Coming Soon</span>
+            <h2 class="font-serif text-3xl md:text-4xl mb-6">おうちで、オー・ベリエ。<br><span class="text-lg md:text-xl text-gray-500 font-sans block mt-2">本格ビストロお取り寄せ便(オンラインショップ)開始予定</span></h2>
+
+            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed mb-12 text-sm md:text-base text-left md:text-center">
+                「この本格的なパテを遠方の友人にも贈りたい」「家でもお店のハラミステーキと美味しいワインで贅沢なディナーを過ごしたい」という温かいお声にお応えして、オー・ベリエの味を全国へお届けするお取り寄せショップを現在企画・準備中です。
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto text-left">
+                <!-- サービスイメージ1 -->
+                <div class="bg-texture p-6 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-deep-gold text-2xl mb-3"><i class="fa-solid fa-box-open"></i></div>
+                        <h4 class="font-bold text-base mb-2">極上シャルキュトリーBOX</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">パテ・ド・カンパーニュ、自家製ハム、ソーセージなどを、本場仕込みの味そのままに真空パックで詰め合わせます。</p>
+                    </div>
+                    <span class="text-[10px] bg-french-blue/10 text-french-blue font-bold px-2 py-1 rounded mt-4 inline-block text-center w-max">準備中</span>
+                </div>
+                <!-- サービスイメージ2 -->
+                <div class="bg-texture p-6 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-deep-gold text-2xl mb-3"><i class="fa-solid fa-fire-burner"></i></div>
+                        <h4 class="font-bold text-base mb-2">牛ハラミステーキ再現ミール</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">お店で一番人気のハラミステーキ肉、クリーミーなマッシュポテト、そして旨み溢れる秘伝のソースをセットでお届け。</p>
+                    </div>
+                    <span class="text-[10px] bg-french-blue/10 text-french-blue font-bold px-2 py-1 rounded mt-4 inline-block text-center w-max">準備中</span>
+                </div>
+                <!-- サービスイメージ3 -->
+                <div class="bg-texture p-6 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-deep-gold text-2xl mb-3"><i class="fa-solid fa-gift"></i></div>
+                        <h4 class="font-bold text-base mb-2">ビストロ・ギフト便</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">お祝いや季節の贈り物に最適な、ワインと極上シャルキュトリーがセットになった、大切な人に喜ばれる贅沢なギフトセット。</p>
+                    </div>
+                    <span class="text-[10px] bg-french-blue/10 text-french-blue font-bold px-2 py-1 rounded mt-4 inline-block text-center w-max">準備中</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer CTA & Map -->
+    <footer class="bg-gray-900 text-white py-24 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 flex">
+            <div class="w-1/3 bg-french-blue"></div><div class="w-1/3 bg-white"></div><div class="w-1/3 bg-french-red"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
+            <h2 class="font-serif text-3xl md:text-5xl mb-8 text-center">特別なひととき、<br>一番町の隠れ家で。</h2>
+
+            <div class="grid md:grid-cols-2 gap-12 w-full max-w-5xl mb-16 items-start">
+                <!-- 店舗情報 & Map -->
+                <div class="space-y-6 text-left">
+                    <div class="map-container shadow-2xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.9657587436323!2d140.8715360747803!3d38.257100184232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a29bf2180aa8b%3A0x4082d01fa59ec4!2z44Kq44O844O744OZ44Oq44Ko!5e0!3m2!1sja!2sjp!4v1772504787785!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="space-y-2 pt-4">
+                        <h3 class="font-serif text-2xl mb-4">Au Bélier <span class="text-sm font-normal opacity-50 ml-2">オー・ベリエ</span></h3>
+                        <p class="text-sm"><i class="fa-solid fa-location-dot mr-2 text-deep-gold"></i> 〒980-0811 宮城県仙台市青葉区一番町1-6-11</p>
+                        <p class="text-sm"><i class="fa-solid fa-phone mr-2 text-deep-gold"></i> 022-706-7914</p>
+                        <p class="text-sm"><i class="fa-solid fa-calendar mr-2 text-deep-gold"></i> 定休日:月曜日</p>
+                        <p class="text-sm"><i class="fa-solid fa-train mr-2 text-deep-gold"></i> 青葉通一番町駅 徒歩4分</p>
+                    </div>
+                </div>
+
+                <!-- 予約導線 -->
+                <div class="bg-white text-black p-8 rounded shadow-2xl flex flex-col justify-center">
+                    <h4 class="font-bold text-center mb-6 text-xl">Reservation</h4>
+                    <p class="text-sm text-gray-500 mb-6 text-center leading-relaxed italic">
+                        「1時間後には予約客で満席」になることも珍しくありません。特別な日のためのお席を今すぐ確保。
+                    </p>
+                    <a href="https://ta1r400.gorp.jp/" target="_blank" class="cta-btn text-white w-full py-5 rounded font-bold text-center block mb-4 text-lg">
+                        ネットで空席確認・予約
+                    </a>
+                    <div class="flex justify-center gap-6 mt-4">
+                        <a href="https://www.facebook.com/AuBelier/" target="_blank" class="text-2xl text-gray-400 hover:text-french-blue transition"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/aubelier0916/" class="text-2xl text-gray-400 hover:text-pink-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-8 mb-12 opacity-50 hover:opacity-100 transition">
+                <a href="https://www.facebook.com/AuBelier/" target="_blank" class="text-3xl text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/aubelier0916/" class="text-3xl text-white"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <p class="text-gray-600 text-[10px] tracking-widest uppercase">&copy; Au Belier. Crafted for French Cuisine Lovers.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
