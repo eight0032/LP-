@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ambrosia(アンブロジア)|仙台一番町の隠れ家カレー・フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #b2945e;
+            --color-bg: #fdfcf9;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #2d2d2d;
+            background-color: var(--color-bg);
+            line-height: 1.8;
+        }
+        h1, h2, h3, .mincho { font-family: 'Shippori Mincho', serif; }
+
+        .writing-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .bg-gold { background-color: var(--color-gold); }
+        .text-gold { color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        /* 装飾的なライン */
+        .deco-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
+
+        /* 和紙テクスチャ風の背景 */
+        .washi-bg {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        .btn-gold {
+            background-color: var(--color-gold);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            letter-spacing: 0.1em;
+        }
+        .btn-gold:hover {
+            background-color: #9a7d4a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            filter: grayscale(0.3) contrast(1.1); /* デザインに馴染ませる */
+        }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- FVエリア -->
+  <header class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+    <div class="absolute inset-0 z-0 scale-110">
+        <img src="images/curry.jpg" alt="シズル感のあるカレー" class="w-full h-full object-cover">
+        <div class="absolute inset-0 hero-gradient"></div>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center gap-8 px-6">
+        <div class="text-center max-w-2xl">
+            <p class="text-sm md:text-xl mb-4 tracking-widest font-light opacity-90">仙台一番町の隠れ家レストラン</p>
+            <h1 class="text-4xl md:text-7xl font-bold mb-8 leading-[1.2]">
+                アンブロジアの<br class="md:hidden">
+                <span class="text-gold">四季</span>を、一皿に。
+            </h1>
+            <p class="text-sm md:text-lg mb-10 leading-relaxed font-light">
+                昼はフレンチシェフが技巧を凝らした「欧風カレー」。<br>
+                夜はワインと語らう、独創的な「粋で味わうフレンチ」。
+            </p>
+            <a href="#cta" class="btn-gold inline-block text-white px-8 md:px-12 py-4 md:py-5 rounded-sm text-base md:text-lg font-bold shadow-2xl">
+                ご予約・お問い合わせ
+            </a>
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+        <span class="text-xs tracking-widest uppercase opacity-60">Scroll</span>
+        <div class="deco-line"></div>
+    </div>
+</header>
+
+<section id="cta" class="py-16 bg-white relative">
+    <div class="container mx-auto px-4 max-w-4xl border border-stone-100 p-8 md:p-12 shadow-sm text-center">
+        <span class="inline-block border border-gold text-gold px-4 py-1 text-xs mb-6">WEB限定特典</span>
+        <h2 class="text-xl md:text-3xl font-bold mb-6 tracking-wide">食後の自家焙煎コーヒーを<br>皆様にサービス</h2>
+        <p class="text-stone-500 mb-8 text-sm leading-loose">「このページを見た」とお伝えいただくか、WEBからのご予約で、<br>多くの常連様に愛される「甘すぎない、濃厚な一杯」をお届けします。</p>
+        <div class="flex justify-center">
+            <a href="tel:0222656671" class="bg-stone-900 text-white px-8 py-4 text-lg md:text-xl font-bold flex items-center justify-center hover:bg-stone-800 transition w-full md:w-auto">
+                <span class="text-xs md:text-sm mr-4 opacity-60 italic">Reservation</span> 022-265-6671
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+            <div class="lg:w-1/2 relative w-full">
+                <div class="absolute -top-5 -left-5 md:-top-10 md:-left-10 text-gold/10 text-6xl md:text-9xl font-bold z-0 select-none">Cuisine</div>
+                <img src="images/yasai.jpg" alt="ポーク野菜カレーのシズル感" class="relative z-10 w-full rounded-sm shadow-2xl">
+                <div class="bg-gold p-6 md:p-8 text-white mt-4 md:absolute md:-bottom-6 md:-right-6 md:mt-0">
+                    <p class="text-xs tracking-[0.2em] mb-2 uppercase">Best Seller</p>
+                    <p class="text-xl md:text-2xl font-bold">ポーク野菜カレー</p>
+                </div>
+            </div>
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-snug">フレンチの技法が<br>スパイスに深みを与える</h2>
+                <p class="text-stone-600 mb-8 leading-loose text-sm md:text-base">
+                    野菜はナス、カボチャ、オクラ、ブロッコリーなど季節の彩りを豊かに。じっくりと煮込まれた豚肉の旨味と、五段階から選べる辛さが、最後の一口まで驚きを与え続けます。
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="border-l-2 border-gold pl-4">
+                        <p class="text-[10px] md:text-xs text-gold font-bold mb-1">Lunch Time</p>
+                        <p class="text-xs md:text-sm text-stone-500">欧風カレーの真骨頂を<br>気軽に愉しむ</p>
+                    </div>
+                    <div class="border-l-2 border-stone-300 pl-4">
+                        <p class="text-[10px] md:text-xs text-stone-400 font-bold mb-1">Dinner Time</p>
+                        <p class="text-xs md:text-sm text-stone-500">厳選ワイン500本と<br>至高のフレンチ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse gap-10 md:gap-16 items-center">
+            <div class="md:w-1/2 w-full">
+                <img src="images/chef.png" alt="温かみのある店内" class="shadow-xl grayscale hover:grayscale-0 transition duration-700 w-full">
+            </div>
+            <div class="md:w-1/2">
+                <span class="text-gold tracking-[0.3em] text-xs font-bold block mb-4">OUR STORY</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 leading-relaxed">「我が家」のようなくつろぎを、<br>仙台一番町で。</h2>
+                <p class="text-stone-600 mb-6 text-sm md:text-base leading-loose">
+                    16坪の店舗から始まったアンブロジア。創業以来変わらないのは、「大切な友人を我が家へ招くような」温かなおもてなしの心です。
+                </p>
+                <p class="text-stone-600 mb-10 text-sm md:text-base leading-loose">
+                    小笠正幸・才子夫妻が作り上げるこの空間は、ある時はビジネスの接待、ある時は大切な記念日、そしてある時は自分へのご褒美として、多くの皆様に愛されてきました。
+                </p>
+                <div class="w-16 h-px bg-gold mb-4"></div>
+                <p class="text-xs font-serif italic text-stone-400">Since 2006 (Old location established earlier)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+        <h2 class="text-center text-2xl md:text-3xl font-bold mb-12 md:mb-16">ご愛顧いただく皆様の言葉</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
+            <div class="bg-white p-8 md:p-10 shadow-sm border-t-4 border-gold">
+                <div class="flex items-center gap-1 text-gold mb-6">★★★★★</div>
+                <p class="text-stone-700 leading-loose mb-6 italic text-sm md:text-base">「何年かぶりに伺いましたが、変わらぬ美味しさ。ラム野菜カレーをいただきました。野菜が具沢山で大満足。食後のドリンクまで完璧です。」</p>
+                <p class="text-xs text-stone-400 text-right">— 常連のお客様より</p>
+            </div>
+            <div class="bg-white p-8 md:p-10 shadow-sm border-t-4 border-stone-200">
+                <div class="flex items-center gap-1 text-gold mb-6">★★★★★</div>
+                <p class="text-stone-700 leading-loose mb-6 italic text-sm md:text-base">「ディナーで利用。カウンターでの食事に最高でした。ワインの種類も豊富で、スタッフさんの対応も家庭的で温かいです。また通います。」</p>
+                <p class="text-xs text-stone-400 text-right">— デートでご利用のお客様より</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-100/60 border-t border-b border-stone-200/50">
+    <div class="container mx-auto px-4 text-center max-w-4xl">
+        <span class="text-gold tracking-[0.3em] text-xs font-bold block mb-4">COMING SOON</span>
+        <h2 class="text-2xl md:text-4xl font-bold mb-6 leading-relaxed">「あればいいな」を、形に。</h2>
+        <p class="text-stone-600 mb-12 text-sm leading-loose max-w-2xl mx-auto">
+            「自宅での特別な時間にもアンブロジアの味を楽しみたい」<br>
+            そんな皆様の温かいご要望にお応えし、現在新しいおもてなしの準備を進めております。
+        </p>
+
+        <div class="max-w-2xl mx-auto text-left">
+            <div class="bg-white p-8 md:p-10 rounded-sm shadow-sm border-t-4 border-gold">
+                <span class="text-[10px] text-gold font-bold uppercase tracking-widest block mb-2">Project 01</span>
+                <h3 class="text-lg md:text-xl font-bold mb-4">極上カレー・厳選ワインの「ペアリング便」</h3>
+                <p class="text-stone-500 text-xs md:text-sm leading-relaxed mb-6">
+                    名物「ポーク野菜カレー」や、じっくり仕上げたフレンチデリを真空急速冷凍でお届け。ソムリエであるオーナーシェフが、それぞれの料理に合わせて特別にセレクトしたハーフボトルワインを添えた、ご自宅用のプレミアムセットです。
+                </p>
+                <div class="inline-block bg-stone-100 text-stone-600 text-xs px-3 py-1 font-bold">2026年秋 サービス開始予定</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-900 text-white overflow-hidden relative">
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-wider">五感を満たす、隠れ家の夜。</h2>
+        <p class="text-stone-400 text-base md:text-lg mb-12 font-light">一皿、一滴に想いを込めて。一番町でお待ちしております。</p>
+
+        <div class="bg-white text-stone-900 p-6 md:p-12 rounded-sm shadow-2xl max-w-5xl w-full mx-auto">
+            <div class="flex flex-col lg:flex-row gap-8 md:gap-12 text-left">
+                <div class="lg:w-5/12">
+                    <p class="text-[10px] tracking-[0.2em] text-gold font-bold mb-4 uppercase">Contact & Information</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-6">ambrosia <span class="text-sm font-normal opacity-50 block md:inline md:ml-2">アンブロジア</span></h3>
+
+                    <a href="tel:0222656671" class="text-2xl md:text-4xl font-bold mb-8 block hover:text-gold transition duration-300">022-265-6671</a>
+
+                    <div class="space-y-6 pt-6 border-t border-stone-100">
+                        <div>
+                            <h4 class="font-bold mb-2 text-xs flex items-center gap-2">
+                                <span class="text-gold">●</span> 営業時間 / 定休日
+                            </h4>
+                            <p class="text-xs text-stone-500 mb-1 pl-6">ランチ:11:30 - 14:00</p>
+                            <p class="text-xs text-stone-500 mb-1 pl-6">ディナー:17:30 - 22:00</p>
+                            <p class="text-xs text-stone-500 pl-6">定休日:日曜日</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2 text-xs flex items-center gap-2">
+                                <span class="text-gold">●</span> 所在地
+                            </h4>
+                            <p class="text-xs text-stone-500 leading-relaxed pl-6">
+                                〒980-0811<br>
+                                宮城県仙台市青葉区一番町4丁目-5-40<br>
+                                おの万一番町ビル3F
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-7/12">
+                    <div class="map-container rounded-sm shadow-inner grayscale-[0.2] h-[300px] lg:h-full">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.674028620753!2d140.86901007478065!3d38.26386558383812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28252b807fb9%3A0x9c26c3571a299d64!2zYW1icm9zaWHvvIjjgqLjg7Pjg5bjg63jgrjjgqLvvIk!5e0!3m2!1sja!2sjp!4v1772502545575!5m2!1sja!2sjp" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-stone-950 py-12 text-center border-t border-white/5">
+    <div class="flex justify-center gap-8 mb-8">
+        <a href="https://www.instagram.com/ambrosia_sendai" target="_blank" class="text-white/40 hover:text-white transition text-xs tracking-widest uppercase">Instagram</a>
+    </div>
+    <p class="text-[10px] text-white/20 tracking-[0.3em]">© 2024 ambrosia. ALL RIGHTS RESERVED.</p>
+</footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
