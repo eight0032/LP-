@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロ レガリテ | 仙台本町の隠れ家ビエ・シャルキュトリ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --wine: #5e111a;
+            --gold: #c5a059;
+            --gold-light: #e3d3b0;
+            --bg-cream: #fdfaf6;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: #332b2b;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-gold { background-color: var(--gold); }
+
+        /* FV Animation */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/zibie.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Gold Gradient Button */
+        .btn-gold {
+            background: linear-gradient(135deg, #c5a059 0%, #e3d3b0 50%, #c5a059 100%);
+            color: #5e111a;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.6);
+        }
+
+        /* Responsive Map Container */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* Aspect Ratio 4:3 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FVエリア -->
+    <header class="hero-bg h-[90vh] flex flex-col items-center justify-center text-white text-center px-4 relative">
+        <div class="mb-6 space-y-2">
+            <p class="text-gold font-bold tracking-[0.2em] text-sm md:text-lg">大人のための、気取らない美食空間</p>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-tight serif">
+                極上のジビエと<br>
+                自家製シャルキュトリ
+            </h1>
+        </div>
+
+        <p class="text-lg md:text-xl mb-10 opacity-90 font-light max-w-2xl mx-auto">
+            昨年12月グランドオープン。地元宮城の「いばり仔羊」や「放牧羊」をワインと共に。
+        </p>
+
+        <a href="#booking" class="btn-gold font-bold py-5 px-12 rounded-full text-xl flex items-center gap-3">
+            <i class="fa-solid fa-calendar-check"></i> お席の空き状況を確認
+        </a>
+    </header>
+
+    <!-- 2. CTA (Visual Highlights) -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="p-6">
+                    <img src="images/syarukyutori.jpg" alt="料理1" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="font-bold text-wine text-lg mb-2 serif">究極のシャルキュトリ</h3>
+                    <p class="text-sm text-gray-600">低温火入れの田舎風パテなど、シェフの職人技が光る肉加工品。</p>
+                </div>
+                <div class="p-6">
+                    <img src="images/wine.png" alt="料理2" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="font-bold text-wine text-lg mb-2 serif">厳選ワインの王道</h3>
+                    <p class="text-sm text-gray-600">シャルドネから赤星ビールまで、料理を引き立てる贅沢な一杯。</p>
+                </div>
+                <div class="p-6">
+                    <img src="images/store.png" alt="店内" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="font-bold text-wine text-lg mb-2 serif">大人の隠れ家</h3>
+                    <p class="text-sm text-gray-600">鹿の剥製が並ぶ西洋の館。20席の心地よい空間で贅沢なひとときを。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 自己紹介/ストーリー -->
+    <section class="py-24 bg-[#f4f1ea] relative">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-5/12 relative">
+                <!-- 画像サイズを最大幅に制限 -->
+                <div class="max-w-[400px] mx-auto lg:mx-0 relative">
+                    <img src="images/chef.png" alt="Chef" class="rounded-lg shadow-2xl relative z-10 w-full">
+                    <div class="absolute -bottom-4 -right-4 bg-wine text-white p-6 z-20 hidden md:block">
+                        <p class="serif text-xl">鈴田 慎一</p>
+                        <p class="text-gold text-[10px] tracking-widest">OWNER CHEF</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-7/12">
+                <h2 class="text-3xl md:text-4xl serif text-wine mb-8">
+                    「大人のディズニーランド」<br>
+                    そんなワクワクを、一皿に.
+                </h2>
+                <p class="text-gray-700 leading-relaxed space-y-4">
+                    秋田県出身. 都内や仙台の名店で修行を積み、2016年に独立.
+                    「美味しいのは当たり前、それ以上に楽しい時間」という想いから、気さくな会話と本格的なフランス料理を融合させた唯一無二のスタイルを追求しています.
+                </p>
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="border-l-4 border-gold pl-4">
+                        <span class="text-xs text-gray-500 block uppercase tracking-tighter">Established</span>
+                        <span class="font-bold text-wine">2016年開業</span>
+                    </div>
+                    <div class="border-l-4 border-gold pl-4">
+                        <span class="text-xs text-gray-500 block uppercase tracking-tighter">Philosophy</span>
+                        <span class="font-bold text-wine">王道をリーズナブルに</span>
+                    </div>
+                </div>
+                <!-- Instagram Link with Icon -->
+                <a href="https://www.instagram.com/bistrolegalite" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-10 text-wine font-bold border-b-2 border-wine pb-1 hover:text-gold hover:border-gold transition">
+                    <i class="fa-brands fa-instagram text-xl"></i> INSTAGRAMで最新情報をチェック
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 選ばれる理由 -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-gold font-bold tracking-widest text-sm mb-4 block">WHY CHOOSE US?</span>
+            <h2 class="text-3xl md:text-5xl serif text-wine mb-16">レガリテが選ばれる理由</h2>
+
+            <div class="space-y-12">
+                <div class="flex flex-col md:flex-row items-center gap-8 text-left bg-[#fdfaf6] p-8 rounded-3xl border border-gold/10">
+                    <div class="w-20 h-20 bg-wine text-gold rounded-full flex items-center justify-center text-3xl shrink-0">01</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 serif text-wine">宮城の恵みを活かした「ジビエ」</h3>
+                        <p class="text-gray-600 text-sm">いばり仔羊、放牧羊、季節のジビエ。シェフ自ら厳選した素材の旨味を、最適な火入れで最大限に引き出します。</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-8 text-left bg-[#fdfaf6] p-8 rounded-3xl border border-gold/10">
+                    <div class="w-20 h-20 bg-wine text-gold rounded-full flex items-center justify-center text-3xl shrink-0">02</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 serif text-wine">気取らない、けれど本格的</h3>
+                        <p class="text-gray-600 text-sm">「本格フレンチは緊張する」という概念を覆す、明るい接客と賑やかな雰囲気。お一人様から女子会まで幅広く愛されています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. COMING SOON 新サービス企画エリア -->
+    <section class="py-24 bg-[#f4f1ea] border-t border-b border-gold/10 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <span class="text-gold font-bold tracking-widest text-sm mb-2 block">COMING SOON</span>
+            <h2 class="text-3xl md:text-5xl serif text-wine mb-6">あればいいな、を形に。<br>おうちで楽しむ新サービス。</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-12 text-sm md:text-base leading-relaxed">
+                「お店の美味しいシャルキュトリを自宅でもワインと合わせたい」「大切な方への特別なお祝いに贈りたい」という多くのお客様の声にお応えし、レガリテのクラフトマンシップをご自宅にお届けする新プロジェクトが進行中。
+            </p>
+
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gold/20 max-w-2xl mx-auto text-left relative">
+                <div class="absolute -top-3 -right-3 bg-wine text-gold text-xs font-bold px-4 py-1.5 rounded-lg tracking-widest uppercase shadow">
+                    PREVIEW
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-wine serif mb-4 flex items-center gap-3">
+                    <i class="fa-solid fa-gift text-gold text-2xl"></i>
+                    おうちでレガリテ便 <span class="text-xs font-normal text-gray-500 block md:inline md:ml-2">（極上シャルキュトリ・厳選ワインお取り寄せセット）</span>
+                </h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                    シェフ自慢の「低温火入れの田舎風パテ」や宮城の「いばり仔羊」を使用した自家製シャルキュトリ、季節のテリーヌなどをベストな状態のまま真空パックでお届け。
+                    さらに、ソムリエでもあるシェフが「一皿の旨味を最大限に引き出す王道ワイン」をセレクトし、ペアリングセットとしてお届けします。
+                    定期縛りはなく、1回のみの気軽なご注文が可能です。ご自宅での特別な日のディナーはもちろん、大切な方への特別なギフトやお中元・お歳暮にも最適です。
+                </p>
+                <div class="bg-wine/5 p-4 rounded-xl border border-wine/10 text-xs text-wine space-y-2">
+                    <p class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-bell"></i> リリース・先行案内のお知らせ</p>
+                    <p class="text-gray-700 leading-relaxed">
+                        開始時期の決定や、お得な初回限定クーポン付きの先行予約受付は、公式Instagramにてどこよりも早く発表いたします。どうぞ楽しみにお待ちください！
+                    </p>
+                </div>
+                <div class="mt-6 text-center">
+                    <a href="https://www.instagram.com/bistrolegalite" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-wine font-bold border-b-2 border-wine pb-1 hover:text-gold hover:border-gold transition text-sm">
+                        <i class="fa-brands fa-instagram"></i> Instagramで最新アップデートを追う
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ -->
+    <section class="py-24 bg-wine relative text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-center text-3xl md:text-5xl serif mb-16">VOICE <span class="text-lg opacity-50">/ 幸せの口コミ</span></h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl relative">
+                    <i class="fa-solid fa-quote-left absolute top-4 left-4 text-gold/20 text-4xl"></i>
+                    <div class="text-gold mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-700 text-sm leading-relaxed italic mb-4">「鴨肉の火入れも完璧です。1人にも関わらず気さくに接して頂き最高の時間を過ごしました。」</p>
+                    <span class="text-gray-400 text-xs">30代・男性</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl relative">
+                    <i class="fa-solid fa-quote-left absolute top-4 left-4 text-gold/20 text-4xl"></i>
+                    <div class="text-gold mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-700 text-sm leading-relaxed italic mb-4">「羊肉の焼き方が絶品！秋刀魚と秋ナスのテリーヌが最高でした。ワインも豊富で大満足。」</p>
+                    <span class="text-gray-400 text-xs">40代・女性</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl relative hidden lg:block">
+                    <i class="fa-solid fa-quote-left absolute top-4 left-4 text-gold/20 text-4xl"></i>
+                    <div class="text-gold mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-700 text-sm leading-relaxed italic mb-4">「気取らず明るいビストロ。仕込みから食材へのこだわりが凄く、いつもお客さんが絶えません。」</p>
+                    <span class="text-gray-400 text-xs">20代・女性</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CTA & Access -->
+    <section id="booking" class="py-24 bg-white text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl serif text-wine mb-6">今夜, 極上の時間を。<br>お電話でお待ちしております。</h2>
+            <p class="text-gray-500 mb-12">少人数制（20席）のため、事前のご予約をおすすめいたします。</p>
+
+            <div class="max-w-2xl mx-auto mb-20 space-y-4">
+                <a href="tel:0227247730" class="btn-gold block py-8 px-4 rounded-3xl text-3xl md:text-4xl font-black">
+                    <i class="fa-solid fa-phone mr-2"></i> 022-724-7730
+                </a>
+                <p class="text-sm text-wine font-bold uppercase tracking-widest">営業時間：17:00〜24:00 | 定休日：月曜日</p>
+                <!-- Instagram Link Button -->
+                <div class="pt-4">
+                    <a href="https://www.instagram.com/bistrolegalite" target="_blank" rel="noopener noreferrer" class="text-wine hover:text-gold transition flex items-center justify-center gap-2 font-bold">
+                        <i class="fa-brands fa-instagram text-2xl"></i> Instagramを見る
+                    </a>
+                </div>
+            </div>
+
+            <!-- Access Section with Google Maps -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center text-left bg-[#fdfaf6] p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-gold/10">
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-wine text-xl mb-3 serif border-b border-gold/30 pb-2">ACCESS / 店舗情報</h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            〒980-0014 <br>
+                            宮城県仙台市青葉区本町２丁目９−２ エンドウビル
+                        </p>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <p><i class="fa-solid fa-train mr-2 text-gold"></i> 広瀬通駅から徒歩圏内（本町商店街内）</p>
+                        <p><i class="fa-solid fa-wine-glass mr-2 text-gold"></i> 20席（カウンター・テーブル席）</p>
+                        <p><i class="fa-solid fa-utensils mr-2 text-gold"></i> 貸切・テイクアウト相談可</p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/9Q6nS6X7L7R7S6W77" target="_blank" class="inline-flex items-center gap-2 text-wine font-bold border-b-2 border-wine pb-1 hover:text-gold hover:border-gold transition">
+                        <i class="fa-solid fa-location-dot"></i> Google Mapsでルートを確認
+                    </a>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.675982142682!2d140.8740710747807!3d38.263820283840765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28247a5cbd01%3A0xd261ded0a1620b5d!2z44OT44K544OI44OtIOODrOOCrOODquODhu-8iEJpc3RybyBs4oCZw6lnYWxpdMOp77yJ!5e0!3m2!1sja!2sjp!4v1772501211056!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-[#1a0508] text-center text-white/30 text-xs tracking-widest">
+        &copy; BISTRO L'ÉGALITÉ. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>
