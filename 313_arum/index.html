@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フランス料理Arum（アリュム）| 絶景と本格フレンチの隠れ家</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --gold: #b39152;
+            --dark-gold: #8e6f36;
+            --deep-green: #1a2a22;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #222;
+            line-height: 1.8;
+            background-color: #fdfcf9;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .en {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .text-gold { color: var(--gold); }
+        .bg-gold { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); }
+
+        .gold-border {
+            border: 1px solid var(--gold);
+            position: relative;
+        }
+        .gold-border::after {
+            content: "";
+            position: absolute;
+            top: 3px; left: 3px; right: 3px; bottom: 3px;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(0.3) contrast(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ファーストビュー -->
+   <section class="relative h-screen flex items-center justify-center text-white">
+    <div class="absolute inset-0 z-0">
+        <img src="images/french.png" alt="Arumの絶景" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 w-full">
+        <div class="mb-6 flex justify-center items-center gap-4">
+            <div class="h-[1px] w-8 md:w-12 bg-gold"></div>
+            <span class="en text-gold tracking-[0.2em] md:tracking-[0.3em] uppercase text-xs md:text-sm">Restaurant Arum</span>
+            <div class="h-[1px] w-8 md:w-12 bg-gold"></div>
+        </div>
+
+        <h1 class="text-3xl md:text-7xl font-bold mb-8 leading-[1.4] tracking-wider serif">
+    <span class="text-lg md:text-3xl block mb-2 font-light">国見ヶ丘、標高の特等席。</span>
+    空に溶け込む、<br>最高純度のフレンチ。
+</h1>
+
+        <div class="inline-block relative p-1 bg-gradient-to-r from-gold to-dark-gold mb-8">
+            <div class="bg-black/20 backdrop-blur-md px-6 md:px-8 py-3 md:py-4 border border-white/30">
+                <p class="text-base md:text-2xl font-bold italic tracking-wide">
+                    至高の一鏡「じゃがいもの冷製ポタージュ」
+                </p>
+            </div>
+        </div>
+
+        <p class="en text-sm md:text-lg tracking-[0.3em] md:tracking-[0.5em] opacity-80">SENDAI / KUNIMIGAOKA</p>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center hidden md:block">
+        <p class="text-[10px] tracking-widest mb-2 uppercase opacity-60">Scroll</p>
+        <div class="w-[1px] h-16 bg-gradient-to-b from-gold to-transparent mx-auto"></div>
+    </div>
+</section>
+
+<section class="py-12 md:py-16 bg-stone-900 text-white relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+        <div class="border-2 border-gold p-6 md:p-12 text-center bg-white/5 backdrop-blur-sm">
+            <h2 class="text-gold text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] mb-4 en">LIMITED OFFER</h2>
+            <h3 class="text-xl md:text-3xl font-bold mb-6 serif leading-relaxed">
+                公式SNS登録で贈る、<br class="md:hidden">旬を味わう特別な招待状。
+            </h3>
+            <p class="text-gray-400 text-xs md:text-sm mb-8 md:mb-10 leading-relaxed md:leading-loose">
+                リピーター様が「これだけで大満足」と絶賛する前菜。<br class="hidden md:block">
+                その中でも不動の人気を誇る<br>
+                <b>「じゃがいもの冷製ポタージュ」</b>をディナー時に無料でご提供いたします。
+            </p>
+
+            <a href="https://www.instagram.com/arum.french/" target="_blank" class="block md:inline-block px-8 md:px-12 py-4 md:py-5 bg-gold text-white font-bold text-base md:text-lg rounded-sm btn-shine shadow-2xl transition-transform hover:scale-105">
+                <i class="fab fa-instagram mr-2"></i> 特典を受け取って予約する
+            </a>
+            <p class="text-[9px] md:text-[10px] mt-4 text-gold/60 italic tracking-widest">※1日5組様限定 / 季節により内容が変更となる場合がございます</p>
+        </div>
+    </div>
+    <div class="absolute -right-20 top-20 text-8xl md:text-[12rem] font-bold text-white/[0.03] pointer-events-none en select-none">ARUM</div>
+</section>
+
+<section class="py-16 md:py-24 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 border-l border-t border-gold opacity-30"></div>
+                <img src="images/soup.jpg" alt="冷製ポタージュ" class="rounded-sm shadow-2xl relative z-10 w-full">
+                <div class="absolute -bottom-6 -right-2 md:-right-6 bg-gold p-4 md:p-6 text-white z-20 shadow-xl">
+                    <p class="serif text-base md:text-xl tracking-widest md:py-4">記憶に刻まれる濃密な甘み。</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 mt-8 md:mt-0">
+                <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 serif leading-tight">
+                    <span class="text-gold block text-xs md:text-sm mb-2 en tracking-widest font-normal uppercase">The Masterpiece</span>
+                    素材の「呼吸」を<br>一皿に閉じ込める。
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base mb-8 leading-relaxed">
+                    Arumのスペシャリテ、じゃがいもの冷製ポタージュ。土の香りを残しつつ、シルクのような滑らかさにまで磨き上げたその味わいは、まさに「飲む宝石」。<br><br>
+                    前菜盛り合わせの一皿に、驚きと感動を。シェフ小野寺が最も大切にしているのは、素材が持つ「本来の甘み」を引き出す温度とタイミングです。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="relative py-24 md:py-40 text-white">
+    <div class="absolute inset-0">
+        <img src="images/yakei.png" alt="Arumの夜景" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-5xl font-bold mb-8 md:mb-10 serif tracking-widest">景色も、立派なメインディッシュ。</h2>
+        <p class="text-sm md:text-lg opacity-90 leading-loose mb-10 md:mb-12 font-light">
+            窓の向こうに広がるのは、宝石を散りばめたような仙台の夜景。<br>
+            あるいは、心洗われるような青空と遠くの海。<br>
+            白木を基調とした落ち着いた空間で、日常を脱ぎ捨てる時間を。
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm tracking-[0.2em]">
+            <div class="border-b border-white/30 pb-2 px-2">DATE</div>
+            <div class="border-b border-white/30 pb-2 px-2">ANNIVERSARY</div>
+            <div class="border-b border-white/30 pb-2 px-2">LUXURY</div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-stone-100">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="en text-gold text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] mb-2">REVIEWS</h2>
+            <h3 class="text-2xl md:text-3xl font-bold serif">お客様の記憶に残る体験。</h3>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div class="bg-white p-6 md:p-8 border-t-4 border-gold shadow-sm">
+                <div class="text-gold mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="text-sm text-gray-600 mb-6 italic">「前菜がこんな組み合わせでも美味しいんだぁと感動。新玉ねぎのスープも甘く、自分でも作りたくなるほど。郊外にいいお店を見つけました。」</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-stone-200 rounded-full"></div>
+                    <p class="text-[11px] font-bold text-gray-400 tracking-widest">30代 女性 / ランチ利用</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 md:p-8 border-t-4 border-gold shadow-sm md:translate-y-4">
+                <div class="text-gold mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="text-sm text-gray-600 mb-6 italic">「2回目ですが、この料理でこの値段は安すぎます。駐車場が少し狭くて急階段ですが、店内は見晴らしが良くて自然を感じて食事出来ます。」</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-stone-200 rounded-full"></div>
+                    <p class="text-[11px] font-bold text-gray-400 tracking-widest">40代 男性 / 記念日利用</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 md:p-8 border-t-4 border-gold shadow-sm">
+                <div class="text-gold mb-4 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="text-sm text-gray-600 mb-6 italic">「景色もご馳走の一部です。デートや記念日など、大切なシチュエーションに訪れたい、と思えるお店です。夜景も素敵だろうなあ。」</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-stone-200 rounded-full"></div>
+                    <p class="text-[11px] font-bold text-gray-400 tracking-widest">20代 女性 / デート利用</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-gradient-to-b from-stone-100 to-white overflow-hidden relative">
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 md:mb-16">
+            <span class="en text-gold text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] mb-2 block font-bold">COMING SOON</span>
+            <h2 class="text-2xl md:text-4xl font-bold serif tracking-wider">「あればいいな」を、形に。</h2>
+            <div class="h-[2px] w-12 md:w-16 bg-gold mx-auto mt-4"></div>
+        </div>
+
+        <div class="bg-white border border-stone-200 rounded-sm p-6 md:p-16 shadow-xl relative">
+            <div class="absolute top-0 right-0 bg-gold text-white text-[10px] font-bold uppercase tracking-widest py-2 px-4 md:px-6 rounded-bl-sm">
+                Premium Online Store
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative">
+                        <img src="images/gift.jpg" alt="急速冷凍してお届けする冷製ポタージュ" class="rounded-sm shadow-lg w-full h-60 md:h-80 object-cover">
+                        <div class="absolute inset-0 bg-stone-900/40 flex items-center justify-center">
+                            <span class="border-2 border-white px-6 py-2 text-white font-bold tracking-widest text-base md:text-lg bg-black/20 backdrop-blur-sm">PREPARATION</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 space-y-6">
+                    <h3 class="text-xl md:text-2xl font-bold serif text-gray-800 leading-snug">
+                        あの感動を、ご自宅でも大切な方へも。<br>
+                        <span class="text-gold font-bold">「おうちで味わうArumプレミアムお取り寄せ」</span>
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        クチコミで「毎日でも飲みたい」「自分でも作りたくなるほど濃厚」と大絶賛をいただくArumのスペシャリテ、<b>「じゃがいもの冷製ポタージュ」</b>。<br><br>
+                        「この味を遠方に住む家族にも贈りたい」「特別な記念日に自宅の食卓で再現したい」という温かいご要望にお応えし、ついに<b>オンラインギフトストア</b>を立ち上げます。
+                    </p>
+                    <ul class="space-y-2 text-xs text-stone-500">
+                        <li><i class="fas fa-check text-gold mr-2"></i> シェフの手作りポタージュを、出来立てそのままに特殊急速冷凍。</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> もっちり香ばしい大人気の「自家製パン」もセットでお届け。</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> お中元・お歳暮・ブライダルギフトに最適な、気品あふれる化粧箱仕様。</li>
+                    </ul>
+                    <div class="bg-stone-50 p-4 border-l-4 border-gold rounded-sm">
+                        <p class="text-xs font-bold text-gray-700">【公式SNSフォロワー様限定】</p>
+                        <p class="text-[11px] text-gray-500 mt-1">オープン時に、優先案内と、オンラインストアで使える「10%OFF先行クーポンコード」を限定配布いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="en text-gold text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] mb-2">ACCESS</h2>
+            <h3 class="text-2xl md:text-3xl font-bold serif tracking-widest">店舗案内・地図</h3>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-8 md:gap-12 items-start">
+            <div class="lg:col-span-2 space-y-8">
+                <div>
+                    <h4 class="text-base md:text-lg font-bold mb-4 serif border-l-4 border-gold pl-4 tracking-widest">Information</h4>
+                    <table class="w-full text-sm leading-relaxed">
+                        <tr class="border-b border-stone-100">
+                            <th class="py-4 text-left font-normal text-gray-400 w-24 en">Address</th>
+                            <td class="py-4">〒989-3201<br>宮城県仙台市青葉区国見ケ丘4丁目31-21 2F</td>
+                        </tr>
+                        <tr class="border-b border-stone-100">
+                            <th class="py-4 text-left font-normal text-gray-400 en">Phone</th>
+                            <td class="py-4 font-bold text-base md:text-lg">050-3556-5564</td>
+                        </tr>
+                        <tr class="border-b border-stone-100">
+                            <th class="py-4 text-left font-normal text-gray-400 en">Holiday</th>
+                            <td class="py-4">月曜日・火曜日</td>
+                        </tr>
+                        <tr>
+                            <th class="py-4 text-left font-normal text-gray-400 en">Parking</th>
+                            <td class="py-4">5台完備</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="bg-stone-50 p-6 rounded-sm border border-stone-200">
+                    <h4 class="text-[11px] font-bold text-gold mb-3 flex items-center gap-2 tracking-widest">
+                        <i class="fas fa-exclamation-triangle"></i> ご来店の際の注意点
+                    </h4>
+                    <p class="text-[11px] text-gray-500 leading-relaxed">
+                        当店舗は高台に位置し絶景をお楽しみいただけますが、入口の階段が少々急になっております。お足元に十分ご注意ください。また、駐車場もスペースに限りがあるため、乗り合わせでのご協力をお願いしております。
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 h-[300px] md:h-[550px] relative">
+                <div class="absolute inset-0 gold-border p-1 md:p-2 bg-white shadow-2xl">
+                    <div class="w-full h-full map-container overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.8246692130238!2d140.82684577478182!3d38.28355698269148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a297ac3ee6585%3A0x1e8ff75720b6580b!2z44OV44Op44Oz44K55paZ55CGQXJ1be-8iOOCouODquODpeODoO-8iQ!5e0!3m2!1sja!2sjp!4v1772499981144!5m2!1sja!2sjp" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -left-2 md:-left-4 bg-stone-900 text-white p-4 md:p-6 z-20 shadow-xl border-l-4 border-gold">
+                    <p class="text-[9px] tracking-widest opacity-60 mb-1 en">Station</p>
+                    <p class="text-sm font-bold">JR国見駅より徒歩20分</p>
+                    <p class="text-[10px] mt-2 text-gold">市参バス「霊天前」徒歩1分</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="py-16 md:py-24 bg-stone-900 text-white text-center">
+    <div class="max-w-2xl mx-auto px-4">
+        <img src="images/soup.jpg" alt="ポタージュ" class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-8 md:mb-10 object-cover border-4 border-gold float-anim">
+        <h2 class="text-2xl md:text-4xl font-bold mb-6 serif text-white">特別な一日は、<br>ここから始まる。</h2>
+        <p class="text-gray-400 mb-10 text-xs md:text-sm tracking-widest leading-loose">
+            窓側の特等席は、1日わずか数組様のみ。<br>
+            仙台の街が煌めき始めるマジックアワーのご予約を、<br>お勧めしております。
+        </p>
+
+        <a href="https://www.instagram.com/arum.french/" target="_blank" class="block w-full bg-gold text-white py-5 md:py-6 rounded-sm font-bold text-lg md:text-xl btn-shine shadow-2xl mb-8">
+            <i class="fab fa-instagram mr-2"></i> 特典を受け取って予約する
+        </a>
+
+        <div class="flex justify-center gap-6 mt-12 opacity-40">
+            <a href="https://www.instagram.com/arum.french/" target="_blank" class="hover:text-gold transition-colors">
+                <i class="fab fa-instagram text-2xl md:text-3xl"></i>
+            </a>
+        </div>
+        <p class="en text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.5em] opacity-30 mt-12 uppercase">© Restaurant Arum All Rights Reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
