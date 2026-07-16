@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graal(グラール)| 仙台の独創的フレンチ - 1日5組限定の饗宴</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark: #0a0a0a;
+            --zinc-800: #27272a;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: var(--dark);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            letter-spacing: 0.1em;
+        }
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        .cta-button:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-10px) translateX(-50%);}
+            60% {transform: translateY(-5px) translateX(-50%);}
+        }
+
+        /* Google Mapをグレースケールにして高級感を出す */
+        .map-container iframe {
+            filter: grayscale(100%) invert(90%) contrast(90%);
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FV:サンプルLPのような凝倒的な没入感 -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="w-full h-full bg-[url('images/french.png')] bg-cover bg-center transition-transform duration-[10000ms] scale-110 animate-pulse-slow"></div>
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6">
+            <p class="font-playfair tracking-[0.4em] text-gold mb-6 opacity-80 uppercase text-sm">Fine Dining Experience</p>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-light leading-relaxed mb-8 tracking-widest">
+               聖杯に注がれる<br>
+                東北の<span class="italic">「旬」</span>
+            </h1>
+            <div class="w-px h-24 bg-gold mx-auto my-8 opacity-50"></div>
+            <p class="text-sm md:text-base tracking-[0.2em] font-light text-gray-300">
+                1日5組限定、仙台の隠れ家フレンチ「Graal」
+            </p>
+        </div>
+
+        <div class="scroll-down text-gold opacity-50 text-xs tracking-widest uppercase">
+            Scroll
+        </div>
+    </section>
+
+    <!-- 導入:縦書きを活かした詩的な構成 -->
+    <section class="py-32 bg-white text-zinc-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-16">
+            <div class="reveal">
+                <h2 class="vertical-text text-3xl md:text-4xl font-bold tracking-widest leading-loose h-80">
+                    地生地消の理想、<br>その先へ。
+                </h2>
+            </div>
+            <div class="max-w-md reveal delay-300 text-zinc-600">
+                <p class="mb-6 leading-loose">
+                    店名「Graal」は、フランス語で「聖杯」を意味します。<br>
+                    私たちが追求するのは、宮城の豊かな大地が育んだ食材という「至宝」を、
+                    独創的なフレンチという「形」にしてお届けすること。
+                </p>
+                <p class="leading-loose">
+                    ミシュラン星付きの厨房で研鑽を積んだシェフ菅原と、
+                    数々の名店でトップソムリエを務めた佐藤。
+                    二人の志が重なり、この場所に新たな物語が刻まれます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴:シネマティックな画像配置 -->
+    <section class="grid md:grid-cols-2 bg-zinc-100">
+        <div class="h-[60vh] md:h-auto bg-[url('images/kinoko.jpg')] bg-cover bg-center reveal"></div>
+        <div class="p-12 md:p-24 flex flex-col justify-center bg-white text-zinc-900">
+            <span class="text-gold text-xs tracking-[0.3em] mb-4 uppercase">Speciality</span>
+            <h3 class="text-2xl font-bold mb-6 tracking-widest">究極のきのこ料理</h3>
+            <p class="text-sm leading-loose text-zinc-500 mb-8">
+                東北の森から届く、野生の力強さを秘めたきのこ。<br>
+                低温調理で極限まで引き出した香りと、緻密に計算された食感のコントラスト。<br>
+                それは、素材の声を聴くことから始まるGraalの真骨頂です。
+            </p>
+            <a href="https://graal-gj.com/" target="_blank" class="cta-button inline-block text-zinc-900 font-bold border-b border-zinc-200 pb-2 self-start uppercase">View Menu</a>
+        </div>
+    </section>
+
+    <!-- セクション:ソムリエのセレクト -->
+    <section class="grid md:grid-cols-2 bg-zinc-100">
+        <div class="order-2 md:order-1 p-12 md:p-24 flex flex-col justify-center bg-zinc-900 text-white">
+            <span class="text-gold text-xs tracking-[0.3em] mb-4 uppercase">Wine Pairing</span>
+            <h3 class="text-2xl font-bold mb-6 tracking-widest text-gold">緻密なマリアージュ</h3>
+            <p class="text-sm leading-loose text-zinc-400 mb-8">
+                ソムリエ佐藤達矢が、一皿ごとに寄り添う最高の一本をセレクト。<br>
+                シャンパンから始まる6種のペアリングは、
+                料理の輪郭を際立たせ、記憶に深く刻まれる体験となります。
+            </p>
+            <a href="https://graal-gj.com/" target="_blank" class="cta-button inline-block text-white font-bold border-b border-zinc-700 pb-2 self-start uppercase">See Pairings</a>
+        </div>
+        <div class="order-1 md:order-2 h-[60vh] md:h-auto bg-[url('images/paring.png')] bg-cover bg-center reveal"></div>
+    </section>
+
+    <!-- 空間:没入感 -->
+   <section class="py-16 md:py-32 bg-white text-zinc-900 overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-10 md:mb-16 reveal">
+            <span class="text-gold text-xs tracking-[0.3em] mb-4 block uppercase">Space</span>
+            <h2 class="text-2xl md:text-3xl font-light tracking-[0.1em] md:tracking-[0.2em]">舞台は、カウンター12席の円形劇場</h2>
+        </div>
+        
+        <div class="relative max-w-5xl mx-auto">
+            <div class="aspect-[4/3] md:aspect-[21/9] bg-zinc-200 overflow-hidden reveal shadow-2xl">
+                <div class="w-full h-full bg-[url('images/store.jpg')] bg-cover bg-center"></div>
+            </div>
+
+            <div class="relative md:absolute md:-bottom-10 md:-right-6 lg:right-12 mt-4 md:mt-0 bg-zinc-900 text-white p-6 md:p-12 md:max-w-xs shadow-2xl reveal delay-500">
+                <p class="text-sm md:text-base leading-relaxed opacity-80 italic">
+                    「シェフの技を目の前で。遊び心あふれる内装と落ち着いた照明が、非日常を演出します。」
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- クチコミ -->
+    <section class="py-32 bg-zinc-50 border-t border-zinc-200">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-zinc-900">
+                <div class="reveal">
+                    <div class="text-gold text-xl mb-4 font-playfair italic">01.</div>
+                    <p class="text-sm leading-loose">「独創的なフレンチで全ての料理に驚きがあり、とても素敵な記念日になりました!」</p>
+                    <div class="mt-4 flex text-gold text-xs tracking-widest">★★★★★</div>
+                </div>
+                <div class="reveal delay-200">
+                    <div class="text-gold text-xl mb-4 font-playfair italic">02.</div>
+                    <p class="text-sm leading-loose">「ソムリエの方がとても良いセレクトをしてくれて、次回も楽しみに想えました。」</p>
+                    <div class="mt-4 flex text-gold text-xs tracking-widest">★★★★★</div>
+                </div>
+                <div class="reveal delay-400">
+                    <div class="text-gold text-xl mb-4 font-playfair italic">03.</div>
+                    <p class="text-sm leading-loose">「雰囲気もスタッフも料理も最高。ペアリングも非常にリーズナブルで大満足でした。」</p>
+                    <div class="mt-4 flex text-gold text-xs tracking-widest">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON:おうちで楽しむ美食の体験キット -->
+    <section class="py-32 bg-gradient-to-b from-zinc-950 to-zinc-900 text-white border-t border-white/5 relative overflow-hidden">
+        <div class="absolute -left-16 -top-16 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-6 max-w-4xl relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold text-xs tracking-[0.3em] mb-4 uppercase font-playfair italic">Coming Soon</span>
+                <h2 class="text-3xl md:text-4xl font-light tracking-[0.2em] mb-6 font-playfair">Graal Atelier</h2>
+                <p class="text-sm text-zinc-400 tracking-[0.1em] leading-relaxed">
+                    おうちのキッチンが、輝きに満ちたフレンチの舞台になる。<br class="hidden md:inline">
+                    仕上げの瞬間を自ら五感で楽しむ、体験型グルメキット。
+                </p>
+                <div class="w-12 h-px bg-gold/50 mx-auto mt-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal delay-200">
+                <!-- 上品なお取り寄せをイメージさせる高品質フードビジュアル -->
+                <div class="aspect-video md:aspect-square bg-[url('images/kit.jpg')] bg-cover bg-center rounded-xl shadow-2xl border border-white/10"></div>
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold tracking-widest text-gold">おうちで最後の仕上げを施す楽しさ</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        菅原シェフこだわりの「極上きのこスープ」や、名物「ふわふわ穴子春巻き」をご自宅で手軽に再現。一番おいしい"出来立ての瞬間"を、ご自宅でクリエイトできる特別なキットです。
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        さらに、ソムリエ佐藤がその日のメニューのためだけに特別に用意したハーフペアリングワインも同封。解説カードを読みながら、ご家庭が贅沢なプライベートサロンに早変わりします。
+                    </p>
+                    <div class="pt-4">
+                        <span class="inline-block border border-gold/40 text-gold text-xs px-4 py-2 rounded-full tracking-widest uppercase">
+                            2026 Winter Release
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス・予約 -->
+    <section class="py-32 bg-zinc-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-light mb-4 tracking-widest">アクセス & ご予約</h2>
+                <p class="text-sm text-zinc-500 tracking-widest uppercase">Location & Reservation</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-white/5 shadow-2xl reveal">
+                <!-- Google Map統合:グレースケール加工でLPのトーンに合わせる -->
+                <div class="map-container min-h-[400px] lg:min-h-full">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.7674936100993!2d140.8768764747805!3d38.261698183964334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2969a490686d%3A0xd5f561a08b1c1ba6!2sGraal!5e0!3m2!1sja!2sjp!4v1772499215167!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="bg-zinc-800/50 p-12 md:p-16 flex flex-col justify-center">
+                    <div class="space-y-8 mb-12 text-sm">
+                        <div>
+                            <span class="block text-gold text-xs mb-2 uppercase tracking-[0.2em]">Address</span>
+                            <p class="text-zinc-300">〒980-0021 宮城県仙台市青葉区中央1-8-22<br>サンスクエア荘司ビル B1F(仙台駅徒歩3分)</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <span class="block text-gold text-xs mb-2 uppercase tracking-[0.2em]">Contact</span>
+                                <p class="text-zinc-300">022-796-7898</p>
+                            </div>
+                            <div>
+                                <span class="block text-gold text-xs mb-2 uppercase tracking-[0.2em]">Closed</span>
+                                <p class="text-zinc-300">月曜日</p>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block text-gold text-xs mb-2 uppercase tracking-[0.2em]">Open</span>
+                            <p class="text-zinc-300 italic">1日5組限定(完全予約制)</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <a href="https://graal-gj.com/" target="_blank" class="w-full block bg-gold text-dark text-center font-bold py-5 tracking-[0.3em] hover:bg-[#e2cf9f] transition-all rounded-sm uppercase text-sm shadow-lg">
+                            Reservation
+                        </a>
+                        <p class="mt-4 text-[10px] text-zinc-500 text-center uppercase tracking-widest">Available 24/7 online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-black text-center border-t border-white/5">
+        <p class="font-playfair text-gold text-2xl mb-6 tracking-widest underline decoration-1 underline-offset-8">Graal</p>
+        <div class="flex justify-center gap-8 mb-10">
+            <!-- インスタグラムへのリンク -->
+            <a href="https://www.instagram.com/graal_sendai/" target="_blank" class="text-zinc-500 hover:text-white transition text-xs tracking-widest uppercase border-b border-transparent hover:border-white pb-1">Instagram</a>
+            <!-- 公式サイト(HP)へのリンク -->
+            <a href="https://graal-gj.com/" target="_blank" class="text-zinc-500 hover:text-white transition text-xs tracking-widest uppercase border-b border-transparent hover:border-white pb-1">Official Site</a>
+        </div>
+        <p class="text-[10px] text-zinc-700 tracking-[0.4em] uppercase">&copy; 2024 Restaurant Graal. Sendai City.</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
