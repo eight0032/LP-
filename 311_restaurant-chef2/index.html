@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン シェフ2 長命ヶ丘店 | 創業37年の隠れ家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --gold-deep: #b8860b;
+            --gold-light: #d4af37;
+            --stone-900: #1c1917;
+            --stone-50: #fafaf9;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--stone-900);
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold {
+            color: var(--gold-light);
+        }
+        .bg-gold {
+            background-color: var(--gold-light);
+        }
+        .border-gold {
+            border-color: var(--gold-light);
+        }
+
+        .deco-line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold-light);
+            margin: 20px auto;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-stone-50">
+
+    <!-- フローティング予約ボタン (Mobile) -->
+    <div class="floating-cta md:hidden">
+        <a href="tel:05032042470" class="bg-gold text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- 1. FVエリア -->
+    <section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- AI生成イメージ: 柔らかな光が差し込むフレンチレストランのテーブルセット -->
+            <div class="w-full h-full bg-[url('images/poware.png')] bg-cover bg-center scale-105 animate-[pulse_10s_infinite]"></div>
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4">
+            <div class="mb-6 opacity-0 animate-fadeIn">
+                <span class="inline-block border-t border-b border-white py-1 px-4 tracking-[0.3em] text-sm md:text-base">SINCE 1987</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-light mb-8 leading-tight serif tracking-wider opacity-0 animate-fadeIn" style="animation-delay: 0.5s;">
+                記憶に刻まれる、<br>至高のひと皿を。
+            </h1>
+            <div class="deco-line"></div>
+            <p class="text-lg md:text-xl mb-10 tracking-[0.2em] serif font-light opacity-0 animate-fadeIn" style="animation-delay: 1s;">
+                レストラン シェフ2 長命ヶ丘店
+            </p>
+            <div class="opacity-0 animate-fadeIn" style="animation-delay: 1.5s;">
+                <a href="#cta" class="inline-block border border-white px-10 py-4 hover:bg-white hover:text-stone-900 transition-all duration-500 tracking-widest text-sm">RESERVATION</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. コンセプト -->
+    <section class="py-24 px-4 max-w-4xl mx-auto text-center">
+        <h2 class="text-gold serif text-sm tracking-[0.4em] mb-4">CONCEPT</h2>
+        <h3 class="text-2xl md:text-3xl serif mb-10 leading-relaxed">宮城の四季を愉しみ、<br>伝統を皿の上に描く。</h3>
+        <div class="text-stone-600 leading-[2.2] text-sm md:text-base tracking-widest font-light">
+            創業より37年。私たちが守り続けてきたのは、<br>
+            「仙台精養軒」の伝統を受け継ぐ確かな技術と、<br>
+            宮城の豊かな大地が育んだ食材への敬意です。<br><br>
+            一品ずつ丁寧に。ゆっくりと流れる時間の中で、<br>
+            五感を研ぎ澄ます本格フレンチをお愉しみください。
+        </div>
+    </section>
+
+    <!-- 3. 特徴 / ATMOSPHERE -->
+    <section class="relative py-24 bg-stone-900 text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 items-center gap-16">
+            <div class="order-2 md:order-1">
+                <div class="relative group">
+                    <div class="aspect-[4/3] bg-stone-800 rounded-sm overflow-hidden shadow-2xl">
+                        <!-- AI生成イメージ: 洗練されたレストランの内装 -->
+                        <div class="w-full h-full bg-cover bg-center bg-[url('images/store.png')] hover:scale-105 transition-transform duration-700"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 border-r border-b border-gold opacity-50"></div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 space-y-6">
+                <h3 class="text-gold serif tracking-widest">ATMOSPHERE</h3>
+                <h2 class="text-3xl serif leading-tight">心を解き放つ、<br>クラシックな空間。</h2>
+                <p class="text-stone-400 text-sm leading-loose tracking-widest">
+                    20席のみのプライベートな空間。大切な記念日には無料の半個室をご用意。ソムリエが厳選するワインと共に、ここでしか味わえない一皿「本日の鮮魚 さわらのポワレ」をご堪能ください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. メニュー -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="serif text-3xl mb-4">Course Menu</h2>
+                <div class="deco-line"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-20">
+                <div class="space-y-8">
+                    <div class="overflow-hidden bg-stone-100 aspect-video">
+                        <!-- AI生成イメージ: 美しく盛り付けられた白身魚のポワレ -->
+                        <img src="images/fish.png" alt="Lunch" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div>
+                        <h4 class="serif text-xl mb-2 flex justify-between items-baseline">
+                            <span>Lunch エスポワール</span>                           
+                        </h4>
+                        <p class="text-stone-500 text-xs tracking-widest leading-loose">
+                            前菜 / 人気の人参ムース / 本日の鮮魚さわら 又は 肉料理 / デザート / コーヒー
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-8 md:mt-24">
+                    <div class="overflow-hidden bg-stone-100 aspect-video">
+                        <!-- AI生成イメージ: 豪華なディナーコースのメイン料理 -->
+                        <img src="images/french.png" alt="Dinner" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div>
+                        <h4 class="serif text-xl mb-2 flex justify-between items-baseline">
+                            <span>Dinner 季節の特別コース</span>                           
+                        </h4>
+                        <p class="text-stone-500 text-xs tracking-widest leading-loose">
+                            その日最高の食材を使用した、全10品前後の特別なフルコース。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 記念日特典 -->
+    <section class="py-24 px-4 bg-stone-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white p-1 rounded-sm shadow-sm">
+                <div class="border border-gold/30 p-8 md:p-12 text-center">
+                    <span class="text-gold serif tracking-[0.5em] text-xs block mb-4 uppercase">Anniversary Gift</span>
+                    <h3 class="text-2xl serif mb-6">特別な日を祝う、心ばかりの贈り物</h3>
+                    <div class="flex flex-col md:flex-row items-center gap-8 mb-8 text-left">
+                        <div class="w-full md:w-1/3 aspect-square overflow-hidden rounded-full border-4 border-stone-50 shadow-inner">
+                            <!-- AI生成イメージ: ハッピーバースデーと書かれたデザートプレート -->
+                            <img src="images/cake.png" alt="Message Plate" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <p class="text-sm text-stone-600 mb-4 tracking-widest leading-loose">
+                                Web予約時に「記念日」とお伝えいただいたお客様へ、<br>
+                                パティシエ特製のメッセージプレートを無料でご用意いたします。
+                            </p>
+                            <ul class="text-xs text-stone-400 space-y-1">
+                                <li>・誕生日の主役の方にはフルーツの増量サービスも</li>
+                                <li>・プレゼントのお預かり、お出しするタイミングのご相談も承ります</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://www.restaurant-chef2.com/contact" class="inline-block bg-gold px-12 py-4 text-white font-bold tracking-[0.3em] hover:bg-gold-deep transition-all">RESERVE NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. COMING SOON -->
+    <section class="py-24 px-4 bg-white border-t border-stone-200">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold serif tracking-[0.4em] text-xs block mb-2 uppercase">New Experience</span>
+                <h2 class="serif text-3xl mb-4 text-stone-900">COMING SOON</h2>
+                <div class="deco-line"></div>
+                <h3 class="text-xl md:text-2xl serif text-stone-800">「おうちでシェフ2」極上フレンチ・グルメ便</h3>
+                <p class="text-sm text-stone-500 mt-2 tracking-widest">お祝いのテーブルに、創業37年の伝統と温もりをそのままお届け。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-stone-600 leading-relaxed text-sm md:text-base tracking-widest">
+                        「小さな子どもがいて、2時間かけてお店で食べるのは少し難しい…」<br>
+                        「大切な記念日だからこそ、自宅で大切な人と気兼ねなく美味しいフレンチを楽しみたい」<br><br>
+                        そんな皆様のあたたかいご要望にお応えし、シェフ2のフルコースをお取り寄せできる<b>【極上おうちフレンチセット(冷凍真空パック)】</b>の宅配サービスを現在準備中です。
+                    </p>
+                    <div class="bg-stone-50 p-6 rounded-lg border-l-4 border-gold">
+                        <h4 class="font-bold text-stone-800 mb-2 text-sm md:text-base">お届け予定メニュー(例)</h4>
+                        <ul class="text-xs text-stone-600 space-y-2">
+                            <li><i class="fas fa-check text-gold mr-2"></i>一番人気・パティシエ特製「にんじんのムース」</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i>本日の鮮魚 さわらのポワレ 〜特製ハーブ白ワインソース仕立て〜</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i>厳選牛の赤ワイン煮込み、および自家製パン詰め合わせ</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
+                        <!-- AI生成イメージ: 綺麗な自宅のダイニングテーブルで並ぶお取り寄せフレンチのイメージ -->
+                        <img src="images/gurume.jpg" alt="Home French Delivery" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-stone-900 text-white py-3 px-6 rounded shadow-lg text-xs tracking-widest">
+                        <span class="text-gold font-bold">RELEASE:</span> 2026年秋 予定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. アクセス & インフォメーション -->
+ <footer id="cta" class="bg-white pt-24 pb-12 border-t border-stone-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 mb-20">
+                <div class="space-y-8">
+                    <h4 class="serif text-gold border-b border-gold/30 pb-2 tracking-[0.2em]">ACCESS</h4>
+                    <div class="map-container shadow-xl">
+                        <!-- Google Maps Embed -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3130.6381719301253!2d140.8287260747833!3d38.31105018108984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8980bcf69b3831%3A0x3a1b92ec4e7b9878!2z44Os44K544OI44Op44OzIOOCt-OCp-ODle-8kiDplbflkb3jg7bkuJjlupc!5e0!3m2!1sja!2sjp!4v1772498366396!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p class="text-sm leading-loose tracking-widest text-stone-600">
+                        〒981-3212 宮城県仙台市泉区長命ヶ丘3-26-16<br>
+                        バス停「長命ヶ丘3丁目西」より徒歩3分<br>
+                        専用無料駐車場 18台完備
+                    </p>
+                </div>
+
+                <div class="space-y-8">
+                    <h4 class="serif text-gold border-b border-gold/30 pb-2 tracking-[0.2em]">INFORMATION</h4>
+                    <div class="grid grid-cols-2 gap-4 text-sm tracking-widest">
+                        <div>
+                            <span class="block text-stone-400 text-[10px] mb-1">PHONE</span>
+                            <a href="tel:05032042470" class="text-lg serif">050-3204-2470</a>
+                        </div>
+                        <div>
+                            <span class="block text-stone-400 text-[10px] mb-1">BUSINESS DAYS</span>
+                            <p>金・土・日・月・火 営業</p>
+                        </div>
+                        <div>
+                            <span class="block text-stone-400 text-[10px] mb-1">HOLIDAYS</span>
+                            <p>水曜日・木曜日</p>
+                        </div>
+                        <div>
+                            <span class="block text-stone-400 text-[10px] mb-1">PAYMENT</span>
+                            <p>現金 / クレジット / PayPay</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://www.restaurant-chef2.com/contact" class="block w-full text-center border border-stone-900 py-4 hover:bg-stone-900 hover:text-white transition-all tracking-[0.3em] font-bold">WEB CONTACT / ONLINE RESERVE</a>
+                    </div>
+
+                    <div class="flex gap-6 pt-2 justify-center md:justify-start">
+                        <!-- インスタグラム リンク -->
+                        <a href="https://www.instagram.com/restaurantchef2/#" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-gold transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <!-- ホームページ リンク -->
+                        <a href="https://www.restaurant-chef2.com/" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-gold transition">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-[10px] text-stone-300 tracking-[0.3em] uppercase mt-20">
+                &copy; Restaurant Chef2 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
