@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BISTROT UN CERCLE | 仙台・本院の隠れ家ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-deep-navy: #0A162B;
+            --color-wine-red: #5E1914;
+            --color-classic-gold: #B5954B;
+            --color-paper: #F9F7F2;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Shippori Mincho', serif;
+            background-color: var(--color-paper);
+            color: #333;
+            overflow-x: hidden;
+        }
+        .serif-en { font-family: 'Playfair Display', serif; }
+        .script-en { font-family: 'Great Vibes', cursive; }
+
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/papyrus.png');
+        }
+
+        /* 飾り罫線 */
+        .ornament-border { position: relative; padding-bottom: 20px; }
+        .ornament-border::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 100px; height: 2px;
+            background: var(--color-classic-gold);
+        }
+
+        /* アニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { opacity: 1; transform: none; transition: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ボタン */
+        .btn-classic {
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            color: white;
+            background: var(--color-wine-red);
+            border: 1px solid var(--color-classic-gold);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .btn-classic:hover, .btn-classic:focus-visible {
+            background: var(--color-deep-navy);
+            letter-spacing: 2px;
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--color-classic-gold);
+            outline-offset: 2px;
+        }
+
+        /* Google Map カスタマイズ */
+        .map-container iframe {
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+            opacity: 0.8;
+            transition: all 0.5s;
+        }
+        .map-container:hover iframe {
+            filter: grayscale(0) invert(0) contrast(1);
+            opacity: 1;
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        #mobile-menu.open { max-height: 400px; }
+
+        /* fade-in の初期状態がSSR/JS無効環境で消えないように */
+        noscript .fade-in { opacity: 1 !important; transform: none !important; }
+    </style>
+</head>
+<body class="bg-paper">
+
+    <!-- Header Navigation -->
+    <nav class="fixed top-0 w-full z-[100] bg-white/95 backdrop-blur-sm border-b border-stone-200">
+        <div class="px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <div class="serif-en font-bold text-lg sm:text-xl tracking-tighter uppercase text-stone-800">
+                BISTROT <span class="text-[#B5954B]">UN CERCLE</span>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest font-bold text-stone-600">
+                <a href="#concept" class="hover:text-[#B5954B] transition">Concept</a>
+                <a href="#menu" class="hover:text-[#B5954B] transition">Menu</a>
+                <a href="#chef" class="hover:text-[#B5954B] transition">Chef</a>
+                <a href="#coming-soon" class="hover:text-[#B5954B] transition">Coming Soon</a>
+                <a href="#access" class="hover:text-[#B5954B] transition">Access</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="#reserve" class="hidden sm:inline-block text-xs bg-stone-900 text-white px-4 py-2 tracking-widest uppercase hover:bg-stone-700 transition">Reserve</a>
+
+                <!-- ハンバーガーボタン(モバイルのみ) -->
+                <button id="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu"
+                    class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]">
+                    <span class="block w-6 h-[2px] bg-stone-800 transition-transform" id="bar1"></span>
+                    <span class="block w-6 h-[2px] bg-stone-800 transition-opacity" id="bar2"></span>
+                    <span class="block w-6 h-[2px] bg-stone-800 transition-transform" id="bar3"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- モバイルメニュー -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-stone-200">
+            <div class="flex flex-col px-6 py-4 gap-4 text-sm uppercase tracking-widest font-bold text-stone-600">
+                <a href="#concept" class="py-1">Concept</a>
+                <a href="#menu" class="py-1">Menu</a>
+                <a href="#chef" class="py-1">Chef</a>
+                <a href="#coming-soon" class="py-1">Coming Soon</a>
+                <a href="#access" class="py-1">Access</a>
+                <a href="#reserve" class="mt-2 text-center bg-stone-900 text-white px-4 py-3">Reserve</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Main Visual -->
+    <section class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/gril.jpg"
+                 alt="山中鶏のグリル" class="w-full h-full object-cover brightness-[0.7]">
+        </div>
+        <div class="relative z-10 text-center text-white px-4 max-w-4xl">
+            <div class="script-en text-3xl sm:text-4xl md:text-6xl text-[#B5954B] mb-3 sm:mb-4 opacity-0 animate-[fadeIn_1.5s_ease-out_forwards]">
+                Welcome to the Hideaway
+            </div>
+            <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold leading-snug sm:leading-tight mb-6 sm:mb-8 tracking-[0.1em] sm:tracking-[0.2em] ornament-border">
+                ビストロ アンセルクル
+            </h1>
+            <p class="text-sm sm:text-lg md:text-xl font-light tracking-widest px-2">
+                仙台・本院、静寂の中に灯る<br class="md:hidden">熟練のフランス大衆料理。
+            </p>
+        </div>
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white text-[10px] sm:text-xs tracking-widest flex flex-col items-center">
+            <span class="mb-2">SCROLL</span>
+            <div class="w-px h-8 sm:h-12 bg-white/50"></div>
+        </div>
+    </section>
+
+    <!-- Section 2: Statement -->
+    <section id="concept" class="py-16 sm:py-24 bg-paper relative">
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+            <div class="script-en text-2xl sm:text-3xl text-[#B5954B] mb-2">Our Philosophy</div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-10 sm:mb-12 tracking-widest">
+                フレンチを、もっと、あなたのそばに。
+            </h2>
+            <div class="space-y-6 sm:space-y-8 leading-loose text-stone-600 text-sm sm:text-base">
+                <p class="fade-in">
+                    「フランス料理」という言葉に、身構えしていませんか？<br>
+                    私たちが提供するのは、気取ったフルコースではなく、<br>
+                    フランスの街角にある食堂で愛される「ビストロ料理」です。
+                </p>
+                <p class="fade-in">
+                    素材の声を聴き、余計なソースで飾らず、<br>
+                    一皿一皿の「輪郭」を際立たせる。<br>
+                    それは、驚くほど優しく、どこか懐かしい味わい。
+                </p>
+                <p class="fade-in">
+                    日常の喧騒を離れ、<br>
+                    ワインを片手に、ゆったりとした時間を。<br>
+                    ここには、心まで解きほぐす魔法があります。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Signature Menu -->
+    <section id="menu" class="py-16 sm:py-24 bg-[#0A162B] text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-14 sm:mb-20">
+                <div class="script-en text-3xl sm:text-4xl text-[#B5954B] mb-2">Recommended</div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-widest">至福のスペシャリテ</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 sm:gap-16 items-center mb-20 sm:mb-32">
+                <div class="fade-in">
+                    <img src="images/gril.jpg"
+                         alt="山中鶏のグリル" class="w-full rounded-sm shadow-2xl border-4 border-[#1E293B]">
+                </div>
+                <div class="fade-in">
+                    <span class="text-[#B5954B] serif-en text-lg sm:text-xl italic font-bold">Viande</span>
+                    <h3 class="text-2xl sm:text-3xl font-bold my-3 sm:my-4 uppercase tracking-tighter">山中鶏のグリル</h3>
+                    <p class="text-stone-400 leading-loose mb-6 text-sm sm:text-base">
+                        分厚い身に閉じ込められた、驚くほど柔らかな旨み。<br>
+                        表面はカリッと香ばしく、噛めば肉汁が溢れ出します。<br>
+                        付け合わせの野菜ひとつひとつにも、素材を活かす技術が宿ります。
+                    </p>                   
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 sm:gap-16 items-center">
+                <div class="fade-in md:order-2">
+                    <img src="images/kasure.jpg"
+                         alt="カスレ" class="w-full rounded-sm shadow-2xl border-4 border-[#1E293B]">
+                </div>
+                <div class="fade-in md:order-1 text-left md:text-right">
+                    <span class="text-[#B5954B] serif-en text-lg sm:text-xl italic font-bold">Tradition</span>
+                    <h3 class="text-2xl sm:text-3xl font-bold my-3 sm:my-4 text-white uppercase tracking-tighter">伝統の「カスレ」</h3>
+                    <p class="text-stone-400 leading-loose mb-6 text-sm sm:text-base">
+                        低温でじっくりと煮込み、表面にできた黄金色の膜を<br>
+                        何度も溶かし込んで作り出す、独特のコクと深み。<br>
+                        インゲン豆が吸い込んだ旨みの凝縮を、お口へ。
+                    </p>
+                    <div class="text-[#B5954B] font-bold">Speciality</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Customer Voices -->
+    <section class="py-16 sm:py-24 bg-paper border-y border-stone-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-12 sm:mb-16 serif-en italic">Guest Reviews</h2>
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-10">
+                <div class="p-6 sm:p-8 border border-[#B5954B]/30 bg-white relative fade-in">
+                    <div class="absolute -top-4 left-6 bg-paper px-4 text-[#B5954B] text-2xl">&ldquo;</div>
+                    <p class="text-sm leading-relaxed text-stone-600 mb-6">
+                        前日に予約してランチに訪れました。ビーツのスープ、山中鶏、デザートのピスタチオアイスまで、どれも繊細で確かな技術を感じます。地下鉄で行って、ワインと一緒に楽しむのが最高です。
+                    </p>
+                    <p class="text-xs font-bold text-stone-400">— 40代・ご夫婦でのご利用</p>
+                </div>
+                <div class="p-6 sm:p-8 border border-[#B5954B]/30 bg-white relative fade-in">
+                    <div class="absolute -top-4 left-6 bg-paper px-4 text-[#B5954B] text-2xl">&ldquo;</div>
+                    <p class="text-sm leading-relaxed text-stone-600 mb-6">
+                        隠れ家のような居心地の良さ。ホタテのタルタルは、別料金を出してでも食べる価値のある一品です。シェフと女性スタッフの丁寧な説明も、料理の味をさらに引き立ててくれます。
+                    </p>
+                    <p class="text-xs font-bold text-stone-400">— 特別な日のお食事に</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Chef Story -->
+    <section id="chef" class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row gap-10 sm:gap-16 items-center">
+            <div class="w-full md:w-1/2 fade-in">
+                <div class="relative max-w-sm mx-auto md:max-w-none">
+                    <div class="absolute -top-4 -left-4 w-full h-full border border-[#B5954B] translate-x-4 translate-y-4"></div>
+                    <img src="images/chef.png"
+                         alt="佐々木シェフ" class="relative z-10 w-full grayscale hover:grayscale-0 transition duration-700">
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 fade-in">
+                <div class="script-en text-2xl sm:text-3xl text-[#B5954B] mb-2">The Artisan</div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 tracking-widest">オーナーシェフ 佐々木 現人</h2>
+                <p class="leading-loose text-stone-600 mb-8 text-sm sm:text-base">
+                    1976年生まれ。幼少期に体験したフレンチの衝撃を胸に、東京で修行を重ねました。2013年、故郷の仙台で「アンセルクル(ひとつの輪)」を冠したこの店をオープン。<br><br>
+                    華美な装飾よりも、素材そのものが持つ力を信じる。伝統的な手法を守りつつ、日本人の味覚に寄り添う「優しく厚みのある味」を追求し続けています。
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/bistrot_uncercle/" target="_blank" rel="noopener"
+                       aria-label="Instagram"
+                       class="border border-stone-300 p-3 hover:bg-[#B5954B] hover:text-white transition">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.058-1.69-.072-4.949-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44-1.44-.645-1.44-1.44.644-1.44 1.441-1.44z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5.5: Coming Soon -->
+    <section id="coming-soon" class="py-16 sm:py-24 bg-[#0A162B] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="images/syarukyutori.png"
+                 alt="お取り寄せビストロイメージ" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 max-w-4xl text-center relative z-10">
+            <div class="script-en text-3xl sm:text-4xl text-[#B5954B] mb-2">Coming Soon</div>
+            <h2 class="text-xl sm:text-3xl font-bold tracking-widest mb-6">おうちで楽しむ、アンセルクルの味。</h2>
+            <div class="w-20 h-px bg-[#B5954B] mx-auto mb-8 sm:mb-10"></div>
+
+            <p class="text-stone-300 leading-loose max-w-2xl mx-auto mb-10 sm:mb-12 text-sm sm:text-base">
+                「自宅でゆっくり本格的なワインタイムを過ごしたい」「遠方の大切な人へ贈りたい」<br>
+                そんな多くのお客様からのご要望にお応えし、<br>
+                アンセルクル特製の<strong class="text-[#B5954B]">【お取り寄せ・オンラインショップ】</strong>を現在準備中です。
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 text-left max-w-3xl mx-auto">
+                <div class="p-6 sm:p-8 bg-white/5 border border-[#B5954B]/30 rounded-sm">
+                    <h3 class="font-bold text-[#B5954B] text-base sm:text-lg mb-4 flex items-center gap-2 flex-wrap">
+                        <span class="text-[10px] border border-[#B5954B] px-2 py-0.5 rounded uppercase font-normal">Menu 01</span>
+                        自家製シャルキュトリー詰合せ
+                    </h3>
+                    <p class="text-sm text-stone-400 leading-relaxed">
+                        大人気のパテ・ド・カンパーニュ、滑らかな舌触りのレバームース、そしてプリッとした肉汁溢れる自家製ソーセージを出来たての状態で真空パックに。至福の家呑みワイン時間を演出します。
+                    </p>
+                </div>
+                <div class="p-6 sm:p-8 bg-white/5 border border-[#B5954B]/30 rounded-sm">
+                    <h3 class="font-bold text-[#B5954B] text-base sm:text-lg mb-4 flex items-center gap-2 flex-wrap">
+                        <span class="text-[10px] border border-[#B5954B] px-2 py-0.5 rounded uppercase font-normal">Menu 02</span>
+                        伝統の「カスレ」簡単ミールキット
+                    </h3>
+                    <p class="text-sm text-stone-400 leading-relaxed">
+                        低温でじっくりと煮込み、旨味を極限まで含んだ鴨のコンフィとインゲン豆。ご家庭のオーブンで表面をカリッとグラチネ(焦げ目付け)していただくだけで、本格的なおもてなしの一皿が完成します。
+                    </p>
+                </div>
+            </div>
+
+            <p class="mt-10 sm:mt-12 text-xs text-stone-500 px-2">
+                ※サービス開始の時期、限定予約の受付は公式Instagramにて先行して公開いたします。
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 6: Access & Info -->
+   <section id="access" class="py-16 sm:py-24 bg-paper">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="text-center mb-12 sm:mb-16">
+            <div class="script-en text-3xl sm:text-4xl text-[#B5954B] mb-2">Access</div>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-widest uppercase">店舗情報・アクセス</h2>
+        </div>
+
+        <div class="bg-white shadow-2xl overflow-hidden rounded-sm flex flex-col lg:flex-row border border-stone-200">
+            <!-- Map Area -->
+            <div class="w-full lg:w-3/5 map-container h-[300px] sm:h-[400px] lg:h-auto lg:min-h-[450px]">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.5612773317794!2d140.87129687478085!3d38.26648008368594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2825f3c6b9f7%3A0xfdfb8a6c1fefedc0!2zQklTVFJPVCBVTiBDRVJDTEXvvIjjg5Pjgrnjg4jjg60g44Ki44Oz44K744Or44Kv44Or77yJ!5e0!3m2!1sja!2sjp!4v1772424324061!5m2!1sja!2sjp"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" title="BISTROT UN CERCLE 地図">
+                </iframe>
+            </div>
+
+            <!-- Info Area -->
+            <div class="w-full lg:w-2/5 p-6 sm:p-10 lg:p-14 flex flex-col justify-center">
+                <h3 class="serif-en text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-[#B5954B] border-b border-[#B5954B] pb-4 uppercase tracking-tighter">
+                    BISTROT UN CERCLE
+                </h3>
+                <ul class="space-y-5 sm:space-y-6 text-sm">
+                    <!-- ...（省略：Address, Station, Open/Holiday, Payment）... -->
+                    <li class="flex flex-col">
+                        <span class="font-bold text-stone-400 text-[10px] uppercase tracking-widest mb-1">Address</span>
+                        <span class="text-stone-700 leading-relaxed">〒980-0014 宮城県仙台市青葉区本町2丁目19－26　TKビル 2F</span>
+                    </li>
+                    <li class="flex flex-col">
+                        <span class="font-bold text-stone-400 text-[10px] uppercase tracking-widest mb-1">Station</span>
+                        <span class="text-stone-700">地下鉄勾当台公園駅より徒歩3〜5分</span>
+                    </li>
+                    <li class="flex flex-col">
+                        <span class="font-bold text-stone-400 text-[10px] uppercase tracking-widest mb-1">Open / Holiday</span>
+                        <span class="text-stone-700 italic">定休日：月曜日<br><span class="text-xs text-stone-500">※ランチ・ディナー共に完全予約制</span></span>
+                    </li>
+                    <li class="flex flex-col">
+                        <span class="font-bold text-stone-400 text-[10px] uppercase tracking-widest mb-1">Payment</span>
+                        <span class="text-stone-700">現金・PayPay・クレジットカード</span>
+                    </li>
+                </ul>
+                
+                <div class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-stone-100 text-center lg:text-left">
+                    <p class="text-xs text-stone-400 mb-3 sm:mb-4">お電話でのご予約・お問い合わせ</p>
+                    <a href="tel:0227964337" class="block text-xl sm:text-2xl font-bold text-stone-800 hover:text-[#B5954B] transition serif-en mb-4">
+                        022-796-4337
+                    </a>
+                    
+                    <!-- 追加部分 -->
+                    <a href="http://uncercle.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm text-[#B5954B] hover:text-stone-800 transition">
+                        <i class="fas fa-globe mr-2"></i> 公式サイトはこちら
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Final CTA Area -->
+    <section id="reserve" class="py-16 sm:py-24 bg-[#0A162B] text-white overflow-hidden relative">
+        <div class="container mx-auto px-4 max-w-4xl text-center relative z-10">
+            <div class="script-en text-3xl sm:text-4xl text-[#B5954B] mb-5 sm:mb-6">Reservation</div>
+            <h2 class="text-xl sm:text-2xl md:text-4xl font-bold mb-6 sm:mb-8 tracking-[0.1em] sm:tracking-[0.2em]">
+                ひとつの輪、至福のひととき。
+            </h2>
+            <p class="text-stone-400 mb-10 sm:mb-12 leading-loose max-w-2xl mx-auto text-sm sm:text-base">
+                完全予約制の小さなお店です。<br>
+                最新の空席状況や期間限定メニューはInstagramにて公開しております。<br>
+                皆様のご来店を、心よりお待ちしております。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="https://www.instagram.com/bistrot_uncercle/" target="_blank" rel="noopener"
+                   class="btn-classic px-8 sm:px-12 tracking-[0.15em] sm:tracking-[0.2em] font-bold text-sm sm:text-base">
+                    Instagramで空席確認
+                </a>
+            </div>
+        </div>
+        <!-- 装飾用背景 -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[26vw] sm:text-[20vw] font-bold text-white/[0.03] pointer-events-none select-none serif-en italic whitespace-nowrap">
+            Un Cercle
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-stone-950 text-stone-600 text-center text-[10px] tracking-widest uppercase px-4">
+        <p>&copy; BISTROT UN CERCLE. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // スクロール時のフェードインアニメーション
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // モバイルハンバーガーメニュー
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            bar1.style.transform = '';
+            bar2.style.opacity = '1';
+            bar3.style.transform = '';
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
+            if (isOpen) {
+                bar1.style.transform = 'translateY(7px) rotate(45deg)';
+                bar2.style.opacity = '0';
+                bar3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                bar1.style.transform = '';
+                bar2.style.opacity = '1';
+                bar3.style.transform = '';
+            }
+        });
+
+        // メニュー内リンクをタップしたら閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>
