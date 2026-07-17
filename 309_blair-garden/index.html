@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trattoria Blair Garden | 仙台・泉パークタウン of ガーデンレストラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 明朝体と手書き風のフォントを追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Caveat:wght@700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #8C7040; /* 落ち着いたゴールド/真鍮色 */
+            --color-bg: #F9F7F2;      /* 柔らかな紙のような白 */
+            --color-accent: #E85D75; /* いちごパスタをイメージしたアクセント */
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: #4A453E;
+        }
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .handwriting { font-family: 'Caveat', cursive; }
+
+        /* 参考サイト風の背景装飾 */
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        /* 手書き風の下線 */
+        .rough-underline {
+            background: linear-gradient(transparent 70%, #D4C3A3 70%);
+        }
+
+        /* フワッとした浮き上がり */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* 写真を少し傾けるあしらい */
+        .tilt-left { transform: rotate(-2deg); }
+        .tilt-right { transform: rotate(2deg); }
+
+        /* スタンプ風バッジ */
+        .badge-stamp {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
+            color: var(--color-primary);
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* マップのラッパー */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="bg-paper">
+
+    <!-- [FVエリア] -->
+    <header class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/fish.png" alt="Garden View" class="w-full h-full object-cover brightness-75">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#F9F7F2] opacity-60"></div>
+
+        <div class="relative z-10 text-center px-4">
+            <div class="inline-block mb-6">
+                <span class="handwriting text-3xl text-white block">Special Italian in Sendai</span>
+                <h1 class="serif text-2xl md:text-3xl font-bold text-white border-b border-white inline-block pb-2 tracking-widest mt-2">Blair Garden</h1>
+            </div>
+            <h2 class="serif text-4xl md:text-6xl font-bold mb-8 leading-tight text-white drop-shadow-lg">
+                光が踊る庭園と、<br>
+                <span class="text-white bg-opacity-30 px-2">五感で味わう一皿。</span>
+            </h2>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#booking" class="bg-[#8C7040] text-white px-12 py-5 rounded-full font-bold shadow-xl hover:scale-105 transition-all text-lg">ご予約はこちら</a>
+                <a href="https://www.instagram.com/blair_garden/" target="_blank" class="flex items-center gap-2 text-white border-b border-white hover:opacity-70 transition">
+                    <span class="text-sm">FOLLOW US ON Instagram</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- スクロールを促すあしらい -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-stone-400 text-center">
+            <span class="text-xs uppercase tracking-[0.3em] block mb-2">Scroll</span>
+            <div class="w-[1px] h-16 bg-stone-300 mx-auto"></div>
+        </div>
+    </header>
+
+    <!-- [コンセプト / クイック情報] -->
+    <section class="py-24 container mx-auto px-4 relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="serif text-xl md:text-2xl leading-loose mb-12">
+                扉を開ければ、そこは<span class="rough-underline italic">四季が息づく特等席。</span><br class="hidden md:block">
+                創業から40年、私たちが大切にしてきたのは<br class="hidden md:block">
+                「手作りの温もり」と「旬を愛でる喜び」です。
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center">
+                    <div class="badge-stamp mb-4 text-sm">PARKING<br>150台</div>
+                    <p class="text-xs text-stone-500">お車でも安心です</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="badge-stamp mb-4 text-sm" style="transform: rotate(10deg);">TERRACE<br>SEATS</div>
+                    <p class="text-xs text-stone-500">ペットもご一緒に</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="badge-stamp mb-4 text-sm" style="transform: rotate(-5deg);">GARDEN<br>VIEW</div>
+                    <p class="text-xs text-stone-500">四季折々の美しさ</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="badge-stamp mb-4 text-sm" style="transform: rotate(15deg);">HAND<br>MADE</div>
+                    <p class="text-xs text-stone-500">すべてが自家製</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [メインコンテンツ：冷製パスタ] -->
+    <section class="py-24 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <!-- 画像を1枚に変更。ポラロイド風の装飾を維持 -->
+                    <div class="relative z-10 tilt-left shadow-2xl rounded-sm p-4 bg-white">
+                        <img src="images/pasta.jpg" alt="冷製パスタ" class="w-full h-auto rounded-sm">
+                    </div>
+                    <!-- 手書き注釈 -->
+                    <p class="handwriting text-3xl text-[#8C7040] absolute -bottom-6 -right-4 z-20">Fresh & Seasonal!</p>
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-[#8C7040] font-bold tracking-widest border-l-4 border-[#8C7040] pl-4 mb-4 block uppercase">Our Pride</span>
+                    <h2 class="serif text-4xl md:text-5xl font-bold mb-8 leading-tight">心まで解きほぐす、<br><span class="text-[#E85D75]">至福の冷製パスタ。</span></h2>
+                    <p class="text-stone-600 leading-loose mb-8">
+                        私たちが一番にお勧めしたいのは、この季節にしか出会えない「冷製パスタ」。<br>
+                        キリリと冷えた自家製麺に、素材本来の甘みを凝縮したソースが絡み合います。<br>
+                        泉パークタウンの緑豊かな景色を背景に、ここでしか味わえない「涼」の物語をお楽しみください。
+                    </p>
+                    <div class="p-6 bg-white border-l-4 border-[#D4C3A3] italic text-stone-500 mb-8">
+                        「期待以上の美味しさでした。いちごのパスタの意外な組み合わせに驚き、すっかりファンになりました」（80代のお客様より）
+                    </div>
+                    <a href="https://t042403.gorp.jp/" class="inline-flex items-center gap-3 text-[#8C7040] font-bold border-b-2 border-[#8C7040] pb-1 hover:opacity-70 transition">
+                        <span>メニューの詳細はこちら</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [こだわり：薪窯ピッツァ] -->
+    <section class="py-24 bg-[#EBE7DF]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <div class="relative z-10 tilt-right shadow-2xl rounded-sm p-4 bg-white">
+                        <img src="images/pizza.jpg" alt="薪窯ピッツァ" class="w-full h-auto rounded-sm">
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 z-20 bg-white p-6 shadow-lg rounded-full w-40 h-40 flex items-center justify-center text-center">
+                        <p class="serif font-bold text-sm leading-tight text-[#8C7040]">
+                            薪窯焼き<br>ローマ風<br>クリスピー
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-[#8C7040] font-bold tracking-widest border-l-4 border-[#8C7040] pl-4 mb-4 block uppercase">Signature Pizza</span>
+                    <h2 class="serif text-4xl font-bold mb-8">サクッ、ふわ。伝統の薪窯。</h2>
+                    <p class="text-stone-600 leading-loose mb-8">
+                        当店のピッツァは、こだわりの薪窯で一気に焼き上げるローマ風。<br>
+                        極限まで薄く伸ばした生地は、サクッと軽い食感でありながら、噛むほどに小麦の香りが広がります。<br>
+                        前菜盛り合わせとともに、まずはこのクリスピーな一枚から始めてみてはいかがでしょうか。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [利用シーン / お客様の声] -->
+    <section class="py-24 container mx-auto px-4">
+        <h2 class="serif text-center text-3xl md:text-4xl font-bold mb-20 relative">
+            どんなひととき も、<br class="md:hidden">大切な思い出に。
+            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#D4C3A3]"></span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-24">
+            <div class="card-hover">
+                <div class="mb-6 overflow-hidden rounded-lg shadow-md">
+                    <img src="images/cake.png" alt="Anniversary" class="w-full h-64 object-cover">
+                </div>
+                <h3 class="serif text-2xl font-bold mb-4">Anniversary</h3>
+                <p class="text-stone-600 text-sm leading-relaxed">「誕生日や結婚記念日には、サプライズのデザートプレートを。ガラス越しの夜景と共に過ごすディナーは、きっと特別な思い出になります。」</p>
+            </div>
+            <div class="card-hover">
+                <div class="mb-6 overflow-hidden rounded-lg shadow-md">
+                    <img src="images/zensai.png" alt="Girl's Party" class="w-full h-64 object-cover">
+                </div>
+                <h3 class="serif text-2xl font-bold mb-4">Ladies' Lunch</h3>
+                <p class="text-stone-600 text-sm leading-relaxed">「『目にも美しい』手作り前菜が評判の女子会ランチ。開放的なテラス席で、四季の風を感じながら会話に花を咲かせてください。」</p>
+            </div>
+        </div>
+
+        <!-- インスタグラムへの誘い -->
+        <div class="bg-white p-12 rounded-3xl shadow-sm border border-stone-100 text-center">
+            <p class="handwriting text-3xl text-[#8C7040] mb-4">Sharing happiness on Instagram</p>
+            <p class="text-stone-500 mb-8">最新のガーデン情報や、季節限定パスタを更新中。</p>
+            <a href="https://www.instagram.com/blair_garden/" target="_blank" class="bg-stone-900 text-white px-10 py-4 rounded-full font-bold hover:bg-stone-700 transition">@blair_garden</a>
+        </div>
+    </section>
+
+    <!-- [Coming Soon: あればいいなと思う新サービス] -->
+    <section class="py-24 bg-[#F2EDE4] relative overflow-hidden">
+        <!-- 背景装飾用のスタンプ風テキスト -->
+        <div class="absolute -top-10 -right-10 text-[10rem] font-bold text-stone-200 opacity-20 handwriting select-none">New!</div>
+
+        <div class="container mx-auto px-4 max-w-5xl relative z-10">
+            <div class="text-center mb-16">
+                <span class="handwriting text-4xl text-[#8C7040] block mb-2">coming soon</span>
+                <h2 class="serif text-3xl md:text-4xl font-bold tracking-widest text-[#4A453E]">
+                    もっと身近に、もっと新しく。<br>
+                    これから始まる、ブレアガーデンのおもてなし。
+                </h2>
+                <div class="w-16 h-[2px] bg-[#8C7040] mx-auto mt-6"></div>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <!-- 新サービス1: おうちでブレアパスタキット -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl card-hover relative flex flex-col justify-between">
+                    <div>
+                        <div class="absolute -top-4 -left-4 bg-[#E85D75] text-white px-4 py-2 rounded-lg font-bold text-xs tracking-wider shadow-md">ONLINE STORE PREVIEW</div>
+                        <h3 class="serif text-2xl font-bold mb-4 text-stone-800">おうちでブレアガーデン<br><span class="text-xs text-[#8C7040] block mt-1 tracking-widest uppercase">Blair Garden at Home</span></h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            「遠方の親戚にあのいちごパスタを食べさせたい」「おうちの記念日でもお店の味を味わいたい」という声にお応えします。<br>
+                            お店で打つ自家製生麺パスタと、一から手作りのこだわりパスタソース、薪窯風の冷凍クリスピーピッツァをご自宅にお届けするオンラインストアを準備中。贈り物にも最適です。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-100 pt-4 flex items-center justify-between text-xs text-stone-400">
+                        <span>2026年 秋ローンチ予定</span>
+                        <span class="font-bold text-[#8C7040]">▶ 詳細を随時配信予定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [CTA / アクセス] -->
+    <section id="booking" class="py-24 bg-[#EBE7DF]">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-12 flex flex-col justify-center">
+                    <h2 class="serif text-4xl font-bold mb-6">Reservation</h2>
+                    <p class="text-stone-500 mb-10 leading-relaxed">
+                        心温まるイタリアンと、<br>
+                        美しい庭園があなたをお待ちしています。
+                    </p>
+                    <div class="space-y-6">
+                        <a href="tel:0227397715" class="block group">
+                            <span class="text-xs text-[#8C7040] font-bold block mb-1">CALL US</span>
+                            <span class="text-3xl font-bold group-hover:text-[#8C7040] transition text-stone-800">022-739-7715</span>
+                        </a>
+                        <a href="https://t042403.gorp.jp/" target="_blank" class="inline-block bg-[#8C7040] text-white px-10 py-4 rounded-full font-bold shadow-lg hover:shadow-none transition-all">WEBから予約する</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 bg-stone-100 p-8 md:p-12">
+                    <h3 class="serif text-xl font-bold mb-6">Information</h3>
+                    <dl class="space-y-4 text-sm text-stone-600 mb-8">
+                        <div class="flex border-b border-stone-200 pb-2">
+                            <dt class="w-24 font-bold">住所</dt>
+                            <dd>〒981-3134 宮城県仙台市泉区桂1-1-1</dd>
+                        </div>
+                        <div class="flex border-b border-stone-200 pb-2">
+                            <dt class="w-24 font-bold">定休日</dt>
+                            <dd>木曜日</dd>
+                        </div>
+                        <div class="flex border-b border-stone-200 pb-2">
+                            <dt class="w-24 font-bold">駐車場</dt>
+                            <dd>150台（共用）※会計時に駐車券提示</dd>
+                        </div>
+                    </dl>
+
+                    <!-- Google Maps Embed -->
+                    <div class="map-container shadow-inner bg-stone-200">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.689697233979!2d140.8620914747847!3d38.33301597980938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89811116ed082d%3A0xd699285dc47bf2e!2sTrattoria%20Blair%20Garden!5e0!3m2!1sja!2sjp!4v1772426261765!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p class="mt-4 text-[10px] text-stone-400 text-center uppercase tracking-widest italic">Blair Garden at Katsura Garden Plaza</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-xs tracking-widest text-stone-400">
+        <p class="mb-4 serif italic text-lg">Trattoria Blair Garden</p>
+        <p>&copy; Blair Group All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
