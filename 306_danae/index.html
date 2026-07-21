@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Danae | 仙台・土樋の隠れ家ヨーロッパ料理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #b39359;
+            --color-dark: #1a1a1a;
+            --color-bg: #f9f7f2;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-dark);
+            line-height: 1.8;
+            -webkit-text-size-adjust: 100%;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .italic-eng {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+        .bg-gold { background-color: var(--color-gold); }
+        .text-gold { color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+            width: 80%;
+            margin: 2rem auto;
+        }
+
+        .hero-vignette {
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.6) 100%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+        }
+        .scroll-down::after {
+            content: "";
+            width: 1px;
+            height: 40px;
+            background: white;
+            display: block;
+            margin: 10px auto;
+            animation: scrollLine 2s infinite;
+        }
+        @keyframes scrollLine {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            51% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* モーションを好まない環境への配慮 */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .scroll-down::after, img { transition: none !important; animation: none !important; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <section class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/fish.png" alt="きのきのパスタ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-vignette"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <div class="mb-4 sm:mb-6 reveal active">
+                <span class="italic-eng text-lg sm:text-2xl tracking-[0.3em] opacity-80">Established 1984</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-light mb-6 sm:mb-8 serif leading-loose tracking-[0.1em] sm:tracking-[0.2em] reveal active" style="transition-delay: 0.3s;">
+                仙台・土樋の静寂に<br>
+                深く香る、至福の一皿。
+            </h1>
+            <div class="reveal active" style="transition-delay: 0.6s;">
+                <button onclick="scrollToCTA()" class="group relative px-8 sm:px-12 py-3.5 sm:py-4 overflow-hidden border border-white rounded-sm hover:text-[#1a1a1a] transition-colors">
+                    <span class="relative z-10 serif tracking-widest text-base sm:text-lg">特典を受け取って予約する</span>
+                    <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-down serif text-xs tracking-widest opacity-60">SCROLL</div>
+    </section>
+
+    <!-- 2. キャッチコピーセクション -->
+    <section class="py-16 sm:py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto text-center py-12 sm:py-20 px-6">
+            <h2 class="text-xl sm:text-2xl md:text-3xl serif mb-8 sm:mb-12 leading-relaxed tracking-[0.1em] sm:tracking-widest">
+                国分町で愛されて20年、<br>
+                この地で継いで20年。
+            </h2>
+            <p class="text-gray-500 font-light mb-8 max-w-xl mx-auto leading-loose text-sm sm:text-base">
+                扉を開ければ、そこは日常の喧騒を忘れる「静かな感動の隠れ家」。<br>
+                JAZZの調べ、クリムトの色彩、そして母娘が奏でる温かなホスピタリティ。<br>
+                40年の時が育んだヨーロッパ料理と厳選ワインが、あなたの大切な時間を彩ります。
+            </p>
+            <div class="gold-line"></div>
+        </div>
+    </section>
+
+    <!-- 3. 雰囲気セクション -->
+    <section class="bg-[#111] py-16 sm:py-24 text-white">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-7">
+                <div class="relative aspect-video rounded-sm overflow-hidden group shadow-2xl border border-white/10">
+                    <img src="images/store.png" alt="店内の雰囲気" class="w-full h-full object-cover opacity-80">
+                </div>
+            </div>
+            <div class="lg:col-span-5">
+                <span class="text-gold italic-eng text-xl sm:text-2xl block mb-3 sm:mb-4">Atmosphere</span>
+                <h3 class="text-2xl sm:text-3xl serif mb-4 sm:mb-6 tracking-[0.1em] sm:tracking-widest">五感を潤す、<br>大人のための隠れ家。</h3>
+                <p class="text-gray-400 font-light text-sm leading-loose">
+                    窓から差し込む柔らかな光、壁を飾る名画。グランドピアノから溢れる旋律。カウンターに並ぶ空輸チーズと、ソムリエが自信を持って薦める一本。<br>
+                    五感すべてで愉しむ、Danaeだけの贅沢な空間。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. イチオシ：きのこのパスタ -->
+    <section class="py-16 sm:py-24 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 sm:gap-16">
+                <div class="w-full md:w-1/2 relative reveal">
+                    <img src="images/pasta.jpg" alt="きのこのパスタ" class="rounded-sm shadow-2xl relative z-10 w-full">
+                    <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-full h-full border border-gold opacity-30 z-0"></div>
+                </div>
+                <div class="w-full md:w-1/2 reveal">
+                    <span class="text-gold italic-eng text-xl sm:text-2xl">Signature Menu</span>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl serif mt-3 sm:mt-4 mb-6 sm:mb-8 tracking-[0.1em] sm:tracking-widest">芳醇な香りの、<br>きのこのパスタ。</h3>
+                    <p class="text-gray-600 font-light mb-6 sm:mb-8 leading-loose text-sm sm:text-base">
+                        数種類のきのこをじっくりと煮込み、旨味を極限まで引き出したソース。パスタに絡みつくその芳醇な香りは、創業当時から多くの美食家を虜にしてきました。<br>
+                        赤ワインとのペアリングも、ぜひソムリエにお尋ねください。
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 特別な体験 -->
+    <section class="bg-white py-16 sm:py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-gold italic-eng text-xl sm:text-2xl">Special Experience</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl serif mt-2 tracking-[0.1em] sm:tracking-widest">特別な夜を、より豊かに。</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="border border-gray-100 p-6 sm:p-8 hover:shadow-lg transition-shadow bg-[#fdfbf7]">
+                    <h4 class="serif text-lg mb-4 text-gold underline underline-offset-8">ソムリエの提案</h4>
+                    <p class="text-sm text-gray-500 font-light leading-loose">ワインのタンニンが苦手な方でも愉しめる、最適な一杯をソムリエが厳選。お好みに合わせた提案が好評です。</p>
+                </div>
+                <div class="border border-gray-100 p-6 sm:p-8 hover:shadow-lg transition-shadow bg-[#fdfbf7]">
+                    <h4 class="serif text-lg mb-4 text-gold underline underline-offset-8">静寂という贅沢</h4>
+                    <p class="text-sm text-gray-500 font-light leading-loose">小規模20席限定。中心街の喧騒から離れた土樋だからこそ叶う、大切な人との静かな語らい。</p>
+                </div>
+                <div class="border border-gray-100 p-6 sm:p-8 hover:shadow-lg transition-shadow bg-[#fdfbf7]">
+                    <h4 class="serif text-lg mb-4 text-gold underline underline-offset-8">週末の生演奏</h4>
+                    <p class="text-sm text-gray-500 font-light leading-loose">運が良ければ、プロによる即興のJAZZ生演奏に出会えることも。音楽と料理が溶け合う至福の時を。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新設：Coming Soon セクション -->
+    <section class="py-16 sm:py-24 bg-[#f2eede] border-t border-b border-[#e1d9c3] relative overflow-hidden">
+        <div class="absolute -right-10 -top-10 opacity-5 pointer-events-none hidden sm:block">
+            <span class="italic-eng text-[8rem] sm:text-[12rem] font-bold">Soon</span>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="mb-4">
+                <span class="text-xs bg-gold text-white px-3 py-1 tracking-[0.2em] uppercase rounded-sm inline-block mb-3">Coming Soon</span>
+                <h3 class="text-gold italic-eng text-3xl sm:text-4xl tracking-widest">Danae At Home</h3>
+                <p class="text-xs text-gray-400 mt-1 tracking-widest">〜 自宅に届く、JAZZとワインと美食の夜 〜</p>
+            </div>
+
+            <div class="gold-line my-6"></div>
+
+            <h4 class="text-lg sm:text-xl md:text-2xl serif mb-8 tracking-[0.05em] sm:tracking-widest leading-relaxed">
+                「お店に行けない日も、わが家を最高の隠れ家に」<br class="hidden md:inline">
+                週末の特別なご褒美ギフトに。1回から始める特別なお取り寄せ、今秋始動。
+            </h4>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 text-left max-w-3xl mx-auto mb-10">
+                <div class="bg-white/60 backdrop-blur-sm p-6 rounded-sm border border-gold/20 shadow-sm">
+                    <span class="text-gold font-bold text-xs uppercase block mb-2">01. Premium Wine & Cheese</span>
+                    <h5 class="serif font-semibold mb-2">ソムリエ厳選ペアリング</h5>
+                    <p class="text-xs text-gray-500 leading-relaxed">空輸した上質な熟成チーズと、ソムリエが「今一番飲んでほしい」と太鼓判を押す珍しいワインを、その時最高の組み合わせで1セットからお届けします。</p>
+                </div>
+                <div class="bg-white/60 backdrop-blur-sm p-6 rounded-sm border border-gold/20 shadow-sm">
+                    <span class="text-gold font-bold text-xs uppercase block mb-2">02. Original Taste</span>
+                    <h5 class="serif font-semibold mb-2">極上パスタソースキット</h5>
+                    <p class="text-xs text-gray-500 leading-relaxed">湯煎するだけで完成する、名物「芳醇きのこのパスタソース」をパスタ麺と共に。お店のあの味わいをご家庭でいつでもその再現。</p>
+                </div>
+                <div class="bg-white/60 backdrop-blur-sm p-6 rounded-sm border border-gold/20 shadow-sm">
+                    <span class="text-gold font-bold text-xs uppercase block mb-2">03. Music Experience</span>
+                    <h5 class="serif font-semibold mb-2">限定JAZZ音源ストリーミング</h5>
+                    <p class="text-xs text-gray-500 leading-relaxed">プロが店内で即興演奏した極上の演奏音源を、限定プレイリストとして同封。音楽が部屋を満たし、一瞬でDanaeの空間へ。</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-500 leading-relaxed max-w-md mx-auto">
+                ※こちらのサービスは、ご注文が集中した際も品質を維持するため、まずはメルマガ会員様限定での完全事前予約制の販売（数量限定）を予定しております。販売時期や優先案内は、下記の【ご登録特典】のメルマガ登録を行っていただいた方へ、いち早くお届けいたします。
+            </p>
+        </div>
+    </section>
+
+    <!-- 6. 特典 CTA -->
+    <section id="cta-area" class="py-16 sm:py-24 bg-[#1a1a1a] text-white overflow-hidden relative">
+        <div class="absolute inset-0 opacity-10">
+            <img src="images/sweets.png" class="w-full h-full object-cover" alt="">
+        </div>
+        <div class="max-w-2xl mx-auto px-6 relative z-10 text-center">
+            <h3 class="text-2xl sm:text-3xl serif mb-4 tracking-[0.1em] sm:tracking-[0.2em]">Gift for You</h3>
+            <p class="text-gray-400 text-sm mb-8 sm:mb-10 font-light">次回来店時にお使いいただける、特別なプレゼント券をご用意しました。</p>
+
+            <div class="bg-white/5 backdrop-blur-md p-6 sm:p-10 rounded-sm border border-white/10 shadow-2xl">
+                <div class="mb-8">
+                    <span class="block text-gold serif text-lg mb-2">【ご登録特典】</span>
+                    <span class="text-lg sm:text-xl md:text-2xl serif">シェフ特選スイーツ or グラスワイン<br>プレゼント券</span>
+                </div>
+                <div class="space-y-4">
+                    <input type="email" placeholder="メールアドレスを入力" class="w-full bg-white/10 border border-white/20 p-4 rounded-sm focus:outline-none focus:border-gold transition text-base">
+                    <button class="w-full bg-gold text-white py-4 rounded-sm font-bold tracking-widest hover:bg-[#a1824d] transition shadow-lg">特典を受け取る</button>
+                </div>
+            </div>
+            <p class="text-[10px] text-gray-500 mt-6 tracking-widest">※登録後、自動返信にて即時にお届けいたします。</p>
+        </div>
+    </section>
+
+    <!-- 7. アクセス & インフォ -->
+   <section class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 items-start">
+            <div class="space-y-8 serif">
+                <div>
+                    <h4 class="text-gold italic-eng text-xl sm:text-2xl mb-4">Location</h4>
+                    <p class="text-base sm:text-lg">〒984-0065 宮城県仙台市若林区土樋2830</p>
+                    <p class="text-sm text-gray-500 mt-2 font-light">地下鉄南北線「愛宕橋駅」より徒歩3分<br>地下鉄南北線「河原町駅」より徒歩5分</p>
+                </div>
+                <div>
+                    <h4 class="text-gold italic-eng text-xl sm:text-2xl mb-4">Reservation</h4>
+                    <a href="tel:022-267-5580" class="text-2xl sm:text-3xl md:text-4xl hover:text-gold transition inline-block">022-267-5580</a>
+                    <p class="text-sm text-gray-500 mt-2 font-light">定休日：日曜日<br>※お電話にて「LPの特典を見た」とお伝えください。</p>
+                </div>
+
+                <!-- 地球儀アイコン付きWebサイトリンク（追加箇所） -->
+                <div>
+                    <h4 class="text-gold italic-eng text-xl sm:text-2xl mb-4">Official Site</h4>
+                    <a href="https://wine-restaurant-danae.gorp.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-base sm:text-lg hover:text-gold transition group">
+                        <!-- 地球儀アイコン (SVG) -->
+                        <svg class="w-5 h-5 fill-current transition group-hover:scale-110" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span class="underline underline-offset-4">Web Siteを見る</span>
+                    </a>
+                </div>
+
+                <div class="pt-2 sm:pt-6">
+                    <span class="block text-sm text-gray-400 mb-4 font-light tracking-widest">OTHERS</span>
+                    <div class="flex flex-wrap gap-3 sm:gap-4">
+                        <span class="border border-gray-200 px-3 py-1 text-xs">カード決済可</span>
+                        <span class="border border-gray-200 px-3 py-1 text-xs">専用駐車場2台</span>
+                        <span class="border border-gray-200 px-3 py-1 text-xs">JAZZ演奏可</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-sm overflow-hidden border border-gray-100 shadow-lg">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.3969859336476!2d140.87908072172758!3d38.24438647204622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a280ad1798eef%3A0x573a5c71f326c54c!2sDanae!5e0!3m2!1sja!2sjp!4v1772419648507!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Danae 地図"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="bg-white py-10 sm:py-12 border-t border-gray-100 text-center">
+        <div class="serif text-xl mb-4 tracking-widest text-gold">Danae</div>
+        <p class="text-[10px] text-gray-400 tracking-[0.2em] sm:tracking-[0.3em]">&copy; 1984-2024 DANAE SENDAI. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = 120;
+                if (revealTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', reveal, { passive: true });
+        window.addEventListener('load', reveal);
+
+        function scrollToCTA() {
+            const cta = document.getElementById('cta-area');
+            if (cta) cta.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
