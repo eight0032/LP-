@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>eichi. | 仙台・錦町の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c5a059;
+            --bg-dark: #1a1a1a;
+            --text-main: #333;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-main);
+            background-color: #fff;
+            /* space for the fixed mobile nav bar */
+            padding-bottom: 64px;
+        }
+        @media (min-width: 768px) {
+            body { padding-bottom: 0; }
+        }
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .en-serif { font-family: 'Playfair Display', serif; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-gold-subtle { background-color: #f9f6f0; }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 100%);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 1.5s ease; }
+        .img-zoom-container:hover img { transform: scale(1.05); }
+
+        .map-container iframe {
+            filter: grayscale(0.3) contrast(1.1);
+            transition: filter 0.5s ease;
+        }
+        .map-container iframe:hover { filter: grayscale(0); }
+
+        /* keep long tracking readable on narrow screens */
+        @media (max-width: 380px) {
+            .hero-heading { letter-spacing: 0.05em !important; }
+        }
+
+        a, button { min-height: 44px; }
+    </style>
+</head>
+<body class="selection:bg-gold-subtle selection:text-primary">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/85 backdrop-blur-md">
+        <div class="container mx-auto px-5 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <h1 class="text-xl sm:text-2xl font-bold en-serif tracking-[0.2em]">eichi.</h1>
+            <nav class="hidden md:flex space-x-10 text-xs tracking-widest uppercase font-medium">
+                <a href="#concept" class="hover:text-amber-600 transition">Concept</a>
+                <a href="#menu" class="hover:text-amber-600 transition">Menu</a>
+                <a href="#coming-soon" class="hover:text-amber-600 transition">Coming Soon</a>
+                <a href="#access" class="hover:text-amber-600 transition">Access</a>
+            </nav>
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <a href="https://www.instagram.com/eichi.0209/?hl=ja" target="_blank" rel="noopener" class="text-stone-400 hover:text-pink-600 transition text-lg sm:text-xl flex items-center justify-center w-9 h-9" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="tel:05052633400" class="hidden sm:inline-flex items-center border border-stone-800 px-5 sm:px-6 py-2 text-xs tracking-widest hover:bg-stone-800 hover:text-white transition">RESERVE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. First View -->
+    <section class="relative h-[100svh] flex items-center justify-center">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544145945-f904253d0c7e?q=80&w=2000')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <div class="relative z-10 container mx-auto px-5 sm:px-6 flex flex-col md:flex-row justify-between items-start md:items-end h-full pb-20 sm:pb-24 pt-24">
+            <!-- Catch Copy -->
+            <div class="text-white fade-in" id="hero-text">
+                <p class="en-serif italic text-sm sm:text-xl mb-3 sm:mb-4 opacity-80">A hidden sanctuary for your senses.</p>
+                <h2 class="hero-heading serif text-3xl sm:text-4xl md:text-6xl leading-relaxed tracking-widest">
+                    地下に眠る、<br>
+                    五感を揺さぶる<br>
+                    イタリアン。
+                </h2>
+            </div>
+            <!-- Access Info -->
+            <div class="hidden md:block vertical-text text-white/60 serif tracking-[0.5em] text-sm py-4 border-r border-white/20 px-4 mb-0 h-48 mt-8 md:mt-0">
+                仙台・錦町 勾当台公園駅より徒歩十分
+            </div>
+        </div>
+
+        <div class="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest flex flex-col items-center">
+            <span class="mb-2">SCROLL</span>
+            <div class="w-px h-10 sm:h-12 bg-white/20 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-white animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Concept -->
+    <section id="concept" class="py-16 sm:py-24 md:py-40 bg-white scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 img-zoom-container">
+                    <img src="images/pasta.jpg" alt="こだわりの一皿" class="w-full h-64 sm:h-96 md:h-[500px] object-cover">
+                </div>
+                <div class="w-full md:w-1/2 fade-in">
+                    <span class="text-amber-600 en-serif text-sm tracking-widest mb-3 sm:mb-4 block">CONCEPT</span>
+                    <h3 class="serif text-2xl sm:text-3xl md:text-4xl leading-snug mb-6 sm:mb-8">
+                        日常の喧騒を忘れ、<br>
+                        素材の「叡智」に触れる。
+                    </h3>
+                    <p class="text-stone-500 leading-loose mb-6 sm:mb-8 serif text-sm sm:text-base">
+                        階段を下りた先に広がるのは、シンプルでいて温かい、大人のための隠れ家。
+                        看板メニューの「牛ハラミ」をはじめ、宮城の豊かな大地が育んだ素材を、
+                        シェフが対話するように丁寧に仕立て上げます。<br><br>
+                        「平日ランチは予約なしで入ればラッキー」<br>
+                        そう仰っていただける喜びを胸に、今日もお待ちしております。
+                    </p>
+                    <div class="flex items-center space-x-6">
+                        <div class="w-12 h-px bg-stone-300"></div>
+                        <p class="serif italic text-stone-400 text-sm sm:text-base">Owner Chef Masaya Tsumori</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Signature -->
+    <section class="bg-stone-50 py-16 sm:py-24">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 fade-in">
+                <h3 class="serif text-2xl sm:text-3xl md:text-5xl tracking-widest">至福の牛ハラミ。</h3>
+                <div class="w-12 h-px bg-amber-600 mx-auto mt-5 sm:mt-6"></div>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto h-[300px] sm:h-[400px] md:h-[600px] rounded-sm overflow-hidden group">
+                <img src="images/harami.jpg" alt="牛ハラミ" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+                <div class="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 text-white pr-6">
+                    <p class="serif text-lg sm:text-2xl md:text-3xl mb-2 leading-snug">溢れ出す肉汁、<br>凝縮された赤身の旨み。</p>
+                    <p class="text-xs sm:text-sm opacity-80">じっくりと低温で火を入れ、最後に表面を力強くグリル。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Menu & Gallery -->
+    <section id="menu" class="py-16 sm:py-24 bg-white scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6 sm:gap-8">
+                <div class="fade-in">
+                    <span class="text-amber-600 en-serif text-sm tracking-widest mb-3 sm:mb-4 block">SELECTED MENU</span>
+                    <h3 class="serif text-2xl sm:text-3xl md:text-4xl">旬を彩る、<br>イタリアの知恵。</h3>
+                </div>
+                <p class="text-stone-400 text-sm max-w-sm serif leading-relaxed">
+                    30種以上のボトルワインとのペアリング. 会話を邪魔しない、けれどもしっかりと記憶に残る一皿を。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="fade-in group">
+                    <div class="overflow-hidden mb-4 sm:mb-6 aspect-[3/4]">
+                        <img src="images/karasumi.png" alt="自家製パスタ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                    </div>
+                    <h4 class="serif text-lg sm:text-xl mb-2">自家製パスタの探究</h4>
+                    <p class="text-stone-500 text-sm leading-loose">日替わり3種のパスタ。特に「からすみスパゲティ」はワインが進む逸品です。</p>
+                </div>
+                <div class="fade-in group">
+                    <div class="overflow-hidden mb-4 sm:mb-6 aspect-[3/4]">
+                        <img src="images/konsome.jpg" alt="五感で味わうスープ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                    </div>
+                    <h4 class="serif text-lg sm:text-xl mb-2">五感で味わうスープ</h4>
+                    <p class="text-stone-500 text-sm leading-loose">素材の滋味を丁寧に取り除いた、黄金色のコンソメ。一口でその違いがわかります。</p>
+                </div>
+                <div class="fade-in group sm:col-span-2 md:col-span-1">
+                    <div class="overflow-hidden mb-4 sm:mb-6 aspect-[3/4]">
+                        <img src="images/italian.png" alt="贅を尽くしたコース" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                    </div>
+                    <h4 class="serif text-lg sm:text-xl mb-2">贅を尽くしたコース</h4>
+                    <p class="text-stone-500 text-sm leading-loose">特別な日のためのペアリングもご提案します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Coming Soon -->
+    <section id="coming-soon" class="py-16 sm:py-28 bg-stone-900 text-white relative overflow-hidden scroll-mt-16">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-72 h-72 sm:w-96 sm:h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-72 h-72 sm:w-96 sm:h-96 bg-stone-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-20 fade-in">
+                <span class="text-amber-500 en-serif text-xs tracking-[0.4em] uppercase block mb-3">NEXT PROJECT</span>
+                <h3 class="en-serif text-3xl sm:text-4xl md:text-5xl font-light tracking-widest text-amber-100/90 mb-4">COMING SOON</h3>
+                <p class="serif text-stone-400 text-sm tracking-widest leading-relaxed">
+                    eichi. がお届けする、新しい食の提案。<br class="hidden sm:inline">
+                    店舗を超えて、あなたの日常と特別な日に寄り添う新プロジェクト。
+                </p>
+                <div class="w-12 h-px bg-amber-600/60 mx-auto mt-8"></div>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <div class="fade-in bg-stone-800/50 border border-stone-800 p-6 sm:p-8 md:p-10 rounded-sm hover:border-amber-600/40 transition duration-500 group flex flex-col justify-between">
+                    <div>
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-5 sm:mb-6">
+                            <span class="text-xs en-serif tracking-widest text-amber-500/80 border border-amber-500/30 px-3 py-1 uppercase">NEW SERVICE</span>
+                            <span class="text-xs text-stone-500 font-mono">2026 AUTUMN</span>
+                        </div>
+                        <h4 class="serif text-xl sm:text-2xl text-stone-100 mb-3 group-hover:text-amber-400 transition">eichi. AT HOME & GIFT</h4>
+                        <p class="text-xs text-amber-500/90 tracking-widest uppercase mb-5 sm:mb-6 en-serif">Premium Gourmet Delivery</p>
+                        <p class="serif text-stone-400 text-sm leading-relaxed mb-6 sm:mb-8">
+                            看板メニュー「牛ハラミの真空低温ロースト」や自家製パスタソースを、シェフの味そのままにご自宅へお届け。
+                            お世話になった方への特別な贈り物や、週末の記念日ディナーに華を添えるプレミアムお取り寄せライン。
+                        </p>
+                    </div>
+                    <div class="pt-5 sm:pt-6 border-t border-stone-800 flex justify-between items-center text-xs text-stone-500">
+                        <span>オンラインストア開設予定</span>
+                        <i class="fa-solid fa-arrow-right text-amber-500/60 group-hover:translate-x-2 transition duration-300"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 sm:mt-16 text-center fade-in">
+                <p class="serif text-xs text-stone-400 tracking-widest">
+                    最新情報は Instagram にていち早くお知らせいたします。
+                </p>
+                <a href="https://www.instagram.com/eichi.0209/?hl=ja" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-4 text-xs text-amber-400 hover:text-amber-300 transition">
+                    <i class="fa-brands fa-instagram text-base"></i>
+                    <span class="border-b border-amber-400/40 pb-0.5 tracking-wider">公式Instagramをフォローする</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Guest Voice -->
+    <section class="bg-stone-50 py-16 sm:py-24 border-y border-stone-200">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10 sm:mb-16">
+                    <h4 class="serif text-xl sm:text-2xl">愛され続ける、理由。</h4>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-16 gap-y-8 sm:gap-y-12">
+                    <div class="fade-in border-l-2 border-amber-600 pl-6 sm:pl-8">
+                        <p class="serif text-stone-600 mb-3 sm:mb-4 leading-loose text-sm sm:text-base">
+                            「階段を降りるとランチを求めるお客さんでいっぱい。平日とは思えない人気店。小綺麗な店内で、自分へのご褒美に最適です。」
+                        </p>
+                        <span class="text-xs text-stone-400 tracking-widest uppercase">Office Worker / Lunch Time</span>
+                    </div>
+                    <div class="fade-in border-l-2 border-amber-600 pl-6 sm:pl-8">
+                        <p class="serif text-stone-600 mb-3 sm:mb-4 leading-loose text-sm sm:text-base">
+                            「9割が女性客で満席。イタリアンとしてのクオリティが非常に高く、店員さんの接客も心地よい。また必ず来ます。」
+                        </p>
+                        <span class="text-xs text-stone-400 tracking-widest uppercase">Instagrammer / Dinner Time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Information & Access -->
+    <section id="access" class="py-16 sm:py-24 bg-white scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 fade-in">
+                    <h3 class="serif text-2xl sm:text-3xl mb-8 sm:mb-12">店舗情報</h3>
+                    <dl class="space-y-6 sm:space-y-8 serif">
+                        <div class="border-b border-stone-100 pb-4">
+                            <dt class="text-xs text-amber-600 mb-1">NAME</dt>
+                            <dd class="text-base sm:text-lg">eichi. (エイチ)</dd>
+                        </div>
+                        <div class="border-b border-stone-100 pb-4">
+                            <dt class="text-xs text-amber-600 mb-1">ADDRESS</dt>
+                            <dd class="text-sm leading-loose">
+                                〒980-0012 宮城県仙台市青葉区錦町1丁目10-11<br>
+                                勾当台上杉通りビル B1<br>
+                                <span class="text-stone-400">勾当台公園駅より徒歩10分</span>
+                            </dd>
+                        </div>
+                        <div class="flex flex-wrap gap-8 sm:gap-12 border-b border-stone-100 pb-4">
+                            <div>
+                                <dt class="text-xs text-amber-600 mb-1">HOURS</dt>
+                                <dd class="text-sm">Lunch / Dinner</dd>
+                            </div>
+                            <div>
+                                <dt class="text-xs text-amber-600 mb-1">CLOSED</dt>
+                                <dd class="text-sm">日曜日</dd>
+                            </div>
+                        </div>
+                        <div>
+                            <dt class="text-xs text-amber-600 mb-1">PHONE</dt>
+                            <dd class="text-xl sm:text-2xl font-bold tracking-widest">
+                                <a href="tel:05052633400" class="hover:text-amber-600 transition">050-5263-3400</a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col gap-5 sm:gap-6">
+                    <div class="h-64 sm:h-80 w-full overflow-hidden rounded-sm shadow-inner map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.4452805207666!2d140.87253167478107!3d38.2691696835293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a293951632281%3A0x5d571a3e3d99c4c1!2seichi.!5e0!3m2!1sja!2sjp!4v1772415922264!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="eichi. 地図"></iframe>
+                    </div>
+                    <div class="bg-amber-50 p-6 sm:p-8 rounded-sm">
+                        <h5 class="serif text-base sm:text-lg mb-3 sm:mb-4 text-amber-900">ご予約について</h5>
+                        <p class="text-sm text-amber-800/80 leading-relaxed">
+                            ランチタイムは混雑が予想されますので、事前の予約をお勧めしております。
+                            
+                        </p>
+                        <a href="tel:05052633400" class="mt-5 sm:mt-6 inline-flex items-center justify-center w-full bg-stone-900 text-white text-center py-4 text-sm tracking-widest hover:bg-amber-600 transition font-bold">電話で予約する</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-10 sm:py-12 border-t border-stone-100">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <h2 class="en-serif text-xl sm:text-2xl tracking-[0.3em] mb-6 sm:mb-8">eichi.</h2>
+            <nav class="flex justify-center flex-wrap gap-x-6 gap-y-2 sm:space-x-8 text-[10px] tracking-widest uppercase text-stone-400 mb-6 sm:mb-8">
+                <a href="#" class="hover:text-stone-800">Privacy Policy</a>
+                <a href="https://www.instagram.com/eichi.0209/?hl=ja" target="_blank" rel="noopener" class="hover:text-stone-800">Instagram</a>
+                <a href="#access" class="hover:text-stone-800">Contact</a>
+            </nav>
+            <p class="text-[10px] text-stone-300 tracking-widest">© 2024 EICHI. SENDAI. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Bottom -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur border-t border-stone-100 flex" style="padding-bottom: env(safe-area-inset-bottom);">
+        <a href="tel:05052633400" class="flex-1 flex flex-col items-center justify-center py-2 border-r border-stone-100">
+            <i class="fa-solid fa-phone text-stone-800 mb-1"></i>
+            <span class="text-[10px] tracking-tighter">CALL</span>
+        </a>
+        <a href="https://www.instagram.com/eichi.0209/?hl=ja" target="_blank" rel="noopener" class="flex-1 flex flex-col items-center justify-center py-2 border-r border-stone-100">
+            <i class="fa-brands fa-instagram text-stone-800 mb-1"></i>
+            <span class="text-[10px] tracking-tighter">INSTAGRAM</span>
+        </a>
+        <a href="#access" class="flex-1 flex flex-col items-center justify-center py-2">
+            <i class="fa-solid fa-map-pin text-stone-800 mb-1"></i>
+            <span class="text-[10px] tracking-tighter">ACCESS</span>
+        </a>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = { threshold: 0.1 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Hero animation on load
+        window.addEventListener('load', () => {
+            document.getElementById('hero-text').classList.add('visible');
+        });
+    </script>
+</body>
+</html>

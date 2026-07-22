@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistrot AOKI (ビストロ アオキ) | 仙台国分町の隠れ家ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --color-brass: #b39356;
+            --color-dark: #1a1512;
+            --color-paper: #f9f7f2;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-dark);
+            background-color: var(--color-paper);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .font-mincho { font-family: 'Shippori Mincho', serif; }
+        .font-serif-en { font-family: 'Playfair Display', serif; }
+
+        .text-brass { color: var(--color-brass); }
+        .bg-brass { background-color: var(--color-brass); }
+        .border-brass { border-color: var(--color-brass); }
+
+        /* 縦書き設定 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 装飾的なライン */
+        .decorative-line { position: relative; }
+        .decorative-line::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: var(--color-brass);
+        }
+
+        /* フェードインアニメーションの微修正 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* 和紙のような質感の背景 */
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        .btn-hover:hover {
+            letter-spacing: 0.15em;
+            background-color: #967a42;
+        }
+
+        /* Map Container Responsive */
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 75%;
+            position: relative;
+            height: 0;
+        }
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        /* モバイルでの電話番号の折り返し防止・サイズ調整 */
+        .phone-number { white-space: nowrap; }
+    </style>
+</head>
+<body class="antialiased texture-bg">
+
+    <!-- 1. ファーストビュー (FV) -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-stone-900 py-24 sm:py-0">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1550966841-3ee5ad63454a?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 scale-110" alt="メイン料理">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-6 sm:gap-10 md:gap-20 px-6 w-full max-w-5xl">
+            <!-- 縦書きキャッチコピー -->
+            <div class="vertical-text text-white font-mincho text-2xl sm:text-3xl md:text-5xl tracking-[0.25em] sm:tracking-[0.3em] leading-relaxed drop-shadow-lg h-48 sm:h-56 md:h-72">
+                <span class="block">日常に、</span>
+                <span class="block text-brass">五感震える</span>
+                <span class="block">贅沢を。</span>
+            </div>
+
+            <div class="text-white text-center md:text-left w-full">
+                <p class="font-serif-en text-brass italic text-xl sm:text-2xl mb-2">Bistrot AOKI</p>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-mincho font-bold leading-tight mb-6">
+                    仙台ホテル元総料理長が<br>
+                    一皿に込める、情熱。
+                </h1>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="bg-white/10 backdrop-blur-md px-5 sm:px-6 py-4 border-l-4 border-brass w-full md:w-auto">
+                        <p class="text-xs sm:text-sm tracking-widest text-brass font-bold mb-1">BEST SELLER LUNCH</p>
+                        <p class="text-lg sm:text-xl md:text-2xl font-mincho">コンビネーションランチ <span class="text-brass">&yen;980</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-[0.5em] vertical-text uppercase h-16">
+            scroll
+        </div>
+    </section>
+
+    <!-- 2. リードメッセージ -->
+    <section class="py-16 sm:py-24 bg-white relative overflow-hidden reveal">
+        <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+            <div class="mb-12">
+                <p class="font-serif-en text-brass tracking-[0.2em] mb-4">Concept</p>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-mincho leading-loose">
+                    国分町の喧騒を離れた、<br>
+                    秘密の隠れ家。
+                </h2>
+            </div>
+            <p class="text-stone-600 leading-[2] sm:leading-[2.5] font-light text-sm sm:text-base">
+                慣しげないビルの階段を登った先に待つのは、<br>
+                温かな灯りと、バターが香る心地よい緊張感。<br>
+                名門ホテルの総料理長として21年、<br>
+                数多の賓客を魅了してきた青木一男が、<br>
+                「もっと身近に、本物の味を」と包丁を握ります。<br>
+                一期一会の手作り料理を、どうぞ心ゆくまで。
+            </p>
+            <div class="mt-12 sm:mt-16">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop" class="w-full h-56 sm:h-80 object-cover rounded-sm shadow-2xl" alt="店内">
+            </div>
+        </div>
+        <div class="hidden md:block absolute top-1/2 -right-20 -translate-y-1/2 font-serif-en text-[15vw] text-stone-50 select-none -z-0">
+            Heritage
+        </div>
+    </section>
+
+    <!-- 3. CTA 1 -->
+    <section class="py-12 sm:py-16 bg-brass text-white overflow-hidden relative">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+            <div class="text-center md:text-left">
+                <h3 class="text-xl sm:text-2xl font-mincho mb-2">お席のご予約を承ります</h3>
+                <p class="text-xs sm:text-sm opacity-80">平日ランチも満席になりやすいため、事前のお電話が確実です。</p>
+            </div>
+            <div class="flex items-center gap-6 w-full md:w-auto">
+                <a href="tel:022-217-3343" class="flex items-center justify-center gap-3 sm:gap-4 bg-white text-brass px-6 sm:px-10 py-4 sm:py-5 rounded-sm font-black text-lg sm:text-2xl shadow-2xl transition btn-hover w-full md:w-auto phone-number">
+                    <i class="fas fa-phone-alt"></i> 022-217-3343
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. イチオシメニュー (コンビネーションランチ) -->
+    <section class="py-16 sm:py-24 bg-stone-50 reveal">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <p class="font-serif-en text-brass tracking-[0.2em]">Signature Dish</p>
+                <h2 class="text-2xl sm:text-3xl font-mincho mt-2 decorative-line pb-4">究極のコストパフォーマンス</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-10 sm:gap-16 max-w-6xl mx-auto">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="hidden sm:block absolute -top-6 -left-6 w-32 h-32 bg-brass/10 -z-10"></div>
+                    <img src="images/lunch.jpg" class="w-full h-auto shadow-xl" alt="コンビネーションランチ">
+                    <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white p-4 sm:p-6 shadow-xl">
+                        <p class="text-xs text-stone-400 font-bold mb-1">Combination Lunch</p>
+                        <p class="text-2xl sm:text-3xl font-serif-en text-brass font-bold">&yen;980 <span class="text-xs text-stone-800">(tax incl.)</span></p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h4 class="text-xl sm:text-2xl font-mincho mb-6 pb-4 border-b border-stone-200">
+                        五感で愉しむ、満足度120%の贅沢プレート。
+                    </h4>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="text-brass font-serif-en text-xl">01.</span>
+                            <div>
+                                <p class="font-bold">旬々の本日のポタージュ</p>
+                                <p class="text-sm text-stone-500">口コミで絶賛される、素材の旨みが凝縮された一杯。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-brass font-serif-en text-xl">02.</span>
+                            <div>
+                                <p class="font-bold">肉と魚のダブルメイン</p>
+                                <p class="text-sm text-stone-500">絶妙な火入れで提供する、旬の魚料理と肉料理の両方を一皿に。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-brass font-serif-en text-xl">03.</span>
+                            <div>
+                                <p class="font-bold">自家製デザート &amp; セルフコーヒー</p>
+                                <p class="text-sm text-stone-500">最後まで手を抜かない、シェフ渾身のスイーツと共に。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. シェフストーリー -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white relative reveal">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 sm:gap-16">
+                <div class="w-full md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1583394293214-28dea15ee548?q=80&w=1858&auto=format&fit=crop" class="w-full h-72 sm:h-[600px] object-cover opacity-80 shadow-2xl border-t border-r border-brass/30 p-3 sm:p-4" alt="シェフ青木">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <p class="font-serif-en text-brass mb-4">Chef's Spirit</p>
+                    <h3 class="text-2xl sm:text-3xl font-mincho mb-6 sm:mb-8 leading-tight">
+                        「美味しい顔」を見ることが、<br>
+                        私の唯一の誇りです。
+                    </h3>
+                    <div class="space-y-6 text-stone-300 text-sm leading-relaxed">
+                        <p>19歳、料理の道を志すと決めたあの日から、私の情熱は一度も途切れたことはありません。</p>
+                        <p>名門仙台ホテルでの修行、そして市内レストランでの21年にわたる総料理長としての重責。そこで培ったクラシカルな技術を、今はすべて、この小さなキッチンのカウンター越しにお客様へ直接届けています。</p>
+                        <p>高級食材を頼るのではなく、手間と時間を惜しまない「本物の手作り」を。ビストロアオキは、私の料理人生の集大成です。</p>
+                    </div>
+                    <div class="mt-10 sm:mt-12 flex items-center gap-4">
+                        <div class="w-12 h-px bg-brass"></div>
+                        <p class="font-mincho text-lg sm:text-xl italic tracking-widest">青木 一男</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ -->
+    <section class="py-16 sm:py-24 bg-white reveal">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <p class="font-serif-en text-brass tracking-[0.2em]">Voice</p>
+                <h2 class="text-2xl sm:text-3xl font-mincho mt-2">喜びの声をいただきました</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                <div class="bg-stone-50 p-6 sm:p-8 relative">
+                    <div class="text-brass mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm leading-loose text-stone-600 mb-6 font-medium italic">「1280円のプレートランチ。前菜からデザートまでどれもきちんと作られていて、他のお店だと2倍はするだろうなあと感じました。」</p>
+                    <p class="text-xs font-bold text-stone-400">— 土曜ランチご利用の女性</p>
+                    <i class="fas fa-quote-right absolute bottom-6 right-8 text-stone-200 text-3xl"></i>
+                </div>
+                <div class="bg-stone-50 p-6 sm:p-8 relative">
+                    <div class="text-brass mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm leading-loose text-stone-600 mb-6 font-medium italic">「ボリュームも食材も多彩で美味しかったです。大きな誤解でした。次回は前日までに予約して訪問したいと思います。」</p>
+                    <p class="text-xs font-bold text-stone-400">— お一人様ご利用の男性</p>
+                    <i class="fas fa-quote-right absolute bottom-6 right-8 text-stone-200 text-3xl"></i>
+                </div>
+                <div class="bg-stone-50 p-6 sm:p-8 relative sm:col-span-2 lg:col-span-1">
+                    <div class="text-brass mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-sm leading-loose text-stone-600 mb-6 font-medium italic">「料理提供時にシェフ自ら配膳して料理名などを教えてくれます。女性だとかなり満腹になる量で大満足です。」</p>
+                    <p class="text-xs font-bold text-stone-400">— 記念日にご利用の女性</p>
+                    <i class="fas fa-quote-right absolute bottom-6 right-8 text-stone-200 text-3xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5. Coming Soon セクション (新サービス予告) -->
+    <section class="py-16 sm:py-20 bg-stone-900 text-white relative overflow-hidden border-t border-b border-brass/20 reveal">
+        <div class="hidden sm:block absolute -right-10 -bottom-10 font-serif-en text-[18vw] text-white/5 select-none pointer-events-none">
+            SOON
+        </div>
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="text-center mb-10 sm:mb-12">
+                <span class="inline-block border border-brass text-brass px-5 sm:px-6 py-1 text-xs tracking-[0.3em] font-serif-en uppercase mb-4">Coming Soon</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-mincho">ご自宅でも、シェフ渾身の「あの味」を。</h2>
+                <p class="text-brass font-serif-en italic text-base sm:text-lg mt-2">Bistrot AOKI at Home — Online Store Launching</p>
+            </div>
+
+            <div class="bg-stone-800/80 border border-white/10 rounded-sm p-6 sm:p-8 md:p-12 shadow-2xl backdrop-blur-sm flex flex-col md:flex-row items-center gap-8 sm:gap-10">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=1000&auto=format&fit=crop" class="w-full h-52 sm:h-64 object-cover rounded-sm opacity-90 shadow-lg" alt="スープ・デリメージ">
+                        <div class="absolute top-4 left-4 bg-brass text-white text-xs font-bold px-3 py-1 shadow">
+                            準備中 / 順次解禁予定
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-4">
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-mincho text-brass">
+                        「おうちで Bistrot AOKI」<br>
+                        真空低温パック・特製ミールキット全国配送
+                    </h3>
+                    <p class="text-sm text-stone-300 leading-relaxed font-light">
+                        口コミでも大好評の「絶品ポタージュスープ」や「シェフ特製肉・魚のWメイン」を、出来立ての旨みを逃さず急速冷凍してお届け。<br>
+                        ご遠方の方や、特別な日のホームパーティー、贈り物にも最適なプレミアムビストロデリを開発中です。
+                    </p>
+                    <div class="pt-4 border-t border-stone-700/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="text-xs text-stone-400">
+                            <i class="fas fa-bell text-brass mr-1"></i> 最新リリース情報はSNSにて順次お知らせいたします
+                        </div>
+                        <a href="https://x.com/bistrotaoki" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold bg-white/10 hover:bg-brass text-white px-5 py-3 rounded-sm transition duration-300 border border-white/20 w-full sm:w-auto justify-center">
+                            <i class="fab fa-x-twitter"></i> 公式Xをフォローする
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. アクセス & 最終CTA -->
+    <section class="py-16 sm:py-24 bg-stone-100 texture-bg reveal">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12 sm:gap-16">
+                <div>
+                    <h3 class="text-2xl sm:text-3xl font-mincho mb-6 sm:mb-8 border-l-4 border-brass pl-5 sm:pl-6 leading-tight">店舗情報</h3>
+                    <div class="space-y-6 text-stone-700">
+                        <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4 pb-4 border-b border-stone-200">
+                            <span class="sm:w-20 text-xs font-bold text-stone-400 tracking-widest sm:pt-1 uppercase">Name</span>
+                            <p class="font-bold text-sm sm:text-base">Bistrot AOKI (ビストロ アオキ)</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4 pb-4 border-b border-stone-200">
+                            <span class="sm:w-20 text-xs font-bold text-stone-400 tracking-widest sm:pt-1 uppercase">Address</span>
+                            <p class="text-sm">〒980-0803 宮城県仙台市青葉区国分町2丁目13-28 クアートロビル2F<br><span class="text-xs text-brass mt-1 block font-bold">※ビル通路を真っ直ぐ進み、奥の階段を登った先にございます。</span></p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4 pb-4 border-b border-stone-200">
+                            <span class="sm:w-20 text-xs font-bold text-stone-400 tracking-widest sm:pt-1 uppercase">Hours</span>
+                            <p class="text-sm">ランチ 11:30 〜 / ディナー 18:00 〜</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-start gap-2 sm:gap-4 pb-4 border-b border-stone-200">
+                            <span class="sm:w-20 text-xs font-bold text-stone-400 tracking-widest sm:pt-1 uppercase">Holiday</span>
+                            <p class="text-sm">日曜日</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 sm:mt-10">
+                        <a href="tel:022-217-3343" class="flex items-center justify-center gap-3 sm:gap-4 bg-brass text-white py-5 sm:py-6 shadow-2xl hover:scale-[1.02] transition duration-300 btn-hover">
+                            <i class="fas fa-phone-alt"></i>
+                            <span class="text-xl sm:text-2xl font-black phone-number">022-217-3343</span>
+                        </a>
+                        <p class="text-center mt-4 text-xs font-bold text-stone-400">※ご予約はお電話にて承っております</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <!-- Decor Frame -->
+                    <div class="hidden sm:block absolute -top-4 -right-4 w-full h-full border border-brass/30"></div>
+                    <!-- Map Wrapper -->
+                    <div class="relative shadow-2xl bg-white p-2">
+                        <div class="map-responsive">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.640865885675!2d140.86501477478078!3d38.26463458379338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a283073640001%3A0xad3877b30abe8c1c!2zQmlzdHJvdCBBT0tJICjjg5Pjgrnjg4jjg60g44Ki44Kq44KtKQ!5e0!3m2!1sja!2sjp!4v1772415274135!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="py-4 px-2 text-center bg-white">
+                            <p class="font-serif-en text-xs tracking-[0.2em] text-stone-400 uppercase">Access from Kotodai-Koen Station / 5min walk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 sm:py-12 bg-stone-900 text-white/30 text-center text-xs tracking-widest">
+        <p class="font-serif-en mb-2">Bistrot AOKI</p>
+        <p>&copy; 2024 Bistrot AOKI. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // スクロール時のフェードインアニメーション
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 100;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
+</body>
+</html>
