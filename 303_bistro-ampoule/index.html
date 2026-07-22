@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ビストロアンプル - 南欧食堂 bistro ampoule</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap');
+
+        :root {
+            --bistro-gold: #c5a059;
+            --bistro-dark: #1a1a1a;
+            --bistro-accent: #8b2635;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fcfaf7;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Shippori Mincho', serif; }
+
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .hero-title {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .brush-underline {
+            background: linear-gradient(transparent 70%, rgba(197, 160, 89, 0.3) 70%);
+        }
+
+        .floating-img {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating-img { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            transition: max-height 0.35s ease, opacity 0.25s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 320px;
+            opacity: 1;
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--bistro-gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-texture text-gray-900">
+
+    <!-- Navigation -->
+    <header id="site-header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-stone-100">
+        <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <div class="flex flex-col leading-tight">
+                <span class="text-[9px] sm:text-[10px] tracking-[0.3em] text-bistro-gold font-bold" style="color:var(--bistro-gold)">南欧食堂</span>
+                <h1 class="text-lg sm:text-2xl font-black serif tracking-tighter">bistro ampoule</h1>
+            </div>
+
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex gap-8 text-sm font-bold tracking-widest">
+                <a href="#menu" class="hover:opacity-70 transition" style="color:inherit">MENU</a>
+                <a href="#story" class="hover:opacity-70 transition">STORY</a>
+                <a href="#access" class="hover:opacity-70 transition">ACCESS</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="tel:0227435785" class="text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold hover:brightness-110 transition shadow-lg whitespace-nowrap" style="background-color:var(--bistro-gold)">
+                    <i class="fa-solid fa-phone mr-1 sm:mr-2"></i><span class="hidden xs:inline">予約する</span><span class="xs:hidden">予約</span>
+                </a>
+                <!-- Hamburger -->
+                <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 shrink-0">
+                    <span class="block w-6 h-[2px] bg-stone-800 transition"></span>
+                    <span class="block w-6 h-[2px] bg-stone-800 transition"></span>
+                    <span class="block w-4 h-[2px] bg-stone-800 transition self-end"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile nav panel -->
+        <nav id="mobile-menu" class="md:hidden bg-white border-t border-stone-100">
+            <div class="flex flex-col px-6 py-2 text-sm font-bold tracking-widest">
+                <a href="#menu" class="py-4 border-b border-stone-100">MENU</a>
+                <a href="#story" class="py-4 border-b border-stone-100">STORY</a>
+                <a href="#access" class="py-4">ACCESS</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Area -->
+    <section class="relative min-h-[100svh] flex items-end sm:items-center overflow-hidden pt-24 pb-16 sm:py-0">
+        <div class="absolute inset-0 z-0">
+            <img src="images/store.png" alt="ビストロのテーブル" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/80 sm:from-black/70 via-black/40 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-5 sm:px-6 relative z-10 text-white">
+            <div class="max-w-3xl">
+                <p class="font-bold tracking-[0.2em] sm:tracking-[0.3em] mb-3 sm:mb-4 text-xs sm:text-base" style="color:var(--bistro-gold)">SINCE 2009 | SENDAI TOMIZAWA</p>
+                <h2 class="text-3xl xs:text-4xl md:text-6xl font-black serif leading-[1.3] hero-title mb-6 sm:mb-8">
+                    「美味しい」の先にある<br>
+                    豊かな時間を、<br>
+                    このテーブルで.
+                </h2>
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <div class="w-8 sm:w-12 h-[1px] shrink-0" style="background-color:var(--bistro-gold)"></div>
+                    <p class="text-xs sm:text-sm opacity-90 tracking-wide sm:tracking-widest">地元、庄司農園の野菜と洞口鮮魚店の旬。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white text-center hidden sm:block">
+            <span class="text-[10px] tracking-[0.5em] uppercase block mb-2">Scroll</span>
+            <div class="w-[1px] h-16 bg-white/30 mx-auto relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 animate-bounce" style="background-color:var(--bistro-gold)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-16 sm:py-24 relative">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-5/12 relative">
+                    <img src="images/fish.png" alt="新鮮な野菜" class="rounded-br-[60px] sm:rounded-br-[100px] shadow-2xl relative z-10 w-full">
+                    <div class="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-40 h-40 sm:w-64 sm:h-64 rounded-full -z-0" style="background-color:rgba(197,160,89,0.1)"></div>
+                </div>
+                <div class="w-full md:w-7/12">
+                    <h3 class="serif text-2xl xs:text-3xl md:text-4xl font-bold leading-relaxed mb-6 sm:mb-8">
+                        肩肘張らず、けれど最高に贅沢に。<br>
+                        <span class="brush-underline">「また明日も食べたい」</span>と思える一皿を。
+                    </h3>
+                    <p class="text-gray-600 leading-loose mb-8 sm:mb-10 text-base sm:text-lg">
+                        「本格的なビストロ料理をもっと身近に」そんな想いからアンプルは始まりました。
+                        契約農家から届く力強い野菜、市場直送の鮮魚。
+                        素材の良さを最大限に引き出すのは、余計な飾りではなく、丁寧な仕事と少しの遊び心。
+                        お一人様での「夜ランチ」も、大切な方との記念日も、
+                        ここにはいつも、温かな料理とワイン、そして笑顔があります。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        <div class="flex items-center gap-4 bg-white p-4 shadow-sm rounded-lg border-l-4" style="border-color:var(--bistro-gold)">
+                            <span class="font-black text-2xl serif shrink-0" style="color:var(--bistro-gold)">01</span>
+                            <span class="text-sm font-bold">庄司農園・洞口鮮魚店の直入荷食材</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white p-4 shadow-sm rounded-lg border-l-4" style="border-color:var(--bistro-gold)">
+                            <span class="font-black text-2xl serif shrink-0" style="color:var(--bistro-gold)">02</span>
+                            <span class="text-sm font-bold">その日の仕入れで変わる黒板メニュー</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dish -->
+    <section id="menu" class="py-16 sm:py-24 bg-stone-50 overflow-hidden relative border-y border-stone-200">
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-14 sm:mb-20">
+                <span class="tracking-[0.3em] sm:tracking-[0.5em] font-bold text-xs sm:text-sm block mb-3 sm:mb-4 uppercase" style="color:var(--bistro-gold)">Specialite</span>
+                <h3 class="serif text-3xl xs:text-4xl md:text-5xl font-bold text-gray-900">アンプルを語る、至高の逸品</h3>
+            </div>
+
+            <!-- Item 1: 鶏コンフィ -->
+            <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-12 mb-16 sm:mb-32">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="inline-block px-4 py-1 border text-xs font-bold mb-5 sm:mb-6" style="border-color:var(--bistro-gold); color:var(--bistro-gold)">REPEATER'S FAVORITE</div>
+                    <h4 class="serif text-2xl xs:text-3xl md:text-5xl font-bold mb-5 sm:mb-6 text-gray-900">鶏モモ肉のコンフィ</h4>
+                    <p class="text-gray-600 leading-loose mb-6 sm:mb-8 text-base sm:text-lg">
+                        「外はカリカリ、中はほくほく柔らかでジューシー」<br>
+                        3回、4回とリピートされるお客様が絶えない看板メニュー。
+                        じっくりと低温のオイルで火を通し、仕上げに皮目を香ばしく焼き上げる。
+                        シンプルだからこそ、職人の技が光る一皿です。
+                    </p>
+                    <div class="text-xl sm:text-2xl font-bold serif" style="color:var(--bistro-gold)"> <span class="text-sm opacity-60 font-sans text-gray-400"></span></div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="relative">
+                        <img src="images/confi.jpg" alt="鶏モモ肉のコンフィ" class="rounded-xl shadow-xl floating-img w-full">
+                        <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 border-r-2 border-b-2 opacity-50" style="border-color:var(--bistro-gold)"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: クリームブリュレ -->
+            <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <img src="images/buryure.jpg" alt="岩塩のクリームブリュレ" class="rounded-xl shadow-xl w-full">
+                        <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-20 h-20 sm:w-32 sm:h-32 border-l-2 border-t-2 opacity-50" style="border-color:var(--bistro-gold)"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="inline-block px-4 py-1 border text-xs font-bold mb-5 sm:mb-6" style="border-color:var(--bistro-gold); color:var(--bistro-gold)">SIGNATURE DESSERT</div>
+                    <h4 class="serif text-2xl xs:text-3xl md:text-5xl font-bold mb-5 sm:mb-6 text-gray-900">山椒のクリームブリュレ</h4>
+                    <p class="text-gray-600 leading-loose mb-6 sm:mb-8 text-base sm:text-lg">
+                        甘みと塩味の完璧なマリアージュ。<br>
+                        濃厚なカスタードのコクを、厳選した岩塩が鮮やかに引き締めます。
+                        パリッとキャラメリゼされた表面を割る瞬間の喜び。
+                        アンプルの夜を締めくくる、唯一無二のデザート。
+                    </p>
+                    <div class="inline-flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm">
+                        <p class="text-sm text-gray-700 font-bold">「LPを見た」で食後のコーヒーサービス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-8 sm:gap-12">
+                <div class="w-full md:w-1/3">
+                    <h3 class="serif text-4xl font-black mb-3 sm:mb-4">Voice.</h3>
+                    <p class="font-bold tracking-widest text-sm sm:text-base" style="color:var(--bistro-gold)">愛され続ける理由。</p>
+                    <div class="mt-6 sm:mt-12 hidden md:block">
+                        <div class="p-6 bg-stone-50 border-r-4 text-right" style="border-color:var(--bistro-gold)">
+                            <p class="text-sm font-bold">Google Review</p>
+                            <p class="text-2xl serif font-black">4.0 / 5.0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 space-y-8 sm:space-y-12">
+                    <blockquote class="border-l-2 border-stone-200 pl-6 sm:pl-8 relative">
+                        <span class="absolute -left-2 sm:-left-4 -top-4 sm:-top-6 text-4xl sm:text-6xl text-stone-100 serif">&ldquo;</span>
+                        <p class="text-base sm:text-xl serif leading-relaxed mb-3 sm:mb-4">前菜は何をチョイスしてもハズレ無し。特に「鶏モモ肉コンフィ」は外カリ中ホクで堪りません。コスパ最強の貫重なお店です。</p>
+                        <footer class="text-sm font-bold" style="color:var(--bistro-gold)">— 40代 女性（ランチ・ディナー利用）</footer>
+                    </blockquote>
+                    <blockquote class="border-l-2 border-stone-200 pl-6 sm:pl-8 relative">
+                        <span class="absolute -left-2 sm:-left-4 -top-4 sm:-top-6 text-4xl sm:text-6xl text-stone-100 serif">&ldquo;</span>
+                        <p class="text-base sm:text-xl serif leading-relaxed mb-3 sm:mb-4">駐車場のコーンに名前が書いてある心遣いに安堵。トマト嫌いな息子が「ハチノスのトマト煮込み」を完食したのには驚きました。まさに食堂のような温かさ。</p>
+                        <footer class="text-sm font-bold" style="color:var(--bistro-gold)">— 50代 男性（家族での夕食会）</footer>
+                    </blockquote>
+                    <div class="p-5 bg-stone-50 border-l-4 md:hidden flex items-center justify-between" style="border-color:var(--bistro-gold)">
+                        <p class="text-sm font-bold">Google Review</p>
+                        <p class="text-xl serif font-black">4.0 / 5.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef's Story -->
+    <section id="story" class="py-16 sm:py-24 bg-stone-50">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-stretch overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl bg-white">
+                <div class="w-full md:w-1/2 bg-cover bg-center min-h-[260px] sm:min-h-[400px]" style="background-image: url('images/chef.png');"></div>
+                <div class="w-full md:w-1/2 p-6 sm:p-12 flex flex-col justify-center">
+                    <span class="font-bold text-xs tracking-widest mb-3 sm:mb-4" style="color:var(--bistro-gold)">OWNER CHEF</span>
+                    <h3 class="serif text-2xl sm:text-4xl font-bold mb-4 sm:mb-6 text-gray-900">鷺坂 大蔵 <span class="text-base sm:text-lg opacity-60 ml-2">Daizou Sagisaka</span></h3>
+                    <p class="text-gray-600 leading-loose mb-6 sm:mb-8 text-sm sm:text-base">
+                        2009年、仙台市太白区の閑静な住宅街にオープン。<br>
+                        フレンチの伝統的な技法をベースにしながらも、枠にとらわれない「南欧料理」という自由なスタイルを提唱。
+                        庄司農園や洞口鮮魚店といった、顔の見える生産者との縁を大切にし、
+                        「その日、その瞬間にしか味わえない一皿」を追求し続けています。
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <a href="https://www.instagram.com/daizousagisaka/" target="_blank" rel="noopener" class="flex items-center gap-2 font-bold hover:opacity-70 transition text-sm sm:text-base">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                            <span>Follow on Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                <span class="font-bold tracking-[0.3em] sm:tracking-[0.4em] text-xs uppercase block mb-3" style="color:var(--bistro-gold)">Future Project</span>
+                <h3 class="serif text-3xl xs:text-4xl md:text-5xl font-bold tracking-tight mb-4">Coming Soon</h3>
+                <p class="text-stone-400 text-sm leading-relaxed">
+                    お店の味をいつでもどこでも。アンプルが準備中の新しいサービスをご紹介します。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+                <!-- Service 1 -->
+                <div class="bg-stone-800/80 backdrop-blur-sm border border-stone-700/60 p-6 sm:p-8 rounded-2xl relative group hover:border-bistro-gold/50 transition duration-300">
+                    <span class="absolute top-5 right-5 sm:top-6 sm:right-6 text-xs font-bold px-3 py-1 rounded-full border" style="background-color:rgba(197,160,89,0.2); color:var(--bistro-gold); border-color:rgba(197,160,89,0.3)">準備中</span>
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 sm:mb-6" style="background-color:rgba(197,160,89,0.1); color:var(--bistro-gold)">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h4 class="serif text-xl sm:text-2xl font-bold mb-3 text-white pr-16 sm:pr-0">
+                        「お家でアンプル」極上ビストロミール便
+                    </h4>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-5 sm:mb-6">
+                        看板メニュー「鶏モモ肉のコンフィ」や季節のポタージュを、出来立ての美味しさそのまま真空急速冷凍でお届け。温めるだけでご家庭の食卓が最高峰のビストロ空間に早変わりします。
+                    </p>
+                    <div class="text-xs text-stone-500 font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-truck-fast" style="color:var(--bistro-gold)"></i> 全国配送対応予定
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-stone-800/80 backdrop-blur-sm border border-stone-700/60 p-6 sm:p-8 rounded-2xl relative group hover:border-bistro-gold/50 transition duration-300">
+                    <span class="absolute top-5 right-5 sm:top-6 sm:right-6 text-xs font-bold px-3 py-1 rounded-full border" style="background-color:rgba(197,160,89,0.2); color:var(--bistro-gold); border-color:rgba(197,160,89,0.3)">準備中</span>
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 sm:mb-6" style="background-color:rgba(197,160,89,0.1); color:var(--bistro-gold)">
+                        <i class="fa-solid fa-wine-glass"></i>
+                    </div>
+                    <h4 class="serif text-xl sm:text-2xl font-bold mb-3 text-white pr-16 sm:pr-0">
+                        シェフ厳選 ワイン&amp;アミューズ定期便
+                    </h4>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-5 sm:mb-6">
+                        シェフ鷺坂が南欧各地からセレクトしたマニアックな自然派ワインと、そのワインに合わせて仕込みを行う自家製パテやオリーブなどの限定ペアリングBOX（月額サブスク）。
+                    </p>
+                    <div class="text-xs text-stone-500 font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-crown" style="color:var(--bistro-gold)"></i> 会員数量限定リリース予定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access -->
+    <section id="access" class="py-16 sm:py-24">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-10 sm:gap-16 items-start">
+                <div>
+                    <h3 class="serif text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">Information.</h3>
+                    <dl class="space-y-5 sm:space-y-6 border-t border-stone-200 pt-6 sm:pt-8">
+                        <div class="flex flex-col xs:flex-row pb-5 sm:pb-6 border-b border-stone-100">
+                            <dt class="w-full xs:w-32 font-bold mb-1 xs:mb-0 shrink-0" style="color:var(--bistro-gold)">店名</dt>
+                            <dd>ビストロアンプル - 南欧食堂 bistro ampoule</dd>
+                        </div>
+                        <div class="flex flex-col xs:flex-row pb-5 sm:pb-6 border-b border-stone-100">
+                            <dt class="w-full xs:w-32 font-bold mb-1 xs:mb-0 shrink-0" style="color:var(--bistro-gold)">所在地</dt>
+                            <dd>〒982-0031 宮城県仙台市太白区泉崎1丁目33−10<br>富沢公園パークマンション 102</dd>
+                        </div>
+                        <div class="flex flex-col xs:flex-row pb-5 sm:pb-6 border-b border-stone-100">
+                            <dt class="w-full xs:w-32 font-bold mb-1 xs:mb-0 shrink-0" style="color:var(--bistro-gold)">営業時間</dt>
+                            <dd>
+                                ランチ 11:30 〜<br>
+                                ディナー 17:30 〜
+                                
+                            </dd>
+                        </div>
+                        <div class="flex flex-col xs:flex-row pb-5 sm:pb-6 border-b border-stone-100">
+                            <dt class="w-full xs:w-32 font-bold mb-1 xs:mb-0 shrink-0" style="color:var(--bistro-gold)">定休日</dt>
+                            <dd>水曜日</dd>
+                        </div>
+                        <div class="flex flex-col xs:flex-row pb-2">
+                            <dt class="w-full xs:w-32 font-bold mb-1 xs:mb-0 shrink-0" style="color:var(--bistro-gold)">駐車場</dt>
+                            <dd>5台完備（ご予約時にご相談ください）</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="h-[280px] sm:h-[500px] rounded-2xl overflow-hidden shadow-inner grayscale hover:grayscale-0 transition duration-1000 w-full">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.6024683015607!2d140.8655820747781!3d38.21912508644161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2638af25d3f7%3A0xb14762e267b7a1d!2z44OT44K544OI44Ot44Ki44Oz44OX44OrLeWNl-asp-mjn-WggiBiaXN0cm8gYW1wb3VsZQ!5e0!3m2!1sja!2sjp!4v1772416696917!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-16 sm:py-24 text-white text-center relative overflow-hidden" style="background-color:var(--bistro-gold)">
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <h3 class="serif text-3xl xs:text-4xl md:text-6xl font-black mb-6 sm:mb-8 leading-tight text-stone-800">
+                「今日、アンプルに行こう。」<br>
+                そう思っていただける場所でありたい。
+            </h3>
+            <p class="text-base sm:text-xl mb-8 sm:mb-12 text-stone-700 font-medium">人気メニューの「鴨コンフィ」、お席の確保はお早めに。</p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                <a href="tel:0227435785" class="bg-stone-800 px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-2xl hover:scale-105 transition shadow-2xl flex items-center justify-center gap-3 sm:gap-4" style="color:var(--bistro-gold)">
+                    <i class="fa-solid fa-phone"></i> 022-743-5785
+                </a>
+                <a href="https://www.instagram.com/daizousagisaka/" target="_blank" rel="noopener" class="bg-white text-stone-800 px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-xl hover:bg-stone-50 transition shadow-lg">
+                    公式インスタを見る
+                </a>
+            </div>
+        </div>
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-white/10 rounded-full"></div>
+        <div class="absolute -top-20 -right-20 w-80 h-80 bg-white/10 rounded-full"></div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-stone-900 text-stone-500 text-center text-xs tracking-widest uppercase px-5">
+        <p>&copy; 2024 bistro ampoule. all rights reserved.</p>
+    </footer>
+
+    <script>
+        // Header shrink on scroll
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+        // Close mobile menu after tapping a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
