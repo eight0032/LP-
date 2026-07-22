@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ビストロ・サンテ | 岩沼の本格フレンチビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-gold: #b39151;
+            --color-dark: #1a1a1a;
+            --color-stone: #f4f1ea;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: var(--color-stone);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .bg-dark { background-color: var(--color-dark); }
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        .v-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #fcf6ba 45%, #b39151 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-overlay {
+            background: radial-gradient(circle at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%);
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 1s ease forwards; }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s;
+        }
+        .cta-button:hover::before,
+        .cta-button:active::before {
+            left: 100%;
+        }
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Map Container */
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 75%;
+            position: relative;
+            height: 0;
+        }
+        @media (min-width: 768px) {
+            .map-responsive { padding-bottom: 56.25%; }
+        }
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            filter: grayscale(0.3) contrast(1.1);
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .cta-button, .cta-button::before, * { animation: none !important; transition: none !important; }
+        }
+
+        /* Focus visibility for accessibility */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--color-gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-[100svh] overflow-hidden bg-black flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="images/roastbeef.png" class="w-full h-full object-cover opacity-70" alt="極上ローストビーフ" loading="eager">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-5 sm:px-6 py-24">
+            <div class="fade-in">
+                <p class="text-gold tracking-[0.35em] sm:tracking-[0.5em] mb-4 text-sm sm:text-lg md:text-xl font-light">岩沼に佇む、大人の隠れ家</p>
+                <div class="mb-6 sm:mb-8">
+                    <span class="text-white text-xs sm:text-sm md:text-base tracking-[0.25em] sm:tracking-[0.3em] block mb-2">— BISTRO SANTE —</span>
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold text-white leading-tight">
+                        至福を、<br>
+                        <span class="gold-gradient">日常に。</span>
+                    </h1>
+                </div>
+                <p class="text-white/80 text-base sm:text-lg md:text-2xl mb-8 sm:mb-10 serif tracking-wide sm:tracking-widest">本格フレンチの真髄を、<br class="sm:hidden">心ゆくまでリーズナブルに。</p>
+
+                <div class="inline-flex items-center gap-4 sm:gap-6 border-y border-white/20 py-3 sm:py-4 px-6 sm:px-8 text-white/90">
+                    <div class="text-center border-r border-white/20 pr-4 sm:pr-6">
+                        <span class="text-[10px] sm:text-xs block mb-1">食べログ</span>
+                        <span class="text-lg sm:text-xl font-bold">3.25</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-[10px] sm:text-xs block mb-1">顧客満足度</span>
+                        <span class="text-lg sm:text-xl font-bold">90% <span class="text-xs">over</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:block">
+            <p class="v-text text-white/40 text-sm tracking-[1em] serif">五感で味わう岩沼の四季</p>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest animate-bounce hidden sm:block">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 2. CTA(1回目) -->
+    <section class="py-12 sm:py-16 bg-dark relative overflow-hidden">
+        <div class="container mx-auto max-w-4xl px-5 sm:px-4 text-center relative z-10">
+            <h2 class="text-gold text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 serif">〈 特別な一日も、何気ない日常も 〉</h2>
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                <a href="tel:09067393131" class="cta-button bg-gold text-white text-lg sm:text-xl font-bold py-4 sm:py-5 rounded-sm flex items-center justify-center">
+                    <i class="fas fa-phone-alt mr-3"></i> 090-6739-3131
+                </a>
+                <a href="https://www.instagram.com/sante.iwanuma/" target="_blank" rel="noopener" class="cta-button border border-gold text-gold text-lg sm:text-xl font-bold py-4 sm:py-5 rounded-sm flex items-center justify-center hover:bg-gold hover:text-white active:bg-gold active:text-white transition">
+                    <i class="fab fa-instagram mr-3"></i> Instagram 予約
+                </a>
+            </div>
+        </div>
+        <div class="absolute -bottom-10 -left-10 text-[6rem] sm:text-[10rem] font-bold text-white/[0.03] select-none pointer-events-none">SANTE</div>
+    </section>
+
+    <!-- 3. ギャラリー・シズルセクション -->
+    <section class="py-16 sm:py-24 bg-stone-50">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 serif section-title leading-relaxed text-center lg:text-left">
+                        厳選された食材、<br>
+                        磨き抜かれた技法。
+                    </h2>
+                    <p class="text-gray-600 leading-loose mb-8 text-center lg:text-left">
+                        宮城・岩沼の地で、季節が息づく食材を選び抜き、フレンチの正統な技法で仕立てる。
+                        看板メニューのロースト ビーフは、低温でじっくりと旨味を閉じ込め、口の中でとろけるような食感を実現しました。
+                    </p>
+                    <div class="flex items-center justify-center lg:justify-start gap-4 text-gold">
+                        <div class="w-12 h-[1px] bg-gold"></div>
+                        <span class="tracking-widest text-sm font-bold uppercase">Our Signature Dish</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 relative">
+                    <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
+                            <div class="relative overflow-hidden rounded shadow-xl group">
+                                <img src="images/zensai.png" alt="季節の前菜盛り合わせ" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                                <div class="absolute bottom-0 left-0 right-0 bg-black/40 p-2 text-white text-[9px] sm:text-[10px] opacity-100 sm:opacity-0 group-hover:opacity-100 transition tracking-widest text-center">SEASONAL APPETIZERS</div>
+                            </div>
+                            <div class="relative overflow-hidden rounded shadow-xl group">
+                                <img src="images/french.png" alt="店内の落ち着いた雰囲気" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                                <div class="absolute bottom-0 left-0 right-0 bg-black/40 p-2 text-white text-[9px] sm:text-[10px] opacity-100 sm:opacity-0 group-hover:opacity-100 transition tracking-widest text-center">BISTRO AMBIANCE</div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 sm:space-y-4">
+                            <div class="relative overflow-hidden rounded shadow-2xl group aspect-[3/4]">
+                                <img src="images/roastbeef.png" alt="特選ローストビーフ" class="w-full h-full object-cover group-hover:scale-105 transition duration-1000" loading="lazy">
+                                <div class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-gold text-white px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold tracking-tighter">RECOMMEND</div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-6 text-white opacity-100 sm:opacity-0 group-hover:opacity-100 transition duration-500">
+                                    <p class="serif text-base sm:text-lg">特選ローストビーフ</p>
+                                    <p class="text-[9px] sm:text-[10px] tracking-widest text-white/70">Signature Roasted Beef</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介 -->
+    <section class="py-16 sm:py-24 bg-dark text-white relative">
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl">
+            <div class="flex flex-wrap items-center gap-10 sm:gap-16">
+                <div class="w-full lg:w-[40%]">
+                    <div class="relative max-w-sm mx-auto lg:max-w-none">
+                        <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-full h-full border border-gold"></div>
+                        <img src="images/chef.png" alt="シェフ" class="relative z-10 w-full grayscale hover:grayscale-0 transition duration-700" loading="lazy">
+                    </div>
+                </div>
+                <div class="w-full lg:w-[50%]">
+                    <span class="text-gold tracking-widest text-xs sm:text-sm mb-4 block">OWNER CHEF MESSAGE</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 serif leading-snug">「美味しい」という言葉が、<br>私たちの最高の報酬です。</h2>
+                    <div class="space-y-5 sm:space-y-6 text-gray-400 leading-loose text-sm sm:text-base">
+                        <p>2022年11月、岩沼の地に「ビストロ・サンテ」は誕生しました。店名はフランス語で「健康・乾杯」を意味します。私たちが目指すのは、高級フレンチのクオリティを、ビストロの気軽さで提供すること。</p>
+                        <p>「今日は美味しいものが食べたい」と思ったとき、真っ先に顔が浮かぶ。そんな、地域の皆様の日常に寄り添う一軒でありたいと願っています。</p>
+                    </div>
+                    <div class="mt-8 sm:mt-12 p-6 sm:p-8 bg-white/5 border-l border-gold italic text-gray-300 serif text-sm sm:text-base">
+                        「オーナーシェフもとても良いお人柄で、また行きたいと思えるお店でした」
+                        <span class="text-xs text-gold mt-2 block not-italic">— お客様からの温かいお言葉</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩み → 解決 -->
+    <section class="py-16 sm:py-24 bg-stone-100 relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-4 text-center mb-12 sm:mb-16 relative z-10">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4 serif">Bistro Sante が選ばれる理由</h2>
+            <div class="w-24 h-px bg-gold mx-auto mt-6 sm:mt-8"></div>
+        </div>
+
+        <div class="container mx-auto px-5 sm:px-4 max-w-5xl">
+            <div class="grid sm:grid-cols-3 gap-5 sm:gap-8 mb-12 sm:mb-16">
+                <div class="bg-white p-6 sm:p-10 text-center shadow-lg border-b-4 border-gold">
+                    <h4 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4 serif">圧倒的価値</h4>
+                    <p class="text-sm text-gray-600 leading-loose">ランチコース。価格を大きく上回る満足度をお約束します。</p>
+                </div>
+                <div class="bg-white p-6 sm:p-10 text-center shadow-lg border-b-4 border-gold">
+                    <h4 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4 serif">アットホーム</h4>
+                    <p class="text-sm text-gray-600 leading-loose">お子様連れでも安心。ご家族の記念日を温かく演出するおもてなしの心。</p>
+                </div>
+                <div class="bg-white p-6 sm:p-10 text-center shadow-lg border-b-4 border-gold">
+                    <h4 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4 serif">旬を味わう</h4>
+                    <p class="text-sm text-gray-600 leading-loose">岩沼の地場野菜と鮮魚。その日一番の食材をシェフの感性で一皿に昇華。</p>
+                </div>
+            </div>
+
+            <div class="bg-dark text-white p-8 sm:p-12 rounded-sm shadow-2xl relative">
+                <div class="absolute top-0 right-0 p-6 sm:p-8 opacity-10">
+                    <i class="fas fa-quote-right text-6xl sm:text-8xl"></i>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 serif text-gold italic">Voice of Guests</h3>
+                <div class="space-y-6 sm:space-y-8">
+                    <div class="border-b border-white/10 pb-6">
+                        <p class="leading-relaxed mb-2 text-sm sm:text-base">「ランチでとてもリーズナブル。お肉もお魚も彩りが綺麗で、オーナーシェフの人柄も最高でした!」</p>
+                        <span class="text-xs text-gray-500">★★★★★ | 30代女性</span>
+                    </div>
+                    <div class="pb-6">
+                        <p class="leading-relaxed mb-2 text-sm sm:text-base">「金婚式のお祝いで利用。カジュアルなのに本格的。細やかな心遣いで素敵なパーティーになりました。」</p>
+                        <span class="text-xs text-gray-500">★★★★★ | 50代男性</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. COMING SOON(新サービス提案) -->
+    <section class="py-16 sm:py-24 bg-dark text-white border-t border-b border-gold/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#b39151_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none"></div>
+
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="inline-block px-4 py-1 border border-gold text-gold text-xs tracking-[0.25em] sm:tracking-[0.3em] font-bold uppercase mb-4">New Projects</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold serif gold-gradient">COMING SOON</h2>
+                <p class="text-gray-400 mt-4 serif text-sm md:text-base tracking-widest">もっと身近に、もっと特別な「サンテ」へ。準備中の新サービス</p>
+                <div class="w-16 h-px bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1 -->
+                <div class="bg-white/5 border border-white/10 rounded-sm p-6 sm:p-8 hover:border-gold/50 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs text-gold tracking-widest font-mono uppercase">Service 01</span>
+                            <span class="text-[10px] bg-gold/20 text-gold px-2.5 py-1 rounded-full font-semibold">2026 AUTUMN</span>
+                        </div>
+                        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-shopping-bag text-xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 serif text-white">Bistro at Home<br><span class="text-xs text-gold font-sans font-normal block mt-1">オンラインストア・特選ドレッシング</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            大好評の「特選ローストビーフソース」や「旬野菜の自家製ドレッシング」を全国へお届け。ビストロの本格的な味を、ご家庭の食卓でも手軽にお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center text-xs text-gold font-bold">
+                        <span>ECサイト準備中</span>
+                        <i class="fas fa-arrow-right ml-auto"></i>
+                    </div>
+                </div>
+
+                <!-- サービス2 -->
+                <div class="bg-white/5 border border-white/10 rounded-sm p-6 sm:p-8 hover:border-gold/50 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs text-gold tracking-widest font-mono uppercase">Service 02</span>
+                            <span class="text-[10px] bg-gold/20 text-gold px-2.5 py-1 rounded-full font-semibold">2027 SPRING</span>
+                        </div>
+                        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-wine-bottle text-xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 serif text-white">Wine &amp; Marriage Salon<br><span class="text-xs text-gold font-sans font-normal block mt-1">ペアリング会員・ワインサロン</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            ソムリエ厳選の季節のワインと小皿フレンチの定期マリアージュ体験。会員様限定のワイン試飲会やシェフのプチ料理教室イベントも定期開催予定。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center text-xs text-gold font-bold">
+                        <span>会員先行リリース予定</span>
+                        <i class="fas fa-arrow-right ml-auto"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 sm:mt-12 text-center text-xs text-gray-400 bg-white/5 p-4 rounded border border-white/5 max-w-4xl mx-auto">
+                <i class="fas fa-info-circle text-gold mr-2"></i>各サービスの先行案内・ご相談は、Instagram DMまたはお電話にてお気軽にお問い合わせください。
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 特典 -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-4 max-w-4xl">
+            <div class="relative border-2 border-gold p-1 sm:p-2">
+                <div class="border border-gold p-6 sm:p-16 text-center">
+                    <span class="text-gold tracking-[0.2em] sm:tracking-[0.3em] font-bold block mb-4 text-sm sm:text-base">— SPECIAL OFFER —</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8 serif">
+                        「ホームページを見た」で、<br>
+                        <span class="gold-gradient">至福の一杯を。</span>
+                    </h2>
+                    <p class="text-gray-600 mb-8 sm:mb-10 leading-loose max-w-xl mx-auto text-sm sm:text-base">
+                        ディナータイムにご来店いただき、ご注文時に「ウェブサイトを見た」とお伝えいただいたお客様に、<br class="hidden md:block">
+                        シェフ厳選のワンドリンクをサービスさせていただきます。
+                    </p>
+                    <div class="inline-block bg-dark text-white py-3 sm:py-4 px-8 sm:px-12 tracking-widest font-bold text-sm sm:text-base">
+                        2026年9月末日まで
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA & Access -->
+    <section class="py-16 sm:py-24 bg-dark text-white relative">
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl">
+            <div class="grid lg:grid-cols-2 gap-12 sm:gap-16 items-start">
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 serif text-gold">Access &amp; Info</h2>
+                        <div class="space-y-4 text-gray-300 text-sm sm:text-base">
+                            <div class="flex flex-col sm:flex-row border-b border-white/10 pb-4">
+                                <span class="w-24 text-gold font-bold mb-1 sm:mb-0 shrink-0">住所</span>
+                                <p>〒989-2442 宮城県岩沼市大手町2−10 <br>ダイヤモンドビル 2F</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-white/10 pb-4">
+                                <span class="w-24 text-gold font-bold mb-1 sm:mb-0 shrink-0">営業時間</span>
+                                <p>Lunch: 11:30~ / Dinner: 17:00~</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-white/10 pb-4">
+                                <span class="w-24 text-gold font-bold mb-1 sm:mb-0 shrink-0">定休日</span>
+                                <p>月曜日</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row pt-2">
+                                <span class="w-24 text-gold font-bold mb-1 sm:mb-0 shrink-0">電話</span>
+                                <p class="text-xl sm:text-2xl font-bold">090-6739-3131</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Map 埋め込み -->
+                    <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+                        <div class="map-responsive">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3139.4642855469947!2d140.86213117477166!3d38.10613169300536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a3d23fc044373%3A0xd5bfda43c20ad128!2z44OT44K544OI44Ot44O744K144Oz44OG!5e0!3m2!1sja!2sjp!4v1772413813572!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ビストロ・サンテ 地図"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:sticky lg:top-8">
+                    <div class="bg-white p-6 sm:p-8 rounded-sm">
+                        <h3 class="text-dark text-lg sm:text-xl font-bold mb-6 text-center serif">ご予約・お問い合わせ</h3>
+                        <a href="tel:09067393131" class="cta-button w-full bg-red-800 text-white py-4 sm:py-5 mb-4 flex items-center justify-center font-bold text-lg sm:text-xl">
+                            <i class="fas fa-phone-alt mr-3"></i> 電話をかける
+                        </a>
+                        <a href="https://www.instagram.com/sante.iwanuma/" target="_blank" rel="noopener" class="cta-button w-full bg-dark text-white py-4 sm:py-5 flex items-center justify-center font-bold text-lg sm:text-xl">
+                            <i class="fab fa-instagram mr-3"></i> Instagram DM
+                        </a>
+                        <p class="text-dark/40 text-[10px] mt-4 text-center leading-relaxed">
+                            ※混雑時はお電話に出られない場合がございます。<br>
+                            その際はDM、またはお時間を空けてからお掛け直しください。
+                        </p>
+                    </div>
+
+                    <div class="mt-8 text-center lg:text-left">
+                        <p class="text-gray-500 text-sm">岩沼駅から徒歩10分。お車でお越しの際はダイヤモンドビル併設の駐車場をご利用ください。</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-16 sm:mt-24 text-center pt-8 border-t border-white/10">
+                <p class="text-gray-500 text-xs tracking-widest">&copy; BISTRO SANTE ALL RIGHTS RESERVED.</p>
+            </footer>
+        </div>
+    </section>
+
+</body>
+</html>
