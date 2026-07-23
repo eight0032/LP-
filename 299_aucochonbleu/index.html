@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オ・コションブルー | 仙台・宮城野公園の本格カジュアルフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --french-blue: #002395;
+            --french-red: #ED2939;
+            --gold: #C5A059;
+            --soft-white: #F9F7F2;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #2D2D2D;
+            background-color: var(--soft-white);
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-french-blue { background-color: var(--french-blue); }
+        .border-gold { border-color: var(--gold); }
+
+        /* 装飾的なライン */
+        .title-line {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .title-line::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* 浮き上がるボタン */
+        .cta-premium {
+            background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+            transition: all 0.3s ease;
+        }
+        .cta-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.5);
+        }
+        .cta-premium:active {
+            transform: translateY(0);
+        }
+
+        /* 背景のテクスチャ */
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+        }
+
+        /* マップのレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Coming Soon カード用スタイル */
+        .coming-card {
+            transition: all 0.3s ease;
+        }
+        .coming-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* スマホ表示の微調整 */
+        @media (max-width: 640px) {
+            .title-line {
+                padding-bottom: 10px;
+            }
+        }
+
+        /* motion配慮 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* キーボードフォーカスの可視化 */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="leading-relaxed bg-paper">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-[85vh] sm:h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/store.png" alt="店内の雰囲気" class="w-full h-full object-cover brightness-[0.4]">
+        </div>
+
+        <div class="relative z-10 text-center px-5 sm:px-4 py-16">
+            <div class="inline-block border border-gold px-4 sm:px-6 py-2 mb-6 sm:mb-8 text-gold tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm">
+                SINCE 2011 | SENDAI FRENCH
+            </div>
+            <h1 class="text-white text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8 leading-tight">
+                仙台で10年以上愛される<br>
+                <span class="text-gold">本物のフレンチ</span>を<br>
+                日常の贅沢に。
+            </h1>
+            <p class="text-gray-300 text-sm sm:text-base md:text-xl mb-8 sm:mb-12 font-light px-2">
+                三國清三氏も認めた技術で贈る、<br class="sm:hidden">
+                五感を揺さぶる至福の一皿。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 sm:gap-6 justify-center items-center">
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/20 w-full max-w-sm md:w-auto">
+                    <p class="text-xs text-gold font-bold mb-1">PRESENT FOR YOU</p>
+                    <p class="text-white font-bold italic text-sm sm:text-base">「スズキのカルパッチョ」無料引換券配布中</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white text-[10px] sm:text-xs tracking-widest uppercase animate-pulse">
+            Scroll Down
+        </div>
+    </header>
+
+    <!-- 2. 実績・社会的証明 -->
+    <section class="py-10 sm:py-12 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
+                <div>
+                    <p class="text-gold text-2xl sm:text-3xl md:text-4xl font-bold mb-1">13th</p>
+                    <p class="text-[11px] sm:text-xs text-gray-500 font-bold">開業からの歴史</p>
+                </div>
+                <div>
+                    <p class="text-gold text-2xl sm:text-3xl md:text-4xl font-bold mb-1">2.5万人</p>
+                    <p class="text-[11px] sm:text-xs text-gray-500 font-bold">累計ご来店者数</p>
+                </div>
+                <div>
+                    <p class="text-gold text-2xl sm:text-3xl md:text-4xl font-bold mb-1">96%</p>
+                    <p class="text-[11px] sm:text-xs text-gray-500 font-bold">料理満足度</p>
+                </div>
+                <div>
+                    <p class="text-gold text-2xl sm:text-3xl md:text-4xl font-bold mb-1">4.5</p>
+                    <p class="text-[11px] sm:text-xs text-gray-500 font-bold">Googleマイビジネス評価</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ストーリー -->
+    <section class="py-16 sm:py-24 bg-[#f2ede4]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-10 sm:gap-16 max-w-6xl mx-auto">
+                <div class="lg:w-1/2 relative w-full max-w-md lg:max-w-none">
+                    <img src="images/chef.png" alt="シェフ姿" class="rounded-lg shadow-xl relative z-10 w-full">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-gold rounded-lg z-0"></div>
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-gold font-bold text-sm tracking-widest uppercase mb-4 block">Chef's Story</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 leading-tight">
+                        「震災を乗り越え、<br>仙台の食文化を支え続けたい」
+                    </h2>
+                    <p class="text-gray-700 mb-5 sm:mb-6 leading-loose text-sm sm:text-base">
+                        オーナーシェフの橘裕二です。1970年生まれ、宮城の地で育ちました。
+                        開業以来、大切にしているのは「食材の生命力を皿の上に表現すること」。
+                        三國清三氏との出会いは私の料理人生に大きな指針を与えてくれました。
+                    </p>
+                    <p class="text-gray-700 mb-8 sm:mb-10 leading-loose text-sm sm:text-base">
+                        気仙沼のカキや毛ガニ、ブランド豚JAPAN Xなど、地元生産者の情熱を、フランス料理という魔法で最高の形にしてお届けします。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        
+                        <p class="font-serif italic text-lg sm:text-xl">Yuji Tachibana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ベネフィット -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 sm:mb-16 title-line italic">Why Choose Us?</h2>
+            <div class="space-y-8 sm:space-y-12">
+                <div class="flex flex-col md:flex-row items-center gap-5 sm:gap-8 bg-gray-50 p-6 sm:p-8 rounded-2xl">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-french-blue text-white rounded-full flex items-center justify-center flex-shrink-0 text-xl sm:text-2xl font-bold">01</div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-french-blue">「敷居は低く、質は高く」を徹底</h3>
+                        <p class="text-gray-600 text-sm">高級店の味を、ビストロのような居心地の良さで。初めてのフレンチでも、気取らずに本物の味を楽しめます。</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-5 sm:gap-8 bg-gray-50 p-6 sm:p-8 rounded-2xl">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-french-blue text-white rounded-full flex items-center justify-center flex-shrink-0 text-xl sm:text-2xl font-bold">02</div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-french-blue">五感で楽しむ「プリフィックスコース」</h3>
+                        <p class="text-gray-600 text-sm">お客様の好みに合わせて前菜・メイン・デザートを選べるスタイル。自分だけの最高のマリアージュを見つけてください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. COMING SOON (新サービス構想) -->
+    <section class="py-16 sm:py-24 bg-[#1A2332] text-white relative overflow-hidden">
+        <!-- 背景装飾 -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-french-blue/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 max-w-6xl relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-gold font-bold text-xs tracking-[0.3em] uppercase block mb-3">NEW PROJECTS</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-serif tracking-wider mb-4">COMING SOON</h2>
+                <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
+                    「もっと身近に、もっと特別な日を。」<br>
+                    オ・コションブルーの味と感動を日常にお届けする、2つの新サービスを準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス 1 -->
+                <div class="coming-card bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col justify-between backdrop-blur-sm relative">
+                    <span class="absolute top-5 right-5 sm:top-6 sm:right-6 text-[10px] bg-gold/20 text-gold border border-gold/40 px-3 py-1 rounded-full font-bold uppercase tracking-widest flex items-center gap-1">
+                        <i class="fas fa-hammer text-[9px]"></i> In Development
+                    </span>
+                    <div>
+                        <div class="w-14 h-14 bg-white/10 text-gold rounded-2xl flex items-center justify-center text-2xl mb-6 mt-8 sm:mt-0">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <p class="text-gold text-xs font-bold tracking-widest mb-1">01 / HOME DINING</p>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 font-serif">おうちフレンチ、ミールキット</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            シェフ特製ソースや真空低温調理されたお肉・お魚料理をご自宅へお届け。簡単な温め盛り付けだけで、ご自宅が本格ビストロに早変わりします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex justify-between items-center text-xs text-gray-400">
+                        <span>全国配送対応予定</span>
+                        <i class="fas fa-arrow-right text-gold"></i>
+                    </div>
+                </div>
+
+                <!-- サービス 2 -->
+                <div class="coming-card bg-white/5 border border-gold/30 rounded-3xl p-6 sm:p-8 flex flex-col justify-between backdrop-blur-sm relative">
+                    <span class="absolute top-5 right-5 sm:top-6 sm:right-6 text-[10px] bg-gold text-black font-bold px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1 shadow-lg">
+                        <i class="fas fa-star text-[9px]"></i> In Development
+                    </span>
+                    <div>
+                        <div class="w-14 h-14 bg-white/10 text-gold rounded-2xl flex items-center justify-center text-2xl mb-6 mt-8 sm:mt-0">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
+                        <p class="text-gold text-xs font-bold tracking-widest mb-1">02 / ORIGINAL SAUCE</p>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 font-serif">自家製ドレッシング、ソース販売</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            「お店のあの味を家でも使いたい」というお客様のご要望にお応えし、シェフ秘伝の玉ねぎドレッシングやステーキソースをボトルでお届けします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex justify-between items-center text-xs text-gray-400">
+                        <span>オンラインストア開設予定</span>
+                        <i class="fas fa-arrow-right text-gold"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 通知受け取り案内 -->
+            <div class="mt-10 sm:mt-12 bg-white/5 border border-white/10 rounded-2xl p-6 text-center max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-center sm:text-left">
+                    <p class="text-sm font-bold text-white">新サービスの開始通知をLINEでお知らせ!</p>
+                    <p class="text-xs text-gray-400">友だち限定で先行予約や特別モニターの募集を行います。</p>
+                </div>
+                <a href="#cta" class="inline-flex items-center gap-2 bg-[#06C755] text-white px-5 py-2.5 rounded-xl font-bold text-xs shrink-0 hover:brightness-110 transition-all w-full sm:w-auto justify-center">
+                    <i class="fab fa-line text-lg"></i> LINE登録しておく
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 限定オファー -->
+    <section class="py-16 sm:py-24 bg-french-blue text-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white/5 border border-white/20 p-6 sm:p-12 rounded-3xl text-center backdrop-blur-sm relative overflow-hidden shadow-2xl">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-5 sm:mb-6 text-gold italic">Special Offer</h2>
+                <p class="text-base sm:text-xl md:text-2xl mb-8 sm:mb-10 font-light">公式LINEへのご登録で、<br class="md:hidden">以下の特典をプレゼント</p>
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-6 text-left mb-10 sm:mb-12">
+                    <div class="flex items-center gap-4 bg-white/10 p-4 rounded-xl">
+                        <i class="fas fa-gift text-gold text-2xl"></i>
+                        <p class="font-bold text-sm sm:text-base">スズキのカルパッチョ無料券</p>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white/10 p-4 rounded-xl">
+                        <i class="fas fa-wine-glass-alt text-gold text-2xl"></i>
+                        <p class="font-bold text-sm sm:text-base">乾杯スパークリング 1杯</p>
+                    </div>
+                </div>
+                <a href="#cta" class="cta-premium inline-block w-full md:w-auto px-8 sm:px-16 py-5 sm:py-6 rounded-full text-lg sm:text-2xl font-black uppercase tracking-wider">
+                    <i class="fab fa-line mr-2"></i> 特典を受け取る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. アクセス・最終CTA -->
+    <footer id="cta" class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 sm:mb-16 title-line italic">Access &amp; Contact</h2>
+
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 text-left items-start mb-16 sm:mb-20">
+                <!-- 地図エリア -->
+                <div class="map-container shadow-2xl border-4 border-white">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.6374676437554!2d140.86827447478066!3d38.264713383788795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a282548a75cfd%3A0xb387729beeb6b16a!2z44Kq44O744Kz44K344On44Oz44OW44Or44O8!5e0!3m2!1sja!2sjp!4v1772413071612!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="オ・コションブルー 店舗地図"></iframe>
+                </div>
+
+                <!-- 店舗詳細エリア -->
+                <div class="space-y-6 sm:space-y-8">
+                    <div class="bg-gray-50 p-6 sm:p-8 rounded-3xl border border-gray-100">
+                        <h3 class="text-lg sm:text-xl font-bold mb-5 sm:mb-6 text-french-blue flex items-center">
+                            <i class="fas fa-info-circle mr-3"></i> SHOP INFORMATION
+                        </h3>
+                        <div class="space-y-5 sm:space-y-6">
+                            <div>
+                                <p class="text-xs font-bold text-gold uppercase mb-1">Store Name</p>
+                                <p class="text-base sm:text-lg font-bold">オ・コションブルー (Au Cochon Bleu)</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gold uppercase mb-1">Address</p>
+                                <p class="font-medium text-gray-700 leading-relaxed text-sm sm:text-base">
+                                    〒980-0811 宮城県仙台市青葉区一番町4丁目5−26<br>
+                                    1が4ビル 4F <span class="text-xs bg-gray-200 px-2 py-0.5 rounded ml-2">三越隣</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gold uppercase mb-1">Reservation</p>
+                                <a href="tel:0222243586" class="text-2xl sm:text-3xl font-black text-french-blue hover:opacity-70 transition-opacity inline-block">
+                                    022-224-3586
+                                </a>
+                                <p class="text-xs text-gray-400 mt-1">※人気店のためお電話でのご予約を推奨しております</p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-200">
+                                <p class="text-sm">
+                                    <span class="font-bold">ランチ</span> 11:30〜14:30<br>
+                                    <span class="font-bold">ディナー</span> 17:30〜22:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LINE CTA -->
+                    <div class="bg-french-blue p-6 sm:p-8 rounded-3xl text-white shadow-xl text-center">
+                        <p class="text-gold font-bold text-sm mb-2">期間限定プレゼント中</p>
+                        <h3 class="text-lg sm:text-xl font-bold mb-6">LINEで特典を受け取る</h3>
+                        <button class="w-full bg-[#06C755] py-4 rounded-xl font-black text-base sm:text-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                            <i class="fab fa-line text-2xl"></i> LINE友だち追加
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 gap-6 uppercase tracking-widest">
+                <p>&copy; Au Cochon Bleu All Rights Reserved.</p>
+                <div class="flex gap-8 font-bold">
+                    <a href="https://aucochonbleu.owst.jp/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors py-2 px-1">Official Web</a>
+                    <a href="https://www.instagram.com/au_cochon_bleu/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors italic py-2 px-1">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
