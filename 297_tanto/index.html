@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanto Tanto | 帯広・東エリアの隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #B68D40;
+            --light: #F9F7F2;
+            --accent: #D97706;
+            --text-main: #332F2B;
+        }
+        body { font-family: 'Noto Serif JP', serif; background-color: var(--light); color: var(--text-main); }
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+        .font-english { font-family: 'Montserrat', sans-serif; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+
+        /* 明るいグラデーションオーバーレイ */
+        .vignette-light {
+            background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(249,247,242,0.4) 100%);
+        }
+
+        /* エレガントなボタン(明るい背景用) */
+        .btn-elegant {
+            position: relative;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-weight: bold;
+            overflow: hidden;
+            transition: all 0.4s;
+            background: white;
+        }
+        .btn-elegant:hover,
+        .btn-elegant:focus-visible {
+            background-color: var(--gold);
+            color: white;
+        }
+        .btn-elegant:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        /* スクロールアニメーション */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-up { animation: fade-in-up 1s ease-out forwards; }
+
+        /* モーション軽減設定を尊重 */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-up { animation: none; opacity: 1; transform: none; }
+        }
+
+        /* iOS Safariでのbg-fixedのちらつき対策:モバイルではscrollに切替 */
+        @media (max-width: 767px) {
+            .parallax-section { background-attachment: scroll !important; }
+        }
+    </style>
+</head>
+<body class="selection:bg-gold selection:text-white overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/plate.png');">
+            <div class="absolute inset-0 bg-white/30 vignette-light"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center text-stone-800 px-6 text-center">
+            <div class="mb-6 sm:mb-8 opacity-0 animate-up" style="animation-delay: 0.2s;">
+                <p class="text-gold font-english tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm mt-4 text-center font-bold">ITALIAN &amp; FRENCH RESTAURANT</p>
+            </div>
+
+            <div class="text-center">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-relaxed opacity-0 animate-up drop-shadow-sm tracking-wider" style="animation-delay: 0.8s;">
+                    至福の、<span class="text-gold">ひと皿。</span>
+                </h1>
+            </div>
+
+            <div class="mt-10 sm:mt-16 opacity-0 animate-up text-center" style="animation-delay: 1.2s;">
+                <p class="text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] mb-4 text-stone-500 px-4">【限定特典】記念日を彩る特典プレートをプレゼント</p>
+                <div class="w-px h-16 sm:h-24 bg-gold mx-auto opacity-50"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. イントロダクション -->
+    <section class="py-16 sm:py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-gold font-english text-xs sm:text-sm tracking-widest mb-4 sm:mb-6 font-bold">INTRODUCTION</h2>
+            <p class="text-2xl sm:text-3xl md:text-4xl font-serif leading-loose mb-8 sm:mb-10 text-stone-800">
+                ダイイチ東店のすぐ隣、<br>
+                半地下に広がる<br>
+                大人たちの秘密基地。
+            </p>
+            <p class="text-stone-500 leading-relaxed max-w-2xl mx-auto text-base sm:text-lg">
+                道路から少し奥まった場所にある、24席の小さなお店。<br>
+                職人気質の店主が作り上げるのは、奇をてらわない「きっちり美味しい」洋食。<br>
+                肩ひじ張らず、日常の中のちょっと特別なひとときを。
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. 看板メニュー -->
+    <section class="py-16 sm:py-24 bg-[var(--light)]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 sm:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 border-2 border-gold w-full h-full z-0 opacity-30"></div>
+                    <img src="images/omuraisu.jpg" alt="チーズオムライス" class="relative z-10 w-full shadow-xl rounded-sm">
+                    <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-gold text-white p-4 sm:p-6 z-20 font-serif shadow-lg">
+                        <span class="text-xs block tracking-widest">SIGNATURE</span>
+                        <span class="text-xl sm:text-2xl font-bold">チーズオムライス</span>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 mt-6 md:mt-0">
+                    <h3 class="text-3xl sm:text-4xl font-serif mb-6 text-stone-800">濃厚チーズと<br>ガーリックの衝撃。</h3>
+                    <p class="leading-loose text-stone-600 mb-8 text-base sm:text-lg">
+                        多くのお客様が注文される当店の看板メニュー。<br>
+                        ふわふわの卵に、とろ〜りと溶け出す濃厚なチーズ。<br>
+                        中には食欲をそそるガーリックライスがぎっしり。<br>
+                        「一度食べたら忘れられない」とリピーターが絶えない、職人の自信作です。
+                    </p>
+                    <div class="border-t border-stone-200 pt-6">
+                        <p class="text-xs text-stone-400 mb-4 font-english tracking-widest uppercase">Other Popular Menu</p>
+                        <ul class="flex flex-wrap gap-3 sm:gap-4 text-sm font-bold">
+                            <li class="px-4 py-2 bg-white text-stone-700 border border-stone-200 shadow-sm">デミグラスハンバーグ</li>
+                            <li class="px-4 py-2 bg-white text-stone-700 border border-stone-200 shadow-sm">豊西牛の煮込み</li>
+                            <li class="px-4 py-2 bg-white text-stone-700 border border-stone-200 shadow-sm">日替わりパスタ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 信頼の証 -->
+    <section class="py-16 sm:py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-gold font-english text-xs sm:text-sm tracking-widest mb-2 font-bold">REVIEWS</h2>
+                <h3 class="text-2xl sm:text-3xl font-serif text-stone-800">お客様から届いた物語</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+                <div class="bg-[var(--light)] p-6 sm:p-8 rounded-xl relative group hover:shadow-md transition duration-500 border border-stone-100">
+                    <div class="absolute -top-4 left-6 text-gold text-6xl opacity-10 font-serif">"</div>
+                    <div class="text-orange-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-stone-600 leading-relaxed mb-6 font-medium">
+                        「誕生日で美味しいものが食べたくて来店。デミグラスハンバーグが絶品でした!お店の雰囲気も店主さんも素敵です。」
+                    </p>
+                    <p class="text-xs text-stone-400 font-english font-bold">Birthday Guest</p>
+                </div>
+                <div class="bg-[var(--light)] p-6 sm:p-8 rounded-xl relative group hover:shadow-md transition duration-500 md:mt-12 border border-stone-100">
+                    <div class="absolute -top-4 left-6 text-gold text-6xl opacity-10 font-serif">"</div>
+                    <div class="text-orange-400 mb-4 text-sm">★★★★★</div>
+                    <p class="text-stone-600 leading-relaxed mb-6 font-medium">
+                        「チーズオムライスが人気!ソースをあまりかけずチーズとガーリックの旨味を活かしていて、最高に美味しい。」
+                    </p>
+                    <p class="text-xs text-stone-400 font-english font-bold">Gourmet Lover</p>
+                </div>
+                <div class="bg-[var(--light)] p-6 sm:p-8 rounded-xl relative group hover:shadow-md transition duration-500 border border-stone-100">
+                    <div class="absolute -top-4 left-6 text-gold text-6xl opacity-10 font-serif">"</div>
+                    <div class="text-orange-400 mb-4 text-sm">★★★★☆</div>
+                    <p class="text-stone-600 leading-relaxed mb-6 font-medium">
+                        「買い物ついでに寄れる立地なのに隠れ家感がすごい。ランチセットのボリュームも本格的で大満足でした。」
+                    </p>
+                    <p class="text-xs text-stone-400 font-english font-bold">Lunch Regular</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 特別な日の特典 -->
+   <section class="parallax-section py-16 sm:py-24 bg-cover bg-fixed bg-center relative" style="background-image: url('images/cake.png');">
+        <div class="absolute inset-0 bg-white/80"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <div class="bg-white/60 backdrop-blur-sm border-2 border-gold p-8 sm:p-12 md:p-20 shadow-2xl">
+                <h2 class="text-gold font-serif text-2xl sm:text-3xl md:text-4xl mb-6">大切な記念日を、<br>もっと特別に.</h2>
+                <p class="text-stone-700 mb-8 sm:mb-10 leading-loose text-base sm:text-lg font-medium">
+                    お誕生日や結婚記念日。大切な方への想いを伝えるひととき。<br>
+                    事前予約いただいたお客様へ、<br>
+                    <span class="text-stone-900 font-bold border-b-2 border-gold pb-1 text-lg sm:text-xl">「メッセージ入り特製デザートプレート」</span><br>
+                    を無料でご用意させていただきます。
+                </p>
+                <a href="https://www.instagram.com/tanto781/" target="_blank" rel="noopener noreferrer" class="btn-elegant inline-block px-8 sm:px-12 py-4 sm:py-5 font-bold tracking-widest text-base sm:text-lg shadow-sm">
+                    特典付きで予約する
+                </a>
+                <p class="mt-6 text-xs text-stone-400 font-bold uppercase tracking-widest">Reservation Required</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 店舗詳細 & CTA -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 sm:gap-16">
+                <div class="flex-1">
+                    <h2 class="text-gold font-english text-xs sm:text-sm tracking-widest mb-8 sm:mb-10 font-bold border-b border-stone-100 pb-2">RESTAURANT INFO</h2>
+                    <div class="space-y-6">
+                        <div class="flex flex-col sm:flex-row border-b border-stone-50 pb-4">
+                            <span class="sm:w-32 text-stone-400 text-xs font-bold uppercase tracking-tighter mb-1 sm:mb-0">店名</span>
+                            <span class="text-lg font-serif text-stone-800">Tanto Tanto (タントタント)</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-50 pb-4">
+                            <span class="sm:w-32 text-stone-400 text-xs font-bold uppercase tracking-tighter mb-1 sm:mb-0">所在地</span>
+                            <span class="text-sm leading-relaxed text-stone-700">〒080-0804 北海道帯広市東4条南12丁目1<br>(ダイイチ東店 敷地内)</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-50 pb-4">
+                            <span class="sm:w-32 text-stone-400 text-xs font-bold uppercase tracking-tighter mb-1 sm:mb-0">営業時間</span>
+                            <span class="text-sm text-stone-700">ランチ 11:00〜14:00 / ディナー 17:30〜21:00</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-50 pb-4">
+                            <span class="sm:w-32 text-stone-400 text-xs font-bold uppercase tracking-tighter mb-1 sm:mb-0">定休日</span>
+                            <span class="text-sm text-stone-700 font-bold">水曜日</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row pt-4 sm:items-center">
+                            <span class="sm:w-32 text-stone-400 text-xs font-bold uppercase tracking-tighter text-nowrap mr-2 mb-2 sm:mb-0">Follow Us</span>
+                            <a href="https://www.instagram.com/tanto781/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-stone-800 hover:text-gold transition font-bold text-sm w-fit">
+                                <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                Instagramをフォロー
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col justify-center items-center bg-[var(--light)] p-6 sm:p-10 border border-stone-100 shadow-sm rounded-sm">
+                    <p class="text-gold font-serif text-lg sm:text-xl mb-6 sm:mb-8 font-bold">お席のご予約はこちら</p>
+                    <a href="tel:0155273348" class="text-3xl sm:text-4xl md:text-5xl font-english font-bold mb-4 text-stone-800 hover:text-gold transition break-all text-center">0155-27-3348</a>
+                    <p class="text-stone-400 text-xs font-bold tracking-widest mb-8 sm:mb-10 text-center">OPENING HOURS: 11:30 - 21:00</p>
+                    <div class="w-full aspect-video bg-white rounded shadow-inner overflow-hidden border border-stone-200">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d563.256960405601!2d143.2105818640843!3d42.91892936620435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f73991589c2f333%3A0x426fb02567987c00!2sTanto%20Tanto!5e0!3m2!1sja!2sjp!4v1772247360266!5m2!1sja!2sjp"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Tanto Tanto 地図">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-stone-50 border-t border-stone-100 text-center px-6">
+        <p class="text-xs text-stone-400 tracking-[0.2em] sm:tracking-[0.3em] font-english uppercase font-bold">&copy; TANTO TANTO. OBIHIRO EST AREA.</p>
+    </footer>
+
+</body>
+</html>
