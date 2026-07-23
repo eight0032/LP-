@@ -66,16 +66,7 @@
 
     <!-- FV: 圧倒的なシズル感 -->
    <header class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white py-20">
-    <!-- 「トップページへ戻る」リンク -->
-    <div class="absolute top-6 left-6 z-20">
-        <a href="../../../" class="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-primary transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-            トップページへ戻る
-        </a>
-    </div>
-
+    
     <div class="absolute top-16 md:top-10 left-1/2 -translate-x-1/2 text-[15vw] font-black text-gray-100 select-none accent-font opacity-50 uppercase pointer-events-none">
         Tiroru
     </div>
@@ -282,6 +273,68 @@
             </div>
         </div>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-30"></div>
+    </section>
+
+<!-- 求人情報（Recruit）セクション -->
+    <section class="py-16 md:py-24 bg-gray-50 border-t border-b border-gray-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-2">Recruit</span>
+                <h2 class="serif text-3xl md:text-5xl font-black text-gray-900">一緒に働く仲間を募集しています</h2>
+                <p class="mt-4 text-gray-600">アットホームな老舗イタリアンで、接客や調理を学んでみませんか？</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-6 md:p-10">
+                <div class="mb-8 border-b border-gray-100 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">アルバイト・パート</span>
+                        <h3 class="serif text-2xl md:text-3xl font-bold text-gray-900">ホール・キッチンスタッフ</h3>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <span class="text-xs text-gray-500 block">時給</span>
+                        <span class="text-2xl md:text-3xl font-black text-primary">1,100円以上</span>
+                    </div>
+                </div>
+
+                <dl class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-700 leading-relaxed mb-8">
+                    <div class="bg-gray-50 p-4 rounded-xl">
+                        <dt class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+                            <span>🕒</span> 勤務時間
+                        </dt>
+                        <dd>
+                            10:00〜16:00 / 17:00〜22:30<br>
+                            <span class="text-xs text-gray-500">※週2日・1日3h〜OK！シフト相談可能</span>
+                        </dd>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl">
+                        <dt class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+                            <span>📍</span> 勤務地
+                        </dt>
+                        <dd>
+                            仙台市青葉区中央2丁目6-6<br>
+                            <span class="text-xs text-gray-500">地下鉄仙台駅徒歩5分（クリスロード内）</span>
+                        </dd>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-xl">
+                        <dt class="font-bold text-gray-900 mb-1 flex items-center gap-2">
+                            <span>✨</span> 待遇・福利厚生
+                        </dt>
+                        <dd>
+                            交通費支給 / 絶品まかない有 / 制服貸与 / 未経験歓迎
+                        </dd>
+                    </div>
+                </dl>
+
+                <div class="text-center pt-4">
+                    <a href="https://townwork.net/viewjob/jobid_feb62b1cc26ec4a5/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-black text-lg md:text-xl px-10 py-5 rounded-full shadow-lg transition-all transform hover:scale-105 w-full md:w-auto">
+                        <span>タウンワークで求人詳細・応募を見る</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer class="py-8 md:py-12 bg-gray-900 text-center text-gray-500 text-xs md:text-sm">

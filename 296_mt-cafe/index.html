@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マッタリーナカフェ | 函館・石川町の本格イタリアンカフェ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ita-green: #008C45;
+            --ita-red: #CD212A;
+            --soft-gold: #D4AF37;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #2D3436;
+            background-color: #fffaf0;
+        }
+        .shippori {
+            font-family: 'Shippori Mincho', serif;
+        }
+        .bg-italian-bar {
+            background: linear-gradient(to right, var(--ita-green) 33.3%, #fff 33.3%, #fff 66.6%, var(--ita-red) 66.6%);
+            height: 6px;
+        }
+        .text-shadow-lg {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .floating { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="bg-italian-bar sticky top-0 z-50"></div>
+
+    <!-- 1. FV AREA (High Impact) -->
+    <section class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Main Visual -->
+        <div class="absolute inset-0 z-0">
+            <img src="images/pizza.png" alt="焼きたてのマルゲリータピザ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4 sm:px-6 max-w-5xl w-full">
+            <div class="inline-block border-2 border-white px-4 sm:px-6 py-1 mb-5 sm:mb-6 tracking-[0.15em] sm:tracking-[0.2em] font-medium text-xs sm:text-base">
+                函館・石川町 | 100席超の圧倒的開放空間
+            </div>
+            <h1 class="shippori text-2xl sm:text-3xl md:text-5xl mb-6 sm:mb-8 leading-[1.4] sm:leading-[1.3] text-shadow-lg">
+                一口で心が満たされる、<br>
+                <span class="text-yellow-400">至福のイタリアン。</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl mb-8 sm:mb-10 font-medium px-2">
+                「今日はちょっと贅沢に」を叶える<br class="md:hidden">イタリアン×カフェの新しいカタチ
+            </p>
+
+            <!-- Float Benefit -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-10 px-2">
+                <span class="bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg border border-white/30 text-xs sm:text-sm">本格アルデンテパスタ</span>
+                <span class="bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg border border-white/30 text-xs sm:text-sm">フリードリンク完備</span>
+                <span class="bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg border border-white/30 text-xs sm:text-sm">キッズ・シニア歓迎</span>
+            </div>
+
+            <div class="floating">
+                <a href="#cta" class="inline-block bg-[#CD212A] hover:bg-red-700 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-2xl shadow-[0_10px_20px_rgba(205,33,42,0.4)] transition-all transform hover:scale-105">
+                    今すぐお得なクーポンをGET ❯
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SOCIAL PROOF (Trust) -->
+    <section class="py-10 sm:py-12 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 overflow-hidden">
+            <p class="text-center font-bold text-gray-400 mb-6 tracking-widest text-xs sm:text-sm">REAL REVIEWS FROM CUSTOMERS</p>
+            <div class="flex flex-nowrap md:grid md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
+                <div class="min-w-[85%] sm:min-w-[300px] snap-center p-5 sm:p-6 bg-orange-50 rounded-2xl flex-shrink-0">
+                    <div class="text-yellow-400 mb-2">★★★★★</div>
+                    <p class="text-sm font-bold mb-3">「母への誕生日に感動しました」</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">杖をついた母と行った際、段差のない席を案内してくれました。料理も美味しく、パスタとピザのランチセットは大満足です!</p>
+                </div>
+                <div class="min-w-[85%] sm:min-w-[300px] snap-center p-5 sm:p-6 bg-orange-50 rounded-2xl flex-shrink-0">
+                    <div class="text-yellow-400 mb-2">★★★★★</div>
+                    <p class="text-sm font-bold mb-3">「ドリンクバーが充実しすぎ!」</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">珍しいフレーバーショップがあって自分だけのキャラメルラテが作れます。開放的な雰囲気で、会話も弾みました。</p>
+                </div>
+                <div class="min-w-[85%] sm:min-w-[300px] snap-center p-5 sm:p-6 bg-orange-50 rounded-2xl flex-shrink-0">
+                    <div class="text-yellow-400 mb-2">★★★★★</div>
+                    <p class="text-sm font-bold mb-3">「モチモチの生パスタが絶品」</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">生パスタは平日でモチモチ。スタッフさんも笑顔で対応してくれて、とても気持ちよく店をあとにできました。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PAIN POINTS & REASON (Logic) -->
+    <section class="py-14 sm:py-20 bg-[#fffaf0]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="shippori text-2xl sm:text-3xl md:text-4xl text-center mb-12 sm:mb-16 leading-relaxed">
+                マッタリーナカフェで、<br>
+                <span class="underline decoration-red-500 underline-offset-8 text-red-600 font-black">一皿の「くつろぎ」</span>をお届けしたい。
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-14 sm:mb-20">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 flex items-center">
+                        <span class="text-red-600 mr-2 italic">01.</span> 迷う楽しさを。
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed mb-4 text-sm">
+                        パスタ、ピザ、そしてプレミアムメニュー。タッチパネルだけでなく、素材のこだわりが伝わるメニュー表を見ながら、次はこれを頼もう!とワクワクする時間を。
+                    </p>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-600">
+                        <p class="text-xs font-bold text-green-700 italic">Recommended:</p>
+                        <p class="font-bold text-sm">牛肉ラグーとモッツァレラのトマトソース</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 rounded-3xl overflow-hidden shadow-xl rotate-1 sm:rotate-2">
+                    <img src="images/pasta.png" alt="彩り豊かなパスタ" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="rounded-3xl overflow-hidden shadow-xl -rotate-1 sm:-rotate-2 order-1">
+                    <img src="images/drink.jpg" alt="充実のドリンクバー" class="w-full h-full object-cover">
+                </div>
+                <div class="order-2">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 flex items-center">
+                        <span class="text-red-600 mr-2 italic">02.</span> 食後まで極上を。
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed mb-4 text-sm">
+                        お茶、コーヒー、そして数種類のフレーバーショップ。自分好みにカスタマイズしたドリンクで、食事の余韻をゆっくりとお楽しみください。
+                    </p>
+                    <p class="text-xs text-orange-700 font-bold">※ランチタイムはソフトドリンク飲み放題!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. LINE CAMPAIGN (Offer/Benefit) -->
+    <section id="cta" class="py-14 sm:py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="relative bg-gradient-to-br from-[#CD212A] to-[#8E141B] rounded-[32px] sm:rounded-[40px] p-6 sm:p-8 md:p-16 text-white text-center shadow-2xl overflow-hidden">
+                <!-- Decoration -->
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <svg class="w-28 h-28 sm:w-40 sm:h-40" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+
+                <p class="text-yellow-300 font-black tracking-[0.2em] sm:tracking-[0.3em] mb-4 text-xs sm:text-base">OFFICIAL LINE BENEFIT</p>
+                <h2 class="shippori text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-10 leading-tight">
+                    公式LINE登録で、<br>
+                    <span class="bg-yellow-400 text-red-900 px-2 text-xl sm:text-2xl md:text-3xl inline-block mt-2">今すぐ使える特典</span>を配布中
+                </h2>
+
+                <div class="grid grid-cols-3 gap-3 sm:gap-6 mb-10 sm:mb-12">
+                    <div class="bg-white/10 p-3 sm:p-4 rounded-2xl backdrop-blur-sm">
+                        <p class="text-xl sm:text-2xl font-bold mb-1">01</p>
+                        <p class="text-xs sm:text-sm font-bold">初回限定<br>ミニデザート</p>
+                    </div>
+                    <div class="bg-white/10 p-3 sm:p-4 rounded-2xl backdrop-blur-sm">
+                        <p class="text-xl sm:text-2xl font-bold mb-1">02</p>
+                        <p class="text-xs sm:text-sm font-bold">お会計から<br>5%OFF</p>
+                    </div>
+                    <div class="bg-white/10 p-3 sm:p-4 rounded-2xl backdrop-blur-sm">
+                        <p class="text-xl sm:text-2xl font-bold mb-1">03</p>
+                        <p class="text-xs sm:text-sm font-bold">誕生月限定<br>スペシャル割引</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <button class="w-full md:w-auto md:px-20 bg-[#06C755] hover:bg-[#05a346] text-white py-5 sm:py-6 rounded-full font-black text-lg sm:text-2xl shadow-xl transition-all transform hover:scale-105 flex items-center justify-center mx-auto">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" class="w-6 h-6 sm:w-8 sm:h-8 mr-3 sm:mr-4 bg-white rounded-full p-1" alt="LINE">
+                        LINEで特典を受け取る
+                    </button>
+                    <p class="text-xs opacity-70">※10秒で完了。いつでも配信停止できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SHOP INFO / MAP -->
+    <section class="py-14 sm:py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black mb-6 sm:mb-8 border-l-8 border-green-600 pl-4 sm:pl-6">アクセス & 店舗情報</h2>
+                    <div class="space-y-6 text-gray-700">
+                        <div>
+                            <p class="font-bold text-lg mb-1 italic text-red-600">Mattalina Cafe</p>
+                            <p class="font-bold text-xl mb-1">マッタリーナカフェ</p>
+                            <p class="text-sm">〒041-0802 北海道函館市石川町52−16</p>
+                        </div>
+                        <div class="flex flex-wrap gap-6 sm:gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wider">Phone</p>
+                                <a href="tel:0138-47-1616" class="text-lg sm:text-xl font-bold hover:text-red-600 transition-colors">0138-47-1616</a>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wider">Seats</p>
+                                <p class="text-lg sm:text-xl font-bold">100席以上（喫煙席有）</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <p class="text-xs leading-relaxed text-gray-600">
+                                <span class="font-bold text-green-700">【お車でお越しの方】</span><br>
+                                産業道路（道道100号線）沿い、国道5号線交差点近く。<br>
+                                イタリア国旗の大きな看板を目印にお越しください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden h-72 sm:h-96 shadow-2xl border-4 border-white transition-all duration-500">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.1522516180185!2d140.7337497749943!3d41.82501956873749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f9ef68fcfc41ee3%3A0xd1c3bf4dfa040652!2z44Oe44OD44K_44Oq44O844OK44Kr44OV44Kn!5e0!3m2!1sja!2sjp!4v1772242941599!5m2!1sja!2sjp"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 sm:py-12 px-4 text-center">
+        <div class="mb-6 sm:mb-8">
+            <h3 class="shippori text-xl sm:text-2xl mb-4 text-white">Mattalina Cafe</h3>
+            <p class="text-xs sm:text-sm opacity-50 mb-6 font-light tracking-widest">ITALIAN & CAFE STYLE</p>
+            <div class="flex justify-center gap-6">
+                <a href="https://mt-cafe.owst.jp/" target="_blank" class="text-sm border-b border-white/30 pb-1 hover:border-white transition-all">Official Site</a>
+                
+            </div>
+        </div>
+        <p class="text-[10px] opacity-30">© 2024 Mattalina Cafe. Best Italian Experience in Hakodate.</p>
+    </footer>
+
+</body>
+</html>
