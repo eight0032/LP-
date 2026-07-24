@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>小さな森のレストラン ポパイ | 北海道新得町の隠れ家ランチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;700&family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Shippori Mincho', serif;
+            scroll-behavior: smooth;
+            background-color: #fdfcf8;
+            color: #2d2a26;
+        }
+        .font-sans-jp { font-family: 'Noto Sans JP', sans-serif; }
+        .font-eng { font-family: 'Montserrat', sans-serif; font-style: italic; }
+
+        /* 縦書き設定 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 背景演出 */
+        .hero-section {
+            background:
+                linear-gradient(to right, rgba(253, 252, 248, 0.85) 25%, rgba(253, 252, 248, 0.35) 60%),
+                url('images/yama.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        @media (max-width: 767px) {
+            .hero-section {
+                background:
+                    linear-gradient(to bottom, rgba(253, 252, 248, 0.55) 30%, rgba(253, 252, 248, 0.9) 78%),
+                    url('images/yama.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        .cta-button {
+            background-color: #5d6d3e; /* 森の緑 */
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #4a5732;
+            transform: translateY(-2px);
+        }
+
+        /* あしらい */
+        .decoration-line {
+            width: 1px;
+            height: 80px;
+            background: #2d2a26;
+            margin: 0 auto;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 340px;
+            filter: grayscale(20%);
+            border-radius: 4px;
+        }
+        @media (min-width: 768px) {
+            .map-container iframe { height: 400px; }
+        }
+
+        /* タップ領域を確保 */
+        a, button { -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <header class="hero-section min-h-[100svh] w-full relative flex items-center overflow-hidden border-b border-stone-100 py-24 md:py-0">
+        <div class="container mx-auto px-6 md:px-12 flex justify-start md:justify-between items-center h-full">
+            <div class="z-10 bg-white/50 md:bg-white/40 backdrop-blur-sm p-5 sm:p-6 md:p-8 border-l border-stone-800 max-w-[92%] sm:max-w-none">
+                <span class="font-eng text-stone-500 block mb-3 text-[9px] sm:text-[10px] tracking-[0.2em]">Restaurant Popeye</span>
+                <h1 class="vertical-text text-lg sm:text-xl md:text-3xl font-bold leading-relaxed tracking-[0.3em] sm:tracking-[0.4em] h-[45vh] sm:h-[50vh] max-h-[380px] sm:max-h-none mx-auto">
+                    日高山脈を望む、<br>
+                    森の中の特等席。<br>
+                    心もお腹も満たされる。
+                </h1>
+                <div class="mt-6">
+                    <p class="text-[9px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.3em] text-stone-600 mb-2 font-sans-jp">小さな森のレストラン ポパイ</p>
+                    <div class="w-6 h-[1px] bg-stone-800"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- オファーバッジ -->
+        <div class="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 bg-stone-800 text-white p-3 sm:p-4 rounded-full w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 flex flex-col items-center justify-center text-center shadow-2xl animate-pulse">
+            <p class="text-[8px] sm:text-[9px] md:text-[10px] mb-1 opacity-70 tracking-widest">LP特典</p>
+            <p class="text-[11px] sm:text-xs md:text-base font-bold leading-snug">季節の小鉢を<br>一品サービス</p>
+        </div>
+    </header>
+
+    <!-- 2. CTAエリア -->
+    <section class="py-16 md:py-20 bg-[#fdfcf8] text-center">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <div class="decoration-line mb-8 sm:mb-10"></div>
+            <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-6 tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed">
+                静寂の中に、<br class="md:hidden">確かな「美味しさ」を求めて。
+            </h2>
+            <p class="mb-8 sm:mb-10 text-stone-500 font-sans-jp text-xs md:text-sm leading-loose tracking-wider px-2">
+                次から次へとお客さまが訪れる人気店のため、<br>
+                事前のご確認をおすすめいたします。
+            </p>
+            <a href="tel:08055926798" class="cta-button text-white py-4 sm:py-5 px-6 sm:px-12 rounded-sm inline-block shadow-lg font-sans-jp tracking-wide sm:tracking-widest text-sm sm:text-base md:text-lg w-full sm:w-auto max-w-xs sm:max-w-none mx-auto">
+                予約・空席確認：080-5592-6798
+            </a>
+            <p class="mt-4 text-[10px] text-stone-400 font-sans-jp">定休日：月曜日 | 4月〜12月営業</p>
+        </div>
+    </section>
+
+    <!-- 3. 自己紹介 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6 md:px-4 max-w-5xl">
+            <div class="flex flex-col md:flex-row-reverse gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border border-stone-200 z-0"></div>
+                    <img src="images/chef.png" class="relative z-10 w-full shadow-xl" alt="店主のポートレート" loading="lazy">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="font-eng text-stone-400 block mb-4 text-xs">The Story of Popeye</span>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-8 tracking-wider md:tracking-widest leading-relaxed">
+                        帯広から新得へ。<br>
+                        家族で紡ぐ、<br>身体が喜ぶ一皿。
+                    </h2>
+                    <p class="text-stone-600 leading-loose mb-6 font-sans-jp text-sm tracking-wide">
+                        便利な場所ではありません。それでも、窓の向こうに広がる日高山脈の稜線と、手間暇かけて煮込んだソースの香りが、ここにはあります。
+                    </p>
+                    <p class="text-stone-600 leading-loose font-sans-jp text-sm tracking-wide">
+                        「また来ます」というその一言のために、今日も私たちは、小さな森の中で皆さまをお待ちしております。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. メニュー紹介 -->
+    <section class="py-16 md:py-24 bg-[#fdfcf8] relative">
+        <div class="container mx-auto px-5 sm:px-6 md:px-4 relative z-10 text-center">
+            <span class="font-eng text-stone-400 block mb-10 md:mb-12 italic text-lg sm:text-xl md:text-2xl tracking-widest">Gastronomy</span>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start md:items-center">
+                <div class="text-left bg-white p-6 md:p-8 shadow-sm border border-stone-50">
+                    <img src="images/hanbagu.png" alt="ハンバーグセット" class="w-full mb-6" loading="lazy">
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 border-b border-stone-100 pb-2 tracking-wider">絶品、ハンバーグセット</h3>
+                    <p class="text-stone-600 text-sm leading-loose font-sans-jp tracking-wide">
+                        肉の旨味を最大限に引き出した、ポパイの看板メニュー。ボリューム満点ながら、重くない。その絶妙なバランスがリピーターを呼びます。
+                    </p>
+                </div>
+                <div class="text-left bg-white p-6 md:p-8 shadow-sm border border-stone-50 md:mt-24">
+                    <img src="images/lunch.png" alt="ポパイランチ" class="w-full mb-6" loading="lazy">
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 border-b border-stone-100 pb-2 tracking-wider">月替わり ポパイランチ</h3>
+                    <p class="text-stone-600 text-sm leading-loose font-sans-jp tracking-wide">
+                        季節の炊き込みご飯や一品が並ぶ、身体が喜ぶランチ。地元の旬を一番美味しい形で。毎月変わる楽しさが、旅の目的地になります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.5. Coming Soon セクション -->
+    <section class="py-16 md:py-24 bg-white border-y border-stone-100">
+        <div class="container mx-auto px-5 sm:px-6 md:px-4 max-w-5xl text-center">
+            <span class="font-eng text-stone-400 block mb-2 tracking-[0.3em] text-xs uppercase">Future Projects</span>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 tracking-[0.15em] sm:tracking-[0.2em] font-serif">COMING SOON</h2>
+            <p class="text-stone-500 font-sans-jp text-xs md:text-sm tracking-widest leading-relaxed mb-12 md:mb-16 max-w-2xl mx-auto">
+                ポパイの味と空間をもっと楽しんでいただくために。<br>
+                現在、心を込めて準備を進めている新しい取り組みをご紹介いたします。
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 text-left max-w-4xl mx-auto">
+                <!-- サービス1 -->
+                <div class="p-6 sm:p-8 bg-[#fdfcf8] border border-stone-200 rounded-sm relative overflow-hidden flex flex-col justify-between shadow-sm">
+                    <span class="absolute top-4 right-4 bg-stone-800 text-white text-[9px] font-sans-jp px-3 py-1 rounded-full tracking-widest uppercase">準備中</span>
+                    <div>
+                        <div class="text-2xl mb-4">🧺</div>
+                        <h3 class="font-bold text-lg mb-3 tracking-wider font-serif pr-16">森のピクニックバスケット</h3>
+                        <p class="text-stone-600 text-xs leading-relaxed font-sans-jp tracking-wide mb-6">
+                            名物ハンバーグサンドと季節の小鉢、温かいハーブティーをバスケットに詰めて。お店の目の前に広がる大自然の好きな場所で楽しめるテイクアウトランチです。
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-stone-400 font-sans-jp tracking-wider">リリース予定：今春</span>
+                </div>
+
+                <!-- サービス2 -->
+                <div class="p-6 sm:p-8 bg-[#fdfcf8] border border-stone-200 rounded-sm relative overflow-hidden flex flex-col justify-between shadow-sm">
+                    <span class="absolute top-4 right-4 bg-stone-800 text-white text-[9px] font-sans-jp px-3 py-1 rounded-full tracking-widest uppercase">準備中</span>
+                    <div>
+                        <div class="text-2xl mb-4">📦</div>
+                        <h3 class="font-bold text-lg mb-3 tracking-wider font-serif pr-16">おうちでポパイ <span class="text-xs font-normal text-stone-500 block sm:inline">（オンラインショップ）</span></h3>
+                        <p class="text-stone-600 text-xs leading-relaxed font-sans-jp tracking-wide mb-6">
+                            「遠方でもポパイの味が食べたい」という声にお応えして。じっくり煮込んだ特製デミグラスソースと手ごねハンバーグの冷凍真空パックを全国へお届けします。
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-stone-400 font-sans-jp tracking-wider">リリース予定：順次ご案内</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 口コミ -->
+    <section class="py-16 md:py-24 bg-[#2d2a26] text-[#fdfcf8]">
+        <div class="container mx-auto px-5 sm:px-6 md:px-4 text-center">
+            <h3 class="text-base md:text-xl tracking-[0.3em] mb-12 md:mb-16 opacity-60 font-eng">VOICE</h3>
+            <div class="flex flex-col md:flex-row gap-10 md:gap-12 max-w-5xl mx-auto text-left">
+                <div class="flex-1 border-t border-stone-700 pt-8">
+                    <p class="text-yellow-500 mb-4 tracking-tighter text-sm font-sans-jp">★★★★★</p>
+                    <p class="text-sm leading-relaxed mb-6 font-sans-jp italic opacity-80 tracking-wide">
+                        「失礼だけどビックリした、すごく美味しい。定食は白飯、メイン、味噌汁、漬物、野菜3種。控えめに言って最高でした。」
+                    </p>
+                    <p class="text-[10px] opacity-40 uppercase tracking-widest">— トンカツ定食を召し上がったお客様</p>
+                </div>
+                <div class="flex-1 border-t border-stone-700 pt-8">
+                    <p class="text-yellow-500 mb-4 tracking-tighter text-sm font-sans-jp">★★★★★</p>
+                    <p class="text-sm leading-relaxed mb-6 font-sans-jp italic opacity-80 tracking-wide">
+                        「日高山脈を望む落ち着いた空間。解放感のある風景がリラックス効果を生み、家族で経営されている雰囲気気を料理にも感じられました。」
+                    </p>
+                    <p class="text-[10px] opacity-40 uppercase tracking-widest">— 景色とランチを楽しまれたお客様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. アクセス & 最終CTA -->
+    <section class="py-16 md:py-24 bg-[#fdfcf8]">
+        <div class="container mx-auto px-5 sm:px-6 md:px-4 max-w-4xl text-center">
+            <div class="decoration-line mb-8 sm:mb-10"></div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-10 md:mb-12 tracking-widest font-serif">ご案内</h2>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mb-10 md:mb-12 text-left font-sans-jp text-sm tracking-wide">
+                <div class="space-y-4">
+                    <div class="flex justify-between border-b border-stone-100 pb-2 gap-3">
+                        <span class="text-stone-400 shrink-0">店名</span>
+                        <span class="text-right">小さな森のレストラン ポパイ</span>
+                    </div>
+                    <div class="flex justify-between border-b border-stone-100 pb-2 gap-3">
+                        <span class="text-stone-400 shrink-0">住所</span>
+                        <span class="text-right leading-relaxed">〒081-0035<br>北海道上川郡新得町上佐幌基線</span>
+                    </div>
+                    <div class="flex justify-between border-b border-stone-100 pb-2 gap-3">
+                        <span class="text-stone-400 shrink-0">営業期間</span>
+                        <span class="text-right">4月 〜 12月</span>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex justify-between border-b border-stone-100 pb-2 gap-3">
+                        <span class="text-stone-400 shrink-0">定休日</span>
+                        <span class="text-right">月曜日</span>
+                    </div>
+                    <div class="flex justify-between border-b border-stone-100 pb-2 gap-3">
+                        <span class="text-stone-400 shrink-0">アクセス</span>
+                        <span class="text-right">JR新得駅から車で15分</span>
+                    </div>
+                    <div class="flex justify-between border-b border-stone-100 pb-2 gap-3 text-red-800">
+                        <span class="text-stone-400 shrink-0">お支払い</span>
+                        <span class="text-right font-bold">現金のみ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Map -->
+            <div class="map-container mb-12 md:mb-16 shadow-lg border border-stone-100 p-1 bg-white">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.213660275829!2d142.86849637507888!3d43.16303908399666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f736e43677a305b%3A0x49775114bf6336ed!2z5bCP44GV44Gq5qOu44Gu44Os44K544OI44Op44OzIOODneODkeOCpA!5e0!3m2!1sja!2sjp!4v1772241699773!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ポパイ 地図"></iframe>
+            </div>
+
+            <div class="inline-block bg-white p-2 border border-stone-100 shadow-sm mb-10 w-full sm:w-auto">
+                <div class="border border-stone-800 p-6 sm:p-8 md:p-16">
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-5 sm:mb-6 tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed">
+                        週末、大自然の隠れ家で<br>
+                        特別なランチを。
+                    </h3>
+                    <p class="text-stone-500 mb-8 sm:mb-10 font-sans-jp text-xs md:text-sm tracking-widest leading-loose">
+                        お電話の際、「LPを見た」とお伝えいただければ<br>
+                        季節の小鉢をサービスさせていただきます。
+                    </p>
+                    <a href="tel:08055926798" class="cta-button text-white py-4 sm:py-5 px-6 sm:px-10 md:px-20 rounded-sm inline-block shadow-lg font-sans-jp tracking-wide sm:tracking-[0.3em] text-sm sm:text-base md:text-lg w-full sm:w-auto">
+                        📞 080-5592-6798
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-10 md:py-12 border-t border-stone-50 text-center">
+        <p class="font-eng text-stone-300 text-[10px] md:text-xs tracking-[0.4em] sm:tracking-[0.6em] mb-4 uppercase">Restaurant Popeye</p>
+        <p class="text-stone-400 text-[10px] font-sans-jp italic tracking-widest">&copy; 2024 小さな森のレストラン ポパイ.</p>
+    </footer>
+
+</body>
+</html>
