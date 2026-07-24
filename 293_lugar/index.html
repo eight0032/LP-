@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北海道ヨーロピアンダイニング ルガール | 札幌・すすきの</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary: #1c1917;
+            --accent: #b45309;
+            --bg-light: #f5f5f4;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .mincho {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(28, 25, 23, 0.75) 0%, rgba(28, 25, 23, 0.35) 45%, rgba(28, 25, 23, 0.85) 100%),
+                        url('images/store.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-bg {
+                background: linear-gradient(to right, rgba(28, 25, 23, 0.8) 0%, rgba(28, 25, 23, 0.2) 50%, rgba(28, 25, 23, 0.8) 100%),
+                            url('images/store.png');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .animate-bounce { animation: none !important; }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー用ナビ (フローティング) -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-stone-200">
+        <div class="text-lg sm:text-xl font-bold tracking-tighter mincho">LUGAR</div>
+
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="#concept" class="hover:text-amber-700 transition">コンセプト</a>
+            <a href="#menu" class="hover:text-amber-700 transition">お品書き</a>
+            <a href="#space" class="hover:text-amber-700 transition">空間</a>
+            <a href="#access" class="hover:text-amber-700 transition">アクセス</a>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <a href="tel:011-252-7580" class="bg-stone-900 text-white px-4 sm:px-6 py-2 rounded-full text-xs whitespace-nowrap hover:bg-amber-800 transition">
+                ご予約はこちら
+            </a>
+            <button id="menu-toggle" class="md:hidden w-9 h-9 flex items-center justify-center text-stone-900" aria-label="メニューを開く" aria-expanded="false">
+                <i class="fas fa-bars text-lg"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="md:hidden fixed top-[57px] left-0 w-full bg-white z-40 border-b border-stone-200 shadow-lg">
+        <div class="flex flex-col px-6 py-4 text-sm font-medium divide-y divide-stone-100">
+            <a href="#concept" class="py-3 hover:text-amber-700 transition">コンセプト</a>
+            <a href="#menu" class="py-3 hover:text-amber-700 transition">お品書き</a>
+            <a href="#space" class="py-3 hover:text-amber-700 transition">空間</a>
+            <a href="#access" class="py-3 hover:text-amber-700 transition">アクセス</a>
+        </div>
+    </div>
+
+    <!-- FVエリア -->
+    <section class="relative min-h-[100svh] flex items-center justify-center hero-bg overflow-hidden pt-16">
+        <div class="w-full flex items-center justify-center px-6">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-24 text-center md:text-left">
+
+                <div class="hidden md:block vertical-text text-white text-2xl md:text-4xl leading-loose tracking-[0.2em] font-bold fade-in">
+                    北海道の恵みを<br><span class="text-amber-500">一皿の芸術</span>に。
+                </div>
+
+                <!-- モバイル用の横書きキャッチコピー -->
+                <div class="md:hidden text-white text-xl leading-loose tracking-wider font-bold fade-in mincho">
+                    北海道の恵みを<br><span class="text-amber-500">一皿の芸術</span>に。
+                </div>
+
+                <div class="hidden md:block w-[1px] h-64 bg-white/30"></div>
+
+                <div class="text-white fade-in" style="animation-delay: 0.3s;">
+                    <p class="text-base sm:text-lg md:text-xl tracking-widest mb-3 md:mb-4 opacity-80">札幌・すすきの</p>
+                    <h2 class="text-lg sm:text-xl md:text-2xl font-light mb-6 md:mb-8 uppercase tracking-widest">Lugar European Dining</h2>
+                    <div class="flex flex-col gap-3 md:gap-4 items-center md:items-start">
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="w-8 h-[1px] bg-amber-500"></span>
+                            <span>アサリとムール貝の白ワイン蒸し</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="w-8 h-[1px] bg-amber-500"></span>
+                            <span>ランチ限定 デザートビュッフェ無料</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce opacity-50">
+            <p class="text-[10px] tracking-widest uppercase">scroll</p>
+        </div>
+    </section>
+
+    <!-- コンセプト -->
+    <section id="concept" class="py-16 md:py-24 px-6 bg-stone-100">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
+            <div class="w-full md:w-1/2 relative max-w-md md:max-w-none">
+                <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-28 h-28 md:w-40 md:h-40 bg-white/50 -z-10"></div>
+                <img src="images/fish.jpg" alt="料理のこだわり" class="rounded-sm shadow-2xl w-full">
+                <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-amber-700 text-white p-5 md:p-10 shadow-xl">
+                    <p class="vertical-text text-lg md:text-2xl mincho leading-relaxed">
+                        北の大地が育んだ<br>
+                        至極の食材を<br>
+                        伝統と革新で。
+                    </p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 space-y-6 md:space-y-8 text-center md:text-left">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl mincho font-bold leading-snug">
+                    産地直送の「鮮」を<br>
+                    ヨーロッパの「技」で。
+                </h3>
+                <p class="text-stone-600 leading-loose text-sm sm:text-base">
+                    生ウニ、イクラ、積丹産あんこう、羊蹄牛……。ルガールのキッチンには、毎日北海道中から最高の食材が届きます。イタリア、フランス、スペイン、それぞれの国で培われた調理技法を融合させ、ここでしか味わえない「北海道ヨーロピアン」をお届けします。
+                </p>
+                <div class="pt-2 md:pt-6">
+                    <a href="#menu" class="group inline-flex items-center gap-4 text-sm font-bold tracking-widest hover:text-amber-700 transition">
+                        お品書きを詳しく見る
+                        <span class="w-12 h-[1px] bg-stone-900 group-hover:bg-amber-700 group-hover:w-20 transition-all"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴的なメニュー -->
+    <section id="menu" class="py-16 md:py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="text-3xl md:text-4xl mincho mb-3 md:mb-4 italic">Signature Menu</h2>
+                <p class="text-stone-400 text-xs sm:text-sm tracking-[0.3em]">おすすめの逸品</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center mb-16 md:mb-32">
+                <div class="order-2 md:order-1 text-center md:text-left">
+                    <span class="text-amber-700 font-bold text-xs sm:text-sm tracking-widest border-b-2 border-amber-700 pb-2">RECOMMEND</span>
+                    <h3 class="text-2xl sm:text-3xl mincho my-5 md:my-6">アサリとムール貝の<br>白ワイン蒸し</h3>
+                    <p class="text-stone-600 leading-relaxed mb-6 md:mb-8 text-sm sm:text-base">
+                        当店のイチオシ。新鮮な貝の旨味が凝縮されたスープは、最後の一滴までパンに浸して味わっていただきたい自信作です。
+                    </p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <span class="bg-stone-100 px-4 py-2 text-xs">旬の貝を使用</span>
+                        <span class="bg-stone-100 px-4 py-2 text-xs">ワインとの相性抜群</span>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <img src="images/asari.jpg" alt="ムール貝の蒸し物" class="w-full aspect-square object-cover shadow-xl">
+                </div>
+            </div>
+
+            <div class="relative bg-stone-900 text-white p-8 sm:p-12 md:p-20 overflow-hidden">
+                <div class="absolute top-0 right-0 opacity-20 w-1/2 h-full">
+                    <img src="images/vuffe.jpg" alt="デザート" class="w-full h-full object-cover">
+                </div>
+                <div class="relative z-10 max-w-xl">
+                    <h4 class="text-amber-500 font-bold mb-3 md:mb-4 tracking-widest text-sm sm:text-base">LUNCH SPECIAL</h4>
+                    <h3 class="text-2xl sm:text-3xl md:text-5xl mincho mb-6 md:mb-8 leading-tight">
+                        ランチプレートに<br>
+                        <span class="text-white border-b-4 border-amber-500">デザートビュッフェ無料</span>
+                    </h3>
+                    <p class="text-stone-400 mb-6 md:mb-8 leading-relaxed text-sm sm:text-base">
+                        お好きなメイン料理を選ぶだけで、宝石のようなスイーツたちが食べ放題。時間無制限（15時まで）で、午後の贅沢なひとときを。
+                    </p>
+                    <a href="tel:011-252-7580" class="inline-block border border-white px-8 sm:px-10 py-3.5 sm:py-4 hover:bg-white hover:text-black transition text-sm tracking-widest uppercase">
+                        Book for Lunch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon : あれば良いなと思う新サービス -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white px-6 border-y border-amber-900/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-amber-700/30 text-amber-400 border border-amber-600/40 px-4 py-1 rounded-full text-xs font-bold tracking-[0.2em] uppercase mb-4">
+                    New Projects
+                </span>
+                <h2 class="text-3xl md:text-5xl mincho italic tracking-wide text-amber-100">Coming Soon</h2>
+                <p class="text-stone-400 text-xs sm:text-sm tracking-[0.2em] mt-3">ルガールが贈る、これからのおもてなし</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <div class="bg-stone-800/80 border border-stone-700/60 p-6 sm:p-8 rounded-sm relative group hover:border-amber-600/60 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 md:mb-6">
+                            <span class="text-2xl sm:text-3xl text-amber-500"><i class="fas fa-gift"></i></span>
+                            <span class="text-[10px] uppercase tracking-widest text-stone-400 border border-stone-600 px-2 py-1">ONLINE STORE</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl mincho font-bold mb-3 text-white group-hover:text-amber-400 transition">
+                            【おうちでルガール】<br>シェフ特選バル缶詰・生パスタキット
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            「お店の味をご自宅でも」というご要望にお応えし、名物の白ワイン蒸しの濃厚スープや道産牛のラグーソースを全国にお届けするECサイトをオープン予定です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex justify-between items-center text-xs text-amber-500/80">
+                        <span>2026. AUTUMN OPEN</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <div class="bg-stone-800/80 border border-stone-700/60 p-6 sm:p-8 rounded-sm relative group hover:border-amber-600/60 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 md:mb-6">
+                            <span class="text-2xl sm:text-3xl text-amber-500"><i class="fas fa-film"></i></span>
+                            <span class="text-[10px] uppercase tracking-widest text-stone-400 border border-stone-600 px-2 py-1">ANNIVERSARY</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl mincho font-bold mb-3 text-white group-hover:text-amber-400 transition">
+                            【個室×プロジェクター】<br>プライベートシアター、サプライズ演出
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            大画面プロジェクター完備の個室で、思い出の動画を流しながらお食事ができる記念日・誕生日会・結婚式二次会向けのフルカスタマイズプランが登場します。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex justify-between items-center text-xs text-amber-500/80">
+                        <span>予約開始日 間近</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-16 md:py-24 bg-stone-50 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl mincho text-center mb-12 md:mb-16 italic font-serif opacity-50">Reviews</h2>
+            <div class="space-y-10 md:space-y-12">
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+                    <div class="text-amber-600 text-2xl">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div>
+                        <p class="text-base sm:text-lg leading-loose mb-4">
+                            「デザートビュッフェが大変お得でした。お肉料理のシーザーサラダには大きなベーコンが乗っていて大満足。スタッフの対応も素晴らしく、コスパ抜群です！」
+                        </p>
+                        <p class="text-xs text-stone-400 font-bold">— ランチ利用のお客様</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start md:justify-end md:text-right">
+                    <div class="order-2 md:order-1">
+                        <p class="text-base sm:text-lg leading-loose mb-4">
+                            「すすきの駅からも近く、アクセス抜群。生ハム食べ放題やアヒージョなど、お酒好きにはたまらないラインナップ。満足のいく飲み会になりました。」
+                        </p>
+                        <p class="text-xs text-stone-400 font-bold">— 宴会利用のお客様</p>
+                    </div>
+                    <div class="text-amber-600 text-2xl order-1 md:order-2">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- インフォメーション -->
+    <section id="access" class="py-16 md:py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+            <div class="md:sticky md:top-32">
+                <h2 class="text-2xl sm:text-3xl mincho mb-8 md:mb-10">Access & Info</h2>
+                <div class="space-y-5 md:space-y-6 text-sm leading-relaxed text-stone-600">
+                    <div class="flex gap-4 border-b border-stone-100 pb-4">
+                        <span class="w-20 sm:w-24 flex-shrink-0 font-bold text-stone-900">店名</span>
+                        <span>北海道ヨーロピアンダイニング ルガール</span>
+                    </div>
+                    <div class="flex gap-4 border-b border-stone-100 pb-4">
+                        <span class="w-20 sm:w-24 flex-shrink-0 font-bold text-stone-900">住所</span>
+                        <span>〒064-0804 北海道旭川市中央区南４条西２丁目２−４ レコルトサッポロ 1F</span>
+                    </div>
+                    <div class="flex gap-4 border-b border-stone-100 pb-4">
+                        <span class="w-20 sm:w-24 flex-shrink-0 font-bold text-stone-900">電話番号</span>
+                        <a href="tel:011-252-7580" class="hover:text-amber-700 font-bold text-stone-900">011-252-7580</a>
+                    </div>
+                    <div class="flex gap-4 border-b border-stone-100 pb-4">
+                        <span class="w-20 sm:w-24 flex-shrink-0 font-bold text-stone-900">交通</span>
+                        <span>地下鉄南北線「すすきの駅」徒歩2分</span>
+                    </div>
+                    <div class="flex gap-4 border-b border-stone-100 pb-4">
+                        <span class="w-20 sm:w-24 flex-shrink-0 font-bold text-stone-900">設備</span>
+                        <span>最大120席、個室完備、プロジェクター、バリアフリー</span>
+                    </div>
+                </div>
+                <div class="mt-10 md:mt-12 flex gap-4">
+                    <a href="https://www.facebook.com/sapporolugar" target="_blank" rel="noopener" class="w-10 h-10 border border-stone-200 flex items-center justify-center rounded-full hover:bg-stone-900 hover:text-white transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3288865298746!2d141.35326907507198!3d43.05554999088138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2986a18669fb%3A0xd4565e3fd8f9f616!2z5YyX5rW36YGT44Oo44O844Ot44OU44Ki44Oz44Oz44OA44Kk44OL44Oz44KwIOODq-OCrOODvOODqw!5e0!3m2!1sja!2sjp!4v1772240431680!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ルガール 地図"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="relative py-20 md:py-32 bg-stone-900 text-white text-center px-6 overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <img src="images/fish.png" alt="店内イメージ" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 max-w-2xl mx-auto">
+            <h3 class="text-2xl sm:text-3xl md:text-5xl mincho mb-6 md:mb-8 leading-tight">心尽くしの料理が、<br>あなたの訪れを待っています。</h3>
+            <p class="text-stone-400 mb-8 md:mb-12 tracking-widest text-xs sm:text-sm md:text-base">特別な日のディナーも、贅沢なランチタイムも。<br>ルガールでしか味わえない感動を。</p>
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center">
+                <a href="tel:011-252-7580" class="w-full md:w-auto bg-amber-700 hover:bg-amber-800 text-white font-bold py-4 md:py-5 px-10 md:px-12 rounded-sm transition text-base md:text-lg tracking-[0.2em]">
+                    お電話で予約する
+                </a>
+                <a href="http://lugar-susukino.com/" target="_blank" rel="noopener" class="w-full md:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/50 py-4 md:py-5 px-10 md:px-12 rounded-sm transition text-base md:text-lg tracking-[0.2em] backdrop-blur-md">
+                    WEB予約
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-950 py-8 md:py-10 text-center px-6">
+        <p class="text-[9px] sm:text-[10px] text-stone-600 tracking-[0.3em] sm:tracking-[0.4em] uppercase">&copy; LUGAR EUROPEAN DINING SAPPORO ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // スムーススクロール（モバイルメニューを閉じる処理込み）
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            menuToggle.innerHTML = isOpen ? '<i class="fas fa-times text-lg"></i>' : '<i class="fas fa-bars text-lg"></i>';
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 64,
+                        behavior: 'smooth'
+                    });
+                }
+                if (mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
