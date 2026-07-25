@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PARCO FIERA | 狸小路・すすきので味わう究極の自家製シャルキュトリーとイタリアン</title>
+    <meta name="description" content="札幌すすきの、狸小路から徒歩1分。1日2部制・限定6席。北海道食材を活かした自家製シャルキュトリー全12種以上を、最高の状態で。完全予約制のイタリアン。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C5A059;
+            --gold-dark: #A6813F;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif { font-family: 'Noto Serif JP', serif; }
+        .bg-gold { background-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.85) 100%);
+        }
+        .section-padding { padding: 56px 20px; }
+        @media (min-width: 768px) { .section-padding { padding: 96px 20px; } }
+
+        .gold-btn {
+            background-color: var(--gold);
+            transition: background-color .25s ease, transform .15s ease;
+        }
+        .gold-btn:hover { background-color: var(--gold-dark); }
+        .gold-btn:active { transform: scale(0.97); }
+
+        /* Respect users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-bounce, .transition-transform, .hover\:scale-105 { animation: none !important; transition: none !important; }
+        }
+
+        /* Safe-area padding for notch devices */
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="w-full h-full bg-[url('images/syarukyutori.png')] bg-cover bg-center transition-transform duration-1000 hover:scale-105"></div>
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-5 sm:px-4 max-w-3xl mx-auto">
+            <p class="text-sm sm:text-lg md:text-xl tracking-widest mb-3 sm:mb-4 opacity-90">狸小路駅から15分、すすきの駅前の隠れ家</p>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold leading-snug sm:leading-tight mb-5 sm:mb-6">
+                常時50種以上を熟成。<br>
+                12種の自家製シャルキュトリーを<br>
+                <span class="text-gold">最高の状態で味わう。</span>
+            </h1>
+            <p class="text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-7 sm:mb-8 leading-relaxed opacity-95">
+                食べログアワードSilver受賞。中條大輔シェフが贈る、<br class="hidden md:block">
+                塩と油以外すべて手作りの調味料で仕上げる、五感を揺さぶるイタリアン。
+            </p>
+            <div class="animate-bounce">
+                <p class="text-xs sm:text-sm tracking-widest uppercase">Scroll for Experience</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 上部CTA -->
+    <section class="bg-stone-900 text-white py-10 sm:py-12 text-center">
+        <div class="max-w-4xl mx-auto px-5">
+            <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">【1日2部制・限定6席】至福のコース体験を予約する</h2>
+            <p class="mb-6 opacity-80 text-xs sm:text-sm">道外客が8割を占めるため、お早めのご予約をお勧めいたします。</p>
+            <a href="https://www.parcofiera-sapporo.com/" class="inline-block w-full sm:w-auto gold-btn text-white font-bold py-4 px-8 sm:px-10 rounded-full shadow-xl">
+                公式サイトで空席を確認する
+            </a>
+        </div>
+    </section>
+
+    <!-- 自己紹介（権威付け） -->
+    <section class="bg-white section-padding">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 items-center px-1 sm:px-4">
+            <div class="order-2 md:order-1">
+                <h2 class="text-xs sm:text-sm tracking-widest text-gold font-bold mb-2">CHEF STORY</h2>
+                <h3 class="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6">中條 大輔 <span class="text-base sm:text-lg font-normal text-stone-500">Daisuke Chujo</span></h3>
+                <p class="leading-relaxed mb-6 text-stone-700 text-sm md:text-base">
+                    1988年、北海道美唄市出身。北イタリア・ピエモンテ州での修行中、土地に根付くサルーミ（食肉加工品）の魅力に没頭。<br><br>
+                    「生産者・客・シェフが公平（パルコフィエラ）であること」を信念に、2020年、故郷・北海道の食材を主役にした現在のスタイルへ。食べログアワードSilver受賞など、全国から美食家が訪れる名店へと成長。
+                </p>
+                <div class="flex gap-3 sm:gap-4">
+                    <div class="border border-stone-200 p-3 rounded text-center flex-1">
+                        <p class="text-xs text-stone-500">受賞</p>
+                        <p class="font-bold text-xs sm:text-sm">Tabelog Silver 2024</p>
+                    </div>
+                    <div class="border border-stone-200 p-3 rounded text-center flex-1">
+                        <p class="text-xs text-stone-500">修行先</p>
+                        <p class="font-bold text-xs sm:text-sm">Piedmont, Italy</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="relative max-w-sm mx-auto md:max-w-none">
+                    <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-full h-full border-2 border-gold -z-10"></div>
+                    <img src="images/chef.png" alt="中條シェフ" class="rounded shadow-lg w-full" loading="lazy" width="900" height="1125">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 悩み言語化 → 解決方法 -->
+    <section class="section-padding bg-stone-900 text-white">
+        <div class="max-w-4xl mx-auto px-1 sm:px-4 text-center">
+            <h2 class="text-2xl sm:text-2xl md:text-3xl font-bold mb-7 sm:mb-8 leading-relaxed">
+                「本物のシャルキュトリーを、<br>
+                最高の状態で食べたことがありますか？」
+            </h2>
+            <div class="space-y-4 sm:space-y-6 text-stone-400 mb-10 sm:mb-12 text-sm sm:text-base">
+                <p>どこで食べても似たような味に感じる……</p>
+                <p>ワインとの相性がしっくりこない……</p>
+                <p>外食は塩分や添加物が気になる……</p>
+            </div>
+            <div class="bg-white/5 p-6 sm:p-8 rounded-2xl border border-white/10">
+                <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-gold">PARCO FIERAが、その常識を覆します。</h3>
+                <p class="text-sm md:text-base leading-loose">
+                    市販品では決して味わえない、熟成50種、常時12種以上の自家製生ハム。<br>
+                    塩と油以外の調味料（バター、酢、マスタードまで）も全て自家製。<br>
+                    「味覚を整える」ための緻密なコース構成が、あなたの食の基準を変えるはずです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 口コミ引用セクション -->
+    <section class="section-padding bg-stone-100">
+        <div class="max-w-5xl mx-auto px-1 sm:px-4">
+            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-9 sm:mb-12">Guests' Voice</h2>
+            <div class="grid md:grid-cols-2 gap-5 sm:gap-6">
+                <div class="bg-white p-5 sm:p-6 rounded shadow-sm border-l-4 border-gold italic text-sm leading-relaxed">
+                    「洗練された雰囲気の中、たまに聞こえる踏切の音が最高のBGM。2部のシャルキュトリー12種類を様々な食べ方で楽しませてくれる。ワインのナチュールとのペアリングも素晴らしい。」
+                </div>
+                <div class="bg-white p-5 sm:p-6 rounded shadow-sm border-l-4 border-gold italic text-sm leading-relaxed">
+                    「上品な肉の旨味が感じられる生ハム・サラミ。調味料も手作りのものが多く奥深い。特にお肉のシャルキュトリがお好きな方には絶対におすすめです。」
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典 -->
+    <section class="section-padding bg-white">
+        <div class="max-w-4xl mx-auto px-5 sm:px-4 border-2 border-gold p-6 sm:p-8 rounded-3xl text-center relative">
+            <span class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 bg-gold text-white px-4 sm:px-6 py-1 rounded-full text-xs sm:text-sm font-bold tracking-widest italic whitespace-nowrap">SPECIAL OFFER</span>
+            <h2 class="text-xl sm:text-2xl font-bold mt-5 sm:mt-4 mb-4">今、この瞬間の旬を味わい尽くす</h2>
+            <p class="text-stone-700 leading-relaxed mb-6 text-sm sm:text-base">
+                看板メニュー「しらすのトマトパスタ」をはじめ、毎朝市場で仕入れる魚介、自家菜園の無農薬ハーブ。一切の妥協を出さないサスティナブルな姿勢から生まれる、今日だけのメニューをご用意してお待ちしております。
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-[11px] sm:text-xs font-bold text-gold uppercase tracking-tighter">
+                <span>#自家製ナチュールペアリング</span>
+                <span>#ノンアルペアリング対応</span>
+                <span>#完全予約制</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON セクション -->
+    <section class="section-padding bg-stone-900 text-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-1 sm:px-4">
+            <div class="text-center mb-9 sm:mb-12">
+                <span class="text-xs font-bold tracking-widest text-gold uppercase block mb-2">FUTURE PROJECT</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold border-b border-gold/30 pb-4 inline-block">COMING SOON</h2>
+                <p class="text-stone-400 text-sm mt-4">PARCO FIERAが準備中の新たな取り組み</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 relative flex flex-col justify-between hover:border-gold/50 transition duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 gap-2">
+                            <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold inline-block">全国お届け</span>
+                            <span class="text-xs text-stone-500 tracking-wider font-mono">PREPARED</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-gold">自家製シャルキュトリー &<br>クラフト調味料の定期便</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-4">
+                            「12種の自家製生ハム」やバター、自家製マスタード、無添加ハーブソースを旬のセットにして自宅へ直接お届け。<br>「お店の味を自宅でも楽しみたい」という遠方のお客様の声に応える公式オンラインサービスです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- 下部CTA -->
+    <footer class="pt-16 sm:pt-20 pb-10 border-t border-black/10 safe-bottom bg-cover bg-center text-stone-900" style="background-image: url('images/fish.png');">
+        <div class="max-w-4xl mx-auto px-5 text-center bg-white/70 rounded-2xl py-12 sm:py-16 shadow-lg">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-stone-950">予約困難になる前に、至高の一皿を。</h2>
+            <p class="mb-8 sm:mb-10 text-stone-800 text-sm sm:text-base leading-relaxed">
+                札幌駅から電車で15分、稲穂駅徒歩1分。<br>
+                そこには、あなたの想像を超える「食の探求」が待っています。
+            </p>
+
+            <a href="https://www.parcofiera-sapporo.com/" class="inline-block w-full sm:w-auto gold-btn text-white font-bold py-4 sm:py-5 px-8 sm:px-16 rounded-full shadow-2xl text-base sm:text-lg mb-10 sm:mb-12">
+                24時間WEB予約を受け付け中
+            </a>
+
+            <div class="grid sm:grid-cols-3 gap-8 text-left text-sm text-stone-700 border-t border-black/10 pt-10 mb-8">
+                <div>
+                    <h4 class="text-stone-950 font-bold mb-2">ACCESS</h4>
+                    <p>〒006-0031<br>北海道札幌市手稲区稲穂１条４丁目８−１0<br>JR稲穂駅 徒歩1分</p>
+                </div>
+                <div>
+                    <h4 class="text-stone-950 font-bold mb-2">SYSTEM</h4>
+                    <p>1日2部制（完全予約制）<br>カウンター6席のみ<br>コース・ペアリング・アラカルト</p>
+                </div>
+                <div>
+                    <h4 class="text-stone-950 font-bold mb-2">LINKS</h4>
+                    <p><a href="https://www.facebook.com/parcofiera.sapporo/" class="hover:text-gold underline underline-offset-2" target="_blank" rel="noopener">Facebook</a> / <a href="https://www.parcofiera-sapporo.com/" class="hover:text-gold underline underline-offset-2" target="_blank" rel="noopener">Official HP</a></p>
+                </div>
+            </div>
+
+            <!-- Google Map 埋め込み -->
+            <div class="w-full h-64 sm:h-80 rounded-xl overflow-hidden shadow-md">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2911.906769168285!2d141.2206988750765!3d43.127484686275466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b270eb3771e9b%3A0x47633d7d17db4796!2sPARCO%20FIERA!5e0!3m2!1sja!2sjp!4v1772170604389!5m2!1sja!2sjp" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <p class="mt-10 sm:mt-12 text-xs text-stone-500 opacity-80">&copy; PARCO FIERA All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
