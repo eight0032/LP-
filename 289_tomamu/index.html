@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>アルテッツァ・トマム | 公式サイト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Montserrat:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary: #c2410c; /* orange-700 */
+            --bg-stone: #f5f5f4;
+            --text-main: #1c1917;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-stone);
+            overflow-x: hidden;
+        }
+
+        .font-mincho { font-family: 'Shippori Mincho', serif; }
+        .font-mont { font-family: 'Montserrat', sans-serif; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .overlay-dark {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--primary);
+        }
+
+        .btn-gold {
+            background: linear-gradient(45deg, #b45309, #d97706);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(180, 83, 9, 0.3);
+            filter: brightness(1.1);
+        }
+        .btn-gold:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* 見やすいボタン形式のSNSアイコン */
+        .sns-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background-color: #ffffff;
+            color: #1c1917;
+            border: 1px solid #1c1917;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 240px;
+        }
+        .sns-button:hover {
+            background-color: #1c1917;
+            color: #ffffff;
+        }
+
+        /* Coming Soon カード用ガラスモフィズム効果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(217, 119, 6, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* モバイルでのタップ対象確保 */
+        a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.1); }
+
+        /* 動きを減らす設定を尊重 */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ナビゲーション -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 sm:px-6 md:px-12 py-4 sm:py-6">
+        <div class="text-white font-mincho text-base sm:text-xl font-bold tracking-widest">ALTEZZA TOMAMU</div>
+        <a href="tel:0167573838" class="flex items-center text-white bg-black/30 backdrop-blur-md border border-white/30 px-4 sm:px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all text-xs sm:text-sm">
+            <i class="fas fa-phone-alt mr-2 text-xs sm:text-sm"></i>
+            <span class="hidden sm:inline">0167-57-3838</span>
+            <span class="sm:hidden">電話</span>
+        </a>
+    </nav>
+
+    <!-- FVエリア -->
+    <section class="relative h-screen min-h-[560px] flex items-center justify-center">
+        <div class="absolute inset-0">
+            <img src="images/store.png" alt="アルテッツァトマムの内装" class="w-full h-full object-cover">
+            <div class="absolute inset-0 overlay-dark"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center px-4">
+            <div class="flex items-start gap-4 sm:gap-6 md:gap-12 text-white">
+                <h1 class="vertical-text font-mincho text-lg sm:text-2xl md:text-4xl leading-loose tracking-[0.15em] sm:tracking-[0.2em] pt-4" data-aos="fade-up" data-aos-delay="300">
+                    トマムの夜に、<br>贅沢な余韻を。
+                </h1>
+                <div class="block pt-10 sm:pt-16 md:pt-20" data-aos="fade-up" data-aos-delay="600">
+                    <p class="vertical-text font-mincho text-xs sm:text-base md:text-lg tracking-widest leading-relaxed">
+                        道産牛フィレ肉と<br>溢れるラクレットの饗宴
+                    </p>
+                </div>
+            </div>
+            <div class="mt-10 sm:mt-16" data-aos="fade-in" data-aos-delay="1000">
+                <div class="w-px h-16 sm:h-24 bg-gradient-to-b from-white to-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1つ目のCTA -->
+    <section class="py-10 sm:py-12 bg-white relative z-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-5 sm:gap-6" data-aos="fade-up">
+                <p class="font-mincho text-stone-600 tracking-wider text-sm sm:text-base">予約なしで入れる、トマム屈指の人気イタリアン</p>
+                <a href="#booking" class="btn-gold text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold tracking-widest text-sm sm:text-base w-full sm:w-auto">
+                    本日のお席を確認する
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンセプト -->
+    <section class="py-16 sm:py-24 md:py-40 bg-stone-50 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="relative flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-7/12 relative" data-aos="fade-right">
+                    <img src="images/steak.png" alt="極上ステーキ" class="w-full shadow-2xl rounded-sm">
+                </div>
+                <div class="w-full md:w-5/12 md:-ml-20 -mt-6 md:mt-0 mx-4 md:mx-0 p-6 sm:p-8 md:p-16 bg-white shadow-xl z-10" data-aos="fade-left" data-aos-delay="200">
+                    <h2 class="font-mincho text-2xl sm:text-3xl md:text-4xl mb-5 sm:mb-8 leading-relaxed">五感で愉しむ、<br>北海道のイタリアン。</h2>
+                    <p class="text-stone-600 leading-loose mb-6 sm:mb-8 font-light text-sm sm:text-base">
+                        リゾナーレトマムの奥、高い天井が開放感を演出するモダンな空間。<br>
+                        道産牛フィレ肉は、お客様の卓上で最も贅く焼き加減に。<br>
+                        北海道の力強い食材を、洗練されたイタリアンスタイルで昇華させます。
+                    </p>
+                    <div class="w-12 h-px bg-stone-300"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 強みと言語化 -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 sm:mb-20">
+                <h2 class="section-title font-mincho text-xl sm:text-2xl md:text-3xl tracking-widest" data-aos="fade-up">Dinner in Tomamu</h2>
+                <p class="mt-4 text-stone-400 font-mont text-xs sm:text-base" data-aos="fade-up" data-aos-delay="100">THE BEST CHOICE</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 max-w-6xl mx-auto">
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-5 sm:mb-6 overflow-hidden">
+                        <img src="images/pasta.png" alt="利便性" class="grayscale hover:grayscale-0 transition-all duration-700 w-full">
+                    </div>
+                    <h3 class="font-mincho text-lg sm:text-xl mb-3 sm:mb-4">予約が取れない夜に</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">多くの店舗が予約で埋まる中、アルテッツァはふらっと立ち寄れる自由を大切にしています。</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-5 sm:mb-6 overflow-hidden">
+                        <img src="images/italian.png" alt="品質" class="grayscale hover:grayscale-0 transition-all duration-700 w-full">
+                    </div>
+                    <h3 class="font-mincho text-lg sm:text-xl mb-3 sm:mb-4">価値あるコース体験</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">6,000円という価格以上の驚きを。道産牛フィレからデザートまで、一切の妥協はありません。</p>
+                </div>
+                <div class="text-center group sm:col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mb-5 sm:mb-6 overflow-hidden">
+                        <img src="images/pizza.png" alt="空間" class="grayscale hover:grayscale-0 transition-all duration-700 w-full">
+                    </div>
+                    <h3 class="font-mincho text-lg sm:text-xl mb-3 sm:mb-4">家族全員が主役</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">お子様用メニューも完備。大人もお子様も、トマムの夜をおしみに美味しく楽しめます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ラクレット演出 -->
+    <section class="relative py-20 sm:py-32 text-white">
+        <div class="absolute inset-0">
+            <img src="images/cheese.jpg" alt="ラクレットチーズ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-stone-900/70"></div>
+        </div>
+        <div class="relative container mx-auto px-4 text-center">
+            <p class="font-mont tracking-[0.3em] sm:tracking-[0.4em] text-orange-400 mb-5 sm:mb-6 text-xs sm:text-sm" data-aos="fade-in">SIGNATURE EXPERIENCE</p>
+            <h2 class="font-mincho text-2xl sm:text-3xl md:text-5xl mb-8 sm:mb-12 leading-relaxed" data-aos="fade-up">「ストップ」と言わせない、<br>黄金の滝。</h2>
+            <div class="max-w-2xl mx-auto space-y-6 sm:space-y-8" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-base sm:text-lg md:text-xl font-light leading-loose">
+                    目の前でとろける熱々のラクレットチーズ。<br>
+                    温野菜やピザへ、あなたの「ストップ」がかかるまで、<br>
+                    たっぷりと、贅沢に。
+                </p>
+                <div class="inline-block border border-white/30 px-8 sm:px-12 py-5 sm:py-6 backdrop-blur-sm">
+                    <p class="text-xs sm:text-sm tracking-widest">チーズ好きが認める、トマム屈指のエンターテインメント</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-16 sm:py-24 bg-stone-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="font-mincho text-xl sm:text-2xl tracking-[0.2em]" data-aos="fade-up">Voice</h2>
+                <p class="text-stone-400 font-mont text-xs sm:text-base" data-aos="fade-up">GUEST REVIEWS</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm" data-aos="fade-up">
+                    <div class="flex text-orange-400 mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">「チーズを目の前でかけてくれるんですが、ストップと言うまでかけ続けてくれます。店員さんの接客も良く、雰囲気もおしゃれで最高でした。」</p>
+                    <div class="text-xs font-bold text-stone-400 tracking-widest">FAMILY GUEST</div>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-orange-400 mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star text-stone-300"></i>
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">「6,000円のコースは非常にリーズナブル。肉は柔らかく、とびこのクリームパスタも茹で加減抜群。北海道ワインと一緒に頂くのがおすすめです。」</p>
+                    <div class="text-xs font-bold text-stone-400 tracking-widest">COUPLE GUEST</div>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm sm:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-orange-400 mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">「トマムリゾート内で予約なしで入れるのは本当にありがたい。内装もおしゃれで静かに食事を楽しめました。ラクレットピザはチーズ好き必見です。」</p>
+                    <div class="text-xs font-bold text-stone-400 tracking-widest">SOLO TRAVELER</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新設：Coming Soon セクション（あればいいなと思う未来のサービス提案） -->
+    <section class="py-20 sm:py-28 bg-stone-950 text-white relative overflow-hidden border-t border-b border-stone-800">
+        <!-- 背景の装飾光線 -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-600 via-transparent to-transparent"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-14 sm:mb-20">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] sm:text-xs font-mont tracking-widest mb-4" data-aos="fade-down">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    NEXT LEVEL HOSPITALITY
+                </div>
+                <h2 class="font-mincho text-2xl sm:text-3xl md:text-5xl tracking-widest text-stone-100" data-aos="fade-up">Coming Soon</h2>
+                <p class="mt-3 text-stone-400 font-mont text-xs sm:text-base tracking-widest" data-aos="fade-up" data-aos-delay="100">アルテッツァが送る、新たな体験構想</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス案 1 -->
+                <div class="glass-card rounded-xl p-6 sm:p-8 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="mb-5 sm:mb-6">
+                            <span class="inline-block bg-stone-900/80 text-amber-400 font-mont text-[10px] tracking-wider px-3 py-1 rounded-full border border-amber-500/30">
+                                CONCEPT 01
+                            </span>
+                        </div>
+                        <h3 class="font-mincho text-lg sm:text-xl mb-3 text-amber-100">プライベートドーム<br>スターゲイジングディナー</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed font-light mb-6">
+                            トマムの幻想的な冬夜と澄み切った星空を、暖かい透明ドーム内で独占。極上の溶けきフィレ肉と自然を同時に味わう、一日組数限定のスペシャルシート。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-stone-500 font-mont">2026 WINTER SCHEDULED</span>
+                        <i class="fas fa-arrow-right text-xs text-amber-500/60 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- サービス案 2 -->
+                <div class="glass-card rounded-xl p-6 sm:p-8 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="mb-5 sm:mb-6">
+                            <span class="inline-block bg-stone-900/80 text-amber-400 font-mont text-[10px] tracking-wider px-3 py-1 rounded-full border border-amber-500/30">
+                                CONCEPT 02
+                            </span>
+                        </div>
+                        <h3 class="font-mincho text-lg sm:text-xl mb-3 text-amber-100">インルーム・ラクレット、<br>道産ワインペアリング</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed font-light mb-6">
+                            滑り疲れた夜やお子様連れでくつろぎたい方に。お部屋まで専用ウォーマーで熱々のラクレットチーズと、ソムリエ厳選の北海道ワインセットをお届けします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-stone-500 font-mont">DELIVERY SERVICE</span>
+                        <i class="fas fa-arrow-right text-xs text-amber-500/60 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 注釈 -->
+            <p class="text-center text-xs text-stone-500 mt-10 sm:mt-12 font-light tracking-widest px-4" data-aos="fade-in">
+                ※ サービス内容は開発・準備中のイメージです。順次公式サイトにて告知いたします。
+            </p>
+        </div>
+    </section>
+
+    <!-- 最終CTA & アクセスマップ -->
+    <section id="booking" class="py-20 sm:py-32 bg-stone-900 text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="font-mincho text-2xl sm:text-3xl md:text-5xl mb-6 sm:mb-8 leading-relaxed" data-aos="fade-up">今宵、最高のひと時を<br>アルテッツァで.</h2>
+            <p class="text-stone-400 mb-8 sm:mb-12 tracking-widest text-sm sm:text-base" data-aos="fade-up" data-aos-delay="100">旅の記憶を彩る、一皿をご用意してお待ちしております。</p>
+
+            <div class="flex flex-col items-center gap-6 sm:gap-8 mb-16 sm:mb-24" data-aos="zoom-in">
+                <a href="tel:0167573838" class="btn-gold px-10 sm:px-16 py-5 sm:py-6 rounded-sm text-lg sm:text-2xl font-bold tracking-[0.1em] w-full max-w-xs sm:w-auto sm:max-w-none">
+                    <span class="text-xs sm:text-sm block font-normal opacity-80 mb-1">お電話での空席確認・ご相談</span>
+                    0167-57-3838
+                </a>
+                <p class="text-stone-500 text-xs sm:text-sm italic text-center">トマムリゾート敷地内・リズナーレ側</p>
+            </div>
+
+            <!-- Google Map Integration -->
+            <div class="max-w-5xl mx-auto mt-14 sm:mt-20" data-aos="fade-up">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-left items-start">
+                    <div class="md:col-span-1">
+                        <h3 class="font-mincho text-lg sm:text-xl mb-5 sm:mb-6 tracking-widest text-orange-400">Access</h3>
+                        <p class="text-stone-400 text-sm leading-loose mb-6 sm:mb-8">
+                            〒079-2204<br>
+                            北海道勇払郡占冠村中トマム<br>
+                            星野リゾート トマム敷地内<br>
+                            （リズナーレトマム側）
+                        </p>
+                        <div class="flex flex-col gap-3">
+                            <!-- SNSボタン形式 -->
+                            <a href="https://www.facebook.com/tomamu.hokkaido" target="_blank" class="sns-button">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>公式Facebook</span>
+                            </a>
+                            <a href="https://www.snowtomamu.jp/winter/restaurant/altezza.php" target="_blank" class="sns-button">
+                                <i class="fas fa-globe"></i>
+                                <span>ウェブサイト</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <div class="map-container shadow-2xl">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.84566628039!2d142.62991807507257!3d43.06571339023098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f736148d3582a51%3A0x4a9fbdef4fc681ef!2z44Ki44Or44OG44OD44OE44Kh772l44OI44Oe44Og!5e0!3m2!1sja!2sjp!4v1772167787982!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 sm:mt-24 pt-6 sm:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-stone-500 text-[11px] sm:text-xs tracking-tight text-center">
+                <p>ALTEZZA TOMAMU - ITALIAN DINING</p>
+                <p>&copy; 2024 ALTEZZA TOMAMU. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+</body>
+</html>
