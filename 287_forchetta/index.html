@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラ・フォルケッタ | 江別の原生林に佇む隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #2d361e;
+            --accent-gold: #c2a371;
+            --soft-cream: #f9f7f2;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; color: #333; background-color: var(--soft-cream); }
+        h1, h2, h3, .font-serif { font-family: 'Noto Serif JP', serif; }
+        .font-en { font-family: 'Cormorant Garamond', serif; }
+
+        .bg-dark-olive { background-color: var(--primary-dark); }
+        .text-gold { color: var(--accent-gold); }
+        .border-gold { border-color: var(--accent-gold); }
+
+        /* 装飾的なライン */
+        .deco-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        .deco-line::before, .deco-line::after {
+            content: "";
+            height: 1px;
+            width: 40px;
+            background-color: var(--accent-gold);
+        }
+        @media (min-width: 768px) {
+            .deco-line::before, .deco-line::after { width: 60px; }
+        }
+
+        .cta-floating {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: 92%;
+            max-width: 400px;
+        }
+
+        /* 参考サイト風のテクスチャ背景 */
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+        }
+
+        .hero-title {
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 66%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* スマホ時、固定CTAの分だけ本文下部に余白を確保 */
+        .safe-bottom { padding-bottom: 96px; }
+        @media (min-width: 768px) {
+            .safe-bottom { padding-bottom: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-\[fadeIn_1\.5s_ease-out_forwards\] { animation: none; opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-texture safe-bottom">
+
+    <!-- モバイル固定予約ボタン -->
+    <div class="cta-floating md:hidden">
+        <a href="#booking" class="block bg-dark-olive text-white text-center py-4 rounded-full font-bold shadow-2xl border border-gold text-sm tracking-wide">
+            お席を予約する
+        </a>
+    </div>
+
+    <!-- 1. FVエリア -->
+   <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <!-- 画像部分（パスはご自身の環境に合わせて変更してください） -->
+        <img 
+            src="images/forest.jpg" 
+            alt="La Forchettaの背景にある豊かな森" 
+            class="w-full h-full object-cover"
+        >
+        <!-- 黒のグラデーションオーバーレイ（文字の視認性を高めるため） -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60"></div>
+    </div>
+
+    <div class="relative z-10 text-center text-white px-6">
+        <div class="mb-6 opacity-0 animate-[fadeIn_1.5s_ease-out_forwards]">
+            <span class="font-en text-2xl md:text-3xl italic text-gold">La Forchetta</span>
+        </div>
+        <h1 class="hero-title text-3xl md:text-5xl font-bold leading-tight mb-6 md:mb-8 tracking-tight">
+            森が育み、<br class="md:hidden">大地が奏でる。<br>
+            <span class="text-xl md:text-4xl font-light">至福のイタリアンを。</span>
+        </h1>
+        <div class="deco-line mb-8 md:mb-10 text-gold">
+            <span class="tracking-[0.3em] text-xs md:text-base">EBETSU NOPPORO</span>
+        </div>
+        <a href="#booking" class="hidden md:inline-block border border-white hover:bg-white hover:text-black text-white px-12 py-4 transition-all duration-500 tracking-widest">
+            RESERVATION
+        </a>
+    </div>
+</header>
+
+   <!-- 2. イントロダクションセクション -->
+<section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 leading-relaxed">
+                    自家製パスタの豊かな香りと、<br>
+                    大地の生命力を噛みしめる。
+                </h2>
+                <p class="text-gray-600 leading-loose mb-6 text-sm md:text-base">
+                    道産小麦100%にこだわった自家製の手打ちパスタは、噛むほどに小麦の甘みが広がります。ソースに使うのは、毎朝「フォルケッタ農園」で収穫される、生命力にあふれた無農薬野菜たち。
+                </p>
+                <p class="text-gray-600 leading-loose text-sm md:text-base">
+                    食材が持つ本来の「声」を聞き、余計な手を加えず、最大限の敬意を払って調理する。それが私たちの考える、最高の贅沢です。
+                </p>
+            </div>
+            <div class="order-1 md:order-2 relative">
+                <!-- 料理写真部分（パスはご自身の環境に合わせて変更してください） -->
+                <div class="aspect-square rounded-sm shadow-2xl overflow-hidden">
+                    <img 
+                        src="images/pasta.jpg" 
+                        alt="フォルケッタ農園の無農薬野菜を使った自家製パスタ" 
+                        class="w-full h-full object-cover"
+                    >
+                </div>
+                <div class="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-dark-olive text-white p-6 md:p-8 hidden md:block">
+                    <p class="font-serif text-lg md:text-xl tracking-tight">「美味しい」を超えた、<br>記憶に残る一皿を。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 3. Heritage Concept -->
+    <section class="py-16 md:py-24 bg-dark-olive text-white relative overflow-hidden text-center">
+        <div class="absolute top-0 right-0 opacity-10 pointer-events-none uppercase font-en text-7xl md:text-9xl font-bold -rotate-12 translate-x-10 md:translate-x-20">
+            Nature
+        </div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 font-en italic text-gold">The Atmosphere</h2>
+            <div class="w-12 h-0.5 bg-gold mx-auto mb-6 md:mb-8"></div>
+            <p class="text-lg md:text-2xl font-serif leading-relaxed mb-4">野鳥のさえずりと、高い天井が織りなす静寂。</p>
+            <p class="text-gold/80 italic font-serif text-sm md:text-base">日常の喧騒を離れ、ただ食材と景色に向き合う贅沢なひととき。</p>
+        </div>
+    </section>
+
+   <!-- 4. Story: マガジン風のレイアウト -->
+<section class="py-16 md:py-24 bg-texture">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+            <div class="w-full md:w-5/12">
+                <div class="relative max-w-xs mx-auto md:max-w-none">
+                    <!-- 創業者写真部分（パスはご自身の環境に合わせて変更してください） -->
+                    <div class="aspect-[3/4] shadow-xl overflow-hidden">
+                        <img 
+                            src="images/chef.png" 
+                            alt="北大教授であったマダムの父" 
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <!-- 金色の装飾枠（-z-10で画像の後ろに配置） -->
+                    <div class="absolute -top-4 -right-4 w-full h-full border border-gold -z-10"></div>
+                </div>
+            </div>
+            <div class="w-full md:w-7/12 flex flex-col justify-center">
+                <p class="font-en text-gold text-xl md:text-2xl mb-2 italic">Father's Legacy</p>
+                <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight">北大教授の遺志を継ぐ、<br>一皿の食卓。</h2>
+                <div class="space-y-6 text-gray-700 leading-loose text-sm md:text-base">
+                    <p>
+                        私たちのルーツは、北海道大学農学部で無農薬栽培と地産地消を説いた、マダムの父の情熱にあります。
+                    </p>
+                    <p>
+                        彼が主宰した「フォルケッタ農園」は、単なる畑ではありません。そこは、人間と自然が調和し、豊かな実りを分かち合う「スローフード」の実践地。その志を受け継ぎ、私たちはこの地に根を下ろしました。
+                    </p>
+                    <p>
+                        「本当に良いものを、一番美味しい状態で。」<br>
+                        その教えは、今もキッチンの火の中に、そしてお皿を彩る野菜の一枚一枚に息づいています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 5. Experience: 解決策提示 -->
+    <section class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">La Forchettaでの体験</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12">
+                <div class="flex gap-5 md:gap-6">
+                    <div class="text-3xl md:text-4xl font-en text-gold opacity-30 shrink-0">01</div>
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">日常を忘れる、深い安らぎ</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">原生林に守られたレストランの窓からは、四季折々の絵画のような景色が。都会の時計とは違う、ゆったりとした時間が流れます。</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 md:gap-6">
+                    <div class="text-3xl md:text-4xl font-en text-gold opacity-30 shrink-0">02</div>
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">五感を潤す本格コース</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">前菜からドルチェまで、すべての皿にストーリーを。驚きと感動、そして安心感が共存する特別なディナーをお約束します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Special Benefit -->
+    <section class="py-16 md:py-24 bg-dark-olive">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="border border-gold p-8 md:p-12 text-center text-white relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-dark-olive px-6 md:px-8">
+                    <span class="font-en text-gold text-xl md:text-2xl">Hospitality</span>
+                </div>
+                <h2 class="text-xl md:text-3xl font-bold mb-6 md:mb-8 leading-relaxed">おもてなしの、ささやかな贈り物</h2>
+                <p class="mb-8 md:mb-10 text-gold/90 text-sm md:text-base">公式サイト・お電話にてご予約をいただいた大切なお客様へ。</p>
+
+                <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+                    <div class="bg-white/5 p-6 md:p-8 border border-white/10">
+                        <h4 class="text-gold font-bold mb-2">Personalized Menu</h4>
+                        <p class="text-sm">お客様のお名前を添えた、本日限定の「お名前入りお品書き」をご用意。特別な一日の思い出に。</p>
+                    </div>
+                    <div class="bg-white/5 p-6 md:p-8 border border-white/10">
+                        <h4 class="text-gold font-bold mb-2">Prime Seating</h4>
+                        <p class="text-sm">季節の庭園を最も美しく眺められる、プライオリティ・シートへの優先案内（ご予約先着順）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5 Coming Soon -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 font-en text-gold">Coming Soon</h2>
+            <p class="text-gray-500 mb-10 md:mb-12 text-sm md:text-base">私たちの農園から、新しい体験をお届けします。</p>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="p-6 md:p-8 border border-gray-100 bg-gray-50">
+                    <h3 class="font-bold mb-3">朝採れ野菜の定期便</h3>
+                    <p class="text-sm text-gray-600">フォルケッタ農園の「その日一番美味しい野菜」を、ご自宅の食卓へお届けするサブスクリプションサービス。</p>
+                </div>
+                <div class="p-6 md:p-8 border border-gray-100 bg-gray-50">
+                    <h3 class="font-bold mb-3">森のプライベート貸切</h3>
+                    <p class="text-sm text-gray-600">特別な記念日に、レストランを一日一組限定で貸切。シェフが直接テーブルで仕上げるフルコース体験。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Booking & Map -->
+    <section id="booking" class="py-16 md:py-24 bg-texture">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white shadow-2xl overflow-hidden rounded-sm border border-gray-100 mb-10 md:mb-12">
+                <div class="bg-dark-olive py-8 md:py-10 text-center">
+                    <p class="font-en text-gold tracking-widest text-sm mb-2">RESERVATION</p>
+                    <h2 class="text-2xl md:text-3xl text-white font-bold">ご予約・お問い合わせ</h2>
+                </div>
+                <div class="p-6 md:p-12 text-center">
+                    <p class="mb-8 text-gray-600 leading-loose text-sm md:text-base">
+                        ランチ・ディナーともに、お席の数に限りがございます。<br>
+                        原生林の静寂を守るため、事前のご予約をお願いしております。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-10 md:mb-12">
+                        <a href="http://forchetta-nopporo.com/" target="_blank" class="block bg-dark-olive text-white py-5 px-8 font-bold hover:bg-black transition-colors border border-gold">
+                            WEB予約システムへ
+                        </a>
+                        <a href="tel:0113987694" class="block bg-white text-dark-olive py-5 px-8 font-bold border border-dark-olive hover:bg-gray-50 transition-colors">
+                            お電話: 011-398-7694
+                        </a>
+                    </div>
+
+                    <div class="text-left space-y-4 text-sm text-gray-500 border-t border-gray-100 pt-8">
+                        <div class="flex flex-col md:flex-row md:justify-between border-b border-gray-50 pb-2 gap-1">
+                            <span>住所</span>
+                            <span class="text-gray-800 font-bold">〒069-0832 北海道江別市西野幌93-17</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:justify-between border-b border-gray-50 pb-2 gap-1">
+                            <span>定休日</span>
+                            <span class="text-gray-800">月曜日（祝日の場合は翌火曜）</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:justify-between border-b border-gray-50 pb-2 gap-1">
+                            <span>アクセス</span>
+                            <span class="text-gray-800">野幌野菜直売所近く / 駐車場10台</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Map -->
+            <div class="bg-white p-3 md:p-4 shadow-xl border border-gray-100">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.3886398573354!2d141.54046587507315!3d43.075324089615805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2d70fb074983%3A0xf512935b0ff9d1fd!2z44Op44O744OV44Kp44Or44Kx44OD44K_!5e0!3m2!1sja!2sjp!4v1772166267369!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 md:py-16 bg-black text-white text-center">
+        <div class="mb-6 md:mb-8">
+            <span class="font-en text-2xl text-gold">La Forchetta</span>
+        </div>
+        <div class="flex justify-center gap-6 mb-6 md:mb-8 text-sm">
+            <a href="https://www.facebook.com/ebetsu.la.forchetta" target="_blank" class="text-white hover:text-gold transition-colors">Facebook</a>
+            <a href="http://forchetta-nopporo.com/" target="_blank" class="text-white hover:text-gold transition-colors">Official Site</a>
+        </div>
+        <p class="text-[10px] opacity-40 tracking-widest uppercase">&copy; La Forchetta. Heritage Italian Restaurant.</p>
+    </footer>
+
+</body>
+</html>
