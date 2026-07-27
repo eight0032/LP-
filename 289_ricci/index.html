@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RICCI cucina italiana | 札幌・大通の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-gold: #b38e44;
+            --color-deep-navy: #0a0e17;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            color: #333;
+            background-color: #fff;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        /* 縦書き設定：スマホでは折り返し崩れを防ぐため無効化 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+            }
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/store.png') center/cover no-repeat;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-gold);
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        /* ぼかし背景の装飾 */
+        .decoration-blur {
+            position: absolute;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.15;
+            border-radius: 100%;
+        }
+
+        /* モバイルメニュー */
+        .mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
+        }
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        /* iframeのスクロールバーを隠すなどマップ周辺の調整 */
+        iframe {
+            filter: contrast(1.1) brightness(1.0);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        /* 動きを苦手とするユーザーへの配慮 */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+
+        /* フォーカスリングを見やすく */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--color-gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- NAVIGATION (Desktop) -->
+    <nav class="fixed top-0 w-full z-50 nav-glass border-b border-gray-100 hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <h1 class="serif text-xl tracking-tighter">RICCI <span class="text-xs font-normal opacity-60">cucina italiana</span></h1>
+            <div class="flex gap-8 text-sm font-light tracking-widest uppercase items-center">
+                <a href="#concept" class="hover:text-gold transition">Concept</a>
+                <a href="#chef" class="hover:text-gold transition">Chef</a>
+                <a href="#menu" class="hover:text-gold transition">Menu</a>
+                <a href="#access" class="hover:text-gold transition">Access</a>
+                <a href="https://www.ricci.jp/contact/" target="_blank" class="bg-gold text-white px-6 py-2 rounded-sm ml-4 transition hover:opacity-90">Reservation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- NAVIGATION (Mobile header) -->
+    <nav class="fixed top-0 w-full z-50 nav-glass border-b border-gray-100 md:hidden">
+        <div class="px-5 h-16 flex justify-between items-center">
+            <h1 class="serif text-lg tracking-tighter">RICCI <span class="text-[10px] font-normal opacity-60 block -mt-0.5">cucina italiana</span></h1>
+            <button id="menuToggle" aria-label="メニューを開く" aria-expanded="false" class="w-10 h-10 flex flex-col items-center justify-center gap-1.5">
+                <span id="barTop" class="block w-6 h-[1.5px] bg-gray-800 transition-transform duration-300"></span>
+                <span id="barMid" class="block w-6 h-[1.5px] bg-gray-800 transition-opacity duration-300"></span>
+                <span id="barBot" class="block w-6 h-[1.5px] bg-gray-800 transition-transform duration-300"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 md:hidden">
+        <a href="#concept" class="mobile-link serif text-2xl tracking-widest">Concept</a>
+        <a href="#chef" class="mobile-link serif text-2xl tracking-widest">Chef</a>
+        <a href="#menu" class="mobile-link serif text-2xl tracking-widest">Menu</a>
+        <a href="#access" class="mobile-link serif text-2xl tracking-widest">Access</a>
+        <a href="https://www.ricci.jp/contact/" target="_blank" class="bg-gold text-white px-10 py-3 rounded-sm text-sm tracking-widest uppercase mt-4">Reservation</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 hero-bg scale-105"></div>
+
+        <!-- キャッチコピーエリア -->
+        <div class="relative z-10 text-white flex items-start gap-8 md:gap-16 px-6 w-full max-w-7xl">
+            <div class="mt-auto pb-24 md:pb-20">
+                <p class="serif text-xl sm:text-2xl md:text-2xl tracking-[0.15em] md:tracking-[0.2em] leading-loose opacity-90 animate-fade-in">
+                    一皿に込めた、<br>
+                    道産食材と真心の対話。
+                </p>
+                <div class="mt-8 flex items-center gap-4">
+                    <div class="w-12 h-[1px] bg-gold"></div>
+                    <p class="text-xs tracking-[0.2em] uppercase">Ricci Cucina Italiana</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-4">
+            <span class="text-[10px] tracking-[0.3em] uppercase opacity-60">Scroll</span>
+            <div class="w-[1px] h-16 bg-white/30 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-gold -translate-y-full animate-[scroll_2s_infinite]"></div>
+            </div>
+        </div>
+    </header>
+
+   <!-- CONCEPT / STORY -->
+<section id="concept" class="py-24 md:py-32 px-6 relative scroll-mt-16 overflow-hidden">
+    <div class="decoration-blur bg-gold w-96 h-96 top-0 left-0"></div>
+    <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            
+            <!-- テキストエリア -->
+            <div class="space-y-10 md:space-y-12 order-2 md:order-1">
+                <div class="space-y-4">
+                    <span class="text-gold text-xs tracking-[0.3em] uppercase block">Our Philosophy</span>
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl leading-snug">
+                        大通の喧騒を忘れ、<br>
+                        五感が目覚める隠れ家へ。
+                    </h2>
+                </div>
+                <div class="serif text-gray-600 leading-[2.1] md:leading-[2.2] space-y-6 text-[15px] md:text-base">
+                    <p>
+                        扉を開けると、そこは別世界。<br>
+                        ベネチア産ムラーノ・シャンデリアの柔らかな光が、<br>
+                        今宵の食卓を優しく照らします。
+                    </p>
+                    <p>
+                        私たちの主役は、北海道の豊かな大地が育んだ旬の恵み。<br>
+                        市場直送の瑞々しい魚介、別海町の羊、契約農家の野菜。<br>
+                        それらがイタリアの伝統技法と出会い、<br>
+                        ここでしか出逢えない一皿へと昇華します。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 画像エリア：並列レイアウト -->
+            <div class="grid grid-cols-12 gap-4 items-center order-1 md:order-2">
+                <div class="col-span-8">
+                    <img src="images/italian.png" alt="Restaurant interior" class="w-full shadow-2xl rounded-sm object-cover">
+                </div>
+                <div class="col-span-6 -ml-8 mt-12 relative z-10">
+                    <img src="images/kakuteru.png" alt="Cocktail and appetizer" class="w-full shadow-xl border-4 md:border-8 border-white rounded-sm object-cover">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- SIGNATURE DISH -->
+    <section id="menu" class="py-24 md:py-32 bg-gray-50 overflow-hidden scroll-mt-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 md:mb-20">
+                <h2 class="serif text-2xl sm:text-3xl section-title">至高の逸品</h2>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <div class="w-full md:w-3/5 relative">
+                    <img src="images/pasta.jpg" alt="Clam Pasta" class="w-full aspect-[16/10] object-cover shadow-2xl">
+                    <div class="absolute top-6 right-6 md:top-10 md:-right-10 bg-white px-5 py-4 md:p-8 shadow-xl">
+                        <p class="vertical-text serif text-base md:text-xl tracking-widest text-gold">あさりのアーリオオリオ</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 space-y-6 md:space-y-8">
+                    <h3 class="serif text-xl md:text-2xl font-bold">「最後の一撃まで、手を抜かんとは」</h3>
+                    <p class="text-gray-600 leading-relaxed font-light">
+                        多くの食通を唸らせるRICCIの代名詞。少し太めのパスタが、あさりの芳醇な旨味とソースをたっぷりと抱き込みます。シンプルだからこそ、素材の質とシェフの腕が試される一皿です。
+                    </p>
+                    <div class="pt-4">
+                        <a href="https://www.ricci.jp/contact/" target="_blank" class="inline-block border border-gold text-gold px-10 py-3 hover:bg-gold hover:text-white transition tracking-widest text-sm">詳しく見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEF SECTION -->
+    <section id="chef" class="py-24 md:py-32 bg-white px-6 scroll-mt-16">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-12 md:gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative inline-block w-full">
+                        <img src="images/chef.png" alt="Chef Kawasaki" class="w-full grayscale hover:grayscale-0 transition duration-700">
+                        <div class="absolute -bottom-4 -right-4 w-full h-full border-b border-r border-gold -z-10"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-6">
+                    <span class="text-gold text-xs tracking-[0.3em] uppercase block">Owner Chef</span>
+                    <h2 class="serif text-2xl md:text-3xl">川嶋 律司</h2>
+                    <p class="text-sm text-gray-400 font-light tracking-widest">Ritsushi Kawasaki</p>
+                    <div class="text-gray-600 text-sm leading-loose font-light space-y-4">
+                        <p>京都に生まれ、美食の環境で育つ。一度は教育の道（体育教師）に進むも、料理への尽きぬ情熱からイタリアへ。2年間の修業で本場のスピリットを吸収。</p>
+                        <p>「道産食材は、世界に誇れる宝。それをイタリアンの魔法で、もっと美味しく、もっと身近に」</p>
+                        <p>2005年の独立以来、その信念は揺らぐことなく、一皿ごとに心を添えるサービスと共に、皆様をお迎えしております。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS / COLUMN STYLE -->
+    <section class="py-24 md:py-32 bg-[#0a0e17] text-white overflow-hidden relative">
+        <div class="decoration-blur bg-gold w-[500px] h-[500px] -bottom-40 -right-40 opacity-10"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="serif text-2xl sm:text-3xl section-title border-white after:bg-gold">お客様の記憶に残る、ひととき</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+                <!-- Col 1 -->
+                <div class="space-y-6 border-l border-white/10 pl-6 md:pl-8">
+                    <div class="text-gold text-xs italic tracking-widest mb-6 md:mb-8">Review 01</div>
+                    <p class="serif text-base md:text-lg leading-loose font-light">
+                        「料理も接客も、まるでイタリアの小宇宙。カウンター越しに広がる静謐でいて躍動感あふれるキッチンに、五感が刺激されました。」
+                    </p>
+                    <div class="pt-6 md:pt-8 flex items-center gap-4">
+                        <div class="w-8 h-[1px] bg-white/30"></div>
+                        <span class="text-[10px] uppercase opacity-40 tracking-widest">Gourmet Lover</span>
+                    </div>
+                </div>
+                <!-- Col 2 -->
+                <div class="space-y-6 border-l border-white/10 pl-6 md:pl-8">
+                    <div class="text-gold text-xs italic tracking-widest mb-6 md:mb-8">Review 02</div>
+                    <p class="serif text-base md:text-lg leading-loose font-light">
+                        「友人の勧めで訪問。蝦夷鹿のお肉の柔らかさとソースの相性が抜群で、ソムリエが選ぶワインと共に、至福の特別な気持ちにさせてくれました。」
+                    </p>
+                    <div class="pt-6 md:pt-8 flex items-center gap-4">
+                        <div class="w-8 h-[1px] bg-white/30"></div>
+                        <span class="text-[10px] uppercase opacity-40 tracking-widest">Wine Enthusiast</span>
+                    </div>
+                </div>
+                <!-- Col 3 -->
+                <div class="space-y-6 border-l border-white/10 pl-6 md:pl-8">
+                    <div class="text-gold text-xs italic tracking-widest mb-6 md:mb-8">Review 03</div>
+                    <p class="serif text-base md:text-lg leading-loose font-light">
+                        「二つのパスタを半分ずつ分けて提供してくれる。そんな老舗割烹のような粋な計らいに感動。大切な人を連れて行きたくなる名店です。」
+                    </p>
+                    <div class="pt-6 md:pt-8 flex items-center gap-4">
+                        <div class="w-8 h-[1px] bg-white/30"></div>
+                        <span class="text-[10px] uppercase opacity-40 tracking-widest">Anniversary Guest</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON / NEW SERVICES -->
+    <section id="coming-soon" class="py-24 md:py-32 bg-stone-50 px-6 relative overflow-hidden">
+        <div class="decoration-blur bg-gold w-96 h-96 top-1/2 right-0 -translate-y-1/2 opacity-10"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-14 md:mb-20">
+                <span class="text-gold text-xs tracking-[0.4em] uppercase block mb-3 font-semibold">New Initiatives</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl section-title">Coming Soon</h2>
+                <p class="text-gray-500 text-sm font-light mt-2">RICCIの味覚と特別な体験を、より多彩なスタイルで。現在準備中の新サービスです。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 max-w-4xl mx-auto gap-6 md:gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-6 sm:p-8 md:p-10 shadow-lg rounded-md border border-amber-100/60 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
+                    <div class="space-y-5 md:space-y-6">
+                        <div class="flex flex-wrap justify-between items-start gap-2">
+                            <span class="text-[11px] font-bold text-gold tracking-widest uppercase bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">01 / Meal Kit</span>
+                            <span class="text-[10px] uppercase tracking-wider text-gray-400 bg-gray-100 px-2.5 py-1 rounded">2026. Autumn</span>
+                        </div>
+                        <h3 class="serif text-lg sm:text-xl font-bold text-gray-800 leading-snug">RICCI Chef's Kit<br><span class="text-xs font-normal text-gray-500 block mt-1">動画解説付き 生パスタ・ソースキット</span></h3>
+                        <p class="text-xs text-gray-600 leading-relaxed font-light">
+                            川嶋シェフ監修の自家製生パスタと特製ソース、仕上げのハーブをセットでお届け。シェフによるワンポイントコツ解説動画を見ながら、ご自宅でレストランの仕上がりを再現いただけます。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-gray-100 mt-6 flex items-center justify-between text-xs text-gray-400">
+                        <span class="text-gold font-medium">ご予約受付・秋開始予定</span>
+                        <i class="fa-solid fa-box-open text-gold text-base"></i>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-6 sm:p-8 md:p-10 shadow-lg rounded-md border border-amber-100/60 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
+                    <div class="space-y-5 md:space-y-6">
+                        <div class="flex flex-wrap justify-between items-start gap-2">
+                            <span class="text-[11px] font-bold text-gold tracking-widest uppercase bg-amber-50 px-3 py-1 rounded-full border border-amber-200/50">02 / Exclusive Salon</span>
+                            <span class="text-[10px] uppercase tracking-wider text-gray-400 bg-gray-100 px-2.5 py-1 rounded">会員限定</span>
+                        </div>
+                        <h3 class="serif text-lg sm:text-xl font-bold text-gray-800 leading-snug">Farm &amp; Wine Salon<br><span class="text-xs font-normal text-gray-500 block mt-1">契約農園訪問 ＆ 特別ワインサロン</span></h3>
+                        <p class="text-xs text-gray-600 leading-relaxed font-light">
+                            北海道の豊かな生産現場を訪ねる現地ツアーと、その夜店舗で楽しむ超限定ディナー。市場に出回らない希少な道産食材と熟成ヴィンテージワインの共演をお愉しみください。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-gray-100 mt-6 flex items-center justify-between text-xs text-gray-400">
+                        <span class="text-gold font-medium">会員様優先ご案内</span>
+                        <i class="fa-solid fa-wine-glass text-gold text-base"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMATION / ACCESS -->
+    <section id="access" class="py-24 md:py-32 px-6 scroll-mt-16">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-14 md:gap-20">
+                <div class="space-y-10 md:space-y-12">
+                    <h2 class="serif text-2xl md:text-3xl">Information</h2>
+                    <dl class="grid grid-cols-1 gap-6 md:gap-8 text-sm border-t border-gray-100 pt-8">
+                        <div class="flex">
+                            <dt class="w-20 md:w-24 shrink-0 text-gold uppercase tracking-widest font-bold text-[10px] md:text-sm">Address</dt>
+                            <dd class="flex-1 font-light leading-relaxed">
+                                〒060-0061 北海道札幌市中央区南1条西7丁目12-2<br>大通公園ウエストビル 2F
+                            </dd>
+                        </div>
+                        <div class="flex">
+                            <dt class="w-20 md:w-24 shrink-0 text-gold uppercase tracking-widest font-bold text-[10px] md:text-sm">Phone</dt>
+                            <dd class="flex-1 font-light tracking-widest">011-280-4700</dd>
+                        </div>
+                        <div class="flex">
+                            <dt class="w-20 md:w-24 shrink-0 text-gold uppercase tracking-widest font-bold text-[10px] md:text-sm">Holiday</dt>
+                            <dd class="flex-1 font-light">月曜日（Monday）</dd>
+                        </div>
+                        <div class="flex">
+                            <dt class="w-20 md:w-24 shrink-0 text-gold uppercase tracking-widest font-bold text-[10px] md:text-sm">Hours</dt>
+                            <dd class="flex-1 font-light">Lunch &amp; Dinner（※詳細は公式サイトをご確認ください）</dd>
+                        </div>
+                    </dl>
+                    <div class="pt-8 space-y-4 text-center">
+                        <a href="https://www.ricci.jp/contact/" target="_blank" class="block bg-gold text-white py-5 text-lg font-bold tracking-[0.2em] shadow-xl hover:opacity-90 transition">RESERVATION</a>
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest">Online reservation or call for inquiries</p>
+                    </div>
+                </div>
+                <div class="h-[300px] sm:h-[400px] md:h-auto bg-gray-100 relative grayscale hover:grayscale-0 transition duration-700 overflow-hidden rounded-sm shadow-inner">
+                    <!-- Google Maps Iframe -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.1848200972136!2d141.34491737507213!3d43.05858029068742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b299b1bfd4801%3A0xf65b1b38bede170f!2z44Oq44OD44OBIOOCr-ODg-ODgeODvOODiiDjgqTjgr_jg6rjgqLjg7zjg4o!5e0!3m2!1sja!2sjp!4v1772167020222!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-gray-100 text-center pb-28 md:pb-12">
+        <p class="serif text-xl tracking-tighter mb-6">RICCI <span class="text-xs font-normal opacity-40">cucina italiana</span></p>
+
+        <!-- Social Icons -->
+        <div class="flex justify-center gap-6 mb-8 text-xl text-gray-400">
+            <a href="https://www.facebook.com/ricci.cucina.italiana/" target="_blank" class="hover:text-gold transition" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/ricci_sapporo_jp/" target="_blank" class="hover:text-gold transition" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+
+        <p class="text-[10px] text-gray-400 uppercase tracking-widest">&copy; RICCI cucina italiana. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Mobile CTA -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full grid grid-cols-2 z-30 shadow-[0_-5px_20px_rgba(0,0,0,0.1)]">
+        <a href="tel:011-280-4700" class="bg-white text-gold py-4 text-center font-bold flex items-center justify-center gap-2">
+            <i class="fa-solid fa-phone"></i> CALL
+        </a>
+        <a href="https://www.ricci.jp/contact/" target="_blank" class="bg-gold text-white py-4 text-center font-bold flex items-center justify-center gap-2">
+            <i class="fa-solid fa-calendar-check"></i> ONLINE
+        </a>
+    </div>
+
+    <script>
+        // シンプルなフェードインアニメーション用
+        window.onload = () => {
+            document.querySelector('.animate-fade-in')?.classList.add('opacity-100');
+        };
+
+        // モバイルメニュー制御
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const barTop = document.getElementById('barTop');
+        const barMid = document.getElementById('barMid');
+        const barBot = document.getElementById('barBot');
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            barTop.style.transform = '';
+            barMid.style.opacity = '1';
+            barBot.style.transform = '';
+            document.body.style.overflow = '';
+        }
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            barTop.style.transform = 'translateY(6.5px) rotate(45deg)';
+            barMid.style.opacity = '0';
+            barBot.style.transform = 'translateY(-6.5px) rotate(-45deg)';
+            document.body.style.overflow = 'hidden';
+        }
+
+        menuToggle?.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('open');
+            isOpen ? closeMenu() : openMenu();
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+
+</body>
+</html>
