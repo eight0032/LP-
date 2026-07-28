@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ふらっすりー海風堂 | 富良野の絶品ハンバーグセット</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@400;700&display=swap');
+
+        :root {
+            --primary: #1a3a2a;
+            --accent: #d35400;
+            --gold: #c5a059;
+            --bg-cream: #f9f6f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+        }
+
+        /* Hero background: fixed only on devices that comfortably support it (desktop).
+           On touch devices background-attachment:fixed causes jank/repaint bugs,
+           so we fall back to scroll behavior via a media query. */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.75)),
+                        url('images/hanbagu.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        @media (max-width: 768px), (hover: none) {
+            .hero-section {
+                background-attachment: scroll;
+            }
+        }
+
+        .floating-coupon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating-coupon { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        .title-under-line {
+            background: linear-gradient(transparent 70%, #f39c12 70%);
+        }
+
+        .review-card {
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Map responsive container, 16:9 on desktop, taller ratio on narrow phones
+           so the map stays usable rather than becoming a thin sliver. */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        @media (min-width: 640px) {
+            .map-container {
+                padding-bottom: 56.25%;
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Comfortable, thumb-friendly tap targets on touch devices */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-[15px] sm:text-base">
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-[100svh] flex items-center justify-center text-white text-center px-5 sm:px-6 relative py-16">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="max-w-5xl relative z-10 w-full">
+            <div class="mb-5 sm:mb-6">
+                <span class="inline-block border-2 border-white px-4 py-2 sm:px-6 text-base sm:text-xl font-bold tracking-[0.15em] sm:tracking-[0.2em]">富良野・隠れ家洋食</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black mb-6 sm:mb-8 leading-tight serif">
+                <span class="text-orange-400">極上</span>の「ほろふわ」<br>
+                <span class="text-xl sm:text-3xl md:text-4xl block mt-3 sm:mt-4">富良野産牛ハンバーグの衝撃</span>
+            </h1>
+            <p class="text-base sm:text-xl md:text-2xl mb-8 sm:mb-12 font-bold leading-relaxed">
+                地産地消の極み、富良野の恵みを丸ごと味わう。<br>
+                プロが唸る「本物」を、今だけ特別価格で。
+            </p>
+
+            <div class="floating-coupon inline-block bg-white text-gray-900 p-6 sm:p-8 rounded-3xl border-4 border-dashed border-orange-500 shadow-2xl max-w-full">
+                <p class="text-orange-600 font-black text-xs sm:text-sm mb-1">【期間限定】WEB閲覧者限定プレゼント</p>
+                <p class="text-lg sm:text-2xl font-black mb-2">噂の「極みチーズケーキ」</p>
+                <p class="text-3xl sm:text-5xl font-black text-orange-600">無料プレゼント</p>
+                <p class="text-xs mt-2 text-gray-500">※ランチセットご注文の方限定</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-14 sm:py-20 px-5 sm:px-6 bg-white border-b border-gray-100">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-2xl sm:text-4xl font-bold serif inline-block title-under-line italic">待つ価値がある。</h2>
+                <p class="text-gray-500 mt-3 sm:mt-4 text-sm sm:text-base">訪れた人々が感動を綴る、本物の評価。</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+                <div class="review-card p-6 border border-gray-100">
+                    <div class="flex text-orange-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-3">「食べたことない食感!」</p>
+                    <p class="text-sm text-gray-600 leading-relaxed text-left">噂のハンバーグはほろほろふわふわ。ペロッと食べられます。次も必ず行きたい!</p>
+                </div>
+                <div class="review-card p-6 border border-gray-100">
+                    <div class="flex text-orange-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-3">「待つ価値、大あり。」</p>
+                    <p class="text-sm text-gray-600 leading-relaxed text-left">少し時間はかかりますが、本当に美味しい。全ての料理に妥協がありません。</p>
+                </div>
+                <div class="review-card p-6 border border-gray-100">
+                    <div class="flex text-orange-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-3">「チーズケーキが絶品」</p>
+                    <p class="text-sm text-gray-600 leading-relaxed text-left">外観も内装も可愛らしい。ランチセットのデザート、クオリティ高すぎです。</p>
+                </div>
+                <div class="review-card p-6 border border-gray-100">
+                    <div class="flex text-orange-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-3">「地元の人が好きな店」</p>
+                    <p class="text-sm text-gray-600 leading-relaxed text-left">家庭的でアットホーム。この美味しさでこの安さは驚き。もっと高くてもいいのでは?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- First CTA -->
+    <section class="py-12 sm:py-16 bg-gray-900 texture-bg text-white">
+        <div class="container mx-auto max-w-2xl px-5 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 serif leading-snug">この「感動」を、<br><span class="text-orange-500">Facebook</span>で今すぐ予約</h2>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-2xl">
+                <a href="https://www.facebook.com/kaifuudou" target="_blank" rel="noopener" class="block w-full py-5 sm:py-6 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl text-lg sm:text-2xl font-black mb-4 transition-colors">
+                    <i class="fab fa-facebook-messenger mr-2"></i> 特典を受け取って予約する
+                </a>
+                <p class="text-gray-400 text-xs">※現在、期間限定特典のご利用が集中しております。お早めに!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6 bg-white relative overflow-hidden">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-8 -left-8 sm:-top-10 sm:-left-10 w-32 h-32 sm:w-40 sm:h-40 bg-orange-100 rounded-full mix-blend-multiply opacity-70 animate-pulse"></div>
+                    <img src="images/chef.png" alt="シェフ" class="rounded-3xl shadow-2xl relative z-10 w-full">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-orange-600 font-black tracking-widest text-xs sm:text-sm">SINCE 1963</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 serif leading-tight mt-2">「おもてなし」の歴史が紡ぐ、<br>最高の一皿。</h2>
+                    <p class="text-gray-600 leading-loose mb-5 sm:mb-6 text-sm sm:text-base">
+                        私たちのルーツは、人生の大切な節目を彩る「冠婚葬祭」のプロフェッショナル集団。長年培い、半世紀以上にわたり数万組の感動を支えてきました。
+                    </p>
+                    <p class="text-gray-600 leading-loose mb-6 sm:mb-8 text-sm sm:text-base">
+                        その技術とホスピタリティを、富良野という大自然の恩恵を受ける場所で、日常の喜びとして楽しんでいただきたい。そんな想いから「ふらっすりー海風堂」は生まれました。
+                    </p>
+                    <div class="bg-gray-50 p-5 sm:p-6 border-l-8 border-orange-500 rounded-r-xl text-left">
+                        <p class="font-bold text-gray-800 italic text-sm sm:text-base">「料理の味はもちろん、その場の空気まで味わってほしい。」</p>
+                        <p class="text-right text-xs sm:text-sm mt-2 font-bold">— 代表取締役 新道いくみ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6 bg-[#1a3a2a] text-white">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-10 sm:mb-12 serif leading-snug">富良野を「食べる」という贅沢。</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <div class="space-y-5 sm:space-y-6">
+                    <img src="images/yasai.png" alt="野菜" class="rounded-2xl h-56 sm:h-64 w-full object-cover shadow-xl">
+                    <h3 class="text-lg sm:text-xl font-bold border-b border-orange-500 pb-2">① 鮮度への矜持</h3>
+                    <p class="text-sm opacity-80 leading-relaxed">農業地帯ならでは。その日の朝に収穫されたばかりの野菜が、あなたのテーブルを彩ります。</p>
+                </div>
+                <div class="space-y-5 sm:space-y-6">
+                    <img src="images/zingisukan.jpg" alt="肉" class="rounded-2xl h-56 sm:h-64 w-full object-cover shadow-xl">
+                    <h3 class="text-lg sm:text-xl font-bold border-b border-orange-500 pb-2">② 独自フュージョン</h3>
+                    <p class="text-sm opacity-80 leading-relaxed">ジンギスカンや地産乳製品。地元の食材を洋食の技法で昇華させた、唯一無二の創作料理。</p>
+                </div>
+                <div class="space-y-5 sm:space-y-6 sm:col-span-2 lg:col-span-1">
+                    <img src="images/ravenda.jpg" alt="店舗" class="rounded-2xl h-56 sm:h-64 w-full object-cover shadow-xl">
+                    <h3 class="text-lg sm:text-xl font-bold border-b border-orange-500 pb-2">③ 四季の隠れ家</h3>
+                    <p class="text-sm opacity-80 leading-relaxed">夏のラベンダー、冬の銀世界。四季折々の景色を背景にした、日常を忘れる特別な空間。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6 bg-gradient-to-b from-amber-50 to-white text-gray-800 relative overflow-hidden border-t border-b border-amber-100">
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="inline-block bg-orange-600 text-white text-xs sm:text-sm font-black px-5 sm:px-6 py-2 rounded-full tracking-widest uppercase mb-4 shadow-md">
+                    <i class="fas fa-rocket mr-2"></i> Coming Soon
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black serif text-gray-900 leading-tight">
+                    もっと美味しく、もっと近くに。<br>海風堂の新たな挑戦。
+                </h2>
+                <p class="text-gray-600 mt-4 text-sm sm:text-lg">「こんなサービスがあったらいいな」をカタチに。現在準備中の新プロジェクトをご紹介します。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1: EC / Direct Shipping -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-orange-100 flex flex-col justify-between relative group hover:border-orange-400 transition-colors duration-300">
+                    <div class="absolute -top-3 right-6 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        開発中
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-5 sm:mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <span class="text-xs font-bold text-orange-600 tracking-wider">ONLINE SHOP</span>
+                        <h3 class="text-lg sm:text-xl font-bold mt-1 mb-3 sm:mb-4 text-gray-900">【全国配送】ご家庭で味わう「極みほろふわハンバーグ」</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                            「遠くてなかなか行けない」「あの味を家でも食べたい」という声にお応えし、急速冷凍技術で出来立ての旨味と肉汁をそのまま閉じ込めたお取り寄せサービスをスタートします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 text-xs font-bold text-gray-400 flex items-center justify-between">
+                        <span>提供開始予定</span>
+                        <span class="text-orange-600">順次オープン予定</span>
+                    </div>
+                </div>
+
+                <!-- Service 2: Private Evening Dinner -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-orange-100 flex flex-col justify-between relative group hover:border-orange-400 transition-colors duration-300">
+                    <div class="absolute -top-3 right-6 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        完全限定
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-5 sm:mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-wine-glass"></i>
+                        </div>
+                        <span class="text-xs font-bold text-indigo-600 tracking-wider">PRIVATE DINING</span>
+                        <h3 class="text-lg sm:text-xl font-bold mt-1 mb-3 sm:mb-4 text-gray-900">【1日1組限定】富良野の夜を独占する「星空シェフズテーブル」</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                            静寂に包まれる富良野の夜。隠れ家レストランを1組限定で貸し切り、シェフ自らが目の前で腕を振るう特別フレンチコースと厳選富良野ワインをお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 text-xs font-bold text-gray-400 flex items-center justify-between">
+                        <span>提供開始予定</span>
+                        <span class="text-indigo-600">予約制にて順次</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 sm:mt-12 text-center">
+                <p class="text-xs text-gray-500">※新サービスのリリース情報は、公式Facebookおよびホームページにて優先的にご案内いたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA & Map Section -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6 bg-white">
+        <div class="container mx-auto max-w-5xl">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-3 sm:mb-4 serif leading-tight">ご来店、心より<br>お待ちしております。</h2>
+                <p class="text-orange-600 font-bold text-base sm:text-xl italic">富良野・朝日町の、あの「ふわふわ」へ。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-12 items-start">
+                <!-- Info/Action Column -->
+                <div class="bg-gray-50 border-2 border-orange-500 rounded-3xl p-6 sm:p-8 shadow-xl relative text-center">
+                    <div class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-5 sm:px-8 py-2 rounded-full font-black text-sm sm:text-lg whitespace-nowrap">
+                        期間限定オファー
+                    </div>
+                    <div class="mb-6 sm:mb-8 pt-5 sm:pt-4">
+                        <p class="text-base sm:text-xl font-bold mb-4">ランチセットご注文で<br>「噂のチーズケーキ」プレゼント</p>
+                        <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4 text-xs text-gray-500">
+                            <span><i class="fas fa-clock mr-1"></i> 今月末まで</span>
+                            <span><i class="fas fa-users mr-1"></i> お一人様1回限り</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <a href="tel:0167225540" class="block w-full py-4 sm:py-5 bg-gray-900 hover:bg-black active:bg-black text-white rounded-2xl text-xl sm:text-2xl font-black transition-colors">
+                            <i class="fas fa-phone-alt mr-3 sm:mr-4 text-orange-500"></i> 0167-22-5540
+                        </a>
+                        <p class="text-xs font-bold text-gray-600">お電話にて「WEBを見た」とお伝えください</p>
+                    </div>
+
+                    <div class="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-200 text-left">
+                        <h4 class="font-bold text-gray-800 mb-4 border-l-4 border-orange-500 pl-3">店舗情報</h4>
+                        <div class="space-y-3 text-sm">
+                            <p class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-orange-500"></i> 〒076-0026 北海道富良野市朝日町3-11</p>
+                            <p class="flex items-start"><i class="fas fa-calendar-times mt-1 mr-3 text-orange-500"></i> 定休日：木曜日</p>
+                            <p class="flex items-start"><i class="fas fa-clock mt-1 mr-3 text-orange-500"></i> 営業時間：ランチ / ディナー（詳細はSNS等で）</p>
+                            <div class="flex space-x-4 mt-4 pt-2">
+                                <a href="https://www.facebook.com/kaifuudou" target="_blank" rel="noopener" title="Facebook" class="text-blue-600 text-2xl sm:text-3xl hover:opacity-70">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a>
+                                <a href="https://furanokaifuudou.jimdofree.com/" target="_blank" rel="noopener" title="Official Website" class="text-gray-700 text-2xl sm:text-3xl hover:text-orange-500 transition-colors">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Column -->
+                <div class="space-y-5 sm:space-y-6">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.369603337506!2d142.38643807509075!3d43.34837887209411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f734d69ae693cf5%3A0x2ba63961fce507d1!2z44G244KJ44Gj44GZ44KK44O85rW36aKo5aCC!5e0!3m2!1sja!2sjp!4v1772159826988!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    </div>
+                    <p class="text-xs text-gray-500 text-center italic">
+                        <i class="fas fa-info-circle mr-1"></i> JR富良野駅より徒歩約10分。朝日町の静かなエリアにございます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white/50 py-10 sm:py-12 px-5 sm:px-6 text-center text-sm">
+        <div class="container mx-auto">
+            <p class="mb-4">ふらっすりー海風堂 | AI Plan Group Official Landing Page</p>
+            <p>&copy; 2024 Brasserie Kaifuudou. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
