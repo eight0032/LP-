@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リストランテ フォレスタ・ビアンカ | 旭川の本格イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdfcf9;
+            -webkit-text-size-adjust: 100%;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.03em;
+        }
+        .bg-gold { background-color: #b59560; }
+        .text-gold { color: #b59560; }
+        .border-gold { border-color: #b59560; }
+
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* モバイルはpaddingを圧縮、md以上でゆったりに */
+        .section-padding {
+            padding-top: 64px;
+            padding-bottom: 64px;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 120px;
+                padding-bottom: 120px;
+            }
+        }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            letter-spacing: 0.08em;
+        }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(181, 149, 96, 0.3);
+        }
+
+        .line-deco::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #b59560;
+            margin: 20px auto;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+        @media (min-width: 768px) {
+            .map-container iframe { height: 450px; }
+        }
+
+        @keyframes zoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+        .hero-img { animation: zoom 20s infinite alternate; }
+
+        /* 電話番号などが画面幅を超えないように */
+        .break-safe { word-break: keep-all; overflow-wrap: break-word; }
+    </style>
+</head>
+<body class="text-stone-800 leading-relaxed overflow-x-hidden">
+
+    <!-- [FVエリア] -->
+    <header class="relative h-[100svh] flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-black/45 z-10"></div>
+            <img src="images/store.png" alt="Restaurant Interior" class="hero-img w-full h-full object-cover scale-105">
+        </div>
+
+        <div class="relative z-20 text-center px-5 max-w-5xl">
+            <p class="text-xs sm:text-sm md:text-base mb-6 md:mb-8 tracking-[0.3em] sm:tracking-[0.4em] uppercase opacity-90">Sapporo Minami / Ristorante</p>
+            <h1 class="text-xl sm:text-2xl md:text-5xl font-light mb-6 md:mb-8 leading-[1.7] md:leading-[1.6]">
+                四季を愛で、<br>
+                <span class="font-bold">「時」を味わう。</span>
+            </h1>
+            <div class="inline-block border border-white/40 backdrop-blur-sm px-5 py-5 sm:px-8 sm:py-6 rounded-sm mb-8 md:mb-12 mx-auto max-w-[90vw]">
+                <p class="text-gold font-bold mb-2 tracking-widest italic text-sm sm:text-base">Special Offer</p>
+                <p class="text-sm sm:text-lg md:text-xl leading-relaxed">【WEB限定】お会計10%OFF<br class="sm:hidden"> または ドリンク1杯無料</p>
+            </div>
+            <div>
+                <a href="#contact" class="cta-button bg-gold text-white font-bold py-4 px-8 sm:py-5 sm:px-12 rounded-sm text-sm sm:text-lg inline-flex items-center gap-3 sm:gap-4">
+                    ご予約・特典を受け取る <span class="text-xs">▶</span>
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce opacity-60">
+            <p class="text-[9px] tracking-[0.3em] uppercase mb-2" style="writing-mode: vertical-rl;">Scroll</p>
+            <div class="w-[1px] h-10 sm:h-12 bg-white mx-auto"></div>
+        </div>
+    </header>
+
+    <!-- [CTA 1回目] -->
+    <section class="bg-white py-10 md:py-16 border-b border-stone-100">
+        <div class="container mx-auto px-5 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-16 text-center md:text-left">
+            <div>
+                <p class="text-stone-400 text-[10px] sm:text-xs tracking-widest mb-1">RESERVATION</p>
+                <h2 class="text-lg sm:text-xl font-bold">お電話またはフォームで承ります</h2>
+            </div>
+            <a href="tel:0115818880" class="text-2xl sm:text-3xl md:text-4xl font-light flex items-center gap-3 hover:text-gold transition-colors serif break-safe">
+                <i class="fas fa-phone-alt text-sm sm:text-base text-gold"></i> 011-581-8880
+            </a>
+            <div class="text-stone-400 hidden md:block">|</div>
+            <p class="text-xs sm:text-sm text-stone-500"> ランチ11:00〜14:30　ディナー17:30〜21:00（完全予約制） / 水曜定休</p>
+        </div>
+    </section>
+
+    <!-- [自己紹介エリア] 創業ストーリー / コンセプト -->
+    <section class="section-padding bg-texture">
+        <div class="container mx-auto px-5">
+            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-20">
+                <p class="text-gold font-bold tracking-[0.3em] text-[10px] sm:text-xs mb-4">OUR STORY & CONCEPT</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 leading-snug">人生の節目に寄り添い、半世紀。</h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto mb-8"></div>
+                <p class="text-stone-500 leading-loose text-sm md:text-base text-left sm:text-center">
+                    1963年の創業以来、私たち「あいプラングループ」は冠婚葬祭という人生の最も大切な瞬間を支えてきました。<br>
+                    札幌の喧騒を離れた南区、木々に囲まれた場所に佇む「フォレスタ・ビアンカ」。<br>
+                    地元食材の生命力を一皿に込め、訪れるすべての方に「記憶に残る食体験」をお届けします。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-1 shadow-2xl">
+                <img src="images/fish.png" class="h-56 sm:h-80 w-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700">
+                <img src="images/kakuteru.png" class="h-56 sm:h-80 w-full object-cover">
+                <img src="images/dessert.png" class="h-56 sm:h-80 w-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+        </div>
+    </section>
+
+    <!-- [悩み解決策] 洗練されたカード型 -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-5 max-w-6xl">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4">「特別な日」の不安を、安心へ。</h2>
+                <p class="text-stone-400 text-xs sm:text-sm">あらゆるシーンに対応するホスピタリティ</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
+                <div class="bg-stone-50 p-7 sm:p-10 border-b-2 border-transparent hover:border-gold transition-all shadow-sm group">
+                    <div class="w-12 h-12 bg-white flex items-center justify-center text-gold mb-6 sm:mb-8 group-hover:bg-gold group-hover:text-white transition-colors">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg mb-3 sm:mb-4">小さなお子様とご一緒に</h3>
+                    <p class="text-sm text-stone-500 leading-loose">
+                        お子様メニューやベビーカー入店への対応など、ご家族皆様が主役になれる環境を整えています。
+                    </p>
+                </div>
+                <div class="bg-stone-50 p-7 sm:p-10 border-b-2 border-transparent hover:border-gold transition-all shadow-sm group">
+                    <div class="w-12 h-12 bg-white flex items-center justify-center text-gold mb-6 sm:mb-8 group-hover:bg-gold group-hover:text-white transition-colors">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg mb-3 sm:mb-4">100台以上の無料駐車場</h3>
+                    <p class="text-sm text-stone-500 leading-loose">
+                        大人数のお集まりやご葬儀でのご来店もスムーズ。札幌南区の緑かな自然の中に、広大なスペースを確保。
+                    </p>
+                </div>
+                <div class="bg-stone-50 p-7 sm:p-10 border-b-2 border-transparent hover:border-gold transition-all shadow-sm group sm:col-span-2 md:col-span-1">
+                    <div class="w-12 h-12 bg-white flex items-center justify-center text-gold mb-6 sm:mb-8 group-hover:bg-gold group-hover:text-white transition-colors">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="font-bold text-base sm:text-lg mb-3 sm:mb-4">アレルギー・サプライズ</h3>
+                    <p class="text-sm text-stone-500 leading-loose">
+                        事前の細やかなヒアリングに基づき、アレルギー対応から大切な方への演出まで真心を込めて。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [特典エリア] -->
+    <section class="section-padding bg-texture">
+        <div class="container mx-auto px-5">
+            <div class="flex flex-col lg:flex-row bg-white rounded-sm overflow-hidden shadow-2xl">
+                <div class="lg:w-1/2 relative h-64 sm:h-80 lg:h-auto lg:min-h-[400px]">
+                    <img src="images/soup.png" alt="Signature Soup" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+                <div class="lg:w-1/2 p-8 sm:p-12 md:p-20 flex flex-col justify-center">
+                    <span class="text-gold font-bold tracking-[0.3em] text-[10px] sm:text-xs mb-4 sm:mb-6 block">SIGNATURE DISH</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8 serif leading-snug">伝統の<br>パンプキンスープ</h2>
+                    <p class="text-stone-600 mb-8 sm:mb-10 leading-loose text-sm sm:text-base">
+                        北海道の肥沃な大地が育てたカボチャを、熟練のシェフが時間をかけて丁寧に仕上げました。<br>
+                        濃厚な甘みと、シルクのような喉越し。この一杯のために足を運ぶ価値がある、私たちの誇りです。
+                    </p>
+                    <div class="border-t border-stone-200 pt-8 sm:pt-10">
+                        <p class="text-stone-400 text-[10px] sm:text-xs mb-3 sm:mb-4 tracking-widest">WEB限定特典</p>
+                        <p class="text-lg sm:text-xl font-bold text-stone-800 mb-6 sm:mb-8 italic">
+                            お会計10%OFF または ドリンク1杯無料
+                        </p>
+                        <a href="#contact" class="cta-button bg-gold text-white font-bold py-4 px-8 sm:py-5 sm:px-10 inline-block rounded-sm text-sm sm:text-base w-full sm:w-auto text-center">
+                            特典を利用して予約する
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- クチコミ -->
+            <div class="mt-16 md:mt-24 max-w-5xl mx-auto">
+                <div class="grid sm:grid-cols-2 gap-8 sm:gap-12">
+                    <div class="relative pl-10 sm:pl-12">
+                        <i class="fas fa-quote-left absolute top-0 left-0 text-gold/20 text-3xl sm:text-4xl"></i>
+                        <p class="text-stone-600 text-sm italic leading-relaxed mb-4">「リーズナブルにコースを楽しめる。ハーフコースでも満足度が高く、接客も丁寧。何よりスープとパスタが絶品です。」</p>
+                        <p class="text-xs font-bold">— 40代 女性のお客様</p>
+                    </div>
+                    <div class="relative pl-10 sm:pl-12">
+                        <i class="fas fa-quote-left absolute top-0 left-0 text-gold/20 text-3xl sm:text-4xl"></i>
+                        <p class="text-stone-600 text-sm italic leading-relaxed mb-4">「隠れ家的な雰囲気で特別感がありました。広々とした店内で、記念日のお祝いに最適です。」</p>
+                        <p class="text-xs font-bold">— 30代 夫婦のお客様</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [COMING SOON セクション] これからいいなと思う新サービス -->
+    <section class="section-padding bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-texture opacity-20 pointer-events-none"></div>
+        <div class="container mx-auto px-5 max-w-6xl relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block border border-gold text-gold text-[10px] sm:text-xs tracking-[0.3em] px-4 py-1.5 uppercase mb-4">Next Phase</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 serif">COMING SOON</h2>
+                <p class="text-stone-400 text-[11px] sm:text-xs md:text-sm tracking-wider">これから始まる、新しいフォレスタ・ビアンカの体験</p>
+                <div class="w-12 h-[1px] bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: ミールキット -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-sm p-6 sm:p-8 flex flex-col justify-between hover:border-gold transition-colors duration-500 group">
+                    <div>
+                        <div class="flex justify-between items-start mb-5 sm:mb-6 gap-2">
+                            <span class="text-gold font-bold text-xs tracking-widest uppercase">Service 01</span>
+                            <span class="bg-gold/20 text-gold text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider whitespace-nowrap">順次開始予定</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 group-hover:text-gold transition-colors">ご自宅で味わう森のレストラン<br><span class="text-sm font-normal text-stone-300">シェフ特選 ミール・パスタキット</span></h3>
+                        <p class="text-stone-400 text-xs leading-relaxed mb-6">
+                            伝統のパンプキンスープやシェフ手打ちの生パスタ、厳選イタリアンソースをパッケージ。「特別なおうちディナー」をご家庭で手軽にお愉しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center gap-2 text-stone-500 text-xs">
+                        <i class="fas fa-utensils text-gold"></i> テイクアウト・全国配送対応予定
+                    </div>
+                </div>
+
+                <!-- サービス2: ガーデンダイニング -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-sm p-6 sm:p-8 flex flex-col justify-between hover:border-gold transition-colors duration-500 group">
+                    <div>
+                        <div class="flex justify-between items-start mb-5 sm:mb-6 gap-2">
+                            <span class="text-gold font-bold text-xs tracking-widest uppercase">Service 02</span>
+                            <span class="bg-gold/20 text-gold text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider whitespace-nowrap">季節限定企画</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 group-hover:text-gold transition-colors">緑に包まれる特別席<br><span class="text-sm font-normal text-stone-300">完全貸切プライベート ガーデンディナー</span></h3>
+                        <p class="text-stone-400 text-xs leading-relaxed mb-6">
+                            札幌南区の澄んだ空気と木々のぬくもりを全身で感じる、1日1組様限定の特別テラス席。爽やかな風とともに味わうグランピング気分の高級コース料理。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center gap-2 text-stone-500 text-xs">
+                        <i class="fas fa-tree text-gold"></i> 春〜秋の期間限定アニバーサリーシート
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 text-center text-[11px] sm:text-xs text-stone-400 px-2">
+                <p>※開始時期や詳細は確定次第、公式Webサイトおよび SNS にてお知らせいたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- [アクセスマップエリア] -->
+    <section class="section-padding bg-white border-t border-stone-100">
+        <div class="container mx-auto px-5 max-w-6xl">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+                <div class="w-full lg:w-1/3">
+                    <p class="text-gold font-bold tracking-[0.3em] text-[10px] sm:text-xs mb-4">ACCESS</p>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 serif">森のリストランテへ</h2>
+                    <div class="space-y-5 sm:space-y-6 text-stone-600 text-sm leading-loose">
+                        <div>
+                            <p class="font-bold text-stone-800">住所</p>
+                            <p>〒005-0038<br>北海道旭川市南区南38条西11丁目4-10</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-stone-800">交通アクセス</p>
+                            <p>無料駐車場 100台完備<br>お車でのご来店が大変便利です。</p>
+                        </div>
+                        <div class="pt-4">
+                            <a href="https://maps.app.goo.gl/333ce09f6d40b7c8" target="_blank" class="text-gold font-bold flex items-center gap-2 hover:underline">
+                                <i class="fas fa-external-link-alt text-xs"></i> Google Mapで開く
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/3">
+                    <div class="relative group">
+                        <div class="hidden sm:block absolute -inset-2 border border-gold/30 translate-x-2 translate-y-2 -z-10"></div>
+                        <div class="map-container shadow-2xl overflow-hidden rounded-sm">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2917.642762344239!2d141.3385919750689!3d43.00685629399569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0ad59c6e3ec4e1%3A0x333ce09f6d40b7c8!2z44Oq44K544OI44Op44Oz44OGIOODleOCqeODrOOCueOCv-ODu-ODk-OCouODs-OCqw!5e0!3m2!1sja!2sjp!4v1772159119696!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [CTA 2回目 / フォーム] -->
+    <section id="contact" class="section-padding bg-stone-900 text-white bg-texture bg-blend-multiply">
+        <div class="container mx-auto px-5 max-w-4xl">
+            <div class="text-center mb-12 md:mb-16">
+                <p class="text-gold font-bold tracking-[0.3em] text-[10px] sm:text-xs mb-4">CONTACT</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 serif">ご予約・お問い合わせ</h2>
+                <div class="w-8 h-[1px] bg-gold mx-auto opacity-50"></div>
+            </div>
+
+            <div class="bg-white text-stone-800 rounded-sm p-6 sm:p-10 md:p-16 shadow-2xl relative">
+                <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
+                    <div class="space-y-6 sm:space-y-8">
+                        <div>
+                            <p class="text-xs text-stone-400 tracking-widest mb-2">TEL</p>
+                            <a href="tel:0115818880" class="text-2xl sm:text-3xl font-light serif hover:text-gold transition-colors break-safe">011-581-8880</a>
+                            <p class="text-[10px] text-stone-400 mt-2 italic">※当日のご予約はお電話にて承ります。</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-stone-400 tracking-widest mb-2">WEB</p>
+                            <a href="https://www.r-bianca.jp/contact/index.html" target="_blank" class="cta-button bg-stone-100 py-4 px-6 rounded-sm w-full text-center inline-block font-bold hover:bg-gold hover:text-white">
+                                問い合わせフォームへ
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-6 text-sm text-stone-500 md:border-l md:border-stone-100 md:pl-8 border-t md:border-t-0 pt-6 md:pt-0">
+                        <div>
+                            <p class="font-bold text-stone-800 mb-1">営業時間</p>
+                            <p>ランチ 11:00〜 / ディナー 完全予約制</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-stone-800 mb-1">定休日</p>
+                            <p>毎週水曜日</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-stone-800 mb-1">住所</p>
+                            <p>〒005-0038 北海道旭川市南区南38条西11丁目4-10</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 md:mt-16 text-center border-t border-stone-50 pt-8">
+                    <a href="http://www.r-bianca.jp/" class="text-xs tracking-widest text-stone-400 hover:text-gold uppercase">Official Website <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="bg-white py-14 md:py-20 border-t border-stone-100">
+        <div class="container mx-auto px-5 text-center">
+            <h3 class="text-lg sm:text-xl font-bold mb-5 sm:mb-6 serif tracking-widest italic">Ristorante Foresta Bianca</h3>
+            <div class="flex justify-center gap-8 mb-8 sm:mb-10 text-stone-300">
+                <a href="https://www.facebook.com/ristorante.bianca" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors text-lg">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/ristorante_bianca/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors text-lg">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="text-[10px] text-stone-400 tracking-[0.2em] uppercase">&copy; 2024 Foresta Bianca. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
