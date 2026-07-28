@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Braceria Bar Brio | 15年熟成ラザニアと本格薪火焼きイタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brio-black: #0f0f0f;
+            --brio-gold: #c5a059;
+            --brio-gold-light: #e0c58e;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--brio-black);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .serif-jp { font-family: 'Noto Serif JP', serif; }
+        .serif-en { font-family: 'Playfair Display', serif; }
+
+        .bg-brio { background-color: var(--brio-black); }
+        .text-gold { color: var(--brio-gold); }
+        .bg-gold { background-color: var(--brio-gold); }
+        .border-gold { border-color: var(--brio-gold); }
+        .text-gold-light { color: var(--brio-gold-light); }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(to right, #c5a059, #f9f295, #c5a059);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-brio {
+            background: linear-gradient(135deg, #c5a059 0%, #8e6d2d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-brio::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        .btn-brio:hover::after,
+        .btn-brio:active::after {
+            left: 120%;
+        }
+
+        /* PC のみ斜めセクション区切りを適用。スマホでは平らにして余白崩れを防ぐ */
+        @media (min-width: 768px) {
+            .section-slope {
+                clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
+            }
+        }
+
+        .img-zoom {
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .img-zoom:hover,
+        .img-zoom:active {
+            transform: scale(1.05);
+        }
+
+        .map-container iframe {
+            filter: grayscale(1) contrast(1.2) invert(0.9);
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            display: block;
+            border: 0;
+        }
+
+        @media (min-width: 768px) {
+            .map-container iframe {
+                min-height: 400px;
+            }
+        }
+
+        /* スマホの小さい画面でも見出しが詰まりすぎないよう行間を調整 */
+        @media (max-width: 480px) {
+            h1, h2 { word-break: keep-all; overflow-wrap: break-word; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .img-zoom, .btn-brio::after, html { transition: none !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/steak.png" alt="薪火焼きステーキのシズル" class="w-full h-full object-cover scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl px-6 sm:px-8 py-24 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="hidden md:block vertical-text text-white border-r border-white border-opacity-30 pr-8 mr-12 h-96 shrink-0">
+                <p class="text-2xl tracking-[0.5em] serif-jp font-bold">すすきのの夜を彩る、唯一無二の芳醇。</p>
+            </div>
+
+            <div class="text-center md:text-left w-full">
+                <p class="text-gold font-bold tracking-[0.3em] mb-4 flex items-center justify-center md:justify-start text-sm sm:text-base">
+                    <span class="h-[1px] w-8 bg-gold mr-3"></span>
+                    BRACERIA BAR BRIO
+                </p>
+                <h1 class="serif-jp text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight">
+                    <span class="block mb-1 sm:mb-2 text-white">極限、</span>
+                    <span class="text-gradient-gold">十五層。</span>
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl serif-jp mb-8 md:mb-10 text-gray-300 leading-relaxed">
+                    一日十食限定、魂のラザニア。<br>
+                    シニアソムリエが選ぶ、至高のマリアージュ。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#cta" class="btn-brio text-white px-8 sm:px-10 py-4 sm:py-5 rounded-sm font-bold text-center tracking-widest shadow-2xl active:scale-95 transition-transform">
+                        ご予約・空席確認
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 text-center text-xs tracking-widest">
+            <p class="mb-2 opacity-50 uppercase">Scroll Down</p>
+            <div class="h-10 sm:h-12 w-[1px] bg-gradient-to-b from-white to-transparent mx-auto"></div>
+        </div>
+    </header>
+
+    <!-- 特徴セクション -->
+    <section class="py-16 md:py-24 bg-white text-gray-900 section-slope relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-14 md:mb-20">
+                <span class="serif-en text-4xl sm:text-5xl md:text-6xl opacity-10 block mb-[-16px] md:mb-[-30px]">Specialties</span>
+                <h2 class="serif-jp text-3xl md:text-4xl font-bold relative inline-block">
+                    三つの矜持
+                    <span class="absolute -bottom-2 left-0 w-full h-1 bg-gold"></span>
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-16">
+                <div class="group">
+                    <div class="overflow-hidden mb-6 relative rounded-sm">
+                        <span class="absolute top-4 left-4 z-10 serif-jp text-4xl md:text-5xl text-white font-black opacity-40">壱</span>
+                        <img src="images/razania.jpg" alt="15年のラザニア" class="w-full aspect-[3/4] object-cover img-zoom">
+                    </div>
+                    <h3 class="serif-jp text-xl md:text-2xl font-bold mb-3 md:mb-4">十五層のミルフィーユ</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">一日十食。重なり合うパスタと濃厚なボロネーゼソースが、口の中で解ける瞬間の幸福。15年愛される唯一無二のシグネチャーメニューです。</p>
+                </div>
+                <div class="group">
+                    <div class="overflow-hidden mb-6 relative rounded-sm">
+                        <span class="absolute top-4 left-4 z-10 serif-jp text-4xl md:text-5xl text-white font-black opacity-40">弐</span>
+                        <img src="images/ramchoppu.png" alt="薪火焼きラムチョップ" class="w-full aspect-[3/4] object-cover img-zoom">
+                    </div>
+                    <h3 class="serif-jp text-xl md:text-2xl font-bold mb-3 md:mb-4">猛る炎火の洗礼</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">看板のラムチョップは、ブラックペッパーを効かせたワイルドな味付け。素材の息吹を閉じ込める「炭焼き」こそ、Brioの原点です。</p>
+                </div>
+                <div class="group sm:col-span-2 md:col-span-1">
+                    <div class="overflow-hidden mb-6 relative rounded-sm">
+                        <span class="absolute top-4 left-4 z-10 serif-jp text-4xl md:text-5xl text-white font-black opacity-40">参</span>
+                        <img src="images/paring.png" alt="ワインとペアリング" class="w-full aspect-[3/4] object-cover img-zoom">
+                    </div>
+                    <h3 class="serif-jp text-xl md:text-2xl font-bold mb-3 md:mb-4">ソムリエの審美眼</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">シニアソムリエが厳選。料理の脂、塩気、香りに完璧に寄り添う一皿一献。世界中の個性溢れるワインとの出会いをお約束します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ライブ感セクション -->
+    <section class="py-20 md:py-32 bg-brio relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="hidden sm:block absolute -top-10 -left-10 w-40 h-40 border-t border-l border-gold opacity-30"></div>
+                    <div class="relative overflow-hidden rounded-lg shadow-2xl aspect-video">
+                        <img src="images/cheese.png" alt="店内の臨場感" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <p class="serif-en text-gold mb-3 md:mb-4 italic tracking-widest text-lg md:text-xl">Sensory Experience</p>
+                    <h2 class="serif-jp text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight">目の前でとろける、<br>歓喜のラクレット。</h2>
+                    <p class="text-gray-400 mb-8 md:mb-10 leading-relaxed text-sm sm:text-base">
+                        炭の爆ぜる音、鼻腔をくすぐる香ばしい薫り、そして目の前で削ぎ落とされるラクレットチーズの躍動感。Braceria Bar Brioの料理は、単なる「食事」ではありません。五感を刺激するエンターテインメントをお愉しみください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典エリア -->
+    <section class="py-16 md:py-24 bg-white text-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto border-[6px] sm:border-[10px] border-gold p-6 sm:p-8 md:p-16 relative text-center">
+                <div class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-white px-4 sm:px-6 py-1.5 sm:py-2 text-gold font-bold tracking-[0.3em] sm:tracking-[0.5em] serif-jp text-sm sm:text-base">SPECIAL OFFER</div>
+                <h2 class="serif-jp text-2xl sm:text-3xl font-bold mb-6 md:mb-8 mt-2">「本LPを見た」と仰っていただいた方へ</h2>
+                <div class="text-4xl sm:text-5xl md:text-7xl font-black text-gray-900 mb-6 md:mb-10 serif-jp italic">
+                    <span class="text-gold">泡</span> 又は <span class="text-gold">チーズ</span>
+                </div>
+                <p class="text-lg sm:text-xl font-bold leading-relaxed">ウェルカムスパークリング1杯サービス</p>
+                <p class="text-sm text-gray-400 italic mt-2">（又はソムリエ厳選のおすすめチーズ1種）</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新サービス構想：Coming Soon セクション -->
+    <section class="py-16 md:py-24 bg-texture text-white relative border-t border-b border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="serif-en text-gold tracking-[0.4em] uppercase text-sm block mb-2">New Experience</span>
+                <h2 class="serif-en text-4xl sm:text-5xl md:text-6xl font-extrabold text-gradient-gold mb-4">COMING SOON</h2>
+                <p class="serif-jp text-gray-300 text-base sm:text-lg">Braceria Bar Brio が目指す、新たな食体験のカタチ。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1 -->
+                <div class="bg-zinc-900/90 border border-amber-600/30 p-6 sm:p-8 rounded-sm relative overflow-hidden group hover:border-gold transition-all duration-300 shadow-xl">
+                    <div class="absolute -top-2 -right-2 bg-gradient-to-r from-amber-600 to-yellow-500 text-black text-[10px] font-bold px-4 py-1 uppercase tracking-widest shadow-md">
+                        In Progress
+                    </div>
+                    <div class="text-gold text-3xl serif-en font-bold mb-3">01</div>
+                    <h3 class="serif-jp text-lg sm:text-xl font-bold mb-2 text-white">「十五層ラザニア」全国お取り寄せ</h3>
+                    <p class="text-[11px] text-amber-400/80 mb-4 font-mono tracking-wider">ONLINE STORE / FROZEN DELIVERY</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        名物の15層ラザニアを特殊急速冷凍。焼きたての香ばしさと濃厚ボロネーゼの風味をそのまま全国のご家庭や大切な方へのギフトとしてお届けします。
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-zinc-900/90 border border-amber-600/30 p-6 sm:p-8 rounded-sm relative overflow-hidden group hover:border-gold transition-all duration-300 shadow-xl">
+                    <div class="absolute -top-2 -right-2 bg-gradient-to-r from-amber-600 to-yellow-500 text-black text-[10px] font-bold px-4 py-1 uppercase tracking-widest shadow-md">
+                        Late Night
+                    </div>
+                    <div class="text-gold text-3xl serif-en font-bold mb-3">02</div>
+                    <h3 class="serif-jp text-lg sm:text-xl font-bold mb-2 text-white">深夜24時からの「締めラザニア&ワイン」</h3>
+                    <p class="text-[11px] text-amber-400/80 mb-4 font-mono tracking-wider">LATE NIGHT PAIRING BAR</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        すすきのの夜を締めくくる大人の贅沢。深夜限定ミニラザニアと、シニアソムリエがその夜の気分に合わせて選ぶ極上グラスワインのペアリングセット。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス & マップセクション -->
+    <section class="py-16 md:py-24 bg-texture text-white overflow-hidden relative border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <p class="serif-en text-gold mb-2 tracking-[0.3em]">ACCESS</p>
+                <h2 class="serif-jp text-3xl md:text-4xl font-bold italic">隠れ家へ、ようこそ。</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-0 rounded-sm overflow-hidden shadow-2xl bg-brio border border-gray-800">
+                <!-- 地図エリア -->
+                <div class="w-full lg:w-2/3 map-container relative">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3185939637924!2d141.34926877507198!3d43.055766490867526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298422b00001%3A0x37f16820a5c4b341!2sBraceria%20Bar%20Brio!5e0!3m2!1sja!2sjp!4v1772165612697!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="absolute top-4 left-4 right-4 sm:right-auto bg-brio bg-opacity-80 backdrop-blur-sm p-3 sm:p-4 text-xs border border-gold border-opacity-30 pointer-events-none">
+                        <p class="text-gold font-bold mb-1">地下鉄「すすきの駅」徒歩3分</p>
+                        <p class="text-gray-400">すすきのの中心部からすぐの好立地</p>
+                    </div>
+                </div>
+                <!-- 情報エリア -->
+                <div class="w-full lg:w-1/3 p-8 sm:p-10 md:p-16 flex flex-col justify-center bg-zinc-900">
+                    <h3 class="serif-jp text-2xl font-bold mb-8 text-gold-light border-b border-gray-800 pb-4">Braceria Bar Brio</h3>
+                    <div class="space-y-6 text-sm text-gray-300">
+                        <div>
+                            <p class="text-gold font-bold mb-1 uppercase text-[10px] tracking-widest">Address</p>
+                            <p>〒064-0804 北海道札幌市中央区南４条西４丁目１４−５ 旧石川書店 1F</p>
+                        </div>
+                        <div>
+                            <p class="text-gold font-bold mb-1 uppercase text-[10px] tracking-widest">Phone</p>
+                            <a href="tel:011-215-1970" class="text-xl font-bold text-white block active:opacity-70">011-215-1970</a>
+                        </div>
+                        <div>
+                            <p class="text-gold font-bold mb-1 uppercase text-[10px] tracking-widest">Business Hours</p>
+                            <p>17:00 〜 1：00</p>
+                           
+                            <p class="text-red-400 mt-2">定休日：不定休</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 求人セクション -->
+    <section class="py-16 md:py-24 bg-amber-50/60 text-gray-900 relative border-t border-b border-amber-200/50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white border-2 border-gold/40 p-6 sm:p-8 md:p-14 rounded-sm shadow-xl text-center relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-32 h-32 bg-gold/10 rounded-full blur-2xl pointer-events-none"></div>
+                <span class="serif-en text-gold tracking-[0.3em] uppercase text-xs font-bold block mb-3">Careers</span>
+                <h2 class="serif-jp text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-900">共に働く仲間を募集しています</h2>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
+                    15年のラザニアと本格薪火焼き、そしてシニアソムリエ厳選のワイン。<br class="hidden md:inline">
+                    お客様に特別な食体験をお届けする、ホール・キッチンスタッフを募集中です。
+                </p>
+                <a href="https://job.inshokuten.com/hokkaido/work/detail/51262" target="_blank" rel="noopener noreferrer" class="btn-brio inline-block text-white px-8 sm:px-10 py-4 rounded-sm font-bold text-base tracking-widest shadow-xl active:scale-95 transition-transform">
+                    求人詳細・ご応募はこちら <span class="text-xs ml-1 opacity-80">（飲食店.com）</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Footer -->
+    <footer id="cta" class="bg-brio text-white py-16 md:py-24 relative overflow-hidden border-t border-gray-900">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="serif-jp text-2xl sm:text-3xl md:text-5xl font-bold mb-10 md:mb-12 italic">今夜、Brioで会いましょう。</h2>
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center mb-16 md:mb-20">
+                <a href="tel:011-215-1970" class="w-full md:w-auto border border-white border-opacity-30 hover:bg-white hover:text-black active:bg-white active:text-black transition-all px-10 sm:px-12 py-4 sm:py-5 rounded-sm text-lg sm:text-xl font-bold flex items-center justify-center">
+                    電話で予約
+                </a>
+                <a href="http://regista2010.co.jp/contact.php" class="w-full md:w-auto btn-brio px-10 sm:px-12 py-4 sm:py-5 rounded-sm text-lg sm:text-xl font-bold shadow-xl active:scale-95 transition-transform">
+                    Web予約・問い合わせ
+                </a>
+            </div>
+            <div class="opacity-30 text-[10px] tracking-widest uppercase">
+                &copy; Braceria Bar Brio / Regista Co., Ltd. 2010-2024
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
