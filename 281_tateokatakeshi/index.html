@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TATEOKA TAKESHI | 札幌ミシュラン一つ星フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS.js for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --bg-base: #f8f6f2;
+            --text-main: #1a1a1a;
+            --accent: #c5a059; /* Gold accent */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+
+        /* Vertical Text Class */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* Hero Image */
+        .hero-bg {
+            background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 100%),
+                        url('images/fish.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Subtle Texture Background */
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* Custom underline */
+        .gold-line::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background-color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            letter-spacing: 0.2em;
+        }
+        .cta-button:hover {
+            letter-spacing: 0.3em;
+            background-color: #000;
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+        /* Section Title Style */
+        .section-number {
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.5em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Responsive Map Container */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            filter: grayscale(1);
+            transition: filter 0.5s ease;
+        }
+        .map-container:hover {
+            filter: grayscale(0);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Custom spacing for horizontal hero text */
+        .hero-content {
+            padding-top: 5vh;
+        }
+
+        /* ---- Mobile optimizations ---- */
+        @media (max-width: 767px) {
+            .hero-content {
+                margin-left: 6% !important;
+                margin-right: 6%;
+                padding-top: 0;
+            }
+            .vertical-text.corner-credit {
+                display: none;
+            }
+            section {
+                padding-top: 4.5rem !important;
+                padding-bottom: 4.5rem !important;
+            }
+            .chef-badge {
+                right: -0.5rem !important;
+                font-size: 0.65rem;
+                padding: 0.6rem 0.4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="texture-bg">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-screen flex items-center justify-start overflow-hidden">
+        <div class="absolute inset-0 hero-bg"></div>
+
+        <div class="relative z-10 ml-[8%] md:ml-[12%] mr-[6%] md:mr-0 text-white hero-content py-24 md:py-0" data-aos="fade-up" data-aos-duration="1500">
+            <div class="mb-6 text-xs tracking-[0.4em] font-light text-accent uppercase">Sapporo / Michelin 1-Star</div>
+
+            <div class="max-w-3xl">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight serif mb-6">
+                    北海道の「本質」を、<br>
+                    一皿の芸術へ。
+                </h1>
+
+                <div class="border-l border-accent pl-6">
+                    <p class="tracking-[0.15em] md:tracking-[0.2em] text-sm md:text-base font-light">
+                        鍛冶武士が紡ぐ、素材と器の共演
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12">
+                <a href="#cta" class="inline-block border border-white px-10 md:px-12 py-4 md:py-5 text-xs tracking-[0.3em] hover:bg-white hover:text-black transition-all">
+                    RESERVATION
+                </a>
+            </div>
+        </div>
+
+        <div class="corner-credit absolute bottom-10 right-10 text-white/50 text-[10px] tracking-widest vertical-text uppercase">
+            Tateoka Takeshi / French Restaurant
+        </div>
+    </header>
+
+   <!-- 2. CTA (1回目) -->
+    <section id="cta" class="py-24 px-4 bg-white/80 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <span class="section-number uppercase">Contact</span>
+            <h2 class="text-2xl md:text-3xl mb-8 serif italic">至福のひとときを、予約する</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+                <div class="text-left">
+                    <p class="text-xs text-gray-400 mb-2 uppercase tracking-tighter">Phone Inquiry</p>
+                    <a href="tel:08040458879" class="text-2xl md:text-3xl serif hover:text-accent transition-colors">080-4045-8879</a>
+                    <p class="text-[10px] text-gray-400 mt-2 italic">※月曜定休 / 豊水すすきの駅 徒歩1分</p>
+                </div>
+                <div class="h-px w-20 bg-gray-200 hidden md:block"></div>
+                <a href="https://www.tablecheck.com/shops/tateokatakeshi/reserve" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto inline-block bg-black text-white px-10 md:px-16 py-5 md:py-6 text-xs font-bold tracking-[0.3em] cta-button text-center">
+                    ONLINE RESERVATION
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 動画・コンセプトセクション -->
+    <section class="py-24 md:py-32 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse gap-12 md:gap-16 items-center">
+                <div class="w-full md:w-3/5" data-aos="zoom-out" data-aos-duration="1200">
+                    <div class="relative">
+                        <div class="aspect-[4/3] overflow-hidden shadow-2xl">
+                            <img src="images/gril.jpg" alt="料理動画" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -left-4 md:-bottom-8 md:-left-8 bg-white p-4 md:p-6 shadow-lg max-w-[80%] md:max-w-none" data-aos="fade-up" data-aos-delay="400">
+                            <p class="serif text-base md:text-lg leading-relaxed">
+                                五感を揺さぶる、<br>火入れの魔法。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5" data-aos="fade-right">
+                    <span class="section-number uppercase">Concept</span>
+                    <h3 class="text-3xl md:text-4xl mb-8 serif leading-tight gold-line">作家作品と<br>料理の共演。</h3>
+                    <p class="text-sm text-gray-500 leading-loose mb-8">
+                        全国の作家による一点ものの皿やグラス。視覚的な美しさと、素材の生命力を引き出す繊細な火入れ。
+                        「ここでしか食べられない」圧倒的な没入感を。
+                    </p>
+                    <p class="text-xs font-bold italic tracking-widest text-accent">Signature: 北海道産冬野菜のグリル</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介 -->
+    <section class="py-24 md:py-32 bg-[#1a1a1a] text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-16 md:gap-20 items-center">
+                <div class="relative w-full md:w-1/2" data-aos="fade-up">
+                    <img src="images/chef.png" alt="鍛冶武士シェフ" class="w-full grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl">
+                    <div class="chef-badge absolute top-10 -right-4 md:-right-10 vertical-text py-4 px-2 bg-accent text-black text-xs font-bold tracking-widest uppercase">
+                        Established 2016
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <span class="text-accent text-[10px] tracking-[0.5em] mb-4 block uppercase">The Chef</span>
+                    <h3 class="text-3xl md:text-4xl mb-6 serif font-light">鍛冶 武士</h3>
+                    <p class="text-sm leading-loose text-gray-400 mb-8">
+                        1978年 小樽市出身。24歳で単身渡仏し、ミシュラン三つ星「トロワグロ」にて本場の技術と感性を磨く。2016年、札幌・すすきのに「TATEOKA TAKESHI」を開業後、わずか半年でミシュラン一つ星を獲得。
+                    </p>
+                    <div class="space-y-4 text-xs tracking-widest">
+                        <div class="flex gap-4 border-b border-white/10 pb-2">
+                            <span class="text-accent shrink-0">2003</span>
+                            <span>単身渡仏、三つ星トロワグロ等で修行</span>
+                        </div>
+                        <div class="flex gap-4 border-b border-white/10 pb-2">
+                            <span class="text-accent shrink-0">2016</span>
+                            <span>札幌本店開業</span>
+                        </div>
+                        <div class="flex gap-4 border-b border-white/10 pb-2">
+                            <span class="text-accent shrink-0">2017</span>
+                            <span>ミシュラン一つ星獲得</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. こだわり・言語化・解決 -->
+    <section class="py-24 md:py-32 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div data-aos="fade-up">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl serif mb-12 md:mb-16 leading-relaxed">
+                    本物のみが持つ、<br class="md:hidden">静謐な感動。
+                </h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 text-left items-center">
+                <div data-aos="fade-right">
+                    <p class="text-xs text-accent mb-4 tracking-widest italic uppercase">Experience</p>
+                    <p class="text-sm leading-loose text-gray-600 mb-6">
+                        華美な装飾ではなく、素材そのものの輪郭を。
+                        ソースに頼るのではなく、食材が内包する旨味を。
+                        私たちが提供するのは、流行に左右されない「料理の本質」です。
+                    </p>
+                    <div class="mt-8 p-6 border-l border-accent italic text-xs text-gray-500 bg-white shadow-sm leading-relaxed">
+                        「ホッケの良いところだけを凝縮したようなお味で、外はカリッと身はしっとりジューシー。サービスにも感動です。」
+                    </div>
+                </div>
+                <div data-aos="fade-left" class="relative">
+                    <img src="images/hokke.jpg" alt="料理写真" class="w-full shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 特典 -->
+    <section class="py-20 md:py-24 bg-white border-y border-gray-100">
+        <div class="max-w-xl mx-auto text-center px-4" data-aos="zoom-in">
+            <div class="inline-block border border-accent text-accent px-6 py-1 text-[10px] tracking-widest mb-6 uppercase">Web Limited Offer</div>
+            <h3 class="text-xl md:text-2xl serif mb-6 italic">至福の始まりを告げる、一杯。</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-8">
+                Webよりご予約いただいたお客様限定で、<br>
+                乾杯のシャンパーニュをサービスさせていただきます。
+            </p>
+            <div class="h-px w-12 bg-accent mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- 7. NEW SERVICE (COMING SOON) -->
+    <section class="py-24 md:py-32 bg-[#121212] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('images/hokkaido.png')] bg-cover bg-center"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="inline-block px-4 py-1 border border-accent text-accent text-[10px] tracking-[0.4em] mb-6 uppercase">
+                    Coming Soon / New Project
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl serif mb-6 tracking-wide">
+                    TATEOKA TAKESHI AT HOME
+                </h2>
+                <p class="text-accent text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] mb-12 uppercase italic">
+                    〜 邸宅で味わう、北海道の四季と極上体験 〜
+                </p>
+
+                <div class="grid md:grid-cols-2 max-w-3xl mx-auto gap-6 md:gap-8 text-left mb-16">
+                    <div class="bg-white/5 p-6 md:p-8 border border-white/10 rounded-sm" data-aos="fade-up" data-aos-delay="100">
+                        <span class="text-accent text-xs font-mono mb-2 block">01 / SELECTION</span>
+                        <h4 class="serif text-lg mb-3">旬の北海道最高級素材</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            シェフ自ら農家や漁港を訪れ厳選した、その季節最も生命力に満ちた極上食材をご自宅にお届けします。
+                        </p>
+                    </div>
+                    <div class="bg-white/5 p-6 md:p-8 border border-white/10 rounded-sm" data-aos="fade-up" data-aos-delay="200">
+                        <span class="text-accent text-xs font-mono mb-2 block">02 / CHEF'S SAUCE</span>
+                        <h4 class="serif text-lg mb-3">特製コンディマン・火入れレシピ</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            店舗秘伝のソースと仕上げ用オイル、火入れのコツを伝授する限定案内付きで、プロの味付けを再現。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-transparent via-accent/20 to-transparent p-px max-w-xl mx-auto" data-aos="fade-up">
+                    <div class="bg-[#121212] p-6 md:p-8 text-center">
+                        <p class="text-xs text-gray-300 leading-relaxed mb-6">
+                            会員様限定・数量限定にて事前予約を順次開始いたします。<br>
+                            サービス開始のご案内を優先的にお受け取りになりたい方は、以下よりご登録ください。
+                        </p>
+                        <a href="#cta" class="inline-block bg-accent text-black font-bold px-8 md:px-10 py-4 text-xs tracking-[0.3em] hover:bg-white transition-all">
+                            PRE-REGISTER (優先案内登録)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA (最終) -->
+    <section class="py-24 md:py-32 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-20">
+                <!-- 店舗情報 & マップ -->
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl serif mb-10 md:mb-12">店舗情報</h2>
+                    <div class="space-y-6 text-sm mb-10 md:mb-12">
+                        <div class="flex flex-col sm:flex-row gap-1 sm:gap-8 border-b border-gray-200 pb-4">
+                            <span class="sm:w-24 text-accent tracking-tighter shrink-0 uppercase">Address</span>
+                            <span class="leading-relaxed">〒060-0063 北海道札幌市中央区南3条西2丁目<br>KT3条ビル1F(都通り側)</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-1 sm:gap-8 border-b border-gray-200 pb-4">
+                            <span class="sm:w-24 text-accent tracking-tighter shrink-0 uppercase">Access</span>
+                            <span class="leading-relaxed">豊水すすきの駅 徒歩1分 / すすきの駅 徒歩3分</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-1 sm:gap-8 border-b border-gray-200 pb-4">
+                            <span class="sm:w-24 text-accent tracking-tighter shrink-0 uppercase">Phone</span>
+                            <a href="tel:08040458879" class="hover:text-accent font-bold">080-4045-8879</a>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-1 sm:gap-8 border-b border-gray-200 pb-4">
+                            <span class="sm:w-24 text-accent tracking-tighter shrink-0 uppercase">Open</span>
+                            <span class="leading-relaxed">営業時間　18:00〜21:00（完全予約制）<br>月曜定休</span>
+                        </div>
+                    </div>
+                    <!-- Google Map Embed -->
+                    <div class="map-container shadow-2xl rounded-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.27537424003!2d141.35282487507203!3d43.05667559080933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29839ad23921%3A0x83ea558e4254c7ac!2zVEFURU9LQSBUQUtFU0hJ77yP77yI5pi86aOf5aCC44Gy44KL44GK44GL77yJ!5e0!3m2!1sja!2sjp!4v1772157551722!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="店舗地図"></iframe>
+                    </div>
+                </div>
+
+                <!-- 予約フォーム -->
+                <div class="bg-white p-8 sm:p-10 md:p-16 shadow-2xl relative" data-aos="fade-left">
+                    <div class="absolute -top-6 -left-6 bg-accent w-12 h-12 hidden md:block"></div>
+                    <h3 class="text-xl md:text-2xl serif mb-10 text-center tracking-[0.2em] italic uppercase">Reservation</h3>
+                    <form class="space-y-8">
+                        <div class="relative border-b border-gray-200 py-2">
+                            <label for="res-name" class="text-[10px] text-gray-400 absolute -top-4 left-0 uppercase tracking-widest">Name</label>
+                            <input id="res-name" type="text" placeholder="お名前" class="w-full bg-transparent focus:outline-none text-sm serif py-1">
+                        </div>
+                        <div class="relative border-b border-gray-200 py-2">
+                            <label for="res-email" class="text-[10px] text-gray-400 absolute -top-4 left-0 uppercase tracking-widest">Email</label>
+                            <input id="res-email" type="email" placeholder="メールアドレス" class="w-full bg-transparent focus:outline-none text-sm py-1">
+                        </div>
+                        <div class="relative border-b border-gray-200 py-2">
+                            <label for="res-date" class="text-[10px] text-gray-400 absolute -top-4 left-0 uppercase tracking-widest">Date</label>
+                            <select id="res-date" class="w-full bg-transparent focus:outline-none text-sm appearance-none py-1">
+                                <option>ご来店希望日を選択</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-black text-white py-5 md:py-6 text-xs font-bold tracking-[0.4em] cta-button">
+                            CONFIRM
+                        </button>
+                    </form>
+                    <p class="text-[9px] text-gray-400 mt-8 text-center leading-relaxed">
+                        ※ご予約は折り返しのご連絡をもって確定となります。<br>
+                        お急ぎの方はお電話にてお問い合わせください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-white text-center border-t border-gray-50">
+        <p class="text-[10px] tracking-[0.5em] text-gray-400 uppercase">Tateoka Takeshi / Sapporo</p>
+        <p class="mt-4 text-[9px] text-gray-300">&copy; 2024 TATEOKA TAKESHI. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        AOS.init({
+            once: true,
+            offset: 80,
+            duration: 900
+        });
+    </script>
+</body>
+</html>
