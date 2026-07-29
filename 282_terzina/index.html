@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>トラットリア テルツィーナ | 北海道食材を活かした本格イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: #fff;
+            overflow-x: hidden;
+            /* space for fixed mobile CTA bar */
+            padding-bottom: 84px;
+        }
+        @media (min-width: 768px) {
+            body { padding-bottom: 0; }
+        }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+
+        .hero-bg {
+            background: linear-gradient(to right, rgba(0,0,0,0.72) 30%, rgba(0,0,0,0.15) 100%), url('images/hokkaido.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .bg-gold { background: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b8860b 100%); }
+        .text-accent { color: #c0392b; }
+        .bg-accent { background-color: #c0392b; }
+
+        .floating-cta { animation: bounce 2s infinite; }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .floating-cta { animation: none; }
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            display: block;
+        }
+        .facebook-icon:hover {
+            color: #1877F2;
+            transform: translateY(-3px);
+        }
+        /* Ensure fixed bottom bar respects iOS safe area */
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        /* Prevent tap highlight flash on mobile */
+        a, button { -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body>
+
+    <!-- ヒーローセクション -->
+    <header class="hero-bg min-h-[100svh] flex flex-col justify-center relative px-5 sm:px-10 md:px-20 overflow-hidden">
+        <div class="absolute top-6 left-5 sm:top-8 sm:left-8 z-20">
+            <span class="text-white font-serif font-bold text-lg sm:text-xl tracking-wide">Trattoria Terzina</span>
+        </div>
+
+        <div class="relative z-10 max-w-2xl text-white mt-16 md:mt-0">
+           
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-5 sm:mb-6 font-serif">
+                
+                本場の技で味わう<br>
+                <span class="text-yellow-400">至高のラザーニャ</span>
+            </h1>
+            <p class="text-sm sm:text-base md:text-lg mb-8 sm:mb-10 leading-relaxed font-serif italic opacity-95">
+                「納得できる食材しか使わない」<br>
+                シェフ塚川が贈る、道産食材の究極イタリアン
+            </p>
+
+            <div class="relative group max-w-md">
+                <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-red-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative bg-white p-2 rounded-lg shadow-2xl">
+                    <img src="images/razania.jpg"
+                         alt="自慢のラザーニャ"
+                         class="w-full h-48 sm:h-64 object-cover rounded">
+                    <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-red-600 text-white p-2.5 sm:p-3 rounded-full text-center font-bold shadow-lg transform rotate-12 leading-tight">
+                        <span class="text-[10px] sm:text-xs block">イチオシ</span>
+                        <span class="text-xs sm:text-sm">本格派</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 hidden sm:block">
+            <div class="bg-gold w-24 h-24 sm:w-32 sm:h-32 rounded-full flex flex-col items-center justify-center text-stone-900 shadow-xl border-4 border-white">
+                <span class="text-[10px] sm:text-xs font-bold">おかげさまで</span>
+                <span class="text-2xl sm:text-3xl font-bold font-serif leading-none">26</span>
+                <span class="text-[10px] sm:text-xs font-bold">ANNIV.</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 固定CTA (モバイル用) -->
+    <div class="fixed bottom-0 left-0 w-full z-50 bg-white border-t border-gray-200 p-3 shadow-2xl md:hidden safe-bottom">
+        <a href="tel:0112213314" class="flex items-center justify-center gap-2 w-full bg-accent text-white text-center font-bold py-4 rounded-full text-base floating-cta">
+            <i class="fas fa-phone-alt"></i> 今すぐ予約・お問い合わせ
+        </a>
+    </div>
+
+    <!-- 第1CTAエリア -->
+    <section class="bg-stone-100 py-10 border-b border-gray-200">
+        <div class="container mx-auto px-5 sm:px-4 text-center">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8">
+                <div class="text-center md:text-left">
+                    <p class="text-accent font-bold mb-1 text-sm sm:text-base">【期間限定】WEB予約限定特典あり</p>
+                    <h2 class="text-xl sm:text-2xl font-bold">シェフ厳選の自家製プチドルチェをサービス</h2>
+                </div>
+                <div class="flex gap-3 sm:gap-4 w-full sm:w-auto">
+                    <a href="tel:0112213314" class="flex-1 sm:flex-none text-center bg-stone-800 text-white font-bold py-4 px-4 sm:px-8 rounded-md hover:bg-black transition text-sm sm:text-base">
+                        電話で予約
+                    </a>
+                    <a href="https://terzina1998.com/" class="flex-1 sm:flex-none text-center bg-accent text-white font-bold py-4 px-4 sm:px-10 rounded-md hover:opacity-90 transition shadow-lg text-sm sm:text-base">
+                        ネットで予約
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 悩みセクション -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-4 max-w-5xl">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-accent font-bold text-base sm:text-lg inline-block border-b-2 border-accent mb-4 italic">Dining Experience</span>
+                <h2 class="text-2xl sm:text-4xl font-bold font-serif">こんなお食事の悩み、ありませんか？</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-6 sm:gap-8">
+                <div class="relative pt-8 p-6 sm:p-8 bg-stone-50 rounded-2xl border border-gray-100">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-stone-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
+                    <p class="text-gray-600 text-center font-bold text-sm sm:text-base">大切な記念日なのに、どこも似たような料理ばかり…</p>
+                </div>
+                <div class="relative pt-8 p-6 sm:p-8 bg-stone-50 rounded-2xl border border-gray-100">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-stone-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+                    <p class="text-gray-600 text-center font-bold text-sm sm:text-base">本格的な味が食べたいけど、堅苦しい雰囲気は苦手。</p>
+                </div>
+                <div class="relative pt-8 p-6 sm:p-8 bg-stone-50 rounded-2xl border border-gray-100">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-stone-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+                    <p class="text-gray-600 text-center font-bold text-sm sm:text-base">「北海道産」と書いてあるけど、本当に美味しいものなの？</p>
+                </div>
+            </div>
+
+            <div class="mt-12 sm:mt-16 text-center">
+                <i class="fas fa-chevron-down text-2xl sm:text-3xl text-stone-300"></i>
+                <div class="mt-6 sm:mt-8 bg-accent text-white p-6 sm:p-10 rounded-3xl shadow-xl">
+                    <h3 class="text-xl sm:text-3xl font-bold mb-3 sm:mb-4 font-serif leading-snug">トラットリア テルツィーナが<br>その期待に、120%でお応えします。</h3>
+                    <p class="text-sm sm:text-lg opacity-90">シェフが自ら生産者を訪ね歩き、納得したものだけで作る「本物の北海道イタリアン」。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- こだわりセクション -->
+    <section class="py-16 sm:py-24 bg-stone-50">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-2xl sm:text-4xl font-bold font-serif">美味しさの「2つの誓い」</h2>
+            </div>
+
+            <div class="space-y-16 sm:space-y-24">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-full md:w-1/2 relative">
+                        <img src="images/syokuzai.jpg" alt="北海道食材" class="rounded-2xl shadow-2xl w-full h-56 sm:h-auto object-cover">
+                        <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-6 bg-gold text-stone-900 p-4 sm:p-6 rounded-lg font-bold shadow-xl">
+                            <span class="block text-xs sm:text-sm">こだわり 01</span>
+                            <span class="text-base sm:text-xl italic">生産地直送を越えた情熱</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 mt-4 md:mt-0">
+                        <h3 class="text-xl sm:text-3xl font-bold mb-4 sm:mb-6 font-serif">「生産者の顔」が見える食材だけ。</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm sm:text-lg mb-4 sm:mb-6">
+                            野菜、肉、魚介。シェフ塚川は自ら生産者のもとへ足を運び、その情熱を確認します。納得できない食材は、例え人気メニューであってもお出ししません。北海道の土と海が育んだ「真の旬」をお愉しみください。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+                    <div class="w-full md:w-1/2 relative">
+                        <img src="images/pasta.png" alt="イタリア伝統技法" class="rounded-2xl shadow-2xl w-full h-56 sm:h-auto object-cover">
+                        <div class="absolute -bottom-5 -left-3 sm:-bottom-6 sm:-left-6 bg-gold text-stone-900 p-4 sm:p-6 rounded-lg font-bold shadow-xl">
+                            <span class="block text-xs sm:text-sm">こだわり 02</span>
+                            <span class="text-base sm:text-xl italic">本場イタリアの修行経験</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 mt-4 md:mt-0">
+                        <h3 class="text-xl sm:text-3xl font-bold mb-4 sm:mb-6 font-serif">ローマ・ヴェネツィアで得た真髄。</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm sm:text-lg mb-4 sm:mb-6">
+                            30歳で渡ったイタリア。約2年間の修行で身につけたのは、単なるレシピではなく「素材を活かす呼吸」です。その伝統技法と北海道の最高級食材が融合し、ここでしか味わえない「北海道イタリアン」が誕生します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典 CTA -->
+    <section class="py-14 sm:py-16 bg-accent text-white text-center">
+        <div class="container mx-auto px-5 sm:px-4">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 font-serif">今この瞬間の「旬」を, 予約する</h2>
+            <div class="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl inline-block mb-8 sm:mb-10 border border-white/20">
+                <p class="text-base sm:text-xl">【限定特典】このページからご予約の方に<br>
+                <span class="text-yellow-400 font-bold text-lg sm:text-2xl">「自家製プチドルチェ」を1品プレゼント中</span></p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <a href="tel:0112213314" class="w-full sm:w-auto bg-white text-accent font-bold py-4 sm:py-5 px-8 sm:px-12 rounded-full text-lg sm:text-2xl shadow-2xl hover:scale-105 transition">
+                    電話で確認 (011-221-3314)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 口コミ -->
+    <section class="py-16 sm:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-4 text-center mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-4xl font-bold font-serif">喜びの声が、信頼の証です。</h2>
+        </div>
+        <div class="container mx-auto px-5 sm:px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            <div class="bg-stone-50 p-6 sm:p-8 rounded-2xl relative border border-gray-100">
+                <div class="flex text-yellow-500 mb-4 text-sm justify-center">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">「ちょっとしたお祝いで利用。ドルチェのサプライズ, 本当に大満足でした。」</p>
+                <p class="font-bold text-xs">— 札幌市 40代 女性</p>
+            </div>
+            <div class="bg-stone-50 p-6 sm:p-8 rounded-2xl relative border border-gray-100">
+                <div class="flex text-yellow-500 mb-4 text-sm justify-center">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">「ランチメニューにない鹿肉を快く提供してくれました。その心意気に感動しました。」</p>
+                <p class="font-bold text-xs">— 出張で来道 30代 男性</p>
+            </div>
+            <div class="bg-stone-50 p-6 sm:p-8 rounded-2xl relative border border-gray-100">
+                <div class="flex text-yellow-500 mb-4 text-sm justify-center">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">「ベビーカーOKなのが本当に嬉しい。ウニのパスタは絶品。お肉もあっさりいただけます。」</p>
+                <p class="font-bold text-xs">— 札幌市 30代 ママ</p>
+            </div>
+            <div class="bg-stone-50 p-6 sm:p-8 rounded-2xl relative border border-gray-100">
+                <div class="flex text-yellow-500 mb-4 text-sm justify-center">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">「店を出る時, シェフが厨房から挨拶してくれて温かい気持ちになりました。」</p>
+                <p class="font-bold text-xs">— 定期的に利用 50代 男性</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON セクション -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="inline-block bg-gold text-stone-900 text-xs font-bold px-4 py-1.5 rounded-full tracking-widest uppercase mb-4 shadow-lg">
+                    New Projects
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif mb-4 tracking-tight">COMING SOON</h2>
+                <p class="text-stone-400 text-sm sm:text-lg max-w-2xl mx-auto">
+                    「もっと身近に、もっと特別に。」<br>
+                    お客様のお声から生まれる、トラットリア テルツィーナの新しい挑戦。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="bg-stone-800/80 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-stone-700/60 hover:border-yellow-500/50 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-stone-700 text-yellow-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl mb-5 sm:mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <span class="text-xs font-bold text-yellow-400 tracking-wider uppercase block mb-2">01. Home Dining</span>
+                        <h3 class="text-xl sm:text-2xl font-bold font-serif mb-3 sm:mb-4 leading-snug">「至高のラザーニャ」<br>全国お届けミールキット</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-4 sm:mb-6">
+                            大人気の「看板ラザーニャ」や旬の道産パスタソースを、できたての美味しさのまま急速冷凍。ご自宅で温めるだけでレストランクオリティをお愉しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-400">
+                        <span>準備中 / 今秋スタート予定</span>
+                        <i class="fas fa-arrow-right text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <div class="bg-stone-800/80 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-stone-700/60 hover:border-yellow-500/50 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-stone-700 text-yellow-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl mb-5 sm:mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <span class="text-xs font-bold text-yellow-400 tracking-wider uppercase block mb-2">02. Online Academy</span>
+                        <h3 class="text-xl sm:text-2xl font-bold font-serif mb-3 sm:mb-4 leading-snug">シェフ直伝！<br>イタリアン・オンラインサロン</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-4 sm:mb-6">
+                            家庭で再現できるプロの隠し味や、北海道ワインとのペアリング術を学べる会員制オンラインレッスン。会員限定のマニアックなワイン頒布会も企画中。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-400">
+                        <span>会員優先案内予定</span>
+                        <i class="fas fa-arrow-right text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 sm:mt-12 bg-stone-800/50 border border-stone-700 rounded-2xl p-5 sm:p-6 md:p-8 text-center max-w-2xl mx-auto">
+                <p class="text-sm md:text-base text-stone-300">
+                    新サービスの開始時期や限定案内は、公式Webサイト・Facebook等にて順次公開いたします。どうぞご期待ください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス情報 & Googleマップ -->
+    <section class="py-16 sm:py-24 bg-stone-100">
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <!-- 情報テキスト -->
+                <div class="lg:w-2/5 p-6 sm:p-8 md:p-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 font-serif border-b pb-4">ACCESS</h2>
+                    <div class="space-y-5 sm:space-y-6">
+                        <div>
+                            <p class="text-xs text-accent font-bold mb-1 uppercase tracking-widest">Location</p>
+                            <p class="text-gray-800 font-bold text-sm sm:text-base">〒060-0061<br>札幌市中央区南1条西6丁目 第27栄和ビル 2F</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-accent font-bold mb-1 uppercase tracking-widest">Reservation</p>
+                            <p class="text-xl sm:text-2xl font-bold text-accent">011-221-3314</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-accent font-bold mb-1 uppercase tracking-widest">Hours</p>
+                            <p class="text-gray-800 text-sm sm:text-base">Lunch 11:30〜15:00 / Dinner 17:30〜22:00<br><span class="text-xs text-gray-500"></span></p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-accent font-bold mb-1 uppercase tracking-widest">Train</p>
+                            <p class="text-gray-800 italic text-sm sm:text-base">大通駅 徒歩5分 / 西4丁目駅 徒歩4分</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 sm:mt-10">
+                        
+                    </div>
+                </div>
+                <!-- Googleマップ埋め込み -->
+                <div class="lg:w-3/5 map-container h-72 sm:h-96 lg:h-auto">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.1966631096343!2d141.3465931750721!3d43.05833119070334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2970d174b2a3%3A0x969ca65d248770d!2z44OI44Op44OD44OI44Oq44KiIOODhuODq-ODhOOCo-ODvOODig!5e0!3m2!1sja!2sjp!4v1772158188432!5m2!1sja!2sjp"
+                        style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="トラットリア テルツィーナ 地図"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <footer class="bg-stone-900 text-white py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="mb-8 sm:mb-10">
+                <h2 class="text-2xl sm:text-4xl font-bold font-serif mb-3 sm:mb-4 italic">Un'esperienza indimenticabile.</h2>
+                <p class="text-base sm:text-lg text-gray-400">心に刻まれる, 至福のひとときを。</p>
+            </div>
+
+            <div class="max-w-xl mx-auto space-y-5 sm:space-y-6 px-2 mb-10 sm:mb-12">
+                <a href="https://terzina1998.com/" class="block w-full bg-gold text-stone-900 font-bold py-5 sm:py-6 rounded-full text-lg sm:text-2xl shadow-2xl transform hover:scale-105 transition duration-300">
+                    24時間ネット予約はこちら
+                </a>
+                <a href="tel:0112213314" class="block w-full bg-accent text-white font-bold py-5 sm:py-6 rounded-full text-lg sm:text-2xl shadow-2xl transform hover:scale-105 transition duration-300">
+                    お電話でのお問い合わせ
+                </a>
+            </div>
+
+            <!-- Facebook リンク -->
+            <div class="flex justify-center items-center gap-4 mb-8">
+                <p class="text-sm text-gray-400">Follow us on</p>
+                <a href="https://www.facebook.com/terzina1998/" target="_blank" rel="noopener" class="facebook-icon text-white text-3xl sm:text-4xl transition duration-300">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+
+            <p class="mt-8 text-xs text-gray-500">&copy; 1998-2024 Trattoria Terzina. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
