@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>洋食屋ローリエ | 帝国ホテル出身シェフの本格洋食</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-red: #8b0000;
+            --deep-brown: #2d1b0d;
+            --gold-accent: #b89551;
+            --cream-bg: #fdfaf5;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--deep-brown);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+
+        .headline-en {
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.1em;
+            color: var(--gold-accent);
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--gold-accent);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #b89551 0%, #8e6d2d 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(184, 149, 81, 0.3);
+        }
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(184, 149, 81, 0.4);
+        }
+        .btn-premium:active {
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* スマホでの見出しサイズ・行間の微調整 */
+        @media (max-width: 640px) {
+            .hero-heading {
+                font-size: 2rem;
+                line-height: 1.4;
+            }
+            .hero-sub {
+                font-size: 0.7rem;
+                letter-spacing: 0.15em;
+            }
+        }
+
+        /* タップ領域を広めに確保 */
+        a, button {
+            touch-action: manipulation;
+        }
+
+        /* iframeがはみ出さないように */
+        iframe {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/hokkaido.png" alt="本格洋食イメージ" class="w-full h-full object-cover scale-105 brightness-[0.4]">
+        </div>
+
+        <div class="relative z-10 text-center px-5 sm:px-4 w-full">
+            <div class="hero-sub mb-4 headline-en text-xs sm:text-sm md:text-base font-bold fade-in" id="fv-sub">Authentic Western Cuisine since 1994</div>
+            <h1 class="hero-heading text-3xl sm:text-4xl md:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-white serif tracking-tight fade-in" id="fv-main">
+                帝国ホテルの技を、<br>
+                <span class="text-white">旭川の日常に。</span>
+            </h1>
+            <div class="inline-block border-y border-white/30 py-3 px-6 sm:py-4 sm:px-8 mb-8 sm:mb-10 fade-in max-w-[90%] sm:max-w-none" id="fv-desc">
+                <p class="text-sm sm:text-base md:text-xl text-white/90 serif">
+                    創業30年、2日煮込んだデミグラスソースが誘う、至福のひと時。
+                </p>
+            </div>
+            <div class="fade-in" id="fv-btn">
+                <a href="#cta" class="btn-premium text-white font-bold py-4 px-8 sm:py-5 sm:px-12 rounded-full text-base sm:text-xl inline-block">
+                    本物の味を体験する
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-[10px] sm:text-xs tracking-widest uppercase">
+            Scroll down
+        </div>
+    </header>
+
+    <!-- 追従ナビゲーション -->
+    <nav class="sticky top-0 z-[100] bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm py-2.5 sm:py-3">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="serif font-bold text-lg sm:text-xl tracking-tight">ローリエ</span>
+                <span class="text-[9px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-widest">Sapporo Motomachi</span>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-6">
+                <div class="hidden md:block text-right">
+                    <p class="text-[10px] font-bold text-gray-400">RESERVATION</p>
+                    <p class="text-lg font-bold text-gray-800">011-782-1839</p>
+                </div>
+                <a href="tel:0117821839" class="bg-[#2d1b0d] text-white px-4 py-2 sm:px-6 sm:py-2 rounded-full font-bold text-xs sm:text-sm hover:bg-black transition whitespace-nowrap">
+                    予約・注文
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 紹介セクション -->
+    <section class="py-14 sm:py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="md:w-1/2 relative w-full">
+                    <div class="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-28 h-28 sm:w-40 sm:h-40 bg-[#b89551] opacity-10 rounded-full"></div>
+                    <img src="images/hanbagu.png" alt="調理風景" class="relative z-10 rounded-lg shadow-2xl w-full">
+                    <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-6 bg-[#2d1b0d] text-white p-4 sm:p-6 rounded-lg z-20">
+                        <p class="serif text-xl sm:text-2xl font-bold">2 Days</p>
+                        <p class="text-[10px] sm:text-xs text-[#b89551] font-bold">Simmered Sauce</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 w-full mt-4 md:mt-0">
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-5 sm:mb-8 serif leading-snug">
+                        2日間、<br>
+                        <span class="text-[#b89551]">つきっきりで育てる</span><br>
+                        伝説のデミグラスソース。
+                    </h2>
+                    <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                        帝国ホテルで磨いた技術の結晶。それは、素材の旨味を極限まで凝縮させる「時間」という調味料です。一口食べればわかる、家庭では決して辿り着けない深みとコク。
+                    </p>
+                    <div class="flex items-center gap-4 text-[#b89551] font-bold">
+                        <span class="w-10 sm:w-12 h-[1px] bg-[#b89551]"></span>
+                        <span class="text-xs sm:text-sm tracking-widest uppercase">Secret of taste</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- イチオシメニュー -->
+    <section class="py-14 sm:py-24 bg-[#fdfaf5]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="headline-en text-xs sm:text-sm font-bold block mb-2">Our Specialties</span>
+                <h2 class="text-3xl sm:text-4xl font-bold serif section-title">至極の逸品</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-8 sm:gap-12 max-w-5xl mx-auto">
+                <div class="group">
+                    <div class="overflow-hidden rounded-xl mb-5 sm:mb-6 shadow-lg">
+                        <img src="images/esukaroppu.jpg" alt="エスカロップ" class="w-full h-64 sm:h-80 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="flex justify-between items-end mb-3 sm:mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold serif">ローリエ風エスカロップ</h3>
+                        
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">
+                        サクサクの薄カツに特製ソースをたっぷりとかけ、バターライスと共に。帝国ホテルのエスプリが息づく、当店の看板メニューです。
+                    </p>
+                </div>
+                <div class="group">
+                    <div class="overflow-hidden rounded-xl mb-5 sm:mb-6 shadow-lg">
+                        <img src="images/omuraisu.png" alt="オムライス" class="w-full h-64 sm:h-80 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="flex justify-between items-end mb-3 sm:mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold serif">ふわとろオムライス</h3>
+                       
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">
+                        卵4個を使用し、プロの火入れで仕上げた極上の食感。ナイフで開いた瞬間に広がる黄金の景色をお楽しみください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 自己紹介・ストーリー -->
+    <section class="py-14 sm:py-24 bg-white relative">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+                <div class="md:w-1/2 w-full">
+                    <div class="relative max-w-sm mx-auto md:max-w-none">
+                        <img src="images/chef.png" alt="シェフ" class="rounded shadow-2xl grayscale hover:grayscale-0 transition duration-500 w-full">
+                        <div class="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 w-full h-full border-2 border-[#b89551] z-[-1] opacity-20"></div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 w-full mt-8 md:mt-0">
+                    <span class="text-[#b89551] font-bold mb-3 sm:mb-4 block headline-en text-sm">Craftsmanship</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-5 sm:mb-8 serif">
+                        格好いいコック帽に、<br>
+                        憧れて。
+                    </h2>
+                    <p class="text-gray-600 mb-5 sm:mb-6 leading-loose text-sm sm:text-base">
+                        「中華帽より、洋食のコック帽が格好よかった」<br>
+                        そんな少年の純粋な憧れから始まった料理人人生。帝国ホテルという日本最高峰の門を叩き、厳しい修行の日々を送りました。
+                    </p>
+                    <p class="text-gray-600 mb-8 sm:mb-10 leading-loose text-sm sm:text-base">
+                        1994年。慣れ親しんだ旭川の地で、自分の理想とする洋食を形にするために開業した「ローリエ」。30年間、変わらぬ情熱でフライパンを握り続けています。
+                    </p>
+                    <div class="flex items-center gap-4">
+                       
+                        <div>
+                            <p class="text-xs sm:text-sm text-gray-400 font-bold tracking-widest">OWNER CHEF</p>
+                            <p class="text-lg sm:text-xl font-bold serif">北山 潤</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-14 sm:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold serif">喜びの声</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+                    <div class="flex text-[#b89551] mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 italic mb-4">「お店のカツレツ」を食べた時、良い意味で期待を裏切られました。表面はカリカリ、中はフワトロ。帝国ホテル仕込みのスープも絶品で、心温まる時間でした。</p>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest text-right">&mdash; Gourmet Guest</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+                    <div class="flex text-[#b89551] mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 italic mb-4">雰囲気が庶民的で落ち着き、味はまさに上流。女性一人でも入りやすく、店員さんの笑顔も素敵。特別な日ではなく、日常にこんな美味しい洋食がある幸せ。</p>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest text-right">&mdash; Regular Customer</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-sm sm:col-span-2 md:col-span-1">
+                    <div class="flex text-[#b89551] mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 italic mb-4">エビフライにタルタルソース。シンプルですが、ここのタルタルは最高です。静かな空間で、自分へのご褒美にぴったりなお店です。</p>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest text-right">&mdash; Dinner Guest</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON セクション -->
+    <section class="py-14 sm:py-24 bg-[#1f1308] text-white relative overflow-hidden border-t border-b border-[#b89551]/20">
+        <div class="absolute -right-20 -top-20 w-72 h-72 sm:w-96 sm:h-96 bg-[#b89551]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-72 h-72 sm:w-96 sm:h-96 bg-[#b89551]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 relative z-10 max-w-6xl">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="inline-block px-4 py-1 rounded-full bg-[#b89551]/20 text-[#b89551] text-xs font-bold tracking-widest uppercase mb-3 border border-[#b89551]/30">New Projects</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold serif text-white tracking-wide">COMING SOON</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-4 max-w-xl mx-auto">
+                    ローリエの「本物の味」をもっと身近に、もっと特別な体験へ。準備中の新サービスをいち早くご紹介します。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: EC通販 -->
+                <div class="bg-gradient-to-b from-white/10 to-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative flex flex-col justify-between group hover:border-[#b89551]/50 transition duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-5 sm:mb-6">
+                            <span class="text-2xl sm:text-3xl text-[#b89551]"><i class="fas fa-box-open"></i></span>
+                            <span class="text-[9px] sm:text-[10px] font-bold tracking-widest text-[#b89551] bg-[#b89551]/10 px-3 py-1 rounded-full border border-[#b89551]/20">2024 AUTUMN</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold serif text-white mb-3 group-hover:text-[#b89551] transition">
+                            おうちでローリエ<br><span class="text-sm sm:text-base text-gray-300 font-normal">（お取り寄せ公式通販）</span>
+                        </h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                            2日煮込んだ秘伝デミグラスハンバーグや特製洋食キットを急速冷凍真空パックで全国へお届け。遠方の方や贈り物にも。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+                        <span>全国配送対応予定</span>
+                        <i class="fas fa-arrow-right text-[#b89551] opacity-0 group-hover:opacity-100 transition duration-300"></i>
+                    </div>
+                </div>
+
+                <!-- サービス2: テイクアウト室用デミグラスボトル -->
+                <div class="bg-gradient-to-b from-white/10 to-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative flex flex-col justify-between group hover:border-[#b89551]/50 transition duration-500">
+                    <div>
+                        <div class="flex justify-between items-center mb-5 sm:mb-6">
+                            <span class="text-2xl sm:text-3xl text-[#b89551]"><i class="fas fa-wine-bottle"></i></span>
+                            <span class="text-[9px] sm:text-[10px] font-bold tracking-widest text-[#b89551] bg-[#b89551]/10 px-3 py-1 rounded-full border border-[#b89551]/20">2024 WINTER</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold serif text-white mb-3 group-hover:text-[#b89551] transition">
+                            秘伝デミグラス<br><span class="text-sm sm:text-base text-gray-300 font-normal">（テイクアウト専用ボトル）</span>
+                        </h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                            「お店のソースを家でもかけたい」のご要望にお応えし、シェフ手作りの濃厚デミグラスソースを瓶詰めで数量限定販売。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+                        <span>店頭・オンライン限定</span>
+                        <i class="fas fa-arrow-right text-[#b89551] opacity-0 group-hover:opacity-100 transition duration-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTAエリア & アクセス詳細 -->
+    <section id="cta" class="py-14 sm:py-24 bg-[#2d1b0d] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="images/haikei.png" alt="背景" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 sm:mb-10 serif leading-tight">
+                        本物の味は、<br>
+                        元町にある。
+                    </h2>
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+                        <a href="tel:0117821839" class="btn-premium text-white px-8 py-4 sm:px-12 sm:py-5 rounded-full text-lg sm:text-xl font-bold w-full sm:w-auto">
+                            <i class="fas fa-phone-alt mr-3"></i> 011-782-1839
+                        </a>
+                        <a href="https://www.laurier.store/" target="_blank" class="bg-white/10 hover:bg-white/20 border border-white/30 px-8 py-4 sm:px-12 sm:py-5 rounded-full text-lg sm:text-xl font-bold transition w-full sm:w-auto">
+                            公式サイトを見る
+                        </a>
+                        <!-- Facebookアイコンボタンを追加 -->
+                        <a href="https://www.facebook.com/laurier.matomachi" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/20 border border-white/30 px-8 py-4 sm:px-12 sm:py-5 rounded-full text-lg sm:text-xl font-bold transition w-full sm:w-auto flex items-center justify-center">
+                            <i class="fab fa-facebook-f mr-3"></i> Facebook
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start border-t border-white/10 pt-10 sm:pt-16">
+                    <div class="text-left">
+                        <h3 class="serif text-xl sm:text-2xl mb-6 sm:mb-8 border-l-4 border-[#b89551] pl-4 font-bold">Access &amp; Info</h3>
+                        <dl class="space-y-5 sm:space-y-6">
+                            <div>
+                                <dt class="text-[#b89551] font-bold text-xs uppercase tracking-widest mb-1">Location</dt>
+                                <dd class="text-sm opacity-80 leading-relaxed">
+                                    〒065-0024 北海道旭川市東区北24条東16丁目1-21<br>
+                                    1F 右手 FC元町ビル 
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-[#b89551] font-bold text-xs uppercase tracking-widest mb-1">Station</dt>
+                                <dd class="text-sm opacity-80 leading-relaxed">
+                                    地下鉄東豊線「元町駅」3番出口より徒歩1分
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-[#b89551] font-bold text-xs uppercase tracking-widest mb-1">Opening Hours</dt>
+                                <dd class="text-sm opacity-80 leading-relaxed">
+                                    定休日：月曜日・火曜日<br>
+                                    駐車場：提携コインパーキングあり（サービス券進呈）
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Google Map 埋め込みエリア -->
+                    <div class="w-full h-64 sm:h-80 rounded-xl overflow-hidden shadow-2xl border-2 border-white/10">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2913.483275640238!2d141.36967847507444!3d43.094357688397245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b292bde6a504f%3A0x2194bdd416d4909e!2z44Ot44O844Oq44Ko!5e0!3m2!1sja!2sjp!4v1772155644884!5m2!1sja!2sjp"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 sm:py-10 text-center border-t border-white/5">
+        <div class="mb-5 sm:mb-6 opacity-30">
+            <span class="serif text-white font-bold text-lg">LAURIER</span>
+        </div>
+        <p class="text-gray-600 text-[9px] sm:text-[10px] tracking-widest uppercase">&copy; 2024 Laurier Sapporo. Since 1994.</p>
+    </footer>
+
+    <!-- スマホ用固定電話ボタン(タップしやすさ向上) -->
+    <a href="tel:0117821839" class="fixed bottom-4 right-4 z-50 sm:hidden bg-[#8b0000] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-xl">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>
