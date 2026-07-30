@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>リストランテ ケーダッシュ | 札幌駅3分の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-gold: #B88E2F;
+            --brand-dark: #1A1A1A;
+            --brand-accent: #E63946;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #FDFCF8;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .text-gold { color: var(--brand-gold); }
+        .bg-gold { background-color: var(--brand-gold); }
+        .border-gold { border-color: var(--brand-gold); }
+
+        /* スクロールアニメーション用のベーススタイル */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--brand-gold);
+        }
+
+        .floating-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* ホバーはポインターデバイスのみ（スマホのタップ後の残留を防止） */
+        @media (hover: hover) {
+            .floating-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            }
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #333 100%);
+            transition: all 0.3s ease;
+            min-height: 44px; /* タップ領域確保 */
+        }
+        @media (hover: hover) {
+            .cta-button:hover {
+                opacity: 0.9;
+                letter-spacing: 0.05em;
+            }
+        }
+        .cta-button:active {
+            opacity: 0.85;
+            transform: scale(0.98);
+        }
+
+        .soft-bg {
+            background: radial-gradient(circle at center, #FDFCF8 0%, #F5F2E8 100%);
+        }
+
+        /* 地図のスタイル設定 */
+        .map-container {
+            transition: opacity 0.3s ease;
+        }
+        @media (hover: hover) {
+            .map-container:hover { opacity: 0.9; }
+        }
+
+        /* FVのアニメーション */
+        .fv-image-reveal {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .fv-image-reveal.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* モーション低減設定を尊重 */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .fv-image-reveal, .floating-card, .cta-button {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* スマホでのタップ領域とフォーカス可視化 */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--brand-gold);
+            outline-offset: 2px;
+        }
+
+        /* iOSノッチ・セーフエリア対応 */
+        header {
+            padding-top: env(safe-area-inset-top);
+        }
+    </style>
+</head>
+<body class="text-stone-800 antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-100 py-3 md:py-4 px-4 md:px-6 flex justify-between items-center">
+        <div class="text-lg md:text-xl font-bold serif tracking-tighter">RISTORANTE <span class="text-gold">K-DASH</span></div>
+        <a href="tel:011-252-9755" class="text-xs md:text-sm font-bold border-b-2 border-gold pb-1 hover:text-gold transition-colors whitespace-nowrap">011-252-9755</a>
+    </header>
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 md:pt-20 md:pb-0 overflow-hidden soft-bg">
+        <div class="max-w-6xl mx-auto px-5 md:px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-12">
+            <div class="z-10 order-2 md:order-1 reveal text-center md:text-left">
+                <span class="text-gold font-bold tracking-[0.3em] text-xs md:text-sm block mb-4 serif">SAPPORO, HOKKAIDO</span>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-[1.6] serif mb-6 md:mb-8">
+                    その一粒に、<br>
+                    北海道の<br>
+                    <span class="text-gold">四季</span>を閉じ味込めて。
+                </h1>
+                <p class="text-stone-500 leading-loose mb-8 md:mb-10 text-sm md:text-base px-2 md:px-0">
+                    札幌駅徒歩3分。地下の静寂に佇むイタリアン。<br>
+                    安平町の野菜、平取町の和牛、猟人が打つ雷鳥。<br>
+                    余計なものは足さない。素材本来の「力」を味わう贅沢を。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="https://www.instagram.com/kdash_sapporo/" target="_blank" rel="noopener noreferrer" class="cta-button text-white px-8 md:px-10 py-4 md:py-5 rounded-full text-center font-bold text-sm tracking-widest shadow-xl flex items-center justify-center">
+                        Instagramで最新情報を見る
+                    </a>
+                </div>
+            </div>
+            <div class="relative order-1 md:order-2 fv-image-reveal">
+                <div class="relative z-10 scale-100 sm:scale-110 md:scale-125 max-w-[280px] sm:max-w-none mx-auto">
+                    <img src="images/raicyou.jpg" alt="至高の雷鳥料理" class="rounded-full shadow-2xl border-[8px] md:border-[12px] border-white w-full h-auto" loading="eager">
+                </div>
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-gold/5 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-gold/10 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CTA 1 -->
+    <section id="cta" class="py-10 md:py-12 bg-white reveal">
+        <div class="max-w-4xl mx-auto px-5 md:px-6">
+            <div class="border border-stone-200 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6 hover:border-gold transition-colors duration-500">
+                <div class="text-center md:text-left">
+                    <p class="text-xs font-bold text-gold tracking-widest mb-1">INSTAGRAM</p>
+                    <h2 class="text-lg md:text-xl font-bold">旬の入荷情報をいち早くお届けします</h2>
+                </div>
+                <a href="https://www.instagram.com/kdash_sapporo/" target="_blank" rel="noopener noreferrer" class="bg-gold text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-2xl transition-all w-full md:w-auto text-center">
+                    公式Instagramを見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. STORYセクション -->
+    <section class="py-16 md:py-24 bg-[#F8F6F0]">
+        <div class="max-w-6xl mx-auto px-5 md:px-6">
+            <div class="text-center mb-14 md:mb-20 reveal">
+                <h3 class="section-title text-2xl md:text-3xl font-bold serif">私たちが大切にする「誠実な素材」</h3>
+                <p class="text-stone-500 text-sm">信頼する農家から届く、嘘のない食材だけを使用しています。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="floating-card bg-white p-8 md:p-10 rounded-2xl text-center reveal" style="transition-delay: 0.1s;">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-5 md:mb-6 text-2xl">🌱</div>
+                    <h4 class="font-bold mb-3 md:mb-4 serif">安平町・平取町の恵み</h4>
+                    <p class="text-xs leading-relaxed text-stone-500">
+                        「サラブレッドの街」安平町や「和牛の里」平取町。直接足を運び納得した食材のみを、鮮度そのままに提供します。
+                    </p>
+                </div>
+                <div class="floating-card bg-white p-8 md:p-10 rounded-2xl text-center reveal" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-5 md:mb-6 text-2xl">🍞</div>
+                    <h4 class="font-bold mb-3 md:mb-4 serif">無添加へのこだわり</h4>
+                    <p class="text-xs leading-relaxed text-stone-500">
+                        「毎日食べても疲れない」ことを大切に。化学調味料を一切使わず、素材の旨味を丁寧に引き出した澄んだスープ。
+                    </p>
+                </div>
+                <div class="floating-card bg-white p-8 md:p-10 rounded-2xl text-center reveal" style="transition-delay: 0.3s;">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-5 md:mb-6 text-2xl">👨‍🍳</div>
+                    <h4 class="font-bold mb-3 md:mb-4 serif">二代で守る職人技</h4>
+                    <p class="text-xs leading-relaxed text-stone-500">
+                        20年前から変わらぬ味。大通りから現在の地下店舗へ移転しても、リピーターが絶えない理由は、一品一品への愚直な丁寧さにあります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MENU GALLERY -->
+    <section class="py-16 md:py-24 bg-white reveal">
+        <div class="max-w-6xl mx-auto px-5 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="relative group overflow-hidden rounded-2xl h-[260px] md:h-[400px]">
+                    <img src="images/lunch.png" alt="ランチ" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                    <div class="absolute inset-0 bg-black/30 flex flex-col justify-end p-6 md:p-8 text-white">
+                        <span class="text-xs font-bold tracking-widest mb-2 uppercase">Lunch Menu</span>
+                        <h4 class="text-xl md:text-2xl font-bold serif mb-2">道産食材の雷鳥料理</h4>
+                        <p class="text-sm opacity-80">女性に人気の優しい一杯。自分ですりおろす山葵を添えて。</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="relative group overflow-hidden rounded-2xl h-[160px] md:h-[192px]">
+                        <img src="images/dinner.png" alt="ディナー" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-black/40 flex flex-col justify-center p-6 md:p-8 text-white">
+                            <span class="text-xs font-bold tracking-widest mb-1">Dinner Menu</span>
+                            <h4 class="text-lg md:text-xl font-bold serif">本格フレンチイタリアン</h4>
+                        </div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl h-[160px] md:h-[192px]">
+                        <img src="images/dessert.png" alt="デザート" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-black/40 flex flex-col justify-center p-6 md:p-8 text-white">
+                            <span class="text-xs font-bold tracking-widest mb-1">Dessert</span>
+                            <h4 class="text-lg md:text-xl font-bold serif">季節のドルチェ</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. VOICES -->
+    <section class="py-16 md:py-24 soft-bg">
+        <div class="max-w-4xl mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <h3 class="section-title text-2xl md:text-3xl font-bold serif">お客様の声</h3>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm italic text-stone-600 relative reveal">
+                    <span class="text-5xl md:text-6xl text-gold/10 absolute -top-3 md:-top-4 -left-1 md:-left-2 serif">&ldquo;</span>
+                    <p class="text-sm leading-loose relative z-10">
+                        地下のお店で良い雰囲気の内観。ランチは雷鳥のみで、出てくるのも早い。別添えの山葵が刺激的で癖になります。サービスでいただいたジャスミンティーも嬉しい心遣いでした。
+                    </p>
+                    <p class="mt-4 text-xs font-bold text-stone-400 not-italic">— 出張ランチでご利用のお客様</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm italic text-stone-600 relative reveal">
+                    <span class="text-5xl md:text-6xl text-gold/10 absolute -top-3 md:-top-4 -left-1 md:-left-2 serif">&ldquo;</span>
+                    <p class="text-sm leading-loose relative z-10">
+                        20年ぶりにオムライスをいただきましたが、味も変わらず最高でした。お店の方も親切で、相手の目を見て話してくれるのが印象的。子どもも喜んで食べていました。
+                    </p>
+                    <p class="mt-4 text-xs font-bold text-stone-400 not-italic">— 20年来のリピーター様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5 COMING SOON -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-72 h-72 md:w-96 md:h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 md:w-96 md:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-5 md:px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <span class="text-gold font-bold tracking-[0.3em] text-xs block mb-3 serif">NEXT PROJECT</span>
+                <h3 class="text-2xl md:text-4xl font-bold serif mb-4">COMING SOON</h3>
+                <p class="text-stone-400 text-xs md:text-sm max-w-xl mx-auto leading-relaxed">
+                    「もっと身近に、もっと特別な時間を。」<br>
+                    ケーダッシュが準備している、新しい食の体験とサービスです。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 md:p-8 relative flex flex-col justify-between floating-card reveal" style="transition-delay: 0.1s;">
+                    <div>
+                        <div class="flex justify-between items-center mb-5 md:mb-6">
+                            <span class="text-xs font-bold text-gold bg-gold/10 px-3 py-1 rounded-full border border-gold/20">全国配送</span>
+                            <span class="text-[10px] tracking-widest text-stone-500 font-serif">PHASE 01</span>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-bold serif mb-3 text-stone-100">猟人手打ち 雷鳥・無添加スープ<br><span class="text-sm font-normal text-gold">冷凍お取り寄せEC</span></h4>
+                        <p class="text-stone-400 text-xs leading-relaxed mb-6">
+                            「遠方でもあの味を食べたい」という声にお応えし、名物雷鳥とこだわりスープをご自宅へ直接お届け。特別なギフトにも最適です。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700/50 pt-4 flex items-center justify-between text-xs text-stone-500">
+                        <span>準備進行中</span>
+                        <span class="text-gold">◆</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 md:p-8 relative flex flex-col justify-between floating-card reveal" style="transition-delay: 0.2s;">
+                    <div>
+                        <div class="flex justify-between items-center mb-5 md:mb-6">
+                            <span class="text-xs font-bold text-gold bg-gold/10 px-3 py-1 rounded-full border border-gold/20">定期便</span>
+                            <span class="text-[10px] tracking-widest text-stone-500 font-serif">PHASE 02</span>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-bold serif mb-3 text-stone-100">北海道の四季を贈る<br><span class="text-sm font-normal text-gold">シェフ厳選 ミールサブスク</span></h4>
+                        <p class="text-stone-400 text-xs leading-relaxed mb-6">
+                            安平町の旬野菜や平取和牛を使った特選パスタソースと季節のドルチェが毎月届くプレミアム定期便。おうちがリストランテに変わります。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700/50 pt-4 flex items-center justify-between text-xs text-stone-500">
+                        <span>準備進行中</span>
+                        <span class="text-gold">◆</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 text-center reveal">
+                <p class="text-xs text-stone-400 mb-4">新サービスの開始案内や限定モニター募集は公式Instagramにて優先してお知らせします。</p>
+                <a href="https://www.instagram.com/kdash_sapporo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-gold/40 text-gold px-6 py-3 rounded-full text-xs font-bold hover:bg-gold hover:text-white transition-all">
+                    <span>Instagramで最新情報をチェックする</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FINAL CTA -->
+    <section class="py-20 md:py-32 bg-white text-center reveal">
+        <div class="max-w-4xl mx-auto px-5 md:px-6">
+            <span class="text-gold font-bold tracking-widest text-xs block mb-5 md:mb-6">INSTAGRAM</span>
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold serif leading-tight mb-10 md:mb-12">
+                隠れ家でのひとときを、<br>
+                もっと身近に。
+            </h2>
+            <div class="max-w-md mx-auto">
+                <a href="https://www.instagram.com/kdash_sapporo/" target="_blank" rel="noopener noreferrer" class="cta-button text-white block py-5 md:py-6 rounded-full text-base md:text-lg font-bold shadow-2xl mb-6">
+                    公式Instagramをフォローする
+                </a>
+                <p class="text-xs text-stone-400">
+                    最新の入荷状況や営業情報を毎日発信中
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. INFO & MAP -->
+    <footer class="py-14 md:py-20 bg-stone-50 border-t border-stone-200 reveal">
+        <div class="max-w-6xl mx-auto px-5 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+            <div>
+                <h3 class="text-xl md:text-2xl font-bold serif mb-6 md:mb-8">リストランテ ケーダッシュ</h3>
+                <dl class="space-y-4 text-sm">
+                    <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2">
+                        <dt class="w-32 font-bold text-stone-400 mb-1 sm:mb-0">ADDRESS</dt>
+                        <dd>〒060-0002 北海道札幌市中央区北2条西3丁目B1F 正門館ビル</dd>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2">
+                        <dt class="w-32 font-bold text-stone-400 mb-1 sm:mb-0">TEL</dt>
+                        <dd><a href="tel:011-252-9755" class="hover:text-gold transition-colors">011-252-9755</a></dd>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2">
+                        <dt class="w-32 font-bold text-stone-400 mb-1 sm:mb-0">HOLIDAY</dt>
+                        <dd>日曜日</dd>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2">
+                        <dt class="w-32 font-bold text-stone-400 mb-1 sm:mb-0">ACCESS</dt>
+                        <dd>札幌駅から徒歩約3分（エレベーター有・バリアフリー）</dd>
+                    </div>
+                </dl>
+                <div class="mt-8 flex flex-wrap items-center gap-4">
+                    <a href="https://www.instagram.com/kdash_sapporo/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-gold font-bold hover:opacity-70 transition-opacity">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
+                    <span class="text-stone-300">|</span>
+                    <a href="https://kdash-yoyaku.com/" target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-stone-600 transition-colors">Official Site</a>
+                </div>
+            </div>
+            <div class="map-container h-64 sm:h-80 md:h-auto rounded-2xl overflow-hidden shadow-inner">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.9095864722667!2d141.34961717507252!3d43.06436909031691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2975f66cdcef%3A0x37a338bf4b6df5d0!2z44Oq44K544OI44Op44Oz44OG44Kx44O844OA44OD44K344Ol!5e0!3m2!1sja!2sjp!4v1772153402989!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="text-center mt-14 md:mt-20 text-[10px] text-stone-300 tracking-[0.2em] px-5">
+            &copy; RISTORANTE K-DASH ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script>
+        // スクロール時に要素を表示させるアニメーション
+        const revealElements = document.querySelectorAll('.reveal, .fv-image-reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        window.addEventListener('load', () => {
+            const fv = document.querySelector('.fv-image-reveal');
+            if (fv) fv.classList.add('active');
+        });
+    </script>
+</body>
+</html>
