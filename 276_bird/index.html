@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>バード ウォッチ カフェ | 北海道ホテル・十勝の恵みを味わうレストラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary: #8b7355;
+            --primary-dark: #6d5a43;
+            --accent-gold: #c5a059;
+            --bg-cream: #fdfbf8;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-cream);
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/forest.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100svh;
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                min-height: 90vh;
+            }
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: rgba(139, 115, 85, 0.12);
+            position: absolute;
+            top: -6px;
+            left: 8px;
+            line-height: 1;
+        }
+        @media (min-width: 768px) {
+            .step-number {
+                font-size: 3rem;
+                top: -10px;
+                left: 10px;
+            }
+        }
+
+        /* 地図のレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* モバイルは縦長寄りの比率で見やすく */
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                padding-bottom: 56.25%; /* 16:9 */
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section flex items-center justify-center text-white text-center px-4 py-16">
+        <div class="max-w-4xl w-full">
+            <div class="inline-block border border-white px-4 py-2 mb-5 tracking-[0.2em] text-xs sm:text-sm md:text-base">
+                HOKKAIDO HOTEL PREMIER RESTAURANT
+            </div>
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 md:mb-8 leading-snug md:leading-tight serif">
+                森の呼吸を感じ、<br>十勝の旬を、五感で.
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl mb-8 md:mb-10 tracking-wide md:tracking-widest font-light px-2">
+                「バード ウォッチ カフェ」で過ごす、贅沢な休息。
+            </p>
+
+            <div class="bg-white text-gray-800 p-1 rounded-full inline-flex flex-wrap sm:flex-nowrap items-center justify-center shadow-2xl px-4 py-2 sm:pr-8 sm:py-1 gap-2 sm:gap-0">
+                <span class="bg-red-600 text-white px-4 py-2 rounded-full font-bold text-xs sm:text-sm">WEB限定</span>
+                <span class="font-bold text-xs sm:text-sm sm:ml-4">ポタージュスープ1杯無料クーポン配布中</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF / NUMBERS -->
+    <section class="py-10 md:py-12 bg-white shadow-sm relative z-10 -mt-8 md:-mt-10 mx-4 rounded-xl max-w-5xl md:mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 text-center">
+            <div class="py-5 md:py-6">
+                <p class="text-gray-500 text-sm mb-1">地元食材使用率</p>
+                <p class="text-3xl md:text-4xl font-bold serif text-[var(--primary)]">90<span class="text-lg md:text-xl">%以上</span></p>
+            </div>
+            <div class="py-5 md:py-6">
+                <p class="text-gray-500 text-sm mb-1">中庭の森の広さ</p>
+                <p class="text-3xl md:text-4xl font-bold serif text-[var(--primary)]">約20,000<span class="text-lg md:text-xl">㎡</span></p>
+            </div>
+            <div class="py-5 md:py-6">
+                <p class="text-gray-500 text-sm mb-1">お客様リピート率</p>
+                <p class="text-3xl md:text-4xl font-bold serif text-[var(--primary)]">85<span class="text-lg md:text-xl">%</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM & SOLUTION -->
+    <section class="py-14 md:py-20 px-4 max-w-6xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16 serif section-title">日常から解き放たれる、3つの理由</h2>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
+            <div class="text-center group">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md group-hover:bg-[var(--primary)] group-hover:text-white transition-all duration-300">
+                    <i class="fas fa-leaf text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 serif">2万㎡の森を望む開放感</h3>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                    十勝の原生林をそのまま残した中庭。野鳥のさえずりをBGMに、都会の喧騒を忘れるひとときを。
+                </p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md group-hover:bg-[var(--primary)] group-hover:text-white transition-all duration-300">
+                    <i class="fas fa-utensils text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 serif">食材の宝庫・十勝の恵み</h3>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                    地元の生産者から直接届く新鮮な野菜。シェフが自ら厳選した、その時期一番の美味しさを一皿に。
+                </p>
+            </div>
+            <div class="text-center group sm:col-span-2 md:col-span-1">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md group-hover:bg-[var(--primary)] group-hover:text-white transition-all duration-300">
+                    <i class="fas fa-concierge-bell text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 serif">ホテルならではのホスピタリティ</h3>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                    特別な日も、日常のランチも。つかず離れずの心地よいサービスで、心ゆくまでお寛ぎください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN OFFER -->
+    <section class="py-14 md:py-20 bg-white border-y border-gray-100 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 mb-8 md:mb-0 relative">
+                <img src="images/soup.png" alt="Special Soup" class="rounded-2xl shadow-2xl relative z-10 w-full">
+                <div class="hidden sm:block absolute -top-10 -left-10 w-40 h-40 bg-[var(--accent-gold)] rounded-full opacity-10 animate-pulse"></div>
+            </div>
+            <div class="w-full md:w-1/2 md:pl-16">
+                <span class="text-[var(--accent-gold)] font-bold tracking-widest text-sm mb-3 md:mb-4 block">RECOMMENDED</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-5 md:mb-6 serif">一口で違いがわかる、<br>「究極のポタージュスープ」</h2>
+                <p class="text-gray-600 leading-relaxed mb-6 md:mb-8 text-sm sm:text-base">
+                    十勝生の玉ねぎを飴色になるまで煮詰め、旬の根菜の甘みを最大限に引き出した、当店のスペシャリテ。多くのリピーター様を魅了するこの味を、まずは無料でご体験ください。
+                </p>
+
+                <div class="bg-[var(--bg-cream)] p-5 sm:p-6 rounded-xl border border-[var(--primary)]/20">
+                    <p class="font-bold text-center text-[var(--primary)] mb-4">簡単3ステップで無料クーポン獲得</p>
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                        <div>
+                            <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2 font-bold shadow-sm">1</div>
+                            LINE登録
+                        </div>
+                        <div>
+                            <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2 font-bold shadow-sm">2</div>
+                            クーポン受取
+                        </div>
+                        <div>
+                            <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2 font-bold shadow-sm">3</div>
+                            来店時に提示
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 md:mt-8">
+                    <a href="https://www.hokkaidohotel.co.jp/rest/contact/" target="_blank" class="block w-full bg-[#06C755] text-white py-4 rounded-full text-center font-bold text-lg sm:text-xl shadow-lg hover:brightness-105 transition-all">
+                        <i class="fab fa-line mr-2"></i> LINEで無料クーポンをもらう
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER VOICES -->
+    <section class="py-14 md:py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10 md:mb-16 serif section-title">お客様の喜びの声</h2>
+
+            <div class="space-y-6 md:space-y-8">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm relative overflow-hidden">
+                    <div class="step-number">01</div>
+                    <div class="relative z-10">
+                        <div class="flex flex-wrap items-center mb-3 md:mb-4 gap-x-2">
+                            <span class="text-yellow-400 mr-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <span class="text-sm text-gray-400">帯広市 40代 女性</span>
+                        </div>
+                        <h4 class="font-bold mb-2 text-base sm:text-lg">「心から感動する接客と味でした」</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            毎年誕生日に利用していますが、今回のスタッフさんの対応がとても良く感動しました。お料理は毎月メニューが変わり、いつ来ても新頼な驚きがあります。ゆったりした時間を過ごせました。
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm relative overflow-hidden">
+                    <div class="step-number">02</div>
+                    <div class="relative z-10">
+                        <div class="flex flex-wrap items-center mb-3 md:mb-4 gap-x-2">
+                            <span class="text-yellow-400 mr-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <span class="text-sm text-gray-400">札幌市 30代 男性</span>
+                        </div>
+                        <h4 class="font-bold mb-2 text-base sm:text-lg">「中庭を眺めながらのランチは絶品」</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            十勝産の食材をふんだんに使ったランチは味付けのバランスが絶妙。スタッフさんもキビキビと案内してくれて、非常に雰囲気が良かったです。席同士の間隔も広く、周りを気にせず楽しめました。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SECTION -->
+    <section class="py-14 md:py-20 px-4 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="bg-[var(--accent-gold)]/20 text-[var(--primary-dark)] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-3 inline-block">
+                    Coming Soon
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold serif section-title">これからの「新しいおもてなし」</h2>
+                <p class="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
+                    お客様により心躍るひとときをお過ごしいただけるよう、現在準備中の新しいサービスをご紹介いたします。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 max-w-4xl mx-auto gap-6 md:gap-8">
+                <!-- ITEM 1: 生産者ヒストリーカード -->
+                <div class="bg-[var(--bg-cream)] rounded-2xl p-6 sm:p-8 border border-[var(--primary)]/10 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-5 md:mb-6">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-2xl flex items-center justify-center text-[var(--primary)] text-xl sm:text-2xl shadow-sm">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <span class="bg-[var(--primary)] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">順次開始予定</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 serif text-gray-800 leading-snug">
+                            「十勝の生産者ヒストリー」<br>ストーリーカードの配布
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            一皿の料理の背後にある農家さんのこだわりや想いを記したカードをお届け。生産者の顔が見えることで、十勝の恵みをより深く愉しんでいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60 flex items-center text-xs text-[var(--primary)] font-bold">
+                        <i class="fas fa-sparkles mr-2"></i> 食育やご歓談のきっかけにも
+                    </div>
+                </div>
+
+                <!-- ITEM 2: お子様メニューの拡充 -->
+                <div class="bg-[var(--bg-cream)] rounded-2xl p-6 sm:p-8 border border-[var(--primary)]/10 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-5 md:mb-6">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-2xl flex items-center justify-center text-[var(--primary)] text-xl sm:text-2xl shadow-sm">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <span class="bg-[var(--primary)] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">近日リニューアル</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 serif text-gray-800 leading-snug">
+                            お子様メニューの<br>全面リニューアル・種類拡充
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            ご家族皆様で安心してお食事をお楽しみいただけるよう、アレルギー配慮メニューや十勝産野菜を美味しく味わえるキッズプレートのラインナップを強化。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60 flex items-center text-xs text-[var(--primary)] font-bold">
+                        <i class="fas fa-heart mr-2"></i> ファミリー利用をより楽しく快適に
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL ACTION -->
+    <section class="py-14 md:py-20 px-4 text-center">
+        <div class="max-w-3xl mx-auto bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-5 md:mb-6 serif text-[var(--primary)]">美食と安らぎのひとときへ。</h2>
+            <p class="text-gray-500 mb-8 md:mb-10 text-sm md:text-base">ポタージュスープ無料クーポンは<br class="md:hidden">残りわずかとなっております。</p>
+            <div class="space-y-5 md:space-y-6">
+                <a href="https://www.hokkaidohotel.co.jp/rest/contact/" target="_blank" class="block w-full bg-[var(--primary)] text-white py-4 sm:py-5 rounded-full font-bold text-lg sm:text-2xl shadow-xl hover:bg-[var(--primary-dark)] transition-all">
+                    <i class="fas fa-envelope mr-2"></i> お問い合わせフォームへ
+                </a>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 text-sm text-gray-500">
+                    <span><i class="fas fa-phone mr-1"></i> 0155-21-0001</span>
+                    <span class="hidden md:inline text-gray-300">|</span>
+                    <span><i class="fas fa-calendar-check mr-1"></i> 月・火定休日</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white pt-12 md:pt-16 pb-8 px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 border-b border-gray-800 pb-10 md:pb-12">
+            <!-- SHOP INFO -->
+            <div>
+                <h3 class="text-xl sm:text-2xl font-bold mb-5 md:mb-6 serif">バード ウォッチ カフェ</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed text-sm sm:text-base">
+                    〒080-8511 北海道帯広市西7条南19丁目1 1階<br>
+                    北海道ホテル内
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div>
+                        <h4 class="font-bold mb-2 text-[var(--accent-gold)] text-xs sm:text-sm uppercase tracking-wider">営業時間</h4>
+                        <ul class="text-sm text-gray-400 space-y-1">
+                            <li>ランチ: 11:30〜15：00</li>
+                            <li>定休日: 月曜日・火曜日</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2 text-[var(--accent-gold)] text-xs sm:text-sm uppercase tracking-wider">ご連絡先</h4>
+                        <ul class="text-sm text-gray-400 space-y-1">
+                            <li>0155-21-0001</li>
+                            <li class="break-all">info@hokkaidohotel.co.jp</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/hokkaido_hotel/" target="_blank" class="text-gray-400 hover:text-[var(--accent-gold)] transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                    <a href="https://www.hokkaidohotel.co.jp/rest/list/bird.html" target="_blank" class="text-gray-400 hover:text-[var(--accent-gold)] transition-colors"><i class="fas fa-globe text-2xl"></i></a>
+                    <a href="https://www.hokkaidohotel.co.jp/rest/contact/" target="_blank" class="text-gray-400 hover:text-[var(--accent-gold)] transition-colors"><i class="fas fa-envelope text-2xl"></i></a>
+                </div>
+            </div>
+
+            <!-- ACCESS / MAP -->
+            <div>
+                <h4 class="font-bold mb-4 text-[var(--accent-gold)] text-xs sm:text-sm uppercase tracking-wider">Google Maps</h4>
+                <div class="rounded-xl overflow-hidden shadow-2xl border border-gray-800 map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2922.2458849632467!2d143.19471177506273!3d42.90985500019181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f7399664323339b%3A0x84393670948ee9db!2z44OQ44O844OJIOOCpuOCqeODg-ODgSDjgqvjg5Xjgqc!5e0!3m2!1sja!2sjp!4v1772152880692!5m2!1sja!2sjp"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-xs text-gray-500 mt-4 text-right">※無料駐車場完備（北海道ホテル駐車場をご利用ください）</p>
+            </div>
+        </div>
+        <div class="text-center mt-8 text-[10px] text-gray-600 tracking-widest uppercase">
+            &copy; Bird Watch Cafe / Hokkaido Hotel. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
