@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Osteria arcobaleno | 札幌・狸小路の隠れ家イタリアン×焼き鳥</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .gold-text {
+            background: linear-gradient(to right, #b38728, #d4af37, #b38728);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%);
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(225, 29, 72, 0.5);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: #d4af37;
+            margin: 1.5rem auto;
+        }
+        .card-shadow {
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+        }
+        .review-card {
+            border-top: 4px solid #d4af37;
+        }
+        .bg-cream {
+            background-color: #faf9f6;
+        }
+        /* チェック柄の背景設定 */
+        .bg-checkered {
+            background-color: #ffffff;
+            background-image:
+                linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0),
+                linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.8;
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* モバイルでは縦長気味に */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        @media (min-width: 1024px) {
+            .map-container {
+                padding-bottom: 56.25%; /* 16:9 (PC) */
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* タップ領域を十分に確保 */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* スマホでの横スクロール防止 */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- FVエリア -->
+    <section class="relative min-h-screen flex items-center justify-center text-center px-4 py-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/pasta.png" alt="シズル感のある焼き鳥とパスタのイメージ" class="w-full h-full object-cover opacity-20 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl w-full">
+            <div class="inline-block px-3 py-1 md:px-4 md:py-1 border border-amber-600 text-amber-700 text-xs sm:text-sm md:text-base tracking-[0.2em] md:tracking-[0.3em] mb-6 font-bold">
+                狸小路の路地裏 1日17名様限定の特等席
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-7xl font-black mb-6 leading-[1.3] md:leading-[1.2] serif text-zinc-800">
+                <span class="text-xl sm:text-2xl md:text-3xl block mb-2 font-light text-zinc-500">至高の「ジェノベーゼ」と職人の「焼き鳥」</span>
+                <span class="gold-text text-2xl sm:text-3xl md:text-5xl lg:text-6xl block mt-4 leading-snug">五感を揺さぶる<br>究極のペアリング</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl mb-10 text-zinc-600 font-light leading-relaxed px-2">
+                「札幌で一番美味しい」と口コミが絶えない看板パスタ。<br class="hidden md:block">
+                ソムリエが厳選するワインと共に、上質な昼下がりと夜を。
+            </p>
+            <div class="flex flex-col items-center gap-4">
+                <a href="tel:011-233-0076" class="cta-button py-4 px-8 sm:py-5 sm:px-10 rounded-full text-lg sm:text-xl font-bold text-white flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <i class="fas fa-calendar-check"></i> 今すぐ予約する
+                </a>
+                <p class="text-xs sm:text-sm text-zinc-500 font-medium">※週末はお早めのご予約をお勧めします</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 選ばれる理由セクション -->
+    <section class="py-16 md:py-24 bg-white relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 section-title text-zinc-800">arcobalenoが選ばれる3つの理由</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+                <div class="text-center group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-cream rounded-full flex items-center justify-center mx-auto mb-6 border border-zinc-100 group-hover:bg-amber-50 transition-all duration-500">
+                        <i class="fas fa-mortar-pestle text-3xl md:text-4xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-4 text-zinc-800">絶品ジェノベーゼ</h3>
+                    <p class="text-zinc-500 text-sm leading-loose px-4 md:px-0">
+                        新鮮なバジルの香りと素材の旨味が凝縮された、当店自慢の一皿。多くのファンがこの味を求めて来店されます。
+                    </p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-cream rounded-full flex items-center justify-center mx-auto mb-6 border border-zinc-100 group-hover:bg-amber-50 transition-all duration-500">
+                        <i class="fas fa-wine-bottle text-3xl md:text-4xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-4 text-zinc-800">専属ソムリエの提案</h3>
+                    <p class="text-zinc-500 text-sm leading-loose px-4 md:px-0">
+                        ワインの知識豊富なソムリエが、お料理やその日の気分に合わせた最高の一杯をペアリング提案します。
+                    </p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-cream rounded-full flex items-center justify-center mx-auto mb-6 border border-zinc-100 group-hover:bg-amber-50 transition-all duration-500">
+                        <i class="fas fa-utensils text-3xl md:text-4xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-4 text-zinc-800">焼き鳥×イタリアン</h3>
+                    <p class="text-zinc-500 text-sm leading-loose px-4 md:px-0">
+                        「月桂冠」や「エゾシカ」など、厳選素材をイタリアンの技術で昇華させた唯一無二の串焼き体験。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ライブキッチンセクション -->
+    <section class="py-16 md:py-20 px-4 bg-cream">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="relative overflow-hidden rounded-2xl shadow-xl">
+                        <img src="images/yakitori.jpg" alt="炭火で焼かれる焼き鳥のシズル感" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 serif text-zinc-800 leading-tight">
+                        五感で楽しむ<br><span class="gold-text">ライブキッチンの躍動</span>
+                    </h2>
+                    <p class="text-zinc-600 leading-loose mb-8 text-sm md:text-base">
+                        目の前で立ち上がる炭火の香りと、パスタを仕上げるリズミカルな音。カウンター17席という限られた空間だからこそ味わえる、料理人との距離の近さが、食事をより一層特別なものにします。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-white rounded-lg border border-zinc-100 shadow-sm text-center md:text-left">
+                            <span class="text-amber-700 font-bold block mb-1">カウンター席</span>
+                            <p class="text-xs text-zinc-400">デート・一人飲みに最適な特等席</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg border border-zinc-100 shadow-sm text-center md:text-left">
+                            <span class="text-amber-700 font-bold block mb-1">テーブル席</span>
+                            <p class="text-xs text-zinc-400">大切な方との会話を楽しむ空間</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 口コミセクション (チェック柄背景) -->
+    <section class="py-16 md:py-24 bg-checkered border-y border-zinc-100">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 serif text-zinc-800">Customer Reviews</h2>
+            <p class="text-center text-amber-600 mb-12 md:mb-16 tracking-widest uppercase font-bold text-sm">高評価の口コミ多数</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Review 1 -->
+                <div class="card-shadow p-6 md:p-8 rounded-2xl review-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 flex gap-1 mr-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-xs text-zinc-400 font-bold">Google 口コミ</span>
+                    </div>
+                    <p class="text-zinc-600 mb-6 italic font-light leading-relaxed text-sm md:text-base">
+                        「札幌で1番美味しいジェノベーゼはほんとに絶品でした！ 月桂冠のもも串、ささみ串、これも衝撃的な美味しさです。 接客も丁寧で心地良い時間をすごせました！」
+                    </p>
+                </div>
+                <!-- Review 2 -->
+                <div class="card-shadow p-6 md:p-8 rounded-2xl review-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 flex gap-1 mr-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-xs text-zinc-400 font-bold">Google 口コミ</span>
+                    </div>
+                    <p class="text-zinc-600 mb-6 italic font-light leading-relaxed text-sm md:text-base">
+                        「トリッパの美味しいお店にハズレ無し。当然こちらのトリッパは最高に美味しかったです。前菜の盛合せからの絶品、どれも手間をかけて提供されます。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- メニューギャラリー -->
+    <section class="py-16 md:py-24 bg-white px-4">
+        <div class="container mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 md:mb-16 section-title text-zinc-800">Recommend Menu</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="group cursor-pointer text-center">
+                    <div class="overflow-hidden rounded-xl mb-4 aspect-square shadow-md border-4 border-white">
+                        <img src="images/pasta.png" alt="ジェノベーゼ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-bold text-zinc-700 text-sm md:text-base">看板ジェノベーゼ</h4>
+                </div>
+                <div class="group cursor-pointer text-center">
+                    <div class="overflow-hidden rounded-xl mb-4 aspect-square shadow-md border-4 border-white">
+                        <img src="images/momokushi.jpg" alt="月桂冠もも" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-bold text-zinc-700 text-sm md:text-base">月桂冠のもも串</h4>
+                </div>
+                <div class="group cursor-pointer text-center">
+                    <div class="overflow-hidden rounded-xl mb-4 aspect-square shadow-md border-4 border-white">
+                        <img src="images/tukune.jpg" alt="エゾシカのつくね" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-bold text-zinc-700 text-sm md:text-base">エゾシカのつくね</h4>
+                </div>
+                <div class="group cursor-pointer text-center">
+                    <div class="overflow-hidden rounded-xl mb-4 aspect-square shadow-md border-4 border-white">
+                        <img src="images/zensai.png" alt="前菜盛り合わせ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-bold text-zinc-700 text-sm md:text-base">前菜の盛り合わせ</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon セクション -->
+    <section class="py-16 md:py-24 bg-zinc-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="container mx-auto px-4 max-w-6xl relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase mb-3">
+                    New Projects
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold serif text-white">Coming Soon</h2>
+                <p class="text-zinc-400 text-sm md:text-base mt-4 max-w-xl mx-auto px-2">
+                    arcobalenoが贈る、さらに特別な食体験。近日のリリースに向けて準備を進めております。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1 -->
+                <div class="bg-zinc-800/80 border border-zinc-700/60 p-6 md:p-8 rounded-2xl relative flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-amber-400 text-3xl"><i class="fas fa-box-open"></i></span>
+                            <span class="text-xs bg-amber-500/10 text-amber-300 font-semibold px-3 py-1 rounded-full border border-amber-500/20">準備中</span>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">
+                            「Osteria at Home」<br>極上ペアリング定期便
+                        </h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            看板メニュー「絶品ジェノベーゼ」の特製パスタソースと、専属ソムリエが料理に合わせて選定した厳選ワインを毎月ご自宅へお届け。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-zinc-700/50 flex justify-between items-center text-xs text-zinc-500 font-mono">
+                        <span>ONLINE STORE</span>
+                        <span>2026 AUTUMN</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-zinc-800/80 border border-zinc-700/60 p-6 md:p-8 rounded-2xl relative flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-amber-400 text-3xl"><i class="fas fa-glass-cheers"></i></span>
+                            <span class="text-xs bg-amber-500/10 text-amber-300 font-semibold px-3 py-1 rounded-full border border-amber-500/20">21:00〜</span>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">
+                            深夜のナイトペアリング<br>Barスタイル
+                        </h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            締めの一杯や遅めのディナーに。こだわりの焼き鳥1本・ハーフパスタとグラスワインを気軽に堪能できる深夜限定メニュー。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-zinc-700/50 flex justify-between items-center text-xs text-zinc-500 font-mono">
+                        <span>LATE NIGHT</span>
+                        <span>COMING SOON</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終コンバージョン & アクセスマップ -->
+    <section class="py-16 md:py-24 bg-cream relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-100/30 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-red-50/50 blur-[120px] rounded-full"></div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-10 md:mb-12 serif text-zinc-800 leading-tight">
+                <span class="gold-text">至高の一夜</span>が、<br>
+                あなたの夜を彩る。
+            </h2>
+
+            <div class="max-w-5xl mx-auto flex flex-col lg:flex-row gap-8 items-stretch">
+                <!-- 店舗情報カード -->
+                <div class="w-full lg:w-1/2 bg-white p-6 sm:p-8 md:p-10 rounded-3xl border border-zinc-100 shadow-2xl text-left flex flex-col">
+                    <p class="text-lg md:text-xl mb-8 font-light text-zinc-600">17席だけの小さな空間のため、<br><span class="text-amber-700 font-bold">週末のご予約は特にお早めに。</span></p>
+
+                    <a href="tel:011-233-0076" class="cta-button w-full py-5 md:py-6 rounded-full text-xl md:text-2xl font-bold flex items-center justify-center gap-4 mb-8 md:mb-10 text-white">
+                        <i class="fas fa-phone-alt"></i> 011-233-0076
+                    </a>
+
+                    <div class="space-y-4 text-zinc-600">
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-map-marker-alt text-amber-600 mt-1"></i>
+                            <div>
+                                <p class="font-bold text-zinc-800">所在地</p>
+                                <p class="text-sm">〒060-0062 北海道札幌市中央区南2条西1丁目6-11 第3広和ビル 2F</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-clock text-amber-600 mt-1"></i>
+                            <div>
+                                <p class="font-bold text-zinc-800">営業時間</p>
+                                <p class="text-sm">17:00〜23:00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-calendar-times text-amber-600 mt-1"></i>
+                            <div>
+                                <p class="font-bold text-zinc-800">定休日</p>
+                                <p class="text-sm">日曜日</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Googleマップ埋め込み -->
+                <div class="w-full lg:w-1/2">
+                    <div class="map-container shadow-2xl border-4 border-white">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.209761198498!2d141.35414567507215!3d43.05805569072101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29018513b5db%3A0x2048ac2b18b038da!2z54S844GN6bOl44Go44Kk44K_44Oq44Ki44OzIE9zdGVyaWEgYXJjb2JhbGVubyDmnK3luYw!5e0!3m2!1sja!2sjp!4v1772156653571!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- フッター -->
+    <footer class="py-10 md:py-12 bg-white text-center border-t border-zinc-100">
+        <div class="mb-8">
+            <h3 class="gold-text text-lg md:text-xl font-bold mb-4">Osteria arcobaleno</h3>
+            <div class="flex justify-center gap-6">
+                <a href="https://www.facebook.com/Osteria.arcobaleno240/" target="_blank" rel="noopener" class="text-zinc-400 hover:text-amber-600 transition-colors text-2xl" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/osteriaarcobaleno/?hl=ja" target="_blank" rel="noopener" class="text-zinc-400 hover:text-amber-600 transition-colors text-2xl" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <p class="text-zinc-400 text-xs tracking-widest uppercase px-4">&copy; Osteria arcobaleno. All Rights Reserved.</p>
+    </footer>
+
+    <!-- スムーススクロール -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
