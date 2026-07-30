@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>レストラン にしかわ | 創業昭和34年、旭川洋食の真髄</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-deep-red: #6b1a26;
+            --color-gold: #c5a059;
+            --color-bg: #fdfaf1;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: #2d2d2d;
+        }
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .text-gold { color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+
+        /* 和紙のようなテクスチャ */
+        .washi-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/p6-dark.png');
+        }
+
+        /* 縦書きのアクセント */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 高級感のある装飾線 */
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+        }
+
+        /* ボタンのプレミアムアニメーション */
+        .btn-premium {
+            background: linear-gradient(135deg, var(--color-deep-red), #8b2635);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: 0.6s;
+        }
+        .btn-premium:hover::after {
+            left: 100%;
+        }
+
+        /* スムーススクロール */
+        html { scroll-behavior: smooth; }
+
+        .image-zoom { overflow: hidden; }
+        .image-zoom img { transition: transform 0.7s ease; }
+        .image-zoom:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 地図のレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* モバイルは正方形に近い比率で見やすく */
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* 動きを抑える設定を尊重 */
+        @media (prefers-reduced-motion: reduce) {
+            .image-zoom img, .btn-premium, .btn-premium::after, html { transition: none !important; scroll-behavior: auto !important; }
+        }
+
+        /* タップ時のハイライトを上品に */
+        a, button { -webkit-tap-highlight-color: rgba(197,160,89,0.2); }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- FV: 圧倒的なシズル感と歴史 -->
+    <header class="relative min-h-[100svh] flex flex-col justify-center items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/hanbagu.png" alt="ジューシーなハンバーグ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 max-w-5xl">
+            <div class="mb-5 sm:mb-6 flex justify-center items-center gap-3 sm:gap-4">
+                <div class="h-[1px] w-8 sm:w-12 bg-gold"></div>
+                <p class="serif text-base sm:text-xl md:text-2xl tracking-[0.4em] sm:tracking-[0.5em] text-yellow-500">創業昭和三十四年</p>
+                <div class="h-[1px] w-8 sm:w-12 bg-gold"></div>
+            </div>
+
+            <h1 class="serif text-4xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 leading-tight tracking-wider sm:tracking-widest">
+                旭川に、この<br><span class="text-yellow-400">至福</span>あり。
+            </h1>
+
+            <p class="text-base sm:text-lg md:text-2xl mb-10 sm:mb-12 font-light leading-relaxed tracking-wide sm:tracking-wider">
+                六十年守り抜いたデミグラスソース。<br>
+                ほとばしる肉汁と、歴史の重み。
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-2">
+                <a href="#menu" class="btn-premium text-white font-bold py-4 sm:py-5 px-8 sm:px-12 rounded-sm text-lg sm:text-xl shadow-2xl text-center">
+                    お品書きを見る
+                </a>
+                <a href="#cta" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/50 font-bold py-4 sm:py-5 px-8 sm:px-12 rounded-sm text-lg sm:text-xl transition text-center">
+                    席を予約する
+                </a>
+            </div>
+        </div>
+
+        <!-- 縦書きの落款風アクセント（PC以上のみ表示） -->
+        <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block">
+            <div class="vertical-text serif text-white text-2xl tracking-widest opacity-80 border-r border-yellow-500 pr-4">
+                五感で愉しむ 伝統の洋食
+            </div>
+        </div>
+    </header>
+
+    <!-- 導入: 老舗の風格 -->
+    <section class="py-16 sm:py-24 bg-white relative">
+        <div class="container mx-auto px-5">
+            <div class="max-w-4xl mx-auto text-center relative">
+                <img src="https://www.transparenttextures.com/patterns/natural-paper.png" class="absolute inset-0 opacity-10 pointer-events-none" alt="">
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl mb-8 sm:mb-12 leading-snug relative">
+                    一口、頬張れば分かる。<br>
+                    六十年、愛されてきた理由。
+                </h2>
+                <div class="gold-line mb-8 sm:mb-12"></div>
+                <p class="text-gray-700 text-base sm:text-lg leading-loose mb-8 text-left sm:text-center relative">
+                    旭川・中央区。地下鉄駅の喧騒を離れた一角に、<br class="hidden md:block">
+                    昭和三十四年の創業時から変わらぬ香りを漂わせる場所があります。<br>
+                    「レストラン にしかわ」。<br>
+                    ここは、ただ食事をする場所ではありません。<br>
+                    親子三代の思い出と、恋人の距離が混ざり合う、旭川洋食の聖地です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+  <!-- 圧倒的シズル感セクション -->
+    <section id="menu" class="py-16 sm:py-24 bg-[#1a1a1a] text-white overflow-hidden">
+        <div class="container mx-auto px-5">
+            <div class="flex flex-col lg:flex-row items-center gap-10 sm:gap-16">
+                <div class="w-full lg:w-1/2 image-zoom rounded-lg shadow-2xl">
+                    <img src="images/teppan.jpg" alt="鉄板ハンバーグ" class="w-full">
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <span class="serif text-yellow-500 text-lg sm:text-xl block mb-3 sm:mb-4">一番人気</span>
+                    <h3 class="serif text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-6">スペシャルハンバーグステーキ</h3>
+                    <p class="text-gray-400 leading-loose text-base sm:text-lg mb-6 sm:mb-8">
+                        道産牛・豚の黄金比による合挽き肉。熱々の鉄板の上で、一週間煮込んだ自慢のデミグラスソースがグツグツと躍ります。肉汁がソースと溶け合う瞬間、あなたを至福のひとときへ誘います。
+                    </p>
+                    <div class="text-2xl sm:text-3xl serif text-yellow-500 mb-6 sm:mb-8">
+                    </div>
+                    <ul class="space-y-3 text-gray-300 border-l-2 border-yellow-500 pl-5 sm:pl-6 text-sm sm:text-base">
+                        <li>・北海道産 合挽き肉使用</li>
+                        <li>・一週間熟成 デミグラスソース</li>
+                        <li>・鉄板による究極の保温</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-10 sm:gap-16 mt-20 sm:mt-32">
+                <div class="w-full lg:w-1/2 image-zoom rounded-lg shadow-2xl">
+                    <img src="images/ebifly.jpg" alt="エビフライ" class="w-full">
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <span class="serif text-yellow-500 text-lg sm:text-xl block mb-3 sm:mb-4">店主イチオシ</span>
+                    <h3 class="serif text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-6">特選 エビフライセット</h3>
+                    <p class="text-gray-400 leading-loose text-base sm:text-lg mb-6 sm:mb-8">
+                        皿からはみ出さんばかりの特大エビが三本。繊細に切られたシャキシャキのキャベツ、そして秘伝のスパイスが隠し味のタルタルソース。一口目の「サクッ」という音が、贅沢の証です。
+                    </p>
+                    <div class="text-2xl sm:text-3xl serif text-yellow-500 mb-6 sm:mb-8">
+                        ボリューム満点
+                    </div>
+                    <a href="https://www.restaurant-nishikawa.jp/" class="inline-block border-b-2 border-yellow-500 text-yellow-500 pb-1 hover:text-white hover:border-white transition">
+                        この逸品を詳しく見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ: 社会的証明 -->
+    <section class="py-16 sm:py-24 washi-bg relative">
+        <div class="container mx-auto px-5">
+            <h2 class="serif text-center text-2xl sm:text-3xl md:text-4xl mb-12 sm:mb-16 italic leading-relaxed">「また、帰ってきたくなる」<br class="md:hidden">そんなお声をいただいています。</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-7 sm:p-10 rounded-sm shadow-sm border border-gray-100 relative">
+                    <div class="absolute top-3 sm:top-4 left-4 sm:left-4 text-5xl sm:text-6xl text-gray-100 font-serif">"</div>
+                    <p class="text-gray-700 leading-relaxed mb-6 italic relative z-10 text-sm sm:text-base">
+                        「15年越しでようやく初訪問。老舗の洋食レストランで、店内も昭和レトロ感漂う懐かしさと品のある落ち着いた内装。個人的にはこのデミグラスソース、今まで食べた中で最高です。最後まで冷めることなく温かいままいただけるのも嬉しい。」
+                    </p>
+                    <div class="flex justify-between items-center text-xs sm:text-sm font-bold text-gray-500">
+                        <span>旭川市 30代男性</span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-7 sm:p-10 rounded-sm shadow-sm border border-gray-100 relative">
+                    <div class="absolute top-3 sm:top-4 left-4 sm:left-4 text-5xl sm:text-6xl text-gray-100 font-serif">"</div>
+                    <p class="text-gray-700 leading-relaxed mb-6 italic relative z-10 text-sm sm:text-base">
+                        「エビフライ3本乗っかっていてボリューム満点。辛いカレーが苦手な私ですが、スパイスは効いているけど辛くなく美味しく頂けました。歴史を感じる店内で選ぶのもワクワクしちゃいました。」
+                    </p>
+                    <div class="flex justify-between items-center text-xs sm:text-sm font-bold text-gray-500">
+                        <span>江別市 40代女性</span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon: 新企画・あったら嬉しい新サービス -->
+    <section id="coming-soon" class="py-16 sm:py-24 bg-[#231d1a] text-white relative border-t border-b border-[#3a302a]">
+        <div class="container mx-auto px-5">
+            <div class="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
+                <span class="serif text-yellow-500 text-base sm:text-xl block mb-2 tracking-[0.2em] sm:tracking-[0.3em] uppercase">New Project</span>
+                <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-bold mb-5 sm:mb-6 text-white tracking-wider">COMING SOON</h2>
+                <div class="gold-line mb-5 sm:mb-6"></div>
+                <p class="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+                    「にしかわ」の味をもっと身近に、もっと特別な瞬間に。<br>
+                    皆様の「あったらいいな」にお応えする、新たな取り組みを現在準備中です。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: オンラインストア -->
+                <div class="bg-[#1a1513] border border-[#3d322b] rounded-lg p-6 sm:p-8 flex flex-col justify-between hover:border-yellow-500/50 transition duration-300 shadow-xl group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full border border-yellow-500/30">準備中</span>
+                            <span class="text-gray-500 text-xs serif">2024 秋 開設予定</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center mb-5 sm:mb-6 text-yellow-500 group-hover:scale-110 transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <h3 class="serif text-xl sm:text-2xl font-bold mb-3 text-yellow-400 group-hover:text-yellow-300 transition">全国お届け便<br><span class="text-base sm:text-lg text-white font-normal">（ECオンラインショップ）</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            60年守り抜いた秘伝デミグラスハンバーグや特選カレーをご自宅で。遠方のご家族への贈り物や、ご家庭での特別なディナーに真空急速冷凍でお届けします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 text-xs text-yellow-500/80 font-serif">
+                        #全国配送 #お取り寄せ洋食
+                    </div>
+                </div>
+
+                <!-- サービス2: 1日1組限定のプレミアムコース -->
+                <div class="bg-[#1a1513] border border-[#3d322b] rounded-lg p-6 sm:p-8 flex flex-col justify-between hover:border-yellow-500/50 transition duration-300 shadow-xl group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full border border-yellow-500/30">準備中</span>
+                            <span class="text-gray-500 text-xs serif">完全予約制</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center mb-5 sm:mb-6 text-yellow-500 group-hover:scale-110 transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V6a2 2 0 10-2 2h2zm0 13C10.832 21 2 13.67 2 9.172a4 4 0 015.656-3.414L12 7.586l4.344-1.828A4 4 0 0122 9.172C22 13.67 13.168 21 12 21z"></path></svg>
+                        </div>
+                        <h3 class="serif text-xl sm:text-2xl font-bold mb-3 text-yellow-400 group-hover:text-yellow-300 transition">1日1組限定<br><span class="text-base sm:text-lg text-white font-normal">「個室アニバーサリーディナー」</span></h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            大切なご家族のお祝いや記念日に。レトロな趣を残したプライベート個室で、料理長特製の昭和洋食フルコースと選りすぐりのペアリングワインをお愉しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 text-xs text-yellow-500/80 font-serif">
+                        #記念日ディナー #限定コース
+                    </div>
+                </div>
+            </div>
+
+            <!-- 事前案内通知登録のメッセージ -->
+            <div class="mt-12 sm:mt-16 text-center max-w-2xl mx-auto bg-black/40 border border-[#3d322b] p-5 sm:p-6 rounded-md">
+                <p class="serif text-yellow-500 text-base sm:text-lg mb-2">新サービス開始のご案内について</p>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    各種サービスの開始時期や限定予約のご案内は、公式Webサイトおよび店頭にて優先的にお知らせいたします。楽しみにお待ちください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+   <!-- 地図・店舗詳細セクション -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-5">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col lg:flex-row gap-10 sm:gap-12 items-start">
+                    <!-- 地図エリア -->
+                    <div class="w-full lg:w-2/3 shadow-xl border border-gray-200 rounded-sm overflow-hidden map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3457348715338!2d141.32528857507197!3d43.05519559090405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29eb4ce3caf5%3A0xc7cc6a60263ab45f!2z44Os44K544OI44Op44OzIOOBq-OBl-OBi-OCjw!5e0!3m2!1sja!2sjp!4v1772154430313!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="レストラン にしかわ 地図"></iframe>
+                    </div>
+
+                    <!-- 店舗情報エリア -->
+                    <div class="w-full lg:w-1/3">
+                        <h2 class="serif text-2xl sm:text-3xl mb-6 sm:mb-8 border-b-2 border-gold pb-4 tracking-wider text-[#6b1a26]">お越しをお待ちしております</h2>
+                        <div class="space-y-6 sm:space-y-8">
+                            <div>
+                                <h4 class="serif font-bold text-sm text-gold mb-2 tracking-widest">所在地</h4>
+                                <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                                    〒060-0061<br>
+                                    北海道旭川市中央区南1条西19丁目
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="serif font-bold text-sm text-gold mb-2 tracking-widest">営業時間</h4>
+                                <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                                    ランチ11:00 〜 15:30<br>
+                                    ディナー17:30 〜 20:30<br>
+                                    <span class="text-red-700 font-bold">定休日：日曜日</span>
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="serif font-bold text-sm text-gold mb-2 tracking-widest">交通のご案内</h4>
+                                <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                                    地下鉄東西線「西18丁目駅」より徒歩圏内。<br>
+                                    旭川の歴史を刻む街並みを愉しみながらお越しください。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA: 予約への動線 -->
+    <section id="cta" class="py-16 sm:py-24 bg-[#6b1a26] text-white relative">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://www.transparenttextures.com/patterns/p6-dark.png" class="w-full h-full object-cover" alt="">
+        </div>
+        <div class="container mx-auto px-5 text-center relative z-10">
+            <h2 class="serif text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8 text-center leading-snug">今日のご褒美に、<br>伝統の味を。</h2>
+            <p class="text-lg sm:text-xl mb-10 sm:mb-12 opacity-80 italic text-center">お昼時は大変混み合います。ご予約は今すぐお電話で。</p>
+
+            <div class="inline-block bg-white text-gray-900 p-7 sm:p-8 md:p-12 rounded-sm shadow-2xl w-full sm:w-auto">
+                <p class="serif text-xl sm:text-2xl mb-4 text-[#6b1a26] font-bold text-center">ご予約・お問い合わせ</p>
+                <a href="tel:0116212751" class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter hover:text-[#8b2635] transition block mb-4 text-center">
+                    011-621-2751
+                </a>
+                <p class="text-gray-500 text-xs sm:text-sm text-center">受付：営業時間内（日曜定休）</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-black text-center text-xs text-gray-600 tracking-widest uppercase px-4">
+        &copy; 1959-2024 Restaurant Nishikawa. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
