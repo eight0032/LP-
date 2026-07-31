@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Furano French 岳 | 富良野の恵みを一皿に</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        accent: '#8b4513',
+                        clay: '#f3ede4',
+                        base: '#fdfcf9',
+                    },
+                    fontFamily: {
+                        mincho: ['"Shippori Mincho"', 'serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-accent: #8b4513;
+            --color-base: #fdfcf9;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Shippori Mincho', serif;
+            background-color: var(--color-base);
+            color: var(--color-primary);
+        }
+        .serif-en { font-family: 'Playfair Display', serif; }
+
+        /* Vertical text: keep for desktop, but simplify below md so it doesn't
+           overflow or break tap targets on narrow screens */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                letter-spacing: 0.15em;
+            }
+        }
+
+        .hero-zoom {
+            animation: zoomInOut 20s infinite alternate ease-in-out;
+        }
+        @keyframes zoomInOut {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm28-65c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm23-11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b4513' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* Visible focus ring for keyboard users */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden bg-pattern">
+
+    <!-- 1. FVエリア -->
+    <header class="relative h-[100svh] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/furano.jpg"
+                 class="hero-zoom w-full h-full object-cover" alt="富良野の風景と料理">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 text-white flex flex-col items-center px-6 text-center">
+            <div class="mb-6 overflow-hidden">
+                <p class="text-[10px] sm:text-sm tracking-[0.5em] sm:tracking-[0.6em] font-light opacity-80 uppercase">Furano Terroir Take</p>
+            </div>
+            <div class="flex items-start gap-4 sm:gap-12">
+                <div class="vertical-text text-sm sm:text-lg md:text-xl leading-relaxed tracking-[0.3em] sm:tracking-[0.4em] font-medium sm:border-r border-white/20 sm:pr-6 py-2">
+                    富良野の土を味わう。
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold serif-en mb-1 italic tracking-tight">Take</h1>
+                    <p class="text-xs sm:text-base tracking-[0.3em] font-light opacity-90">Furano French 岳</p>
+                </div>
+            </div>
+            <div class="mt-14 sm:mt-20 animate-pulse opacity-50">
+                <div class="w-[1px] h-12 sm:h-16 bg-white mx-auto"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. リードコピー -->
+    <section class="py-16 sm:py-24 px-6 text-center max-w-4xl mx-auto">
+        <h2 class="text-lg sm:text-2xl md:text-3xl mb-8 sm:mb-12 leading-loose tracking-wider">
+            都会の喧騒を離れ、<br>
+            富良野の「旬」に身を委ねる。
+        </h2>
+        <p class="text-gray-600 leading-loose text-xs sm:text-sm max-w-xl mx-auto">
+            一皿に込められたのは、地元農家との絆が生んだ瑞々しい野菜。<br class="hidden sm:block">
+            そして、大地の力強さを宿したジビエの調べ。<br class="hidden sm:block">
+            「Furano French 岳」でしか出会えない、<br class="hidden sm:block">
+            記憶に刻まれる一夜が始まります。
+        </p>
+    </section>
+
+    <!-- 3. メインディッシュの訴求 -->
+    <section class="pb-16 sm:pb-24 px-4 bg-white/50">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-0 shadow-2xl rounded-sm overflow-hidden bg-white">
+            <div class="relative aspect-[4/3] md:aspect-auto">
+                <img src="images/shika.jpg" class="w-full h-full object-cover" alt="鹿肉のメインディッシュ">
+                <div class="absolute top-5 left-5 sm:top-8 sm:left-8 bg-white/90 px-3 py-3 sm:p-4 vertical-text font-bold tracking-widest text-accent text-xs sm:text-sm">
+                    至極の鹿肉コース
+                </div>
+            </div>
+            <div class="p-8 sm:p-10 md:p-16 flex flex-col justify-center">
+                <span class="text-accent serif-en italic text-base sm:text-lg mb-3 sm:mb-4 block">Spécialité</span>
+                <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 leading-relaxed">心まで解ける、<br>白玉ねぎのポタージュ</h3>
+                <p class="text-gray-600 leading-loose text-sm mb-8">
+                    クチコミで「最高」と称賛される白玉ねぎのポタージュ。一口含めば、玉ねぎの概念を覆す甘みと香りが広がります。
+                    メインの鹿肉は、産地直送ならではの柔らかさと繊細さを追求しました。
+                </p>
+                <a href="tel:0167220385" class="inline-flex items-center justify-center border border-accent text-accent px-8 py-4 hover:bg-accent hover:text-white active:bg-accent active:text-white transition duration-500 text-center tracking-widest text-sm">
+                    ご予約を承ります
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介 -->
+    <section class="py-16 sm:py-24 bg-clay relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 sm:gap-16">
+                <div class="w-full md:w-1/2 relative max-w-sm md:max-w-none mx-auto">
+                    <div class="absolute -top-4 -left-4 w-full h-full border border-accent/10 z-0"></div>
+                    <img src="images/chef.png" class="relative z-10 w-full grayscale hover:grayscale-0 transition duration-1000" alt="オーナーシェフ永易剛行">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <p class="text-accent mb-2 tracking-[0.3em] text-xs">CHEF STORY</p>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 leading-relaxed">「富良野の魅力を、<br>一皿の芸術へ。」</h3>
+                    <p class="leading-loose mb-6 text-sm">
+                        オーナーシェフ 永易剛行。<br>
+                        京都、そしてフランス料理の本質を追求し続けた日々。
+                        2013年、故郷である北海道・富良野で「岳」を拓いたのは、地元農家が手塩にかけて育てた食材の輝きを、もっと多くの人に知ってほしいという想いからでした。
+                    </p>
+                    <p class="leading-loose italic text-gray-500 text-xs">
+                        ドレスコードはありません。ただ、富良野の風土を慈しむ心だけを持って、お越しください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩み解決 -->
+    <section class="py-16 sm:py-24 bg-black text-white px-6">
+        <div class="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
+            <h3 class="text-xl sm:text-2xl font-bold serif-en mb-4 italic tracking-widest">Dinner Sanctuary</h3>
+            <p class="opacity-40 text-[10px] tracking-[0.3em] sm:tracking-[0.4em] uppercase font-light">富良野の夜、最高の紬めくくりを</p>
+        </div>
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-16 items-center">
+            <div class="space-y-10 sm:space-y-12">
+                <div>
+                    <h4 class="text-base sm:text-lg font-bold mb-3 sm:mb-4 border-l-2 border-accent pl-4">夕食難民にならないために</h4>
+                    <p class="text-xs opacity-70 leading-loose">
+                        富良野の夜は早く、20時を過ぎると多くの店が灯を消します。一軒家レストラン「岳」は、駅徒歩10分の場所であなたを静かに待ち続けます。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-base sm:text-lg font-bold mb-3 sm:mb-4 border-l-2 border-accent pl-4">五感で味わう地産地消</h4>
+                    <p class="text-xs opacity-70 leading-loose">
+                        地元野菜100%のコースや、希少な地元ワイン。富良野を「観光」するだけでなく「体験」するフレンチをご提案します。
+                    </p>
+                </div>
+            </div>
+            <div class="bg-accent/5 p-6 border border-white/5 rounded-sm">
+                <img src="images/paring.png" class="w-full h-56 sm:h-64 object-cover mb-6 opacity-60" alt="店内の様子">
+                <p class="text-[10px] tracking-normal sm:tracking-tighter leading-relaxed opacity-50">
+                    「カジュアルな夜富良野フレンチ」として、ご家族連れやドレスコードを気にされる方にも、最高のリラックス空間をご提供します。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ & 特典 -->
+    <section class="py-16 sm:py-24 bg-white px-6">
+        <div class="max-w-6xl mx-auto text-center mb-12 sm:mb-16">
+            <h3 class="text-xl sm:text-2xl font-bold serif-en italic">Voice of Guests</h3>
+        </div>
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-3 gap-10 sm:gap-12">
+            <div class="border-t pt-8">
+                <div class="flex gap-1 mb-4" aria-label="評価 5つ星中5つ">
+                    <span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span>
+                </div>
+                <p class="text-xs leading-loose text-gray-600">「山わさびのアイスクリーム、自家製パン、どれをとっても繊細で驚きがありました。母も大満足で、富良野に来たら必ず再訪します。」</p>
+                <p class="mt-4 text-[10px] font-bold opacity-40 uppercase tracking-widest">— Trip Advisor Guest</p>
+            </div>
+            <div class="border-t pt-8">
+                <div class="flex gap-1 mb-4" aria-label="評価 5つ星中5つ">
+                    <span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span><span class="text-accent text-xs">★</span>
+                </div>
+                <p class="text-xs leading-loose text-gray-600">「5500円の地元野菜コース。野菜の味がこれほど濃いとは。スペシャリテの白玉ねぎのポタージュは、言葉を失う美味しさでした。」</p>
+                <p class="mt-4 text-[10px] font-bold opacity-40 uppercase tracking-widest">— Local Guide</p>
+            </div>
+            <div class="bg-clay p-8 rounded-sm text-left">
+                <h4 class="font-bold text-accent mb-4 text-sm tracking-widest uppercase">Chef's Privilege</h4>
+                <p class="text-xs font-bold mb-2 underline decoration-accent decoration-2 text-accent">自家製パンの温かいおもてなし</p>
+                <p class="text-[11px] leading-loose opacity-60 italic">
+                    お出しする直前に温める自家製パンと、地元産の鹿肉。細部まで行き届いた「おもてなし」が岳の誇りです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Coming Soon セクション（新機能・サービス提案） -->
+    <section class="py-16 sm:py-24 bg-[#f8f6f0] border-y border-stone-200 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-accent font-bold text-xs tracking-[0.4em] uppercase block mb-3">Future Hospitality</span>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold serif-en italic mb-4">Coming Soon</h3>
+                <p class="text-xs sm:text-sm text-gray-500 tracking-wider">「岳」が描く、これからの新しいおもてなしのカタチ</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- アイテム 1: 生産者ヒストリーカード -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm border border-stone-200/60 shadow-sm hover:shadow-md transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 sm:mb-6">
+                            <span class="text-[10px] font-bold text-white bg-accent px-3 py-1 rounded-full tracking-widest uppercase">New Service</span>
+                            <span class="text-xs serif-en italic text-gray-400">01</span>
+                        </div>
+                        <h4 class="text-base font-bold mb-3 tracking-wide text-gray-900">生産者ストーリーカード</h4>
+                        <p class="text-xs leading-relaxed text-gray-600 mb-6">
+                            お料理とともに、富良野の大地で手塩にかけて育てる農家さん・ハンターさんの物語が記された特製カードを添えて。食後はお持ち帰りいただき、旅の記憶に。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-dashed border-gray-200 flex items-center justify-between text-[11px] text-accent font-medium">
+                        <span>準備中（次回ご来店時に公開）</span>
+                        <span>→</span>
+                    </div>
+                </div>
+
+                <!-- アイテム 2: 富良野テロワール・ギフト -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm border border-stone-200/60 shadow-sm hover:shadow-md transition duration-500 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 sm:mb-6">
+                            <span class="text-[10px] font-bold text-stone-600 bg-stone-100 px-3 py-1 rounded-full tracking-widest uppercase">Gift & Home</span>
+                            <span class="text-xs serif-en italic text-gray-400">02</span>
+                        </div>
+                        <h4 class="text-base font-bold mb-3 tracking-wide text-gray-900">富良野テロワール便</h4>
+                        <p class="text-xs leading-relaxed text-gray-600 mb-6">
+                            「岳」で味わった余韻をご自宅でも。シェフ自家製の鹿ドレッシングや季節のコンフィチュール、厳選された富良野野菜の特別配送サービスを計画中です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-dashed border-gray-200 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+                        <span>順次オンライン予約開始</span>
+                        <span>→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA & Access -->
+    <section class="py-16 sm:py-24 bg-clay relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 serif-en italic">Reservations</h2>
+            <p class="mb-10 sm:mb-12 tracking-[0.15em] sm:tracking-[0.2em] leading-loose text-sm">
+                その日、その瞬間にしかない富良野を、<br>
+                特別なひと皿に変えて。
+            </p>
+
+            <div class="bg-white p-5 sm:p-8 md:p-12 shadow-2xl space-y-8 rounded-sm">
+                <!-- Google Maps Embed -->
+                <div class="w-full aspect-[4/3] sm:aspect-video md:aspect-[21/9] rounded-sm overflow-hidden border border-gray-100 shadow-inner">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.5824051912873!2d142.38402117509054!3d43.34392677238045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f734d68e3915a13%3A0x370f15c59d581c88!2sFurano%20French%20%E5%B2%B3!5e0!3m2!1sja!2sjp!4v1772068755278!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Furano French 岳 地図"></iframe>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 text-left border-b pb-8">
+                    <div>
+                        <h5 class="text-[10px] font-bold text-accent mb-2 tracking-[0.2em] uppercase">Access</h5>
+                        <p class="text-xs">〒076-0024 北海道富良野市幸町10-1</p>
+                        <p class="text-[10px] opacity-40 mt-1">富良野駅から徒歩約10分</p>
+                    </div>
+                    <div>
+                        <h5 class="text-[10px] font-bold text-accent mb-2 tracking-[0.2em] uppercase">Information</h5>
+                        <p class="text-xs font-bold">TEL: 0167-22-0385</p>
+                       
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-5 sm:gap-6">
+                    <a href="tel:0167220385" class="bg-accent text-white py-5 sm:py-6 text-base sm:text-lg tracking-[0.3em] sm:tracking-[0.4em] font-bold hover:bg-black active:bg-black transition duration-700 block rounded-sm">
+                        電話で予約を確定する
+                    </a>
+                    <a href="https://www.instagram.com/furano_french_take" target="_blank" rel="noopener noreferrer" class="text-[10px] underline opacity-40 hover:opacity-100 transition tracking-[0.1em] py-2">
+                        公式Instagramで本日の食材を見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-black text-white/20 text-center text-[9px] sm:text-[10px] tracking-[0.3em] sm:tracking-[0.4em] font-light px-4">
+        &copy; FURANO FRENCH TAKE. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>
