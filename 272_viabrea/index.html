@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Via BRERA(ヴィアブレラ)| 旭川・すすきのの隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Library for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --gold: #c5a059;
+            --dark-gold: #a67c37;
+            --stone-900: #1c1917;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdfcfb;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .en-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+        }
+
+        .img-zoom {
+            overflow: hidden;
+        }
+        .img-zoom img {
+            transition: transform 0.6s ease;
+        }
+        .img-zoom:hover img {
+            transform: scale(1.05);
+        }
+
+        .gold-border {
+            border-color: var(--gold);
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+
+        .btn-elegant {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid var(--gold);
+        }
+        .btn-elegant:hover, .btn-elegant:active {
+            background-color: var(--gold);
+            color: white !important;
+        }
+
+        .deco-line {
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0 auto;
+        }
+
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* Map Container responsive */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* taller ratio on mobile so the map isn't a sliver */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: 1024px) {
+            .map-container {
+                padding-bottom: 56.25%; /* 16:9 on larger screens */
+            }
+        }
+
+        /* Prevent horizontal scroll from bg-fixed on iOS */
+        @supports (-webkit-touch-callout: none) {
+            .bg-fixed {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Comfortable minimum tap target size */
+        a, button {
+            min-height: 44px;
+        }
+    </style>
+</head>
+<body class="text-stone-900 bg-texture">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/main.jpg" alt="Main Dish" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 sm:px-4 text-center text-white py-24">
+            <div class="mb-6 sm:mb-8" data-aos="fade-down" data-aos-duration="1500">
+                <span class="en-serif italic text-lg sm:text-2xl tracking-[0.25em] sm:tracking-[0.3em] uppercase">Via BRERA</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8 leading-snug sm:leading-tight tracking-wide sm:tracking-wider" data-aos="fade-up" data-aos-duration="1500">
+                道産食材の記憶を<br>一皿に綴る
+            </h1>
+            <div class="deco-line mb-6 sm:mb-8" data-aos="stretch-y"></div>
+            <p class="text-sm sm:text-lg md:text-xl mb-10 sm:mb-12 font-light tracking-[0.1em] sm:tracking-[0.2em]" data-aos="fade-up" data-aos-delay="500">
+                旭川・すすきのの、大人のための隠れ家イタリアン
+            </p>
+            <div data-aos="fade-up" data-aos-delay="800">
+                <a href="#reservation" class="btn-elegant px-8 sm:px-12 py-4 sm:py-5 rounded-sm text-white inline-flex items-center justify-center tracking-widest uppercase text-sm">
+                    Book a Table
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:block text-white vertical-text tracking-[0.5em] font-light text-sm opacity-70">
+            HOKKAIDO INGREDIENTS × ITALIAN SPIRIT
+        </div>
+    </header>
+
+    <!-- Intro -->
+    <section class="py-16 sm:py-24 relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-4 max-w-4xl text-center">
+            <div class="mb-10 sm:mb-16" data-aos="fade-up">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed mb-8 sm:mb-12 italic">
+                    「賑やかな街のなかで、<br>
+                    心から落ち着ける場所を探している。」
+                </h2>
+                <p class="text-stone-500 leading-loose text-sm sm:text-base">
+                    すすきのの駅から徒歩2分。繁華街の中心にありながら、<br class="hidden md:block">
+                    扉を開ければそこには、時が穏やかに流れる隠れ家が広がります。<br>
+                    北海道の豊かな大地が育んだ食材と、厳選された100種のワイン。<br>
+                    大切な方との語らいに、至福のひとときを。
+                </p>
+            </div>
+            <div class="flex justify-center" data-aos="fade-up">
+                <img src="images/italian.png" alt="Inside the restaurant" class="rounded-sm shadow-xl w-full md:max-w-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Showcase -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="text-center mb-12 sm:mb-20" data-aos="fade-up">
+                <span class="text-gold en-serif text-lg sm:text-xl italic mb-2 block">Specialità</span>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-widest">至高の一皿</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-8 sm:gap-16">
+                <div class="w-full lg:w-3/5 img-zoom" data-aos="fade-right">
+                    <img src="images/pasta.jpg" alt="きのこのクリームパスタ" class="w-full h-auto">
+                </div>
+                <div class="w-full lg:w-2/5" data-aos="fade-left">
+                    <h3 class="text-xl sm:text-3xl font-bold mb-4 sm:mb-6 text-stone-800 leading-tight">
+                        芳醇な香りに包まれる<br>
+                        「きのこのクリームパスタ」
+                    </h3>
+                    <p class="text-stone-600 leading-loose mb-6 sm:mb-8 text-sm sm:text-base">
+                        シェフが厳選した旬のきのこを贅沢に使用。濃厚なクリームがパスタに絡み、口に含んだ瞬間に森の香りが広がります。北海道産の乳製品のコクが引き立つ、Via BRERAを代表するスペシャリテです。
+                    </p>
+                    <div class="border-l-4 gold-border pl-5 sm:pl-6 py-2">
+                        <p class="font-bold text-stone-800 text-sm sm:text-base">その他の人気メニュー</p>
+                        <p class="text-xs sm:text-sm text-stone-500 mt-2">渡り蟹のパスタ / 十勝牛Tボーンステーキ / 道産生ウニのパスタ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef & Story -->
+    <section class="py-16 sm:py-24 bg-stone-50">
+        <div class="container mx-auto px-5 sm:px-4 max-w-5xl">
+            <div class="flex flex-col md:flex-row-reverse gap-10 sm:gap-16 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <div class="relative max-w-sm mx-auto md:max-w-none">
+                        <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-full h-full border-2 gold-border z-0"></div>
+                        <img src="images/chef.png" alt="Chef Sakai" class="relative z-10 w-full grayscale hover:grayscale-0 transition duration-1000">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <span class="text-gold en-serif text-lg sm:text-xl italic mb-2 block">Il Cuoco</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">シェフ 境 直人</h2>
+                    <p class="text-stone-600 leading-loose mb-6 text-sm sm:text-base">
+                        1996年、北海道生まれ。幼い頃から料理に親しみ、調理師専門学校時代から旭川の名店でその才能を開花させる。<br><br>
+                        彼の料理哲学は「素材との対話」。北海道の四季がもたらす一瞬の輝きを逃さず、イタリアンの伝統的な技法を用いて、最も美しい形でテーブルへ届けます。
+                    </p>
+                    <div class="text-right">
+                        <span class="en-serif text-xl sm:text-2xl tracking-widest text-stone-400">— Naoto Sakai</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 sm:py-24 bg-white relative">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="text-center mb-12 sm:mb-20">
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.15em] sm:tracking-[0.2em]" data-aos="fade-up">Guest Voice</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+                <div class="border-b pb-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-gold text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-stone-600 text-sm leading-relaxed italic mb-6">「スープはもちろんのこと、すべて美味しかったです。雰囲気もとても落ち着いていて、デートなどにぴったりです。」</p>
+                    <p class="text-xs font-bold text-stone-400 tracking-widest uppercase">Visit for Dinner</p>
+                </div>
+                <div class="border-b pb-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-gold text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="text-stone-600 text-sm leading-relaxed italic mb-6">「『美味しいは幸せ』と思わせてくれるお店。接客が丁寧でとても感じがいい。ビールの後はもちろんワインをボトルで。」</p>
+                    <p class="text-xs font-bold text-stone-400 tracking-widest uppercase">Special Occasion</p>
+                </div>
+                <div class="border-b pb-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex text-gold text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-stone-600 text-sm leading-relaxed italic mb-6">「イタリアンならここ！と決めています。カトラリーにこだわりを感じて、居心地の良いお店です。シェフも話しやすい。」</p>
+                    <p class="text-xs font-bold text-stone-400 tracking-widest uppercase">Regular Guest</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="container mx-auto px-5 sm:px-4 relative z-10 max-w-6xl">
+            <div class="text-center mb-12 sm:mb-20" data-aos="fade-up">
+                <span class="text-gold en-serif text-xl sm:text-2xl italic mb-2 block tracking-widest">New Services</span>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase">Coming Soon</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-6"></div>
+                <p class="text-stone-400 text-sm mt-4 tracking-widest">より多くのお客様に愛されるお店を目指して、新しい試みを準備しております。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1: Kids Plate -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-sm border border-stone-700/50 hover:border-gold transition duration-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="text-gold text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
+                            <span class="inline-block w-2 h-2 rounded-full bg-gold"></span>
+                            Lunch New Service
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 text-white leading-snug">
+                            シェフ特製<br>「キッズ・イタリアンプレート」
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6 font-light">
+                            お子様連れのご家族やママ友会でも気兼ねなくお楽しみいただけるよう、シェフ境が腕を振るう栄養満点のキッズコース・プレートが新登場します。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-gold">
+                        <span>提供開始予定</span>
+                        <span class="font-bold tracking-wider">近日公開</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Takeout & Gift -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-sm border border-stone-700/50 hover:border-gold transition duration-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="text-gold text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
+                            <span class="inline-block w-2 h-2 rounded-full bg-gold"></span>
+                            Takeout & Gift
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 text-white leading-snug">
+                            Via BRERA<br>「自家製パスタソース&ドレッシング」
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6 font-light">
+                            お店の味をご家庭や贈り物に。道産野菜の特製ドレッシングや、スペシャリテの濃厚パスタソースのテイクアウト・オンライン販売をスタートします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-gold">
+                        <span>提供開始予定</span>
+                        <span class="font-bold tracking-wider">順次準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access & Map -->
+    <section id="access" class="py-16 sm:py-24 bg-stone-50">
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl">
+            <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+                <span class="text-gold en-serif text-lg sm:text-xl italic mb-2 block">Access</span>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-widest">アクセス</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-12 items-stretch">
+                <!-- Map Info -->
+                <div class="lg:w-1/3 space-y-8" data-aos="fade-right">
+                    <div class="bg-white p-6 sm:p-8 border border-stone-200 shadow-sm h-full">
+                        <h3 class="text-lg sm:text-xl font-bold mb-6 border-b gold-border pb-4">Via BRERA</h3>
+                        <div class="space-y-6 text-sm text-stone-600">
+                            <div>
+                                <p class="text-gold font-bold mb-1 tracking-widest">ADDRESS</p>
+                                <p class="break-words">〒060-0063<br>北海道札幌市中央区南3条西2丁目6 KT3条ビル1階</p>
+                            </div>
+                            <div>
+                                <p class="text-gold font-bold mb-1 tracking-widest">STATION</p>
+                                <p>地下鉄南北線「すすきの駅」より徒歩2分</p>
+                                <p>地下鉄南北b線「大通駅」より徒歩5分</p>
+                            </div>
+                            <div>
+                                <p class="text-gold font-bold mb-1 tracking-widest">TEL</p>
+                                <p class="text-base sm:text-lg font-bold text-stone-900">011-887-7381</p>
+                            </div>
+                            <div class="pt-4">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map Embed -->
+                <div class="lg:w-2/3" data-aos="fade-left">
+                    <div class="map-container shadow-xl grayscale-[0.3] hover:grayscale-0 transition duration-700">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.2830617090854!2d141.35241407507198!3d43.05651389081965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298389d78d3d%3A0x146ed6632b2e2a8!2zVmlhIEJSRVJB77yI44O044Kj44KiIOODluODrOODqe-8iQ!5e0!3m2!1sja!2sjp!4v1772067889394!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation & CTA -->
+    <section id="reservation" class="py-16 sm:py-24 bg-stone-900 text-white relative">
+        <div class="absolute inset-0 opacity-20 bg-[url('images/dinner.png')] bg-center bg-cover"></div>
+
+        <div class="container mx-auto px-5 sm:px-4 text-center relative z-10">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 tracking-widest" data-aos="fade-up">ご予約・お問合せ</h2>
+            <p class="text-stone-400 mb-10 sm:mb-12 font-light tracking-widest text-sm sm:text-base" data-aos="fade-up">特別な夜に、ふさわしいお席をご用意いたします。</p>
+
+            <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 mb-14 sm:mb-16">
+                <a href="https://viabrera.owst.jp/" target="_blank" class="bg-white text-stone-900 py-5 sm:py-6 px-4 rounded-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] hover:bg-gold hover:text-white transition duration-500 flex items-center justify-center gap-4" data-aos="zoom-in">
+                    <i class="far fa-calendar-alt"></i> 24時間WEB予約
+                </a>
+                <a href="tel:0118877381" class="border border-white text-white py-5 sm:py-6 px-4 rounded-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] hover:bg-white hover:text-stone-900 transition duration-500 flex items-center justify-center gap-4" data-aos="zoom-in">
+                    <i class="fas fa-phone-alt"></i> 011-887-7381
+                </a>
+            </div>
+
+            <div class="flex justify-center gap-8 mb-4" data-aos="fade-up">
+                <a href="https://www.instagram.com/viabrera_sapporo/" target="_blank" class="text-stone-400 hover:text-white transition flex items-center gap-2">
+                    <i class="fab fa-instagram text-2xl"></i>
+                    <span class="text-xs tracking-widest">Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 sm:py-12 bg-black text-center px-5">
+        <div class="mb-6">
+            <span class="en-serif italic text-lg sm:text-xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-white">Via BRERA</span>
+        </div>
+        <div class="text-stone-600 text-[10px] tracking-widest uppercase space-y-2">
+            <p>Lunch: 11:30 - 14:30 / Dinner: 17:30 - Close</p>
+            <p>Closed on Sundays</p>
+            <p class="pt-4">&copy; Via BRERA Sapporo. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+    </script>
+</body>
+</html>
