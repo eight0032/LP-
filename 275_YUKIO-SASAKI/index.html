@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>YUKIO SASAKI | 札幌・西18丁目の至高フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-gold: #b39151;
+            --color-dark: #1a1a1a;
+            --color-soft-bg: #f9f8f6;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--color-dark);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+
+        /* 装飾的なライン */
+        .marker-gold {
+            background: linear-gradient(transparent 60%, rgba(179, 145, 81, 0.2) 60%);
+        }
+
+        /* ヒーローエリアのオーバーレイ */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%);
+        }
+
+        .cta-float {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .cta-float:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(179, 145, 81, 0.3);
+        }
+        .cta-float:active {
+            transform: scale(0.98);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        @media (hover: hover) {
+            .card-hover:hover {
+                background: white;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+                transform: translateY(-5px);
+            }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: 0;
+        }
+
+        /* モバイルでのタップ範囲確保 */
+        a, button {
+            min-height: 44px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fcfbf9]">
+
+    <!-- 1. FVエリア -->
+    <section class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/buryure.jpg" alt="Restaurant interior" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl px-5 sm:px-6 text-center text-white">
+            <div class="inline-block border border-white/40 px-4 sm:px-6 py-2 mb-6 sm:mb-8 tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-base backdrop-blur-sm text-white font-bold">
+                完全予約制 | 札幌・西18丁目の隠れ家
+            </div>
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-6 sm:mb-8 leading-[1.4] sm:leading-[1.3] drop-shadow-lg">
+                <span class="text-lg sm:text-2xl md:text-3xl font-light block mb-3 sm:mb-4 opacity-90">一皿に宿る、四季と美術。</span>
+                五感で愉しむ、<br>至高のフレンチ。
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl mb-8 sm:mb-12 font-light tracking-wide px-2">
+                名物「<span class="text-gold font-bold">フォアグラのブリュレ</span>」が織りなす感動の体験
+            </p>
+            <div class="flex justify-center">
+                <a href="#cta" class="bg-gold text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold cta-float tracking-widest inline-flex items-center justify-center">
+                    24時間WEB予約を受け付ける
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50 text-white">
+            <i class="fa-solid fa-chevron-down text-xl sm:text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- 2. ベネフィット・特長セクション -->
+    <section class="py-16 sm:py-24 px-5 sm:px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-xs sm:text-sm font-bold tracking-[0.3em] sm:tracking-[0.4em] text-gold mb-3 sm:mb-4 uppercase">Features</h2>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-bold serif leading-snug">YUKIO SASAKIが選ばれる<br class="md:hidden">3つの理由</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="p-6 sm:p-8 rounded-2xl border border-stone-100 bg-stone-50/50 card-hover text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-sm">
+                        <i class="fa-solid fa-palette text-gold text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 serif">アート級の盛り付け</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">食用花を贅沢に使い、他では見られない鮮やかな色彩で彩られた一皿。誕生日や記念日に、目でも味わう感動をお届けします。</p>
+                </div>
+                <div class="p-6 sm:p-8 rounded-2xl border border-stone-100 bg-stone-50/50 card-hover text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-sm">
+                        <i class="fa-solid fa-wine-glass text-gold text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 serif">わずか9席のプライベート</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">個室3名・テーブル6名。こじんまりとした温かな空間だからこそ叶う、丁寧で親密なおもてなしと静かな時間。</p>
+                </div>
+                <div class="p-6 sm:p-8 rounded-2xl border border-stone-100 bg-stone-50/50 card-hover text-center sm:col-span-2 md:col-span-1">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-sm">
+                        <i class="fa-solid fa-bread-slice text-gold text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 serif">自家製焼きたてパン</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">ゆり根や黒豆を使った奥様手作りのパン。料理のソースを最後まで愉しむための、パン屋さんを超える絶品の名脇役です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ストーリーセクション -->
+    <section class="bg-stone-900 py-16 sm:py-24 px-5 sm:px-4 text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 sm:gap-16">
+            <div class="w-full md:w-1/2">
+                <div class="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="images/chef.png" class="w-full h-full object-cover opacity-80" alt="Chef working">
+                    <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 border-l-2 border-gold pl-4">
+                        <p class="text-[10px] sm:text-xs tracking-widest opacity-60">OWNER CHEF</p>
+                        <p class="text-base sm:text-lg font-bold serif">佐々木 幸男</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 serif leading-tight">
+                    東京での研鑽を、<br>札幌の小さな隠れ家で。
+                </h2>
+                <div class="space-y-5 sm:space-y-6 text-stone-300 leading-relaxed font-light text-sm sm:text-base">
+                    <p>オーナーシェフ佐々木は、東京の高級フレンチで長年修行を積み、繊細な盛り付けと独創的な味わいを獲得しました。</p>
+                    <p>札幌西18丁目に夫婦で小さな店を構えました。広告を出さず、ただ一皿一皿に真摯に向き合うことで、今では「予約の取れない隠れ家」として口コミで愛されるまでになりました。</p>
+                    <p>寡黙なシェフと、温かく迎える奥様。この小さな空間にしかない、特別なフレンチの形があります。</p>
+                </div>
+                <div class="mt-8 sm:mt-10 flex items-center gap-4">
+                    <div class="w-12 h-[1px] bg-gold"></div>
+                    <span class="text-gold tracking-[0.2em] font-bold text-sm sm:text-base">STORY</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 悩みの共感 & 解決 -->
+    <section class="py-16 sm:py-24 px-5 sm:px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-stone-50 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-16 border border-stone-100">
+                <h2 class="text-xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 serif leading-snug">
+                    大切な記念日に、<br class="md:hidden">こんな不安はありませんか？
+                </h2>
+                <div class="space-y-4 sm:space-y-6 mb-10 sm:mb-16">
+                    <div class="flex items-start sm:items-center gap-3 sm:gap-4 bg-white p-4 sm:p-5 rounded-xl shadow-sm">
+                        <i class="fa-solid fa-circle-question text-stone-300 text-lg sm:text-xl mt-0.5 sm:mt-0"></i>
+                        <p class="text-stone-700 text-sm sm:text-base">「高級店は緊張してしまい、ゆっくり会話を楽しめない…」</p>
+                    </div>
+                    <div class="flex items-start sm:items-center gap-3 sm:gap-4 bg-white p-4 sm:p-5 rounded-xl shadow-sm">
+                        <i class="fa-solid fa-circle-question text-stone-300 text-lg sm:text-xl mt-0.5 sm:mt-0"></i>
+                        <p class="text-stone-700 text-sm sm:text-base">「いつもと同じ店ではなく、驚きのある一皿に出会いたい…」</p>
+                    </div>
+                    <div class="flex items-start sm:items-center gap-3 sm:gap-4 bg-white p-4 sm:p-5 rounded-xl shadow-sm">
+                        <i class="fa-solid fa-circle-question text-stone-300 text-lg sm:text-xl mt-0.5 sm:mt-0"></i>
+                        <p class="text-stone-700 text-sm sm:text-base">「子供連れでも、まずは本格的なフレンチが食べたい…」</p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="inline-block text-gold text-sm font-bold tracking-widest mb-4">OUR ANSWER</div>
+                    <h3 class="text-xl sm:text-3xl font-bold mb-6 marker-gold inline-block">YUKIO SASAKIなら叶います。</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
+                        完全予約制・わずか9席。アットホームな居心地の良さと、<br class="hidden md:block">
+                        都心高級店クオリティの芸術的な料理。その両立が私たちの誇りです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. クチコミセクション -->
+    <section class="py-16 sm:py-24 px-5 sm:px-4 bg-[#f9f8f6]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-10 sm:mb-16 serif">お客様から届いた、喜びの声</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 sm:p-8 pt-8 sm:pt-8 rounded-2xl shadow-sm relative mt-4">
+                    <div class="absolute -top-4 left-6 sm:-left-4 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4 pt-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-stone-700 leading-relaxed mb-6 font-bold">「パンが絶品！お腹も心も満足感でいっぱいでした」</p>
+                    <p class="text-stone-500 text-sm leading-relaxed">
+                        ランチで伺いました。予約席は窓側の個室で、こじんまりとした素敵なお部屋。
+                        一品ごとの説明も丁寧で、料理はもちろんどれも美味しい。提供されるパンはその都度違う種類で、焼きたて。パン屋さんより美味しかったです（笑）。
+                    </p>
+                    <div class="mt-6 text-xs text-stone-400">札幌市中央区・女性のお客様</div>
+                </div>
+                <div class="bg-white p-6 sm:p-8 pt-8 sm:pt-8 rounded-2xl shadow-sm relative mt-4">
+                    <div class="absolute -top-4 left-6 sm:-left-4 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <div class="flex text-yellow-400 mb-4 pt-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-stone-700 leading-relaxed mb-6 font-bold">「他では見ない、食用花の彩りに感動しました」</p>
+                    <p class="text-stone-500 text-sm leading-relaxed">
+                        フレンチの固い雰囲気ではなく、ゆったりできるレストランです。それでいて、接客もワインのオススメも非常に丁寧。
+                        食用のお花を華々しく彩った盛り付けが本当に綺麗で、えぐみも全くなく、味も最高でした。是非また来たいです。
+                    </p>
+                    <div class="mt-6 text-xs text-stone-400">記念日利用・ご夫妻</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. COMING SOON セクション -->
+    <section class="py-16 sm:py-24 px-5 sm:px-4 bg-stone-900 text-white relative overflow-hidden">
+        <!-- 背景装飾 -->
+        <div class="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="inline-block border border-gold/40 text-gold px-4 py-1 text-xs tracking-[0.3em] font-bold rounded-full mb-4 uppercase">
+                    New Experience
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black serif tracking-widest text-gold mb-4">
+                    COMING SOON
+                </h2>
+                <p class="text-stone-400 text-sm md:text-base font-light tracking-wider max-w-2xl mx-auto">
+                    YUKIO SASAKIでのひとときを、さらに記憶に残る思い出に。<br>
+                    ご来店いただいたお客様へ、間もなくお届けを開始する新たなサービスです。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: メニューカードの配布 -->
+                <div class="bg-stone-800/80 rounded-2xl p-6 sm:p-8 border border-white/10 hover:border-gold/50 transition-all duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute top-4 right-4 bg-gold/20 text-gold text-[10px] px-3 py-1 rounded-full font-bold tracking-widest uppercase">
+                        Preparation
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-scroll"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-3 text-stone-100 pr-16 sm:pr-0">
+                            記念日特詣オリジナル<br>メニューカードのプレゼント
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6 font-light">
+                            本日の料理構成、シェフの手書きデッサン、そしてお客様の記念日とお名前を刻印した特製カードをお席にご用意。大切なお食事の思い出を形にしてお持ち帰りいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 text-xs text-gold flex items-center gap-2">
+                        <i class="fa-solid fa-sparkles text-xs"></i> ご予約時に「記念日利用」で無料進呈
+                    </div>
+                </div>
+
+                <!-- サービス2: 自家焼きパンの持ち帰り・ギフト化 -->
+                <div class="bg-stone-800/80 rounded-2xl p-6 sm:p-8 border border-white/10 hover:border-gold/50 transition-all duration-300 flex flex-col justify-between relative group">
+                    <div class="absolute top-4 right-4 bg-gold/20 text-gold text-[10px] px-3 py-1 rounded-full font-bold tracking-widest uppercase">
+                        Preparation
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-3 text-stone-100 pr-16 sm:pr-0">
+                            「奥様の自家製パン」<br>お土産ギフトボックス
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6 font-light">
+                            クチコミでも「パン屋さんより美味しい」と大好評のゆり根や黒豆を使った焼きたてパン。ご要望にお応えし、翌朝の朝食にも愉しめるお土産用アソートの販売を開始予定です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 text-xs text-gold flex items-center gap-2">
+                        <i class="fa-solid fa-gift text-xs"></i> 数量限定・お会計時にご注文可能
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. オファー・詳細セクション -->
+    <section id="details" class="py-16 sm:py-24 px-5 sm:px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold serif mb-4">Information</h2>
+                <p class="text-stone-500 tracking-widest text-sm sm:text-base">至福のひとときをお約束するために</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 sm:gap-12 items-start">
+                <!-- 情報テキスト -->
+                <div class="w-full lg:w-1/2 space-y-2">
+                    <div class="flex flex-col sm:flex-row border-b border-stone-100 py-5 sm:py-6 sm:items-center gap-1 sm:gap-0">
+                        <div class="sm:w-1/3 font-bold text-gold serif tracking-wider text-sm">イチオシ</div>
+                        <div class="sm:w-2/3 text-stone-700">名物・フォアグラのブリュレ</div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-100 py-5 sm:py-6 sm:items-center gap-1 sm:gap-0">
+                        <div class="sm:w-1/3 font-bold text-gold serif tracking-wider text-sm">コース価格</div>
+                        <div class="sm:w-2/3 text-stone-700">ランチ 3,500円〜 / ディナー おまかせコース</div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-100 py-5 sm:py-6 sm:items-center gap-1 sm:gap-0">
+                        <div class="sm:w-1/3 font-bold text-gold serif tracking-wider text-sm">席数</div>
+                        <div class="sm:w-2/3 text-stone-700">9席（個室3室 / テーブル席6席）<br><span class="text-xs opacity-70">※お子様連れ歓迎</span></div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-100 py-5 sm:py-6 sm:items-start gap-1 sm:gap-0">
+                        <div class="sm:w-1/3 font-bold text-gold serif tracking-wider text-sm sm:mt-1">所在地</div>
+                        <div class="sm:w-2/3 text-stone-700">
+                            <p class="mb-2">〒064-0801 北海道札幌市中央区南1条西20丁目1−27</p>
+                            <p class="text-sm leading-relaxed opacity-80">
+                                地下鉄東西線「西18丁目駅」徒歩3分<br>
+                                専用駐車場あり
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-100 py-5 sm:py-6 sm:items-center gap-1 sm:gap-0">
+                        <div class="sm:w-1/3 font-bold text-gold serif tracking-wider text-sm">営業時間</div>
+                        <div class="sm:w-2/3 text-stone-700 text-sm">
+                            ランチ / ディナー（月曜定休）<br>
+                            <span class="text-[10px] opacity-60">※ディナーは遅くまで営業しております。詳細はお問合せください。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map -->
+                <div class="w-full lg:w-1/2">
+                    <div class="map-container shadow-2xl border border-stone-100">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.2818779259383!2d141.3240639750721!3d43.05653879081806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b299529ee5e8f%3A0x447b44b673964aa4!2sYUKIO%20SASAKI!5e0!3m2!1sja!2sjp!4v1772084003345!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-stone-400 px-2">
+                        <span>地下鉄 西18丁目駅から徒歩圏内</span>
+                        <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="text-gold underline">Google Mapで開く</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 8. CTA(最終) -->
+<section id="cta" class="py-16 sm:py-24 bg-stone-900 px-5 sm:px-4">
+    <div class="max-w-4xl mx-auto text-center text-white bg-stone-800/50 p-8 sm:p-12 md:p-20 rounded-[2rem] sm:rounded-[3rem] border border-white/5 backdrop-blur-md">
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-8 serif tracking-tight leading-tight">
+            大切な人と、<br class="md:hidden">アートを愉しむひとときを。
+        </h2>
+        <p class="text-stone-400 mb-8 sm:mb-12 text-base sm:text-lg font-light">
+            1日わずか数組の限られたお席です。<br>
+            特別な日は、お早めのご予約をお勧めしております。
+        </p>
+
+        <div class="flex flex-col items-center gap-6">
+            <a href="https://autoreserve.com/ja/restaurants/t8RNRzDj4RRCbEUt9sKN" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-gold text-white px-8 sm:px-16 py-5 sm:py-6 rounded-full text-lg sm:text-xl font-bold cta-float shadow-2xl tracking-[0.1em] inline-flex items-center justify-center">
+                WEBで即時予約する
+            </a>
+            <p class="text-sm opacity-60">※24時間受付。確認メールをお送りします。</p>
+
+            <div class="mt-4 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10 w-full max-w-sm">
+                <p class="text-[10px] text-stone-400 mb-2 font-bold tracking-[0.3em] uppercase opacity-70">Reservation by Phone</p>
+                <a href="tel:0116161140" class="text-2xl sm:text-3xl font-bold tracking-widest hover:text-gold transition inline-block">011-616-1140</a>
+                <p class="text-[10px] text-stone-500 mt-2 italic">※営業時間中のお電話は出られない場合がございます。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="py-12 sm:py-16 bg-white text-center text-stone-400">
+        <div class="max-w-6xl mx-auto px-5 sm:px-4">
+            <h3 class="serif text-stone-900 text-xl sm:text-2xl tracking-[0.3em] sm:tracking-[0.4em] mb-6 sm:mb-8">YUKIO SASAKI</h3>
+            <div class="text-xs space-y-2 mb-6 sm:mb-8 font-light">
+                <p>〒064-0801 北海道札幌市中央区南1条西20丁目1−28</p>
+                <p>定休日：月曜日 | 電話：011-616-1140</p>
+            </div>
+            <div class="w-16 h-[1px] bg-stone-100 mx-auto mb-6 sm:mb-8"></div>
+            <p class="text-[9px] uppercase tracking-[0.2em] opacity-60">&copy; 2024 YUKIO SASAKI. Managed by SASAKI Family.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
