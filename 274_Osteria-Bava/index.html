@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>オステリア バーヴァ (Osteria Bava) | 北海道の至福を味わう隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#b39154',
+                        dark: '#1a1a1a',
+                        cream: '#fcf9f2'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        cinzel: ['"Cinzel"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fcf9f2;
+            color: #222;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .font-serif { font-family: 'Noto Serif JP', serif; }
+
+        .bg-text {
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3.5rem, 12vw, 10rem);
+            color: rgba(179, 145, 84, 0.06);
+            z-index: 0;
+            white-space: nowrap;
+            pointer-events: none;
+            font-weight: 700;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .cta-gold {
+            background: linear-gradient(135deg, #b39154 0%, #d4b886 50%, #b39154 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
+            box-shadow: 0 10px 30px rgba(179, 145, 84, 0.3);
+        }
+        .cta-gold:hover {
+            background-position: right center;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(179, 145, 84, 0.5);
+        }
+        .cta-gold:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 3px;
+        }
+
+        .shimmer { position: relative; overflow: hidden; }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.12), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .map-container iframe {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .shimmer::after { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* keep vertical side-copy readable but out of the way on small screens */
+        @media (max-width: 767px) {
+            .side-copy { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0">
+            <img src="images/roast beef.jpg"
+                 alt="びらとり和牛のローストビーフ"
+                 class="w-full h-full object-cover opacity-70 scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30"></div>
+        </div>
+
+        <div class="side-copy absolute top-10 right-6 md:right-16 z-20">
+            <p class="vertical-text text-white text-xl md:text-2xl tracking-[0.5em] font-serif py-8 border-r border-gold/50">
+                北海道の恵みを、一皿の芸術に。
+            </p>
+        </div>
+
+        <div class="relative z-10 text-center px-6 w-full max-w-4xl">
+            <p class="font-cinzel text-gold tracking-[0.3em] mb-4 text-xs sm:text-sm md:text-xl" data-aos="fade-up">SINCE 2010 | SAPPORO SUSUKINO</p>
+            <h1 class="text-white text-[2.1rem] leading-[1.3] sm:text-5xl md:text-7xl font-black md:leading-tight mb-6 md:mb-8 drop-shadow-2xl" data-aos="fade-up" data-aos-delay="300">
+                <span class="block mb-1 md:mb-2">至高の<span class="text-gold">びらとり和牛</span></span>
+                <span class="block">燻り雲丹の<span class="text-gold">リゾット</span></span>
+            </h1>
+            <div class="w-16 md:w-20 h-1 bg-gold mx-auto mb-6 md:mb-8" data-aos="zoom-in" data-aos-delay="600"></div>
+            <p class="text-gray-200 text-sm sm:text-base md:text-xl mb-10 md:mb-12 tracking-widest font-light px-2" data-aos="fade-up" data-aos-delay="800">
+                フレンチの技法が薫る、地中海風イタリアンの真髄
+            </p>
+            <a href="#cta" class="inline-block cta-gold text-white font-bold py-4 px-8 sm:py-5 sm:px-12 rounded-full text-base sm:text-lg tracking-widest shimmer" data-aos="fade-up" data-aos-delay="1000">
+                WEB限定特典を確認する
+            </a>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest flex flex-col items-center">
+            <span class="mb-2 font-cinzel">SCROLL</span>
+            <div class="w-px h-12 md:h-16 bg-gradient-to-b from-gold to-transparent"></div>
+        </div>
+    </header>
+
+    <!-- 2. CTA(上部) -->
+    <section id="cta" class="py-16 md:py-20 bg-[#1a1a1a] relative overflow-hidden">
+        <div class="bg-text top-0 left-0">RESERVATION</div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="bg-white p-1 md:p-2 rounded-3xl">
+                <div class="border-2 border-gold/30 rounded-2xl p-6 sm:p-10 md:p-12 text-center">
+                    <span class="text-gold font-bold tracking-widest text-xs sm:text-sm mb-2 block">— SPECIAL OFFER —</span>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-5 md:mb-6 text-gray-800">今すぐ使える「WEB限定クーポン」</h2>
+                    <p class="text-gray-600 mb-7 md:mb-8 leading-relaxed text-sm sm:text-base">
+                        当ページよりお問い合わせ・LINE登録いただいた方限定で、<br class="hidden md:block">
+                        <span class="text-red-800 font-bold">「誕生日プレート半額」</span>などの特別優待をお送りします。
+                    </p>
+                    <div class="flex flex-col gap-4 justify-center">
+                        <a href="http://regista2010.co.jp/contact.php" class="bg-green-700 hover:bg-green-800 active:bg-green-900 text-white font-bold py-4 sm:py-5 px-6 sm:px-10 rounded-xl text-base sm:text-xl transition-all shadow-xl flex items-center justify-center gap-3">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.083.924.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975 1.557-1.787 2.547-3.722 2.547-5.968z"/></svg>
+                            LINEで特典を受け取る
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. コンセプト / シズル -->
+    <section class="py-16 md:py-24 relative bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-12 gap-6 md:gap-8 items-center">
+                <div class="col-span-12 lg:col-span-7 relative" data-aos="fade-right">
+                    <div class="aspect-[4/5] md:aspect-video overflow-hidden rounded-sm shadow-2xl">
+                        <img src="images/pasta.jpg"
+                             alt="調理シーン" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 hidden lg:block w-64 h-64 bg-[#f4ece0] -z-10"></div>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:-ml-20 z-10 bg-white p-6 sm:p-8 md:p-10 shadow-xl border-t-4 border-gold -mt-8 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
+                    <span class="font-cinzel text-gold text-xs sm:text-sm tracking-[0.4em] mb-3 md:mb-4 block">CONCEPT</span>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-4 md:mb-6 leading-relaxed">
+                        一軒家の隠れ家で、<br>美食の深淵に触れる。
+                    </h2>
+                    <p class="text-gray-600 leading-[1.9] md:leading-[2] text-sm md:text-base">
+                        路面店でありながら、一歩足を踏み入れればそこは別世界。
+                        1階の活気あるバール、2階の開放的な北欧風空間。
+                        A5ランクの「びらとり和牛」や、濃厚な「燻り雲丹」が、
+                        シェフ川崎律司の感性によって、驚きに満ちたイタリアンへと生まれ変わります。
+                    </p>
+                    <div class="mt-6 md:mt-8">
+                        <p class="text-gold font-serif italic text-sm sm:text-base">「美味しいものに、境界線はない。」</p>
+                        <p class="text-xs text-gray-400 mt-1">Chef Ritsuji Kawasaki</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. メニュー / シズル感セクション -->
+    <section class="py-16 md:py-24 bg-[#111] text-white overflow-hidden relative">
+        <div class="bg-text bottom-10 right-0">SIGNATURE</div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-bold mb-3 md:mb-4" data-aos="fade-up">珠玉の逸品</h2>
+                <p class="text-gold tracking-[0.3em] sm:tracking-[0.5em] text-xs sm:text-sm" data-aos="fade-up" data-aos-delay="200">SIGNATURE MENUS</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16">
+                <div class="group" data-aos="fade-up">
+                    <div class="relative overflow-hidden aspect-[4/3] rounded-sm mb-5 md:mb-6">
+                        <img src="images/uni.jpg"
+                             alt="燻りウニのリゾット" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-serif text-gold mb-3">燻りウニのクリームリゾット</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        新鮮な雲丹を惜しみなく使い、表面を軽く燻ることで香ばしさをプラス。
+                        濃厚なクリームと雲丹の甘みが口の中で溶け合う、Bava不動の看板メニュー。
+                    </p>
+                </div>
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden aspect-[4/3] rounded-sm mb-5 md:mb-6">
+                        <img src="images/roast beef.jpg"
+                             alt="びらとり和牛のローストビーフ" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-serif text-gold mb-3">A5ランクびらとり和牛のローストビーフ</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        厳しい基準をクリアした「びらとり和牛」を、低温でじっくりとロースト。
+                        赤身の旨味と雫落りの甘みが完璧なバランスで共存する、至極の一皿。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 信頼と実績(口コミ) -->
+    <section class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="bg-[#fcf9f2] p-8 sm:p-12 md:p-20 rounded-[2rem] md:rounded-[3rem] relative shadow-inner overflow-hidden">
+                <div class="absolute top-6 left-6 sm:top-10 sm:left-10 text-gold/20 text-6xl sm:text-9xl font-serif font-black leading-none italic">&ldquo;</div>
+
+                <div class="relative z-10" data-aos="fade-in">
+                    <p class="text-lg sm:text-xl md:text-2xl font-serif leading-[1.8] md:leading-[2] mb-8 md:mb-12 text-center text-gray-800">
+                        「お通しの自家製ピクルスを一口食べた瞬間に確信しました。<br class="hidden md:block">
+                        この店の料理は、間違いなく素晴らしいと。」
+                    </p>
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="w-8 sm:w-12 h-px bg-gold"></div>
+                        <p class="font-bold tracking-widest text-xs sm:text-sm">ご来店されたお客様の声</p>
+                        <div class="w-8 sm:w-12 h-px bg-gold"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-5 md:gap-8 mt-8 md:mt-12">
+                        <div class="p-5 sm:p-6 bg-white rounded-2xl shadow-sm text-sm border-l-4 border-gold">
+                            「ウニと帆立と白身魚のクネルの味は濃厚。フレンチ出身のシェフでしょうか。本当に美味しかった。」
+                        </div>
+                        <div class="p-5 sm:p-6 bg-white rounded-2xl shadow-sm text-sm border-l-4 border-gold">
+                            「レバームースにリンゴソースがベストマッチ。前菜盛り合わせは絶対に頼んでほしいです!」
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5. COMING SOON / 新サービス予告 -->
+    <section class="py-16 md:py-24 bg-[#181818] text-white relative overflow-hidden border-t border-b border-gold/30">
+        <div class="bg-text top-1/2 -translate-y-1/2 left-0 opacity-10">COMING SOON</div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                <span class="inline-block px-4 py-1 border border-gold text-gold text-xs tracking-widest rounded-full mb-4 font-cinzel">NEXT PROJECT</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-bold">新サービス、準備中。</h2>
+                <p class="text-gray-400 text-sm md:text-base mt-4 tracking-widest">お客様のご要望にお応えし、さらに特別な体験をお届けします</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <div class="bg-black/60 border border-gold/30 p-6 sm:p-8 rounded-2xl relative flex flex-col justify-between group hover:border-gold transition duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gold font-cinzel text-xs tracking-widest uppercase">01 / LUNCH</span>
+                            <span class="bg-gold/20 text-gold text-[10px] px-3 py-1 rounded-full font-bold">開発中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-serif text-white font-bold mb-3 group-hover:text-gold transition">極上「おひとり様用」<br>贅沢ご褒美ランチ</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            「昼から贅沢にBavaの味を一人で堪能したい」という声にお応え。燻りウニリゾットやびらとり和牛をハーフサイズで楽しめる平日限定ランチを開始予定。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 text-xs text-gold/70 italic font-serif">
+                        ※近日公開予定
+                    </div>
+                </div>
+
+                <div class="bg-black/60 border border-gold/30 p-6 sm:p-8 rounded-2xl relative flex flex-col justify-between group hover:border-gold transition duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gold font-cinzel text-xs tracking-widest uppercase">02 / HOME BAVA</span>
+                            <span class="bg-gold/20 text-gold text-[10px] px-3 py-1 rounded-full font-bold">開発中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-serif text-white font-bold mb-3 group-hover:text-gold transition">特選テイクアウト、<br>おうちBavaオードブル</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            口コミでも大人気の「ローストビーフ×リンゴソース」や前菜盛り合わせをご自宅で。ワインと楽しむプレミアムテイクアウト・ギフトBOX。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 text-xs text-gold/70 italic font-serif">
+                        ※順次開始予定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. アクセス & 店舗情報 -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="font-cinzel text-gold text-xs sm:text-sm tracking-[0.4em] mb-3 md:mb-4 block">SHOP INFO</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold">アクセス・店舗情報</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+                <div class="order-2 lg:order-1" data-aos="fade-right">
+                    <div class="map-container shadow-2xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3202008429053!2d141.34945887507195!3d43.055732690869625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2984516316ad%3A0x26c6b56d77f88123!2z44Kq44K544OG44Oq44KiIOODkOODvOODtOOCoe-8iE9zdGVyaWEgQmF2Ye-8iQ!5e0!3m2!1sja!2sjp!4v1772082480851!5m2!1sja!2sjp"
+                                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="オステリア バーヴァ 地図"></iframe>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 space-y-6 md:space-y-8" data-aos="fade-left">
+                    <div class="border-b border-gold/20 pb-5 md:pb-6">
+                        <h3 class="text-gold font-bold mb-2 tracking-widest uppercase text-xs sm:text-sm">Location</h3>
+                        <p class="text-lg sm:text-xl font-serif">オステリア バーヴァ(Osteria Bava)</p>
+                        <p class="text-gray-600 mt-2 text-sm sm:text-base">〒064-0804 北海道札幌市中央区南4条西4丁目13−1</p>
+                        <p class="text-gold font-bold mt-2 text-sm sm:text-base">すすきの駅 徒歩2分</p>
+                    </div>
+
+                    <div class="border-b border-gold/20 pb-5 md:pb-6">
+                        <h3 class="text-gold font-bold mb-2 tracking-widest uppercase text-xs sm:text-sm">Contact</h3>
+                        <p class="text-xl sm:text-2xl font-cinzel tracking-wider">
+                            <a href="tel:011-222-2101" class="hover:text-gold transition-colors">011-222-2101</a>
+                        </p>
+                        <p class="text-xs text-gray-400 mt-1">※ご予約・お問い合わせはお電話またはWEBにて承ります</p>
+                    </div>
+
+                    <div class="border-b border-gold/20 pb-5 md:pb-6">
+                        <h3 class="text-gold font-bold mb-2 tracking-widest uppercase text-xs sm:text-sm">Space Info</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                            一軒家(1階:バールスペース / 2階:北欧風開放空間)<br>
+                            個室・ソファ席あり / プロジェクター完備 / 禁煙店
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <a href="http://regista2010.co.jp/contact.php" class="bg-dark text-white text-center px-8 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-gold transition-colors">
+                            WEBから問い合わせ
+                        </a>
+                        <a href="https://www.instagram.com/osteriabava/" target="_blank" rel="noopener" class="border border-gold text-gold text-center px-8 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-gold hover:text-white transition-all">
+                            INSTAGRAM
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 最終CTA -->
+    <section class="py-16 md:py-24 bg-dark text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="images/fish.png" class="w-full h-full object-cover" alt="">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-black mb-6 md:mb-8 leading-tight">
+                あなたの「一皿美味しい」を、<br>Bavaで見つけてください。
+            </h2>
+            <div class="w-20 md:w-24 h-px bg-gold mx-auto mb-8 md:mb-10"></div>
+            <p class="text-gray-300 mb-10 md:mb-12 tracking-[0.15em] sm:tracking-[0.2em] text-sm sm:text-base">飲み放題付きコース 3,500円〜10,000円</p>
+
+            <a href="http://regista2010.co.jp/contact.php" class="inline-block cta-gold text-white font-bold py-5 px-10 sm:py-6 sm:px-16 rounded-full text-lg sm:text-2xl shimmer">
+                WEB予約・クーポン獲得
+            </a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="py-10 md:py-12 bg-black border-t border-white/10 text-center px-4">
+        <p class="text-[10px] text-gray-600 tracking-widest">&copy; OSTERIA BAVA / REGISTA CO.,LTD. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 80,
+            disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        });
+    </script>
+</body>
+</html>
