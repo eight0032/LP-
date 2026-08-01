@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オステリア クロッキオ | 札幌で愛される伝説 of イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        accent: '#c0392b',
+                        'accent-hover': '#a0281b',
+                        gold: '#b3a369',
+                        'bg-light': '#f9f7f2'
+                    },
+                    fontFamily: {
+                        serif: ['"Shippori Mincho"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1a1a1a;
+            background-color: #f9f7f2;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('images/saba.jpg');
+            min-height: 100svh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #b3a369;
+            margin: 20px auto;
+        }
+
+        .btn-hover:hover {
+            letter-spacing: 0.1em;
+            background-color: #a0281b;
+        }
+
+        /* アニメーション用スタイル */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* スマホでは控えめなアニメーションに(酔いや遅延を防ぐ) */
+        @media (max-width: 767px) {
+            .reveal {
+                transform: translateY(14px);
+                transition-duration: 0.7s;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Google Map Responsive Container */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* スマホでは正方形に近い比率で見やすく */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                padding-bottom: 56.25%; /* 16:9 */
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* フローティングCTAの下に隠れないよう、最終セクション等に余白を確保 */
+        .safe-bottom {
+            padding-bottom: 96px;
+        }
+        @media (min-width: 768px) {
+            .safe-bottom {
+                padding-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FIRST VIEW -->
+    <section class="hero-section flex items-center justify-center relative overflow-hidden">
+        <div class="text-center text-white z-10 px-4 reveal active">
+            <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl mb-6 md:mb-8 leading-tight tracking-wider">
+                なめらかな、<br><span class="text-white/90">サバのテリーヌ。</span>
+            </h1>
+            <p class="text-[10px] sm:text-xs md:text-sm tracking-[0.2em] opacity-80 mb-8 md:mb-12 uppercase">Osteria Crocchio Sapporo</p>
+            <div class="w-px h-16 md:h-24 bg-white/40 mx-auto"></div>
+        </div>
+        <div class="absolute inset-0 bg-black/20"></div>
+    </section>
+
+    <!-- FLOATING CTA -->
+    <div class="fixed bottom-0 left-0 w-full z-50 md:bottom-8 md:left-auto md:right-8 md:w-auto">
+        <div class="bg-black/90 backdrop-blur-md md:rounded-full p-4 md:px-8 shadow-2xl flex items-center justify-between md:gap-8 border-t border-white/10 md:border-none">
+            <div class="hidden md:block">
+                <p class="text-white text-xs opacity-60">ご予約・お問い合わせ</p>
+                <p class="text-white font-bold text-lg">011-207-3522</p>
+            </div>
+            <a href="tel:0112073522" class="w-full md:w-auto bg-accent text-white text-center py-3 px-10 rounded-full font-bold transition-all btn-hover">
+                <i class="fas fa-phone-alt mr-2"></i> お電話で予約
+            </a>
+        </div>
+    </div>
+
+    <!-- INTRODUCTION -->
+    <section class="py-16 md:py-24 px-4 bg-white reveal">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-gold font-serif block mb-4 italic">Concept</span>
+            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl mb-8 md:mb-10 section-title">居心地の良さと、<br>本格的な美食の共鳴。</h2>
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center text-left">
+                <div class="md:w-1/2">
+                    <img src="images/fish.png" alt="Dish image" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2 space-y-6 text-gray-600">
+                    <p>「オステリア」とは、イタリア語で居酒屋を意味します。肩肘張らずに、しかし供される一皿はどこまでも妥協なく。</p>
+                    <p>札幌の人気店として愛され続け、食べログ3.60、250件以上の口コミに裏打ちされた実力。私たちが大切にしているのは、新鮮な魚介と地元食材が織りなす「その瞬間、一番美味しいもの」をお届けすることです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE MENU -->
+    <section class="py-16 md:py-24 px-4 bg-[#1a1a1a] text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto reveal">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute -top-6 -left-4 md:-top-10 md:-left-10 text-[80px] md:text-[120px] font-serif opacity-10 leading-none">01</div>
+                    <h3 class="font-serif text-3xl md:text-4xl mb-6 md:mb-8 relative z-10">スペシャリテ<br><span class="text-gold text-xl md:text-2xl tracking-widest">サバのテリーヌ</span></h3>
+                    <p class="leading-loose text-white/70 mb-8">
+                        当店の代名詞ともいえる逸品。新鮮なサバを贅沢に使用し、濃厚な旨味を閉じ込めたテリーヌは、一口でその「違い」を実感いただけます。ワインとの最高のマリアージュをお楽しみください。
+                    </p>
+                    <div class="border-l-2 border-gold pl-6 py-2 italic text-gold">
+                        「これを食べるためだけに、札幌へ来る価値がある」
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="images/saba.jpg" alt="Terrine detail" class="rounded-lg w-full">
+                    <img src="images/paring.png" alt="Wine" class="rounded-lg mt-8 w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICE -->
+    <section class="py-16 md:py-24 px-4 reveal">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-serif text-center text-2xl sm:text-3xl mb-10 md:mb-16 section-title">賑わい、という最高。</h2>
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 border border-gray-100 shadow-sm transition-transform hover:-translate-y-2">
+                    <div class="flex text-gold mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-6">「いつも混んでいて外から入店したいと思っていました。たまたま入店できた日は最高に幸せな時間。次は必ず予約して行きます。」</p>
+                    <p class="font-serif text-xs tracking-widest">— 札幌市 A様</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 border border-gray-100 shadow-sm transition-transform hover:-translate-y-2">
+                    <div class="flex text-gold mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-6">「お酒に合うボリュームと賑やかな雰囲気。素材の旨味と風味がバランスよく、リーズナブルなのが嬉しいですね。」</p>
+                    <p class="font-serif text-xs tracking-widest">— グルメ通 B様</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 border border-gray-100 shadow-sm transition-transform hover:-translate-y-2">
+                    <div class="flex text-gold mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-6">「お料理が素晴らしく美味しく、おもてなしが細やか。既にご存知の方が多い有名店ですが、末永く通いたいです。」</p>
+                    <p class="font-serif text-xs tracking-widest">— 観光客 C様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OWNER STORY -->
+    <section class="py-16 md:py-24 px-4 bg-[#f4f2ed] reveal">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+                <div class="md:w-1/2">
+                    <h2 class="font-serif text-2xl sm:text-3xl mb-6 md:mb-8">女性たちの感性が息づく、<br>温かなおもてなし。</h2>
+                    <p class="text-gray-600 mb-6">オーナーシェフ・児嶋加奈子氏を中心に、スタッフ全員が女性。手作りの温もりが宿る店内には、細やかな気配りと活気が満ちています。</p>
+                    <p class="text-gray-600 mb-8">「二軒目使いはもったいない」と言われるほどの充実したメニュー構成。コースは7,000円から、お好みに合わせてお楽しみいただけます。</p>
+                    <div class="font-serif text-lg md:text-xl tracking-widest">
+                        Osteria Crocchio<br>
+                        <span class="text-sm">児嶋 加奈子</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="images/chef.png" alt="Chef image" class="rounded-lg shadow-2xl relative z-10 w-full">
+                    <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-full h-full border-2 border-gold z-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SERVICES -->
+    <section class="py-16 md:py-24 px-4 bg-[#222222] text-white reveal relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-gold font-serif block mb-2 italic tracking-widest text-sm uppercase">New Projects</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl mb-4 section-title">Coming Soon</h2>
+                <p class="text-white/60 text-sm max-w-xl mx-auto">クロッキオをご愛顧いただくお客様へ。さらに快適で特別な時間をお届けするため、ただいま新しいサービスを準備中です。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- サービス 1: 一人客用セット -->
+                <div class="bg-[#111111] p-6 md:p-8 rounded-xl border border-white/10 hover:border-gold/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Plan 01</span>
+                            <span class="text-xs text-white/40"><i class="fas fa-clock mr-1"></i> 今秋スタート予定</span>
+                        </div>
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="font-serif text-xl mb-3 text-white">カウンター限定<br>おひとり様特別コース</h3>
+                        <p class="text-xs text-white/60 leading-relaxed mb-6">
+                            「一人でも色々な料理を楽しみたい」というお声にお応えし、名物サバのテリーヌ（ハーフ）、前菜盛り合わせ、お好きなパスタをハーフポーションで楽しめる特別セットを新設します。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold">
+                        <span>ソムリエ厳選割付き</span>
+                        <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </div>
+                </div>
+
+                <!-- サービス 2: 深夜アペリティーボ -->
+                <div class="bg-[#111111] p-6 md:p-8 rounded-xl border border-white/10 hover:border-gold/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Plan 02</span>
+                            <span class="text-xs text-white/40"><i class="fas fa-clock mr-1"></i> 近日公開</span>
+                        </div>
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <h3 class="font-serif text-xl mb-3 text-white">21:30〜限定<br>深夜のアペリティーボ・バー</h3>
+                        <p class="text-xs text-white/60 leading-relaxed mb-6">
+                            遅めの時間帯でもゆったりとお酒と軽食をお楽しみいただける、ソムリエ厳選のワインペアリングとアンティパストの夜限定特別プランです。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold">
+                        <span>グラスワイン3種＋ペアリング皿</span>
+                        <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- お知らせ通知への誘導 -->
+            <div class="mt-10 md:mt-12 text-center bg-white/5 p-6 rounded-lg border border-white/10 max-w-2xl mx-auto">
+                <p class="text-xs text-white/80">
+                    <i class="fab fa-instagram text-gold mr-2 text-sm"></i>
+                    新サービスのリリース日程やご予約開始日は、公式Instagramにて優先的にお知らせいたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMATION / MAP -->
+    <section class="py-16 md:py-24 px-4 bg-white reveal">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-serif text-center text-2xl sm:text-3xl mb-10 md:mb-16 section-title">Information</h2>
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 text-sm">
+                <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-2">
+                        <span class="w-full sm:w-32 font-bold">店名</span>
+                        <span>オステリア クロッキオ</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-2">
+                        <span class="w-full sm:w-32 font-bold">電話番号</span>
+                        <span><a href="tel:0112073522" class="hover:text-accent">011-207-3522</a></span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-2">
+                        <span class="w-full sm:w-32 font-bold">定休日</span>
+                        <span>日曜日・月曜日</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-2">
+                        <span class="w-full sm:w-32 font-bold">営業時間</span>
+                        <span>17:00 〜 22:30（L.O. 要確認）</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-2 italic text-gray-400">
+                        <span class="w-full sm:w-32 font-bold not-italic text-gray-700">住所</span>
+                        <span>〒060-0063 北海道札幌市中央区南3条西8丁目7番地4 遠藤ビル 1B</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row pt-6 gap-3 sm:space-x-4 sm:gap-0">
+                        <a href="https://www.instagram.com/crocchio_sapporo.2026/" target="_blank" rel="noopener" class="bg-black text-white px-6 py-2 rounded uppercase text-xs tracking-widest font-bold hover:bg-gray-800 transition text-center">Instagram</a>
+                        <a href="https://ha03000.gorp.jp/" target="_blank" rel="noopener" class="border border-black px-6 py-2 rounded uppercase text-xs tracking-widest font-bold hover:bg-gray-50 transition text-center">Official Web</a>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-lg flex items-center"><i class="fas fa-map-marker-alt mr-2 text-accent"></i> Access Map</h4>
+                    <div class="map-container shadow-xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.2933781895094!2d141.34388607507208!3d43.05629689083352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298ff0a97137%3A0xba0121a33111c201!2z44Kq44K544OG44Oq44KiIOOCr-ODreODg-OCreOCqg!5e0!3m2!1sja!2sjp!4v1772066967959!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">※地下鉄「すすきの駅」より徒歩圏内。資生館小学校前駅が最寄りとなります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-20 md:py-32 px-4 text-center bg-[#1a1a1a] text-white reveal safe-bottom">
+        <h2 class="font-serif text-3xl sm:text-4xl mb-6 md:mb-8 leading-tight">予約必至の夜、<br>その先に待つ至福。</h2>
+        <p class="text-white/60 mb-10 md:mb-12 tracking-widest text-sm">人気店のため、お早めのご予約をお勧めいたします。</p>
+        <a href="tel:0112073522" class="inline-block bg-accent text-white px-10 sm:px-16 py-5 sm:py-6 rounded-full font-bold text-xl sm:text-2xl transition-all btn-hover shadow-2xl">
+            011-207-3522
+        </a>
+    </section>
+
+    <footer class="bg-black text-white/30 py-10 text-center text-xs tracking-widest px-4">
+        &copy; OSTERIA CROCCHIO ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        // スクロール監視：要素が画面内に入ったら 'active' クラスを付与
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 10%が見えたら発火
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // 'reveal' クラスを持つすべての要素を監視対象にする
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
