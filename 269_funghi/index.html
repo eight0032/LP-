@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フンギ堂 | 北海道産天然キノコの隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #46342E;
+            --accent: #B13A1A;
+            --bg-cream: #F9F7F2;
+            --gold: #C5A059;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: #2D2421;
+            scroll-behavior: smooth;
+        }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+
+        /* 縦書きの装飾:スマホでは横書きに切り替え、崩れを防ぐ */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+            }
+        }
+
+        /* アニメーション用 */
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 高級感のある境界線 */
+        .luxury-border {
+            position: relative;
+            padding: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .luxury-border { padding: 2rem; }
+        }
+        .luxury-border::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid var(--gold);
+            margin: 8px;
+            pointer-events: none;
+        }
+        @media (min-width: 768px) {
+            .luxury-border::before { margin: 10px; }
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('images/pasta.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%) contrast(1.2) opacity(0.8);
+            transition: filter 0.5s;
+        }
+        .map-container iframe:hover {
+            filter: grayscale(0%) contrast(1) opacity(1);
+        }
+
+        /* モバイル用テーブル(店舗情報)をカード風に */
+        @media (max-width: 640px) {
+            .shop-info-row {
+                display: flex;
+                flex-direction: column;
+                padding: 0.75rem 0;
+            }
+            .shop-info-row th {
+                padding: 0 0 0.25rem 0 !important;
+                font-size: 0.75rem;
+                color: #a8a29e;
+                letter-spacing: 0.1em;
+            }
+            .shop-info-row td {
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <header class="hero-section relative min-h-screen flex flex-col md:flex-row items-start md:items-center justify-start md:justify-end overflow-hidden">
+        <!-- 縦書きコピー:スマホでは非表示にして横書きコピーに統一 -->
+        <div class="hidden md:block absolute left-8 md:left-20 top-20 z-20 fade-in">
+            <h1 class="vertical-text font-serif text-white text-2xl md:text-4xl font-black leading-none tracking-[0.2em]">
+                唯一無二の、<br>きのこ体験を。
+            </h1>
+        </div>
+
+        <div class="w-full md:w-1/2 bg-black/40 backdrop-blur-sm min-h-screen md:h-screen flex items-center p-8 sm:p-10 md:p-20 text-white">
+            <div class="fade-in w-full">
+                <p class="font-serif text-lg sm:text-xl md:text-2xl mb-4 border-b border-white/30 pb-4 inline-block tracking-widest">
+                    札幌・すすきのの静かなる名店
+                </p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-6 md:mb-8 leading-tight">
+                    北海道産天然キノコが<br>
+                    紡ぐ、至福の旋律。
+                </h2>
+                <p class="text-sm md:text-base mb-8 md:mb-10 opacity-90 leading-loose">
+                    オーナーシェフ「きのこの王子」田端 肇が、<br>
+                    自ら山に入り、選び抜いた一期一会の恵み。<br>
+                    デザートまでキノコが主役の、魔法のようなひとときを。
+                </p>
+                <a href="#booking" class="inline-block bg-[#B13A1A] hover:bg-[#8e2e15] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-sm text-base sm:text-lg font-bold tracking-widest transition-all text-center">
+                    ご予約・空席確認
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. イントロダクション -->
+    <section class="py-16 md:py-24 px-4 bg-white relative">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 border-l border-t border-[#C5A059] opacity-30"></div>
+                <img src="images/dessert.jpg" alt="料理イメージ" class="w-full h-auto shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000">
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="text-[#C5A059] font-serif text-base md:text-lg tracking-widest block mb-3 md:mb-4">— FUNGHI-DO STORY</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-6 md:mb-8 leading-relaxed">
+                    なぜ、デザートまで<br>キノコを使うのか。
+                </h2>
+                <p class="text-stone-600 leading-loose mb-8 text-sm sm:text-base">
+                    キノコは脇役ではありません。その土の香り、芳醇な旨味、転じて不思議な食感。北海道生天然キノコが持つポテンシャルを最大限に引き出した時、それは肉や魚を凌駕する「主役」へと変わります。<br><br>
+                    デザートのポルチーニ・ジェラートを一口含んだ瞬間、あなたのキノコ観は塗り替えられるでしょう。
+                </p>
+                <div class="border-l-4 border-[#C5A059] pl-6 py-2">
+                    <p class="italic text-stone-500">「期待を大幅に上回る感動で帰りました。」</p>
+                    <p class="text-xs text-stone-400 mt-2">— 予約サイト クチコミより</p>
+                </div>
+            </div>
+        </div>
+    </section>
+             
+    <!-- 3.5 Coming Soon セクション -->
+    <section class="py-16 md:py-20 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-80 h-80 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-10 md:mb-12">
+                <span class="inline-block bg-[#C5A059]/20 text-[#C5A059] border border-[#C5A059]/40 text-xs tracking-[0.3em] font-bold px-4 py-1.5 rounded-full mb-4 uppercase">
+                    Coming Soon
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-4 tracking-wide">
+                    お料理の余韻を、ご自宅まで。
+                </h2>
+                <p class="text-stone-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                    フンギ堂での感動的な一夜をより深く心に刻んでいただくため、<br class="hidden md:inline">新たな特別サービスを準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+                <!-- サービスカード 1 -->
+                <div class="bg-stone-800/80 border border-stone-700 p-6 sm:p-8 rounded-sm flex flex-col justify-between relative group hover:border-[#C5A059]/60 transition-all duration-300">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+                            <span class="text-[#C5A059] font-serif text-sm tracking-widest">NEW SERVICE 01</span>
+                            <span class="text-xs bg-stone-700 text-stone-300 px-2.5 py-1 rounded">店頭配布</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-serif font-bold mb-3 text-white group-hover:text-[#C5A059] transition-colors">
+                            「ストーリーを届ける」<br>特製きのこ解説カード
+                        </h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            本日召し上がった天然キノコの名称、シェフが採取した山々の物語、ソムリエ厳選ペアリングの理由を記した上質なメニューカードをお渡しします。お持ち帰りいただき、ご帰宅後も至福の余韻をお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/60 flex items-center gap-3 text-xs text-stone-400">
+                        <svg class="w-4 h-4 text-[#C5A059] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>写真に収めてSNS(口コミ)でシェアしたくなるデザイン</span>
+                    </div>
+                </div>
+
+                <!-- サービスカード 2 -->
+                <div class="bg-stone-800/80 border border-stone-700 p-6 sm:p-8 rounded-sm flex flex-col justify-between relative group hover:border-[#C5A059]/60 transition-all duration-300">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+                            <span class="text-[#C5A059] font-serif text-sm tracking-widest">NEW SERVICE 02</span>
+                            <span class="text-xs bg-stone-700 text-stone-300 px-2.5 py-1 rounded">カード連動</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-serif font-bold mb-3 text-white group-hover:text-[#C5A059] transition-colors">
+                            シークレット案内:<br>極上キノコ優先ご予約
+                        </h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            カード裏面のQRコードからシークレットページへ。めったに手に入らない幻の天然ポルチーニや超稀少キノコが入荷した際、カード保有者様限定で「最優先予約のご案内」を配信いたします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/60 flex items-center gap-3 text-xs text-stone-400">
+                        <svg class="w-4 h-4 text-[#C5A059] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>リピーター様限定のシークレット特典もご用意</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-xs text-[#C5A059]/80 mt-8 tracking-widest">
+                ※ サービス開始時期は店舗および公式Instagramにて順次発表いたします。
+            </p>
+        </div>
+    </section>
+
+   <!-- 4. シェフ紹介 -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden border-b border-stone-100">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row gap-10 md:gap-20 items-stretch">
+            <div class="w-full md:w-1/3 vertical-text font-serif text-[#C5A059] text-4xl md:text-5xl font-black opacity-20 hidden md:block leading-none">
+                KINOKO-OHJI TABATA HAJIME
+            </div>
+            <div class="w-full md:w-2/3">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
+                    <!-- 画像表示部分 -->
+                    <div class="w-full sm:w-48 h-56 sm:h-64 bg-stone-100 flex-shrink-0 shadow-inner relative overflow-hidden mx-auto sm:mx-0">
+                        <img src="images/chef.png" alt="きのこ王子 田端 肇" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-sm tracking-[0.3em] text-stone-400 block mb-2 uppercase">The Specialist</span>
+                        <h2 class="text-2xl sm:text-3xl font-serif font-bold mb-6">きのこ王子 / 田端 肇</h2>
+                        <p class="text-stone-600 leading-loose text-sm sm:text-base">
+                            イタリア語で「フンギ」はキノコ。その名の通り、北海道産天然キノコに魅せられた料理人。ソムリエとしての知識も活かし、山での採取から、最適なワインとのペアリングまでをトータルでコーディネートする。札幌の食通たちの間で「予約が取れない隠れ家」として知られる所以は、その飽くなき探求心にある。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 特典・予約 -->
+    <section id="booking" class="py-16 md:py-24 bg-stone-900 text-white relative">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">Reservation</h2>
+                <div class="w-20 h-1 bg-[#C5A059] mx-auto mb-8"></div>
+                <p class="text-stone-400 tracking-widest text-sm sm:text-base">特別な一夜の、はじまりに。</p>
+            </div>
+
+            <div class="bg-stone-800 p-6 sm:p-8 md:p-12 luxury-border text-center">
+                <span class="text-[#C5A059] text-sm tracking-[0.3em] block mb-4">EXCLUSIVE OFFER</span>
+                <h3 class="text-xl sm:text-2xl font-serif font-bold mb-6">WEB予約限定 特典</h3>
+                <p class="text-base sm:text-lg text-stone-300 mb-8 md:mb-10 leading-relaxed">
+                    本ページをご覧になり「おまかせコース」をご予約のお客様に、<br>
+                    <span class="text-white text-xl sm:text-2xl border-b border-[#C5A059]">ソムリエ厳選ウェルカムドリンク</span>を1杯進呈いたします。
+                </p>
+                <div class="space-y-4">
+                    <a href="tel:011-271-9614" class="block w-full max-w-md mx-auto bg-[#C5A059] hover:bg-yellow-600 text-black py-4 sm:py-5 text-xl sm:text-2xl font-black tracking-widest transition-all">
+                        011-271-9614
+                    </a>
+                    <p class="text-xs text-stone-500 italic">
+                        ※「LPを見た」と一言添えてご予約ください。<br>
+                        ※月曜定休 / 狸小路6丁目 アーケード内
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. アクセス・店舗情報 & Google Map -->
+    <footer class="py-16 md:py-24 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 mb-12 md:mb-16">
+                <div>
+                    <h3 class="font-serif text-xl sm:text-2xl font-bold mb-6 md:mb-8 border-b border-stone-100 pb-2">SHOP INFO</h3>
+                    <table class="w-full text-sm text-stone-600">
+                        <tr class="border-b border-stone-50 shop-info-row">
+                            <th class="py-4 text-left w-24 align-top">店名</th>
+                            <td class="py-4 font-bold text-stone-900">フンギ堂</td>
+                        </tr>
+                        <tr class="border-b border-stone-50 shop-info-row">
+                            <th class="py-4 text-left align-top">住所</th>
+                            <td class="py-4 leading-relaxed">
+                                〒060-0063 北海道札幌市中央区南3条西6丁目10 2階<br>
+                                <span class="text-xs text-stone-400">大通駅・すすきの駅から徒歩5分(狸小路アーケード沿い)</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-stone-50 shop-info-row">
+                            <th class="py-4 text-left align-top">電話</th>
+                            <td class="py-4">011-271-9614</td>
+                        </tr>
+                        <tr class="border-b border-stone-50 shop-info-row">
+                            <th class="py-4 text-left align-top">定休日</th>
+                            <td class="py-4">月曜日</td>
+                        </tr>
+                    </table>
+
+                    <div class="mt-8 flex gap-6">
+                        <a href="https://www.instagram.com/funghi0423/" target="_blank" class="text-stone-400 hover:text-orange-600 transition-colors">Instagram</a>
+                        <a href="http://kinoko1231.blog.fc2.com/" target="_blank" class="text-stone-400 hover:text-stone-900 transition-colors">Official Blog</a>
+                    </div>
+                </div>
+
+                <div class="shadow-2xl rounded-sm overflow-hidden border border-stone-100">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.274585048944!2d141.34656617507207!3d43.05669219080824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2985226befa9%3A0x90f2d61265efdf6!2z44OV44Oz44Ku5aCC!5e0!3m2!1sja!2sjp!4v1771996168876!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="p-4 bg-stone-50 text-[10px] text-stone-400 text-center tracking-widest">
+                        狸小路6丁目の階段を上がった2階にございます
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-10 md:pt-12 border-t border-stone-50 text-[10px] text-stone-300 tracking-[0.3em] sm:tracking-[0.5em] uppercase">
+                &copy; FUNGHI-DO SAPPORO. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
