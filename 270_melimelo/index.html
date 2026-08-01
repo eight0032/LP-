@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>méli mélo | 札幌・ミシュラン一つ星のモダンフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --gold-dark: #a68549;
+            --dark: #0a0a0a;
+            --light: #fdfcf9;
+            --zinc: #f4f1ea;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { overflow-x: hidden; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--dark);
+            color: #333;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        .hover\:bg-gold-dark:hover { background-color: var(--gold-dark); }
+        .text-gold-dark { color: var(--gold-dark); }
+
+        /* 縦書き設定。PC/タブレットのみ有効。スマホでは通常の横書きに切り替える */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+                text-align: left;
+            }
+            .vertical-text span {
+                display: block;
+                border-right: none !important;
+                padding-right: 0 !important;
+            }
+        }
+
+        /* アニメーション：浮き上がるような表示 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-200.active { transition-delay: 0.15s; }
+        .delay-300.active { transition-delay: 0.25s; }
+        .delay-400.active { transition-delay: 0.35s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .hero-zoom, .cta-glow { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
+        }
+
+        .hero-zoom { animation: zoom 20s infinite alternate; }
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .cta-glow {
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 640px) {
+            .cta-glow { animation: none; } /* スマホでは常時パルスは目がチカチカするため無効化 */
+        }
+
+        .section-dark { background-color: var(--dark); color: #e5e5e5; }
+        .section-light { background-color: var(--light); color: #1a1a1a; }
+        .section-zinc { background-color: var(--zinc); color: #1a1a1a; }
+
+        .google-map-container {
+            filter: grayscale(1) contrast(1.1) invert(0.9) opacity(0.8);
+            transition: filter 0.5s ease;
+        }
+        @media (hover: hover) {
+            .google-map-container:hover {
+                filter: grayscale(0) contrast(1) invert(0) opacity(1);
+            }
+        }
+        @media (max-width: 767px) {
+            /* スマホはホバーがないため常にカラー表示 */
+            .google-map-container {
+                filter: none;
+            }
+        }
+
+        /* タップ領域確保 */
+        .cta-button { min-height: 56px; }
+
+        /* iOSでの100vh問題対策 */
+        .h-screen-safe {
+            height: 100vh;
+            height: 100svh;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FV AREA -->
+    <section class="relative h-screen-safe min-h-[560px] flex items-center justify-center overflow-hidden section-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="images/soup.jpg" alt="澄み切ったスープのローストの一皿" class="w-full h-full object-cover hero-zoom">
+            <div class="absolute inset-0 bg-black/65"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl px-5 sm:px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-0">
+            <div class="text-center md:text-left">
+                <div class="inline-block border border-gold px-3 py-1.5 sm:px-4 mb-5 sm:mb-6">
+                    <p class="text-gold tracking-[0.35em] sm:tracking-[0.5em] text-[9px] sm:text-[10px] font-bold">MICHELIN ★ ONE STAR</p>
+                </div>
+                <h2 class="serif text-lg sm:text-xl md:text-2xl tracking-widest text-white/70">札幌・南3条</h2>
+                <h1 class="serif text-4xl sm:text-5xl mt-2 sm:mt-3 mb-2 tracking-tighter text-white">méli mélo</h1>
+                <p class="text-gold tracking-[0.3em] sm:tracking-[0.4em] text-[10px] sm:text-[11px] italic">MODERN FRENCH RESTAURANT</p>
+            </div>
+
+            <!-- 縦書きコピー：スマホでは横書きに自動切り替え -->
+            <div class="vertical-text serif text-lg sm:text-xl md:text-3xl leading-relaxed tracking-[0.2em] sm:tracking-[0.3em] text-white max-w-xs md:max-w-none mx-auto md:mx-0">
+                <span class="border-r border-gold/30 pr-3">北海道の旬、</span><br class="hidden md:block">
+                <span class="mt-2 md:mt-6 block">「楽しい混在」に</span><br class="hidden md:block">
+                <span class="mt-2 md:mt-6 text-gold block">酔いしれる。</span>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-0 w-full flex justify-center px-4">
+            <div class="bg-gold/95 backdrop-blur-md text-black px-5 py-3.5 sm:px-8 sm:py-4 rounded-sm flex items-center gap-3 sm:gap-4 max-w-md sm:max-w-2xl shadow-2xl">
+                <span class="hidden md:block text-2xl shrink-0">🍽️</span>
+                <div>
+                    <p class="text-[10px] sm:text-xs font-bold leading-none mb-1">期間限定：LINE登録特典</p>
+                    <p class="serif font-bold text-xs sm:text-sm md:text-base leading-snug">シェフ厳選「極上の食材ペアリング・ガイド(PDF)」を無料進呈</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CTA AREA -->
+    <section id="cta-top" class="py-16 sm:py-24 px-5 sm:px-4 section-light text-center border-b border-gray-100">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-gold font-bold tracking-widest mb-3 sm:mb-4 text-xs sm:text-sm">RESERVATION & BENEFITS</p>
+            <h2 class="serif text-2xl sm:text-3xl md:text-5xl mb-8 sm:mb-10 leading-snug">五感を揺さぶる、<br><span class="text-gold italic">美食の招待状。</span></h2>
+            <div class="space-y-5 sm:space-y-6">
+                <a href="https://www.melimelo-sapporo.com/cms/contact" class="cta-button cta-glow bg-gold text-white font-black py-5 px-8 sm:py-6 sm:px-12 rounded-sm text-base sm:text-xl inline-flex items-center justify-center w-full md:w-auto hover:bg-gold-dark transition-colors">
+                    公式LINEで特典を受け取り、予約する
+                </a>
+                <p class="text-xs text-gray-400 italic">※一斉スタート制のため、事前のご案内を優先的にお届けします</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SELF INTRODUCTION -->
+    <section class="py-20 sm:py-32 section-zinc">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-1/2 reveal">
+                    <div class="relative max-w-sm mx-auto md:max-w-none">
+                        <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-20 h-20 sm:w-32 sm:h-32 border-t-2 border-l-2 border-gold/40"></div>
+                        <img src="images/chef.png" alt="佐藤大典シェフ" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl">
+                        <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 border-b-2 border-r-2 border-gold/40"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col justify-center reveal delay-300">
+                    <p class="text-gold font-bold tracking-widest mb-2 text-sm">OWNER CHEF</p>
+                    <h2 class="serif text-3xl sm:text-4xl mb-5 sm:mb-6 text-gray-900">佐藤 大典 <span class="block sm:inline text-sm sm:text-base font-sans text-gray-400 mt-1 sm:mt-0">HIRONORI SATO</span></h2>
+                    <p class="text-gray-700 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                        フランス・パリの三つ星「アストランス」「ルドワイヤン」で研鑽。<br>
+                        帰国後、33歳で「méli mélo」を開業し、わずか9ヶ月でミシュラン一つ星を獲得。
+                    </p>
+                    <blockquote class="serif text-lg sm:text-xl text-gold-dark italic border-l-4 border-gold pl-5 sm:pl-6 mb-6 sm:mb-8 py-2">
+                        「不満が満足を生む。<br>完璧ではないからこそ、記憶に深く刻まれる。」
+                    </blockquote>
+                    <p class="text-sm text-gray-500 leading-loose">
+                        彼の料理は「引き算」の哲学。和の調和とフランスの技法が混ざり合い、一口ごとに映像のような情景が浮かび上がる。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. VOICES -->
+    <section class="py-20 sm:py-32 section-light">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 text-center">
+            <h2 class="serif text-center text-3xl sm:text-4xl mb-14 sm:mb-20 tracking-widest text-gold italic">Guest Voices</h2>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10">
+                <div class="bg-white p-7 sm:p-10 shadow-xl border-b-4 border-gold reveal group hover:-translate-y-2 transition-transform">
+                    <div class="flex justify-center text-gold mb-5 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
+                    <p class="serif text-lg sm:text-xl mb-6 sm:mb-8 leading-relaxed text-gray-800">「まさに"情景"が感じられる。一口ごとに映像が浮かび上がる演出。」</p>
+                    <p class="text-xs text-gray-400 tracking-widest">（30代 男性・美食家）</p>
+                </div>
+                <div class="bg-white p-7 sm:p-10 shadow-xl border-b-4 border-gold reveal delay-200 group hover:-translate-y-2 transition-transform">
+                    <div class="flex justify-center text-gold mb-5 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
+                    <p class="serif text-lg sm:text-xl mb-6 sm:mb-8 leading-relaxed text-gray-800">「今まで一番のバターかも！食材の組み合わせが素晴らしいハーモニー。」</p>
+                    <p class="text-xs text-gray-400 tracking-widest">（40代 女性・観光客）</p>
+                </div>
+                <div class="bg-white p-7 sm:p-10 shadow-xl border-b-4 border-gold reveal delay-400 group hover:-translate-y-2 transition-transform sm:col-span-2 md:col-span-1">
+                    <div class="flex justify-center text-gold mb-5 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
+                    <p class="serif text-lg sm:text-xl mb-6 sm:mb-8 leading-relaxed text-gray-800">「6席のみの没入感。シェフの熱量を間近で感じる理想的なディナー。」</p>
+                    <p class="text-xs text-gray-400 tracking-widest">（50代 夫婦）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BONUS SECTION -->
+    <section class="py-20 sm:py-32 section-dark relative overflow-hidden">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+            <span class="text-[8rem] sm:text-[20rem] serif italic select-none">Méli</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-5 sm:px-6 text-center reveal">
+            <div class="inline-block px-5 py-2 sm:px-6 bg-gold text-black text-[10px] sm:text-xs font-black mb-6 sm:mb-8 tracking-widest">LINE LIMITED BENEFIT</div>
+            <h2 class="serif text-2xl sm:text-4xl md:text-5xl mb-10 sm:mb-16 leading-snug">自宅でも「メリメロ」の感性を。</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-12 bg-white/5 backdrop-blur-sm p-6 sm:p-12 border border-gold/30 rounded-sm">
+                <div class="w-40 sm:w-full md:w-1/3 shadow-2xl transition-transform hover:scale-105 duration-500">
+                    <div class="aspect-[3/4] bg-zinc-900 border-2 border-gold flex flex-col items-center justify-center p-4 sm:p-6 relative">
+                        <div class="absolute inset-2 border border-gold/20"></div>
+                        <p class="serif text-gold text-lg sm:text-2xl border-b border-gold/50 mb-2 sm:mb-3 px-3 sm:px-4">PAIRING</p>
+                        <p class="text-[0.55rem] sm:text-[0.6rem] tracking-[0.3em] sm:tracking-[0.4em] text-white/60 text-center">HIRONORI SATO</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 text-left">
+                    <h3 class="serif text-2xl sm:text-3xl text-gold mb-4 sm:mb-6 italic">極上の食材ペアリング・ガイド</h3>
+                    <p class="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                        ミシュランシェフが実際に使用している、北海道生食材とワイン、そこで培った意外な調味料の組み合わせを体系化したPDFガイドです。
+                    </p>
+                    <ul class="space-y-3 sm:space-y-4 text-sm">
+                        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 bg-gold rounded-full mt-2 shrink-0"></span> 鶏肉を劇的に変える「酸味」の足し算</li>
+                        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 bg-gold rounded-full mt-2 shrink-0"></span> 魚介の旨味を止まらなくする「和のハーブ」</li>
+                        <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 bg-gold rounded-full mt-2 shrink-0"></span> 市販のバターを三つ星級に変えるテクニック</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. COMING SOON SECTION -->
+    <section class="py-20 sm:py-32 section-zinc relative overflow-hidden border-t border-b border-gold/20">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="text-center reveal mb-12 sm:mb-16">
+                <div class="inline-block border border-gold px-5 py-2 sm:px-6 mb-4 bg-white/80 backdrop-blur-sm">
+                    <p class="text-gold tracking-[0.3em] sm:tracking-[0.4em] text-[10px] sm:text-xs font-bold uppercase">COMING SOON</p>
+                </div>
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl text-gray-900 leading-snug">
+                    特別な夜の記憶を、いつまでも。<br>
+                    <span class="text-gold-dark italic">「デジタル・メニュー・アルバム」</span>
+                </h2>
+                <p class="mt-5 sm:mt-6 text-gray-600 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                    一皿一皿に込められた物語、北海道の風土、シェフからの詳細なストーリー──。<br>
+                    当夜の盛りだくさんな美食体験を、いつでもご自宅で鮮やかに振り返ることができます。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 reveal delay-200">
+                <div class="bg-white p-6 sm:p-8 border border-gold/20 shadow-lg rounded-sm relative group hover:border-gold transition-colors">
+                    <div class="text-xs text-gold font-bold tracking-widest mb-3">01 / DISH STORY</div>
+                    <h3 class="serif text-xl text-gray-900 mb-3 sm:mb-4">当夜のメニュー別・詳細解説</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        シェフ佐藤がその日選んだ厳選食材の背景や調味料の秘密、料理に込めた想いを美しい料理写真とともにデジタルデータとして保存・閲覧いただけます。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 border border-gold/20 shadow-lg rounded-sm relative group hover:border-gold transition-colors">
+                    <div class="text-xs text-gold font-bold tracking-widest mb-3">02 / PAIRING LOG</div>
+                    <h3 class="serif text-xl text-gray-900 mb-3 sm:mb-4">ワイン・ペアリングノート</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        お料理とペアリングした銘柄ワインやハーブティーの記録を一覧化。「あの日味わった感動の一杯」を忘れることなく振り返ることができます。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 border border-gold/20 shadow-lg rounded-sm relative group hover:border-gold transition-colors sm:col-span-2 md:col-span-1">
+                    <div class="text-xs text-gold font-bold tracking-widest mb-3">03 / MEMORIAL OPTION</div>
+                    <h3 class="serif text-xl text-gray-900 mb-3 sm:mb-4">上質な紙ベース装丁（選択可能）</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        デジタルだけでなく、記念日やご接待の想い出を形に残したい方へ。手触りの良い上質な紙にプリントした記念アルバムもお渡し・ご郵送可能です。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 sm:mt-12 text-center reveal delay-300">
+                <p class="text-xs text-gray-500 italic px-4">
+                    ※サービス開始時は公式LINEにご登録いただいたお客様へ優先的にご案内いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. ACCESS & FINAL CTA -->
+    <footer class="py-20 sm:py-32 section-light text-center">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <p class="serif text-lg sm:text-xl md:text-2xl text-gold mb-5 sm:mb-6 font-bold uppercase tracking-widest">Only 6 Seats per Night</p>
+            <h2 class="serif text-3xl sm:text-4xl md:text-6xl mb-12 sm:mb-16 leading-tight text-gray-900">記憶に刻まれる、<br>美食の冒険へ。</h2>
+
+            <a href="https://www.melimelo-sapporo.com/cms/contact" class="cta-button cta-glow bg-gold text-white font-black py-5 px-8 sm:py-7 sm:px-16 rounded-sm text-lg sm:text-2xl inline-flex items-center justify-center w-full sm:w-auto mb-16 sm:mb-24 hover:bg-gold-dark transition-all">
+                今すぐLINEで特典を受け取る
+            </a>
+
+            <!-- 地図セクション -->
+            <div class="reveal mb-16 sm:mb-24">
+                <div class="google-map-container shadow-2xl border border-gray-200 overflow-hidden rounded-sm bg-gray-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3368.0987233024407!2d141.35140154974505!3d43.05799669497973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29eec3238939%3A0xc0a0aaefe9aef618!2zbcOpbGkgbcOpbG_vvIjjg6Hjg6rjg6Hjg63vvInvvZzmnK3luYwg44OV44Os44Oz44Ob44OB44Os44K544OI44Op44Oz!5e0!3m2!1sja!2sjp!4v1772066363313!5m2!1sja!2sjp" width="100%" height="320" class="sm:h-[450px]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <p class="mt-4 text-xs text-gray-400 tracking-widest">N・Messe Building 2F, Minami 3-jo Nishi 3-chome 11, Chuo-ku, Sapporo</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 text-left text-sm border-t border-gray-200 pt-12 sm:pt-16">
+                <div class="space-y-4">
+                    <p class="serif text-gold-dark text-xl font-bold italic">méli mélo</p>
+                    <p class="text-gray-500 leading-relaxed">〒060-0063 北海道札幌市中央区南３条西３丁目１１ <br>N・Messeビル 2F</p>
+                    <div class="flex flex-col gap-1 mt-4">
+                        <p class="text-gray-800 font-bold">TEL: 011-223-5075</p>
+                        <p class="text-gray-500">定休日: 月曜日</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-gold font-bold tracking-widest uppercase">INFORMATION</p>
+                    <p class="text-gray-500 text-xs leading-loose">
+                        すすきの駅より徒歩3分。<br>
+                        ビル2階に足を踏み入れた瞬間、そこは外界の喧騒を忘れる静謐な空間が広がります。<br>
+                        <span class="text-gold-dark mt-2 block">完全予約制・一斉スタート</span>
+                    </p>
+                    <div class="flex gap-6 pt-6">
+                        <a href="https://www.instagram.com/melimelo_sapporo/#" target="_blank" class="text-gray-400 hover:text-gold transition-colors font-bold text-xs uppercase tracking-widest">Instagram</a>
+                        <a href="http://www.melimelo-sapporo.com/" target="_blank" class="text-gray-400 hover:text-gold transition-colors font-bold text-xs uppercase tracking-widest">Official HP</a>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-16 sm:mt-24 text-[9px] sm:text-[10px] text-gray-300 tracking-[0.3em] sm:tracking-[0.5em] font-light">&copy; MÉLI MÉLO SAPPORO. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スクロールに応じたアニメーション (Reveal)
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
