@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Risotteria.GAKU hiragishi | 本格リゾット専門店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fcf9f2;
+        }
+
+        .font-rounded { font-family: 'M PLUS Rounded 1c', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+            background-color: #fdfaf5;
+        }
+
+        .text-accent { color: #d94e28; }
+        .bg-accent { background-color: #d94e28; }
+        .border-accent { border-color: #d94e28; }
+
+        .btn-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        .shizuru-shadow {
+            box-shadow: 12px 12px 0px #f0e6d2;
+        }
+        @media (min-width: 768px) {
+            .shizuru-shadow {
+                box-shadow: 20px 20px 0px #f0e6d2;
+            }
+        }
+
+        /* 手書き風のあしらい */
+        .hand-drawn-border {
+            border: 2px solid #5d4037;
+            border-radius: 40px 15px 40px 15px/15px 40px 15px 40px;
+        }
+        @media (min-width: 768px) {
+            .hand-drawn-border {
+                border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Google Maps レスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* モバイルは縦長気味に */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                padding-bottom: 56.25%; /* 16:9 の比率 */
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* スマホでのタップ領域確保 */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 横スクロール防止 */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-paper text-gray-800">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-screen flex items-center justify-center pt-10 pb-16 md:pb-20 overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-8 md:gap-10">
+            <!-- 左側:キャッチコピー -->
+            <div class="w-full md:w-1/2 z-10 text-center md:text-left">
+                <div class="inline-block bg-white text-accent border-2 border-accent px-3 py-1 md:px-4 rounded-full text-sm md:text-base font-bold mb-4 animate-pulse">
+                    ★ 札幌・平岸で愛されて10余年 ★
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 md:mb-6 font-rounded">
+                    お米が躍る、<br>
+                    <span class="text-accent underline decoration-yellow-400 decoration-4">最高の熱々リゾット</span>を<br>
+                    召し上がれ。
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed font-medium">
+                    100種類以上のバリエーションから見つける、<br class="hidden md:block">
+                    あなただけの一皿。北海道米×旬の贅沢食材。
+                </p>
+                <div class="flex flex-col gap-4">
+                    <a href="#cta" class="btn-bounce bg-accent text-white px-6 py-4 sm:px-10 sm:py-5 rounded-2xl font-bold text-lg sm:text-2xl shadow-2xl hover:brightness-110 transition text-center">
+                        <i class="fas fa-arrow-circle-right mr-2"></i>メニュー詳細・予約はこちら
+                    </a>
+                </div>
+            </div>
+            <!-- 右側:メインビジュアル -->
+            <div class="w-full md:w-1/2 relative mt-8 md:mt-0">
+                <div class="relative z-10 shizuru-shadow rounded-2xl overflow-hidden border-4 border-white">
+                    <img src="images/rizzoto.jpg" alt="カルボナーラのリゾット" class="w-full h-auto">
+                    <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-yellow-400 text-gray-900 font-bold p-3 sm:p-4 rounded-full flex flex-col items-center justify-center leading-tight shadow-lg transform rotate-12">
+                        <span class="text-[10px] sm:text-xs">一番人気</span>
+                        <span class="text-lg sm:text-xl">100種</span>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 z-20 bg-white p-3 sm:p-4 rounded-xl shadow-lg border-2 border-accent transform -rotate-3 max-w-[70%] sm:max-w-none">
+                    <p class="text-accent font-bold text-xs sm:text-sm">看板メニュー:カルボナーラのリゾット</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 期間限定・ベネフィット強調 -->
+    <section class="py-8 md:py-10 bg-yellow-50 border-y-4 border-dashed border-yellow-200">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+                <div class="text-center md:text-left">
+                    <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-700">
+                        <span class="text-accent">★期間限定★</span> 今ならランチセットが大変お得!
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-600 mt-1">おまかせサラダ・ドリンク・自家焙ドルチェが付いて大満足のボリューム。</p>
+                </div>
+                <a href="https://risotteria-gaku.net/contact" class="w-full md:w-auto text-center bg-gray-800 text-white px-6 py-3 sm:px-8 rounded-full font-bold hover:bg-black transition whitespace-nowrap">
+                    お問い合わせはこちら
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 悩みの言語化 -->
+    <section class="py-14 md:py-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-3xl mx-auto hand-drawn-border p-6 sm:p-10 bg-white relative">
+                <span class="absolute -top-5 sm:-top-6 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 sm:px-6 rounded-full text-sm sm:text-base font-bold whitespace-nowrap">
+                    こんなお悩みありませんか?
+                </span>
+                <ul class="space-y-5 sm:space-y-6 text-base sm:text-lg font-medium pt-6 sm:pt-4">
+                    <li class="flex items-start sm:items-center gap-3 sm:gap-4">
+                        <span class="shrink-0 w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-500">?</span>
+                        <span>リゾットはおしゃれだけど、お腹いっぱいにならない気がする…</span>
+                    </li>
+                    <li class="flex items-start sm:items-center gap-3 sm:gap-4 border-t border-dotted pt-5 sm:pt-4">
+                        <span class="shrink-0 w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-500">?</span>
+                        <span>子供連れだと、本格的なイタリアンは入りにくい…</span>
+                    </li>
+                    <li class="flex items-start sm:items-center gap-3 sm:gap-4 border-t border-dotted pt-5 sm:pt-4">
+                        <span class="shrink-0 w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-500">?</span>
+                        <span>メニューが少なくて、結局いつも同じものを選んでしまう…</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-10 md:mt-12">
+                <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-3 md:mb-4 font-rounded">大丈夫!GAKUにお任せください!</p>
+                <p class="text-base sm:text-xl font-bold px-2">リゾットを「定食屋スタイル」で、お腹いっぱい楽しむ提案。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3つの解決策 -->
+    <section class="py-14 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-2xl mb-5 md:mb-6 shadow-xl border-b-8 border-accent">
+                        <img src="images/tomato.jpg" alt="100種類のリゾット" class="w-full h-52 sm:h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 font-rounded">圧倒的!100種類</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm sm:text-base">クリームもトマトも和風もカレースタイル…その日の気分に必ずフィットする一皿を。</p>
+                </div>
+                <div class="text-center group">
+                    <div class="overflow-hidden rounded-2xl mb-5 md:mb-6 shadow-xl border-b-8 border-yellow-400">
+                        <img src="images/salada.jpg" alt="ボリュームなサラダ" class="w-full h-52 sm:h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 font-rounded">ボリューム満点!</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm sm:text-base">「定食屋」感覚のボリュームな一皿。おまかせサラダは大盛足の盛りです。</p>
+                </div>
+                <div class="text-center group sm:col-span-2 lg:col-span-1">
+                    <div class="overflow-hidden rounded-2xl mb-5 md:mb-6 shadow-xl border-b-8 border-gray-800">
+                        <img src="images/dessert.png" alt="自家焙ドルチェ" class="w-full h-52 sm:h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 font-rounded">自家焙ドルチェ</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm sm:text-base">食後はパティシエ自慢のジェラートやドルチェで。カフェ利用も大歓迎!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 創業ストーリー -->
+    <section class="py-14 md:py-20 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
+            <div class="bg-white p-6 sm:p-8 md:p-16 rounded-3xl shadow-xl flex flex-col md:flex-row gap-8 md:gap-12 items-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-yellow-100 rounded-full -mr-12 -mt-12 sm:-mr-16 sm:-mt-16 z-0"></div>
+                <div class="w-full md:w-2/5 z-10">
+                    <img src="images/chef.png" alt="厨本学氏イメージ" class="rounded-2xl grayscale hover:grayscale-0 transition duration-500 w-full">
+                    <p class="text-center mt-4 font-bold text-gray-500">代表:厨本 学</p>
+                </div>
+                <div class="w-full md:w-3/5 z-10">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 font-rounded">なぜ「リゾット専門店」なのか。</h2>
+                    <p class="text-gray-700 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+                        オーストラリアで見たリゾットの熱狂。それを日本のお米、北海道の食材で再現したい。
+                        「本格イタリアン」の壁を取り払い、誰もが大きな口で頬張れる場所を作りたい——その想いで2006年にGAKUは生声を上げました。
+                    </p>
+                    <p class="font-bold italic text-accent text-sm sm:text-base">「美味しいものを、お腹いっぱい食べて、笑顔になってほしい。」</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-4">それが私たちの原点であり、すべてです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 口コミ -->
+    <section class="py-14 md:py-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10 md:mb-16 font-rounded">愛されているのには、理由があります。</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-6 sm:p-8 shadow-lg transform rotate-1 hover:rotate-0 transition">
+                    <div class="flex text-yellow-400 mb-4 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 font-medium text-sm sm:text-base">「店員さんの親切なアドバイスで、初めてでも安心して選べました。リゾットの硬さが選べるのも嬉しいポイント!」</p>
+                    <div class="mt-4 pt-4 border-t text-sm text-gray-400 text-right">30代・女性</div>
+                </div>
+                <div class="bg-white p-6 sm:p-8 shadow-lg transform -rotate-2 hover:rotate-0 transition">
+                    <div class="flex text-yellow-400 mb-4 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 font-medium text-sm sm:text-base">「おまかせサラダのボリュームに驚き!カレークリームリゾットに餅チーズトッピングは最強の組み合わせでした。」</p>
+                    <div class="mt-4 pt-4 border-t text-sm text-gray-400 text-right">40代・男性</div>
+                </div>
+                <div class="bg-white p-6 sm:p-8 shadow-lg transform rotate-2 hover:rotate-0 transition md:col-span-2 lg:col-span-1">
+                    <div class="flex text-yellow-400 mb-4 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 font-medium text-sm sm:text-base">「種類が多すぎて迷いますが、それも楽しみの一つ。中休みがないので、遅めのランチにも使えるのが最高です。」</p>
+                    <div class="mt-4 pt-4 border-t text-sm text-gray-400 text-right">20代・女性</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon:こんなサービスあったらいいな(新企画セクション) -->
+    <section class="py-14 md:py-20 bg-amber-50/60 border-t-2 border-b-2 border-dashed border-amber-200">
+        <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="inline-block bg-accent text-white font-bold px-4 py-2 sm:px-6 rounded-full text-xs sm:text-sm uppercase tracking-widest mb-3 shadow-sm">
+                    <i class="fas fa-rocket mr-2"></i>Coming Soon
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold font-rounded text-gray-800">
+                    「あったらいいな」を形に!新企画準備中
+                </h2>
+                <p class="text-gray-600 mt-4 text-sm sm:text-lg font-medium px-2">
+                    お客様の「もっとこうだったら嬉しい」にお応えして、現在準備中の新サービスをご紹介!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- サービスカード 1: ハーフ&ハーフセット -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-amber-100 flex flex-col justify-between hover:-translate-y-2 transition duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-gray-900 text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-wider">
+                        開発進行中
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-orange-100 text-accent rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-5 sm:mb-6">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold font-rounded mb-3 text-gray-800">
+                            欲張りハーフ&ハーフセット
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            「クリームもトマトもどっちも食べたい!」「100種類もあるから迷いすぎる…」という声にお応え!<br>
+                            ハーフサイズで好きなリゾットを2種類チョイスできる、夜の食べ比べセットを展開予定です。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center text-accent font-bold text-sm">
+                        <span><i class="far fa-clock mr-1"></i> 順次ご提供開始予定</span>
+                    </div>
+                </div>
+
+                <!-- サービスカード 2: おうちで本格GAKU!冷凍手作りキット -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-amber-100 flex flex-col justify-between hover:-translate-y-2 transition duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-gray-900 text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-wider">
+                        試作中
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-5 sm:mb-6">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold font-rounded mb-3 text-gray-800">
+                            おうちでGAKU!手作り冷凍キット
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            「お家でも店舗と同じアルデンテの贅々リゾットを食べたい!」<br>
+                            GAKU秘伝のブイヨンスープと北海道米、厳選具材を冷凍パックでお届け。フライパン1つで5分で本格の味が完成します。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center text-emerald-600 font-bold text-sm">
+                        <span><i class="far fa-clock mr-1"></i> テイクアウト・通販限定</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ユーザーリクエスト誘導バナー -->
+            <div class="mt-10 md:mt-12 bg-white rounded-2xl p-6 md:p-8 text-center shadow-md border border-amber-200 max-w-4xl mx-auto">
+                <p class="font-bold text-gray-800 text-base sm:text-lg mb-2">
+                    💡 「こんなリゾット・サービスがほしい!」というアイデアを募集中です!
+                </p>
+                <p class="text-gray-600 text-xs sm:text-sm mb-4">
+                    ご来店時のアンケートや公式Instagramのダイレクトメッセージにて、あなたのリクエストをお聞かせください。
+                </p>
+                <a href="https://www.instagram.com/risotteria_hiragishi/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-accent font-bold hover:underline text-sm sm:text-base">
+                    <i class="fab fa-instagram text-xl"></i> 公式Instagramでリクエストを送る <i class="fas fa-chevron-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下部CTA -->
+    <section id="cta" class="py-14 md:py-20 bg-accent text-white">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 font-rounded italic">Enjoy Delicious Time.</h2>
+            <p class="text-base sm:text-xl mb-8 md:mb-12 opacity-90">平岸駅徒歩5分。駐車場も完備してお待ちしております。</p>
+
+            <div class="max-w-2xl mx-auto bg-white p-1 rounded-3xl overflow-hidden shadow-2xl">
+                <div class="bg-white p-6 sm:p-8 md:p-12 text-gray-800 rounded-3xl border-4 border-dashed border-accent">
+                    <p class="font-bold text-accent mb-2 text-sm sm:text-base">★ まずはお気軽にお問い合わせを ★</p>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 font-rounded">ご予約・テイクアウトもOK!</h3>
+                    <a href="https://risotteria-gaku.net/contact" class="block bg-accent text-white py-5 sm:py-6 rounded-2xl font-bold text-2xl sm:text-3xl hover:scale-105 transition shadow-lg mb-6">
+                        WEB予約はこちらから
+                    </a>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
+                        <p class="text-xl sm:text-2xl font-bold"><i class="fas fa-phone-alt mr-2 text-accent"></i>011-839-9006</p>
+                        <p class="text-sm bg-gray-100 px-4 py-2 rounded-lg font-bold">定休日:水曜日</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス・店舗詳細 -->
+    <section class="py-14 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+                    <!-- 地図埋め込み -->
+                    <div class="map-container shadow-2xl border-4 border-white">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2916.2013023149034!2d141.36673917507085!3d43.037195892055564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2a391810d10b%3A0x37d3c0d5d7756140!2sRisotteria.GAKU%20hiragishi!5e0!3m2!1sja!2sjp!4v1771992471830!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <!-- 詳細情報 -->
+                    <div class="space-y-6 md:space-y-8">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold font-rounded mb-4 flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt text-accent"></i> アクセス情報
+                            </h3>
+                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                                <span class="font-bold">Risotteria.GAKU hiragishi</span><br>
+                                〒062-0932 北海道札幌市豊平区平岸2条5丁目2-14<br>
+                                第5平岸グランドビル 1F
+                            </p>
+                            <p class="mt-4 text-gray-600 text-sm sm:text-base">地下鉄南北線「平岸駅」から平岸街道沿いを北へ徒歩5分。</p>
+                        </div>
+                        <div class="bg-orange-50 p-5 sm:p-6 rounded-2xl border border-orange-100">
+                            <h4 class="font-bold mb-2 flex items-center gap-2 text-sm sm:text-base">
+                                <i class="fas fa-car text-accent"></i> 駐車場について
+                            </h4>
+                            <p class="text-xs sm:text-sm text-gray-600">
+                                店舗横に5台、店舗裏に3台分ございます。<br>
+                                ※斜め駐車となりますのでご注意ください。満車の場合は近隣のコインパーキングをご利用ください。
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                            <div class="bg-gray-50 p-3 sm:p-4 rounded-xl">
+                                <p class="text-xs text-gray-400 mb-1">営業時間</p>
+                                <p class="font-bold text-sm sm:text-base">11:00 〜 22:00</p>
+                                <p class="text-xs text-gray-500">(中休みなし)</p>
+                            </div>
+                            <div class="bg-gray-50 p-3 sm:p-4 rounded-xl">
+                                <p class="text-xs text-gray-400 mb-1">定休日</p>
+                                <p class="font-bold text-accent text-sm sm:text-base">火曜日・水曜日</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-900 text-gray-400 py-10 md:py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center gap-6 mb-6 md:mb-8 text-2xl">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/risotteria_hiragishi/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/channel/UC_73aPYOhplye4nOzrob67w" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <!-- Official Website -->
+                <a href="http://www.risotteria-gaku.net/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="Official Web Site">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+            <p class="text-xs sm:text-sm">&copy; Risotteria.GAKU. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
