@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>料理屋 botan | 札幌・和×洋のモダンイタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #c5a059;
+            --color-dark-gold: #8e6d2f;
+            --color-bg-dark: #121212;
+            --color-bg-light: #ffffff;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg-light);
+            color: #222;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #c5a059 0%, #8e6d2f 50%, #c5a059 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-bg { background: var(--color-gold); }
+        .text-gold-bg { color: var(--color-gold); }
+        .border-gold-bg { border-color: var(--color-gold); }
+        .bg-gold-bg { background-color: var(--color-gold); }
+
+        .section-num {
+            font-size: 3.5rem;
+            line-height: 1;
+            font-weight: 200;
+            opacity: 0.12;
+            position: absolute;
+            top: -0.5rem;
+            left: -0.25rem;
+        }
+        @media (min-width: 768px) {
+            .section-num { font-size: 5rem; top: -1rem; left: -1rem; }
+        }
+        .magazine-border { border: 1px solid #eaeaea; }
+        .letter-spacing-widest { letter-spacing: 0.5em; }
+
+        .section-magazine-dark { background-color: var(--color-bg-dark); color: #fff; }
+        .section-magazine-light { background-color: var(--color-bg-light); color: #222; }
+
+        .map-container {
+            filter: grayscale(1) contrast(1.2) opacity(0.8);
+            transition: all 0.5s ease;
+        }
+        .map-container:hover, .map-container:active { filter: grayscale(0) contrast(1) opacity(1); }
+
+        /* Mobile: keep the vertical Japanese text small and controlled so it never forces horizontal scroll */
+        @media (max-width: 767px) {
+            .vertical-text {
+                font-size: 0.75rem;
+                letter-spacing: 0.4em;
+                max-height: 8rem;
+            }
+        }
+
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* Visible keyboard focus for accessibility */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--color-gold);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <!-- COVER AREA (FV) -->
+    <header class="relative min-h-[100svh] flex items-center justify-center p-3 sm:p-4 md:p-8 section-magazine-light">
+        <div class="absolute inset-3 sm:inset-4 md:inset-8 border border-black/5 z-20 pointer-events-none"></div>
+
+        <div class="relative w-full h-full overflow-hidden flex items-center py-24 md:py-0">
+            <!-- Background Image -->
+            <img src="images/italian.png" alt="botan interior" class="absolute inset-0 w-full h-full object-cover grayscale opacity-30 md:opacity-20">
+
+            <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10 md:gap-0 px-5 sm:px-6">
+                <div class="text-left">
+                    <p class="serif text-[9px] sm:text-[10px] md:text-xs mb-3 md:mb-4 tracking-[0.4em] sm:tracking-[0.6em] text-gray-400 uppercase">Special Feature / Gastronomy</p>
+                    <h1 class="serif text-3xl sm:text-4xl md:text-6xl font-bold leading-none mb-4">
+                        料理屋 <span class="gold-gradient">botan</span>
+                    </h1>
+                    <div class="h-px w-24 sm:w-32 md:w-48 bg-black/10 my-5 md:my-6"></div>
+                    <p class="serif text-base sm:text-lg md:text-xl tracking-widest leading-loose">
+                        和の情景と、<br>イタリアの鼓動。
+                    </p>
+                </div>
+
+                <div class="flex flex-row md:flex-col items-center md:items-end w-full md:w-auto justify-between md:justify-start">
+                    <div class="vertical-text serif tracking-[0.5em] sm:tracking-[0.6em] leading-relaxed border-r border-gold-bg/30 pr-3 sm:pr-4 md:pr-6 text-gray-700">
+                        二十一年の歳月が、<br>
+                        一皿の調和を紡ぎ出す。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Info -->
+        <div class="absolute bottom-6 left-5 right-5 md:left-12 md:right-auto text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.3em] text-gray-400">
+            RYORIYA BOTAN / SAPPORO SUSUKINO / 2F APOLLO BLDG.
+        </div>
+    </header>
+
+    <!-- STORY SECTION -->
+    <section class="py-16 sm:py-24 md:py-40 section-magazine-light">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+                <div class="w-full md:w-1/2 relative">
+                    <span class="section-num serif italic">01</span>
+                    <div class="pt-10 md:pt-12">
+                        <p class="serif text-gold-bg text-xs sm:text-sm mb-4 md:mb-6 tracking-widest">PROLOGUE</p>
+                        <h2 class="serif text-3xl sm:text-4xl md:text-5xl mb-8 md:mb-12 leading-tight">
+                            板場の記憶を、<br>現代の悦びへ。
+                        </h2>
+                        <div class="space-y-6 md:space-y-8 text-sm sm:text-base text-gray-600 leading-loose">
+                            <p>
+                                扉を開けると、そこにはかつて寿司店として愛された板場の趣が静かに息づいている。
+                                北海道の厳しい冬を越え、芽吹く春の力。その熾鮮烈な味を、店主・丹後公章はイタリアンの技法で解釈し直す。
+                            </p>
+                            <p>
+                                それは単なるフュージョンではない。鮮魚や味噌といった日本の調味料を隠し味に、
+                                白身魚の繊細な旨味を最大限に引き出す「モダンイタリアン」の極致だ。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 md:pt-24">
+                    <div class="relative magazine-border p-2">
+                        <img src="images/fish.png" alt="dish" class="w-full">
+                        <p class="text-[9px] sm:text-[10px] mt-2 text-gray-400 text-right serif">Fig. 101: 十勝ロイヤルマンガリッツァの火入れ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE SECTION -->
+    <section class="py-16 sm:py-24 md:py-32 section-magazine-dark">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row-reverse gap-10 md:gap-20">
+                <div class="w-full md:w-5/12 relative">
+                    <span class="section-num serif italic opacity-20">02</span>
+                    <div class="pt-10 md:pt-12">
+                        <p class="serif text-gold-bg text-xs sm:text-sm mb-4 md:mb-6 tracking-widest uppercase">The Gastronomy</p>
+                        <h2 class="serif text-3xl sm:text-4xl md:text-5xl mb-6 md:mb-8 leading-tight">
+                            五感を、<br>おまかせに委ねる。
+                        </h2>
+                        <p class="text-gray-400 mb-8 md:mb-12 text-sm leading-loose">
+                            その日、その時、もっとも美しい食材を。<br>
+                           「おまかせコース」は、
+                            アミューズからドルチェまで、一篇の詩を読み進めるような高揚感に満ちている。
+                        </p>
+                        <!-- HITOSARA Link -->
+                        <a href="https://hitosara.com/0006139761/" target="_blank" class="inline-block w-full sm:w-auto text-center border border-gold-bg text-gold-bg px-8 sm:px-12 py-4 hover:bg-gold-bg hover:text-white transition serif tracking-widest text-sm">
+                            ヒトサラで予約・詳細を見る
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-7/12 grid grid-cols-2 gap-3 sm:gap-4">
+                    <div class="space-y-3 sm:space-y-4">
+                        <img src="images/zensai.png" class="w-full h-40 sm:h-64 md:h-80 object-cover grayscale hover:grayscale-0 transition duration-700">
+                        <img src="images/kakuteru.png" class="w-full h-32 sm:h-56 md:h-64 object-cover">
+                    </div>
+                    <div class="pt-8 sm:pt-12 space-y-3 sm:space-y-4">
+                        <img src="images/dessert.png" class="w-full h-48 sm:h-80 md:h-96 object-cover">
+                        <p class="serif text-[10px] sm:text-xs text-gold-bg pt-2 sm:pt-4 tracking-widest">Pairing by Senior Sommelière</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICE SECTION -->
+    <section class="py-16 sm:py-24 md:py-32 section-magazine-light relative">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-14 sm:mb-20 md:mb-24">
+                <p class="serif text-gray-400 text-xs tracking-widest mb-4">REVIEWS</p>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl text-black">ゲストたちの記憶。</h2>
+            </div>
+
+            <div class="space-y-14 sm:space-y-20 md:space-y-24">
+                <div class="flex flex-col md:flex-row gap-5 md:gap-8 items-start md:items-end">
+                    <div class="w-16 md:w-24 h-px bg-gold-bg mb-2 md:mb-4"></div>
+                    <blockquote class="serif text-lg sm:text-xl md:text-2xl leading-relaxed italic text-gray-800">
+                        「料理のバリエーションも斬新も絶妙で、箸が飽きることなく時間が過ぎていく。プロでなければできないペアリングの提案も、この店の魅力だ。」
+                    </blockquote>
+                </div>
+                <div class="flex flex-col md:flex-row-reverse gap-5 md:gap-8 items-start md:items-end">
+                    <div class="w-16 md:w-24 h-px bg-gold-bg mb-2 md:mb-4"></div>
+                    <blockquote class="serif text-lg sm:text-xl md:text-2xl leading-relaxed italic text-gray-800 md:text-right">
+                        「落ち着いた雪囲気。味噌麹と山わさびのソースがカンパチにピッタリで驚いた。特別な日のディナーにふさわしい素敵なお店です。」
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEF SECTION -->
+    <section class="py-16 sm:py-24 md:py-32 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <img src="images/chef.png" class="w-full grayscale brightness-90 shadow-2xl">
+                </div>
+                <div class="w-full md:w-1/2 relative">
+                    <span class="section-num serif italic">03</span>
+                    <div class="pt-10 md:pt-12">
+                        <p class="serif text-gold-bg text-xs sm:text-sm mb-4 tracking-widest">THE DUO</p>
+                        <h2 class="serif text-2xl sm:text-3xl mb-6 md:mb-8 text-black">丹後 公章 × 勝山 美幸</h2>
+                        <div class="text-sm text-gray-500 leading-loose space-y-5 md:space-y-6">
+                            <p>
+                                札幌の名店「カノフィーロ」や市内のフレンチレストランで21年の研鑽を積んだ店主。
+                                その隣には、シニアソムリエとしてワインとのマリアージュを紡績する妻・美幸。
+                            </p>
+                            <p>
+                                二人の調和が、この隠れ家を「botanで外せない一軒」へと押し上げている。
+                                店名の「botan」に込めたのは、美しく、かつ親しみやすいもてなしの願い。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SECTION -->
+    <section class="py-16 sm:py-24 md:py-32 section-magazine-dark relative overflow-hidden border-t border-b border-gold-bg/20">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 md:mb-20">
+                <span class="serif text-gold-bg text-xs tracking-[0.3em] sm:tracking-[0.5em] uppercase block mb-3">Future Projects</span>
+                <h2 class="serif text-3xl sm:text-4xl md:text-6xl gold-gradient tracking-widest font-bold mb-4">COMING SOON</h2>
+                <p class="serif text-[10px] sm:text-xs text-gray-400 tracking-[0.2em] sm:tracking-[0.3em]">料理屋 botan がお贈りする、新しい食の体験。</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <!-- Event Details -->
+                <div class="space-y-8 md:space-y-10">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="h-px w-8 bg-gold-bg"></span>
+                            <p class="serif text-gold-bg text-xs tracking-widest">01 / WORKSHOP & DINING</p>
+                        </div>
+                        <h3 class="serif text-xl sm:text-2xl md:text-3xl text-white font-normal leading-snug">
+                            自家譲調味料の料理教室 × <br>特別おまかせコースの極上体験
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            botanの味の根幹をなす「自家醸魚醤」や「手仕込み味噌」。店主・丹後が手塩にかけて育てる発酵調味料の作り方をまなぶ小さなワークショップ。体験後は、その調味料で極立てられたこの日限りの特別コースをソムリエ厳選のペアリングと共にお召し上がりいただきます。
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-6 border-t border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="h-px w-8 bg-gold-bg"></span>
+                            <p class="serif text-gold-bg text-xs tracking-widest">02 / PAIRING SALON</p>
+                        </div>
+                        <h3 class="serif text-lg sm:text-xl md:text-2xl text-white font-normal leading-snug">
+                            シニアソムリエが明かす「和と洋を繋ぐペアリング講座」
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            出汁や麹の旨味とワインの酸味が重なり合う瞬間を試食しながら紐解く、大人のためのサロン形式イベント。ご家庭の食卓にも活かせるペアリングの秘訣をお伝えします。
+                        </p>
+                    </div>
+
+                    <div class="pt-2 text-center">
+                        <p class="text-[10px] sm:text-[11px] text-gold-bg/80 border border-gold-bg/30 px-5 sm:px-6 py-3 serif tracking-widest inline-block">
+                            ※ 開催時期および募集案内は公式SNS・HITOSARAにて告知予定です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS & MAP SECTION -->
+    <section class="py-16 sm:py-24 md:py-32 section-magazine-light border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+                <div class="w-full md:w-1/3">
+                    <p class="serif text-gold-bg text-xs mb-4 tracking-widest">LOCATION</p>
+                    <h2 class="serif text-2xl sm:text-3xl mb-8 md:mb-12 text-black">アクセス</h2>
+                    <div class="space-y-6 md:space-y-8 text-sm">
+                        <div>
+                            <p class="serif text-gray-400 mb-2">Address</p>
+                            <p class="text-gray-800">〒064-0807<br>北海道札幌市中央区南7条西3丁目7-29<br>アポロビル 2F</p>
+                        </div>
+                        <div>
+                            <p class="serif text-gray-400 mb-2">Contact</p>
+                            <p class="text-gray-800">Tel: 090-7654-1474<br><span class="text-[10px] text-gray-400">※接客中はお電話に出られない場合がございます。</span></p>
+                        </div>
+                        <div>
+                            <p class="serif text-gray-400 mb-2">Stations</p>
+                            <ul class="text-gray-800 space-y-1">
+                                <li>地下鉄南北線「すすきの駅」徒歩7分</li>
+                                <li>地下鉄東豊線「豊水すすきの駅」徒歩5分</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3">
+                    <div class="relative w-full h-[280px] sm:h-[350px] md:h-[450px] magazine-border p-2 bg-white shadow-sm overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.5012107060843!2d141.35209177507167!3d43.05192509111334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29384e164631%3A0xb2efeac928abb5f0!2z5paZ55CG5bGLIGJvdGFu!5e0!3m2!1sja!2sjp!4v1771993384449!5m2!1sja!2sjp"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="map-container">
+                        </iframe>
+                    </div>
+                    <p class="text-[9px] sm:text-[10px] mt-3 md:mt-4 text-gray-400 serif text-right italic">Ryoriya Botan Location Map / Central Sapporo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-20 sm:py-28 md:py-40 section-magazine-dark text-center px-5 sm:px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 grayscale">
+            <img src="https://images.unsplash.com/photo-1550966841-3ee5ad63384f?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h2 class="serif text-4xl sm:text-5xl md:text-7xl mb-8 md:mb-12 gold-gradient leading-tight">
+                さあ、美食の<br>物語の続きを。
+            </h2>
+            <p class="serif text-white/60 mb-10 md:mb-16 tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm">ONE NIGHT, ONE TABLE, YOUR STORY.</p>
+
+            <a href="https://hitosara.com/0006139761/" target="_blank" class="gold-bg text-white font-bold text-lg sm:text-xl py-5 sm:py-6 px-10 sm:px-16 inline-block w-full sm:w-auto shadow-2xl hover:scale-105 transition duration-500">
+                RESERVATION / 予約する
+            </a>
+
+            <div class="mt-16 sm:mt-20 md:mt-24 grid sm:grid-cols-2 gap-8 sm:gap-12 text-left text-[10px] tracking-[0.15em] sm:tracking-[0.2em] text-gray-400 border-t border-white/5 pt-10 md:pt-12">
+                <div class="space-y-2">
+                    <p class="text-white text-xs mb-4 uppercase">Ryoriya Botan</p>
+                    <p>定休日：日曜日</p>
+                    <p>ご予約：前日までの完全予約制</p>
+                </div>
+                <div class="space-y-2 pt-2 sm:pt-8">
+                    <div class="flex gap-4 sm:justify-end">
+                        <a href="https://hitosara.com/0006139761/" target="_blank" class="hover:text-white transition-colors duration-300">HITOSARA</a>
+                       
+                        <a href="https://www.instagram.com/ryouriya_botan_sapporo/" target="_blank" class="hover:text-white transition-colors duration-300">SNS </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-black text-center text-[7px] sm:text-[8px] text-gray-700 tracking-[0.5em] sm:tracking-[0.8em] uppercase px-4">
+        &copy; 2024 Ryoriya Botan / Editorial by LP Specialist
+    </footer>
+
+</body>
+</html>
