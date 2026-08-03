@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ビストロ メナージェ | 豊平・菊水の老舗洋食店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bistro-red: #8b0000;
+            --bistro-gold: #c5a059;
+            --bistro-black: #1a1512;
+            --bistro-brown: #5d4037;
+            --bistro-cream: #f9f7f2;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bistro-cream);
+            color: var(--bistro-black);
+            overflow-x: hidden;
+        }
+        .font-serif-jp { font-family: 'Shippori Mincho', serif; }
+        .font-accent { font-family: 'Playfair Display', serif; }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 100%);
+        }
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .gold-line::after {
+            content: "";
+            display: block;
+            width: 48px;
+            height: 2px;
+            background: var(--bistro-gold);
+            margin: 1rem auto;
+        }
+        .gold-line-left::after { margin: 1rem 0; }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: 0;
+        }
+
+        .text-gold { color: var(--bistro-gold); }
+        .bg-gold { background-color: var(--bistro-gold); }
+        .border-gold { border-color: var(--bistro-gold); }
+        .text-bistro-brown { color: var(--bistro-brown); }
+        .bg-bistro-black { background-color: var(--bistro-black); }
+
+        /* モバイルメニュー */
+        #mobile-menu { transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+        #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+        /* 極小画面での見出しサイズ調整 */
+        @media (max-width: 380px) {
+            .hero-title { font-size: 1.9rem !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { transition: none; opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body class="texture-bg">
+
+    <!-- Header Navigation -->
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center py-3">
+            <div class="text-xl sm:text-2xl font-serif-jp font-bold tracking-tighter">メナージェ</div>
+
+            <nav class="hidden md:flex space-x-8 text-sm font-bold">
+                <a href="#concept" class="hover:text-gold transition">CONCEPT</a>
+                <a href="#menu" class="hover:text-gold transition">MENU</a>
+                <a href="#review" class="hover:text-gold transition">REVIEWS</a>
+                <a href="#coming-soon" class="hover:text-gold transition">COMING SOON</a>
+                <a href="#access" class="hover:text-gold transition">ACCESS</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="tel:0118237772" class="hidden sm:inline-block bg-stone-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-stone-700 transition">
+                    予約・お問合せ
+                </a>
+                <!-- ハンバーガーボタン(モバイル用) -->
+                <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-10 h-10" aria-label="メニューを開く" aria-expanded="false">
+                    <span class="block w-6 h-0.5 bg-stone-900 mb-1.5 transition-transform" id="bar1"></span>
+                    <span class="block w-6 h-0.5 bg-stone-900 mb-1.5 transition-opacity" id="bar2"></span>
+                    <span class="block w-6 h-0.5 bg-stone-900 transition-transform" id="bar3"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- モバイルメニュー本体 -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-stone-200">
+            <nav class="flex flex-col text-sm font-bold px-6 py-4 space-y-4">
+                <a href="#concept" class="py-1 hover:text-gold transition">CONCEPT</a>
+                <a href="#menu" class="py-1 hover:text-gold transition">MENU</a>
+                <a href="#review" class="py-1 hover:text-gold transition">REVIEWS</a>
+                <a href="#coming-soon" class="py-1 hover:text-gold transition">COMING SOON</a>
+                <a href="#access" class="py-1 hover:text-gold transition">ACCESS</a>
+                <a href="tel:0118237772" class="bg-stone-900 text-white px-5 py-3 rounded-full text-center mt-2">
+                    予約・お問合せ 011-823-7772
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FV: 圧倒的なシズル感 -->
+    <section class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/main.png" alt="本格的な洋食料理のシズル" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5">
+            <span class="font-accent text-xl sm:text-2xl md:text-3xl text-gold mb-4 block opacity-90">Bistro Ménager</span>
+            <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-serif-jp mb-6 md:mb-8 leading-tight tracking-wider">
+                時代に流されない、<br><span class="text-white text-4xl sm:text-5xl md:text-6xl">本物の「洋食」を。</span>
+            </h1>
+            <p class="text-sm sm:text-base md:text-xl mb-8 md:mb-12 font-light tracking-widest leading-relaxed">
+                札幌・豊平で35年以上。<br>丁寧な仕事が光る、驚愕のビストロランチ。
+            </p>
+            <a href="#menu" class="group relative inline-block">
+                <div class="absolute -inset-1 bg-gold rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                <button class="relative bg-white text-stone-900 font-bold py-3.5 px-8 md:py-4 md:px-10 rounded-full transition duration-300 shadow-2xl tracking-widest text-sm md:text-base">
+                    至福のメニューを見る
+                </button>
+            </a>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white text-xs tracking-widest flex flex-col items-center gap-2">
+            <span>SCROLL</span>
+            <div class="w-px h-10 md:h-12 bg-white/30"></div>
+        </div>
+    </section>
+
+    <!-- 1. イチオシ訴求: 有頭エビフライ -->
+    <section id="menu" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-5 -left-5 md:-top-6 md:-left-6 bg-gold text-white p-4 md:p-6 rounded-full z-10 font-serif-jp leading-none text-center shadow-xl w-20 h-20 md:w-24 md:h-24 flex flex-col items-center justify-center">
+                        <span class="text-[10px] md:text-xs">リピート必至</span>
+                        <span class="text-xl md:text-2xl font-bold">必食</span>
+                    </div>
+                    <img src="images/ebifly.png" alt="有頭エビフライ" class="rounded-sm shadow-2xl w-full h-auto">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp mb-5 md:mb-6 gold-line gold-line-left text-left">
+                        エビフライ好きの終着点。<br>プリップリの「有頭大エビ」
+                    </h2>
+                    <p class="text-stone-600 leading-relaxed mb-6 md:mb-8 text-sm sm:text-base">
+                        当店のイチオシは、見た目のインパクトも抜群の有頭エビフライ。<br>
+                        サクッとした薄衣の中に閉じ込められた、濃厚なエビの旨みと弾力。自家製のタルタルソース、そして自慢のデミグラスソースとの相性はまさに「絶妙」の一言です。
+                    </p>
+                    <div class="bg-stone-50 p-5 md:p-6 border-l-4 border-gold italic text-sm text-stone-500">
+                        「有頭エビなのも必食。エビドリアやフライドポテトも、常連客が必ず推す逸品です。」
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. コンセプトセクション -->
+    <section id="concept" class="py-16 md:py-24 relative bg-stone-900 text-white overflow-hidden">
+        <div class="absolute right-0 top-0 opacity-10 pointer-events-none hidden sm:block">
+            <span class="text-[100px] md:text-[200px] font-accent leading-none">Menager</span>
+        </div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div>
+                    <span class="font-accent text-gold text-xl md:text-2xl">Traditional Skills</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp mt-4 mb-6 md:mb-8 tracking-widest leading-snug">ナイフが、スッと沈む。<br>職人による「デネルベ」の魔法。</h2>
+                    <p class="text-stone-400 leading-relaxed mb-6 text-sm sm:text-base">
+                        「お肉が硬かったら…」そんな心配は無用です。当店では熟練のシェフがステーキ肉を一枚一枚丁寧にトリミング(筋引き)。
+                    </p>
+                    <p class="text-stone-400 leading-relaxed text-sm sm:text-base">
+                        筋や脂身を完璧に省くことで、どこからナイフを入れてもストレスフリーな柔らかさを実現しています。1988年の創業以来、変わることのない「丁寧な仕事」が当店の誇りです。
+                    </p>
+                </div>
+                <div class="relative group">
+                    <div class="absolute -inset-3 md:-inset-4 border border-gold/30 pointer-events-none"></div>
+                    <img src="images/niku.png" alt="シェフの調理" class="w-full h-auto object-cover filter brightness-75 transition duration-700 group-hover:brightness-100">
+                    <div class="absolute bottom-4 left-4 bg-stone-900/80 px-3 py-2 md:px-4 text-[11px] md:text-xs tracking-tighter">
+                        熟練の技が宿る、一皿一皿の工程
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. コスパ訴求 & クチコミ -->
+    <section id="review" class="py-16 md:py-24 bg-stone-50">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp gold-line">「驚愕の驚額」と評される理由</h2>
+                <p class="text-stone-500 mt-4 tracking-widest italic font-serif-jp text-sm md:text-base">2025年リピート確定リスト、選出。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+                <div class="bg-white p-6 md:p-10 shadow-sm border-b-4 border-gold relative">
+                    <div class="text-gold text-xl md:text-2xl mb-4">★★★★★</div>
+                    <p class="text-stone-800 leading-relaxed mb-6 italic text-sm md:text-base">
+                        「ステーキランチ1150円。ソフトドリンク付きで驚愕のワンプレート。ファミレスでもこの値段じゃ食べられません。デミソースが秀逸!」
+                    </p>
+                    <p class="text-xs text-stone-400 font-bold tracking-widest">— 2025年7月初旬 来訪</p>
+                </div>
+                <div class="bg-white p-6 md:p-10 shadow-sm border-b-4 border-gold relative">
+                    <div class="text-gold text-xl md:text-2xl mb-4">★★★★★</div>
+                    <p class="text-stone-800 leading-relaxed mb-6 italic text-sm md:text-base">
+                        「メナージェコース(税込1400円)が最高。前菜、カルパッチョ、メイン、デザートまで。本格フレンチの味わいをこの価格で。」
+                    </p>
+                    <p class="text-xs text-stone-400 font-bold tracking-widest">— 常連客の声</p>
+                </div>
+                <div class="bg-white p-6 md:p-10 shadow-sm border-b-4 border-gold relative sm:col-span-2 lg:col-span-1">
+                    <div class="text-gold text-xl md:text-2xl mb-4">★★★★</div>
+                    <p class="text-stone-800 leading-relaxed mb-6 italic text-sm md:text-base">
+                        「カツランチ1,100円。チーズが載っていてコクが増して美味しい。家具はカリモクで揃えてあり、高級感・接客ともに良い。」
+                    </p>
+                    <p class="text-xs text-stone-400 font-bold tracking-widest">— ランチ利用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. メニュー紹介 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl font-serif-jp text-center mb-10 md:mb-16 italic">Popular Lunch Selection</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                <div class="group overflow-hidden relative aspect-[3/4]">
+                    <img src="images/steak.png" alt="ステーキランチ" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3 md:p-6">
+                        <h4 class="text-white font-bold text-sm md:text-xl">ステーキランチ</h4>
+                       
+                    </div>
+                </div>
+                <div class="group overflow-hidden relative aspect-[3/4]">
+                    <img src="images/hanbagu.png" alt="ハンバーグランチ" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3 md:p-6">
+                        <h4 class="text-white font-bold text-sm md:text-xl">ハンバーグランチ</h4>
+                        
+                    </div>
+                </div>
+                <div class="group overflow-hidden relative aspect-[3/4]">
+                    <img src="images/pasta.png" alt="メナージェコース" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3 md:p-6">
+                        <h4 class="text-white font-bold text-sm md:text-xl">メナージェコース</h4>
+                       
+                    </div>
+                </div>
+                <div class="group overflow-hidden relative aspect-[3/4]">
+                    <img src="images/doria.jpg" alt="海の幸ドリア" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3 md:p-6">
+                        <h4 class="text-white font-bold text-sm md:text-xl">海の幸ドリア</h4>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.5 Coming Soon / 新サービス準備中 -->
+    <section id="coming-soon" class="py-16 md:py-24 bg-stone-900 text-white border-t border-b border-stone-800 relative overflow-hidden">
+        <div class="absolute -left-10 -bottom-10 opacity-5 pointer-events-none select-none hidden sm:block">
+            <span class="text-[100px] md:text-[180px] font-serif-jp font-bold text-white">NEXT</span>
+        </div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                <span class="font-accent text-gold text-xs sm:text-sm tracking-[0.3em] uppercase block mb-2">Future Services</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp gold-line mb-6">COMING SOON</h2>
+                <p class="text-stone-300 text-sm md:text-base leading-relaxed">
+                    「メナージェの味をもっと身近に、もっと楽しく。」<br>
+                    お客様のご要望にお応えし、準備中の新しいサービスをご紹介いたします。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: 日替わりSNS配信 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 p-6 md:p-8 rounded-lg relative flex flex-col justify-between hover:border-gold/50 transition duration-300 group">
+                    <div class="absolute -top-3 right-6 bg-gold text-stone-900 font-bold text-[10px] tracking-widest uppercase px-3 py-1 rounded-full shadow">
+                        Prep 01
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-stone-700/80 text-gold flex items-center justify-center text-2xl mb-5 md:mb-6 group-hover:scale-110 transition duration-300">
+                            📱
+                        </div>
+                        <h3 class="text-lg md:text-xl font-serif-jp font-bold mb-3 text-white">日替わり・限定メニュー<br>リアルタイムSNS配信</h3>
+                        <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-6">
+                            「今日のランチは何だろう?」毎朝・毎晩の直前に、公式LINEやInstagramで『本日の日替わり』や仕入れ限定メニューをリアルタイム配信。忙しいランチタイムのお楽しみをお届けします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/40 text-xs text-gold flex items-center gap-1">
+                        <span>● LINE / Instagramにて順次開始予定</span>
+                    </div>
+                </div>
+
+                <!-- サービス2: LINEお取り置き -->
+                <div class="bg-stone-800/80 border border-stone-700/60 p-6 md:p-8 rounded-lg relative flex flex-col justify-between hover:border-gold/50 transition duration-300 group">
+                    <div class="absolute -top-3 right-6 bg-gold text-stone-900 font-bold text-[10px] tracking-widest uppercase px-3 py-1 rounded-full shadow">
+                        Prep 02
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-stone-700/80 text-gold flex items-center justify-center text-2xl mb-5 md:mb-6 group-hover:scale-110 transition duration-300">
+                            🍤
+                        </div>
+                        <h3 class="text-lg md:text-xl font-serif-jp font-bold mb-3 text-white">名物有頭エビフライ・特製弁当<br>LINE事前お取り置き・テイクアウト</h3>
+                        <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-6">
+                            売り切れ必至の人気メニューや老舗の味を詰め込んだ特製洋食弁当を、スマホからサクッと簡単予約。「完売で食べられなかった」を防ぎ、できたてを確実にお持ち帰りいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/40 text-xs text-gold flex items-center gap-1">
+                        <span>● スマホ事前注文システム準備中</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10 md:mt-12">
+                <div class="inline-block bg-white/5 border border-white/10 px-5 py-3 md:px-6 rounded-full text-[11px] md:text-xs text-stone-300">
+                    ※サービス内容およびリリース時期は予告なく変更となる場合がございます。最新情報は店頭にてお知らせしております。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. アクセス & Google Map -->
+    <section id="access" class="py-16 md:py-24 bg-stone-50 border-t border-stone-200">
+        <div class="container mx-auto px-5 sm:px-6 max-w-6xl">
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-serif-jp italic">Access Info</h2>
+                <p class="text-stone-500 mt-2 text-sm md:text-base">札幌・豊平 36号線沿いの老舗ビストロ</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                <div class="bg-white p-2 shadow-xl border border-stone-200 rounded-sm">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.6284413910016!2d141.37269647507145!3d43.049248591284524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2a2d2fb5ffdf%3A0x621ca44f8a196b32!2z44Oh44OK44O844K444Kn!5e0!3m2!1sja!2sjp!4v1771994890713!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ビストロ メナージェ 地図"></iframe>
+                    </div>
+                    <div class="p-4 bg-stone-900 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs sm:text-sm">
+                        <span>地下鉄「学園前駅」より徒歩約8分</span>
+                        <a href="https://maps.app.goo.gl/yQYpP6Gv7p3R2N1i6" target="_blank" rel="noopener" class="text-gold border-b border-gold font-bold">Googleマップで開く</a>
+                    </div>
+                </div>
+
+                <div class="space-y-6 md:space-y-8">
+                    <div class="bg-white p-6 md:p-8 border border-stone-200 shadow-sm">
+                        <dl class="space-y-5 md:space-y-6">
+                            <div class="flex flex-col border-b border-stone-100 pb-4">
+                                <dt class="text-xs font-bold text-gold tracking-widest uppercase mb-2">Address</dt>
+                                <dd class="text-stone-700 leading-relaxed font-bold text-sm md:text-base">〒062-0903 北海道札幌市豊平区豊平3条8丁目1-47 林ビル 1F</dd>
+                            </div>
+                            <div class="flex flex-col border-b border-stone-100 pb-4">
+                                <dt class="text-xs font-bold text-gold tracking-widest uppercase mb-2">Hours &amp; Holiday</dt>
+                                <dd class="text-stone-700 font-bold text-base md:text-lg">Lunch / 1988年創業のクラシカルな洋食店</dd>
+                                <dd class="text-red-800 font-bold mt-1 text-sm md:text-base">定休日:日曜日</dd>
+                            </div>
+                            <div class="flex flex-col">
+                                <dt class="text-xs font-bold text-gold tracking-widest uppercase mb-2">Payment</dt>
+                                <dd class="text-stone-700 font-bold text-sm md:text-base">現金のみ(各種キャッシュレス決済不可)</dd>
+                                <p class="text-xs text-stone-400 mt-2">※カードやQR決済はご利用いただけません。予めご了承ください。</p>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="bg-stone-900 text-white p-6 md:p-8 relative overflow-hidden">
+                        <div class="absolute -right-8 -top-8 text-white/5 font-accent text-6xl md:text-8xl hidden sm:block">Parking</div>
+                        <h3 class="font-bold text-lg md:text-xl mb-4 flex items-center relative z-10 text-gold">
+                            <span class="text-2xl md:text-3xl mr-3">🅿️</span> 提携駐車場について
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed relative z-10 mb-4">
+                            お店の向かい斜め方向にある<strong>「豊平4条9丁目 カエルパーキング」</strong>が提携先です。
+                        </p>
+                        <div class="bg-white/10 p-4 rounded text-sm relative z-10">
+                            <p>飲食費により<span class="text-gold font-bold italic">現金でのキャッシュバック</span>(駐車料負担金)をお渡しする独自のシステムです。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Last CTA -->
+    <footer class="bg-bistro-black text-white pt-16 md:pt-24 pb-10 md:pb-12">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <div class="mb-10 md:mb-12">
+                <span class="font-accent text-bistro-brown text-2xl sm:text-3xl md:text-4xl block mb-4">Reservation</span>
+                <p class="text-base sm:text-lg md:text-xl font-serif-jp text-bistro-brown mb-6 md:mb-8 tracking-widest">
+                    今日は、少し贅沢なランチを。<br>
+                    皆様のご来店を心よりお待ちしております。
+                </p>
+                <div class="inline-flex flex-col items-center">
+                    <a href="tel:0118237772" class="text-3xl sm:text-4xl md:text-5xl font-serif-jp font-bold text-bistro-brown hover:text-gold transition">
+                        011-823-7772
+                    </a>
+                    <div class="w-full h-px bg-bistro-brown mt-2"></div>
+                </div>
+            </div>
+
+           
+
+            <div class="text-[9px] sm:text-[10px] text-stone-500 tracking-[0.3em] uppercase">
+                &copy; Bistro Ménager Sapporo Toyohira Since 1988.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            bar1.style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+            bar3.style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+            bar2.style.opacity = isOpen ? '0' : '1';
+        });
+
+        // メニュー内リンクをタップしたら自動で閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                bar1.style.transform = '';
+                bar3.style.transform = '';
+                bar2.style.opacity = '1';
+            });
+        });
+
+        // スクロールフェードイン
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, div.group').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+
+        // アンカーのスムーススクロール(ヘッダー分オフセット)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                const headerOffset = 64;
+                const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
