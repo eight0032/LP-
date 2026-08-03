@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>tire bouchon(ティルブション)| 札幌・すすきのが誇る至高のペアリング</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-gold: #b38e44;
+            --bg-dark: #0a0a0a;
+            --bg-light: #f9f8f4;
+            --text-dark: #1c1c1c;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.08em;
+        }
+
+        /* アニメーション：ふわっと浮き上がる */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .fade-in-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in-up { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* ゴールドの装飾ライン */
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        /* セクションタイトルの縦書き装飾（タブレット以上のみ） */
+        .section-title {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+            color: var(--primary-gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.5em;
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .section-title { display: block; left: -2rem; font-size: 0.875rem; }
+        }
+
+        /* エレガントなボタン */
+        .btn-elegant {
+            position: relative;
+            display: inline-block;
+            padding: 1.1rem 2.5rem;
+            border: 1px solid var(--primary-gold);
+            color: #fff;
+            overflow: hidden;
+            transition: color 0.4s;
+            z-index: 1;
+        }
+        .btn-elegant::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gold);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+        .btn-elegant:hover::before,
+        .btn-elegant:focus-visible::before {
+            left: 0;
+        }
+        .btn-elegant:focus-visible {
+            outline: 2px solid var(--primary-gold);
+            outline-offset: 3px;
+        }
+
+        /* 地図のコンテナ：高さを拡大 */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        @media (min-width: 768px) {
+            .map-container { height: 500px; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 固定予約バー (モバイルのみ) */
+        .fixed-booking {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            z-index: 100;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+            padding-bottom: env(safe-area-inset-bottom);
+            background: var(--primary-gold);
+        }
+
+        /* モバイルでは固定バー分の余白を確保 */
+        @media (max-width: 767px) {
+            body { padding-bottom: 4.25rem; }
+        }
+
+        /* モバイルナビメニュー */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        #mobile-menu.open { max-height: 24rem; }
+
+        /* タップ領域を広めに */
+        #nav-toggle { min-width: 44px; min-height: 44px; }
+
+        :focus-visible { outline: 2px solid var(--primary-gold); outline-offset: 2px; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ナビゲーション -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 py-4 md:p-6 flex justify-between items-center transition-all duration-300" id="main-nav">
+        <div class="text-xl md:text-2xl font-bold serif tracking-widest">tire bouchon</div>
+
+        <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase text-white/80">
+            <a href="#concept" class="hover:text-[#b38e44] transition">Concept</a>
+            <a href="#cuisine" class="hover:text-[#b38e44] transition">Cuisine</a>
+            <a href="#wine" class="hover:text-[#b38e44] transition">Wine</a>
+            <a href="#coming-soon" class="hover:text-[#b38e44] transition">Coming Soon</a>
+            <a href="#access" class="hover:text-[#b38e44] transition">Access</a>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-0">
+            <a href="tel:011-215-0886" class="hidden md:inline-block bg-[#b38e44] text-white px-6 py-2 text-xs md:text-sm serif hover:bg-[#967635] transition-colors">RESERVE</a>
+            <button id="nav-toggle" class="md:hidden flex items-center justify-center text-white" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fa-solid fa-bars text-xl" id="nav-toggle-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full bg-black/95 backdrop-blur-sm z-40 pt-20 px-6">
+        <div class="flex flex-col gap-6 text-base tracking-widest uppercase text-white/90 pb-8 border-b border-zinc-800">
+            <a href="#concept" class="nav-link py-1">Concept</a>
+            <a href="#cuisine" class="nav-link py-1">Cuisine</a>
+            <a href="#wine" class="nav-link py-1">Wine</a>
+            <a href="#coming-soon" class="nav-link py-1">Coming Soon</a>
+            <a href="#access" class="nav-link py-1">Access</a>
+            <a href="tel:011-215-0886" class="bg-[#b38e44] text-white px-6 py-3 text-center serif tracking-widest mt-2">RESERVE</a>
+        </div>
+    </div>
+
+    <!-- FV -->
+    <header class="relative min-h-screen flex items-center justify-center">
+        <div class="absolute inset-0">
+            <img src="images/kakuteru.png" alt="" class="w-full h-full object-cover opacity-70" loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#0a0a0a]"></div>
+        </div>
+        <div class="relative z-10 text-center px-6">
+            <p class="text-xs sm:text-sm md:text-base mb-5 md:mb-6 tracking-[0.4em] md:tracking-[0.5em] serif text-[#d4af37] fade-in-up">SAPPORO SUSUKINO</p>
+            <h1 class="text-2xl sm:text-3xl md:text-6xl font-light mb-6 md:mb-8 leading-relaxed serif fade-in-up" style="transition-delay: 0.2s;">
+                刻々と移ろう夜景と、<br>
+                シニアソムリエが奏でる<br>
+                至高のマリアージュ。
+            </h1>
+            <div class="gold-line max-w-xs mx-auto fade-in-up" style="transition-delay: 0.4s;"></div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- Concept Section -->
+    <section id="concept" class="py-20 md:py-32 bg-[#0a0a0a] overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                <div class="w-full md:w-1/2 relative fade-in-up">
+                    <div class="section-title">CONCEPT</div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl serif mb-8 md:mb-12 leading-loose">
+                        五感で愉しむ、<br>
+                        大人の隠れ家。
+                    </h2>
+                    <p class="text-zinc-400 leading-loose mb-8 font-light text-sm sm:text-base">
+                        すすきのの喧騒を離れ、エレベーターを降りると広がるのは、F-45ビル最上階付近からの街を臨むようなパノラマ夜景。<br><br>
+                        ここは、シニアソムリエ森一茂が贈る、ワインと料理の対話の場。厚岸から届く旬の牡蠣、厳選された北海道の食材、そして世界中から集められた150種以上の在庫ワイン。それらが重なり合い、ここでしか味わえない「一期一会の夜」を演出します。
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2 flex gap-3 md:gap-4 fade-in-up" style="transition-delay: 0.3s;">
+                    <div class="w-2/3 mt-8 md:mt-12">
+                        <img src="images/dinner.png" alt="店内夜景" class="rounded-sm shadow-2xl w-full" loading="lazy">
+                    </div>
+                    <div class="w-1/3">
+                        <img src="images/paring.png" alt="ワイングラス" class="rounded-sm shadow-2xl mt-[-2.5rem] md:mt-[-4rem] w-full" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cuisine Section -->
+    <section id="cuisine" class="py-20 md:py-32 bg-[#f9f8f4] text-zinc-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 md:mb-24 fade-in-up">
+                <span class="text-[#b38e44] tracking-[0.3em] text-xs uppercase mb-4 block">Gastronomy</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl serif mb-4">旬を愉しみ、素材を活かす。</h2>
+                <div class="w-12 h-[1px] bg-[#b38e44] mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-24 items-center mb-20 md:mb-32">
+                <div class="order-2 md:order-1 fade-in-up">
+                    <h3 class="text-xl sm:text-2xl serif mb-4 md:mb-6">厚岸産ブランド牡蠣との出逢い</h3>
+                    <p class="text-zinc-600 leading-loose font-light mb-6 md:mb-8 text-sm sm:text-base">
+                        当店のシグネチャー、厚岸直送の牡蠣。その濃厚でクリーミーな味わいは、シニアソムリエが選ぶミネラル豊かなシャブリやシャンパーニュと完璧に共鳴します。
+                    </p>
+                    <a href="#access" class="text-zinc-900 border-b border-zinc-900 pb-1 text-sm tracking-widest hover:text-[#b38e44] hover:border-[#b38e44] transition">VIEW ACCESS</a>
+                </div>
+                <div class="order-1 md:order-2 fade-in-up" style="transition-delay: 0.2s;">
+                    <img src="images/kaki.jpg" alt="牡蠣料理" class="shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 rounded-sm w-full" loading="lazy">
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-24 items-center">
+                <div class="fade-in-up">
+                    <img src="images/main.png" alt="肉料理" class="shadow-2xl rounded-sm w-full" loading="lazy">
+                </div>
+                <div class="fade-in-up" style="transition-delay: 0.2s;">
+                    <h3 class="text-xl sm:text-2xl serif mb-4 md:mb-6">月替わりのコース・ストーリー</h3>
+                    <p class="text-zinc-600 leading-loose font-light text-sm sm:text-base">
+                        その時期、最も輝く北海道の食材をフレンチの技法で昇華。全5〜7皿のコースは、前菜からデザートまで一つの物語のように構成されています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wine Section -->
+    <section id="wine" class="py-20 md:py-32 bg-zinc-900">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="mb-12 md:mb-16 fade-in-up">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl serif mb-6 md:mb-8 leading-relaxed">
+                    150通りの正解を、<br>
+                    あなたのために。
+                </h2>
+                <p class="text-zinc-400 font-light leading-loose max-w-2xl mx-auto text-sm sm:text-base">
+                    「何を飲めばいいか分からない」という方もご安心ください。<br>
+                    シニアソムリエが、その日の気分、料理、ご予算に合わせて、<br class="hidden md:block">
+                    あなたのための「最高の一杯」をセレクトします。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 mb-14 md:mb-20 fade-in-up" style="transition-delay: 0.3s;">
+                <div class="p-5 sm:p-8 border border-zinc-800 hover:border-[#b38e44] transition group bg-black/30">
+                    <i class="fa-solid fa-wine-glass text-2xl sm:text-3xl mb-3 sm:mb-4 text-[#b38e44] group-hover:scale-110 transition"></i>
+                    <p class="text-xs sm:text-sm serif">Glass Wine<br><span class="text-[10px] text-zinc-500">¥1,000 〜</span></p>
+                </div>
+                <div class="p-5 sm:p-8 border border-zinc-800 hover:border-[#b38e44] transition group bg-black/30">
+                    <i class="fa-solid fa-bottle-wine text-2xl sm:text-3xl mb-3 sm:mb-4 text-[#b38e44] group-hover:scale-110 transition"></i>
+                    <p class="text-xs sm:text-sm serif">Rare Bottles<br><span class="text-[10px] text-zinc-500">150+ Stocks</span></p>
+                </div>
+                <div class="p-5 sm:p-8 border border-zinc-800 hover:border-[#b38e44] transition group bg-black/30">
+                    <i class="fa-solid fa-map-location-dot text-2xl sm:text-3xl mb-3 sm:mb-4 text-[#b38e44] group-hover:scale-110 transition"></i>
+                    <p class="text-xs sm:text-sm serif">Hokkaido Wine<br><span class="text-[10px] text-zinc-500">Selected</span></p>
+                </div>
+                <div class="p-5 sm:p-8 border border-zinc-800 hover:border-[#b38e44] transition group bg-black/30">
+                    <i class="fa-solid fa-award text-2xl sm:text-3xl mb-3 sm:mb-4 text-[#b38e44] group-hover:scale-110 transition"></i>
+                    <p class="text-xs sm:text-sm serif">Expertise<br><span class="text-[10px] text-zinc-500">Senior Sommelier</span></p>
+                </div>
+            </div>
+
+            <a href="tel:011-215-0886" class="btn-elegant serif tracking-widest fade-in-up text-sm sm:text-base">
+                お電話でご相談・ご予約
+            </a>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-20 md:py-32 bg-[#0d0d0d] relative overflow-hidden border-t border-b border-zinc-800/80">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-14 md:mb-20 fade-in-up">
+                <span class="text-[#b38e44] tracking-[0.4em] text-xs uppercase block mb-3 font-semibold">Future Projects</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl serif mb-6 tracking-widest">COMING SOON</h2>
+                <p class="text-zinc-400 text-sm md:text-base font-light leading-relaxed max-w-2xl mx-auto">
+                    tire bouchon(ティルブション)が準備を進めている、特別な新サービス。<br>
+                    お客様により深く、自由な美食体験をお届けするための新しい試みをご期待ください。
+                </p>
+                <div class="w-16 h-[1px] bg-[#b38e44] mx-auto mt-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+                <!-- サービス 1: 季節限定ペアリングコース -->
+                <div class="bg-zinc-900/60 border border-zinc-800 p-6 sm:p-8 lg:p-10 rounded-sm hover:border-[#b38e44]/60 transition-all duration-300 fade-in-up flex flex-col justify-between group">
+                    <div>
+                        <div class="flex flex-wrap gap-2 justify-between items-start mb-5 sm:mb-6">
+                            <span class="text-[10px] tracking-[0.2em] text-[#b38e44] border border-[#b38e44]/40 px-3 py-1 uppercase font-serif">Special Course</span>
+                            <span class="text-xs text-zinc-500 font-mono">2026 AUTUMN</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl serif mb-4 group-hover:text-[#b38e44] transition-colors">
+                            季節限定ペアリングつき<br>シェフおまかせフルコース
+                        </h3>
+                        <p class="text-zinc-400 font-light leading-loose text-sm mb-6">
+                            北海道の四季折々の特選食材を贅沢にあしらったシェフ渾身の特別ディナー。料理一皿ごとに、シニアソムリエが世界中から厳選した在庫ワインを合わせてご提供する「究極のマリアージュコース」です。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-500">
+                        <span><i class="fa-regular fa-clock mr-2 text-[#b38e44]"></i>完全予約制・数量限定</span>
+                        <span class="text-[#b38e44]">準備中</span>
+                    </div>
+                </div>
+
+                <!-- サービス 2: ノンアルコールペアリング -->
+                <div class="bg-zinc-900/60 border border-zinc-800 p-6 sm:p-8 lg:p-10 rounded-sm hover:border-[#b38e44]/60 transition-all duration-300 fade-in-up flex flex-col justify-between group" style="transition-delay: 0.15s;">
+                    <div>
+                        <div class="flex flex-wrap gap-2 justify-between items-start mb-5 sm:mb-6">
+                            <span class="text-[10px] tracking-[0.2em] text-[#b38e44] border border-[#b38e44]/40 px-3 py-1 uppercase font-serif">Non-Alcoholic</span>
+                            <span class="text-xs text-zinc-500 font-mono">NEW EXPERIENCES</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl serif mb-4 group-hover:text-[#b38e44] transition-colors">
+                            プレミアム・ノンアルコール<br>ペアリングコース
+                        </h3>
+                        <p class="text-zinc-400 font-light leading-loose text-sm mb-6">
+                            「お酒を飲めない方も、お車でお越しの方にも本物のマリアージュ体験を」。希少な高級ボタニカルドリンク、熟成スパイスティー、ハーブ抽出液を自家ブレンドし、ワインに引けを取らない深みと芳醇さを表現した至高のノンアルコールコースペアリング。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-500">
+                        <span><i class="fa-solid fa-wine-bottle mr-2 text-[#b38e44]"></i>厳選茶葉・ハーブ・極上果実</span>
+                        <span class="text-[#b38e44]">準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Access -->
+    <footer id="access" class="pt-20 md:pt-32 pb-10 md:pb-12 bg-black text-white px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col gap-12 md:gap-16 mb-16 md:mb-24">
+
+                <!-- 店舗情報エリア -->
+                <div class="grid lg:grid-cols-3 gap-10 lg:gap-12 fade-in-up">
+                    <div class="lg:col-span-1">
+                        <h2 class="text-2xl sm:text-3xl serif mb-4 md:mb-6 tracking-widest">tire bouchon</h2>
+                        <p class="text-zinc-500 text-xs tracking-[0.3em] uppercase mb-8 md:mb-10 italic">Authentic Wine Bar &amp; Grill</p>
+
+                        <div class="flex gap-6">
+                            <a href="https://facebook.com/tire2017/?locale2=ja_JP" target="_blank" rel="noopener" aria-label="Facebook" class="w-11 h-11 rounded-full border border-zinc-700 flex items-center justify-center hover:bg-[#b38e44] hover:border-[#b38e44] transition">
+                                <i class="fa-brands fa-facebook-f text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 grid sm:grid-cols-2 gap-8 text-zinc-400 font-light text-sm">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-white serif block mb-2 uppercase tracking-wide text-xs">Address</span>
+                                <p>〒064-0804 北海道札幌市中央区南4条西5丁目8番地 F-45ビル 13階</p>
+                                <p class="mt-1 text-xs opacity-60">すすきの駅より徒歩2分 / 豊水すすきの駅より徒歩5分</p>
+                            </div>
+                            <div>
+                                <span class="text-white serif block mb-2 uppercase tracking-wide text-xs">Contact</span>
+                                <a href="tel:011-215-0886" class="text-white text-lg sm:text-xl hover:text-[#b38e44] transition">011-215-0886</a>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-white serif block mb-2 uppercase tracking-wide text-xs">Business Hours</span>
+                                <p>19:30 - 2:00 </p>
+                                <p class="mt-1 text-[#b38e44]">定休日：日曜日</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 地図エリア -->
+                <div class="fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="map-container grayscale hover:grayscale-0 focus-within:grayscale-0 transition-all duration-1000 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-zinc-800">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3245222967726!2d141.34826817507198!3d43.05564179087557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298454dbf36d%3A0x739d60b75e28c0c6!2zdGlyZSBib3VjaG9uIOODhuOCo-ODq-ODluOCt-ODp-ODsw!5e0!3m2!1sja!2sjp!4v1771986999152!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" title="tire bouchon 地図"></iframe>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <a href="https://maps.app.goo.gl/yYyLqK1Gv5oQ7V6w6" target="_blank" rel="noopener" class="text-[10px] tracking-[0.2em] text-zinc-500 hover:text-[#b38e44] transition uppercase underline">Open in Google Maps</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 下部コピーライト -->
+            <div class="border-t border-zinc-900 pt-10 md:pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                <p class="text-zinc-600 text-[10px] tracking-[0.2em] uppercase">© tire bouchon All Rights Reserved.</p>
+                <div class="flex gap-8 text-[10px] tracking-[0.2em] text-zinc-400">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Site Map</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Fixed Footer -->
+    <div class="fixed-booking md:hidden">
+        <a href="tel:011-215-0886" class="w-full text-white py-4 text-center serif tracking-widest flex items-center justify-center gap-3">
+            <i class="fa-solid fa-phone-volume animate-pulse"></i> 予約・空席確認
+        </a>
+    </div>
+
+    <script>
+        // スクロール時のアニメーション発火
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // ナビゲーションの背景透過切り替え
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/90', 'backdrop-blur-sm');
+            } else {
+                nav.classList.remove('bg-black/90', 'backdrop-blur-sm');
+            }
+        });
+
+        // モバイルメニューの開閉
+        const navToggle = document.getElementById('nav-toggle');
+        const navToggleIcon = document.getElementById('nav-toggle-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggleIcon.classList.remove('fa-xmark');
+            navToggleIcon.classList.add('fa-bars');
+        }
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+            navToggleIcon.classList.toggle('fa-bars', !isOpen);
+            navToggleIcon.classList.toggle('fa-xmark', isOpen);
+        });
+
+        document.querySelectorAll('#mobile-menu .nav-link, #mobile-menu a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 72,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
