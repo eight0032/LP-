@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常春TOKOHARU | 円山・裏小路の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-gold: #b58d40;
+            --color-dark-gold: #8a6d30;
+            --color-bg: #fdfbf7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1a1a1a;
+            background-color: var(--color-bg);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        .washi-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade { animation: fadeIn 1.2s ease-out forwards; opacity: 0; }
+
+        .hero-img {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('images/main.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cta-glow {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(181, 141, 64, 0.7); }
+            70% { box-shadow: 0 0 0 16px rgba(181, 141, 64, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(181, 141, 64, 0); }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 1.5rem auto 0;
+        }
+        .section-title.text-left::after {
+            margin: 1.5rem 0 0;
+        }
+
+        .decorative-border {
+            border-top: 1px solid rgba(181, 141, 64, 0.3);
+            position: relative;
+        }
+        .decorative-border::before {
+            content: '◆';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-gold);
+            background: var(--color-bg);
+            padding: 0 10px;
+            font-size: 12px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-gold);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- モバイルメニュー --- */
+        #mobile-menu {
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        #menu-toggle i {
+            transition: transform 0.3s ease;
+        }
+        #menu-toggle.open i {
+            transform: rotate(90deg);
+        }
+
+        /* タップ領域を広めに */
+        @media (max-width: 767px) {
+            .nav-link {
+                display: block;
+                padding: 0.85rem 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased washi-bg" id="top">
+
+    <nav class="fixed top-0 left-0 w-full z-[100] bg-black/85 backdrop-blur-md border-b border-white/10 text-white">
+        <div class="container mx-auto px-5 md:px-6 flex justify-between items-center py-4">
+            <div class="text-xl font-serif tracking-widest text-gold font-bold">常春</div>
+
+            <!-- デスクトップメニュー -->
+            <div class="hidden md:flex items-center gap-7 text-sm tracking-widest font-light">
+                <a href="#top" class="nav-link hover:text-gold uppercase">Top</a>
+                <a href="#strength-section" class="nav-link hover:text-gold uppercase">strengths</a>
+                <a href="#profile-section" class="nav-link hover:text-gold uppercase">history</a>
+                <a href="#problem-section" class="nav-link hover:text-gold uppercase">Q&amp;A</a>
+                <a href="#coming-soon-section" class="nav-link hover:text-gold uppercase">Coming Soon</a>
+                <a href="#access-section" class="nav-link hover:text-gold uppercase">access</a>
+                <a href="https://tokoharu0914.com/wpinstall/index.php/reservationcontact/" target="_blank" class="bg-gold text-white px-5 py-2 rounded-sm hover:bg-dark-gold transition-colors font-bold">
+                    お問い合わせ
+                </a>
+            </div>
+
+            <!-- モバイル用ハンバーガーボタン -->
+            <button id="menu-toggle" class="md:hidden text-gold text-2xl w-11 h-11 flex items-center justify-center" aria-label="メニューを開く" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- モバイルメニュー本体 -->
+        <div id="mobile-menu" class="md:hidden px-5">
+            <div class="flex flex-col text-sm tracking-widest font-light pb-4">
+                <a href="#top" class="nav-link hover:text-gold uppercase">Top</a>
+                <a href="#strength-section" class="nav-link hover:text-gold uppercase">strengths</a>
+                <a href="#profile-section" class="nav-link hover:text-gold uppercase">history</a>
+                <a href="#problem-section" class="nav-link hover:text-gold uppercase">Q&amp;A</a>
+                <a href="#coming-soon-section" class="nav-link hover:text-gold uppercase">Coming Soon</a>
+                <a href="#access-section" class="nav-link hover:text-gold uppercase">access</a>
+                <a href="https://tokoharu0914.com/wpinstall/index.php/contact" target="_blank" class="bg-gold text-white text-center px-5 py-3 rounded-sm hover:bg-dark-gold transition-colors font-bold mt-3">
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-img min-h-[100svh] relative flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <!-- 縦書きキャッチコピー(PCのみ) -->
+        <div class="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 z-10 hidden md:block">
+            <p class="vertical-text text-white text-2xl tracking-[0.5em] font-serif border-r border-gold/50 pr-4">
+                旬の北海道を、銀座の技で。
+            </p>
+        </div>
+
+        <div class="container mx-auto px-5 md:px-4 z-10 text-center text-white">
+            <div class="mb-6 animate-fade" style="animation-delay: 0.2s">
+                <span class="inline-block border border-gold px-4 md:px-6 py-2 tracking-[0.2em] md:tracking-[0.3em] text-gold font-bold bg-black/30 backdrop-blur-md text-xs md:text-base">
+                    札幌・狸小路の隠れ家 | 創業10周年
+                </span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-black mb-8 md:mb-10 leading-snug animate-fade serif" style="animation-delay: 0.5s">
+                至高の<span class="text-gold">フカヒレ</span>、<br>
+                <span class="md:mt-2 block">悦びの<span class="text-gold">パスタ</span>。</span>
+            </h1>
+            <p class="text-sm sm:text-base md:text-xl mb-10 md:mb-12 font-light tracking-[0.1em] md:tracking-[0.2em] animate-fade leading-relaxed" style="animation-delay: 0.8s">
+                銀座で腕を磨いたシェフが贈る、<br class="md:hidden">熟成と真空調理の極致。<br>
+                女性ソムリエが紡ぐ、一夜ごとの至福。
+            </p>
+            <div class="animate-fade" style="animation-delay: 1.1s">
+                <a href="#contact" class="cta-glow bg-gold text-white font-bold py-4 px-10 md:py-5 md:px-16 rounded-sm text-base md:text-2xl inline-block hover:bg-dark-gold transition-colors tracking-widest">
+                    ご予約はこちら
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-8 md:py-12 bg-gold text-white text-center relative shadow-2xl">
+        <div class="container mx-auto px-5 md:px-4 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+            <p class="text-base md:text-xl font-bold tracking-wider">【WEB予約特典】ウェルカムドリンク進呈中</p>
+            <a href="https://tokoharu0914.com/wpinstall/index.php/reservationcontact/" target="_blank" class="bg-white text-gold font-bold py-3 px-8 rounded-sm hover:scale-105 transition-transform flex items-center shadow-lg w-full md:w-auto justify-center">
+                <i class="fas fa-calendar-alt mr-2"></i> 空席を確認
+            </a>
+        </div>
+    </section>
+
+    <section id="strength-section" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 md:px-4">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="aspect-[4/5] bg-gray-100 shadow-2xl overflow-hidden relative group">
+                        <img src="images/pasta.jpg" alt="フカヒレのパスタ" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+                        <div class="absolute top-4 left-4 border border-white/50 p-2 text-white text-xs tracking-widest">SIGNATURE DISH</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 md:mb-8 serif leading-tight section-title text-left after:ml-0">
+                        五感を震わせる、<br>濃厚な記憶。
+                    </h2>
+                    <p class="text-gray-600 leading-loose mb-8 text-base md:text-lg">
+                        看板メニュー「フカヒレのパスタ」。<br>
+                        気仙沼産の上質なフカヒレを、シェフ独自の技法で旨味の極限まで引き出しました。<br>
+                        熟成させたソースが麺に絡み、一口ごとに広がるのは、他では決して味わえない贅沢な余韻。<br>
+                        多くの食通に愛され続ける、常春の象徴です。
+                    </p>
+                    <div class="flex items-center gap-4 text-gold font-bold">
+                        <span class="text-2xl md:text-3xl italic serif">"One &amp; Only"</span>
+                        <div class="h-[1px] flex-grow bg-gold/30"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile-section" class="py-16 md:py-24 bg-[#1a1a1a] text-white overflow-hidden">
+        <div class="container mx-auto px-5 md:px-4 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="text-gold tracking-[0.3em] md:tracking-[0.4em] font-bold block mb-4 text-sm md:text-base">CRAFTMANSHIP / HISTORY</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 serif">銀座の伝統と、<br>北海道の息吹。</h2>
+                    <div class="space-y-6 text-gray-400 leading-relaxed text-sm md:text-base">
+                        <p>
+                            オーナーシェフ、澤飯 和広。20歳で上京し、美食の激戦区・銀座の【イル・ピノーロ】で6年間料理長を務める。
+                            高級店で磨き上げたのは、素材の声を紡ぐ力と、完璧な火入れの技術。
+                        </p>
+                        <p>
+                            「真の地産地消とは何か」を問い直し、2014年に札幌へ帰還。
+                            北海道の旬食材を、銀座仕込みの真空調理や熟成技法で昇華させる。
+                            その繊細かつ大胆な一皿は、10年の歳月を経て、今や札幌を代表するイタリアンの一つとなりました。
+                        </p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="relative z-10">
+                        <img src="images/chef.png" alt="調理シーン" class="w-full h-auto shadow-2xl filter brightness-90">
+                    </div>
+                    <div class="absolute -top-8 -right-8 w-64 h-64 border border-gold/30 hidden md:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem-section" class="py-16 md:py-24 bg-white decorative-border">
+        <div class="container mx-auto px-5 md:px-4 max-w-4xl">
+            <h2 class="text-center text-2xl md:text-3xl font-bold serif mb-4">よくあるご質問と皆様の声</h2>
+            <p class="text-center text-gold tracking-widest mb-12 md:mb-16 uppercase italic font-serif text-sm">Q&amp;A and Voice</p>
+            <div class="space-y-10 md:space-y-12">
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start border-l-4 border-gold pl-6 md:pl-8 py-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex text-gold mb-2 font-bold serif text-xl italic">Q.</div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-base md:text-lg mb-2">記念日での利用ですが、サプライズは可能ですか？</p>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">はい。メッセージプレートのご用意など承っております。ご予約時に詳細をお聞かせください。</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start border-l-4 border-gold pl-6 md:pl-8 py-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex text-gold mb-2">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-base md:text-lg italic leading-loose text-gray-700">
+                        「こだわりの料理にペアリングのワインがマッチして、素晴らしい。気の置けない仲間と最高に良い時間を過ごせた。内装も落ち着いていて、隠れ家そのもの。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="coming-soon-section" class="py-16 md:py-24 bg-[#111111] text-white relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-5 md:px-4 max-w-5xl relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block border border-gold/60 text-gold text-xs px-4 md:px-5 py-1.5 rounded-full tracking-[0.2em] md:tracking-[0.3em] font-bold mb-4 uppercase">
+                    Coming Soon
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold serif mb-6 leading-tight">
+                    食の物語を、お手元に。<br>
+                    <span class="text-gold text-xl sm:text-2xl md:text-3xl block mt-3">「デジタル・ストーリーカード」誕生（準備中）</span>
+                </h2>
+                <div class="h-0.5 w-16 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
+                    常春での感動的な一夜を、もっと深く、ずっと身近に。<br>
+                    お召し上がりいただいたお料理、ソムリエ厳選ペアリングワイン、そして北海道の食材生産者様のストーリーを詰め込んだ「デジタルカード」をスマホに配布する新サービスを企画しております。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-sm hover:border-gold/50 transition-all group relative">
+                    <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-wine-glass-alt"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold serif mb-3 text-gold">1. 余韻を味わう図鑑</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        今夜味わったワインのマリアージュや、熟成料理の技法、契約農家様の情熱をデジタルカードでいつでも読み返せます。
+                    </p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-sm hover:border-gold/50 transition-all group relative">
+                    <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold serif mb-3 text-gold">2. 次回来店がもっと楽しみに</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        集めたカードのコレクションに応じて、次回ご来店時に楽しめる「裏メニューペアリング」や「特別なご案内」が届きます。
+                    </p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-sm hover:border-gold/50 transition-all group relative">
+                    <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-share-nodes"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold serif mb-3 text-gold">3. 感動を大切な方へ共有</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        「このワインと料理が最高だった」という思い出のカードをSNSやLINEで手軽に共有。大切な方への美味しい口コミの輪が広がります。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 text-center">
+                <span class="text-xs text-gold/80 tracking-widest uppercase border-b border-gold/30 pb-1">※サービス開始時期は決まり次第、公式LINE・Instagramにてご案内いたします。</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="access-section" class="py-16 md:py-24 bg-[#fdfbf7]">
+        <div class="container mx-auto px-5 md:px-4 max-w-5xl">
+            <div class="bg-white border-[8px] md:border-[12px] border-[#eee] p-6 md:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gold text-white px-6 md:px-8 py-2 text-sm md:text-base font-bold transform translate-x-[30%] translate-y-[100%] rotate-45">LIMITED</div>
+
+                <div class="text-center mb-10 md:mb-12">
+                    <h3 class="text-gold tracking-[0.3em] md:tracking-[0.5em] font-bold mb-4 uppercase text-sm md:text-base">Access &amp; Offer</h3>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold serif mb-6">WEB予約限定特典</h2>
+                    <div class="h-1 w-20 bg-gold mx-auto mb-8"></div>
+                    <p class="text-lg sm:text-xl md:text-2xl font-bold leading-tight text-gray-800">
+                        「乾杯のウェルカムドリンク」を1杯サービスいたします。
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-8 md:mb-12">
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-5 md:p-6 rounded-lg">
+                            <h4 class="font-bold text-gold border-b border-gold/20 pb-2 mb-4 uppercase tracking-widest text-xs">Shop Information</h4>
+                            <div class="text-sm md:text-base space-y-4">
+                                <p class="flex items-start"><i class="fas fa-map-marker-alt text-gold mt-1 mr-3 w-4"></i> <span>〒060-0063 北海道札幌市中央区南3条西8丁目7 大洋ビル 2F</span></p>
+                                <p class="flex items-center"><i class="fas fa-phone text-gold mr-3 w-4"></i> <a href="tel:0112150780" class="hover:text-gold transition-colors">011-215-0780</a></p>
+                                <p class="flex items-center"><i class="fas fa-clock text-gold mr-3 w-4"></i> <span>定休日：月曜日</span></p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-4 text-sm text-gray-600">※少人数制のためお早めのご予約をお勧めいたします。</p>
+                            <a href="https://tokoharu0914.com/wpinstall/index.php/reservationcontact/" id="contact" target="_blank" class="block bg-black text-white py-5 px-4 text-lg md:text-xl font-bold hover:bg-gray-800 transition-all shadow-xl tracking-[0.15em] md:tracking-[0.2em] animate-pulse">
+                                今すぐ空席を予約する
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="h-[250px] md:h-full min-h-[250px] rounded-lg overflow-hidden shadow-inner border border-gray-100">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3064472560523!2d141.3437865750721!3d43.05602199085106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29855658e927%3A0x56ea5ab7cf1dd360!2z5bi45pilVE9LT0hBUlU!5e0!3m2!1sja!2sjp!4v1771986448674!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 md:py-16 bg-black text-white/50 text-center">
+        <div class="container mx-auto px-5 md:px-4">
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="https://www.instagram.com/tokoharu0914/" target="_blank" class="hover:text-gold text-2xl transition-colors w-11 h-11 flex items-center justify-center"><i class="fab fa-instagram"></i></a>
+                <a href="https://tokoharu0914.com/wpinstall" target="_blank" class="hover:text-gold text-2xl transition-colors w-11 h-11 flex items-center justify-center"><i class="fas fa-home"></i></a>
+            </div>
+            <p class="text-sm tracking-widest mb-4">常春 TOKOHARU</p>
+            <p class="text-xs opacity-50">&copy; 2024 TOKOHARU. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        });
+
+        // リンクタップ時にメニューを閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-times');
+            });
+        });
+
+        // スクロール時にフェードインアニメーションを再生
+        const fadeEls = document.querySelectorAll('.animate-fade');
+        fadeEls.forEach(el => {
+            el.style.animationPlayState = 'running';
+        });
+    </script>
+
+</body>
+</html>
