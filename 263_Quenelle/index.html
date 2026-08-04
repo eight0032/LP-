@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Quenelle（クネル）| 札幌・南2条の隠れ家フレンチ食堂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Cormorant+Garamond:ital@1&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-deep: #2c2621;
+            --color-gold: #b8935a;
+            --color-gold-deep: #8f6f3f;
+            --color-bg: #fbf8f4;
+            --color-line: rgba(184,147,90,0.25);
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-deep);
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .cursive { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+        .washi-bg {
+            background-image: radial-gradient(rgba(44,38,33,0.035) 1px, transparent 1px);
+            background-size: 3px 3px;
+        }
+        .float-img { box-shadow: 16px 16px 0px rgba(184,147,90,0.12); }
+        .deco-line { width: 44px; height: 1px; background: var(--color-gold); margin: 1.25rem auto; }
+        .btn-gold {
+            background: linear-gradient(135deg, #c9a267 0%, #a97f45 100%);
+            box-shadow: 0 6px 18px rgba(184,147,90,0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-gold:active { transform: scale(0.97); }
+        @media (hover: hover) {
+            .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(184,147,90,0.45); }
+        }
+        .hero-title { text-shadow: 0 2px 18px rgba(0,0,0,0.45); }
+
+        .map-container { position: relative; padding-bottom: 75%; height: 0; overflow: hidden; }
+        @media (min-width: 768px) { .map-container { padding-bottom: 56.25%; } }
+        .map-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .btn-gold:active, .btn-gold:hover { transform: none; }
+        }
+
+        /* comfortable tap targets on small screens */
+        a, button { min-height: 44px; display: inline-flex; align-items: center; }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-[#fbf8f4]/90 backdrop-blur-md border-b border-[color:var(--color-line)] py-3 px-4 sm:px-6 flex justify-between items-center">
+        <div class="serif font-bold text-lg sm:text-2xl tracking-tight">Quenelle</div>
+        <a href="tel:0118768778" class="text-[11px] sm:text-sm font-bold border-b border-stone-800 leading-tight py-2">
+            <span class="hidden sm:inline">Reservation: </span>011-876-8778
+        </a>
+    </nav>
+
+    <!-- 1. HERO -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/main.png"
+                 alt="クネルのメイン料理" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 sm:px-4 pt-16">
+            <span class="cursive text-3xl sm:text-5xl md:text-6xl text-[#e9d3a8] mb-2 block">Authentic Bistro</span>
+            <h1 class="hero-title serif text-[2.1rem] leading-[1.35] sm:text-6xl md:text-7xl font-bold sm:leading-tight mb-5 sm:mb-6">
+                一口で虜にする、<br>
+                黄金のソース。
+            </h1>
+            <p class="serif tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-lg mb-8 opacity-90 px-2">
+                札幌・南2条、夫婦で紡ぐフランス料理の真髄
+            </p>
+            <div class="deco-line !bg-white"></div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white text-center animate-bounce">
+            <p class="text-[9px] sm:text-[10px] tracking-widest mb-2">SCROLL</p>
+            <div class="w-px h-8 sm:h-10 bg-white/70 mx-auto"></div>
+        </div>
+    </header>
+
+    <!-- 2. INTRODUCTION -->
+    <section class="reveal py-16 sm:py-24 px-5 sm:px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <span class="cursive text-3xl sm:text-4xl text-[color:var(--color-gold)] block mb-2 md:mb-0 md:absolute md:-top-8 md:-left-8 opacity-70">Signature</span>
+                    <img src="images/chef.png"
+                         alt="クネルのクローズアップ" class="float-img rounded-sm w-full relative z-10">
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 sm:w-48 sm:h-48 border border-[color:var(--color-gold)]/25 -z-0 hidden md:block"></div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold mb-5 sm:mb-8 leading-relaxed">
+                        看板メニュー「クネル」<br>
+                        その一皿に込めた14年の歳月
+                    </h2>
+                    <p class="text-stone-600 text-[15px] sm:text-base leading-loose mb-6 sm:mb-8">
+                        伝説の名店「コート・ドール」で14年。スーシェフとしてストーブ前を守り続けた屋木宏司が、地元北海道の食材で描くのは、奇をてらわない「王道」のフレンチです。
+                        <br><br>
+                        魚介の旨味を凝縮したスフレのようなクネル、艶やかなアメリケーヌソース。お皿に残ったソースをパンで拭って食べる。そんなビストロらしい至福のひとときをお届けします。
+                    </p>
+                    <div class="flex items-center gap-3 sm:gap-4">
+                        <div class="w-10 sm:w-12 h-px bg-[color:var(--color-gold)] shrink-0"></div>
+                        <span class="serif font-bold text-[color:var(--color-gold-deep)] text-sm sm:text-base">Michelin Guide 2017 掲載</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CUISINE GRID -->
+    <section class="reveal py-16 sm:py-24 bg-stone-100">
+        <div class="container mx-auto px-4 text-center mb-10 sm:mb-16">
+            <h2 class="serif text-2xl sm:text-3xl font-bold mb-3">季節を味わう</h2>
+            <p class="cursive text-xl sm:text-2xl text-stone-400">Season's Inspiration</p>
+            <div class="deco-line"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-1">
+            <div class="group relative overflow-hidden aspect-[4/5]">
+                <img src="images/hotate.jpg"
+                     class="w-full h-full object-cover transition duration-700 sm:group-hover:scale-110" alt="帆立のソテーとリゾット">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent sm:bg-black/40 sm:opacity-0 sm:group-hover:opacity-100 transition duration-500 flex flex-col justify-end sm:justify-center items-start sm:items-center text-white p-6 sm:p-8">
+                    <h3 class="serif text-lg sm:text-xl mb-1 sm:mb-2">帆立のソテーとリゾット</h3>
+                    <p class="text-xs opacity-90">ポルチーニ香る、道産ホタテの贅沢</p>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden aspect-[4/5]">
+                <img src="images/roast.jpg"
+                     class="w-full h-full object-cover transition duration-700 sm:group-hover:scale-110" alt="仔羊のロースト">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent sm:bg-black/40 sm:opacity-0 sm:group-hover:opacity-100 transition duration-500 flex flex-col justify-end sm:justify-center items-start sm:items-center text-white p-6 sm:p-8">
+                    <h3 class="serif text-lg sm:text-xl mb-1 sm:mb-2">仔羊のロースト</h3>
+                    <p class="text-xs opacity-90">ローズマリーの香りと柔らかな旨味</p>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden aspect-[4/5]">
+                <img src="images/pie.jpg"
+                     class="w-full h-full object-cover transition duration-700 sm:group-hover:scale-110" alt="鴨胸肉と苺のパイ包み">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent sm:bg-black/40 sm:opacity-0 sm:group-hover:opacity-100 transition duration-500 flex flex-col justify-end sm:justify-center items-start sm:items-center text-white p-6 sm:p-8">
+                    <h3 class="serif text-lg sm:text-xl mb-1 sm:mb-2">鴨胸肉と苺のパイ包み</h3>
+                    <p class="text-xs opacity-90">フォアグラがとろける、肉の重奏</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. VOICES -->
+    <section class="reveal py-16 sm:py-24 px-5 sm:px-6">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="serif text-2xl sm:text-3xl font-bold mb-3">記憶に残る食事</h2>
+                <div class="deco-line"></div>
+            </div>
+
+            <div class="space-y-8 sm:space-y-12">
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 sm:items-center border-b border-stone-200 pb-8 sm:pb-12">
+                    <div class="sm:w-1/4 text-left sm:text-center">
+                        <span class="text-[color:var(--color-gold-deep)] text-3xl sm:text-4xl serif font-bold">5.0</span>
+                    </div>
+                    <div class="sm:w-3/4">
+                        <p class="text-stone-600 italic mb-3 sm:mb-4 leading-relaxed text-[15px] sm:text-base">
+                            「札幌に行くならぜひ行ってほしいフランス料理店。クネルのアメリケーヌソースとスフレの優しい味のバランスが最高でした。雰囲気も接客も温かく、新婚旅行の最高の思い出になりました。」
+                        </p>
+                        <p class="text-xs font-bold text-stone-400">— 24年12月 訪問のお客様</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 sm:items-center border-b border-stone-200 pb-8 sm:pb-12">
+                    <div class="sm:w-1/4 text-left sm:text-center">
+                        <span class="text-[color:var(--color-gold-deep)] text-3xl sm:text-4xl serif font-bold">4.5</span>
+                    </div>
+                    <div class="sm:w-3/4">
+                        <p class="text-stone-600 italic mb-3 sm:mb-4 leading-relaxed text-[15px] sm:text-base">
+                            「料理が丁寧に作られており、何を食べても美味しい。提供には時間がかかるので、ゆっくりワインを楽しみたい時に。ハウスワインのカラフェもリーズナブルで嬉しいです。」
+                        </p>
+                        <p class="text-xs font-bold text-stone-400">— 常連のお客様</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. COMING SOON -->
+    <section class="reveal py-16 sm:py-24 px-5 sm:px-6 bg-stone-100/60 border-y border-stone-200/60">
+        <div class="container mx-auto max-w-5xl text-center">
+            <span class="cursive text-2xl sm:text-4xl text-[color:var(--color-gold-deep)] block mb-1">Future Services</span>
+            <h2 class="serif text-2xl sm:text-4xl font-bold mb-3">Coming Soon</h2>
+            <p class="text-[11px] sm:text-sm text-stone-500 tracking-widest uppercase mb-4 px-2">より快適に、特別なお食事をお楽しみいただくために</p>
+            <div class="deco-line"></div>
+
+            <div class="grid sm:grid-cols-2 gap-5 sm:gap-8 text-left mt-10 sm:mt-12 max-w-3xl mx-auto">
+                <div class="bg-white p-6 sm:p-8 rounded-sm border border-stone-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-5 sm:mb-6">
+                            <span class="text-3xl">📱</span>
+                            <span class="text-[10px] tracking-widest bg-[color:var(--color-gold)]/10 text-[color:var(--color-gold-deep)] font-bold px-3 py-1 rounded-full border border-[color:var(--color-gold)]/25">順次導入予定</span>
+                        </div>
+                        <h3 class="serif text-base sm:text-lg font-bold mb-2 sm:mb-3 text-stone-800">24時間 Web予約システム</h3>
+                        <p class="text-stone-600 text-xs sm:text-[13px] leading-relaxed">
+                            「仕込み中や営業時間中でお電話が繋がりにくい」というお声を解消するため、深夜や移動中でも簡単に席を確保できるオンライン予約を準備中です。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 rounded-sm border border-stone-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-5 sm:mb-6">
+                            <span class="text-3xl">🔔</span>
+                            <span class="text-[10px] tracking-widest bg-[color:var(--color-gold)]/10 text-[color:var(--color-gold-deep)] font-bold px-3 py-1 rounded-full border border-[color:var(--color-gold)]/25">順次導入予定</span>
+                        </div>
+                        <h3 class="serif text-base sm:text-lg font-bold mb-2 sm:mb-3 text-stone-800">キャンセル待ち即時通知</h3>
+                        <p class="text-stone-600 text-xs sm:text-[13px] leading-relaxed">
+                            「いつも満席で予約が取れない」とお悩みの方へ。お席のキャンセルが発生した際、公式LINEまたはメールで自動通知するサービスを開始いたします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SHOP INFO & MAP -->
+    <section class="reveal py-16 sm:py-24 bg-stone-900 text-stone-300">
+        <div class="container mx-auto px-5 sm:px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+                <div class="w-full md:w-1/2">
+                    <h2 class="serif text-2xl sm:text-3xl text-white font-bold mb-6 sm:mb-8">Access</h2>
+                    <div class="space-y-5 sm:space-y-6">
+                        <dl class="flex flex-col sm:flex-row sm:items-baseline border-b border-stone-800 pb-4 gap-1 sm:gap-0">
+                            <dt class="sm:w-32 font-bold text-[color:var(--color-gold)] text-sm">住所</dt>
+                            <dd class="text-sm sm:text-base">〒060-0062<br>北海道札幌市中央区南2条西8丁目</dd>
+                        </dl>
+                        <dl class="flex flex-col sm:flex-row sm:items-baseline border-b border-stone-800 pb-4 gap-1 sm:gap-0">
+                            <dt class="sm:w-32 font-bold text-[color:var(--color-gold)] text-sm">電話番号</dt>
+                            <dd><a href="tel:0118768778" class="text-lg sm:text-xl text-white font-bold">011-876-8778</a></dd>
+                        </dl>
+                        <dl class="flex flex-col sm:flex-row sm:items-baseline border-b border-stone-800 pb-4 gap-1 sm:gap-0">
+                            <dt class="sm:w-32 font-bold text-[color:var(--color-gold)] text-sm">営業時間</dt>
+                            <dd class="text-sm sm:text-base">17:30〜22:00<br><span class="text-xs sm:text-sm opacity-60">※定休日：月曜日</span></dd>
+                        </dl>
+                    </div>
+                    <p class="mt-6 sm:mt-8 text-xs opacity-50">狸小路商店街から徒歩圏内。いつも満席の看板が目印です。</p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="rounded-sm overflow-hidden border border-stone-700 shadow-2xl">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.290031280629!2d141.343149275072!3d43.05636729082899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b299aaa70a4d7%3A0x67ee5206553fb591!2zUXVlbmVsbGUgKOOCr-ODjeODqyk!5e0!3m2!1sja!2sjp!4v1771985678676!5m2!1sja!2sjp"
+                                    style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Quenelle 地図"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FINAL CTA -->
+    <section class="reveal py-20 sm:py-32 text-center bg-white relative overflow-hidden">
+        <span class="cursive text-5xl sm:text-8xl text-stone-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0 whitespace-nowrap select-none">Quenelle</span>
+        <div class="relative z-10 px-5">
+            <h2 class="serif text-2xl sm:text-5xl font-bold mb-8 sm:mb-12 leading-snug">大切な人と、<br class="sm:hidden">特別な一皿を。</h2>
+            <a href="tel:0118768778" class="btn-gold inline-flex text-white px-10 sm:px-16 py-4 sm:py-6 rounded-full font-bold text-base sm:text-xl tracking-widest">
+                お電話でのご予約
+            </a>
+            <p class="mt-5 sm:mt-6 text-xs sm:text-sm text-stone-400 max-w-xs sm:max-w-none mx-auto">
+                ※接客中によりお電話に出られない場合がございます。<br class="sm:hidden">恐れ入りますが時間を置いてお掛け直しください。
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-stone-100 text-center text-[10px] tracking-[0.2em] text-stone-400 uppercase px-4">
+        &copy; Quenelle Sapporo All Rights Reserved.
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
