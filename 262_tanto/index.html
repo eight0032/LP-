@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>トラットリア・タント・タヴォレッテ | 札幌・西18丁目の隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --brand-red: #a52a2a;
+            --brand-gold: #c5a059;
+            --bg-stone: #f9f7f2;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-stone);
+            color: #333;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif, .vertical-text {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.55) 100%), url('images/italian.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%), url('images/italian.png');
+            }
+        }
+
+        .gold-border {
+            border: 1px solid var(--brand-gold);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--brand-gold);
+            margin: 1rem auto;
+        }
+
+        /* 地図のレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* 固定CTAの safe-area 対応 */
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        /* スマホでは縦書き見出しを控えめに */
+        @media (max-width: 767px) {
+            .vertical-text {
+                font-size: 1.1rem;
+                letter-spacing: 0.15em;
+                line-height: 1.6;
+                max-height: 8rem;
+                padding-right: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- FVエリア -->
+    <header class="hero-section min-h-[100svh] flex items-center relative overflow-hidden py-24 md:py-0">
+        <div class="container mx-auto px-5 sm:px-6 z-10">
+            <div class="flex flex-row items-start md:items-center gap-4 sm:gap-6 md:gap-8">
+                <div class="vertical-text text-white font-black tracking-[0.15em] md:tracking-[0.2em] border-r border-white/30 pr-3 md:pr-4 leading-relaxed shrink-0">
+                    心解ける、<br>濃厚な一皿の物語。
+                </div>
+                <div class="text-white max-w-2xl">
+                    <p class="text-brand-gold font-bold tracking-[0.15em] sm:tracking-[0.3em] mb-3 md:mb-4 text-sm sm:text-base md:text-lg">TRATTORIA TANTO TAVOLETTE</p>
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 leading-tight serif">
+                        海老とズッキーニの<br>トマトクリーム。
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl opacity-90 leading-loose">
+                        札幌・西18丁目。美術館通りの静寂に佇む、<br class="hidden sm:block">
+                        道産食材とアートが響き合うイタリアン。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-24 right-5 sm:bottom-10 sm:right-10 bg-white/90 backdrop-blur p-4 sm:p-6 rounded-full w-24 h-24 sm:w-32 sm:h-32 flex flex-col items-center justify-center text-center shadow-2xl gold-border">
+            <span class="text-[10px] sm:text-xs text-stone-500">満足度</span>
+            <span class="text-2xl sm:text-3xl font-bold text-red-800">94<span class="text-xs sm:text-sm">%</span></span>
+        </div>
+    </header>
+
+    <!-- 固定CTA（スマホ用） -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-gradient-to-t from-black/40 to-transparent pt-6 pb-3 px-4 safe-bottom">
+        <a href="tel:0116130100" class="flex items-center justify-center bg-red-800 text-white py-4 rounded-full shadow-2xl font-bold gap-2 text-base active:scale-95 transition">
+            <i class="fas fa-calendar-check"></i> お電話で予約する
+        </a>
+    </div>
+
+    <!-- コンセプトセクション -->
+    <section class="py-16 md:py-24 container mx-auto px-5 sm:px-6">
+        <div class="text-center mb-10 md:mb-16">
+            <span class="text-brand-gold tracking-widest text-xs sm:text-sm uppercase">Concept</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 serif section-title">五感で味わう、北海道の四季</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="relative">
+                <img src="images/chef.png" alt="料理イメージ" class="rounded shadow-2xl w-full">
+                <div class="hidden sm:block absolute -bottom-6 -right-6 w-32 h-32 md:w-48 md:h-48 border-8 border-white/50 rounded -z-10"></div>
+            </div>
+            <div class="space-y-5 md:space-y-6">
+                <p class="text-lg md:text-xl leading-loose serif italic text-red-900">「季節の食材をもっと美味しく、楽しく」</p>
+                <p class="leading-loose text-stone-600 text-sm sm:text-base">
+                    道産桜姫鶏、真ダラ、黄金色のカボチャ。オーナーシェフが毎朝厳選する北海道の恵みを、伝統的なイタリアンの技法で一皿の芸術へと昇華させます。壁に飾られた絵画を眺めながら、ギャラリーのような空間でゆったりとした時間をお過ごしください。
+                </p>
+                <div class="flex flex-wrap gap-3 md:gap-4">
+                    <span class="px-3 py-2 sm:px-4 bg-stone-200 text-[11px] sm:text-xs font-bold rounded">近代美術館 徒歩1分</span>
+                    <span class="px-3 py-2 sm:px-4 bg-stone-200 text-[11px] sm:text-xs font-bold rounded">完全禁煙</span>
+                    <span class="px-3 py-2 sm:px-4 bg-stone-200 text-[11px] sm:text-xs font-bold rounded">西18丁目駅スグ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 圧倒的シズル感：イチオシ商品 -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="md:w-1/2 order-2 md:order-1">
+                    <span class="text-brand-gold font-bold text-sm">Recommended Menu</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 md:mt-4 mb-6 md:mb-8 serif leading-tight">海老とズッキーニの<br>トマトクリームパスタ</h2>
+                    <p class="text-stone-400 leading-loose mb-6 md:mb-8 text-sm sm:text-base">
+                        海老の殻から丁寧に抽出した旨味エキスと、完熟トマトの酸味、および北海道産生クリームが織りなす濃厚なハーモニー。プリプリの海老の食感と、ソースがよく絡む絶妙な茹で加減のパスタは、多くのリピーターを生む当店の代名詞です。
+                    </p>
+                    <div class="p-5 sm:p-6 border border-brand-gold/30 bg-white/5 rounded-lg">
+                        <p class="text-brand-gold text-sm mb-2">お客様の声</p>
+                        <p class="italic text-sm">「エビはプリプリで大満足。濃厚で旨みのあるソースが最高に絡みます！」</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2 relative">
+                    <img src="images/pasta.jpg" alt="パスタ" class="w-full rounded-lg shadow-[0_0_50px_rgba(197,160,89,0.3)]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典オファー -->
+    <section class="py-16 md:py-24 container mx-auto px-5 sm:px-6 max-w-4xl">
+        <div class="bg-red-900 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+            <div class="md:w-2/5 relative min-h-[180px] sm:min-h-[220px] md:min-h-[250px]">
+                <img src="images/pannacotta.jpg" alt="パンナコッタ" class="h-full w-full object-cover">
+                <div class="absolute inset-0 bg-black/20"></div>
+            </div>
+            <div class="md:w-3/5 p-6 sm:p-8 md:p-10 text-white">
+                <span class="inline-block px-3 py-1 sm:px-4 bg-yellow-400 text-red-900 text-xs font-bold rounded-full mb-4">Web限定・予約特典</span>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 md:mb-6 serif">自家製パンナコッタを<br>お食事の方全員に。</h2>
+                <p class="text-white/80 leading-loose mb-6 md:mb-8 text-sm sm:text-base">
+                    「舌触り良く、カラメルソースと苦味の相性」とクチコミでも絶賛されるパンナコッタを、Web・お電話でのご予約限定でプレゼント。
+                </p>
+                <div class="border-t border-white/20 pt-6">
+                    <p class="text-sm opacity-60 mb-4 text-center md:text-left">※ご予約時に「LPを見ました」とお伝えください。</p>
+                    <a href="tel:0116130100" class="inline-block w-full md:w-auto text-center bg-white text-red-900 px-8 sm:px-10 py-4 rounded font-bold hover:bg-stone-100 transition shadow-xl">
+                        お席を予約する
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon：今後の新サービス予告 -->
+    <section class="bg-stone-900 text-white relative overflow-hidden my-8 md:my-12 py-16 md:py-20">
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-brand-gold tracking-[0.2em] sm:tracking-[0.3em] text-xs uppercase font-bold px-3 py-1 border border-brand-gold/40 rounded-full inline-block mb-3">Coming Soon</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold serif text-stone-100">アートと食がさらにつながる、<br class="hidden md:inline">新しいおもてなし。</h2>
+                <p class="text-stone-400 text-sm mt-4">当プロジェクトでは、近代美術館通りならではの新たなサービスを順次開始予定です。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1 -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-2xl gold-border backdrop-blur relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs bg-brand-gold/20 text-brand-gold px-3 py-1 rounded font-bold">準備中</span>
+                            <i class="fas fa-ticket-alt text-brand-gold text-xl sm:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-3 text-stone-100">美術館チケット優待サービス</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                            北海道立近代美術館の当日チケット（半券）をご提示いただいたお客様に、シェフ特製の「プチデザート」または「食前ドリンク」を無料でプレゼント。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700 pt-4 text-[11px] text-stone-500">
+                        ※賑わいの余韻とともに、ゆったりとしたカフェ・ランチタイムを。
+                    </div>
+                </div>
+
+                <!-- サービス2 -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-2xl gold-border backdrop-blur relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs bg-brand-gold/20 text-brand-gold px-3 py-1 rounded font-bold">準備中</span>
+                            <i class="fas fa-palette text-brand-gold text-xl sm:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-3 text-stone-100">企画展コラボレーションコース</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed mb-6">
+                            近代美術館で開催される話題の企画展に合わせて、作品のモチーフや色彩、画家の故郷の料理をオマージュした期間限定スペシャルランチ・ディナーをご提供。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700 pt-4 text-[11px] text-stone-500">
+                        ※五感でアートを愉しむ、当店ならではの特別企画です。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス・地図セクション (Google Map追加) -->
+    <section class="py-16 md:py-24 bg-stone-200/50 pb-32 md:pb-24">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-brand-gold tracking-widest text-xs sm:text-sm uppercase">Access</span>
+                <h2 class="text-2xl sm:text-3xl font-bold mt-2 serif section-title">店舗・地図情報</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 md:gap-12 items-start">
+                <!-- 地図 -->
+                <div class="w-full lg:w-2/3">
+                    <div class="map-container shadow-xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.229277463587!2d141.3279073750722!3d43.0576451907473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2994490a4b67%3A0xb76d01c05e911ba6!2z44OI44Op44OD44OI44Oq44Ki44O744K_44Oz44OI44O744K_44O044Kp44Os44OD44OG!5e0!3m2!1sja!2sjp!4v1771985264717!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- 情報 -->
+                <div class="w-full lg:w-1/3 space-y-6 md:space-y-8">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-3 md:mb-4 text-red-800">Trattoria Tanto Tavolette</h3>
+                        <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
+                            〒060-0042<br>
+                            北海道札幌市中央区大通西17丁目2-27<br>
+                           
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
+                        <div class="bg-white p-3 sm:p-4 rounded gold-border">
+                            <p class="text-xs text-stone-400 font-bold mb-1">最寄駅</p>
+                            <p class="text-xs sm:text-sm">西18丁目駅<br>4番出口 徒歩1分</p>
+                        </div>
+                        <div class="bg-white p-3 sm:p-4 rounded gold-border">
+                            <p class="text-xs text-stone-400 font-bold mb-1">定休日</p>
+                            <p class="text-xs sm:text-sm">毎週月曜日</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded shadow-sm">
+                        <p class="text-xs text-stone-400 font-bold mb-2">ご予約・お問い合わせ</p>
+                        <p class="text-xl sm:text-2xl font-bold text-red-800 mb-4">011-613-0100</p>
+                        <p class="text-xs text-stone-500">※ランチタイム 11:30 〜<br>土日祝は早めのご予約をお勧めします。</p>
+                    </div>
+
+                    <a href="https://x.com/tantotavoletta" target="_blank" class="flex items-center justify-center gap-2 w-full py-4 bg-stone-800 text-white rounded font-bold hover:bg-stone-700 transition">
+                        <i class="fab fa-x-twitter"></i> 最新情報をXで見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="py-10 md:py-12 bg-stone-900 text-white border-t border-white/5">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <h3 class="text-lg sm:text-xl font-bold serif mb-5 md:mb-6 tracking-widest uppercase">Trattoria Tanto Tavolette</h3>
+            <p class="text-xs text-stone-500 leading-relaxed mb-6 md:mb-8">
+                季節の食材をもっと美味しく、楽しく。札幌・西18丁目の隠れ家イタリアン
+            </p>
+            <p class="text-[10px] text-stone-600 tracking-widest uppercase">
+                &copy; 2024 TRATTORIA TANTO TAVOLETTE. ALL RIGHTS RESERVED.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
