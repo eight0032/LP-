@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Akihisa Handa | 旭川・すすきのの至高のフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/releases/v6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,400;1,700&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --gold: #b39359;
+            --dark: #121212;
+            --light: #f8f7f2;
+            --text-dark: #2d2d2d;
+            --text-light: #d4d4d4;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .playfair { font-family: 'Playfair Display', serif; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* スマホでは縦書きの高さが画面を超えないよう調整 */
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: unset;
+            }
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: white;
+            transition: all 0.4s ease;
+            letter-spacing: 0.1em;
+            border: 1px solid var(--gold);
+        }
+        .btn-gold:hover, .btn-gold:active {
+            background-color: transparent;
+            color: var(--gold);
+        }
+
+        [data-aos] {
+            transition-duration: 900ms !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            [data-aos] { transition-duration: 1ms !important; animation: none !important; }
+        }
+
+        .bg-section-dark { background-color: var(--dark); color: var(--text-light); }
+        .bg-section-light { background-color: var(--light); color: var(--text-dark); }
+
+        /* Map container responsive */
+        .map-container {
+            position: relative;
+            padding-bottom: 66%;
+            height: 0;
+            overflow: hidden;
+            border: 1px solid rgba(179, 147, 89, 0.2);
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
+        }
+        #mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        /* 巨大な背景テキストはスマホでは非表示（はみ出し防止） */
+        .bg-watermark {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .bg-watermark { display: block; }
+        }
+
+        /* タップ領域の最小サイズ確保 */
+        a, button { touch-action: manipulation; }
+    </style>
+</head>
+<body class="selection:bg-gold/30">
+
+    <!-- Header Navigation -->
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-5 md:px-6 py-4 bg-white/80 md:bg-black/40 backdrop-blur-sm border-b border-black/5 md:border-white/10 transition-all">
+        <div class="serif text-lg md:text-xl tracking-[0.15em] md:tracking-[0.2em] text-stone-800 md:text-white">AKIHISA HANDA</div>
+        <div class="flex items-center gap-5 md:gap-8">
+            <div class="hidden md:flex gap-8 text-[10px] tracking-widest text-white/70 uppercase font-bold">
+                <a href="#concept-section" class="hover:text-gold transition-colors">Concept</a>
+                <a href="#menu-section" class="hover:text-gold transition-colors">Menu</a>
+                <a href="#chef-section" class="hover:text-gold transition-colors">Chef</a>
+                <a href="#coming-soon-section" class="hover:text-gold transition-colors">New Services</a>
+                <a href="#booking" class="hover:text-gold transition-colors">Reserve</a>
+            </div>
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/akihisahanda/" target="_blank" rel="noopener noreferrer" class="text-stone-800 md:text-white hover:text-gold transition-colors text-lg" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- モバイル用ハンバーガーボタン -->
+            <button id="menu-toggle" class="md:hidden text-stone-800 text-xl w-8 h-8 flex items-center justify-center" aria-label="メニューを開く" aria-expanded="false">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- モバイル用フルスクリーンメニュー -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-[var(--dark)] flex flex-col items-center justify-center gap-8 md:hidden">
+        <a href="#concept-section" class="mobile-link serif text-2xl text-white tracking-widest">Concept</a>
+        <a href="#menu-section" class="mobile-link serif text-2xl text-white tracking-widest">Menu</a>
+        <a href="#chef-section" class="mobile-link serif text-2xl text-white tracking-widest">Chef</a>
+        <a href="#coming-soon-section" class="mobile-link serif text-2xl text-white tracking-widest">New Services</a>
+        <a href="#booking" class="mobile-link serif text-2xl text-gold tracking-widest">Reserve</a>
+    </div>
+
+    <!-- FV: 背景はインパクト重視のダーク -->
+    <section class="relative h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 bg-[url('images/fish.png')] bg-cover bg-center scale-110"></div>
+        <div class="absolute inset-0 bg-black/60"></div>
+
+        <div class="relative z-10 flex flex-col items-center text-center px-6">
+            <div class="playfair text-gold text-lg md:text-2xl mb-4 italic" data-aos="fade-down">The Art of Terroir</div>
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-16">
+                <div class="hidden md:block w-px h-24 bg-gold/50"></div>
+                <h1 class="serif text-3xl md:text-3xl text-white leading-relaxed md:leading-loose py-2 md:py-8 tracking-[0.15em] md:tracking-[0.3em]" data-aos="fade-up">
+                    感性を満たす、<br>北のフレンチ。
+                </h1>
+                <div class="hidden md:block w-px h-24 bg-gold/50"></div>
+            </div>
+            <p class="text-white/80 mt-8 md:mt-12 text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] px-2" data-aos="fade-up" data-aos-delay="400">
+                すすきのの隠れ家で、二十四節気を描く
+            </p>
+        </div>
+
+        <!-- スクロール誘導 -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest animate-bounce">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- CTA 1: 明るいセクション -->
+    <section class="py-10 md:py-16 px-4 bg-section-light border-y border-stone-200">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <p class="text-gold serif tracking-widest text-sm mb-1 uppercase">Reservation</p>
+                <p class="text-stone-800 text-base md:text-lg font-light">至福のひとときを、今すぐ予約する</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-4 w-full md:w-auto">
+                <a href="tel:0116006460" class="btn-gold py-4 px-10 text-xs font-bold rounded-sm text-center">CALL NOW</a>
+                <a href="#booking" class="bg-transparent border border-stone-300 text-stone-600 hover:border-gold py-4 px-10 text-xs font-bold rounded-sm transition-all text-center">ONLINE RESERVE</a>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- 自己紹介 / Chef Section: 明るいセクション -->
+    <section id="chef-section" class="py-20 md:py-32 bg-section-light relative overflow-hidden">
+        <div class="absolute -right-20 top-20 playfair text-[15rem] text-stone-200/50 pointer-events-none uppercase bg-watermark">A.Handa</div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-up">
+                    <div class="relative">
+                        <img src="images/chef.png" alt="Chef Akihisa Handa" class="w-full h-auto shadow-xl" loading="lazy">
+                        <div class="absolute -bottom-6 -right-6 w-48 h-48 border border-gold/30 hidden md:block"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2" data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-gold tracking-[0.3em] text-xs font-bold uppercase">Owner Chef</span>
+                    <h2 class="serif text-2xl md:text-3xl text-stone-800 mt-4 mb-6 md:mb-8">半田 明久</h2>
+                    <p class="text-sm text-stone-600 leading-[1.9] md:leading-[2] mb-6 md:mb-8">
+                        札幌出身。伝説的な「ホテルエペックス洞爺」の立ち上げメンバーとしてキャリアを開始。以来、30年以上にわたり北海道の食材と真摯に向き合ってきました。フランス修業留学での総料理長時代に確立した「野菜の魔法」は、現在も進化を続けています。
+                    </p>
+                    <div class="border-t border-stone-200 pt-6 md:pt-8 grid grid-cols-2 gap-6 md:gap-8">
+                        <div>
+                            <p class="text-gold text-2xl serif">30+</p>
+                            <p class="text-[10px] uppercase tracking-widest text-stone-400">Years of Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-gold text-2xl serif">200</p>
+                            <p class="text-[10px] uppercase tracking-widest text-stone-400">Fine Wines</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- エクスペリエンス / Menu Section: ダークセクション -->
+    <section id="menu-section" class="py-20 md:py-32 bg-section-dark">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 md:mb-24" data-aos="fade-up">
+                <span class="playfair text-gold italic text-lg md:text-xl">The Experience</span>
+                <h2 class="serif text-2xl md:text-4xl text-white mt-4 tracking-widest leading-relaxed">
+                    「五感を研ぎ澄ます、一皿のために。」
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-24 items-center mb-20 md:mb-32">
+                <div class="order-2 md:order-1" data-aos="fade-right">
+                    <h3 class="serif text-xl md:text-2xl text-white mb-5 md:mb-6">20種類以上の野菜を、<br>絵画のように。</h3>
+                    <p class="text-stone-400 text-sm leading-[1.9] md:leading-[2] mb-6 md:mb-8">
+                        「一口ごとに、野菜の硬さや香りが変化する」。お客様がそう仰るテリーヌは、Akihisa Handaの代名詞。北海道の大地が持つエネルギーを、最も美しく、最も繊細な形でお届けします。
+                    </p>
+                    <div class="italic text-gold text-sm serif border-l border-gold/50 pl-6 py-2 bg-white/5">
+                        「この雪の札幌に居ながら、野菜の優しさに触れる幸せ。」<br>
+                        <span class="text-[10px] opacity-60 text-white">— ゲストのクチコミより</span>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2" data-aos="fade-left">
+                    <img src="images/terinu.png" alt="Vegetable Dish" class="w-full h-auto shadow-2xl brightness-90" loading="lazy">
+                </div>
+            </div>
+
+            <!-- 食材・ワイン紹介 -->
+            <div class="grid md:grid-cols-2 gap-10 md:gap-24 items-center">
+                <div data-aos="fade-right">
+                    <img src="images/main.png" alt="Meat Dish" class="w-full h-auto shadow-xl" loading="lazy">
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="serif text-xl md:text-2xl text-white mb-5 md:mb-6">選び抜かれた<br>道産の高級食材とワイン。</h3>
+                    <p class="text-stone-400 text-sm leading-[1.9] md:leading-[2] mb-6 md:mb-8">
+                        アワビ、トキシラズ、シャトーブリアン。厳選された最高級の道産食材。ソムリエが提案する200本のワインリストから、あなただけの一杯をペアリングいたします。
+                    </p>
+                    <div class="italic text-gold text-sm serif border-l border-gold/50 pl-6 py-2 bg-white/5">
+                        「目で楽しめて、口の中で感動。鮑は最高でした。」<br>
+                        <span class="text-[10px] opacity-60 text-stone-400">— ゲストのクチコミより</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon / 新サービス展開セクション -->
+    <section id="coming-soon-section" class="py-20 md:py-32 bg-section-light border-t border-stone-200 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
+                <span class="playfair text-gold italic text-lg md:text-xl tracking-wider">Future Visions</span>
+                <h2 class="playfair text-3xl md:text-5xl text-stone-800 mt-2 mb-4 tracking-widest font-light">COMING SOON</h2>
+                <p class="serif text-stone-500 text-sm tracking-widest">お客様の食体験をさらに深める、新たな取り組み。</p>
+                <div class="w-12 h-px bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <!-- Feature 1: 多言語QRメニュー -->
+                <div class="bg-white p-6 md:p-12 shadow-xl border border-stone-100 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-bold text-gold uppercase border border-gold/30 px-3 py-1">New Experience</span>
+                            <i class="fa-solid fa-qrcode text-stone-300 text-2xl"></i>
+                        </div>
+                        <h3 class="serif text-xl md:text-2xl text-stone-800 mb-4 leading-snug">
+                            QRコード付き<br>多言語デジタルメニューカード
+                        </h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            テーブルのメニューカードからQRコードを読み込むことで、海外のゲストにもわかりやすい多言語（英語・中国語等）表示に対応。一皿一皿に込められた北海道産の食材のストーリーや生産者様への想いを、スマートフォンで深掘りしてお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400 font-mono">
+                        <span><i class="fa-solid fa-globe text-gold mr-2"></i>Multilingual Support</span>
+                        <span class="text-gold font-bold">順次導入予定</span>
+                    </div>
+                </div>
+
+                <!-- Feature 2: テイクアウト・ギフトセット -->
+                <div class="bg-white p-6 md:p-12 shadow-xl border border-stone-100 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-bold text-gold uppercase border border-gold/30 px-3 py-1">Takeout & Gift</span>
+                            <i class="fa-solid fa-gift text-stone-300 text-2xl"></i>
+                        </div>
+                        <h3 class="serif text-xl md:text-2xl text-stone-800 mb-4 leading-snug">
+                            特製お持ち帰り<br>スイーツ＆ギフトセット
+                        </h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            レストランの余韻をご自宅でも。「Akihisa Handa」特製の自家製焼き菓子や厳選パン、季節のコンフィチュールなどを詰め合わせたお土産セット。ご家族へのお土産やお祝いの贈り物としてご利用いただける特別なギフトです。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400 font-mono">
+                        <span><i class="fa-solid fa-wheat-awn text-gold mr-2"></i>Baked Goods & Bread</span>
+                        <span class="text-gold font-bold">準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典: ダークゴールドセクション -->
+    <section class="py-20 md:py-32 bg-stone-900 relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-30"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <span class="text-gold tracking-[0.3em] md:tracking-[0.4em] text-xs font-bold uppercase mb-4 block">Special Offer</span>
+            <h2 class="serif text-2xl md:text-5xl text-white mb-10 md:mb-12">心に残る夜を、演出する。</h2>
+
+            <div class="bg-white/5 backdrop-blur-sm p-6 md:p-16 border border-white/10 rounded-sm">
+                <p class="text-stone-300 text-base md:text-lg mb-8 md:mb-10 leading-relaxed">
+                    公式LINEをご登録いただいたお客様へ、<br>
+                    お祝いの席を彩る「乾杯シャンパン」をご用意いたしました。
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center">
+                    <div class="flex items-center gap-4 text-left text-white bg-white/5 p-4 border border-white/10">
+                        <i class="fa-solid fa-champagne-glasses text-2xl text-gold"></i>
+                        <div>
+                            <p class="font-bold text-sm">Welcome Champagne</p>
+                            <p class="text-[10px] opacity-60 uppercase">Registration Gift</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 text-left text-white bg-white/5 p-4 border border-white/10">
+                        <i class="fa-solid fa-calendar-days text-2xl text-gold"></i>
+                        <div>
+                            <p class="font-bold text-sm">Priority Booking</p>
+                            <p class="text-[10px] opacity-60 uppercase">Exclusive Update</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="mt-10 md:mt-12 inline-flex items-center gap-3 bg-gold text-white hover:bg-white hover:text-gold px-8 md:px-12 py-5 font-bold transition-all tracking-widest text-sm rounded-sm shadow-2xl">
+                    <i class="fa-brands fa-line text-xl"></i> LINE友だち追加で特典を受け取る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info / CTA / Map: 明るいセクション -->
+    <section id="booking" class="py-20 md:py-32 bg-section-light">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12 md:gap-20 mb-16 md:mb-20">
+                <div class="w-full md:w-1/2" data-aos="fade-up">
+                    <h3 class="serif text-2xl md:text-3xl text-stone-800 mb-8 md:mb-12 flex items-center gap-4">
+                        Information
+                        <span class="text-gold playfair italic text-lg opacity-50">/ Store</span>
+                    </h3>
+                    <div class="space-y-2 text-sm text-stone-600">
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-4 gap-1">
+                            <span class="sm:w-32 text-gold font-bold">ADDRESS</span>
+                            <span class="flex-1">〒060-0063 旭川市中央区南3条西3丁目1<br>プレイタウンふじ井ビル 9階</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-4 gap-1">
+                            <span class="sm:w-32 text-gold font-bold">ACCESS</span>
+                            <span class="flex-1">地下鉄南北線「すすきの駅」徒歩2分</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-4 gap-1">
+                            <span class="sm:w-32 text-gold font-bold">PHONE</span>
+                            <a href="tel:0116006460" class="flex-1 font-bold hover:text-gold transition-colors">011-600-6460</a>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-4 gap-1">
+                            <span class="sm:w-32 text-gold font-bold">CLOSED</span>
+                            <span class="flex-1">日曜日</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 bg-white p-8 md:p-16 shadow-2xl border border-stone-100" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="serif text-xl md:text-2xl text-stone-800 mb-6 md:mb-8 text-center tracking-widest">Reserve</h3>
+                    <p class="text-xs text-stone-400 text-center mb-10 md:mb-12 uppercase tracking-[0.2em]">Course 9,900 / 16,500</p>
+
+                    <div class="space-y-5 md:space-y-6">
+                        <a href="https://www.instagram.com/restaurant_akihisa_handa?igshid=YmMyMTA2M2Y%3D" target="_blank" rel="noopener noreferrer" class="w-full btn-gold py-5 font-bold shadow-lg text-center block">
+                            <i class="fa-solid fa-calendar-days mr-2"></i> WEB RESERVATION
+                        </a>
+                        <a href="tel:0116006460" class="w-full border-2 border-gold text-gold py-5 text-center font-bold hover:bg-gold hover:text-white transition-all block">
+                            <i class="fa-solid fa-phone mr-2"></i> CALL TO RESERVE
+                        </a>
+                    </div>
+                    <p class="text-[10px] text-stone-400 mt-6 md:mt-8 text-center leading-relaxed italic">
+                        ※バータイムはアラカルトとグラスワインもお楽しみいただけます。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Google Maps Area -->
+            <div class="w-full" data-aos="fade-up">
+                <div class="map-container shadow-2xl rounded-sm">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.279101500655!2d141.35191497507205!3d43.056597190814294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298477363ce3%3A0xbb27c7d7e301dcf!2sAkihisa%20Handa!5e0!3m2!1sja!2sjp!4v1771982853313!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Akihisa Handa 地図"></iframe>
+                </div>
+                <div class="mt-6 text-center">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 md:py-12 bg-stone-100 border-t border-stone-200 text-center px-4">
+        <p class="text-[10px] text-stone-400 tracking-[0.3em] md:tracking-[0.5em] uppercase">Akihisa Handa &copy; 2024</p>
+    </footer>
+
+    <!-- 電話ですぐ予約できるモバイル固定バー -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 flex border-t border-gold/30 shadow-2xl">
+        <a href="tel:0116006460" class="flex-1 bg-[var(--dark)] text-white text-center py-4 text-xs font-bold tracking-widest">
+            <i class="fa-solid fa-phone mr-2"></i>電話で予約
+        </a>
+        <a href="#booking" class="flex-1 btn-gold text-center py-4 text-xs font-bold tracking-widest">
+            <i class="fa-solid fa-calendar-days mr-2"></i>WEB予約
+        </a>
+    </div>
+
+    <!-- 固定バー分の余白 -->
+    <div class="md:hidden h-16"></div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+        });
+
+        // モバイルメニューの開閉制御
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-xmark');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        menuToggle.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>
