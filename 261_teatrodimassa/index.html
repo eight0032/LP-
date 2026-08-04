@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Teatro di massa | 劇場・厨房型イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark-bg: #0a0a0a;
+            --light-bg: #f9f7f2;
+            --text-gray: #717171;
+        }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Shippori Mincho', serif;
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            letter-spacing: 0.03em;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-noto { font-family: 'Noto Sans JP', sans-serif; }
+
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+
+        .writing-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .section-dark { background-color: var(--dark-bg); color: white; }
+        .section-light { background-color: var(--light-bg); color: #222; }
+        .section-light .section-title-en { color: rgba(197, 160, 89, 0.6); }
+        .section-light .text-gray-400 { color: #666; }
+
+        .section-title-en {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.35em;
+            color: rgba(197, 160, 89, 0.4);
+            font-size: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .section-title-en { font-size: 0.875rem; letter-spacing: 0.4em; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .animate-scroll-line { animation: none; }
+        }
+
+        .cta-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.45s;
+            border: 1px solid var(--gold);
+        }
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--gold);
+            transition: all 0.45s;
+            z-index: -1;
+        }
+        .cta-btn:hover { color: white; }
+        .section-light .cta-btn:hover { color: white; }
+        .cta-btn:hover::before { left: 0; }
+        /* タップ端末では hover が残らないよう active も用意 */
+        .cta-btn:active::before { left: 0; }
+        .cta-btn:active { color: white; }
+
+        .menu-item {
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .section-light .menu-item {
+            border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* スマホでは縦横比を少し縮めて見切れ防止 */
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+        }
+
+        /* スマホでのタップ領域確保 */
+        .tap-target { min-height: 48px; }
+
+        /* 見出し等の可読フォントサイズをスマホ基準で clamp */
+        .h-hero { font-size: clamp(1.75rem, 6vw, 3rem); }
+        .h-section { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+
+        @keyframes scroll-line {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .animate-scroll-line { animation: scroll-line 2s infinite ease-in-out; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FVエリア (DARK) -->
+    <section class="relative min-h-screen flex items-center overflow-hidden section-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="images/main.png" alt="Cooking Scene" class="w-full h-full object-cover scale-110">
+            <div class="absolute inset-0 bg-black/50 md:bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 w-full container mx-auto px-5 sm:px-6 md:px-12 flex justify-between items-end pb-16 sm:pb-20 md:pb-24 min-h-screen">
+            <div class="reveal w-full md:w-auto">
+                <p class="font-cinzel text-gold tracking-[0.3em] sm:tracking-[0.5em] text-xs sm:text-sm mb-3 sm:mb-4">EST. 2014 SAPPORO</p>
+                <h1 class="h-hero font-bold leading-tight">
+                    美食の劇場、<br><span class="text-gold">第二章</span>の幕開け。
+                </h1>
+                <p class="mt-6 sm:mt-8 text-gray-300 font-noto font-light tracking-wide sm:tracking-widest text-sm sm:text-base max-w-lg leading-relaxed">
+                    北イタリアの郷土料理を、北海道の旬で再構築する。<br>
+                    ライブ感溢れるカウンターで、五感を揺さぶる体験を。
+                </p>
+            </div>
+            <div class="hidden md:block reveal writing-vertical text-gold text-lg tracking-[0.8em] border-r border-gold/30 pr-4 pb-12 h-64">
+                五感で体感するイタリアンの極致
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <span class="font-cinzel text-[9px] sm:text-[10px] tracking-widest text-gold mb-2">SCROLL</span>
+            <div class="w-[1px] h-10 sm:h-12 bg-gold/50 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-gold -translate-y-full animate-scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CTA 1 (LIGHT) -->
+    <section class="py-14 sm:py-20 px-5 sm:px-6 section-light border-y border-gold/10">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div class="text-center md:text-left">
+                <h3 class="text-xl sm:text-2xl font-bold mb-2">百名店の味を、まずはLINEから。</h3>
+                <p class="font-noto text-xs sm:text-sm opacity-80">公式LINE限定で、看板メニューの「自家製パン」引換券を進呈中。</p>
+            </div>
+            <button onclick="scrollToForm()" class="cta-btn tap-target font-noto font-bold px-8 sm:px-10 py-4 text-gold whitespace-nowrap bg-white w-full md:w-auto text-sm sm:text-base">
+                特典付きLINE登録はこちら
+            </button>
+        </div>
+    </section>
+
+    <!-- 3. Concept / Video (DARK) -->
+    <section class="py-20 sm:py-32 px-5 sm:px-6 section-dark">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-5/12 reveal">
+                    <span class="section-title-en block mb-3 sm:mb-4">THE CONCEPT</span>
+                    <h2 class="h-section font-bold mb-6 sm:mb-8 leading-relaxed">「テアトロ(劇場)」の名の通り、<br>全ての席が、特等席。</h2>
+                    <p class="text-gray-400 font-noto leading-loose text-sm sm:text-base mb-8 sm:mb-10">
+                        開放的なオープンキッチンを囲む16席のカウンター。<br>
+                        食材が弾ける音、シェフの繊細な指先、立ち上がる香り。<br>
+                        ここは単なるレストランではなく、一皿の料理が完成するまでの物語を愉しむ場所。
+                    </p>
+                </div>
+                <div class="w-full md:w-7/12 relative reveal">
+                    <div class="hidden sm:block absolute -top-4 -left-4 w-20 h-20 md:w-24 md:h-24 border-t border-l border-gold/40"></div>
+                    <div class="relative aspect-[16/9] overflow-hidden group rounded-sm">
+                        <img src="images/open.jpg" alt="Kitchen Live" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Chef Story (LIGHT) -->
+    <section class="py-20 sm:py-32 section-light px-5 sm:px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <div class="relative max-w-sm mx-auto md:max-w-none">
+                        <div class="hidden sm:block absolute -top-6 -left-6 w-full h-full border border-gold/20 -z-10"></div>
+                        <img src="images/chef.png" alt="Chef Shizuru" class="w-full shadow-2xl">
+                        <p class="mt-3 sm:mt-0 sm:absolute sm:bottom-4 sm:left-4 font-cinzel text-gray-500 text-[10px] sm:text-xs tracking-widest uppercase">Director Shizuru Tamazaki</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 reveal">
+                    <span class="section-title-en block mb-3 sm:mb-4">TRADITION & INNOVATION</span>
+                    <h2 class="h-section font-bold mb-6 sm:mb-8">受け継がれる哲学、<br>27歳の新たな感性。</h2>
+                    <p class="font-noto leading-loose text-sm sm:text-base mb-5 sm:mb-6 opacity-80">
+                        初代・新田諭也が北海道に根付かせた「北イタリア郷土料理の再構築」。その意志を弱冠27歳で引き継いだ料理長・玉崎静流。
+                    </p>
+                    <p class="font-noto leading-loose text-sm sm:text-base mb-8 sm:mb-10 opacity-80">
+                        先代から学んだ「食材への誠実さ」を軸に、自身の若き感性が描く繊細な盛り付け、意表を突く組み合わせ。テアトロ ディ マッサは今、さらなる進化を遂げています。
+                    </p>
+                    <div class="border-l-2 border-gold pl-5 sm:pl-6">
+                        <p class="text-xs sm:text-sm font-noto tracking-widest text-gold mb-2 italic">「劇場の幕を、何度でも新しく。」</p>
+                        <p class="font-bold text-lg sm:text-xl">料理長 玉崎 静流</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Experience / Menu (DARK) -->
+    <section class="py-20 sm:py-32 px-5 sm:px-6 section-dark">
+        <div class="container mx-auto max-w-4xl text-center mb-14 sm:mb-20 reveal">
+            <span class="section-title-en block mb-3 sm:mb-4">THE EXPERIENCE</span>
+            <h2 class="h-section font-bold mb-5 sm:mb-6 italic">「美味しい」の先にある、驚きを。</h2>
+            <div class="h-[1px] w-20 sm:w-24 bg-gold mx-auto"></div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 container mx-auto mb-16 sm:mb-24">
+            <div class="reveal">
+                <div class="menu-item">
+                    <h4 class="text-gold font-bold mb-2 font-noto tracking-tight text-sm">APPETIZER</h4>
+                    <p class="text-white text-base sm:text-lg">札幌黄のミルフィーユ</p>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed font-noto">
+                    北海道が誇る名産夕張「札幌黄」の甘みを凝縮。幾層にも重なる食感のハーモニー。
+                </p>
+            </div>
+            <div class="reveal">
+                <div class="menu-item">
+                    <h4 class="text-gold font-bold mb-2 font-noto tracking-tight text-sm">PASTA</h4>
+                    <p class="text-white text-base sm:text-lg">ヤリイカとタラサイの手打ちパスタ</p>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed font-noto">
+                    毎朝シェフが打つパスタ。ヤリイカの繊細な甘みと、旬のタラサイが絡み合う。
+                </p>
+            </div>
+            <div class="reveal sm:col-span-2 md:col-span-1">
+                <div class="menu-item">
+                    <h4 class="text-gold font-bold mb-2 font-noto tracking-tight text-sm">MAIN</h4>
+                    <p class="text-white text-base sm:text-lg">鴨肉と牛蒡のコンフィ</p>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed font-noto">
+                    驚くほど柔らかく仕上げられた鴨肉。牛蒡の力強い大地の香りが、一皿を完成させる。
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-3xl mx-auto bg-white/[0.03] p-7 sm:p-12 border border-white/10 rounded-sm reveal">
+            <div class="flex justify-center gap-1 text-gold mb-5 sm:mb-6 italic text-lg sm:text-xl">
+                ★★★★★
+            </div>
+            <p class="text-lg sm:text-2xl leading-relaxed font-noto font-light italic mb-6 sm:mb-8">
+                「カウンターからキッチンが見えるのもワクワクします。ワインも好みを伝えて選んでいただきました。季節を変えてまた伺いたいお店です。」
+            </p>
+            <p class="text-[10px] text-gold font-noto tracking-[0.2em] sm:tracking-[0.3em] uppercase">— Review from 2024.01.05</p>
+        </div>
+    </section>
+
+    <!-- 5.5 Coming Soon / Personalized Story Course -->
+    <section class="py-16 sm:py-28 px-5 sm:px-6 bg-neutral-950 border-t border-gold/20 relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-72 h-72 sm:w-96 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto max-w-5xl relative z-10">
+            <div class="text-center mb-10 sm:mb-16 reveal">
+                <span class="font-cinzel text-gold text-xs sm:text-sm tracking-[0.3em] sm:tracking-[0.5em] block mb-2">SPECIAL PROJECT</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl text-gold font-bold tracking-widest mb-4">COMING SOON</h2>
+                <p class="text-[11px] sm:text-xs text-gray-400 font-noto tracking-widest uppercase mb-6 px-2">お客様の「あったらいいな」に応える、新しいテアトロの挑戦</p>
+                <div class="h-[1px] w-16 bg-gold mx-auto"></div>
+            </div>
+
+            <div class="bg-white/[0.02] border border-gold/30 p-6 sm:p-8 md:p-14 rounded-sm reveal shadow-2xl">
+                <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+                    <span class="inline-block px-4 py-1.5 border border-gold/40 text-gold text-xs font-noto tracking-widest mb-5 sm:mb-6">劇場型オーダーメイド体験</span>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-5 sm:mb-6 text-white leading-relaxed">
+                        「人生の物語」を味わう、特別なおもてなし。<br>
+                        おふたりだけの記憶を、一皿の料理へ。
+                    </h3>
+                    <p class="text-gray-300 font-noto leading-loose text-sm md:text-base">
+                        店名「テアトロ(劇場)」が意味するように、主役はお客様ご自身です。<br class="hidden sm:inline">
+                        お客様から丁寧にお伺いした思い出やストーリーをもとに、シェフが料理として表現・演出する完全パーソナライズコースの準備を進めております。
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
+                    <!-- Dinner Plan -->
+                    <div class="p-6 sm:p-8 border border-white/10 bg-black/40 rounded-sm relative flex flex-col justify-between hover:border-gold/50 transition duration-500">
+                        <div>
+                            <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+                                <span class="text-gold font-cinzel text-xs tracking-widest">DINNER COURSE</span>
+                                <span class="bg-gold/20 text-gold text-[10px] px-2.5 py-1 rounded font-noto whitespace-nowrap">記念日向け再構築</span>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-4">ディナーコース「未知」<br><span class="text-gold text-sm sm:text-base font-normal">- Story Edition -</span></h4>
+                            <p class="text-gray-400 text-xs leading-relaxed font-noto mb-6">
+                                既存の看板コース「未知」を、大切な記念日向けに再定義。事前ヒアリングでお聞きした出会いのきっかけ、思い出の場所、大切にしている言葉などをモチーフに、シェフ玉崎が一夜限りのシナリオ(一皿)を創造します。
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4 flex items-center justify-between text-xs text-gold font-noto">
+                            <span>事前ヒアリング制 / 完全予約</span>
+                            <span class="italic">準備中</span>
+                        </div>
+                    </div>
+
+                    <!-- Lunch Plan -->
+                    <div class="p-6 sm:p-8 border border-white/10 bg-black/40 rounded-sm relative flex flex-col justify-between hover:border-gold/50 transition duration-500">
+                        <div>
+                            <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+                                <span class="text-gold font-cinzel text-xs tracking-widest">LUNCH COURSE</span>
+                                <span class="bg-gold/20 text-gold text-[10px] px-2.5 py-1 rounded font-noto whitespace-nowrap">昼の部 新設</span>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-4">ストーリー・ランチコース<br><span class="text-gold text-sm sm:text-base font-normal">- Daytime Special -</span></h4>
+                            <p class="text-gray-400 text-xs leading-relaxed font-noto mb-6">
+                                ディナーの贅沢な物語演出を、昼の光の中でも愉しんでいただけるランチ特別コースを開設予定。日常のちょっとしたお祝いや感謝を伝えるランチ会に、物語と季節を織り交ぜた特別なメニューをご用意いたします。
+                            </p>
+                        </div>
+                        <div class="border-t border-white/10 pt-4 flex items-center justify-between text-xs text-gold font-noto">
+                            <span>お昼の記念日・お祝い向け</span>
+                            <span class="italic">準備中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center text-[11px] sm:text-xs text-gray-500 font-noto mt-8 sm:mt-10 px-2">
+                    ※ 各新企画の最新情報および先行予約のご案内は、公式LINEにて順次配信予定です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Gift / Special Offer (LIGHT) -->
+    <section class="py-20 sm:py-32 section-light px-5 sm:px-6 overflow-hidden">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 reveal">
+                    <div class="relative p-3 sm:p-4 max-w-sm mx-auto md:max-w-none">
+                        <div class="hidden sm:block absolute inset-0 border border-gold/40 translate-x-4 translate-y-4"></div>
+                        <img src="images/bread.jpg" alt="Bread Gift" class="relative z-10 shadow-2xl w-full">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 reveal text-center md:text-left">
+                    <span class="section-title-en block mb-3 sm:mb-4">FOR OUR GUESTS</span>
+                    <h2 class="h-section font-bold mb-6 sm:mb-8">一番の人気メニューは、<br>意外にも「パン」かもしれません。</h2>
+                    <p class="leading-loose text-sm sm:text-base mb-8 sm:mb-10 opacity-80">
+                        コースの名脇役として、多くのお客様に愛していただく自家製パン。北海道産小麦の力強い香りと、ソースを逃さないしっとりとした質感。<br><br>
+                        今、公式LINEにご登録いただいた方へ、ご来店時に「お土産用パン」をお渡しする特別チケットを配布しております。
+                    </p>
+                    <button onclick="scrollToForm()" class="cta-btn tap-target px-10 sm:px-12 py-4 sm:py-5 text-gold font-bold font-noto bg-white w-full sm:w-auto text-sm sm:text-base">
+                        LINEで特典を受け取る
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 7. Final CTA & Access (DARK) -->
+    <section id="form-section" class="py-24 sm:py-40 px-5 sm:px-6 section-dark relative">
+        <div class="absolute inset-0 opacity-5 flex items-center justify-center pointer-events-none">
+            <h2 class="font-cinzel text-[22vw] text-white whitespace-nowrap overflow-hidden">TEATRO</h2>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto reveal">
+            <div class="text-center mb-14 sm:mb-20">
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-8 sm:mb-10">劇場の幕開け。</h2>
+                <p class="text-gray-400 font-noto mb-10 sm:mb-12 leading-relaxed max-w-2xl mx-auto text-sm sm:text-base">
+                    百名店に選出された、札幌が誇る美食の劇場へ。<br>
+                    特別な一夜の予約は、こちらから。
+                </p>
+                <div class="max-w-2xl mx-auto bg-white/5 p-6 sm:p-8 md:p-12 border border-gold/30 rounded-lg mb-16 sm:mb-24">
+                    <a href="https://www.teatrodimassa.com/" target="_blank" rel="noopener noreferrer" class="tap-target w-full bg-gold text-black font-bold py-5 sm:py-6 rounded-sm text-base sm:text-xl mb-6 flex items-center justify-center gap-3 transition hover:scale-[1.02]">
+                        <span>WEBで予約</span>
+                    </a>
+                    <div class="flex flex-wrap justify-center gap-3 sm:gap-6 text-[9px] sm:text-[10px] text-gray-500 font-noto tracking-widest uppercase">
+                        <span>Authentic Italian</span>
+                        <span>•</span>
+                        <span>100 Famous Stores</span>
+                        <span>•</span>
+                        <span>Sapporo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAP & ACCESS INFO -->
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start bg-white/[0.02] p-6 sm:p-8 md:p-12 border border-white/5">
+                <div class="space-y-8 sm:space-y-12">
+                    <div class="border-l border-gold pl-5 sm:pl-6 font-noto">
+                        <h4 class="text-white font-bold mb-3 sm:mb-4 uppercase tracking-widest flex items-center gap-2 text-sm sm:text-base">
+                            <span class="w-4 h-[1px] bg-gold"></span> Access
+                        </h4>
+                        <p class="text-gray-300 mb-2 text-sm sm:text-base">〒060-0063 札幌市中央区南3条西8丁目7 大泉ビル 2F</p>
+                        <p class="text-gray-500 text-xs sm:text-sm mb-5 sm:mb-6">地下鉄「すすきの駅」より徒歩8分</p>
+                        <p class="text-gold font-bold text-xl sm:text-2xl">TEL: 011-252-7953</p>
+                    </div>
+                    <div class="border-l border-white/20 pl-5 sm:pl-6 font-noto text-sm">
+                        <h4 class="text-white font-bold mb-3 sm:mb-4 uppercase tracking-widest text-sm sm:text-base">Information</h4>
+                        <p class="text-gray-400 mb-1">定休日: 火曜日</p>
+                        <p class="text-gray-400 mb-6 sm:mb-8">DINNER: 17:30 - 23:00</p>
+                        <div class="flex gap-6 sm:gap-8">
+                            <a href="http://www.teatrodimassa.com/" target="_blank" rel="noopener noreferrer" class="text-xs text-gray-400 hover:text-gold transition underline underline-offset-8">OFFICIAL HP</a>
+                            <a href="https://www.instagram.com/teatro_di_massa/" target="_blank" rel="noopener noreferrer" class="text-xs text-gray-400 hover:text-gold transition underline underline-offset-8">INSTAGRAM</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="map-container rounded-sm overflow-hidden border border-gold/20 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition duration-700">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.301231998182!2d141.34396677507195!3d43.05613169084412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298553895edf%3A0xf5e5e8095e8236f7!2z44OG44Ki44OI44OtIOODh-OCoyDjg57jg4PjgrU!5e0!3m2!1sja!2sjp!4v1771984625530!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="店舗地図"></iframe>
+                    </div>
+                    <p class="mt-3 sm:mt-4 text-[10px] text-gray-600 font-noto tracking-widest text-right">※ 大泉ビルの2階へお上がりください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 section-dark text-center text-[9px] sm:text-[10px] text-gray-700 font-cinzel tracking-[0.3em] sm:tracking-[0.4em] border-t border-white/5 px-4">
+        COPYRIGHT &copy; TEATRO DI MASSA ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        };
+        const observer = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
