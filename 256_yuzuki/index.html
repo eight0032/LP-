@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>レストラン癒月｜小樽・銭函 日本海を望むレストラン</title>
+<meta name="description" content="小樽市銭函の老舗レストラン癒月。日本海を望む窓際席で味わう、イチオシのスモークサーモンサラダとワタリガニのトマトクリームスパゲティ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-navy:#16323f;
+    --color-navy-deep:#0e2129;
+    --color-coral:#e2775b;
+    --color-coral-soft:#f0a488;
+    --color-cream:#f7f1e7;
+    --color-cream-soft:#fbf7f0;
+    --color-gold:#c8a24a;
+    --color-charcoal:#2b2620;
+    --color-mist:#a7c3bd;
+    --font-display:'Shippori Mincho', serif;
+    --font-body:'Noto Sans JP', sans-serif;
+    --max-w:1120px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--font-body);
+    color:var(--color-charcoal);
+    background:var(--color-cream);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img{max-width:100%;display:block;}
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:12px;
+    letter-spacing:.28em;
+    color:var(--color-gold);
+    font-weight:700;
+    display:inline-block;
+    margin-bottom:14px;
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    background:rgba(14,33,41,.72);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    transition:background .3s ease;
+  }
+  .logo{
+    font-family:var(--font-display);
+    color:var(--color-cream-soft);
+    font-size:20px;
+    letter-spacing:.15em;
+  }
+  .logo span{
+    display:block;
+    font-family:var(--font-body);
+    font-size:9px;
+    letter-spacing:.3em;
+    color:var(--color-mist);
+    margin-top:2px;
+  }
+  .header-cta{
+    font-size:13px;
+    color:var(--color-cream-soft);
+    border:1px solid rgba(247,241,231,.5);
+    padding:8px 16px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    background:
+      linear-gradient(180deg, rgba(14,28,35,.35) 0%, rgba(12,26,33,.55) 55%, rgba(10,22,28,.92) 100%),
+      url('images/restaurant.jpg') center/cover no-repeat;
+    background-color:var(--color-navy-deep);
+  }
+  .hero-inner{
+    width:100%;
+    padding:120px 24px 56px;
+    max-width:var(--max-w);
+    margin:0 auto;
+    color:var(--color-cream-soft);
+  }
+  .hero .eyebrow{color:var(--color-coral-soft);}
+  .hero h1{
+    font-size:clamp(40px,10vw,72px);
+    line-height:1.15;
+    margin-bottom:10px;
+  }
+  .hero-sub{
+    font-size:clamp(14px,3.6vw,17px);
+    color:var(--color-mist);
+    max-width:34em;
+    margin-bottom:26px;
+    font-weight:300;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+    margin-bottom:30px;
+  }
+  .stars{
+    color:var(--color-gold);
+    letter-spacing:2px;
+    font-size:15px;
+  }
+  .hero-meta-text{
+    font-size:12px;
+    color:var(--color-mist);
+    letter-spacing:.05em;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:15px 30px;
+    border-radius:999px;
+    background:var(--color-coral);
+    color:#fff;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.06em;
+    box-shadow:0 14px 30px -12px rgba(226,119,91,.7);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px -10px rgba(226,119,91,.8);}
+  .btn-outline{
+    background:transparent;
+    border:1px solid rgba(247,241,231,.55);
+    color:var(--color-cream-soft);
+    box-shadow:none;
+  }
+
+  /* ---------- Section base ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head h2{
+    font-size:clamp(26px,5vw,38px);
+    color:var(--color-navy);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:#5a5248;
+    font-size:15px;
+  }
+
+  /* ---------- Feature (Osusume) ---------- */
+  .feature{
+    background:var(--color-navy);
+    color:var(--color-cream-soft);
+    position:relative;
+    overflow:hidden;
+  }
+  .feature::before{
+    content:"";
+    position:absolute;
+    top:-120px;right:-120px;
+    width:340px;height:340px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(200,162,74,.18), transparent 70%);
+  }
+  .feature-grid{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:56px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  .feature-frame{
+    position:relative;
+    border-radius:50% / 40%;
+    overflow:hidden;
+    aspect-ratio:4/5;
+    border:10px solid rgba(247,241,231,.9);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.55), inset 0 0 0 2px rgba(200,162,74,.4);
+  }
+ .feature-frame img{width:100%;height:100%;object-fit:cover;}
+  .feature-copy .eyebrow{color:var(--color-gold);}
+  .feature-copy h2{
+    font-size:clamp(28px,5.2vw,42px);
+    margin-bottom:20px;
+    color:#fff;
+  }
+  .feature-copy p{
+    color:var(--color-mist);
+    font-size:15.5px;
+    margin-bottom:16px;
+  }
+  .feature-copy .lead{
+    font-family:var(--font-display);
+    font-size:clamp(18px,3.4vw,22px);
+    color:var(--color-cream-soft);
+    margin-bottom:22px;
+    line-height:1.7;
+  }
+  .feature-tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:.1em;
+    color:var(--color-navy);
+    background:var(--color-coral-soft);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:18px;
+    font-weight:700;
+  }
+
+  /* ---------- Sub feature (crab pasta) ---------- */
+  .subfeature{background:var(--color-cream);}
+  .subfeature-grid{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .subfeature-frame{
+    border-radius:14px;
+    overflow:hidden;
+    aspect-ratio:4/3;
+    box-shadow:0 24px 48px -22px rgba(22,50,63,.4);
+  }
+  .subfeature-frame img{width:100%;height:100%;object-fit:cover;}
+  .subfeature-copy h3{
+    font-size:clamp(22px,4vw,30px);
+    color:var(--color-navy);
+    margin-bottom:18px;
+  }
+  .quote-line{
+    font-family:var(--font-display);
+    font-size:15.5px;
+    color:var(--color-navy);
+    padding-left:18px;
+    border-left:3px solid var(--color-coral);
+    margin-bottom:14px;
+  }
+
+  /* ---------- Strengths (portholes) ---------- */
+  .strengths{background:var(--color-cream-soft);}
+  .strength-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+  }
+  .porthole{
+    width:104px;height:104px;
+    border-radius:50%;
+    margin:0 auto 20px;
+    background:var(--color-navy);
+    border:6px solid var(--color-gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 14px 26px -12px rgba(22,50,63,.5), inset 0 0 0 4px rgba(247,241,231,.08);
+  }
+  .porthole svg{width:42px;height:42px;stroke:var(--color-cream-soft);}
+  .strength-card{text-align:center;}
+  .strength-card h4{
+    font-family:var(--font-display);
+    font-size:16.5px;
+    color:var(--color-navy);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .strength-card p{font-size:13.5px;color:#5a5248;}
+
+  /* ---------- Rainy day ---------- */
+  .rainy{
+    background:linear-gradient(120deg, var(--color-navy) 0%, #21495a 100%);
+    color:var(--color-cream-soft);
+  }
+  .rainy-inner{
+    display:flex;
+    align-items:center;
+    gap:44px;
+    flex-wrap:wrap;
+  }
+  .rainy-icon{
+    flex:0 0 auto;
+    width:96px;height:96px;
+    border-radius:50%;
+    background:rgba(247,241,231,.08);
+    border:1px solid rgba(200,162,74,.5);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .rainy-icon svg{width:44px;height:44px;stroke:var(--color-gold);}
+  .rainy-text{flex:1 1 320px;}
+  .rainy-text h2{font-size:clamp(22px,4.4vw,30px);margin-bottom:12px;}
+  .rainy-text p{color:var(--color-mist);font-size:14.5px;max-width:46em;}
+  .rainy-badge{
+    display:inline-block;
+    margin-top:18px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--color-navy);
+    background:var(--color-gold);
+    padding:8px 18px;
+    border-radius:999px;
+  }
+
+  /* ---------- Reviews ---------- */
+  .reviews{background:var(--color-cream);}
+  .review-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .review-card{
+    background:var(--color-cream-soft);
+    border:1px solid rgba(22,50,63,.08);
+    border-radius:16px;
+    padding:32px;
+    position:relative;
+  }
+  .review-card .stars{margin-bottom:14px;display:block;font-size:16px;}
+  .review-card p{
+    font-size:14px;
+    color:#4a443b;
+  }
+
+  /* ---------- Info / footer ---------- */
+  footer{
+    background:var(--color-navy-deep);
+    color:var(--color-cream-soft);
+    padding:80px 0 32px;
+  }
+  .info-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:48px;
+    margin-bottom:56px;
+  }
+  footer h2{
+    font-size:clamp(24px,4.4vw,32px);
+    margin-bottom:22px;
+  }
+  .info-list{list-style:none;font-size:14px;color:var(--color-mist);}
+  .info-list li{
+    display:flex;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(247,241,231,.12);
+  }
+  .info-list b{
+    color:var(--color-gold);
+    font-weight:700;
+    flex:0 0 90px;
+    letter-spacing:.05em;
+  }
+  .info-cta{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    align-items:flex-start;
+    justify-content:center;
+  }
+  .sns-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color:var(--color-cream-soft);
+    border:1px solid rgba(247,241,231,.4);
+    padding:10px 18px;
+    border-radius:999px;
+  }
+  .footer-bottom{
+    text-align:center;
+    font-size:12px;
+    color:rgba(247,241,231,.45);
+    padding-top:28px;
+    border-top:1px solid rgba(247,241,231,.1);
+  }
+.info-map-area {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.map-container {
+  width: 100%;
+  height: 260px; /* マップの表示高さを調整できます */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .feature-grid,.subfeature-grid,.info-grid{
+      grid-template-columns:1fr;
+    }
+    .subfeature-grid{
+      display:flex;
+      flex-direction:column-reverse;
+    }
+    .strength-grid{grid-template-columns:repeat(2,1fr);}
+    .review-grid{grid-template-columns:1fr;}
+    .feature-frame{aspect-ratio:5/4;border-radius:24px;}
+    section{padding:72px 0;}
+  }
+  @media (max-width:520px){
+    .strength-grid{grid-template-columns:1fr 1fr;gap:20px;}
+    .porthole{width:84px;height:84px;}
+    .porthole svg{width:34px;height:34px;}
+    .rainy-inner{gap:22px;}
+    .header-cta{padding:7px 12px;font-size:11px;}
+    .hero-inner{padding-top:110px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">癒月<span>RESTAURANT YUZUKI・銭函</span></div>
+  <a class="header-cta" href="tel:0134620184">📞 0134-62-0184</a>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">小樽・銭函　日本海を望むレストラン</span>
+    <h1>癒月</h1>
+    <p class="hero-sub">窓の向こうに広がる日本海と夕陽。豪華客船のような寛ぎの店内で、イタリアンをベースにした季節の一皿を。</p>
+    <div class="hero-meta">
+      <span class="stars">★★★★☆</span>
+      <span class="hero-meta-text">口コミ多数・銭函の老舗レストラン</span>
+    </div>
+    <a class="btn" href="tel:0134620184">電話で予約する</a>
+  </div>
+</section>
+
+<!-- ===== イチオシ：スモークサーモンサラダ ===== -->
+<section class="feature" id="osusume">
+  <div class="wrap feature-grid">
+    <div class="feature-frame">
+      <img src="images/salada.jpg" alt="イチオシのスモークサーモンサラダ">
+    </div>
+    <div class="feature-copy">
+      <span class="feature-tag">当店イチオシ</span>
+      <span class="eyebrow">OUR SIGNATURE DISH</span>
+      <h2>スモークサーモンサラダ</h2>
+      <p class="lead">窓の外に広がる日本海。<br>その煌めきに負けない、彩り豊かなひと皿。</p>
+      <p>脂ののったスモークサーモンに、季節の野菜を重ねて。燻香とまろやかな塩気が、日本海の景色と溶け合います。単品でも、ランチのお供にも。窓際の特等席で、景色ごと味わってください。</p>
+      <a class="btn btn-outline" href="tel:0134620184">この一皿を予約する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 人気メニュー：ワタリガニのトマトクリームスパゲティ ===== -->
+<section class="subfeature">
+  <div class="wrap subfeature-grid">
+    <div class="subfeature-frame">
+      <img src="images/pasta.jpg" alt="ワタリガニの贅沢トマトクリームスパゲティ">
+    </div>
+    <div class="subfeature-copy">
+      <span class="eyebrow">人気メニュー</span>
+      <h3>ワタリガニの贅沢トマトクリームスパゲティ</h3>
+      <p class="quote-line">海の恵みをひとすくい。蟹の旨味がトマトクリームに溶け込む、至福の一皿。</p>
+      <p class="quote-line">濃厚なトマトクリーム×海の幸。一口食べれば、豊かな味わいが広がります。</p>
+      <p style="font-size:14px;color:#5a5248;">特別なランチのひとときに、ワタリガニの旨味を贅沢に。サラダ付き、追加100円で特別な玄米ごはんに変更できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お店の強み ===== -->
+<section class="strengths">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">RESTAURANT YUZUKI の魅力</span>
+      <h2>景色も、味も、寛ぎも。</h2>
+      <p>JR銭函駅から徒歩2〜3分。札幌中心部からも車で30〜40分と、意外と近い特別な時間。</p>
+    </div>
+    <div class="strength-grid">
+      <div class="strength-card">
+        <div class="porthole">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 12h18M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg>
+        </div>
+        <h4>アクセス良好</h4>
+        <p>JR銭函駅から徒歩2〜3分。札幌中心部から車で30〜40分。</p>
+      </div>
+      <div class="strength-card">
+        <div class="porthole">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        </div>
+        <h4>客船のような寛ぎ空間</h4>
+        <p>窓際の特等席から、日本海と夕陽、鳥たちの姿を眺めながら食事を。</p>
+      </div>
+      <div class="strength-card">
+        <div class="porthole">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 19h16M6 19V9l6-5 6 5v10"/></svg>
+        </div>
+        <h4>気軽なイタリアン</h4>
+        <p>ランチはパスタや丼物が1000円台と、リーズナブルに楽しめます。</p>
+      </div>
+      <div class="strength-card">
+        <div class="porthole">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3c3 3 5 6 5 9a5 5 0 0 1-10 0c0-3 2-6 5-9z"/></svg>
+        </div>
+        <h4>季節を彩る一皿</h4>
+        <p>和風きのこスパゲッティやハーブローストチキン丼など、美しい盛り付けが好評。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 雨の日サービス ===== -->
+<section class="rainy">
+  <div class="wrap rainy-inner">
+    <div class="rainy-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M6 16a5 5 0 1 1 1-9.9A6 6 0 0 1 18 9a4 4 0 0 1-1 7.9H6z"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2"/></svg>
+    </div>
+    <div class="rainy-text">
+      <span class="eyebrow" style="color:var(--color-coral-soft)">RAINY DAY SERVICE</span>
+      <h2>雨の日こそ、癒月へ。</h2>
+      <p>晴れの日は煌めく海、雨の日は霧にけぶる幻想的な日本海。景色もまた、癒月のごちそうのひとつです。雨天にご来店のお客様には、感謝を込めた特典をご用意しています。</p>
+      <span class="rainy-badge">雨の日限定特典あり ／ 詳細はお電話でご確認ください</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== クチコミ ===== -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">VOICE</span>
+      <h2>お客様のクチコミ</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <span class="stars">★★★★☆</span>
+        <p>銭函の老舗のレストラン。ハンバーグセットとワタリガニのパスタセット、ハンバーグはライスとサラダ、パスタはサラダ付き。とにかく景色が良い。ハンバーグは結構柔らか目でソースが少し甘め。パスタはトマトクリームにしっかりカニの風味が付いていてアッサリ食べやすいです。ご馳走さまでした。また行きます。</p>
+      </div>
+      <div class="review-card">
+        <span class="stars">★★★★★</span>
+        <p>海が見渡せる素敵なロケーション。最初にオーダーしてから着席するタイプ。お店の雰囲気も良く、当然美味しい！リピート確定ですね！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 店舗情報 ===== -->
+<footer id="access">
+  <div class="wrap">
+    <div class="info-grid">
+      <div>
+        <h2>店舗情報</h2>
+        <ul class="info-list">
+
+
+          <li><b>店名</b><span>[レストラン 癒月]</span></li>
+          <li><b>住所</b><span>〒047-0261 北海道小樽市銭函１丁目２３−２</span></li>
+          <li><b>電話</b><span>0134-62-0184</span></li>
+          <li><b>定休日</b><span>月曜日</span></li>
+          <li><b>アクセス</b><span>JR銭函駅から徒歩2〜3分／札幌中心部から車で30〜40分</span></li>
+        </ul>
+      </div>
+      
+      <!-- 地図とCTAボタンをまとめるエリア -->
+      <div class="info-map-area">
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2911.1060127175497!2d141.1560898750776!3d43.14430308519761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b20ae938b9edb%3A0xf69a41d62c2f015f!2z44Os44K544OI44Op44OzIOeZkuaciA!5e0!3m2!1sja!2sjp!4v1785991499939!5m2!1sja!2sjp" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+        <div class="info-cta">
+          <a class="btn" href="tel:0134620184">📞 電話で予約する</a>
+          <a class="sns-link" href="https://www.facebook.com/people/%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%E7%99%92%E6%9C%88/100068704031558/" target="_blank" rel="noopener">Facebookを見る ↗</a>
+   
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; レストラン癒月（銭函）</div>
+  </div>
+</footer>
+</body>
+</html>
