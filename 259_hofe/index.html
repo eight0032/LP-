@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hofe（ホフ）| 札幌・すすきのの隠れ家ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap');
+
+        :root {
+            --gold: #b58d40;
+            --light-bg: #fcfbf7;
+            --text-main: #2d2a26;
+            --accent-soft: #f4eee0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+
+        /* 明るいセクションごとの背景定義 */
+        .bg-section-signature {
+            background: linear-gradient(135deg, #ffffff 0%, #f4eee0 100%);
+        }
+
+        .bg-section-reviews {
+            background-color: #f7f3f0;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        .bg-section-offer {
+            background: linear-gradient(to bottom, #fcfbf7 0%, #ede3d0 100%);
+            position: relative;
+        }
+
+        .bg-section-comingsoon {
+            background: linear-gradient(180deg, #ffffff 0%, #f7f3f0 100%);
+            position: relative;
+        }
+
+        .bg-section-access {
+            background-color: #ffffff;
+        }
+
+        /* 縦書き */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 背景透かし文字 (明るい色用) */
+        .bg-watermark {
+            position: absolute;
+            font-size: 18vw;
+            font-family: 'Cinzel', serif;
+            color: rgba(181, 141, 64, 0.06);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* アニメーション */
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        .animate-slow-zoom {
+            animation: slowZoom 15s ease-in-out infinite alternate;
+        }
+
+        .gradient-overlay-fv {
+            background: linear-gradient(to bottom, rgba(252, 251, 247, 0.1) 0%, rgba(252, 251, 247, 1) 95%);
+        }
+
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .btn-premium:hover {
+            letter-spacing: 0.2em;
+            background-color: var(--text-main);
+            color: #fff;
+        }
+
+        /* 地図のレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* モバイルでの文字量調整・視認性向上 */
+        @media (max-width: 767px) {
+            .bg-watermark {
+                font-size: 24vw;
+            }
+        }
+
+        /* フォーカスの視認性を確保 */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-slow-zoom {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Section 1: FVエリア -->
+    <header class="relative h-screen min-h-[560px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/roast.jpg" alt="エゾ鹿肉のロースト" class="w-full h-full object-cover animate-slow-zoom">
+        </div>
+        <div class="absolute inset-0 gradient-overlay-fv z-10"></div>
+
+        <div class="absolute right-4 md:right-16 top-1/2 -translate-y-1/2 z-20 hidden md:block">
+            <p class="vertical-text font-serif text-gold tracking-[0.5em] text-lg border-r border-gold/30 pr-4">
+                札幌中央区・南三条西六丁
+            </p>
+        </div>
+
+        <div class="relative z-20 text-center px-6">
+            <div class="font-cinzel text-gold tracking-[0.3em] md:tracking-[0.5em] mb-5 md:mb-6 text-xs md:text-lg">BISTRO hofe</div>
+            <h1 class="font-serif text-3xl sm:text-4xl md:text-7xl mb-6 md:mb-8 leading-tight text-gray-800">
+                <span class="block text-base sm:text-xl md:text-3xl mb-3 md:mb-4 font-light text-gray-500 tracking-[0.2em] md:tracking-[0.4em]">五感を研ぎ澄ます、</span>
+                一皿の<span class="text-gold text-2xl sm:text-4xl md:text-6xl align-middle">叙事詩</span>。
+            </h1>
+            <div class="h-16 md:h-24 w-[1px] bg-gold mx-auto mb-6 md:mb-8 opacity-40"></div>
+            <p class="text-gray-500 text-xs md:text-base tracking-[0.25em] md:tracking-[0.4em] uppercase mb-8 md:mb-12">Wild Venison &amp; Orange Wine</p>
+
+            <a href="#booking" class="btn-premium inline-block border border-gold text-gold px-10 md:px-16 py-4 md:py-5 tracking-widest text-sm font-bold rounded-sm">
+                RESERVE NOW
+            </a>
+        </div>
+    </header>
+
+    <!-- Section 2: Signature (Menu) -->
+    <section class="py-20 md:py-32 relative overflow-hidden bg-section-signature">
+        <div class="bg-watermark -top-10 -left-10">CUISINE</div>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-gold/5 blur-2xl opacity-100 transition duration-1000"></div>
+                        <img src="images/wine.jpg" alt="オレンジワイン" class="relative w-full h-[320px] sm:h-[420px] md:h-[600px] object-cover rounded-sm shadow-xl transition-transform duration-700 group-hover:scale-[1.02]">
+                        <div class="relative md:absolute md:-bottom-8 md:-right-4 mt-6 md:mt-0 bg-white text-gray-800 p-6 md:p-10 shadow-xl border-l-4 border-gold">
+                            <p class="font-serif text-xl md:text-2xl leading-relaxed">肉と薪の、<br><span class="text-gold">創造的な旋律。</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-8 md:space-y-10">
+                    <div>
+                        <span class="text-gold block text-sm font-cinzel mb-3 md:mb-4 tracking-[0.3em] md:tracking-[0.4em]">Signature Menu</span>
+                        <h2 class="text-3xl md:text-6xl font-serif leading-snug text-gray-800">
+                            エゾ鹿肉の<br>ロースト
+                        </h2>
+                    </div>
+                    <p class="text-gray-600 leading-loose text-sm md:text-base font-light">
+                        私たちが最も大切にしているのは、食材が持つ「生命の温度」です。<br>
+                        北海道の広大な大地が育んだエゾ鹿肉に、緻密な計算に基づいた火入れを施す。
+                        外側は香ばしく、内側は柔らかほどしっとりと。オレンジワインの芳醇な渋みが、その旨味を極限まで引き立てます。
+                    </p>
+                    <div class="pt-8 md:pt-10 border-t border-gold/20">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-serif text-xl md:text-2xl text-gray-700">Dinner Course</span>
+                            <span class="font-cinzel text-gold text-2xl md:text-3xl">&yen;6,600 <small class="text-xs">~</small></span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 tracking-widest uppercase">※Excluding drinks. Menu changes seasonally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Reviews -->
+    <section class="py-20 md:py-32 relative bg-section-reviews">
+        <div class="bg-watermark top-1/2 -translate-y-1/2 right-0">VOICE</div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-14 md:mb-24">
+                <p class="font-cinzel text-gold tracking-[0.5em] md:tracking-[0.6em] mb-4 text-xs">GUEST REVIEWS</p>
+                <h3 class="text-3xl md:text-5xl font-serif text-gray-800">響き合う、歓喜の声</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 md:p-12 shadow-sm border-t border-gold flex flex-col justify-between md:h-[450px] hover:shadow-2xl transition-all duration-500">
+                    <div class="text-gold text-sm mb-6 md:mb-8 font-cinzel tracking-widest">01 /</div>
+                    <p class="text-base md:text-lg leading-relaxed text-gray-600 font-light italic">「扉を開けた瞬間から特別な、大人の隠れ家ビストロ。丁寧に作られた料理とサービスの女性の気遣いが素晴らしい。」</p>
+                    <div class="mt-6 md:mt-auto pt-6 md:pt-8 border-t border-gray-100 flex items-center justify-between">
+                        <span class="text-[10px] tracking-widest text-gray-400 uppercase">Guest Testimony</span>
+                        <div class="text-gold text-xs italic tracking-tighter">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 md:p-12 shadow-sm border-t border-gold flex flex-col justify-between md:h-[450px] md:-mt-12 hover:shadow-2xl transition-all duration-500">
+                    <div class="text-gold text-sm mb-6 md:mb-8 font-cinzel tracking-widest">02 /</div>
+                    <p class="text-base md:text-lg leading-relaxed text-gray-600 font-light italic">「何をいただいても美味しかった。コースの最後のデザートを追加して更に正解でした。」</p>
+                    <div class="mt-6 md:mt-auto pt-6 md:pt-8 border-t border-gray-100 flex items-center justify-between">
+                        <span class="text-[10px] tracking-widest text-gray-400 uppercase">Guest Testimony</span>
+                        <div class="text-gold text-xs italic tracking-tighter">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 md:p-12 shadow-sm border-t border-gold flex flex-col justify-between md:h-[450px] hover:shadow-2xl transition-all duration-500">
+                    <div class="text-gold text-sm mb-6 md:mb-8 font-cinzel tracking-widest">03 /</div>
+                    <p class="text-base md:text-lg leading-relaxed text-gray-600 font-light italic">「多彩なメニューから、丁寧で繊細なお食事を頂けます。お店の方のご説明も丁寧でした。」</p>
+                    <div class="mt-6 md:mt-auto pt-6 md:pt-8 border-t border-gray-100 flex items-center justify-between">
+                        <span class="text-[10px] tracking-widest text-gray-400 uppercase">Guest Testimony</span>
+                        <div class="text-gold text-xs italic tracking-tighter">★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Special Offer -->
+    <section class="py-20 md:py-32 flex justify-center px-4 bg-section-offer">
+        <div class="max-w-4xl w-full bg-white p-8 sm:p-12 md:p-24 text-center relative shadow-2xl overflow-hidden group">
+            <div class="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 bg-accent-soft rounded-full -mr-20 -mt-20 md:-mr-32 md:-mt-32 opacity-50"></div>
+            <div class="absolute bottom-0 left-0 w-40 h-40 md:w-64 md:h-64 bg-accent-soft rounded-full -ml-20 -mb-20 md:-ml-32 md:-mb-32 opacity-50"></div>
+
+            <div class="relative z-10">
+                <div class="font-cinzel text-gold tracking-[0.5em] md:tracking-[0.6em] mb-6 md:mb-8 text-xs">EXCLUSIVE OFFER</div>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif mb-8 md:mb-10 text-gray-800 tracking-wide md:tracking-widest leading-tight">特別な夜への、<br>ささやかな贈り物</h2>
+                <p class="text-gray-500 mb-8 md:mb-12 text-base md:text-lg leading-loose max-w-2xl mx-auto font-light">
+                    このページをご覧いただき、ご予約いただいたお客様へ。<br>
+                    お食事の最後に、シェフ厳選の<span class="text-gold font-bold">「季節のデザート」</span>を1品サービスさせていただきます。
+                </p>
+                <div class="inline-block border-y border-gold/20 py-4 md:py-5 px-6 md:px-10 mb-10 md:mb-16">
+                    <span class="text-xs tracking-[0.15em] md:tracking-[0.2em] text-gold font-bold">「ホームページを見た」とスタッフにお伝えください。</span>
+                </div>
+
+                <div id="booking" class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center">
+                    <a href="tel:0115968818" class="flex-1 bg-gold text-white font-bold py-5 md:py-6 text-base md:text-lg hover:bg-gray-800 transition-all duration-500 shadow-lg tracking-[0.15em] md:tracking-[0.2em]">
+                        <i class="fas fa-phone-alt mr-3"></i> CALL NOW
+                    </a>
+                    <a href="http://www.hofe-espace.com/contact.html" class="flex-1 border border-gray-800 text-gray-800 font-bold py-5 md:py-6 text-base md:text-lg hover:bg-gray-800 hover:text-white transition-all duration-500 tracking-[0.15em] md:tracking-[0.2em]">
+                        WEB RESERVE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: COMING SOON -->
+    <section class="py-20 md:py-32 relative bg-section-comingsoon overflow-hidden border-t border-b border-gold/10">
+        <div class="bg-watermark top-10 right-0">FUTURE</div>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="inline-block bg-gold/10 text-gold font-cinzel text-xs tracking-[0.3em] md:tracking-[0.5em] px-5 md:px-6 py-2 rounded-full mb-4">COMING SOON</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-gray-800 mb-5 md:mb-6">hofeが贈る、新しい体験</h2>
+                <p class="text-gray-500 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
+                    旬の息吹や限定ワインの入荷、一期一会のお料理情報をお届けする発信強化プロジェクトが始動。今だけの美味しさをもっと身近に。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white p-7 sm:p-8 md:p-10 shadow-lg border border-gray-100 rounded-sm hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-gold/10 text-gold rounded-full flex items-center justify-center text-xl md:text-2xl mb-6 md:mb-8">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <span class="text-[10px] font-cinzel tracking-[0.3em] text-gold uppercase block mb-2">01. Live Update</span>
+                        <h3 class="font-serif text-xl md:text-2xl text-gray-800 mb-4">旬の食材・自然派ワイン入荷速報</h3>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed font-light mb-6">
+                            北海道産エゾ鹿の極上部位や稀少なオレンジワインの入荷をリアルタイム発信。「今、一瞬美味しい瞬間」を逃さずチェックしていただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gold">
+                        <span>Instagram / Official LINE</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-7 sm:p-8 md:p-10 shadow-lg border border-gray-100 rounded-sm hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-gold/10 text-gold rounded-full flex items-center justify-center text-xl md:text-2xl mb-6 md:mb-8">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <span class="text-[10px] font-cinzel tracking-[0.3em] text-gold uppercase block mb-2">02. Weekly Special</span>
+                        <h3 class="font-serif text-xl md:text-2xl text-gray-800 mb-4">「今週の料理」先行アプローチ</h3>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed font-light mb-6">
+                            シェフの感性が光る週替わりのスペシャリテや特別コースをSNS限定で一足早く先行案内。一期一会の一皿との出会いを演出します。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gold">
+                        <span>Weekly Updates</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Follow callout banner -->
+            <div class="mt-10 md:mt-16 bg-white/80 backdrop-blur border border-gold/30 p-6 md:p-8 text-center max-w-3xl mx-auto rounded-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="text-center sm:text-left">
+                    <p class="font-serif text-lg text-gray-800">最新情報を見逃さないために</p>
+                    <p class="text-xs text-gray-500 font-light mt-1">公式Instagramにて最新入荷や今週の料理情報を随時更新中。</p>
+                </div>
+                <a href="https://www.instagram.com/hofefrenchbistro/" target="_blank" class="shrink-0 bg-gray-800 text-white hover:bg-gold transition-colors text-xs tracking-widest px-8 py-4 font-bold rounded-sm flex items-center gap-2">
+                    <i class="fab fa-instagram text-base"></i> INSTAGRAM FOLLOW
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Access -->
+    <section class="py-20 md:py-32 bg-section-access relative overflow-hidden">
+        <div class="bg-watermark -bottom-10 -left-10">ACCESS</div>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="flex flex-col lg:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full lg:w-2/3 shadow-2xl border border-gray-100">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.288818975897!2d141.3468694750721!3d43.05639279082742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298518f5a47d%3A0xf2f0169449efbd36!2z44Ob44OV!5e0!3m2!1sja!2sjp!4v1771982253935!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/3 space-y-8">
+                    <div class="border-l-4 border-gold pl-6">
+                        <p class="font-cinzel text-gold text-xs tracking-[0.4em] mb-2">LOCATION</p>
+                        <h3 class="font-serif text-2xl md:text-3xl text-gray-800 mb-4">アクセスマップ</h3>
+                        <p class="text-gray-600 text-sm leading-loose font-light">
+                            札幌市中央区南３条西６丁目<br>
+                            3-6ビル 2F<br>
+                            <span class="block mt-4 text-gold font-bold">● 地下鉄南北線「すすきの駅」より徒歩5分</span>
+                            <span class="block text-gray-400 text-xs">※狸小路6丁目アーケードすぐそば</span>
+                        </p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 md:py-24 bg-[#2d2a26] text-white relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-12 md:gap-20 items-start text-center md:text-left">
+                <div class="space-y-6 md:space-y-8">
+                    <h3 class="font-cinzel text-4xl md:text-5xl text-gold">hofe</h3>
+                    <p class="text-[10px] leading-loose text-gray-400 tracking-[0.4em] uppercase">
+                        French Bistro &amp; Wine Bar<br>
+                        Sapporo City, Japan
+                    </p>
+                </div>
+                <div class="space-y-6 md:space-y-8">
+                    <p class="text-xs font-bold tracking-[0.5em] text-gold uppercase border-b border-gold/20 pb-4">Contact Info</p>
+                    <ul class="text-sm space-y-5 md:space-y-6 text-gray-300 font-light">
+                        <li class="flex items-start justify-center md:justify-start gap-4">
+                            <span class="text-gold font-cinzel text-[10px] mt-1">LOC.</span>
+                            <span class="tracking-widest text-left">札幌市中央区南３条西６丁 3-6ビル 2F</span>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start gap-4">
+                            <span class="text-gold font-cinzel text-[10px] mt-1">HRS.</span>
+                            <span class="tracking-widest text-xs">18:00 - 24:00 (L.O. 23:00)</span>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start gap-4">
+                            <span class="text-gold font-cinzel text-[10px] mt-1">OFF.</span>
+                            <span class="tracking-widest">日曜日</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-8 md:space-y-10">
+                    <p class="text-xs font-bold tracking-[0.5em] text-gold uppercase border-b border-gold/20 pb-4">Connect</p>
+                    <div class="flex gap-8 justify-center md:justify-start">
+                        <a href="https://www.instagram.com/hofefrenchbistro/" target="_blank" class="group text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-instagram text-3xl"></i>
+                        </a>
+                        <a href="mailto:info@hofe-espace.com" class="group text-gray-400 hover:text-gold transition-colors">
+                            <i class="fas fa-envelope text-3xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-[9px] text-gray-500 mt-10 md:mt-16 tracking-[0.3em] font-cinzel">
+                        &copy; 2024 HOFE ESPACE. PRODUCED IN SAPPORO.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
