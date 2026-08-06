@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>洋食 マーシュ亭 | 札幌・バスセンター前の行列ができる洋食店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+        :root {
+            --primary: #8e1d1d; /* 深みのあるエンジ */
+            --gold: #c5a059;   /* 上品なゴールド */
+            --bg-paper: #fcf9f2; /* 和紙のような温かみのある白 */
+            --dark: #1a1a1a;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-paper);
+            color: var(--dark);
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .bg-primary { background-color: var(--primary); }
+        .text-primary { color: var(--primary); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-gold\/5 { background-color: rgba(197,160,89,0.05); }
+        .bg-gold\/10 { background-color: rgba(197,160,89,0.10); }
+        .bg-gold\/20 { background-color: rgba(197,160,89,0.20); }
+        .border-gold\/30 { border-color: rgba(197,160,89,0.30); }
+        .border-gold\/40 { border-color: rgba(197,160,89,0.40); }
+        .border-gold\/50 { border-color: rgba(197,160,89,0.50); }
+        .hover\:border-gold\/50:hover { border-color: rgba(197,160,89,0.50); }
+        .text-gold\/80 { color: rgba(197,160,89,0.80); }
+
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        .cta-float {
+            filter: drop-shadow(0 10px 15px rgba(142, 29, 29, 0.3));
+        }
+
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        /* スマートフォンでの視認性・タップしやすさ調整 */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 1.85rem;
+                line-height: 1.4;
+            }
+            .hero-lead {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* フォーカス時のアウトライン(アクセシビリティ) */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="texture-bg">
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-[560px] h-[85vh] sm:h-[80vh] flex items-center overflow-hidden bg-black rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[5rem]">
+        <div class="absolute inset-0 z-0">
+            <img src="images/curry.jpg" alt="メインビジュアル" class="w-full h-full object-cover opacity-70 scale-105 hover:scale-100 transition-transform duration-[10s]">
+            <div class="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black via-black/40 sm:via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-5 sm:px-6 h-full flex flex-col justify-center">
+            <div class="text-white max-w-2xl">
+                <div class="mb-5 sm:mb-6 flex items-center gap-3 sm:gap-4 flex-wrap">
+                    <span class="bg-gold text-black px-3 py-1 text-[10px] sm:text-xs font-bold tracking-widest uppercase rounded-full">Sapporo Odori</span>
+                    <span class="h-[1px] w-10 sm:w-12 bg-gold"></span>
+                </div>
+                <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-serif font-black leading-tight mb-6 sm:mb-8">
+                    フレンチの矜持を、<br>
+                    <span class="text-gold">一皿の洋食に込めて。</span>
+                </h1>
+                <p class="hero-lead text-base sm:text-lg md:text-xl font-light leading-loose opacity-90 mb-8 sm:mb-10">
+                    札幌・大通東。路地裏に佇む小さな店。<br>
+                    五感に響く、肉厚ジューシーな「ポークカツカレー」の誘惑。
+                </p>
+                <div class="flex flex-wrap gap-3 sm:gap-4">
+                    <div class="border border-gold/50 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm tracking-widest">バスセンター前駅 徒歩1分</div>
+                    <div class="border border-gold/50 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm tracking-widest">フレンチ歴30年の技法</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 第1CTA -->
+    <section class="bg-primary py-6 sm:py-8 px-4 sm:px-4 sticky top-0 z-50 shadow-2xl rounded-b-2xl sm:rounded-b-3xl">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+            <div class="text-white text-center md:text-left">
+                <span class="text-gold text-[10px] sm:text-xs font-bold tracking-widest block mb-1">STAY TUNED</span>
+                <p class="font-bold text-base sm:text-lg md:text-xl">本日限定の「裏メニュー」はSNSで公開中</p>
+            </div>
+            <a href="https://www.instagram.com/macheendo/" target="_blank" class="cta-float bg-gold hover:bg-white text-dark font-black py-3.5 sm:py-4 px-8 sm:px-12 transition-all duration-300 flex items-center gap-3 rounded-full w-full md:w-auto justify-center">
+                <i class="fab fa-instagram text-lg sm:text-xl"></i>
+                <span class="text-sm sm:text-base">公式Instagramで確認</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. こだわりセクション -->
+    <section class="py-16 sm:py-20 md:py-24 px-5 sm:px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="section-title text-2xl sm:text-3xl font-serif font-bold mb-3 sm:mb-4">職人の手仕事</h2>
+                <p class="text-gray-500 text-xs sm:text-sm tracking-widest">THE CRAFTSMANSHIP</p>
+            </div>
+            <div class="space-y-10 sm:space-y-12">
+                <div class="text-center">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-primary mb-4 sm:mb-6 leading-snug">薄衣が奏でる、軽やかな「音」。</h3>
+                    <p class="text-gray-600 leading-loose text-base sm:text-lg max-w-2xl mx-auto">
+                        マーシュ亭のポークカツレツは、あえて「薄衣」にこだわります。高温で一気に揚げ上げ、クリスピーな食感の後に広がるのは、溢れんばかりの肉汁。フレンチの火入れ技術を応用した、ここでしか味わえない「肉料理」としての洋食です。
+                    </p>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 pt-6 sm:pt-8">
+                    <div class="bg-bg-paper p-6 sm:p-8 border-l-4 border-gold rounded-2xl shadow-sm">
+                        <p class="text-xs text-gold font-bold mb-2 uppercase tracking-widest">こだわり その壱</p>
+                        <p class="text-lg sm:text-xl font-bold mb-3">厳選された豚肉の熟成</p>
+                        <p class="text-sm text-gray-500 leading-relaxed">肉の繊維一本一本が柔らかくなるまで低温で管理。噛むほどに旨みが広がる最高級の豚肉を使用しています。</p>
+                    </div>
+                    <div class="bg-bg-paper p-6 sm:p-8 border-l-4 border-gold rounded-2xl shadow-sm">
+                        <p class="text-xs text-gold font-bold mb-2 uppercase tracking-widest">こだわり その弐</p>
+                        <p class="text-lg sm:text-xl font-bold mb-3">三日間煮込む深いコクのルー</p>
+                        <p class="text-sm text-gray-500 leading-relaxed">数種類のスパイスと、香味野菜、そして肉の旨味を凝縮。雑味を削ぎ落とし、旨味だけを残した至福のルーです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 4. 自己紹介(権威付け) -->
+    <section class="py-16 sm:py-20 md:py-24 px-5 sm:px-4 bg-dark text-white relative overflow-hidden rounded-t-[2rem] sm:rounded-t-[3rem] md:rounded-t-[5rem]">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gold/5 -skew-x-12 translate-x-1/2"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="flex flex-col lg:flex-row gap-10 sm:gap-16 items-center">
+                <div class="w-full max-w-xs sm:max-w-sm lg:max-w-none lg:w-5/12">
+                    <div class="relative">
+                        <div class="aspect-[4/5] bg-gray-800 rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl relative overflow-hidden border-4 border-white/10">
+                            <!-- 挿入する画像 -->
+                            <img src="images/chef.png" alt="Masashi Endo &amp; Yoko" class="absolute inset-0 w-full h-full object-cover">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-60"></div>
+                            <div class="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 z-10">
+                                <p class="text-gold font-serif italic text-lg sm:text-xl">Masashi Endo &amp; Yoko</p>
+                                <p class="text-xs tracking-widest opacity-60">OWNER CHEF &amp; MANAGER</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 sm:-bottom-6 sm:-right-6 w-24 h-24 sm:w-32 sm:h-32 bg-gold/25 backdrop-blur-md rounded-full border border-gold/40 flex items-center justify-center text-gold font-serif text-xs sm:text-sm text-center shadow-lg">
+                            since<br>2014
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-7/12">
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold mb-6 sm:mb-8 leading-relaxed">
+                        「ブラッセリー」から「洋食」へ。<br>
+                        名門の技術を、日常の贅沢に。
+                    </h2>
+                    <div class="space-y-5 sm:space-y-6 text-gray-400 leading-loose text-sm sm:text-base">
+                        <p>かつて札幌の名門「ブラッセリーマーシュ」で腕を振るった遠藤正司。フレンチの真髄を知る男が辿り着いたのは、お茶碗のごはんに具沢山の煮込み、そして圧倒的なボリュームの主菜という「一汁一菜」のスタイルでした。</p>
+                        <p>2014年、バスセンター前の一角に「洋食 マーシュ亭」として再始動。ラーメン店の跡地を自ら改装した小さな空間には、今日も開店前から、その味を求める人々の列が途切れることはありません。</p>
+                        <p>妻・洋子との二人三脚。技術は妥協せず、形式は驕らず。それがマーシュ亭の誇りです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩み・解決 -->
+    <section class="py-16 sm:py-20 md:py-24 px-5 sm:px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-12 sm:mb-16 leading-loose">
+                「今日は、並んでもいい。」<br>
+                <span class="text-primary text-lg sm:text-xl md:text-2xl">そう思わせてしまう理由が、この一皿にはある。</span>
+            </h2>
+
+            <div class="grid sm:grid-cols-2 gap-0 shadow-2xl rounded-[2rem] sm:rounded-[3rem] overflow-hidden">
+                <div class="bg-white p-8 sm:p-12 flex flex-col justify-center border-b sm:border-b-0 sm:border-r border-gray-100">
+                    <p class="text-primary font-bold mb-4 sm:mb-6 flex items-center justify-center gap-2 text-sm sm:text-base">
+                        <i class="fas fa-exclamation-triangle"></i> 行列、品切れ、予約不可
+                    </p>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        「いかんせん並ぶ事を覚悟しなければいけない為、躊躇してしまいます。ジレンマです。」（クチコミより）
+                    </p>
+                </div>
+                <div class="bg-primary p-8 sm:p-12 text-white flex flex-col justify-center relative">
+                    <div class="absolute top-4 right-6 sm:right-8 text-5xl sm:text-6xl text-white/10 font-black">!</div>
+                    <p class="text-gold font-bold mb-4 italic text-sm sm:text-base">Everything is forgiven.</p>
+                    <h4 class="text-lg sm:text-xl font-bold mb-4">「美味しい料理食べたら全部チャラ。」</h4>
+                    <p class="text-sm opacity-80 leading-relaxed">
+                        そのボリューム、そのコク、その衝撃。お腹も心もパンパンに満たされた時、あなたのジレンマは感動へと変わります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 6. 特典(夜の魅力) -->
+    <section class="py-16 sm:py-20 md:py-24 px-5 sm:px-4 bg-[#f2ede4] texture-bg">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-4 mb-10 sm:mb-12">
+                <div>
+                    <h2 class="section-title text-2xl sm:text-3xl font-serif font-bold mb-3 sm:mb-4">夜の部、美食の深淵。</h2>
+                    <p class="text-gray-500 tracking-widest text-xs sm:text-base">DINNER SPECIALTIES</p>
+                </div>
+                <p class="text-primary font-bold text-sm sm:text-base lg:mb-4">※昼の定番メニューも注文可能です</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- 1. 大粒カキフライ -->
+                <div class="bg-white p-6 shadow-lg hover:-translate-y-2 transition-transform rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-square bg-gray-100 mb-6 flex items-center justify-center text-gray-400 font-bold rounded-2xl overflow-hidden">
+                            <img src="images/kaki.jpg" alt="大粒カキフライ" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-center">大粒カキフライ</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed text-center px-2 sm:px-4">海のミルクを閉じ込めた、驚くほど濃厚な一品。タルタルソースとの相性は格別です。</p>
+                    </div>
+                    <div class="text-center mt-auto pt-2">
+                        <span class="text-xs text-gold border border-gold px-3 py-1 rounded-full">冬季限定あり</span>
+                    </div>
+                </div>
+
+                <!-- 2. 鹿レバーカツ -->
+                <div class="bg-white p-6 shadow-lg hover:-translate-y-2 transition-transform rounded-3xl border-t-4 border-gold flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-square bg-gray-100 mb-6 flex items-center justify-center text-gray-400 font-bold rounded-2xl overflow-hidden">
+                            <img src="images/reba.jpg" alt="鹿レバーカツ" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-center">鹿レバーカツ</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed text-center px-2 sm:px-4">しっとりと味わい深いレバーをクリスピーな衣で。マスタードがクセになる大人の味。</p>
+                    </div>
+                    <div class="text-center mt-auto pt-2">
+                        <span class="text-xs text-gold border border-gold px-3 py-1 rounded-full">逸品料理</span>
+                    </div>
+                </div>
+
+                <!-- 3. 日替わり裏メニュー（復元・追加） -->
+                <div class="bg-white p-6 shadow-lg hover:-translate-y-2 transition-transform rounded-3xl sm:col-span-2 lg:col-span-1 flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-square bg-gray-100 mb-6 flex items-center justify-center text-gray-400 font-bold rounded-2xl overflow-hidden">
+                            <img src="images/pasta.png" alt="日替わり裏メニュー" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-center">日替わり裏メニュー</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed text-center px-2 sm:px-4">店主のインスタのみで告知される、仔羊メンチカツなどの特別料理。一期一会の出会い。</p>
+                    </div>
+                    <div class="text-center mt-auto pt-2">
+                        <span class="text-xs text-gold border border-gold px-3 py-1 rounded-full">Instagram限定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5. COMING SOON セクション -->
+    <section class="py-14 sm:py-20 px-5 sm:px-4 bg-white relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-gradient-to-br from-gray-900 via-dark to-black text-white rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-14 shadow-2xl relative overflow-hidden border border-gold/30">
+                <div class="absolute -right-8 -bottom-8 sm:-right-10 sm:-bottom-10 opacity-10 text-[6rem] sm:text-[9rem] md:text-[12rem] font-black font-serif text-gold pointer-events-none select-none">SOON</div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-5 sm:mb-6 flex-wrap">
+                        <span class="bg-gold text-black font-black text-xs px-4 py-1.5 rounded-full tracking-widest uppercase">COMING SOON</span>
+                        <span class="text-gold/80 text-xs tracking-widest font-mono">NEW SERVICE CONCEPT</span>
+                    </div>
+
+                    <h2 class="text-xl sm:text-2xl md:text-4xl font-serif font-bold mb-5 sm:mb-6 leading-snug">
+                        もっと快適に、もっとスマートに。<br>
+                        <span class="text-gold">「スマート整理券待ち・事前注文サービス」構想中</span>
+                    </h2>
+
+                    <p class="text-gray-300 text-sm md:text-base leading-loose mb-8 sm:mb-10 max-w-3xl">
+                        いつも当店のお料理を楽しみにお並びいただき、誠にありがとうございます。「予約不可・行列必至」の負担を少しでも軽減し、出来立て熱々の一皿を最高のお腹の空き具合で楽しんでいただくために。マーシュ亭では新たな取り組みを計画しています。
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-5 sm:gap-6 mb-8 sm:mb-10">
+                        <div class="bg-white/5 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/10 hover:border-gold/50 transition-colors">
+                            <div class="w-12 h-12 bg-gold/20 text-gold rounded-full flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2 text-gold">スマホで呼び出し、整理券確認</h3>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                店頭の受付機で整理券を発行したら、列から離れてカフェや周辺で待機可能。お呼び出し通知がスマホに届くまで、時間を有効に使っていただけます。
+                            </p>
+                        </div>
+
+                        <div class="bg-white/5 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/10 hover:border-gold/50 transition-colors">
+                            <div class="w-12 h-12 bg-gold/20 text-gold rounded-full flex items-center justify-center text-xl mb-4">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2 text-gold">入店前の「事前注文」で時短</h3>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                順番が近づいたタイミングでスマホからメニューを事前注文。着席とほぼ同時に料理が提供され、待ち時間を大幅削減、回転率アップを目指します。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gold/10 rounded-2xl p-4 border border-gold/30 text-center">
+                        <p class="text-xs text-gold font-bold leading-relaxed">
+                            ※本サービスは、ご来店いただくすべてのお客様により良い食体験を提供するための開発・検討中の構想です。開始時期等の詳細は公式Instagramにて随時お知らせいたします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 最終CTA & アクセス -->
+    <section class="py-16 sm:py-20 md:py-24 px-5 sm:px-4 bg-white">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="mb-10 sm:mb-12">
+                <i class="fas fa-utensils text-gold text-3xl sm:text-4xl mb-4"></i>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-black mb-5 sm:mb-6 leading-snug">明日の「一皿」を、<br class="sm:hidden">最高のコンディションで。</h2>
+                <p class="text-gray-600 leading-loose text-sm sm:text-base">
+                    当店は予約を承っておりません。だからこそ、最新の営業状況とメニューを把握することが、最高の食事体験への近道です。
+                </p>
+            </div>
+
+            <div class="relative p-1 bg-gradient-to-br from-gold via-primary to-gold rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl mb-16 sm:mb-24">
+                <div class="bg-bg-paper p-7 sm:p-10 md:p-16 rounded-[calc(2rem-1px)] sm:rounded-[calc(3rem-1px)]">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">公式Instagramをフォローするメリット</h3>
+                    <ul class="text-left space-y-4 sm:space-y-5 max-w-md mx-auto mb-8 sm:mb-12">
+                        <li class="flex items-center gap-3 sm:gap-4">
+                            <span class="flex-none w-8 h-8 bg-primary text-white text-sm flex items-center justify-center rounded-full italic font-serif">1</span>
+                            <span class="font-bold text-sm sm:text-base">「本日、やってますか？」が即解決</span>
+                        </li>
+                        <li class="flex items-center gap-3 sm:gap-4">
+                            <span class="flex-none w-8 h-8 bg-primary text-white text-sm flex items-center justify-center rounded-full italic font-serif">2</span>
+                            <span class="font-bold text-sm sm:text-base">本日の日替わり「裏メニュー」を写真で確認</span>
+                        </li>
+                        <li class="flex items-center gap-3 sm:gap-4">
+                            <span class="flex-none w-8 h-8 bg-primary text-white text-sm flex items-center justify-center rounded-full italic font-serif">3</span>
+                            <span class="font-bold text-sm sm:text-base">混雑状況や完売情報もストーリーズで。</span>
+                        </li>
+                    </ul>
+                    <a href="https://www.instagram.com/macheendo/" target="_blank" class="shimmer bg-primary hover:bg-dark text-white text-lg sm:text-xl font-bold py-5 sm:py-6 px-8 sm:px-12 rounded-full inline-flex items-center gap-3 sm:gap-4 w-full justify-center transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                        Instagramをフォローして準備する
+                    </a>
+                </div>
+            </div>
+
+            <!-- アクセス・地図セクション -->
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 text-left">
+                <div class="space-y-6 sm:space-y-8">
+                    <div>
+                        <h4 class="font-serif text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-primary border-b border-gold pb-2 inline-block">店舗案内</h4>
+                        <div class="space-y-3 sm:space-y-4 text-gray-700">
+                            <p class="flex items-start gap-3">
+                                <i class="fas fa-map-marker-alt text-gold mt-1 text-lg sm:text-xl"></i>
+                                <span class="text-base sm:text-lg">〒060-0041<br>北海道札幌市中央区大通東2丁目14−1</span>
+                            </p>
+                            <p class="flex items-center gap-3">
+                                <i class="fas fa-subway text-gold text-lg sm:text-xl"></i>
+                                <span class="text-base sm:text-lg font-bold">「バスセンター前駅」5番出口 徒歩1分</span>
+                            </p>
+                            <p class="flex items-center gap-3">
+                                <i class="fas fa-phone text-gold text-lg sm:text-xl"></i>
+                                <a href="tel:0112817772" class="text-base sm:text-lg hover:text-primary transition-colors">011-281-7772</a>
+                            </p>
+                            <p class="flex items-center gap-3">
+                                <i class="far fa-calendar-times text-gold text-lg sm:text-xl"></i>
+                                <span class="text-base sm:text-lg">定休日：日曜日</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 border-l-8 border-gold">
+                        <h5 class="font-bold mb-3 flex items-center gap-2 text-base sm:text-lg">
+                            <i class="fas fa-info-circle text-gold"></i> ご来店のお客様へ
+                        </h5>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            当店は予約不可の行列店です。お並びの際は人数が揃ってからのご案内となります。品切れ次第終了となりますので、お早めのご来店をお勧めいたします。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Google Maps 埋め込み -->
+                <div class="w-full h-[280px] sm:h-full sm:min-h-[400px] rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-inner border border-gray-200">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.0143145478187!2d141.3575346750724!3d43.06216649045795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b297786ea1875%3A0x50f2550210f034c9!2z5rSL6aOfIOODnuODvOOCt-ODpeS6rQ!5e0!3m2!1sja!2sjp!4v1771979936637!5m2!1sja!2sjp"
+                        width="100%"
+                        height="100%"
+                        style="border:0; min-height: 280px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-10 sm:py-12 text-center rounded-t-[2rem] sm:rounded-t-[3rem] px-4">
+        <div class="text-gold font-serif text-xl sm:text-2xl mb-3 sm:mb-4 tracking-widest">洋食 マーシュ亭</div>
+        <p class="text-gray-500 text-xs tracking-widest">Copyright &copy; 2014-2026 洋食 マーシュ亭 All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -167,7 +167,7 @@
                         シェフが命を吹き込む。
                     </h2>
                     <p class="text-gray-600 leading-loose mb-8 md:mb-10 font-light text-sm md:text-base">
-                        「イカスミパスタ」の濃厚な旨味、「新村牧場」の乳肉が持つ脂の甘み、そして2年という歳月が醸成した「熟成じゃがいも」の煌き。地元の生産者と深く繋がり、旬を逃さない。それがカーディナルの約束です。
+                        「イカスミパスタ」の濃厚な旨味、「新村牧場」の牛肉が持つ脂の甘み、そして2年という歳月が醸成した「熟成じゃがいも」の煌めき。地元の生産者と深く繋がり、旬を逃さない。それがカーディナルの約束です。
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 text-sm serif">
                         <div>
@@ -190,7 +190,7 @@
             <div class="w-full lg:w-2/3" data-aos="fade-up">
                 <span class="gold-text serif tracking-[0.3em] text-sm block mb-4">PROFILE</span>
                 <h2 class="serif text-2xl sm:text-3xl mb-6 md:mb-8 tracking-widest leading-relaxed">
-                    シェフ・シニアソムリエ<br>加藤 誠
+                    シェフ・シニアソムリエ<br>加藤 喜啓
                 </h2>
                 <div class="space-y-5 md:space-y-6 font-light leading-loose text-gray-300 text-sm md:text-base">
                     <p>2000年、家業を継承。2009年、自らの料理を深めるため単身パリへ。</p>
@@ -329,11 +329,11 @@
         </div>
     </section>
 
-    <!-- 9. 特典 & 最終誘導 -->
+<!-- 9. 特典 & 最終誘導 -->
     <section class="py-20 md:py-32 bg-gray-50 border-y border-gray-100">
         <div class="container mx-auto px-6 max-w-3xl text-center">
             <div class="bg-white p-8 sm:p-12 md:p-20 shadow-2xl relative" data-aos="zoom-in">
-                <div class="absolute inset-4 border border-gold opacity-20"></div>
+                <div class="absolute inset-4 border border-gold opacity-20 pointer-events-none"></div>
                 <p class="serif gold-text tracking-[0.4em] md:tracking-[0.5em] mb-4">GIFT</p>
                 <h2 class="serif text-xl sm:text-2xl md:text-3xl mb-6 md:mb-8 tracking-widest leading-relaxed">Web予約限定の贈り物</h2>
                 <div class="w-12 h-[1px] bg-gold mx-auto mb-6 md:mb-8"></div>
@@ -342,7 +342,8 @@
                     シニアソムリエ加藤がその日の料理に合わせて選ぶ<br>
                     <span class="text-cardinal font-bold">「ウェルカムドリンク」</span>を一杯サービスいたします。
                 </p>
-                <a href="https://www.instagram.com/cardinal_tokachi/" target="_blank" rel="noopener" class="inline-block bg-cardinal text-white py-4 md:py-5 px-10 sm:px-16 tracking-[0.3em] hover:bg-black active:bg-black transition-all duration-500 text-sm sm:text-base">
+                <!-- relative と z-10 を追加してクリックを確実にします -->
+                <a href="https://www.instagram.com/cardinal_tokachi/" target="_blank" rel="noopener noreferrer" class="relative z-10 inline-block bg-cardinal text-white py-4 md:py-5 px-10 sm:px-16 tracking-[0.3em] hover:bg-black active:bg-black transition-all duration-500 text-sm sm:text-base">
                     予約して特典を受け取る
                 </a>
                 <p class="mt-6 text-[10px] opacity-40">※「LPを見た」とお伝えいただくか、備考欄にご記入ください。</p>
@@ -350,37 +351,36 @@
         </div>
     </section>
 
-    <!-- 10. Footer -->
-    <footer class="bg-white py-16 md:py-20 border-t border-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-10 md:mb-12">
-                <h2 class="serif text-2xl md:text-3xl tracking-[0.4em] md:tracking-[0.5em] text-cardinal mb-4">CARDINAL</h2>
-                <p class="serif text-xs tracking-widest text-gray-400">Hidden French Restaurant in Tokachi</p>
-            </div>
-
-            <div class="grid sm:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto text-left text-sm font-light text-gray-600 mb-14 md:mb-20">
-                <div>
-                    <p class="gold-text mb-4 serif">ADDRESS</p>
-                    <p>〒080-0011<br>北海道帯広市西1条南10丁目6</p>
-                </div>
-                <div>
-                    <p class="gold-text mb-4 serif">CONTACT</p>
-                    <p>電話：015-524-9921</p>
-                    <p class="mt-2">定休日：日曜日</p>
-                </div>
-                <div>
-                    <p class="gold-text mb-4 serif">SOCIAL</p>
-                    <a href="https://www.instagram.com/cardinal_tokachi/" target="_blank" rel="noopener" class="flex items-center gap-2 hover:gold-text transition-all group">
-                        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        <span class="border-b border-transparent group-hover:border-gold">Instagram</span>
-                    </a>
-                </div>
-            </div>
-
-            <p class="text-[10px] tracking-widest text-gray-300">© 2024 CARDINAL. DESIGNED FOR GASTRONOMY.</p>
+<!-- 10. Footer -->
+<footer class="bg-white py-16 md:py-20 border-t border-gray-100">
+    <div class="container mx-auto px-6 text-center">
+        <div class="mb-10 md:mb-12">
+            <h2 class="serif text-2xl md:text-3xl tracking-[0.4em] md:tracking-[0.5em] text-cardinal mb-4">CARDINAL</h2>
+            <p class="serif text-xs tracking-widest text-gray-400">Hidden French Restaurant in Tokachi</p>
         </div>
-    </footer>
 
+        <div class="grid sm:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto text-left text-sm font-light text-gray-600 mb-14 md:mb-20">
+            <div>
+                <p class="gold-text mb-4 serif">ADDRESS</p>
+                <p>〒080-0011<br>北海道帯広市西1条南10丁目6</p>
+            </div>
+            <div>
+                <p class="gold-text mb-4 serif">CONTACT</p>
+                <p>電話：015-524-9921</p>
+                <p class="mt-2">定休日：日曜日</p>
+            </div>
+            <div>
+                <p class="gold-text mb-4 serif">SOCIAL</p>
+                <a href="https://www.instagram.com/cardinal_tokachi/" target="_blank" rel="noopener" class="flex items-center gap-2 hover:gold-text transition-all group">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span class="border-b border-transparent group-hover:border-gold">Instagram</span>
+                </a>
+            </div>
+        </div>
+
+        <p class="text-[10px] tracking-widest text-gray-300">© 2024 CARDINAL. DESIGNED FOR GASTRONOMY.</p>
+    </div>
+</footer>
     <script>
         // AOS初期化
         AOS.init({
