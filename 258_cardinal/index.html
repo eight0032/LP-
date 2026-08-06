@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>カーディナル | 帯広の隠れ家フレンチレストラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --cardinal: #4a0a0e;
+            --gold: #b08d4a;
+            --gold-light: #d4bc8d;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fcfaf7;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .bg-cardinal { background-color: var(--cardinal); }
+        .text-cardinal { color: var(--cardinal); }
+        .gold-text { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+
+        /* 縦書き設定 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .hero-zoom {
+            animation: zoom-out 20s infinite alternate;
+        }
+        @keyframes zoom-out {
+            from { transform: scale(1.15); }
+            to { transform: scale(1); }
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin: 20px auto 0;
+        }
+        .section-title.text-left::after {
+            margin: 20px 0 0;
+        }
+
+        /* 地図のラッパー */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* モーション配慮 */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom { animation: none; }
+            *[data-aos] { transition: none !important; animation: none !important; }
+        }
+
+        /* タップ領域を確保 */
+        a, button { -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <section class="relative h-screen min-h-[560px] overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="images/main.png"
+                 class="w-full h-full object-cover hero-zoom opacity-70" alt="Main Visual">
+            <div class="absolute inset-0 bg-black/40 md:bg-black/30"></div>
+        </div>
+
+        <div class="relative z-10 text-white text-center px-6" data-aos="fade-up" data-aos-duration="1500">
+            <p class="serif text-base md:text-xl tracking-[0.4em] md:tracking-[0.5em] mb-6 md:mb-8 font-extralight">OBIHIRO TOKACHI</p>
+            <div class="inline-block border-y border-white/30 py-5 px-4 md:py-6 mb-8 md:mb-12">
+                <h1 class="serif text-2xl sm:text-3xl md:text-5xl font-medium leading-relaxed tracking-widest">
+                    十勝の息吹を、<br>
+                    一皿の詩に。
+                </h1>
+            </div>
+            <p class="serif text-xs sm:text-sm md:text-base tracking-[0.15em] md:tracking-[0.2em] leading-loose opacity-90">
+                フランスの薫陶を受けたシェフと、<br>
+                シニアソムリエが紡ぐ、美食の聖域。
+            </p>
+        </div>
+
+        <!-- スクロールダウン表示 -->
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest vertical-text h-16 md:h-20">
+            SCROLL <span class="inline-block w-[1px] h-8 md:h-10 bg-white/30 mt-2"></span>
+        </div>
+    </section>
+
+    <!-- 2. リードコピー -->
+    <section class="py-20 md:py-32 px-6 bg-white/50">
+        <div class="max-w-xl mx-auto text-center" data-aos="fade-up">
+            <h2 class="serif text-xl sm:text-2xl md:text-3xl leading-loose mb-10 md:mb-12 tracking-widest text-cardinal">
+                「誰にも教えたくない」と、<br>
+                そう願われる場所でありたい。
+            </h2>
+            <div class="text-gray-600 leading-loose tracking-wide text-sm md:text-base font-light">
+                <p class="mb-6">帯広の喧噪を離れた、隠れ家レストラン「カーディナル」。</p>
+                <p class="mb-6">代々受け継いだ伝統に、フランス修業で培った感性を重ね、<br>
+                2000年の開店以来、十勝の食材と向き合ってきました。</p>
+                <p>特別な日の、特別なひとときを。<br>
+                ワインの芳醇な香りと共に、五感で味わうフレンチをどうぞ。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CTA -->
+    <section id="cta" class="py-16 md:py-20 bg-cardinal text-white text-center px-6">
+        <div class="container mx-auto" data-aos="zoom-in">
+            <p class="serif text-xs md:text-sm tracking-[0.3em] mb-4 opacity-70">RESERVATION</p>
+            <h3 class="serif text-xl sm:text-2xl md:text-3xl mb-8 md:mb-10 tracking-widest leading-relaxed">美食の体験を、今すぐご予約ください。</h3>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+                <a href="tel:0155249921" class="border border-white/30 hover:bg-white hover:text-cardinal active:bg-white active:text-cardinal py-4 md:py-5 px-8 md:px-10 transition-all duration-500 text-base md:text-lg tracking-widest flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                    015-524-9921
+                </a>
+                <a href="https://www.instagram.com/cardinal_tokachi/" target="_blank" rel="noopener" class="gold-gradient text-white py-4 md:py-5 px-8 md:px-10 shadow-xl hover:opacity-90 active:opacity-90 transition-all text-base md:text-lg tracking-widest">
+                    Webで空席を確認する
+                </a>
+            </div>
+            <p class="mt-6 md:mt-8 text-xs opacity-50">※2階コース席は完全予約制となります</p>
+        </div>
+    </section>
+
+    <!-- 4. 料理セクション -->
+    <section class="py-20 md:py-32 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full lg:w-1/2 relative max-w-md lg:max-w-none mx-auto" data-aos="fade-right">
+                    <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-full h-full border border-gold opacity-30 z-0"></div>
+                    <img src="images/pasta.png"
+                         alt="Main Dish" class="relative z-10 w-full shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000">
+                </div>
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
+                    <span class="gold-text serif tracking-[0.3em] text-sm block mb-4">CUISINE</span>
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-6 md:mb-8 leading-relaxed tracking-widest section-title text-left">
+                        十勝の土が育み、<br>
+                        シェフが命を吹き込む。
+                    </h2>
+                    <p class="text-gray-600 leading-loose mb-8 md:mb-10 font-light text-sm md:text-base">
+                        「イカスミパスタ」の濃厚な旨味、「新村牧場」の乳肉が持つ脂の甘み、そして2年という歳月が醸成した「熟成じゃがいも」の煌き。地元の生産者と深く繋がり、旬を逃さない。それがカーディナルの約束です。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 text-sm serif">
+                        <div>
+                            <p class="gold-text mb-2">● 厳選食材</p>
+                            <p class="text-gray-500">ハンガリー産マンガリッツァポーク、地元十勝産野菜、旬の魚介</p>
+                        </div>
+                        <div>
+                            <p class="gold-text mb-2">● 多様性</p>
+                            <p class="text-gray-500">フランス料理を基軸に、アジア・メキシコ風の驚きを添えて</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 5. シェフ & ソムリエ -->
+    <section class="py-20 md:py-32 bg-gray-900 text-white relative">
+        <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+            <div class="w-full lg:w-2/3" data-aos="fade-up">
+                <span class="gold-text serif tracking-[0.3em] text-sm block mb-4">PROFILE</span>
+                <h2 class="serif text-2xl sm:text-3xl mb-6 md:mb-8 tracking-widest leading-relaxed">
+                    シェフ・シニアソムリエ<br>加藤 誠
+                </h2>
+                <div class="space-y-5 md:space-y-6 font-light leading-loose text-gray-300 text-sm md:text-base">
+                    <p>2000年、家業を継承。2009年、自らの料理を深めるため単身パリへ。</p>
+                    <p>そこで出会ったのは、素材を愛し、ワインと共に人生を慈しむフランスの精神でした。</p>
+                    <p>帰国後、2010年にシニアソムリエ資格を取得。料理とワインが共鳴し、お互いを高め合う「究極のペアリング」を帯広の地で追求し続けています。</p>
+                </div>
+                <div class="mt-10 md:mt-12 flex gap-8 md:gap-10">
+                    <div class="text-center">
+                        <span class="block text-xl md:text-2xl serif gold-text">20+</span>
+                        <span class="text-xs opacity-50">Years Exp.</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-xl md:text-2xl serif gold-text">Senior</span>
+                        <span class="text-xs opacity-50">Sommelier</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/3 flex justify-center lg:justify-end relative" data-aos="fade-left">
+                <!-- 縦書きコピー -->
+                <div class="absolute -left-4 top-0 vertical-text serif gold-text text-lg xl:text-xl tracking-[0.5em] hidden xl:block">
+                    ワインと料理の、幸福な結婚。
+                </div>
+                <div class="w-48 h-72 sm:w-64 sm:h-96 border border-gold/30 p-2 overflow-hidden">
+                    <img src="images/chef.png" alt="シェフ・シニアソムリエ 加藤 誠" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                <span class="gold-text serif tracking-[0.3em] text-sm block mb-4">REVIEWS</span>
+                <h2 class="serif text-2xl md:text-3xl tracking-widest">お客様からの声</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+                <div class="bg-gray-50 p-8 md:p-10 border-t-2 border-gold" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-gold gold-text mb-4">★★★★★</p>
+                    <p class="leading-loose text-gray-700 font-light italic mb-6 text-sm md:text-base">「十勝の食材にこだわり素材の魅力を引き出すシェフの力量に脱帽。また行きたくなるお店です。」</p>
+                    <p class="text-xs tracking-widest opacity-50">— 2022.9 老舗フレンチレストランコースにて</p>
+                </div>
+                <div class="bg-gray-50 p-8 md:p-10 border-t-2 border-gold" data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-gold gold-text mb-4">★★★★★</p>
+                    <p class="leading-loose text-gray-700 font-light italic mb-6 text-sm md:text-base">「前菜からメインまで、とても美味しいの連続。今まで食べたことのないじゃがいもの味わいに感動しました。」</p>
+                    <p class="text-xs tracking-widest opacity-50">— 地元食材を愛すお客様より</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Coming Soon -->
+    <section class="py-20 md:py-32 bg-stone-900 text-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="text-center mb-14 md:mb-20" data-aos="fade-up">
+                <span class="gold-text serif tracking-[0.3em] text-sm block mb-3">FUTURE EXPERIENCE</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl tracking-widest mb-4">COMING SOON</h2>
+                <p class="text-xs md:text-sm text-gray-400 font-light tracking-widest max-w-xl mx-auto leading-relaxed">
+                    一皿の向こう側にある「物語」まで味わっていただくために。<br>
+                    カーディナルが現在準備を進めている、新しい食の体験サービスです。
+                </p>
+                <div class="w-12 h-[1px] bg-gold mx-auto mt-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-gray-800/80 border border-gold/20 p-6 md:p-8 rounded-sm hover:border-gold/60 transition-all duration-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs border border-gold/40 gold-text px-3 py-1 font-mono tracking-wider">01</span>
+                            <span class="text-[10px] tracking-widest text-gray-400 bg-white/5 px-3 py-1 rounded">準備中</span>
+                        </div>
+                        <div class="w-12 h-12 mb-6 gold-text flex items-center justify-center bg-gold/10 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+                        </div>
+                        <h3 class="serif text-lg md:text-xl mb-4 tracking-wider gold-text leading-snug">QRコード付き<br>メモリアル・メニューカード</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            テーブルにお届けするカードのQRコードから、本日召し上がったコース詳細やペアリングワインのストーリーをスマホで閲覧・保存。特別な日の思い出をいつまでも鮮明に残せます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-800/80 border border-gold/20 p-6 md:p-8 rounded-sm hover:border-gold/60 transition-all duration-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs border border-gold/40 gold-text px-3 py-1 font-mono tracking-wider">02</span>
+                            <span class="text-[10px] tracking-widest text-gray-400 bg-white/5 px-3 py-1 rounded">準備中</span>
+                        </div>
+                        <div class="w-12 h-12 mb-6 gold-text flex items-center justify-center bg-gold/10 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="serif text-lg md:text-xl mb-4 tracking-wider gold-text leading-snug">十勝の生産者<br>動画メッセージ・ストーリー</h3>
+                        <p class="text-xs text-gray-300 font-light leading-relaxed">
+                            新村牧場をはじめとする地元の農家さんや醸造家の情熱、こだわりを語る短いメッセージ動画を配信。食材が命を得た背景に触れながら、五感で味わう一皿をお届けします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. アクセスマップ -->
+    <section class="py-20 md:py-32 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+                <div class="w-full lg:w-1/2" data-aos="fade-up">
+                    <span class="gold-text serif tracking-[0.3em] text-sm block mb-4">ACCESS</span>
+                    <h2 class="serif text-2xl md:text-3xl mb-6 md:mb-8 tracking-widest">道しるべ</h2>
+                    <div class="space-y-5 md:space-y-6 text-gray-600 font-light text-sm md:text-base">
+                        <div>
+                            <p class="font-bold text-gray-900 mb-1">所在地</p>
+                            <p>〒080-0011 北海道帯広市西1条南10丁目6</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900 mb-1">最寄り駅</p>
+                            <p>JR帯広駅より徒歩7〜9分</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900 mb-1">営業時間</p>
+                            <p>1階：アラカルト / 2階：コース（完全予約制）</p>
+                            <p class="text-sm">※定休日：日曜日</p>
+                        </div>
+                        <a href="https://www.google.com/maps/dir//%E3%82%AB%E3%83%BC%E3%83%87%E3%82%A3%E3%83%8A%E3%83%AB/@42.921183,143.2017688,17z" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-cardinal hover:text-gold-text transition-colors font-medium underline underline-offset-4">
+                            Googleマップでルートを検索
+                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
+                    <div class="map-container shadow-2xl rounded-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.70875507703!2d143.20176877506339!3d42.92118299946879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f73993f4586d717%3A0x9cef52e6dde3f2f!2z44Kr44O844OH44Kj44OK44Or!5e0!3m2!1sja!2sjp!4v1771980668189!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. 特典 & 最終誘導 -->
+    <section class="py-20 md:py-32 bg-gray-50 border-y border-gray-100">
+        <div class="container mx-auto px-6 max-w-3xl text-center">
+            <div class="bg-white p-8 sm:p-12 md:p-20 shadow-2xl relative" data-aos="zoom-in">
+                <div class="absolute inset-4 border border-gold opacity-20"></div>
+                <p class="serif gold-text tracking-[0.4em] md:tracking-[0.5em] mb-4">GIFT</p>
+                <h2 class="serif text-xl sm:text-2xl md:text-3xl mb-6 md:mb-8 tracking-widest leading-relaxed">Web予約限定の贈り物</h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto mb-6 md:mb-8"></div>
+                <p class="text-gray-600 leading-loose mb-8 md:mb-10 font-light text-sm md:text-base">
+                    公式サイトをご覧いただきご予約のお客様に、<br>
+                    シニアソムリエ加藤がその日の料理に合わせて選ぶ<br>
+                    <span class="text-cardinal font-bold">「ウェルカムドリンク」</span>を一杯サービスいたします。
+                </p>
+                <a href="https://www.instagram.com/cardinal_tokachi/" target="_blank" rel="noopener" class="inline-block bg-cardinal text-white py-4 md:py-5 px-10 sm:px-16 tracking-[0.3em] hover:bg-black active:bg-black transition-all duration-500 text-sm sm:text-base">
+                    予約して特典を受け取る
+                </a>
+                <p class="mt-6 text-[10px] opacity-40">※「LPを見た」とお伝えいただくか、備考欄にご記入ください。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Footer -->
+    <footer class="bg-white py-16 md:py-20 border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-10 md:mb-12">
+                <h2 class="serif text-2xl md:text-3xl tracking-[0.4em] md:tracking-[0.5em] text-cardinal mb-4">CARDINAL</h2>
+                <p class="serif text-xs tracking-widest text-gray-400">Hidden French Restaurant in Tokachi</p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto text-left text-sm font-light text-gray-600 mb-14 md:mb-20">
+                <div>
+                    <p class="gold-text mb-4 serif">ADDRESS</p>
+                    <p>〒080-0011<br>北海道帯広市西1条南10丁目6</p>
+                </div>
+                <div>
+                    <p class="gold-text mb-4 serif">CONTACT</p>
+                    <p>電話：015-524-9921</p>
+                    <p class="mt-2">定休日：日曜日</p>
+                </div>
+                <div>
+                    <p class="gold-text mb-4 serif">SOCIAL</p>
+                    <a href="https://www.instagram.com/cardinal_tokachi/" target="_blank" rel="noopener" class="flex items-center gap-2 hover:gold-text transition-all group">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <span class="border-b border-transparent group-hover:border-gold">Instagram</span>
+                    </a>
+                </div>
+            </div>
+
+            <p class="text-[10px] tracking-widest text-gray-300">© 2024 CARDINAL. DESIGNED FOR GASTRONOMY.</p>
+        </div>
+    </footer>
+
+    <script>
+        // AOS初期化
+        AOS.init({
+            duration: 1200,
+            once: true,
+            disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
