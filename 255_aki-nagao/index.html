@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>アキ ナガオ / aki nagao | 究極のフィナンシェ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@200;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --accent: #b89352;
+            --accent-light: #e2d1b3;
+            --bg-base: #fdfcf9;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: var(--primary);
+            background-color: var(--bg-base);
+            overflow-x: hidden;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+
+        /* アニメーション用 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* プレミアムな背景装飾 */
+       background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+
+        .header-glass {
+            background: rgba(253, 252, 249, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(184, 147, 82, 0.2);
+        }
+
+        .fv-title {
+            letter-spacing: 0.1em;
+            line-height: 1.4;
+            text-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        @media (min-width: 768px) {
+            .fv-title { letter-spacing: 0.15em; }
+        }
+
+        /* 装飾的なライン */
+        .decorative-line {
+            width: 1px;
+            height: 70px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+        @media (min-width: 768px) {
+            .decorative-line { height: 100px; }
+        }
+
+        /* 商品紹介枠 */
+        .product-frame {
+            border: 1px solid var(--accent-light);
+            padding: 1.25rem;
+            position: relative;
+        }
+        @media (min-width: 768px) {
+            .product-frame { padding: 2rem; }
+        }
+        .product-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid var(--accent-light);
+            pointer-events: none;
+        }
+        @media (min-width: 768px) {
+            .product-frame::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+        }
+
+        /* Google Map Container */
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 100%; /* スマホは正方形寄りで見やすく */
+            position: relative;
+            height: 0;
+            filter: grayscale(1) contrast(1.2) invert(0.05);
+            transition: filter 0.5s ease;
+        }
+        @media (min-width: 768px) {
+            .map-responsive { padding-bottom: 75%; } /* 4:3 */
+        }
+        .map-responsive:hover, .map-responsive:focus-within {
+            filter: grayscale(0);
+        }
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        /* スペックの行（原材料・賞味期限など） */
+        .spec-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        @media (min-width: 640px) {
+            .spec-row {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 1rem;
+            }
+        }
+
+        /* ハンバーガーメニュー */
+        .hamburger-line {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--primary);
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+        .hamburger.is-open .line-1 { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.is-open .line-2 { opacity: 0; }
+        .hamburger.is-open .line-3 { transform: translateY(-6.5px) rotate(-45deg); }
+
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        #mobile-menu.is-open { max-height: 480px; }
+
+        a, button { min-height: 44px; }
+        .tap-target { display: inline-flex; align-items: center; justify-content: center; }
+
+        /* フォーカス可視化 */
+        a:focus-visible, button:focus-visible, summary:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- Navigation -->
+    <header class="header-glass fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex flex-col cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <span class="font-cinzel text-[10px] md:text-xs tracking-[0.35em] md:tracking-[0.4em] text-accent" style="color:var(--accent)">SAPPORO FRENCH</span>
+                <h1 class="font-cinzel text-lg md:text-2xl tracking-widest uppercase">aki nagao</h1>
+            </div>
+
+            <nav class="hidden lg:flex items-center space-x-10 text-xs tracking-widest font-medium uppercase">
+                <a href="#" class="hover:text-accent transition-colors">Top</a>
+                <a href="#strength-section" class="hover:text-accent transition-colors">strengths</a>
+                <a href="#coming-soon" class="hover:text-accent transition-colors">coming soon</a>
+                <a href="#profile-section" class="hover:text-accent transition-colors">history</a>
+                <a href="#problem-section" class="hover:text-accent transition-colors">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-accent transition-colors">access</a>
+                <a href="mailto:INFO@AKI-NAGAO.COM" class="text-white px-8 py-3 hover:bg-primary transition-all duration-300" style="background-color:var(--accent)">問い合わせ</a>
+            </nav>
+
+            <button id="menu-btn" class="hamburger lg:hidden tap-target w-11 h-11 -mr-2 flex flex-col items-center justify-center gap-[6px]" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger-line line-1"></span>
+                <span class="hamburger-line line-2"></span>
+                <span class="hamburger-line line-3"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="lg:hidden border-t border-accent-light/30" style="border-color:rgba(226,209,179,0.4)">
+            <div class="flex flex-col px-5 py-4 text-sm tracking-widest uppercase divide-y divide-black/5">
+                <a href="#" class="py-3 hover:text-accent transition-colors">Top</a>
+                <a href="#strength-section" class="py-3 hover:text-accent transition-colors">strengths</a>
+                <a href="#coming-soon" class="py-3 hover:text-accent transition-colors">coming soon</a>
+                <a href="#profile-section" class="py-3 hover:text-accent transition-colors">history</a>
+                <a href="#problem-section" class="py-3 hover:text-accent transition-colors">Q&amp;A</a>
+                <a href="#access-section" class="py-3 hover:text-accent transition-colors">access</a>
+                <a href="mailto:INFO@AKI-NAGAO.COM" class="mt-3 mb-2 text-center text-white px-8 py-3.5 tap-target" style="background-color:var(--accent)">問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- First View -->
+    <section class="relative h-[100svh] flex items-center overflow-hidden pt-16 lg:pt-0">
+        <div class="absolute inset-0">
+            <img src="images/main.png" alt="Premium Gastronomy" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 md:from-black/70 via-black/30 md:via-black/20 to-black/10 md:to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-white max-w-xl">
+                <p class="font-cinzel tracking-[0.35em] md:tracking-[0.5em] text-xs md:text-sm mb-4 md:mb-6 opacity-80 reveal" style="color:var(--accent-light)">MOMENT OF BLISS</p>
+                <h2 class="fv-title text-3xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8 leading-tight reveal">
+                    アキ ナガオ<br><span class="text-xl sm:text-2xl md:text-4xl font-normal opacity-80">フィナンシェ</span>
+                </h2>
+                <div class="w-16 md:w-20 h-1 mb-6 md:mb-8 reveal" style="background-color:var(--accent)"></div>
+                <p class="text-base sm:text-lg md:text-xl font-light leading-relaxed mb-8 md:mb-10 reveal">
+                    一皿のコースを締めくくる、記憶に刻まれる究極の余韻。
+                </p>
+                <a href="mailto:INFO@AKI-NAGAO.COM" class="tap-target border border-white/40 px-8 md:px-12 py-4 md:py-5 text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500 reveal">
+                    RESERVE / ORDER
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <span class="text-white text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] mb-3 md:mb-4">SCROLL</span>
+            <div class="decorative-line"></div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="py-20 md:py-32 px-5 md:px-8">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <span class="font-cinzel tracking-[0.3em] md:tracking-[0.4em] text-xs md:text-sm mb-4 block underline underline-offset-8" style="color:var(--accent)">PHILOSOPHY</span>
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 leading-snug">ここでしか体験できない、<br>食と時間を。</h3>
+            <p class="text-gray-600 leading-[1.9] md:leading-[2.2] text-base md:text-lg font-light">
+                北海道、札幌。豊かな海と山に囲まれたこの地で、<br class="hidden md:block">
+                私たちはフランス料理の伝統を重んじながらも、<br class="hidden md:block">
+                自由で独創的な「再解釈」に挑み続けています。<br>
+                素材の声を聞き、そのポテンシャルを最大限に引き出す。<br>
+                フィナンシェ一つにも、その哲学が宿っています。
+            </p>
+        </div>
+    </section>
+
+    <!-- Strengths -->
+    <section id="strength-section" class="py-16 md:py-24 bg-[#111] text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="flex justify-between items-end mb-12 md:mb-20 reveal">
+                <div>
+                    <span class="font-cinzel text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em]" style="color:var(--accent)">STRENGTHS</span>
+                    <h4 class="text-2xl md:text-4xl font-bold mt-2">アキ ナガオの真髄</h4>
+                </div>
+                <div class="hidden md:block text-accent-light/40 text-6xl font-cinzel italic">01-03</div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-0 border border-white/10">
+                <div class="p-6 md:p-12 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/5 transition-colors group reveal">
+                    <span class="font-cinzel text-xl md:text-2xl mb-6 md:mb-8 block" style="color:var(--accent)">01.</span>
+                    <h5 class="text-lg md:text-xl font-bold mb-4 md:mb-6 group-hover:text-accent transition-colors">北海道の再解釈</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">海洋深層水を調理に活用し、四季を一皿で感じさせるコース構成。地物の食材をフランス料理の技法で全く新しい体験へ。</p>
+                </div>
+                <div class="p-6 md:p-12 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/5 transition-colors group reveal">
+                    <span class="font-cinzel text-xl md:text-2xl mb-6 md:mb-8 block" style="color:var(--accent)">02.</span>
+                    <h5 class="text-lg md:text-xl font-bold mb-4 md:mb-6 group-hover:text-accent transition-colors">究極のペアリング</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">ワイン・日本酒・ウイスキー。室任ソムリエが、ゲスト一人ひとりの嗜好に合わせた「解」を提案します。</p>
+                </div>
+                <div class="p-6 md:p-12 hover:bg-white/5 transition-colors group reveal">
+                    <span class="font-cinzel text-xl md:text-2xl mb-6 md:mb-8 block" style="color:var(--accent)">03.</span>
+                    <h5 class="text-lg md:text-xl font-bold mb-4 md:mb-6 group-hover:text-accent transition-colors">進化するチーム</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">キッチンとサービスが対等に意見を出し合い、日々テイスティングと検証を重ねる。最高の一瞬を追求するプロ集団。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="py-20 md:py-32 px-5 md:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 md:gap-20">
+            <div class="lg:w-1/2 w-full reveal">
+                <div class="product-frame">
+                    <img src="images/finansye.jpg" alt="The Financier" class="w-full grayscale hover:grayscale-0 transition-all duration-1000">
+                </div>
+            </div>
+            <div class="lg:w-1/2 reveal">
+                <span class="font-cinzel text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] mb-4 block" style="color:var(--accent)">SIGNATURE ITEM</span>
+                <h4 class="text-3xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 leading-tight">アキ ナガオ<br>究極のフィナンシェ</h4>
+                <p class="text-gray-600 leading-[1.9] md:leading-[2] mb-8 md:mb-12 font-light">
+                    バターが焦げる直前の芳醇な香り、厳選したアーモンドパウダーの質感。<br>
+                    焼き上がりの一瞬を閉じ込めたような、外側はサクッと、内側はしっとりと。<br>
+                    レストランのフルコースの終盤に提供される感動を、そのまま形にしました。
+                </p>
+                <div class="space-y-4">
+                    <div class="spec-row border-b pb-2 text-sm" style="border-color:var(--accent-light)">
+                        <span>原材料</span>
+                        <span>北海道生発酵バター、アーモンド、有機小麦</span>
+                    </div>
+                    <div class="spec-row border-b pb-2 text-sm" style="border-color:var(--accent-light)">
+                        <span>賞味期限</span>
+                        <span>製造より14日間</span>
+                    </div>
+                </div>
+                <a href="mailto:INFO@AKI-NAGAO.COM" class="tap-target mt-10 md:mt-12 w-full sm:w-auto bg-primary text-white px-10 py-4 md:py-5 text-sm tracking-widest hover:bg-accent-hover transition-all duration-300 shadow-xl" style="background-color:var(--primary)">ORDER INFORMATION</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef History -->
+    <section id="profile-section" class="py-20 md:py-32 bg-[#f4f1ec]">
+        <div class="max-w-6xl mx-auto px-5 md:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div class="reveal">
+                    <span class="font-cinzel text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] mb-5 md:mb-6 block" style="color:var(--accent)">OWNER CHEF</span>
+                    <h4 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-10">長尾 彰浩 <span class="text-base md:text-lg font-normal ml-2 md:ml-4 opacity-60 block sm:inline mt-2 sm:mt-0">Akihiko Nagao</span></h4>
+                    <div class="space-y-5 md:space-y-6 text-gray-700 leading-loose text-sm font-light">
+                        <p>1976年札幌生まれ。東京の名店で基礎を固めた後、フランスへ。パリ、南仏、モンペリエのミシュラン星付きレストランで3年間、研鑽を積む。</p>
+                        <p>「北海道の土地でフランス料理の基本を大切にしつつ、最高の時間を提供したい」という信念を掲げ、2010年、札幌に『アキ ナガオ』をオープン。</p>
+                        <p>2024年春には北斗市に自社ワイナリーを開設。料理とワインが共鳴する「真のペアリング」の未来を切り拓いている。</p>
+                    </div>
+                    <div class="mt-8 md:mt-10 flex gap-8">
+                        <div>
+                            <span class="block font-cinzel text-2xl font-bold" style="color:var(--accent)">1★</span>
+                            <span class="text-[10px] tracking-widest text-gray-500 uppercase">Michelin Guide</span>
+                        </div>
+                        <div>
+                            <span class="block font-cinzel text-2xl font-bold" style="color:var(--accent)">100</span>
+                            <span class="text-[10px] tracking-widest text-gray-500 uppercase">Tabelog Award</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative reveal mt-4 lg:mt-0">
+                    <img src="images/chef.png" alt="Chef's Craft" class="rounded-lg shadow-2xl w-full">
+                    <div class="absolute -bottom-6 -left-4 md:-bottom-10 md:-left-10 bg-white p-5 md:p-8 shadow-xl">
+                        <p class="font-cinzel text-[10px] md:text-xs tracking-widest mb-1 md:mb-2" style="color:var(--accent)">FOUNDED IN</p>
+                        <p class="text-xl md:text-3xl font-bold">2010</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 md:py-32 px-5 md:px-8 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <h3 class="text-center font-cinzel text-2xl md:text-3xl font-bold mb-14 md:mb-20 tracking-widest">GUEST VOICES</h3>
+            <div class="space-y-10 md:space-y-16">
+                <div class="border-l pl-6 md:pl-10 reveal" style="border-color:var(--accent-light)">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span style="color:var(--accent)">★★★★★</span>
+                        <span class="text-xs tracking-widest text-gray-400">MAY 2022</span>
+                    </div>
+                    <p class="text-base md:text-lg italic font-light leading-relaxed mb-4">「札幌へ行ったら絶対行きたいお店。いや、この『aki nagao』へ行くために札幌を訪問しても良い程。」</p>
+                </div>
+                <div class="border-l pl-6 md:pl-10 reveal" style="border-color:var(--accent-light)">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span style="color:var(--accent)">★★★★★</span>
+                        <span class="text-xs tracking-widest text-gray-400">JAN 2023</span>
+                    </div>
+                    <p class="text-base md:text-lg italic font-light leading-relaxed mb-4">「シェフ達がワイン好きということもあり、ワインも豊富。ソムリエさんも素晴らしく、最後には心温まるメッセージカードまで。」</p>
+                </div>
+                <div class="border-l pl-6 md:pl-10 reveal" style="border-color:var(--accent-light)">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span style="color:var(--accent)">★★★★</span>
+                        <span class="text-xs tracking-widest text-gray-400">OCT 2023</span>
+                    </div>
+                    <p class="text-base md:text-lg italic font-light leading-relaxed mb-4">「斬新なアイディアは素晴らしく、引き寄せられる。フォアグラをスパイスリゾットで頂くのはシェフのアイディアの勝利です。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-20 md:py-32 px-5 md:px-8 bg-[#fdfcf9] border-t border-b border-accent-light/30 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-14 md:mb-20 reveal">
+                <span class="font-cinzel text-xs tracking-[0.4em] md:tracking-[0.5em] block mb-3 uppercase" style="color:var(--accent)">Future Services</span>
+                <h3 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-black tracking-widest mb-6">COMING SOON</h3>
+                <div class="w-12 h-px mx-auto mb-6" style="background-color:var(--accent)"></div>
+                <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base">
+                    『aki nagao』の味と哲学を、店舗だけでなくより深く、身近に体感していただくために。<br class="hidden md:block">
+                    現在準備中の新しいおもてなし・体験型サービスをご紹介いたします。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white p-7 md:p-10 border border-accent-light/40 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between group reveal">
+                    <div>
+                        <div class="flex items-center justify-between mb-6 md:mb-8">
+                            <span class="font-cinzel text-2xl md:text-3xl font-light" style="color:var(--accent)">01</span>
+                            <span class="text-[10px] tracking-[0.2em] font-cinzel border px-3 py-1" style="color:var(--accent); border-color:rgba(184,147,82,0.3)">PREPARATION</span>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-bold mb-4 group-hover:text-accent transition-colors leading-snug">
+                            ペアリング・ストーリー<br>解説カードの同封
+                        </h4>
+                        <p class="text-gray-500 text-sm leading-relaxed font-light mb-8">
+                            フィナンシェやギフトボックスに、ソムリエ厳選のおすすめドリンク（ワイン・紅茶・日本酒など）とのペアリング提案や、北海道産素材の生産者ストーリーを記したカードをお届け。一口ごとの味わいがさらに深く広がります。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-gray-100 flex items-center text-xs tracking-widest font-medium" style="color:var(--accent)">
+                        <span>リリース予定：2026年秋</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-7 md:p-10 border border-accent-light/40 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between group reveal">
+                    <div>
+                        <div class="flex items-center justify-between mb-6 md:mb-8">
+                            <span class="font-cinzel text-2xl md:text-3xl font-light" style="color:var(--accent)">02</span>
+                            <span class="text-[10px] tracking-[0.2em] font-cinzel border px-3 py-1" style="color:var(--accent); border-color:rgba(184,147,82,0.3)">PREPARATION</span>
+                        </div>
+                        <h4 class="text-lg md:text-xl font-bold mb-4 group-hover:text-accent transition-colors leading-snug">
+                            ホーム・ガストロノミー<br>限定ペアリングキット
+                        </h4>
+                        <p class="text-gray-500 text-sm leading-relaxed font-light mb-8">
+                            ご自宅で温めるだけで『aki nagao』のコースの特選スープやソース、焼きたてフィナンシェの質感を楽しめるミールキット。ソムリエ推奨の特選ドリンクもセットで、至福のディナータイムを演出します。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-gray-100 flex items-center text-xs tracking-widest font-medium" style="color:var(--accent)">
+                        <span>リリース予定：2026年冬</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & Access -->
+    <section id="problem-section" class="py-20 md:py-32 px-5 md:px-8 bg-[#1a1a1a] text-white">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 md:gap-24">
+            <div class="reveal">
+                <h4 class="font-cinzel tracking-[0.3em] md:tracking-[0.4em] mb-8 md:mb-12" style="color:var(--accent)">Q&amp;A</h4>
+                <div class="space-y-6 md:space-y-8">
+                    <details class="group border-b border-white/10 pb-6">
+                        <summary class="list-none cursor-pointer flex justify-between items-center gap-4 text-base md:text-lg font-bold">
+                            フィナンシェの発送は可能ですか？
+                            <span class="group-open:rotate-45 transition-transform shrink-0" style="color:var(--accent)">+</span>
+                        </summary>
+                        <p class="mt-4 text-gray-400 text-sm font-light">はい。鮮度を保つため受注生産となります。詳細はお問い合わせください。</p>
+                    </details>
+                    <details class="group border-b border-white/10 pb-6">
+                        <summary class="list-none cursor-pointer flex justify-between items-center gap-4 text-base md:text-lg font-bold">
+                            ペアリングについて教えてください
+                            <span class="group-open:rotate-45 transition-transform shrink-0" style="color:var(--accent)">+</span>
+                        </summary>
+                        <p class="mt-4 text-gray-400 text-sm font-light">ワインを中心に、日本酒、ウイスキーなど、お料理一皿ごとに最適な一杯をご提案いたします。</p>
+                    </details>
+                </div>
+            </div>
+
+            <div id="access-section" class="reveal">
+                <h4 class="font-cinzel tracking-[0.3em] md:tracking-[0.4em] mb-6 md:mb-8" style="color:var(--accent)">INFORMATION / ACCESS</h4>
+                <div class="grid gap-8 md:gap-12">
+                    <div class="space-y-4 md:space-y-6 text-sm font-light leading-loose">
+                        <p class="flex flex-col sm:flex-row sm:gap-2"><span class="sm:inline-block sm:w-20 font-bold" style="color:var(--accent)">ADDRESS</span>〒060-0063 北海道札幌市中央区南3条西3丁目3 G DINING SAPPORO 1F</p>
+                        <p class="flex flex-col sm:flex-row sm:gap-2"><span class="sm:inline-block sm:w-20 font-bold" style="color:var(--accent)">TEL</span>011-206-1789</p>
+                        <p class="flex flex-col sm:flex-row sm:gap-2"><span class="sm:inline-block sm:w-20 font-bold" style="color:var(--accent)">EMAIL</span><span class="break-all">INFO@AKI-NAGAO.COM</span></p>
+                        <p class="flex flex-col sm:flex-row sm:gap-2"><span class="sm:inline-block sm:w-20 font-bold" style="color:var(--accent)">OPENING</span>定休日：不定休</p>
+                    </div>
+
+                    <!-- Google Map Embed -->
+                    <div class="map-responsive rounded-sm border border-white/10 shadow-2xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.2893847181776!2d141.35179207507198!3d43.05638089082814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298470ed4289%3A0x79ed4b374463b16f!2z44Ki44KtIOODiuOCrOOCqi9ha2kgbmFnYW8!5e0!3m2!1sja!2sjp!4v1771912552782!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="aki nagao 地図"></iframe>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                        <a href="http://www.aki-nagao.com/" target="_blank" rel="noopener noreferrer" class="tap-target border border-accent-light px-8 py-3 hover:bg-accent transition-all text-xs tracking-widest">OFFICIAL HP</a>
+                        <a href="https://www.instagram.com/akinagao_sapporo/" target="_blank" rel="noopener noreferrer" class="tap-target border border-accent-light px-8 py-3 hover:bg-accent transition-all text-xs tracking-widest">INSTAGRAM</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 md:py-20 bg-black text-center border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.3em] md:tracking-[0.5em] text-white mb-4">aki nagao</h2>
+            <p class="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] text-gray-500 uppercase">The Art of Hokkaido French Gastronomy</p>
+            <div class="mt-10 md:mt-12 w-12 h-px mx-auto" style="background-color:var(--accent)"></div>
+            <p class="mt-10 md:mt-12 text-[9px] text-gray-600 tracking-widest">&copy; 2024 AKI NAGAO. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スクロールリビール
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            var windowHeight = window.innerHeight;
+            for (var i = 0; i < reveals.length; i++) {
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("resize", reveal);
+        reveal();
+
+        // モバイルメニュー開閉
+        var menuBtn = document.getElementById("menu-btn");
+        var mobileMenu = document.getElementById("mobile-menu");
+
+        function closeMenu() {
+            menuBtn.classList.remove("is-open");
+            mobileMenu.classList.remove("is-open");
+            menuBtn.setAttribute("aria-expanded", "false");
+        }
+
+        menuBtn.addEventListener("click", function () {
+            var isOpen = mobileMenu.classList.toggle("is-open");
+            menuBtn.classList.toggle("is-open", isOpen);
+            menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", function () {
+            if (window.innerWidth >= 1024) closeMenu();
+        });
+    </script>
+</body>
+</html>
