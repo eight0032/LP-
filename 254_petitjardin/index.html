@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プティジャルダン | 帯広・十勝の地生地消レストラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f8f5f0;
+            --text-main: #2c2621;
+            --accent-gold: #b3935a;
+            --deep-brown: #1a1612;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .italic-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+        .text-accent-gold { color: var(--accent-gold); }
+        .bg-accent-gold { background-color: var(--accent-gold); }
+        .border-accent-gold { border-color: var(--accent-gold); }
+        .bg-deep-brown { background-color: var(--deep-brown); }
+
+        /* 縦書き設定：スマホでは横書きに切り替えて可読性を確保 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+            }
+        }
+
+        /* 背景テクスチャ */
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* セクション装飾 */
+        .section-title {
+            position: relative;
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.2em;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 48px;
+            background-color: var(--accent-gold);
+        }
+        @media (min-width: 768px) {
+            .section-title { margin-bottom: 3rem; }
+            .section-title::after { height: 60px; }
+        }
+        .section-title.text-left::after { left: 0; transform: none; }
+
+        /* フェードインアニメーション */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 1s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* 画像ホバー効果（タッチ端末では無効化） */
+        .img-zoom { overflow: hidden; }
+        .img-zoom img { transition: transform 1.5s ease; }
+        @media (hover: hover) {
+            .img-zoom:hover img { transform: scale(1.08); }
+        }
+
+        /* マップレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 66%;
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        /* フォーカス表示（アクセシビリティ） */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 3px;
+        }
+
+        /* タップ領域確保 */
+        a { -webkit-touch-callout: default; }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- ヒーローセクション -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden px-6 py-20">
+        <div class="absolute inset-0 z-0 scale-110">
+            <img src="images/main.png" alt="十勝牛ステーキ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/45"></div>
+        </div>
+
+        <div class="relative z-10 text-white flex flex-col md:flex-row items-center gap-8 md:gap-24 text-center md:text-left">
+            <div class="vertical-text text-lg sm:text-xl md:text-3xl tracking-[0.3em] md:tracking-[0.5em] leading-relaxed serif border-b md:border-b-0 md:border-r border-white/30 pb-6 md:pb-0 md:pr-8">
+                十勝の風土を、<br class="hidden md:block">一皿の芸術に。
+            </div>
+            <div class="text-center">
+                <p class="italic-serif text-2xl md:text-3xl mb-3 md:mb-4 text-accent-gold/90">Petit Jardin</p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl serif tracking-widest leading-loose">プティジャルダン</h1>
+                <div class="mt-8 md:mt-12 w-px h-16 md:h-24 bg-white/60 mx-auto"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white text-xs tracking-widest flex flex-col items-center gap-3">
+            <span>SCROLL</span>
+            <span class="block w-px h-10 md:h-12 bg-white/40"></span>
+        </div>
+    </header>
+
+    <!-- イントロダクション：情緒的な語り -->
+    <section class="py-16 md:py-24 px-6 max-w-4xl mx-auto text-center reveal">
+        <div class="serif text-base md:text-xl leading-[2.2] md:leading-[2.5] tracking-wide md:tracking-widest text-stone-700">
+            <p>帯広の静かな街角に佇む、</p>
+            <p>わずか六席のカウンター。</p>
+            <p>そこは、大地の息吹を感じる</p>
+            <p>「小さな箱庭」という名の特等席。</p>
+            <br>
+            <p>バターの弾ぜる音、季節の移ろいを映す彩りを、</p>
+            <p>シェフの手から生まれる魔法のようなひととき。</p>
+            <p>大切な人と、心満たされる余白をお愉しみください。</p>
+        </div>
+    </section>
+
+    <!-- メインビジュアル：看板メニュー -->
+    <section class="py-16 md:py-20 bg-stone-900 text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="reveal order-2 md:order-1">
+                <span class="text-accent-gold italic-serif text-lg md:text-xl mb-3 md:mb-4 block">Signature Dish</span>
+                <h2 class="text-2xl md:text-3xl serif mb-6 md:mb-8 tracking-wide md:tracking-widest leading-relaxed">十勝牛の極上<br>ビーフストロガノフ</h2>
+                <p class="text-stone-400 leading-loose mb-6 md:mb-8 text-sm md:text-base">
+                    十勝が誇る厳選された牛肉を、シェフが鉄板で丁寧に焼き目をつけ、旨味を閉じ込める。
+                    家庭の味とは一線を画す、幾重にも重なる深いコクと、口の中でほどけるような食感。
+                    プティジャルダンでしか出逢えない、記憶に残る一皿です。
+                </p>
+                <div class="border border-stone-700 p-5 md:p-6 inline-block w-full sm:w-auto">
+                    <p class="text-xs tracking-widest uppercase text-stone-500 mb-2">Wine Pairing</p>
+                    <p class="serif text-stone-200">シェフ厳選：熟成赤ワインとのマリアージュ</p>
+                </div>
+            </div>
+            <div class="img-zoom rounded-sm shadow-2xl reveal order-1 md:order-2">
+                <img src="images/beef.jpg" alt="ビーフストロガノフ" class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- ストーリー：シェフの哲学 -->
+    <section class="py-20 md:py-32 relative">
+        <div class="hidden lg:block absolute right-0 top-1/4 opacity-5 pointer-events-none">
+            <p class="vertical-text text-[15rem] serif">料理人</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-5 img-zoom shadow-xl reveal">
+                <img src="images/chef.png" alt="調理風景" class="w-full">
+            </div>
+            <div class="md:col-span-7 md:pl-12 reveal">
+                <h2 class="section-title text-left md:text-center serif text-xl md:text-2xl tracking-[0.2em] md:tracking-[0.3em]">作り手の想い</h2>
+                <h3 class="serif text-lg md:text-xl mb-5 md:mb-6">「すべてを見せる」という矜持</h3>
+                <p class="mb-5 md:mb-6 text-stone-600 text-sm md:text-base">
+                    調理学校を卒業後、道内三つのホテルで二十年間、王道を歩んできました。
+                    しかし、決まった枠の中では、食材への愛着や、お客様一人ひとりに合わせた「一皿の物語」を表現しきれませんでした。
+                </p>
+                <p class="mb-6 md:mb-8 text-stone-600 text-sm md:text-base">
+                    朝、自ら直売所を回り、土の香りが残る野菜を選ぶ。
+                    オープンキッチンで、切る音からフランベの炎まで、すべてを愉しんでいただく。
+                    独立した今、私の料理には「隠し事」はありません。
+                </p>
+                <div class="flex items-end gap-4">
+                    <p class="serif text-base md:text-lg">オーナーシェフ 佐藤</p>
+                    <p class="text-xs text-stone-400 pb-1 italic-serif">Executive Chef Sato</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ・空気感 -->
+    <section class="py-16 md:py-24 bg-[#efebdf]">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="serif text-xl md:text-2xl tracking-widest">お客様の記憶</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 shadow-sm reveal">
+                    <div class="flex text-accent-gold mb-3 md:mb-4">★★★★★</div>
+                    <p class="text-sm leading-loose text-stone-600">「オープンキッチンのカウンターで、じっくりとシェフの魔法の手を堪能。盛り付けも美しく、贅沢な満足感がありました。」</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 shadow-sm reveal" style="transition-delay: 0.15s;">
+                    <div class="flex text-accent-gold mb-3 md:mb-4">★★★★★</div>
+                    <p class="text-sm leading-loose text-stone-600">「十勝産の野菜の甘みに驚きました。ビーフストロガノフは家庭の味とは全く別物。ステキな時間がゆっくりと過ぎていくお店です。」</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 shadow-sm reveal sm:col-span-2 md:col-span-1" style="transition-delay: 0.3s;">
+                    <div class="flex text-accent-gold mb-3 md:mb-4">★★★★★</div>
+                    <p class="text-sm leading-loose text-stone-600">「記念日に利用。6名限定という特別感が心地よい。ノンアルコールのローズも美味しく、細部までシェフのこだわりを感じます。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新機能・サービス予告 -->
+    <section class="py-20 md:py-28 bg-stone-100 relative overflow-hidden border-t border-b border-stone-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <p class="italic-serif text-xl md:text-2xl text-accent-gold mb-2">Future Visions</p>
+                <h2 class="serif text-2xl md:text-4xl tracking-widest text-stone-800">Coming Soon</h2>
+                <div class="w-12 h-px bg-accent-gold mx-auto mt-5 md:mt-6"></div>
+                <p class="text-sm text-stone-500 mt-4 tracking-wide md:tracking-widest">より心満たされる体験のために、準備を進めている新しい取り組みです。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- 1. メニューカード配布 -->
+                <div class="bg-white border border-stone-200/80 p-6 md:p-8 rounded-sm shadow-sm relative flex flex-col justify-between reveal group hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 md:mb-6">
+                            <span class="text-[10px] tracking-widest uppercase bg-amber-50 text-accent-gold border border-amber-200/60 px-3 py-1 rounded-full font-medium">Memory Card</span>
+                            <span class="italic-serif text-stone-400 text-lg">01</span>
+                        </div>
+                        <h3 class="serif text-lg md:text-xl font-bold mb-3 md:mb-4 text-stone-800 group-hover:text-accent-gold transition">思い出を刻む<br>メモリアル・メニューカード</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-5 md:mb-6">
+                            その日にお愉しみいただいた十勝の旬食材、ペアリングしたワインの解説、シェフの手書きメッセージを記した上質な特製メニューカードを食後に贈呈。ご自宅へ帰られた後も、美味の余韻を呼び覚ます旅の記念に。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-dashed border-stone-200 text-right">
+                        <span class="text-[11px] text-stone-400 italic">※準備中 / ご来店者様限定</span>
+                    </div>
+                </div>
+
+                <!-- 2. テイクアウト・お土産 -->
+                <div class="bg-white border border-stone-200/80 p-6 md:p-8 rounded-sm shadow-sm relative flex flex-col justify-between reveal group hover:shadow-md transition" style="transition-delay: 0.15s;">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 md:mb-6">
+                            <span class="text-[10px] tracking-widest uppercase bg-amber-50 text-accent-gold border border-amber-200/60 px-3 py-1 rounded-full font-medium">Takeout Selection</span>
+                            <span class="italic-serif text-stone-400 text-lg">02</span>
+                        </div>
+                        <h3 class="serif text-lg md:text-xl font-bold mb-3 md:mb-4 text-stone-800 group-hover:text-accent-gold transition">プティジャルダン<br>特製ギフトセレクション</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed mb-5 md:mb-6">
+                            看板メニューであるビーフストロガノフの極上ベースソースや、十勝野菜を引き立てる自家製和風フレンチドレッシング。お店の余韻をそのままご家庭で味わえる、オリジナル商品の瓶詰めギフト。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-dashed border-stone-200 text-right">
+                        <span class="text-[11px] text-stone-400 italic">※店頭・オンライン順次開始</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約導線エリア -->
+    <section class="py-20 md:py-32 bg-stone-900 text-white relative">
+        <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
+            <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-10 md:mb-12 tracking-wide md:tracking-widest leading-loose">
+                今宵、小さな箱庭で<br>お待ちしております。
+            </h2>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10">
+                <div class="text-center">
+                    <p class="text-stone-400 text-xs tracking-widest mb-3 md:mb-4">Reservation by Phone</p>
+                    <a href="tel:0155677030" class="text-2xl sm:text-3xl md:text-4xl serif hover:text-accent-gold transition underline underline-offset-8">0155-67-7030</a>
+                </div>
+                <div class="h-px w-12 bg-stone-700 hidden md:block"></div>
+                <div class="text-center">
+                    <p class="text-stone-400 text-xs tracking-widest mb-3 md:mb-4">Opening Hours</p>
+                    <p class="serif text-lg md:text-xl">完全予約制 / 月曜定休</p>
+                    <p class="text-xs text-stone-500 mt-1 uppercase tracking-widest">Lunch &amp; Dinner Course Only</p>
+                </div>
+            </div>
+            <div class="mt-12 md:mt-16">
+                <a href="http://petitjardin.jp/" target="_blank" rel="noopener noreferrer" class="inline-block border border-accent-gold text-accent-gold py-4 px-10 md:px-12 hover:bg-accent-gold hover:text-white transition tracking-widest serif text-base md:text-lg group">
+                    Official Site <span class="inline-block transition-transform group-hover:translate-x-2">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセスマップ・店舗情報 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-12 items-start">
+            <div class="reveal">
+                <h2 class="section-title text-left serif text-xl md:text-2xl tracking-[0.2em] md:tracking-[0.3em]">アクセス</h2>
+                <div class="mb-6 md:mb-8 serif">
+                    <p class="text-lg font-bold mb-2">プティジャルダン（Petit Jardin）</p>
+                    <p class="text-stone-600">〒080-0802<br>北海道帯広市東2条南21丁目2−1 東</p>
+                </div>
+                <div class="space-y-4 text-stone-600 text-sm md:text-base">
+                    <p><span class="font-bold text-stone-800">お車で：</span>帯広駅から車で約6分。国道から一本入った、静かな住宅街に佇む隠れ家レストランです。</p>
+                    <p><span class="font-bold text-stone-800">駐車場：</span>店舗前に4台分の駐車スペースを完備しております。</p>
+                </div>
+                <div class="mt-8 md:mt-10">
+                    <a href="http://petitjardin.jp/" target="_blank" rel="noopener noreferrer" class="text-accent-gold serif border-b border-accent-gold pb-1 hover:opacity-70 transition">
+                        公式サイトで詳細を確認する
+                    </a>
+                </div>
+            </div>
+            <div class="reveal shadow-2xl border border-stone-200 p-2 bg-white">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2922.2944950811793!2d143.20804167506265!3d42.908829700257236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f73996e1d8ff6e1%3A0x42a2afddb81a63da!2z44OX44OG44Kj44K444Oj44Or44OA44Oz!5e0!3m2!1sja!2sjp!4v1771909991661!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="プティジャルダン地図"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-deep-brown text-stone-500 py-16 md:py-20 px-6">
+        <div class="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12 text-sm leading-loose">
+            <div class="reveal">
+                <h4 class="text-white serif text-lg mb-5 md:mb-6 tracking-widest">プティジャルダン</h4>
+                <p>Petit Jardin<br>French &amp; Teppan Cuisine</p>
+                <p class="mt-4 text-stone-300">TEL: 0155-67-7030</p>
+            </div>
+            <div class="reveal" style="transition-delay: 0.1s;">
+                <h4 class="text-white serif text-lg mb-5 md:mb-6 tracking-widest">お品書き</h4>
+                <ul class="space-y-2">
+                    <li>十勝産野菜のコース</li>
+                    <li>十勝牛の鉄板ステーキ</li>
+                    <li>特製ビーフストロガノフ</li>
+                    <li>自家製無添加ソルベ</li>
+                </ul>
+            </div>
+            <div class="reveal sm:col-span-2 md:col-span-1" style="transition-delay: 0.2s;">
+                <h4 class="text-white serif text-lg mb-5 md:mb-6 tracking-widest">SNS / Link</h4>
+                <div class="flex flex-col gap-3">
+                    <a href="https://www.instagram.com/petitjardin174/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-2 group">
+                        <span class="w-5 h-px bg-stone-700 transition-all group-hover:w-8 group-hover:bg-accent-gold"></span>
+                        Instagram
+                    </a>
+                    <a href="http://petitjardin.jp/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-2 group">
+                        <span class="w-5 h-px bg-stone-700 transition-all group-hover:w-8 group-hover:bg-accent-gold"></span>
+                        Official Site
+                    </a>
+                </div>
+                <div class="mt-10 md:mt-12">
+                    <p class="text-[10px] tracking-widest opacity-50 uppercase leading-relaxed">© 2024 Petit Jardin. <br>Crafted with pride in Obihiro, Hokkaido.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
