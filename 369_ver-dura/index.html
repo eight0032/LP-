@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ヴェルドゥーラ｜宮城・利府 隠れ家イタリアン｜大海老のクリームパスタ</title>
+<meta name="description" content="宮城県利府町、住宅街にひっそりと佇む隠れ家イタリアン「ヴェルドゥーラ」。地場野菜と6種のダシで作る看板パスタ、そして自慢の大海老のゆずクリームパスタをぜひ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verdura-deep: #23402f;
+    --verdura-mid: #3c5f47;
+    --cream: #f6f1e4;
+    --cream-soft: #efe7d2;
+    --yuzu: #c99a2e;
+    --yuzu-light: #e4bc5c;
+    --shrimp: #a85f3c;
+    --ink: #22261e;
+    --ink-soft: #565a4c;
+    --line: rgba(34,38,30,0.14);
+    --white: #fffdf8;
+    --shadow: 0 18px 40px rgba(34, 40, 24, 0.16);
+    --radius: 4px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .serif{font-family:"Shippori Mincho", serif;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- eyebrow / labels ---------- */
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    letter-spacing:0.32em;
+    color:var(--yuzu);
+    font-weight:700;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;
+    height:1px;
+    background:var(--yuzu);
+    display:inline-block;
+  }
+
+  .section-title{
+    font-family:"Shippori Mincho", serif;
+    font-weight:700;
+    font-size:clamp(26px, 5vw, 40px);
+    color:var(--verdura-deep);
+    margin-top:14px;
+    letter-spacing:0.04em;
+  }
+
+  section{ padding:76px 0; position:relative; }
+
+  /* ================= HEADER ================= */
+  header.gnav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(246,241,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+  .gnav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .brand-mark{
+    font-family:"Shippori Mincho", serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:0.14em;
+    color:var(--verdura-deep);
+  }
+  .brand-mark span{ color:var(--yuzu); }
+  .gnav-cta{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    background:var(--verdura-deep);
+    color:var(--white);
+    padding:10px 18px;
+    border-radius:999px;
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    position:relative;
+    padding:0;
+    overflow:hidden;
+  }
+  .hero-media{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .hero-media img{
+    width:100%; height:100%;
+    object-fit:cover;
+    filter:saturate(1.02);
+  }
+  .hero-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,28,18,0.18) 0%, rgba(18,26,16,0.30) 45%, rgba(15,22,13,0.86) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:1;
+    width:100%;
+    padding:0 24px 64px;
+    color:var(--white);
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    letter-spacing:0.3em;
+    color:var(--yuzu-light);
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  .hero-eyebrow::before{
+    content:"";
+    width:30px; height:1px;
+    background:var(--yuzu-light);
+  }
+  .hero-title{
+    font-family:"Shippori Mincho", serif;
+    font-weight:800;
+    font-size:clamp(30px, 7vw, 56px);
+    line-height:1.42;
+    letter-spacing:0.02em;
+    text-shadow:0 4px 24px rgba(0,0,0,0.25);
+  }
+  .hero-title .accent{ color:var(--yuzu-light); }
+  .hero-sub{
+    margin-top:22px;
+    font-size:clamp(14px, 2.4vw, 16px);
+    line-height:2;
+    color:rgba(255,253,248,0.88);
+    max-width:520px;
+  }
+  .hero-shop{
+    margin-top:10px;
+    font-family:"Shippori Mincho", serif;
+    font-size:clamp(22px, 4.4vw, 30px);
+    letter-spacing:0.22em;
+  }
+  .hero-shop small{
+    display:block;
+    font-family:"Zen Kaku Gothic New", sans-serif;
+    font-size:12px;
+    letter-spacing:0.3em;
+    color:var(--yuzu-light);
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  .hero-cta-row{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 28px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:var(--yuzu);
+    color:#23200f;
+    box-shadow:0 10px 26px rgba(201,154,46,0.42);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-outline{
+    border:1px solid rgba(255,253,248,0.55);
+    color:var(--white);
+  }
+  .btn-outline:hover{ background:rgba(255,253,248,0.12); }
+  .scroll-hint{
+    position:absolute;
+    right:24px;
+    bottom:26px;
+    z-index:1;
+    writing-mode:vertical-rl;
+    color:rgba(255,253,248,0.7);
+    font-size:11px;
+    letter-spacing:0.3em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .scroll-hint::after{
+    content:"";
+    width:1px; height:34px;
+    background:rgba(255,253,248,0.6);
+    animation:scrollDown 1.8s infinite;
+  }
+  @keyframes scrollDown{
+    0%{ transform:scaleY(0); transform-origin:top; opacity:0;}
+    40%{ transform:scaleY(1); transform-origin:top; opacity:1;}
+    60%{ transform:scaleY(1); transform-origin:bottom; opacity:1;}
+    100%{ transform:scaleY(0); transform-origin:bottom; opacity:0;}
+  }
+
+  /* ================= イチオシ SIGNATURE SECTION ================= */
+  .signature{
+    background:var(--verdura-deep);
+    color:var(--cream);
+    padding:90px 0 100px;
+    position:relative;
+    overflow:hidden;
+  }
+  .signature::before{
+    content:"VERDURA";
+    position:absolute;
+    top:-40px; left:50%;
+    transform:translateX(-50%);
+    font-family:"Shippori Mincho", serif;
+    font-size:clamp(70px,18vw,180px);
+    font-weight:800;
+    color:rgba(255,253,248,0.045);
+    letter-spacing:0.1em;
+    white-space:nowrap;
+    pointer-events:none;
+  }
+  .sig-eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12px; letter-spacing:0.32em;
+    color:var(--yuzu-light); font-weight:700;
+  }
+  .sig-eyebrow::before{ content:""; width:26px; height:1px; background:var(--yuzu-light); }
+  .sig-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 46px;
+    position:relative;
+  }
+  .sig-title{
+    font-family:"Shippori Mincho", serif;
+    font-weight:800;
+    font-size:clamp(28px, 6vw, 46px);
+    line-height:1.5;
+    margin-top:16px;
+  }
+  .sig-title .em{ color:var(--yuzu-light); }
+  .sig-copy{
+    margin-top:20px;
+    font-size:14.5px;
+    color:rgba(246,241,228,0.82);
+    line-height:2;
+  }
+
+  .sig-card{
+    position:relative;
+    background:var(--cream);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+  }
+  .sig-card-media{
+    position:relative;
+    min-height:340px;
+  }
+  .sig-card-media img{
+    width:100%; height:100%;
+    object-fit:cover;
+    position:absolute; inset:0;
+  }
+  .sig-price-tag{
+    position:absolute;
+    top:20px; left:20px;
+    background:var(--yuzu);
+    color:#241f0c;
+    font-family:"Shippori Mincho", serif;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:0.08em;
+    padding:10px 16px;
+    border-radius:999px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.25);
+  }
+  .sig-card-body{
+    padding:38px 34px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    color:var(--ink);
+  }
+  .sig-dish-name{
+    font-family:"Shippori Mincho", serif;
+    font-weight:800;
+    font-size:clamp(22px,3.6vw,28px);
+    color:var(--verdura-deep);
+    line-height:1.5;
+  }
+  .sig-dish-lead{
+    margin-top:6px;
+    font-size:13px;
+    color:var(--shrimp);
+    font-weight:700;
+    letter-spacing:0.04em;
+  }
+  .sig-desc{
+    margin-top:18px;
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:2;
+  }
+  .sig-tags{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .sig-tag{
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    background:var(--cream-soft);
+    border:1px solid var(--line);
+    color:var(--verdura-mid);
+    padding:7px 13px;
+    border-radius:999px;
+  }
+  .sig-note{
+    margin-top:26px;
+    font-size:13px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    padding-top:18px;
+  }
+
+  /* copy carousel-ish list */
+  .copy-list{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .copy-item{
+    background:rgba(255,253,248,0.06);
+    border:1px solid rgba(255,253,248,0.14);
+    border-radius:12px;
+    padding:22px 20px;
+  }
+  .copy-item .num{
+    font-family:"Shippori Mincho", serif;
+    color:var(--yuzu-light);
+    font-size:12px;
+    letter-spacing:0.1em;
+    font-weight:700;
+  }
+  .copy-item p{
+    margin-top:10px;
+    font-size:13.5px;
+    line-height:1.9;
+    color:rgba(246,241,228,0.9);
+  }
+
+  /* ================= STRENGTHS ================= */
+  .strengths{ background:var(--cream); }
+  .strength-head{ text-align:center; max-width:600px; margin:0 auto; }
+  .strength-head p{
+    margin-top:16px;
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:2;
+  }
+  .strength-grid{
+    margin-top:52px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .strength-card{
+    background:var(--white);
+    border-radius:16px;
+    padding:34px 28px;
+    box-shadow:var(--shadow);
+    border-top:3px solid var(--yuzu);
+  }
+  .strength-card .leaf{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--verdura-deep);
+    color:var(--cream);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho", serif;
+    font-weight:700;
+    font-size:15px;
+  }
+  .strength-card h3{
+    margin-top:20px;
+    font-family:"Shippori Mincho", serif;
+    font-size:19px;
+    color:var(--verdura-deep);
+    line-height:1.6;
+  }
+  .strength-card p{
+    margin-top:12px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.95;
+  }
+
+  /* ================= STORY / SPACE (image break) ================= */
+  .story{
+    position:relative;
+    padding:0;
+    min-height:64vh;
+    display:flex;
+    align-items:center;
+  }
+  .story-media{
+    position:absolute; inset:0;
+    z-index:0;
+  }
+  .story-media img{ width:100%; height:100%; object-fit:cover; }
+  .story-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(20,28,18,0.82) 0%, rgba(20,28,18,0.55) 45%, rgba(20,28,18,0.15) 100%);
+  }
+  .story-inner{
+    position:relative; z-index:1;
+    padding:80px 0;
+  }
+  .story-box{
+    max-width:470px;
+    color:var(--cream);
+  }
+  .story-box .section-title{ color:var(--white); }
+  .story-box p{
+    margin-top:18px;
+    font-size:13.5px;
+    line-height:2.05;
+    color:rgba(246,241,228,0.86);
+  }
+  .story-box .quote{
+    margin-top:26px;
+    font-family:"Shippori Mincho", serif;
+    font-size:16px;
+    color:var(--yuzu-light);
+    line-height:1.9;
+    border-left:2px solid var(--yuzu-light);
+    padding-left:16px;
+  }
+
+  /* ================= MENU ================= */
+  .menu{ background:var(--cream-soft); }
+  .menu-head{ text-align:center; max-width:600px; margin:0 auto; }
+  .menu-head p{ margin-top:16px; font-size:14px; color:var(--ink-soft); line-height:2;}
+  .menu-photo{
+    margin:34px auto 0;
+    max-width:520px;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .menu-photo img{ width:100%; height:280px; object-fit:cover; }
+  .menu-grid{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+  }
+  .menu-card{
+    background:var(--white);
+    border-radius:14px;
+    padding:28px 26px;
+    border:1px solid var(--line);
+  }
+  .menu-card.hi{
+    border:1px solid var(--yuzu);
+    background:linear-gradient(160deg, #fffdf8 0%, #fbf1dd 100%);
+    position:relative;
+  }
+  .menu-card.hi::before{
+    content:"イチオシ";
+    position:absolute;
+    top:-11px; right:22px;
+    background:var(--yuzu);
+    color:#241f0c;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:0.06em;
+    padding:5px 12px;
+    border-radius:999px;
+  }
+  .menu-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+  }
+  .menu-card h3{
+    font-family:"Shippori Mincho", serif;
+    font-size:18px;
+    color:var(--verdura-deep);
+    line-height:1.6;
+  }
+  .menu-card .price{
+    font-family:"Shippori Mincho", serif;
+    font-weight:700;
+    color:var(--shrimp);
+    font-size:16px;
+    white-space:nowrap;
+  }
+  .menu-card p{
+    margin-top:10px;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.9;
+  }
+
+  /* ================= REVIEWS ================= */
+  .reviews{ background:var(--cream); }
+  .reviews-head{ text-align:center; max-width:600px; margin:0 auto; }
+  .review-grid{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:22px;
+  }
+  .review-card{
+    background:var(--white);
+    border-radius:14px;
+    padding:30px 26px;
+    box-shadow:var(--shadow);
+  }
+  .stars{
+    color:var(--yuzu);
+    font-size:16px;
+    letter-spacing:2px;
+  }
+  .review-card p{
+    margin-top:16px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:2;
+  }
+  .review-card .src{
+    margin-top:18px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    opacity:0.7;
+    letter-spacing:0.04em;
+  }
+
+  /* ================= SHOP INFO ================= */
+  .info{ background:var(--verdura-deep); color:var(--cream); }
+  .info-inner{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:start;
+  }
+  .info .section-title{ color:var(--white); }
+  .info-table{
+    margin-top:28px;
+    width:100%;
+    border-collapse:collapse;
+  }
+  .info-table tr{ border-bottom:1px solid rgba(246,241,228,0.16); }
+  .info-table th{
+    text-align:left;
+    padding:16px 14px 16px 0;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    color:var(--yuzu-light);
+    width:110px;
+    vertical-align:top;
+  }
+  .info-table td{
+    padding:16px 0;
+    font-size:13.5px;
+    line-height:1.9;
+    color:rgba(246,241,228,0.92);
+  }
+  .info-table a{ color:var(--yuzu-light); text-decoration:underline; text-underline-offset:3px; }
+  .info-side{
+    background:rgba(246,241,228,0.06);
+    border:1px solid rgba(246,241,228,0.14);
+    border-radius:16px;
+    padding:32px 28px;
+    margin-top:28px;
+  }
+  .info-side h3{
+    font-family:"Shippori Mincho", serif;
+    font-size:18px;
+    color:var(--yuzu-light);
+  }
+  .info-side p{
+    margin-top:12px;
+    font-size:13px;
+    line-height:1.95;
+    color:rgba(246,241,228,0.85);
+  }
+  .sns-btn{
+    margin-top:20px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--yuzu);
+    color:#241f0c;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+  }
+
+  /* ================= FOOTER CTA ================= */
+  .final-cta{
+    position:relative;
+    padding:90px 0;
+    text-align:center;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .final-cta-media{
+    position:absolute; inset:0;
+  }
+  .final-cta-media img{ width:100%; height:100%; object-fit:cover; opacity:0.34; }
+  .final-cta-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(15,20,12,0.55), rgba(15,20,12,0.92));
+  }
+  .final-cta-inner{
+    position:relative; z-index:1;
+    color:var(--cream);
+  }
+  .final-cta .eyebrow{ justify-content:center; }
+  .final-cta h2{
+    font-family:"Shippori Mincho", serif;
+    font-weight:800;
+    font-size:clamp(24px,5.6vw,38px);
+    margin-top:16px;
+    line-height:1.6;
+  }
+  .final-cta .accent{ color:var(--yuzu-light); }
+  .final-cta-row{
+    margin-top:34px;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  footer{
+    background:#151d12;
+    color:rgba(246,241,228,0.55);
+    text-align:center;
+    padding:26px 0;
+    font-size:11.5px;
+    letter-spacing:0.04em;
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 860px){
+    .sig-card{ grid-template-columns:1fr; }
+    .sig-card-media{ min-height:280px; }
+    .copy-list{ grid-template-columns:1fr; }
+    .strength-grid{ grid-template-columns:1fr; }
+    .menu-grid{ grid-template-columns:1fr; }
+    .review-grid{ grid-template-columns:1fr; }
+    .info-inner{ grid-template-columns:1fr; }
+    .story-box{ max-width:100%; }
+  }
+
+  @media (max-width: 600px){
+    section{ padding:56px 0; }
+    .wrap{ padding:0 18px; }
+    .gnav-inner{ padding:0 18px; }
+    .brand-mark{ font-size:16px; }
+    .gnav-cta{ padding:9px 14px; font-size:11.5px; }
+    .hero-content{ padding:0 18px 46px; }
+    .hero-cta-row{ flex-direction:column; align-items:stretch; }
+    .btn{ justify-content:center; }
+    .signature{ padding:70px 0 80px; }
+    .sig-card-body{ padding:28px 22px; }
+    .story{ min-height:auto; }
+    .story-inner{ padding:60px 0; }
+    .info-table th{ width:88px; font-size:11.5px; padding:14px 10px 14px 0;}
+    .info-table td{ font-size:12.5px; }
+    .scroll-hint{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="gnav">
+  <div class="gnav-inner">
+    <div class="brand-mark">Ver<span>·</span>dura</div>
+    <a href="#info" class="gnav-cta">アクセス・予約</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-media">
+    <img src="images/hero-shrimp-pasta.jpg" alt="ヴェルドゥーラ自慢の大海老とキノコのゆずクリームパスタ">
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">HAYAMA... 宮城県利府町の隠れ家イタリアン</div>
+    <p class="hero-title" style="margin-top: 1.5em;">
+      香るゆず、ほどけるクリーム。<br>
+      海老とキノコが彩る、
+      <span class="accent">ヴェルドゥーラのごちそうパスタ。</span>
+    </p>
+    <p class="hero-shop"><small>Ristorante</small>ヴェルドゥーラ</p>
+    <p class="hero-sub">
+      住宅街にひっそりと佇む、大人の隠れ家。地場野菜をふんだんに使った本格イタリアンと、
+      看板の大海老のクリームパスタを求めて、わざわざ訪れる人が絶えません。
+    </p>
+    <div class="hero-cta-row">
+      <a href="#signature" class="btn btn-primary">イチオシの一皿を見る</a>
+      <a href="https://www.instagram.com/ver__dura/" target="_blank" rel="noopener" class="btn btn-outline">Instagramで見る</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- ================= 一押し商品 SIGNATURE ================= -->
+<section class="signature" id="signature">
+  <div class="wrap">
+    <div class="sig-head">
+      <div class="sig-eyebrow" style="justify-content:center;">SIGNATURE DISH</div>
+      <p class="sig-title">
+        ひと口で、やさしく満たされる。<br>
+        <span class="em">大海老のゆずクリームパスタ</span>
+      </p>
+      <p class="sig-copy">
+        海老の旨みとゆずの香りが重なる、贅沢な一皿。地場野菜のおいしさを、もっと華やかに。
+        プリプリの大海老とキノコ、そしてゆずがふわりと広がる濃厚クリームソースは、
+        ヴェルドゥーラでしか出会えない自慢の逸品です。
+      </p>
+    </div>
+
+    <div class="sig-card">
+      <div class="sig-card-media">
+        <span class="sig-price-tag">CHEF'S BEST</span>
+        <img src="images/hero-shrimp-pasta.jpg" alt="大海老とキノコのゆずクリームパスタのアップ">
+      </div>
+      <div class="sig-card-body">
+        <p class="sig-dish-lead">SIGNATURE PASTA</p>
+        <h3 class="sig-dish-name">大海老のゆずクリームパスタ</h3>
+        <p class="sig-desc">
+          利府で出会う、やさしく華やかな一皿。プリプリの大海老とキノコに、
+          ゆずの香りがふわりと重なる濃厚クリームソースをたっぷりと。
+          サービスエリアやホテルで料理長を務めたシェフが、素材の味を活かしながら
+          丁寧に仕上げています。地場野菜のコースと合わせて、ぜひ味わってください。
+        </p>
+        <div class="sig-tags">
+          <span class="sig-tag">🍤 大海老</span>
+          <span class="sig-tag">🍄 キノコ</span>
+          <span class="sig-tag">🍋 ゆずの香り</span>
+          <span class="sig-tag">🥬 地場野菜添え</span>
+        </div>
+        <p class="sig-note">
+          ランチ・ディナーの各コースでご用意。単品でのご相談もお気軽にどうぞ。
+          週末は満席になることが多いため、ご予約がおすすめです。
+        </p>
+      </div>
+    </div>
+
+    <div class="copy-list">
+      <div class="copy-item">
+        <p class="num">01</p>
+        <p>香りまでごちそう。ゆずがふわりと広がる、海老とキノコの濃厚クリームパスタ。</p>
+      </div>
+      <div class="copy-item">
+        <p class="num">02</p>
+        <p>野菜のおいしさに、海老の贅沢を添えて。ヴェルドゥーラ自慢のゆずクリームパスタ。</p>
+      </div>
+      <div class="copy-item">
+        <p class="num">03</p>
+        <p>地場野菜のおいしさを、もっと華やかに。プリプリ海老とキノコのゆずクリームパスタ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 強み STRENGTHS ================= -->
+<section class="strengths">
+  <div class="wrap">
+    <div class="strength-head">
+      <div class="eyebrow" style="justify-content:center;">WHY VERDURA</div>
+      <h2 class="section-title">選ばれる、3つの理由</h2>
+      <p>地場野菜をふんだんに使った本格イタリアンと、隠れ家的な雰囲気。<br>ヴェルドゥーラだけの体験がここにあります。</p>
+    </div>
+
+    <div class="strength-grid">
+      <div class="strength-card">
+        <div class="leaf">葉</div>
+        <h3>地場野菜の<br>野菜メインイタリアン</h3>
+        <p>宮城の地場産野菜をふんだんに取り入れたオリジナルイタリアン。看板メニューのペペロンチーノは6種のダシで作られ、冷めてもおいしいと評判です。</p>
+      </div>
+      <div class="strength-card">
+        <div class="leaf">厨</div>
+        <h3>料理長経験を持つ<br>シェフの本格の味</h3>
+        <p>サービスエリアやホテルで料理長を務めた経歴を持つシェフが、本格イタリアンでありながら気軽に立ち寄れる価格帯とカジュアルさを両立させています。</p>
+      </div>
+      <div class="strength-card">
+        <div class="leaf">隠</div>
+        <h3>大人が寛げる<br>隠れ家的な空間</h3>
+        <p>住宅街の中、窓越しに公園が見えるこじんまりとした店内。静かに食事を楽しめる「知る人ぞ知る」大人の隠れ家として親しまれています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY / SPACE ================= -->
+<section class="story">
+  <div class="story-media">
+    <img src="images/store-interior.jpg" alt="ヴェルドゥーラの落ち着いた店内の様子">
+  </div>
+  <div class="wrap">
+    <div class="story-inner">
+      <div class="story-box">
+        <div class="eyebrow">OUR STORY</div>
+        <h2 class="section-title">30歳、居抜きの店から始まった物語</h2>
+        <p>
+          代表・金子智彦氏が30歳の時に開業したヴェルドゥーラ。空き物件として紹介された店舗を、
+          ほぼ居抜きのままスタートしました。地元・利府町の住宅街に根ざしながら、
+          いまでは「大人の隠れ家」として、わざわざ足を運ぶ人が絶えない一軒に育っています。
+        </p>
+        <p class="quote">
+          「知る人ぞ知る人気店」から、<br>あなたにとっての「行きつけ」へ。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section class="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div class="eyebrow" style="justify-content:center;">COURSE MENU</div>
+      <h2 class="section-title">前菜からデザートまで、丁寧なコース仕立て</h2>
+      <p>前菜・スープ・肉料理または魚料理・パスタ／ピザ・デザートまでしっかり楽しめるコースをご用意しています。</p>
+      <div class="menu-photo">
+        <img src="images/course-dish.jpg" alt="地場野菜を使った美しいコース料理の一皿">
+      </div>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-card hi">
+        <div class="menu-card-top">
+          <h3>大海老のゆずクリームパスタ<br>コース</h3>
+          <span class="price">要相談</span>
+        </div>
+        <p>看板の大海老のゆずクリームパスタを中心に、前菜からデザートまでを贅沢に。特別な日にもおすすめです。</p>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-top">
+          <h3>レモンコース</h3>
+          <span class="price">2,700円<small style="font-size:11px;color:var(--ink-soft);">（税込）</small></span>
+        </div>
+        <p>前菜からメインまで丁寧に作られた、野菜も使ったヘルシーで見た目にも美しいコース料理です。</p>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-top">
+          <h3>贅沢コース</h3>
+          <span class="price">要相談</span>
+        </div>
+        <p>肉料理・魚料理をはじめ、季節の地場野菜をふんだんに使った贅沢なフルコースをお楽しみいただけます。</p>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-top">
+          <h3>シェフおまかせコース</h3>
+          <span class="price">要予約制</span>
+        </div>
+        <p>金・土・日のディナー限定。特別感のあるひとときを演出する、シェフおまかせのフルコースです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div class="eyebrow" style="justify-content:center;">VOICE</div>
+      <h2 class="section-title">お客様の声</h2>
+    </div>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>
+          予約してランチを楽しみに伺いました。前菜はとても美味しく、素材の味がしっかり感じられました。
+          スタッフの方の案内も丁寧で、落ち着いた時間を過ごせました。
+        </p>
+        <div class="src">来店者様の口コミより</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>
+          レモンコースにデザートを追加していただきました。野菜も使ったヘルシーで見た目にも美しいコース料理で、
+          前菜からメインまで丁寧に作られていて、どれも素材の味がしっかり感じられました。
+          特にとうもろこしとはちみつの冷製スープの甘みが優しく美味でした。
+        </p>
+        <div class="src">2025.6.13 ご来店のお客様</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOP INFO ================= -->
+<section class="info" id="info">
+  <div class="wrap">
+    <div class="info-inner">
+      <div>
+        <div class="eyebrow">SHOP INFO</div>
+        <h2 class="section-title">店舗情報</h2>
+        <table class="info-table">
+          <tr>
+            <th>店名</th>
+            <td>ヴェルドゥーラ（Ristorante Verdura）</td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td>〒981-0101<br>宮城県宮城郡利府町赤沼大貝93−1</td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><a href="tel:0227675070">022-767-5070</a></td>
+          </tr>
+          <tr>
+            <th>代表者</th>
+            <td>赤羽 優子</td>
+          </tr>
+          <tr>
+            <th>営業</th>
+            <td>ランチ営業中心<br>ディナーは金・土・日のみ、要予約制</td>
+          </tr>
+          <tr>
+            <th>SNS</th>
+            <td><a href="https://www.instagram.com/ver__dura/" target="_blank" rel="noopener">Instagram @ver__dura</a></td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <div class="eyebrow">ACCESS</div>
+        <h2 class="section-title">アクセス</h2>
+        <div class="info-side">
+          <h3>仙台松島道路「松島海岸IC」近く</h3>
+          <p>
+            利府町の住宅街・複合施設内に位置し、ドライブ途中のランチ場所としても好立地。
+            席数が多くないため、事前のご予約をおすすめしています。
+          </p>
+          <a class="sns-btn" href="https://www.instagram.com/ver__dura/" target="_blank" rel="noopener">Instagramをフォロー</a>
+          
+          <!-- 地図埋め込みエリア -->
+          <div class="map-container" style="margin-top: 20px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3128.2541157829723!2d141.02442147478658!3d38.36624247787159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f899b44d692736f%3A0x1546b11f37828591!2z44O044Kn44Or44OJ44Kl44O844Op!5e0!3m2!1sja!2sjp!4v1786069573011!5m2!1sja!2sjp" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta">
+  <div class="final-cta-media">
+    <img src="images/store-interior.jpg" alt="ヴェルドゥーラの店内、公園を望む窓辺の席">
+  </div>
+  <div class="wrap final-cta-inner">
+    <div class="eyebrow">RESERVE YOUR TABLE</div>
+    <h2>
+      利府で出会う、やさしく華やかな一皿を。<br>
+      <span class="accent">大海老のゆずクリームパスタ</span>を、ぜひ一度。
+    </h2>
+    <div class="final-cta-row">
+      <a href="tel:0227675070" class="btn btn-primary">📞 022-767-5070 に電話する</a>
+      <a href="https://www.instagram.com/ver__dura/" target="_blank" rel="noopener" class="btn btn-outline">Instagramで最新情報を見る</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Ristorante Verdura — 宮城県宮城郡利府町赤沼大貝93−1
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リゾット専門店 Risotteria®︎GAKU bis | 札幌唯一のリゾット専門店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=M+PLUS+Rounded+1c:wght@700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --primary: #d35400;
+            --primary-dark: #a04000;
+            --cream: #fdfaf5;
+            --paper: #f7f3ed;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        .font-rounded { font-family: 'M PLUS Rounded 1c', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+
+        .bg-pattern {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        .bg-paper { background-color: var(--paper); }
+        .text-accent { color: var(--primary); }
+        .bg-accent { background-color: var(--primary); }
+
+        .btn-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-hover:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(211, 84, 0, 0.2);
+        }
+
+        .handwritten-border {
+            position: relative;
+        }
+        .handwritten-border::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .menu-card {
+            transition: all 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: rotate(-1deg) scale(1.05);
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+        }
+        #hamburger span {
+            transition: all 0.3s ease;
+        }
+        #hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        #hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        #hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-hover, .menu-card, #mobile-menu, #hamburger span {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-pattern">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-orange-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 min-w-0">
+                <span class="text-accent text-xl md:text-2xl shrink-0"><i class="fas fa-utensils"></i></span>
+                <div class="font-bold text-lg md:text-2xl tracking-tighter text-gray-800 font-rounded truncate">
+                    Risotteria®︎GAKU <span class="text-accent">bis</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex gap-8 text-sm font-bold text-gray-600">
+                <a href="#about" class="hover:text-accent transition-colors">こだわり</a>
+                <a href="#menu" class="hover:text-accent transition-colors">メニュー</a>
+                <a href="#coming-soon" class="hover:text-accent transition-colors">Coming Soon</a>
+                <a href="#owner" class="hover:text-accent transition-colors">ストーリー</a>
+                <a href="#access" class="hover:text-accent transition-colors">アクセス</a>
+            </nav>
+
+            <!-- 予約ボタン(PC/タブレット) -->
+            <a href="https://risotteria-gaku.net/contact" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex bg-accent text-white px-6 py-3 rounded-full text-sm font-bold btn-hover">
+                ご予約・お問い合わせ
+            </a>
+
+            <!-- ハンバーガーメニュー(モバイル) -->
+            <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-10 h-10 shrink-0" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="block w-6 h-0.5 bg-gray-800 mb-1.5 rounded"></span>
+                <span class="block w-6 h-0.5 bg-gray-800 mb-1.5 rounded"></span>
+                <span class="block w-6 h-0.5 bg-gray-800 rounded"></span>
+            </button>
+        </div>
+
+        <!-- モバイルメニュー本体 -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-orange-100">
+            <nav class="flex flex-col px-6 py-4 gap-1 text-base font-bold text-gray-700">
+                <a href="#about" class="py-3 border-b border-gray-100">こだわり</a>
+                <a href="#menu" class="py-3 border-b border-gray-100">メニュー</a>
+                <a href="#coming-soon" class="py-3 border-b border-gray-100">Coming Soon</a>
+                <a href="#owner" class="py-3 border-b border-gray-100">ストーリー</a>
+                <a href="#access" class="py-3 border-b border-gray-100">アクセス</a>
+                <a href="https://risotteria-gaku.net/contact" target="_blank" rel="noopener noreferrer" class="mt-4 bg-accent text-white text-center px-6 py-3.5 rounded-full text-sm btn-hover">
+                    ご予約・お問い合わせ
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FV (Hero Section) -->
+    <section class="relative min-h-[100svh] flex items-center pt-16 md:pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/rissot.jpg" alt="おいしいリゾット" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/85 via-black/55 md:via-black/40 to-black/30 md:to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 w-full">
+            <div class="max-w-2xl text-white">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-accent rounded-sm mb-5 md:mb-6">
+                    <span class="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.2em]">SAPPORO RISOTTO SPECIALTY STORE</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 md:mb-8 leading-[1.3] md:leading-[1.2] font-rounded tracking-tight">
+                    その一皿に、<br>
+                    <span class="text-accent">北海道</span>を凝縮する。
+                </h1>
+                <p class="text-base md:text-xl mb-8 md:mb-10 leading-relaxed opacity-90 font-medium">
+                    秘伝のチキンブイヨンと、選び抜かれた旬の食材。<br class="hidden sm:block">
+                    100種類以上のリゾットが、あなたの日常を彩ります。
+                </p>
+                <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
+                    <a href="#menu" class="bg-white text-gray-900 px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-base md:text-lg btn-hover flex items-center justify-center gap-3">
+                        <i class="fas fa-th-list"></i> メニューを見る
+                    </a>
+                    <a href="tel:011-281-2822" class="bg-transparent border-2 border-white text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-base md:text-lg btn-hover flex items-center justify-center gap-3">
+                        <i class="fas fa-phone-alt"></i> お電話で予約
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-2 opacity-60">
+            <span class="text-[10px] tracking-[0.3em] font-bold">SCROLL</span>
+            <div class="w-[1px] h-10 md:h-12 bg-white/50 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Section -->
+    <section id="about" class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="text-accent font-bold serif italic text-xl md:text-2xl">Specialty</span>
+                <h2 class="text-2xl md:text-4xl font-bold mt-2 font-rounded handwritten-border pb-4">GAKU bisが選ばれる3つの理由</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-10 md:gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8 relative">
+                        <span class="absolute -top-2 -right-2 w-9 h-9 md:w-10 md:h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold italic serif text-sm md:text-base">01</span>
+                        <i class="fas fa-magic text-accent text-3xl md:text-4xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 font-rounded">100種超の圧倒的な選択肢</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">魚系、トマト、クリーム、ミートソース…。その日の気分で選べる「迷う楽しさ」を提供します。</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8 relative">
+                        <span class="absolute -top-2 -right-2 w-9 h-9 md:w-10 md:h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold italic serif text-sm md:text-base">02</span>
+                        <i class="fas fa-fire text-accent text-3xl md:text-4xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 font-rounded">名物「焼きリゾット」</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">表面はパリッと香ばしく、中はふっくら。独自の調理法が生み出す、ここでしか味わえない新食感。</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8 relative">
+                        <span class="absolute -top-2 -right-2 w-9 h-9 md:w-10 md:h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold italic serif text-sm md:text-base">03</span>
+                        <i class="fas fa-leaf text-accent text-3xl md:text-4xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 font-rounded">旬の北海道産食材</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">道産の米、アスパラ、海の幸。素材の旨味を秘伝のチキンブイヨンが最大限に引き出します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Visual -->
+    <section id="menu" class="py-16 md:py-24 bg-paper relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 md:mb-16 gap-4 md:gap-6">
+                <div class="max-w-xl">
+                    <h2 class="text-2xl md:text-4xl font-bold font-rounded mb-3 md:mb-4">毎日通える、<span class="text-accent underline decoration-orange-200">100のバリエーション</span></h2>
+                    <p class="text-sm md:text-base text-gray-600">定番から季節限定まで、リゾットの常識を覆す豊富なメニューを取り揃えています。</p>
+                </div>
+                <div class="hidden md:block text-right">
+                    <span class="text-3xl lg:text-5xl font-black text-gray-200 italic serif uppercase tracking-tighter">Unlimited Flavors</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
+                <div class="menu-card bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-orange-100 flex flex-col items-center">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl"><i class="fas fa-apple-alt"></i></div>
+                    <span class="font-bold text-sm sm:text-base text-center">トマトベース</span>
+                </div>
+                <div class="menu-card bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-orange-100 flex flex-col items-center">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl"><i class="fas fa-cheese"></i></div>
+                    <span class="font-bold text-sm sm:text-base text-center">クリームベース</span>
+                </div>
+                <div class="menu-card bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-orange-100 flex flex-col items-center">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-yellow-50 text-yellow-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl"><i class="fas fa-drumstick-bite"></i></div>
+                    <span class="font-bold text-sm sm:text-base text-center">ブイヨンベース</span>
+                </div>
+                <div class="menu-card bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-orange-100 flex flex-col items-center">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl"><i class="fas fa-hamburger"></i></div>
+                    <span class="font-bold text-sm sm:text-base text-center">ミートソース</span>
+                </div>
+            </div>
+
+            <div class="mt-8 md:mt-12 p-6 md:p-8 bg-white rounded-3xl border-2 border-dashed border-orange-200 text-center">
+                <p class="text-lg md:text-xl font-bold font-rounded text-gray-700 mb-2">さらに、人気の「焼きリゾット」オプション</p>
+                <p class="text-xs md:text-sm text-gray-500 italic">すべてのリゾットに+αで、香ばしい焼き目をつけることができます。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-16 md:py-24 bg-gradient-to-b from-orange-50/60 to-white relative">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="bg-accent text-white font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider inline-block mb-3">Future Services</span>
+                <h2 class="text-2xl md:text-4xl font-bold font-rounded text-gray-800 handwritten-border pb-4">Coming Soon</h2>
+                <p class="text-sm md:text-base text-gray-500 mt-6 font-medium">「あったらいいな」のお声にお応えして。現在準備中の新しい楽しみ方をご紹介します。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1: Half & Half -->
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-orange-100 relative overflow-hidden flex flex-col justify-between btn-hover">
+                    <div class="absolute -top-3 -right-3 bg-amber-500 text-white font-bold text-[10px] px-8 py-2 rotate-45 shadow-sm">
+                        PREPARING
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-100 text-accent rounded-2xl flex items-center justify-center text-xl md:text-2xl font-bold mb-5 md:mb-6">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <span class="text-xs font-bold text-accent tracking-wider uppercase">01. Menu</span>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 font-rounded mt-1 mb-3">ハーフ&ハーフ セット</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            「100種以上あって迷う!」「2つの味を同時に食べ比べたい」というリクエストに応え、お好みのリゾット2種類をハーフサイズで組み合わせられる贅沢セットを開発中。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-dashed border-orange-100 flex items-center gap-2 text-xs font-bold text-orange-600">
+                        <i class="fas fa-clock"></i> 順次登場予定
+                    </div>
+                </div>
+
+                <!-- Service 2: Takeout Frozen -->
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-orange-100 relative overflow-hidden flex flex-col justify-between btn-hover">
+                    <div class="absolute -top-3 -right-3 bg-amber-500 text-white font-bold text-[10px] px-8 py-2 rotate-45 shadow-sm">
+                        PREPARING
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-100 text-accent rounded-2xl flex items-center justify-center text-xl md:text-2xl font-bold mb-5 md:mb-6">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <span class="text-xs font-bold text-accent tracking-wider uppercase">02. Takeout & Gift</span>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 font-rounded mt-1 mb-3">おうちでGAKU急速冷凍パック</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            お店のアルデンテと秘伝ブイヨンの深みをそのままパック。ご家庭やオフィスでのランチ、遠方のご家族・友人へのギフトとしても喜ばれる冷凍リゾットを展開予定です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-dashed border-orange-100 flex items-center gap-2 text-xs font-bold text-orange-600">
+                        <i class="fas fa-clock"></i> 開発中
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <h2 class="text-center text-2xl md:text-3xl font-bold font-rounded mb-12 md:mb-16">お客様の「おいしい」の声</h2>
+            <div class="space-y-6 md:space-y-8">
+                <div class="flex items-start gap-3 sm:gap-4 md:gap-8">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-orange-100 rounded-full shrink-0 flex items-center justify-center text-accent">
+                        <i class="fas fa-user text-base sm:text-xl"></i>
+                    </div>
+                    <div class="relative bg-orange-50 p-4 sm:p-6 rounded-2xl rounded-tl-none">
+                        <div class="text-yellow-500 mb-2 text-sm sm:text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">「大盛りがたっぷりで驚きました!野菜の甘みとたらこの塩気が絶妙。待ち時間はありましたが、待つ価値のある一皿です。」</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 sm:gap-4 md:gap-8 flex-row-reverse">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gray-100 rounded-full shrink-0 flex items-center justify-center text-gray-400">
+                        <i class="fas fa-user text-base sm:text-xl"></i>
+                    </div>
+                    <div class="relative bg-gray-100 p-4 sm:p-6 rounded-2xl rounded-tr-none text-right">
+                        <div class="text-yellow-500 mb-2 justify-end flex text-sm sm:text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">「妻がチーズ苦手なのですが、スタッフさんが親切にメニューを選んでくれました。牛すね肉のリゾット、ホロホロで最高でした!」</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="owner" class="py-16 md:py-24 bg-paper border-y border-orange-100">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full max-w-xs md:max-w-none md:w-1/2 relative">
+                    <div class="aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl">
+                        <img src="images/chef.png" alt="Founder" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-2 sm:-right-4 bg-accent text-white p-4 sm:p-6 rounded-2xl font-rounded">
+                        <p class="text-[10px] sm:text-xs uppercase tracking-widest font-bold">Representative</p>
+                        <p class="text-lg sm:text-2xl font-bold">柚木 学</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-accent font-bold serif italic text-lg md:text-xl">Our Story</span>
+                    <h2 class="text-2xl md:text-4xl font-bold mt-2 font-rounded mb-6 md:mb-8 leading-snug">リゾットの常識を変え、<br>日常の景色にする。</h2>
+                    <div class="space-y-5 md:space-y-6 text-gray-600 leading-relaxed text-sm md:text-base">
+                        <p>調理師学校を経てシドニーへ。しかし現実は舟洗いの毎日でした。挫折を味わい帰国後、バイト先で気づいた「日本にリゾット専門店がない」という事実。</p>
+                        <p>「パスタやピザのように、もっと気軽に、お腹いっぱいリゾットを食べてほしい」</p>
+                        <p>2006年、その想いだけで立ち上げたGAKUは、今や北海道を代表するリゾット専門店となりました。定食屋のような気軽さと、プロの味。その両立を今も追求し続けています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access & Final CTA -->
+    <section id="access" class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-4xl font-bold font-rounded mb-3 md:mb-4">アクセス</h2>
+                <p class="text-sm md:text-base text-gray-500">札幌NSビル2階。大通駅・すすきの駅からもアクセス良好です。</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 md:gap-12 mb-14 md:mb-20">
+                <div class="w-full lg:w-3/5">
+                    <div class="map-container shadow-2xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.1961543984685!2d141.35260807507223!3d43.05834189070271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2983113434a3%3A0x79ab10d0ac7d1dd4!2z44Oq44K-44OD44OI5bCC6ZaA5bqXIFJpc290dGVyaWHCru-4jkdBS1UgYmlz!5e0!3m2!1sja!2sjp!4v1771900525979!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/5 flex flex-col justify-center">
+                    <div class="bg-orange-50 p-6 sm:p-8 rounded-3xl border border-orange-100">
+                        <h4 class="font-bold text-xl sm:text-2xl mb-5 sm:mb-6 font-rounded text-accent">Risotteria®︎GAKU bis</h4>
+                        <ul class="space-y-3 sm:space-y-4 text-gray-700 text-sm sm:text-base">
+                            <li class="flex gap-3 sm:gap-4">
+                                <i class="fas fa-map-marker-alt text-accent mt-1 shrink-0"></i>
+                                <span>〒060-0062 北海道札幌市中央区南2条西2丁目 札幌NSビル 2F</span>
+                            </li>
+                            <li class="flex gap-3 sm:gap-4">
+                                <i class="fas fa-clock text-accent mt-1 shrink-0"></i>
+                                <span>11:30 〜 22:00 (L.O. 21:30)</span>
+                            </li>
+                            <li class="flex gap-3 sm:gap-4">
+                                <i class="fas fa-calendar-times text-accent mt-1 shrink-0"></i>
+                                <span>定休日：月曜日・火曜日</span>
+                            </li>
+                            <li class="flex gap-3 sm:gap-4">
+                                <i class="fas fa-phone-alt text-accent mt-1 shrink-0"></i>
+                                <span class="font-bold">011-281-2822</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center border-t border-gray-100 pt-12 md:pt-16">
+                <h3 class="text-2xl md:text-3xl font-bold font-rounded mb-6 md:mb-8">さあ、今日のリゾットを<br>選びに行こう。</h3>
+                <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center">
+                    <a href="https://risotteria-gaku.net/contact" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto bg-accent text-white px-10 py-5 md:px-12 md:py-6 rounded-full font-bold text-lg md:text-xl btn-hover shadow-xl text-center">
+                        WEBから予約する
+                    </a>
+                    <a href="tel:011-281-2822" class="w-full md:w-auto bg-gray-900 text-white px-10 py-5 md:px-12 md:py-6 rounded-full font-bold text-lg md:text-xl btn-hover shadow-xl text-center">
+                        お電話で予約
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 text-center">
+            <div class="font-bold text-2xl md:text-3xl font-rounded mb-4">Risotteria®︎GAKU <span class="text-accent">bis</span></div>
+            <p class="text-gray-500 text-xs md:text-sm mb-8 md:mb-10 tracking-widest uppercase">The Risotto Specialty Store in Sapporo</p>
+            <div class="flex justify-center gap-6 mb-8 md:mb-10">
+                <a href="https://www.instagram.com/risotteria/" target="_blank" rel="noopener noreferrer" class="text-2xl md:text-3xl hover:text-accent transition-colors duration-300" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UC_73aPYOhplye4nOzrob67w" target="_blank" rel="noopener noreferrer" class="text-2xl md:text-3xl hover:text-accent transition-colors duration-300" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <p class="text-xs text-gray-600">&copy; 2025 株式会社GAKU. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        // モバイルメニューが開いていたら閉じる
+                        mobileMenu.classList.remove('open');
+                        hamburger.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', 'false');
+
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // モバイルハンバーガーメニュー
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    </script>
+</body>
+</html>
