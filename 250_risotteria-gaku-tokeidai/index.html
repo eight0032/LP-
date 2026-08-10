@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Risotteria®︎GAKU 時計台 | 北海道発・リゾット専門店の原点</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700;900&display=swap');
+
+        :root {
+            --primary-color: #d35400;
+            --accent-color: #c0392b;
+            --bg-cream: #fdfbf7;
+            --text-main: #2c3e50;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        /* スマホでは background-attachment:fixed を解除（iOS対策・パフォーマンス対策） */
+        .hero-visual {
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/hotate.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-visual {
+                background-attachment: fixed;
+            }
+        }
+
+        .cta-float {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cta-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(211, 84, 0, 0.4);
+        }
+
+        .cta-float:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .section-decorative-title {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-decorative-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        /* 地図：スマホは正方形に近い比率、タブレット以上で横長に */
+        .map-container {
+            position: relative;
+            padding-bottom: 100%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        @media (min-width: 640px) {
+            .map-container {
+                padding-bottom: 70%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .map-container {
+                padding-bottom: 0;
+                height: 450px;
+            }
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="paper-texture">
+
+ <!-- ナビゲーション -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-orange-100 px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+        <div class="font-black text-base sm:text-xl tracking-tighter text-orange-800 leading-tight">
+            Risotteria®︎GAKU <span class="block sm:inline text-[10px] sm:text-sm font-normal sm:ml-1">時計台店</span>
+        </div>
+        <a href="tel:011-219-6004" class="bg-orange-700 text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold hover:bg-orange-800 transition whitespace-nowrap">
+            ご予約・お問い合わせ
+        </a>
+    </nav>
+
+   <!-- FVエリア -->
+    <header class="hero-visual min-h-[100svh] flex flex-col items-center justify-center text-white px-4 text-center pt-20 pb-16">
+        <div class="fade-in visible">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-5 sm:mb-6 leading-[1.4] sm:leading-[1.3]">
+                お米、具材、<br>
+                <span class="text-xl sm:text-2xl md:text-3xl text-orange-400 block mt-3 sm:mt-4 font-normal">そのすべてに 愛を込めて。</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl font-light tracking-wide sm:tracking-widest max-w-xs sm:max-w-2xl mx-auto leading-relaxed">
+                北海道発リゾット専門店の原点。<br>
+                100種類以上のレシピから、今日のあなたに寄り添う一皿を。
+            </p>
+            <div class="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
+                <a href="#menu" class="bg-white text-orange-900 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold hover:bg-orange-50 transition text-sm sm:text-base">お品書きを見る</a>
+                <a href="tel:011-219-6004" class="bg-orange-600 text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold hover:bg-orange-700 transition text-sm sm:text-base">ご予約・お問合せ</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 紹介文：コンセプト -->
+    <section class="py-16 sm:py-24 bg-white text-center">
+        <div class="container mx-auto px-5 sm:px-4 max-w-3xl">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-serif mb-8 sm:mb-10 leading-relaxed">
+                「リゾットをおいしく・たっぷり・気軽に」
+            </h2>
+            <p class="text-gray-600 leading-loose text-sm sm:text-base">
+                札幌時計台のすぐ横、静かなビルの地下に広がる「隠れ家」。<br>
+                私たちは、リゾットを単なるサイドメニューではなく、<br>
+                主役として、そして北海道の恵みを一番美味しく食べる方法として<br>
+                磨き続けてきました。
+            </p>
+        </div>
+    </section>
+
+    <!-- 100種類以上のメニュー訴求 -->
+    <section id="menu" class="py-16 sm:py-24 container mx-auto px-5 sm:px-4">
+        <div class="text-center mb-10 sm:mb-16">
+            <h2 class="section-decorative-title text-2xl sm:text-3xl font-serif mb-4">選べる愉しみ</h2>
+            <p class="text-orange-800 font-bold italic text-sm sm:text-base">Variation of 100+ Risottos</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl text-center border border-orange-50 hover:border-orange-200 transition">
+                <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🍅</div>
+                <h3 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Tomato Base</h3>
+                <p class="text-[11px] sm:text-xs text-gray-500">素材の旨みが引き立つ定番</p>
+            </div>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl text-center border border-orange-50 hover:border-orange-200 transition">
+                <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🧀</div>
+                <h3 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Cream Base</h3>
+                <p class="text-[11px] sm:text-xs text-gray-500">濃厚でクリーミーな味わい</p>
+            </div>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl text-center border border-orange-50 hover:border-orange-200 transition">
+                <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🦴</div>
+                <h3 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Brodo Base</h3>
+                <p class="text-[11px] sm:text-xs text-gray-500">出汁の旨みが染み渡る</p>
+            </div>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl text-center border border-orange-50 hover:border-orange-200 transition">
+                <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🔥</div>
+                <h3 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Grilled Cheese</h3>
+                <p class="text-[11px] sm:text-xs text-gray-500">香ばしい焦げ目が一番人気</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- おすすめ商品ピックアップ -->
+    <section class="py-16 sm:py-24 bg-stone-100">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="flex flex-wrap items-center -mx-4">
+                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                    <img src="images/rizzoto.jpg" alt="リゾット" class="rounded-2xl shadow-2xl w-full h-auto">
+                </div>
+                <div class="w-full md:w-1/2 px-4 md:px-8">
+                    <span class="text-orange-700 font-bold tracking-widest text-xs sm:text-sm uppercase">Recommended</span>
+                    <h2 class="text-2xl sm:text-4xl font-serif mt-3 sm:mt-4 mb-4 sm:mb-6 leading-tight text-stone-800">自家製ミートソースの<br>焚きリゾット</h2>
+                    <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                        常連様が口を揃えて「絶対にチーズにする」と語る、GAKUの真骨頂。たっぷりかかったスパイシーなミートソースと、熱々でとろけるステッペンチーズが、北海道産米の一粒一粒を包み込みます。
+                    </p>
+                    <div class="border-l-4 border-orange-500 pl-4 py-2 italic text-gray-500 text-xs sm:text-sm bg-white/50 rounded-r-lg">
+                        「熱々でチーズが溶けている食べ物が大好きなので、めげずに自分好みのメニューを探します。」（お客様のクチコミより）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon : 新サービス予告 -->
+    <section class="py-16 sm:py-24 bg-gradient-to-b from-stone-100 to-amber-50/50 relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-4 max-w-5xl">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="inline-block bg-orange-800 text-white font-bold text-[11px] sm:text-xs px-4 py-1.5 rounded-full uppercase tracking-widest mb-3">Coming Soon</span>
+                <h2 class="section-decorative-title text-2xl sm:text-3xl md:text-4xl font-serif text-stone-800">こんなサービス、準備中。</h2>
+                <p class="text-gray-600 mt-4 text-sm sm:text-base">「もっとこうだったら嬉しい」を形に。まもなく登場予定の新しい楽しみ方です。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: ハーフ&ハーフ -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-orange-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-xl sm:text-2xl mb-5 sm:mb-6 text-orange-700">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <span class="text-xs font-bold text-orange-600 tracking-wider">01 / SET MENU</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-stone-800 mt-2 mb-3 font-serif">ハーフ&ハーフ<br>選べるリゾットセット</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            「100種類あって1つに絞れない…」という声にお応えして。お好きな2種類をハーフサイズで一度に楽しめる、欲張りな新セットメニューを展開予定！
+                        </p>
+                    </div>
+                    <div class="mt-6 sm:mt-8 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400 font-bold">
+                        <span>提供開始時期</span>
+                        <span class="text-orange-700">順次展開準備中</span>
+                    </div>
+                </div>
+
+                <!-- サービス2: 夜の〆リゾット -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-orange-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-xl sm:text-2xl mb-5 sm:mb-6 text-orange-700">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <span class="text-xs font-bold text-orange-600 tracking-wider">02 / NIGHT SPECIAL</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-stone-800 mt-2 mb-3 font-serif">夜の〆リゾット &<br>ペアリングワイン</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            締めパフェ文化の街・札幌からお届けする「夜の〆（シメ）リゾット」。お酒の後にも優しい出汁ベースのミニリゾットとナチュラルワインの夜限定セットです。
+                        </p>
+                    </div>
+                    <div class="mt-6 sm:mt-8 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400 font-bold">
+                        <span>提供開始時期</span>
+                        <span class="text-orange-700">順次展開準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 創業者ストーリー -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="flex flex-wrap items-center max-w-5xl mx-auto lg:flex-row-reverse">
+                <div class="w-full lg:w-1/2 px-0 lg:px-4 mb-8 lg:mb-0">
+                    <img src="images/chef.png" alt="創業者" class="rounded-2xl grayscale hover:grayscale-0 transition duration-700 shadow-2xl w-full h-auto">
+                </div>
+                <div class="w-full lg:w-1/2 px-0 lg:px-8">
+                    <h2 class="text-2xl sm:text-3xl font-serif mb-4 sm:mb-6">ここが、私たちの原点。</h2>
+                    <p class="text-orange-400 font-bold mb-4 text-sm sm:text-base">創業者 岳本 学 の想い</p>
+                    <p class="leading-loose text-gray-300 mb-6 sm:mb-8 font-light text-sm sm:text-base">
+                        23歳でこの時計台店を開いた時、胸にあったのは「誰でも気負わずに入れる食堂のようなリゾット屋を作りたい」という一心でした。地下1階の、少し電波の届きにくいこの場所から、私たちの挑戦は始まりました。
+                    </p>
+                    <div class="flex flex-wrap gap-5 sm:gap-6 items-center">
+                        <a href="https://www.instagram.com/gaku_tokeidai/" target="_blank" class="inline-flex items-center text-white border-b border-white pb-1 hover:text-orange-400 hover:border-orange-400 transition text-sm sm:text-base">
+                            インスタグラムを見る <i class="fab fa-instagram ml-2"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC_73aPYOhplye4nOzrob67w" target="_blank" class="inline-flex items-center text-white border-b border-white pb-1 hover:text-red-500 hover:border-red-500 transition text-sm sm:text-base">
+                            YouTubeを見る <i class="fab fa-youtube ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA & アクセス -->
+    <section id="contact" class="py-16 sm:py-24 bg-stone-100 border-t border-stone-200">
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-2xl sm:text-4xl font-serif mb-6 sm:mb-8 text-stone-800">お席のご予約・お問い合わせ</h2>
+                <p class="text-gray-600 text-sm sm:text-base">
+                    時計台の鐘の音を近くに聞きながら、<br>
+                    特別な一皿をご用意してお待ちしております。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-8 mb-10 sm:mb-16 max-w-4xl mx-auto">
+                <a href="tel:011-219-6004" class="cta-float block bg-white border border-orange-200 p-6 sm:p-8 rounded-3xl shadow-sm text-center">
+                    <i class="fas fa-phone text-2xl sm:text-3xl text-orange-600 mb-3 sm:mb-4"></i>
+                    <p class="text-xs text-gray-500 mb-1">お電話でのご予約</p>
+                    <p class="text-xl sm:text-2xl font-black text-orange-900 tracking-wider">011-219-6004</p>
+                </a>
+                <a href="https://risotteria-gaku.net/contact" target="_blank" class="cta-float block bg-orange-700 p-6 sm:p-8 rounded-3xl shadow-sm text-center text-white">
+                    <i class="fas fa-envelope text-2xl sm:text-3xl mb-3 sm:mb-4"></i>
+                    <p class="text-xs opacity-80 mb-1">フォームでのお問い合わせ</p>
+                    <p class="text-xl sm:text-2xl font-bold">Contact Form</p>
+                </a>
+            </div>
+
+            <!-- アクセスマップエリア -->
+            <div class="flex flex-wrap bg-white rounded-[1.5rem] sm:rounded-[2rem] shadow-xl overflow-hidden border border-stone-200">
+                <div class="w-full lg:w-1/2 p-6 sm:p-10 lg:p-16">
+                    <h3 class="text-xl sm:text-2xl font-serif mb-6 sm:mb-8 text-orange-900 italic">Shop Information</h3>
+                    <div class="space-y-6 sm:space-y-8">
+                        <div>
+                            <h4 class="font-bold text-stone-400 text-xs uppercase tracking-widest mb-2">Address</h4>
+                            <p class="text-base sm:text-lg text-stone-800">〒060-0001<br>北海道札幌市中央区北１条西２丁目<br>札幌時計台ビル B1F</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-stone-400 text-xs uppercase tracking-widest mb-2">Business Hours</h4>
+                            <p class="text-base sm:text-lg text-stone-800">11:00 〜 22:00 (L.O 21:30)</p>
+                            <p class="text-sm text-orange-600 font-bold mt-1">定休日：不定</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-stone-400 text-xs uppercase tracking-widest mb-2">Access</h4>
+                            <p class="text-stone-700 text-sm sm:text-base">札幌駅・大通駅より 徒歩4分<br>札幌市時計台のすぐ隣、ビルの地下1階です。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 bg-stone-200">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.9657500891963!2d141.3509030750725!3d43.063187890392584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b297627507247%3A0x123a624479525443!2zUmlzb3R0ZXJpYcKu77iOR0FLVeaZguioiOWPsA!5e0!3m2!1sja!2sjp!4v1771897523835!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-stone-900 text-stone-500 text-center text-xs tracking-widest px-4">
+        <p class="mb-4">Risotteria®︎GAKU 時計台店</p>
+        <p>&copy; GAKU co., ltd. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // フェードインアニメーション
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
