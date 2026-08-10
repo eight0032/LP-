@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Nido del Pasto | Magazine Style LP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,900;1,400&family=Noto+Serif+JP:wght@300;600;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdfcf0;
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .bodoni { font-family: 'Bodoni Moda', serif; }
+        .text-accent { color: #8b0000; }
+        .bg-accent { background-color: #8b0000; }
+
+        /* 雑誌風の縦書きアクセント */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 写真のオーバーレイ装飾 */
+        .img-caption {
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #b8860b;
+        }
+
+        /* 特典バッジの雑誌風スタンプデザイン */
+        .stamp {
+            border: 2px dotted #d4af37;
+            border-radius: 50%;
+            transform: rotate(-15deg);
+        }
+
+        /* 雑誌のページのような装飾的な余白 */
+        .magazine-border {
+            border-left: 1px solid #d4af37;
+            padding-left: 1.5rem;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* マップのレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* モバイルはやや正方形寄りに */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.125rem;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; } /* PCは16:9 */
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* モバイルでのタイポグラフィ微調整（Tailwindのブレークポイントで大枠は制御） */
+        @media (max-width: 480px) {
+            .hero-title { max-width: 80%; }
+        }
+
+        /* prefers-reduced-motion 対応 */
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION: Magazine Cover style -->
+    <header class="relative min-h-screen grid grid-cols-1 md:grid-cols-12 items-center px-5 sm:px-8 md:px-12 py-10 md:py-12">
+        <!-- Vertical Label（モバイルでは非表示） -->
+        <div class="hidden md:block col-span-1 border-r border-gray-200 h-full">
+            <p class="vertical-text serif text-sm tracking-[0.5em] opacity-40 py-8">EST. SAPPORO 2024 / ISSUE NO.01</p>
+        </div>
+
+        <div class="col-span-1 md:col-span-11 grid md:grid-cols-2 gap-10 md:gap-8 items-center">
+            <div class="relative z-10 order-2 md:order-1">
+                <p class="bodoni italic text-lg sm:text-xl md:text-2xl text-accent mb-3 md:mb-4">The Art of Italian Gastronomy</p>
+                <h1 class="serif text-[2.5rem] leading-[1.15] sm:text-6xl md:text-[5rem] font-black md:leading-[1.1] text-gray-900 mb-6 md:mb-8 tracking-tighter">
+                    記憶に<br>残る、<br>
+                    <span class="text-accent">一皿。</span>
+                </h1>
+                <div class="magazine-border max-w-sm">
+                    <p class="serif text-base sm:text-lg leading-relaxed mb-6">
+                        店舗の片隅、コンテナの扉を開けると広がるのは、イタリアの陽光を思わせる温かな空間。
+                    </p>
+                    <a href="#booking" class="inline-block w-full sm:w-auto text-center bg-accent text-white px-8 sm:px-10 py-4 rounded-full font-bold tracking-widest hover:bg-black transition shadow-2xl">
+                        RESERVE A TABLE
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative order-1 md:order-2 mt-4 md:mt-0">
+                <div class="aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-sm shadow-2xl relative">
+                    <img src="images/main.png" alt="メイン料理" class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-white hero-title">
+                        <p class="bodoni text-2xl sm:text-3xl md:text-4xl italic">Saffron Risotto</p>
+                        <p class="text-[9px] sm:text-[10px] tracking-widest mt-1">THE ICONIC SIGNATURE DISH</p>
+                    </div>
+                </div>
+                <!-- 雑誌風スタンプバッジ -->
+                <div class="absolute -top-6 right-2 sm:-top-8 sm:right-4 md:-top-10 md:-right-4 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 stamp bg-white/90 shadow-xl flex items-center justify-center text-center p-3 sm:p-4 z-20">
+                    <p class="serif text-[10px] sm:text-xs font-bold leading-tight">
+                        <span class="text-[9px] sm:text-[10px] opacity-60">Web Limited</span><br>
+                        自家製<br>フォカッチャ<br>プレゼント
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 01: STORY -->
+    <section class="py-16 md:py-24 px-5 sm:px-8 md:px-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 md:gap-16 items-start">
+            <div class="md:col-span-1">
+                <h2 class="serif text-3xl sm:text-4xl font-black mb-6 md:mb-8 leading-tight">
+                    札幌・大通東で<br>出会う、<br>
+                    <span class="bodoni italic text-accent text-4xl sm:text-5xl">Real Italy.</span>
+                </h2>
+                <div class="space-y-5 md:space-y-6 text-gray-600 leading-relaxed text-sm sm:text-base">
+                    <p>サッポロファクトリー向かい。カジュアルな外観を裏切るような、上質で温かいサービス。ここは、日常の中に「非日常」を添える場所。</p>
+                    <p>爽やかなシェフが紡ぐ本格料理と、ソムリエのマダムが提案するワインのペアリング。その調和は、まるでお気に入りの短編小説を読み終えた時のような充足感をもたらします。</p>
+                </div>
+            </div>
+            <div class="md:col-span-2 grid grid-cols-2 gap-3 sm:gap-4">
+                <div class="mt-8 sm:mt-12">
+                    <img src="images/store.png" alt="店内1" class="w-full aspect-square object-cover shadow-lg mb-2">
+                    <p class="img-caption">Interior / Warm Yellow Walls</p>
+                </div>
+                <div>
+                    <img src="images/pasta.png" alt="料理2" class="w-full aspect-[3/4] object-cover shadow-lg mb-2">
+                    <p class="img-caption">Main Course / Hokkaido Venison</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: THE DISH -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6 max-w-6xl">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="bodoni text-accent text-lg sm:text-xl italic">Specialty of the House</span>
+                <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-black mt-2">人生最高のリゾット</h2>
+                <div class="flex justify-center mt-4">
+                    <div class="w-12 h-[1px] bg-accent"></div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <img src="images/rissot.png" alt="リゾット" class="w-full h-[380px] sm:h-[480px] md:h-[600px] object-cover rounded-sm shadow-inner">
+                <div class="md:absolute md:inset-0 flex items-center justify-center px-1 -mt-16 md:mt-0">
+                    <div class="bg-white/95 md:bg-white/90 p-6 sm:p-8 md:p-12 max-w-lg shadow-2xl backdrop-blur-sm mx-4 md:mx-0">
+                        <h3 class="serif text-xl sm:text-2xl font-bold mb-3 sm:mb-4">「筆舌に尽くし難いほどの美味しさ」</h3>
+                        <p class="text-gray-600 leading-relaxed mb-5 sm:mb-6 text-sm sm:text-base">
+                            クチコミで絶賛されるサフランのリゾット。鮮やかな黄色は、北海道の豊かな大地を象徴するかのよう。コックリと濃厚でありながら、後味はどこまでも洗練されています。
+                        </p>
+                        <div class="border-t border-gray-100 pt-4">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 03: REVIEWS -->
+    <section class="py-16 md:py-24 bg-[#f2f0e4]">
+        <div class="container mx-auto px-5 sm:px-6">
+            <h3 class="bodoni text-center text-3xl sm:text-4xl italic mb-12 md:mb-16">Guest Chronicles</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 max-w-7xl mx-auto">
+                <div class="space-y-10 md:space-y-12">
+                    <div class="border-b border-gray-300 pb-8">
+                        <div class="flex text-yellow-500 mb-2">★★★★★</div>
+                        <p class="serif font-bold text-base sm:text-lg mb-4">「永久に続くランチとディナーを全制覇したい」</p>
+                        <p class="text-xs text-gray-500 italic">— 平日昼間、本格イタリアンを求めて</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 sm:p-10 shadow-xl relative md:-mt-8">
+                    <div class="absolute -top-4 left-6 bg-accent text-white px-3 py-1 text-[10px] tracking-widest uppercase">Best Review</div>
+                    <div class="flex text-yellow-500 mb-4 mt-2 md:mt-0">★★★★★</div>
+                    <p class="serif text-lg sm:text-xl font-bold leading-relaxed mb-5 sm:mb-6">「ハードルを大幅に超える美味しさ！人生最高のリゾットとなりました。」</p>
+                    <p class="text-sm text-gray-600 leading-loose">
+                        評判が良かったのでハードルを上げて来ましたが、それを軽々と超えていきました。スープ、パン、トマト、チーズ…全てが最高。リピート確定です。
+                    </p>
+                </div>
+                <div class="space-y-10 md:space-y-12">
+                    <div class="border-b border-gray-300 pb-8">
+                        <div class="flex text-yellow-500 mb-2">★★★★</div>
+                        <p class="serif font-bold text-base sm:text-lg mb-4">「鹿肉は牛肉よりさっぱり。お腹に優しい味」</p>
+                        <p class="text-xs text-gray-500 italic">— Dinnerコースを堪能</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: COMING SOON -->
+    <section class="py-16 md:py-24 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-5 sm:px-6 max-w-6xl">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="bodoni text-accent text-lg sm:text-xl italic tracking-widest">Next Issue &amp; Future Services</span>
+                <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-black mt-2">COMING SOON</h2>
+                <p class="serif text-sm text-gray-500 mt-4 tracking-wider">これから始まる、新しいおもてなしと体験。</p>
+                <div class="flex justify-center mt-4">
+                    <div class="w-12 h-[1px] bg-accent"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1: SNS Pairing -->
+                <div class="p-6 sm:p-8 border border-gray-200 bg-[#fdfcf0] relative flex flex-col justify-between group hover:border-accent transition-colors shadow-sm hover:shadow-md">
+                    <div>
+                        <span class="inline-block bg-accent text-white text-[10px] tracking-widest font-bold px-3 py-1 mb-5 sm:mb-6 uppercase">SNS Service</span>
+                        <h3 class="serif text-lg sm:text-xl font-bold mb-3 leading-snug">SNS限定<br>ペアリング解説配信</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                            ソムリエとシェフが厳選する「今月の一皿×おすすめワイン」のペアリング理由やご自宅での楽しみ方を、Instagramやショート動画で毎週特別発信予定。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200 text-xs bodoni text-accent font-bold tracking-wider">
+                        #01 / PAIRING GUIDE
+                    </div>
+                </div>
+
+                <!-- Card 2: Online Shop -->
+                <div class="p-6 sm:p-8 border border-gray-200 bg-[#fdfcf0] relative flex flex-col justify-between group hover:border-accent transition-colors shadow-sm hover:shadow-md">
+                    <div>
+                        <span class="inline-block bg-gray-800 text-white text-[10px] tracking-widest font-bold px-3 py-1 mb-5 sm:mb-6 uppercase">Online Shop</span>
+                        <h3 class="serif text-lg sm:text-xl font-bold mb-3 leading-snug">自家製ソース＆、<br>パスタ ギフトボックス</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                            シェフ手作りの濃厚ラグーソースや旬の北海道素材を使った自家製パスタキット。ご自宅でも「イル ニード」の味を楽しめるオンラインショップを準備中。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200 text-xs bodoni text-accent font-bold tracking-wider">
+                        #02 / GOURMET BOX
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: ACCESS & MAP -->
+    <section id="booking" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="map-container shadow-2xl mb-6 md:mb-8">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.957586186278!2d141.3598620750725!3d43.06335959038155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2977511cfee5%3A0xb2aec697a7ed7ddb!2z44Kk44OrIOODi-ODvOODiSDjg4fjg6sg44OR44K544OI!5e0!3m2!1sja!2sjp!4v1771562361558!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <p class="img-caption text-center">Locate us / Odori East 4-chome</p>
+                </div>
+
+                <div class="order-1 md:order-2">
+                    <span class="bodoni text-accent tracking-[0.3em] text-sm sm:text-base">RESERVATION</span>
+                    <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-black mt-4 mb-6 md:mb-8">物語のつづきは、<br>お店で。</h2>
+                    <div class="space-y-4 sm:space-y-6 text-sm">
+                        <div class="flex flex-col sm:flex-row sm:justify-between gap-1 border-b pb-2">
+                            <span class="font-bold">Address</span>
+                            <span class="sm:text-right">札幌市中央区大通東4-4-45 </span>
+                        </div>
+                        <div class="flex justify-between items-center border-b pb-2">
+                            <span class="font-bold">Phone</span>
+                            <span class="text-base sm:text-lg">011-213-1705</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:justify-between gap-1 border-b pb-2">
+                            <span class="font-bold">Holiday</span>
+                            <span class="sm:text-right">月曜日（海の日等祝日の場合は振替あり）</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 md:mt-12 p-6 sm:p-8 bg-gray-50 border-t-4 border-accent">
+                        <p class="serif text-center mb-5 sm:mb-6 text-sm sm:text-base">週末ランチは早めのご予約をお勧めします</p>
+                        <button onclick="window.location.href='https://res-reserve.com/ja/restaurants/ilnidodelpasto'" class="w-full bg-accent text-white py-4 sm:py-5 rounded-sm font-bold text-lg sm:text-xl hover:bg-black transition-all shadow-xl">
+                            WEB予約・空席状況
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-14 md:py-20 border-t border-gray-200 text-center px-5">
+        <div class="mb-8">
+            <h4 class="bodoni text-2xl sm:text-3xl font-black italic">Il Nido del Pasto</h4>
+            <p class="text-[9px] sm:text-[10px] tracking-[0.4em] sm:tracking-[0.5em] text-gray-400 mt-2">SAPPORO MODERN ITALIAN REPERTOIRE</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 sm:gap-12 text-xs font-bold tracking-widest text-gray-500 uppercase">
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/il_nido_del_pasto/" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">Instagram</a>
+            <!-- Official Blog Link -->
+            <a href="http://blog.livedoor.jp/ilnidodelpasto/" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">Official Blog</a>
+        </div>
+        <p class="mt-10 md:mt-12 text-[9px] text-gray-300">© 2024 Il Nido del Pasto / Photo by Unsplash &amp; Guests</p>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('scroll-reveal');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
