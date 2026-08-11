@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>La motrice 新得 | 十勝の恵みと銀座の技が織りなす隠れ家レストラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600;900&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-base': '#fdfcf9',
+                        'text-main': '#2d2a26',
+                        'accent-dark': '#4a3e35',
+                        'accent-gold': '#b5a085',
+                    },
+                    fontFamily: {
+                        mincho: ["'Shippori Mincho'", 'serif'],
+                        noto: ["'Noto Serif JP'", 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-base: #fdfcf9;
+            --text-main: #2d2a26;
+            --accent-dark: #4a3e35;
+            --accent-gold: #b5a085;
+        }
+        body {
+            font-family: 'Shippori Mincho', serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .img-frame {
+            position: relative;
+            padding: 12px;
+            border: 1px solid var(--accent-gold);
+        }
+        .section-title {
+            letter-spacing: 0.15em;
+            position: relative;
+            padding-bottom: 18px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--accent-gold);
+        }
+        .map-container {
+            filter: grayscale(100%) invert(90%) contrast(90%);
+            transition: filter 0.5s ease;
+        }
+        .map-container:hover, .map-container:active {
+            filter: grayscale(0%) invert(0%) contrast(100%);
+        }
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { opacity: 1; transform: none; transition: none; }
+        }
+        /* Keep hero vertical headline legible and contained on small screens */
+        @media (max-width: 767px) {
+            .hero-vertical-text { max-height: 46vh; }
+        }
+    </style>
+</head>
+<body class="bg-paper">
+
+    <!-- FV AREA -->
+    <section class="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden py-24 px-4">
+        <div class="absolute inset-0 z-0 scale-110">
+            <div class="absolute inset-0 bg-black/40 sm:bg-black/30 z-10"></div>
+            <img src="images/hanbagu.jpg" alt="[十勝の絶景とジャージー牛ハンバーグ]" class="w-full h-full object-cover">
+        </div>
+
+        <div class="relative z-20 flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-12 text-center md:text-left">
+            <div class="vertical-text hero-vertical-text text-white mx-auto md:mx-0">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-black leading-relaxed tracking-[0.15em] md:tracking-[0.2em] mb-4">
+                    十勝の恵み、<br>銀座の矜持。
+                </h1>
+                <p class="text-sm sm:text-base md:text-lg tracking-[0.25em] md:tracking-[0.3em] font-light opacity-90">白樺の林を抜けて、別世界へ。</p>
+            </div>
+            <div class="w-16 h-[1px] md:w-[1px] md:h-48 bg-white/40 self-center"></div>
+            <div class="text-white text-center md:text-left self-center">
+                <p class="text-base md:text-xl font-light tracking-[0.1em] mb-6 md:mb-8">La motrice Shintoku</p>
+                <div class="border border-white/40 p-5 md:p-6 backdrop-blur-sm mx-auto max-w-xs md:max-w-none">
+                    <p class="text-xs sm:text-sm tracking-widest leading-loose">
+                        銀座の懐石で磨かれた技が、<br>
+                        新得の土から生まれた素材と出会う。<br>
+                        ここは、心まで満たす大人の隠れ家。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce text-xs md:text-sm tracking-widest">SCROLL</div>
+    </section>
+
+    <!-- CTA FIXED TOP BAR -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-3 md:py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+            <div class="text-lg md:text-xl font-bold tracking-[0.15em] md:tracking-[0.2em]">La motrice</div>
+            <div class="flex items-center gap-3 md:gap-6">
+                <a href="tel:0156-64-2222" class="hidden md:block text-sm font-bold border-b border-black">0156-64-2222</a>
+                <a href="tel:0156-64-2222" class="bg-black text-white px-4 md:px-6 py-2 rounded-sm text-xs md:text-sm tracking-widest hover:bg-gray-800 transition-all whitespace-nowrap">
+                    <i class="fas fa-phone-alt mr-1 md:hidden"></i>席を予約する
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- INTRODUCTION -->
+    <section class="py-20 md:py-32 px-4 md:px-6">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <span class="text-accent-gold text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] block mb-4 uppercase">Introduction</span>
+            <h2 class="text-2xl md:text-4xl mb-10 md:mb-12 section-title">銀座の技を、十勝の土の上で。</h2>
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-12 mt-12 md:mt-16">
+                <div class="md:w-1/2 text-left leading-loose text-gray-700 space-y-6 order-2 md:order-1">
+                    <p>
+                        東京・銀座。一流が鎬を削る街で、長年懐石料理の伝統と向き合ってきた店主。<br>
+                        その店主が選んだ場所は、北海道・新得町。
+                    </p>
+                    <p>
+                        白樺の林に包まれた高台のドームハウス。窓いっぱいに広がる十勝の空と、店内に流れるモダンなJAZZ。
+                    </p>
+                    <p>
+                        「素材の味を、下手に触らず、しっかりと味わってほしい」。<br>
+                        その想いは、一皿のサラダ、一切れのパン、そして溢れる肉汁のハンバーグへと注がれます。
+                    </p>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <div class="img-frame">
+                        <img src="images/chef.png" alt="[銀座の技を持つシェフ]" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU HIGHLIGHT -->
+    <section class="py-20 md:py-32 bg-[#2d2a26] text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center">
+                <div class="w-full md:w-1/2 fade-in">
+                    <img src="images/salada.jpg" alt="[サラダマウンテンとハンバーグ]" class="w-full h-72 sm:h-96 md:h-[600px] object-cover rounded-sm grayscale-[20%] hover:grayscale-0 transition-all duration-700 shadow-2xl">
+                </div>
+                <div class="w-full md:w-1/2 fade-in">
+                    <span class="text-accent-gold tracking-[0.4em] md:tracking-[0.5em] text-xs uppercase block mb-4 md:mb-6">Signature Menu</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 md:mb-8 md:vertical-text md:h-96 leading-relaxed">
+                        視覚が驚き、<br class="md:hidden">味覚が震える。
+                    </h2>
+                    <div class="mt-6 md:mt-8 space-y-6 md:space-y-8 text-gray-300 leading-loose">
+                        <div>
+                            <h3 class="text-white text-lg md:text-xl font-bold mb-2">サラダマウンテン</h3>
+                            <p class="text-sm md:text-base">地元の野菜が織りなす芸術的な盛り付け。一口ごとに、野菜本来の「甘い」旨みが広がります。</p>
+                        </div>
+                        <div>
+                            <h3 class="text-white text-lg md:text-xl font-bold mb-2">ジャージー牛のハンバーグ</h3>
+                            <p class="text-sm md:text-base">ジューシーかつ肉肉しい食感。十勝の恵みを一塊に凝縮した、当店一番の人気メニューです。</p>
+                        </div>
+                        <div class="pt-4 md:pt-6">
+                            <p class="text-xs md:text-sm italic">※旬の食材など、時期に合わせた特別なコースもご用意しております。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE / ATMOSPHERE -->
+    <section class="py-20 md:py-32 px-4 md:px-6 bg-white">
+        <div class="max-w-5xl mx-auto text-center fade-in">
+            <h2 class="text-2xl md:text-3xl font-bold mb-12 md:mb-16 section-title">非日常という、贅沢な調味料。</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                <div class="relative group overflow-hidden">
+                    <img src="images/store.jpg" alt="[吹き抜けの店内]" class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
+                        <p class="text-white tracking-widest font-bold">ドームハウスの吹き抜け</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                    <img src="images/sirakaba.jpg" alt="[白樺林]" class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <p class="text-white tracking-widest font-bold">白樺に囲まれた高台</p>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-10 md:mt-12 text-sm md:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                天文台のような不思議なドーム。見晴らしの良い高台で、晴れた日には十勝の青空が溶け込んでくるような開放感を。<br>
+                夜は静寂に包まれ、予約制の貸切空間として特別なひとときを演出します。
+            </p>
+        </div>
+    </section>
+
+    <!-- VOICES -->
+    <section class="py-20 md:py-32 bg-paper">
+        <div class="max-w-4xl mx-auto px-4 md:px-6">
+            <h2 class="text-center text-xl md:text-2xl font-bold mb-14 md:mb-20 section-title italic">Reviews</h2>
+            <div class="space-y-10 md:space-y-16">
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start fade-in">
+                    <div class="text-accent-gold text-3xl md:text-4xl serif leading-none">&ldquo;</div>
+                    <div class="flex-1 border-b border-accent-gold/20 pb-10 md:pb-12">
+                        <p class="text-base md:text-lg leading-loose mb-4">
+                            「甘くて濃い野菜の美味しさを実感出来るサラダ。ジャージー牛のハンバーグもジューシーで肉肉しい味、こちらにも色とりどりの野菜がたっぷりで美味しかったです。」
+                        </p>
+                        <p class="text-sm text-gray-500">— 来店時評価 ★★★★☆</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start fade-in">
+                    <div class="text-accent-gold text-3xl md:text-4xl serif leading-none">&ldquo;</div>
+                    <div class="flex-1 border-b border-accent-gold/20 pb-10 md:pb-12">
+                        <p class="text-base md:text-lg leading-loose mb-4">
+                            「白樺の林に入った所で別世界に入り込んだ気になります。盛り付け、彩り、味付け。全てが素晴らしい。見ても美味しい食べても美味しい。」
+                        </p>
+                        <p class="text-sm text-gray-500">— 来店時評価 ★★★★★</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS MAP SECTION -->
+    <section class="py-20 md:py-32 bg-white px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <span class="text-accent-gold tracking-[0.2em] md:tracking-[0.3em] text-xs uppercase block mb-4">Access</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 section-title">辿り着くまでの、物語。</h2>
+                <p class="text-sm md:text-base text-gray-600 leading-loose max-w-2xl mx-auto">
+                    La motriceは、少し辺鄙な場所にあります。<br>
+                    セブンイレブンの交差点を右折し、レストランの案内板を目印にお越しください。<br>
+                    <span class="text-accent-gold border-b border-accent-gold/30">※カーナビでは辿り着けない場合がございます。Googleマップのご利用を推奨します。</span>
+                </p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-stretch fade-in">
+                <div class="md:w-2/3 h-72 sm:h-96 md:h-[450px] map-container rounded-sm overflow-hidden shadow-2xl border border-gray-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.160616703883!2d142.8457855750735!3d43.08011848930884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f736fb29e97f0b9%3A0x65964cad97d109e8!2zTGEgbW90cmljZSDmlrDlvpc!5e0!3m2!1sja!2sjp!4v1771895670670!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="md:w-1/3 space-y-6 md:space-y-8 flex flex-col justify-center">
+                    <div class="border-l-2 border-accent-gold pl-5 md:pl-6">
+                        <p class="text-xs text-gray-500 mb-2 uppercase tracking-widest">Address</p>
+                        <p class="text-sm leading-loose">
+                            〒081-0035<br>
+                            北海道上川郡新得町上佐幌<br>
+                            西三線23-4
+                        </p>
+                    </div>
+                    <div class="border-l-2 border-accent-gold pl-5 md:pl-6">
+                        <p class="text-xs text-gray-500 mb-2 uppercase tracking-widest">Phone</p>
+                        <a href="tel:0156-64-2222" class="text-lg md:text-xl font-bold hover:text-accent-gold transition-colors">0156-64-2222</a>
+                    </div>
+                    <div class="border-l-2 border-accent-gold pl-5 md:pl-6">
+                        <p class="text-xs text-gray-500 mb-2 uppercase tracking-widest">Open</p>
+                        <p class="text-sm leading-loose">
+                            ランチ / ディナー（夜は要予約）<br>
+                            定休日：火曜日<br>
+                            <span class="text-xs opacity-60">※海の日の振り替え休日等の場合あり</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section class="py-20 md:py-32 bg-[#2d2a26] text-white px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <span class="text-accent-gold tracking-[0.3em] md:tracking-[0.4em] text-xs uppercase block mb-4">Coming Soon</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 section-title text-white">さらに深く、至福の刻を。</h2>
+                <p class="text-sm md:text-base text-gray-300 leading-loose max-w-2xl mx-auto">
+                    お客様により贅沢で快適な時間をお過ごしいただけるよう、<br class="hidden sm:block">
+                    La motriceでは新たなサービスやプランの整備を進めております。
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto fade-in">
+                <div class="border border-white/10 bg-white/5 p-6 md:p-8 rounded-sm hover:border-accent-gold transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="text-accent-gold text-2xl mb-4"><i class="fas fa-shuttle-van"></i></div>
+                        <span class="text-[10px] tracking-widest uppercase bg-accent-gold/20 text-accent-gold px-3 py-1 rounded-full inline-block mb-4">Preparation</span>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 text-white">周辺ホテル・駅からの送迎サービス</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            ワインやお酒を心ゆくまでお愉しみいただけるよう、JR新得駅やサホロエリア周辺ホテルからの送迎サービスを整備しております。
+                        </p>
+                    </div>
+                    <span class="text-xs text-accent-gold/80 italic">※順次開始予定</span>
+                </div>
+                <div class="border border-white/10 bg-white/5 p-6 md:p-8 rounded-sm hover:border-accent-gold transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="text-accent-gold text-2xl mb-4"><i class="fas fa-gift"></i></div>
+                        <span class="text-[10px] tracking-widest uppercase bg-accent-gold/20 text-accent-gold px-3 py-1 rounded-full inline-block mb-4">Preparation</span>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 text-white">十勝の味覚 オンライン配送</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            当店人気の「特選ジャージー牛ハンバーグ」や自家製ドレッシングをご自宅でお楽しみいただけるオンラインストアを開設予定です。
+                        </p>
+                    </div>
+                    <span class="text-xs text-accent-gold/80 italic">※順次開始予定</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVILEGE -->
+    <section class="py-20 md:py-32 px-4 md:px-6 bg-paper">
+        <div class="max-w-3xl mx-auto bg-[#f8f5f0] p-8 sm:p-12 md:p-20 text-center border border-accent-gold/30 fade-in">
+            <span class="text-accent-gold tracking-[0.2em] md:tracking-[0.3em] text-xs uppercase mb-6 block">Reservation Gift</span>
+            <h2 class="text-xl md:text-3xl font-bold mb-6 md:mb-8 font-mincho">心ばかりの、甘い幸せを。</h2>
+            <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-10 md:mb-12">
+                お客様の「甘いものがあればもっと嬉しい」という声にお応えして。<br>
+                <strong>「LPを見た」</strong>とご予約いただいたお客様に、<br>
+                シェフ特製の「小さな甘いもの」を食後にプレゼントいたします。
+            </p>
+            <a href="tel:0156-64-2222" class="inline-block bg-accent-dark text-white px-8 sm:px-12 py-4 sm:py-5 rounded-sm tracking-[0.15em] md:tracking-[0.2em] hover:bg-black transition-all shadow-xl text-sm sm:text-base">
+                電話で予約する
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1a1816] text-white py-16 md:py-24 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+            <div class="space-y-6">
+                <h3 class="text-xl md:text-2xl font-bold tracking-widest font-mincho">La motrice</h3>
+                <p class="text-sm text-gray-400 leading-loose max-w-sm">
+                    銀座で培った膳石の心と技を、北海道・新得の雄大な自然の中で。五感すべてで味わう、贅沢な時間を。
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/lamotrice/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="http://la-motrice.com/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 md:gap-8 text-xs text-gray-400">
+                <div class="space-y-4">
+                    <p class="text-white font-bold tracking-widest uppercase">Navigation</p>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Top</a></li>
+                        <li><a href="http://la-motrice.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Official Site</a></li>
+                        <li><a href="https://www.instagram.com/lamotrice/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-white font-bold tracking-widest uppercase">Contact</p>
+                    <p><a href="tel:0156-64-2222" class="hover:text-white transition-colors">0156-64-2222</a></p>
+                    <p>夜のご予約・貸切のご相談など、お気軽にお電話ください。</p>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-14 md:mt-20 pt-8 border-t border-white/10 text-center text-[10px] text-gray-600 tracking-widest">
+            &copy; 2025 LA MOTRICE SHINTOKU. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        window.addEventListener('load', () => {
+            const fvText = document.querySelector('.hero-vertical-text');
+            if (fvText) fvText.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
