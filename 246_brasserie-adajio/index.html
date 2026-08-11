@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ブラッスリー アダージョ | 円山公園の夜景と楽しむロワイヤルコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark-bg: #0b0e11;
+            --wood-warm: #1a1612;
+            --royal-black: #050505;
+        }
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.1em;
+        }
+        @media (min-width: 768px) {
+            h1, h2, h3, .serif { letter-spacing: 0.15em; }
+        }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(11,14,17,0) 0%, rgba(5,5,5,1) 100%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        .gold-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .gold-line { height: 80px; }
+        }
+
+        .btn-luxury {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid var(--gold);
+            background: rgba(197, 160, 89, 0.1);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s;
+        }
+        .btn-luxury:hover::before,
+        .btn-luxury:active::before {
+            left: 100%;
+        }
+
+        /* セクションごとの背景定義 */
+        .bg-section-atmosphere {
+            background: linear-gradient(rgba(5,5,5,0.8), rgba(5,5,5,0.8)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+        /* fixed attachment は iOS Safari で不具合が出やすいため PC のみ適用 */
+        @media (min-width: 768px) {
+            .bg-section-atmosphere { background-attachment: fixed; }
+        }
+
+        .bg-section-hospitality {
+            background-color: var(--wood-warm);
+            background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+        }
+
+        .bg-section-values {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* モバイルは正方形に近い比率 */
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-top: 40%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        /* タップ領域の確保 */
+        a, button { min-height: 44px; }
+
+        /* 横スクロール事故防止 */
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FV AREA: Cinematic Night View -->
+    <section class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/sapporo.jpg" alt="Sapporo Night View" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-20 text-center px-5 max-w-5xl">
+            <div class="reveal">
+                <p class="text-gold tracking-[0.3em] md:tracking-[0.6em] mb-5 md:mb-6 text-[10px] md:text-lg uppercase font-light">Sapporo Maruyama Hidden Gem</p>
+                <h1 class="text-2xl sm:text-3xl md:text-6xl mb-8 md:mb-10 leading-relaxed font-bold break-keep">
+                    手が届きそうな夜景と、<br>
+                    五感を揺さぶるフルコース。
+                </h1>
+                <div class="gold-line mb-8 md:mb-10"></div>
+                <p class="text-sm sm:text-lg md:text-2xl mb-10 md:mb-12 font-light text-gray-200 tracking-[0.1em] md:tracking-[0.2em] serif">
+                    1日3組限定。至高の「ロワイヤルコース」
+                </p>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 text-gold text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] animate-bounce">
+            SCROLL
+        </div>
+    </section>
+
+    <!-- 2. CTA 1: Pure Luxury Black -->
+    <section class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-5 text-center reveal">
+            <p class="text-gold mb-5 md:mb-6 serif tracking-widest text-xs md:text-sm">Brasserie Adajio</p>
+            <h2 class="text-lg sm:text-xl md:text-3xl mb-8 md:mb-10 font-light tracking-[0.05em] md:tracking-[0.1em] leading-relaxed">
+                円山の高台で、<br class="md:hidden">一生モノの記憶を刻む。
+            </h2>
+            <a href="tel:0116337300" class="btn-luxury inline-block w-full sm:w-auto text-white px-8 sm:px-12 py-4 sm:py-5 rounded-sm font-bold tracking-widest text-base sm:text-lg">
+                ご予約：011-633-7300
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. ATMOSPHERE: Night View -->
+    <section class="py-20 md:py-32 bg-section-atmosphere relative">
+        <div class="container mx-auto px-5">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20 reveal">
+                <div class="w-full md:w-1/2">
+                    <div class="relative inline-block w-full">
+                        <div class="absolute -inset-3 md:-inset-4 border border-gold/30"></div>
+                        <img src="images/yakei.jpg" alt="View" class="relative z-10 w-full rounded-sm shadow-2xl">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-gold text-xs tracking-[0.3em] md:tracking-[0.4em] block mb-4">THE VIEW</span>
+                    <h3 class="text-2xl sm:text-3xl md:text-5xl mb-6 md:mb-8 serif leading-tight">宝石のような<br>パノラマに包まれて</h3>
+                    <p class="text-gray-200 leading-loose text-base md:text-lg">
+                        札幌市街を一望できる至極の特等席。季節や時間とともに移ろう空の色と、街の灯りが、お二人のディナーを最高に美しく彩ります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. HOSPITALITY: Warm Wood Texture -->
+    <section class="py-20 md:py-32 bg-section-hospitality">
+        <div class="container mx-auto px-5">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 md:gap-20 reveal">
+                <div class="w-full md:w-1/2">
+                    <img src="images/main.jpg" alt="Course" class="w-full rounded-sm shadow-2xl border-b-4 border-gold">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-gold text-xs tracking-[0.3em] md:tracking-[0.4em] block mb-4">CUISINE</span>
+                    <h3 class="text-2xl sm:text-3xl md:text-5xl mb-6 md:mb-8 serif">道産食材と<br>イタリアン技法の融合</h3>
+                    <p class="text-gray-300 leading-loose mb-8 md:mb-10 text-base">
+                        和牛フィレ、フォワグラ、トリュフソース。北海道の力強い食材を、自由な発想で仕立てる「ロワイヤルコース」。1日3組だからこそできる、オーダーメイドの美味しさをお届けします。
+                    </p>
+                    <div class="glass-panel p-6 md:p-8 rounded-sm">
+                        <p class="text-gold text-sm italic mb-4">"若いお二人にも安心のサービス"</p>
+                        <p class="text-sm text-gray-400">「緊張していましたが、気さくな奥様の気遣いでリラックスして最高の記念日を過ごせました」</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. VALUES: Gradient Dark Focus -->
+    <section class="py-20 md:py-32 bg-section-values">
+        <div class="container mx-auto px-5 text-center reveal">
+            <h2 class="text-gold text-xs tracking-[0.3em] md:tracking-[0.5em] mb-10 md:mb-12 uppercase">Why Adajio?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+                <div class="p-8 md:p-10 border border-white/5 bg-white/[0.01] active:bg-white/[0.03] md:hover:bg-white/[0.03] transition-all">
+                    <h4 class="text-xl mb-5 md:mb-6 serif text-gold">Exclusive</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">1日3組。広々とした空間を贅沢に使い、誰にも邪魔されない時間をお約束します。</p>
+                </div>
+                <div class="p-8 md:p-10 border border-white/5 bg-white/[0.01] active:bg-white/[0.03] md:hover:bg-white/[0.03] transition-all">
+                    <h4 class="text-xl mb-5 md:mb-6 serif text-gold">Personalized</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">アレルギーや苦手な食材はもちろん、主役の好みに合わせた一皿をご用意いたします。</p>
+                </div>
+                <div class="p-8 md:p-10 border border-white/5 bg-white/[0.01] active:bg-white/[0.03] md:hover:bg-white/[0.03] transition-all">
+                    <h4 class="text-xl mb-5 md:mb-6 serif text-gold">Surprise</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">プロポーズや記念日の演出は、私たちの得意分野です。全力でサポートいたします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5. COMING SOON -->
+    <section class="py-16 md:py-28 bg-[#0e1217] relative border-y border-gold/15">
+        <div class="container mx-auto px-5 max-w-6xl">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <span class="inline-block border border-gold/40 text-gold text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] px-4 py-1.5 rounded-full mb-4 uppercase">Future Hospitality</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold serif tracking-wider">COMING SOON</h2>
+                <p class="text-gray-400 text-sm md:text-base mt-4 font-light">さらに心地よく、さらに特別なひとときをお届けするために準備中のサービス</p>
+                <div class="w-12 h-[1px] bg-gold/50 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto reveal">
+                <!-- 構想1: 送迎サービス -->
+                <div class="glass-panel p-6 sm:p-8 rounded-sm relative overflow-hidden group active:border-gold/50 md:hover:border-gold/50 transition-all duration-500">
+                    <div class="absolute -top-6 -right-6 text-white/5 text-6xl font-bold serif">01</div>
+                    <span class="text-gold text-xs tracking-widest font-bold uppercase block mb-3">Shuttle Service</span>
+                    <h3 class="text-lg sm:text-xl font-bold serif mb-4 text-white group-active:text-gold md:group-hover:text-gold transition-colors">地下鉄駅からの<br>プライベート送迎</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                        円山の高台だからこそ、お酒を心置きなく楽しみたい方や、ドレスアップした大切な方の足元を気にせずお越しいただけるよう、地下鉄円山公園駅等からの完全予約制送迎サービスを準備しております。
+                    </p>
+                    <span class="inline-block text-[10px] text-gold/80 border border-gold/30 px-3 py-1 rounded-sm">準備中 / 順次開始予定</span>
+                </div>
+
+                <!-- 構想2: アニバーサリーフォトプロデュース -->
+                <div class="glass-panel p-6 sm:p-8 rounded-sm relative overflow-hidden group active:border-gold/50 md:hover:border-gold/50 transition-all duration-500">
+                    <div class="absolute -top-6 -right-6 text-white/5 text-6xl font-bold serif">02</div>
+                    <span class="text-gold text-xs tracking-widest font-bold uppercase block mb-3">Memorial Photo</span>
+                    <h3 class="text-lg sm:text-xl font-bold serif mb-4 text-white group-active:text-gold md:group-hover:text-gold transition-colors">プロカメラマンによる<br>記念フォトグラフ</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                        プロポーズやご結婚記念日など、一生に一度の感動の瞬間を札幌の極上夜景とともに美しく残す、専属カメラマンによる撮影プロデュースプラン。
+                    </p>
+                    <span class="inline-block text-[10px] text-gold/80 border border-gold/30 px-3 py-1 rounded-sm">準備中 / 順次開始予定</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SPECIAL: Bright Anniversary White -->
+    <section class="py-20 md:py-32 bg-white text-black overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 bg-gold/10 rounded-full -mr-20 -mt-20 md:-mr-32 md:-mt-32"></div>
+        <div class="container mx-auto px-5 relative z-10">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 reveal">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-gold text-xs tracking-[0.3em] md:tracking-[0.4em] mb-4">ANNIVERSARY</h2>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl mb-6 md:mb-8 serif font-bold">特別な日を、<br>さらに輝かせる。</h3>
+                    <p class="leading-loose mb-6 md:mb-8 text-gray-700 text-base">
+                        お誕生日やプロポーズ。大切な瞬間のために、デザート時のメッセージプレートや、記念写真の撮影を無料で承っております。
+                    </p>
+                    <div class="inline-block border-l-4 border-gold pl-5 md:pl-6">
+                        <p class="font-bold text-base md:text-lg">演出サポート無料</p>
+                        <p class="text-sm text-gray-500">※ご予約時にお気軽にお申し付けください</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="images/dessert.png" alt="Support" class="w-full rounded-sm shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. INFORMATION & MAP -->
+    <section class="py-20 md:py-32 bg-[#f8f8f8] text-black">
+        <div class="container mx-auto px-5 max-w-5xl">
+            <div class="text-center mb-14 md:mb-20 reveal">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold serif mb-4 tracking-tight md:tracking-tighter">Access &amp; Info</h2>
+                <div class="w-16 h-1 bg-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-14 md:mb-20 reveal">
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold font-bold w-20 pt-1 shrink-0 text-sm md:text-base">Address</span>
+                        <p class="text-sm md:text-base">〒064-0944<br>北海道札幌市中央区円山西町2丁目20-7</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold font-bold w-20 pt-1 shrink-0 text-sm md:text-base">Contact</span>
+                        <p class="text-lg md:text-xl font-bold">011-633-7300</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold font-bold w-20 pt-1 shrink-0 text-sm md:text-base">Open</span>
+                        <p class="text-sm md:text-base">18:00 一斉スタート<br><span class="text-xs text-gray-500">※完全予約制（前日まで）</span></p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold font-bold w-20 pt-1 shrink-0 text-sm md:text-base">Holiday</span>
+                        <p class="text-sm md:text-base">不定休<br><span class="text-xs text-gray-500"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container mb-14 md:mb-20 rounded-sm overflow-hidden shadow-2xl reveal">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.8551448541602!2d141.2964921750712!3d43.04447919158973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0ad61ec187d7c1%3A0xbf0322832d5e0270!2z44OW44Op44OD44K544Oq44O8IOOCouODgOODvOOCuOOCqQ!5e0!3m2!1sja!2sjp!4v1771894402903!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="text-center reveal">
+                <a href="tel:0116337300" class="inline-block w-full sm:w-auto bg-black text-white px-10 sm:px-20 py-5 sm:py-6 rounded-sm font-bold text-lg sm:text-xl active:bg-gold md:hover:bg-gold transition-colors duration-500">
+                    今すぐお電話で予約する
+                </a>
+                <div class="mt-10 md:mt-12 flex justify-center gap-8 md:gap-12 opacity-40">
+                    <a href="https://adajio-sapporo.com/" target="_blank" class="text-xs tracking-widest uppercase active:text-gold md:hover:text-gold">Web Site</a>
+                    <a href="https://www.instagram.com/brasserie.adajio/" target="_blank" class="text-xs tracking-widest uppercase active:text-gold md:hover:text-gold">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 md:py-12 bg-black text-center border-t border-white/5">
+        <p class="text-gray-600 text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] uppercase">&copy; Brasserie Adajio All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
