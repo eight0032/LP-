@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>レストラン ラ・タージュ | 函館のカジュアルフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --accent-gold: #c5a059;
+            --deep-red: #8b0000;
+            --navy: #1a2a3a;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .marker-yellow {
+            background: linear-gradient(transparent 60%, #fff176 60%);
+        }
+
+        .bg-navy { background-color: var(--navy); }
+        .text-gold { color: var(--accent-gold); }
+        .bg-gold { background-color: var(--accent-gold); }
+        .border-gold { border-color: var(--accent-gold); }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/soup.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 15px auto 0;
+        }
+
+        input:focus, textarea:focus {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- 1. FV: ファーストビュー -->
+    <header class="hero-section min-h-[100svh] flex items-end justify-center text-white text-center px-4 pb-16 sm:pb-24 relative">
+        <div class="max-w-4xl z-10 mb-8 sm:mb-12">
+            <div class="inline-block border border-white px-4 py-1 mb-5 sm:mb-6 tracking-[0.25em] sm:tracking-[0.3em] text-xs sm:text-base rounded-full">
+                HAKODATE FRENCH RESTAURANT
+            </div>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 leading-tight">
+                函館の美食家が愛する、<br>
+                究極の<span class="text-yellow-400">「かぼちゃのポタージュ」</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 leading-relaxed font-light">
+                地元食材をシンプルに。<br>
+                一口食べれば心がほどける、<span class="font-bold underline decoration-yellow-400">「おいしく優しい」</span>ひととき。
+            </p>
+            <a href="#cta-form" class="inline-block bg-red-700 hover:bg-red-800 active:bg-red-900 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg shadow-2xl transition-all transform hover:-translate-y-1">
+                今すぐ限定クーポンを受け取る <i class="fas fa-chevron-right ml-2"></i>
+            </a>
+        </div>
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <p class="text-xs tracking-widest mb-2">SCROLL</p>
+            <div class="w-px h-8 sm:h-10 bg-white mx-auto"></div>
+        </div>
+    </header>
+
+    <!-- 2. CTA (1回目) -->
+    <section class="bg-navy py-8 sm:py-12 px-4 shadow-inner">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
+            <div class="text-white text-center md:text-left">
+                <p class="text-yellow-400 font-bold mb-1 text-sm sm:text-base">【WEB限定オファー】</p>
+                <h2 class="text-xl sm:text-2xl font-bold">ポタージュ無料引換券プレゼント</h2>
+            </div>
+            <div class="flex-1 w-full max-w-md">
+                <a href="#cta-form" class="block text-center bg-white text-navy font-bold py-3.5 sm:py-4 rounded-full shadow-lg hover:bg-slate-100 active:bg-slate-200 transition">
+                    以下のフォームから今すぐ受け取れます！
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 自己紹介: 板本シェフのストーリー -->
+    <section class="py-16 sm:py-24 px-4 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 sm:gap-12 items-center">
+            <div class="w-full md:w-2/5">
+                <div class="relative max-w-sm mx-auto md:max-w-none">
+                    <img src="images/chef.png" alt="シェフの写真" class="rounded-3xl shadow-xl w-full" loading="lazy">
+                    <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-6 bg-gold text-white p-4 sm:p-6 rounded-2xl shadow-lg">
+                        <p class="text-xs sm:text-sm">SINCE 2003</p>
+                        <p class="text-lg sm:text-2xl font-bold">La Tâche</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-3/5">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6">「はじめまして、橋本です」</h2>
+                <p class="text-base sm:text-lg leading-relaxed mb-6">
+                    フランスでの修行、そして函館のホテルでの経験を経て、2003年にこの「ラ・タージュ」を妻と共にスタートさせました。
+                </p>
+                <div class="space-y-3 sm:space-y-4">
+                    <p class="flex items-start"><i class="fas fa-check text-gold mt-1 mr-3 flex-shrink-0"></i> <span><span class="marker-yellow font-bold">地元函館の新鮮食材</span>をシンプルに調理</span></p>
+                    <p class="flex items-start"><i class="fas fa-check text-gold mt-1 mr-3 flex-shrink-0"></i> <span>お財布に優しい価格設定で<span class="marker-yellow font-bold">最高級の満足感</span>を</span></p>
+                    <p class="flex items-start"><i class="fas fa-check text-gold mt-1 mr-3 flex-shrink-0"></i> <span>主婦の憩いの場としても愛される、<span class="marker-yellow font-bold">カジュアルな空間</span></span></p>
+                </div>
+                <div class="mt-8 sm:mt-10 p-5 sm:p-6 bg-white border-l-4 border-gold italic text-slate-600 rounded-r-2xl shadow-sm text-sm sm:text-base">
+                    「おすすめのお店は？」と聞かれたら、このお店を必ず教えている——。そんな風に言っていただけるのが一番の喜びです。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 悩み言語化 → 解決策提示 -->
+    <section class="py-16 sm:py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">こんな「お悩み」ございませんか？</h2>
+                <div class="w-20 h-1 bg-slate-200 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 mb-14 sm:mb-20">
+                <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-100 flex gap-4">
+                    <div class="text-red-800 text-2xl sm:text-3xl font-bold flex-shrink-0">01</div>
+                    <div>
+                        <h3 class="font-bold text-base sm:text-lg mb-2">函館に来て海鮮料理に飽きてきた…</h3>
+                        <p class="text-slate-600 text-sm sm:text-base">新鮮な海鮮はもちろんですが、シェフの繊細な火入れが光るフレンチなら、全く新しい魅力をご提供できます。</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-100 flex gap-4">
+                    <div class="text-red-800 text-2xl sm:text-3xl font-bold flex-shrink-0">02</div>
+                    <div>
+                        <h3 class="font-bold text-base sm:text-lg mb-2">記念日や特別なランチ、外したくない</h3>
+                        <p class="text-slate-600 text-sm sm:text-base">「平日でも贅沢」「女性客でいっぱい」なのは信頼の証。口コミ評価★4.0以上の人気店にお任せください。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-navy text-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] relative overflow-hidden shadow-2xl">
+                <div class="relative z-10 text-center">
+                    <h3 class="text-xl sm:text-3xl font-bold mb-6 sm:mb-8">ラ・タージュが選ばれる3つの理由</h3>
+                    <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                        <div>
+                            <div class="text-gold text-3xl sm:text-4xl mb-3 sm:mb-4 font-serif">I</div>
+                            <h4 class="font-bold mb-2 text-sm sm:text-base">圧倒的人気のポタージュ</h4>
+                            <p class="text-sm opacity-80">「何か奥深い旨味がある」と評される、かぼちゃやさつまいものポタージュ。一口で虜になります。</p>
+                        </div>
+                        <div>
+                            <div class="text-gold text-3xl sm:text-4xl mb-3 sm:mb-4 font-serif">II</div>
+                            <h4 class="font-bold mb-2 text-sm sm:text-base">至福のデザートタイム</h4>
+                            <p class="text-sm opacity-80">夜のコースには必ず付くデザート。ランチで人気の「ワゴンデザート」は選ぶワクワク感が最高です。</p>
+                        </div>
+                        <div>
+                            <div class="text-gold text-3xl sm:text-4xl mb-3 sm:mb-4 font-serif">III</div>
+                            <h4 class="font-bold mb-2 text-sm sm:text-base">きびきびしたサービス</h4>
+                            <p class="text-sm opacity-80">忙しい中でもスタッフが心地よく動き、素敵なBGMと共に幸せな時間をお約束します。</p>
+                        </div>
+                    </div>
+                </div>
+                <i class="fas fa-utensils absolute bottom-[-50px] right-[-30px] text-[140px] sm:text-[200px] opacity-10 rotate-12"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 特典提示: 追加オファー -->
+    <section class="py-16 sm:py-24 px-4 bg-slate-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block bg-red-800 text-white px-5 sm:px-6 py-2 rounded-full font-bold mb-6 sm:mb-8 text-sm sm:text-base animate-pulse">
+                LIMITED OFFER
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-bold mb-5 sm:mb-6 italic font-serif">さらに、今なら！</h2>
+            <p class="text-base sm:text-xl mb-10 sm:mb-12">このページをご覧のあなただけに、<br><span class="marker-yellow font-bold text-lg sm:text-2xl">ディナーを彩る特別な一杯を。</span></p>
+
+            <div class="bg-white border-2 border-dashed border-gold p-6 sm:p-10 rounded-[2rem] shadow-xl relative">
+                <h3 class="text-xl sm:text-2xl font-bold text-navy mb-4">「名物ポタージュ」アップグレード引換券</h3>
+                <p class="text-slate-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                    厳選した旬の素材をさらに凝縮。通常のコースでは味わえない<br class="hidden md:block">
+                    特別な「プレミアム・ポタージュ」へ無料変更いたします。
+                </p>
+                <div class="flex justify-center items-center gap-3 sm:gap-4 text-xs sm:text-sm text-slate-500 font-bold uppercase tracking-widest">
+                    <span>Exclusive</span>
+                    <span class="w-8 sm:w-10 h-px bg-slate-300"></span>
+                    <span>For You</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. COMING SOON: これからのラ・タージュ -->
+    <section class="py-16 sm:py-24 px-4 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="inline-block text-gold text-xs sm:text-sm font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-3 border-b border-amber-500/40 pb-1">Future Project</span>
+                <h2 class="text-2xl sm:text-4xl font-bold section-title">COMING SOON</h2>
+                <p class="text-slate-300 mt-4 max-w-xl mx-auto text-sm md:text-base">
+                    「もっと日常に、ラ・ターチの美味しさを。」<br>
+                    お客様の声から生まれる、新しい「あればいいな」をかたちにしていきます。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                <!-- 構想1: スイーツテイクアウト拡充 -->
+                <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 p-6 sm:p-8 rounded-3xl relative hover:border-amber-500/50 transition duration-300 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-amber-500/20 text-gold text-xs px-3 py-1 rounded-full font-bold">PROJECT 01</span>
+                        <i class="fas fa-cookie-bite text-2xl text-gold group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-3">スイーツテイクアウト品目の本格充実</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        コースで大好評の自家製デザートをご自宅でも。「お土産に買って帰りたい」という多くのご要望にお応えし、シェフ特製タルトや濃厚カタラーナなどのテイクアウトメニューを順次拡充します。
+                    </p>
+                    <div class="text-xs text-amber-300/80 font-medium flex items-center gap-1">
+                        <i class="fas fa-sparkles"></i> ご自宅でのティータイムやお持ち寄りギフトに
+                    </div>
+                </div>
+
+                <!-- 構想2: ネット通販・全国配送 -->
+                <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 p-6 sm:p-8 rounded-3xl relative hover:border-amber-500/50 transition duration-300 group">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-amber-500/20 text-gold text-xs px-3 py-1 rounded-full font-bold">PROJECT 02</span>
+                        <i class="fas fa-truck-ramp-box text-2xl text-gold group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-3">全国お取り寄せ（ポタージュ・スイーツ）</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        自慢の「かぼちゃのポタージュ」や特製スイーツを急速冷凍し、全国へお届けするオンラインショップを展開予定。遠方のファンや贈り物としてもご利用いただけます。
+                    </p>
+                    <div class="text-xs text-amber-300/80 font-medium flex items-center gap-1">
+                        <i class="fas fa-sparkles"></i> 函館の絶品スープを全国のご家庭へ
+                    </div>
+                </div>
+            </div>
+
+            <!-- シェフの一言 -->
+            <div class="mt-10 sm:mt-12 text-center border-t border-slate-800 pt-8">
+                <p class="text-sm text-slate-400 italic">
+                    「こんなサービスがあったら嬉しい」というご意見がありましたら、ぜひお気軽にお聞かせください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. アクセス & 地図 -->
+    <section class="py-16 sm:py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold section-title tracking-wider">ACCESS</h2>
+                <p class="mt-4 text-slate-500 font-bold text-sm sm:text-base">レストラン ラ・ターチ 所在地</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 sm:gap-12 items-start">
+                <div class="md:col-span-1 space-y-5 sm:space-y-6">
+                    <div>
+                        <h3 class="text-gold font-bold mb-2 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i>住所</h3>
+                        <p class="text-sm leading-relaxed">〒041-0813<br>北海道函館市亀田本町3−24</p>
+                    </div>
+                    <div>
+                        <h3 class="text-gold font-bold mb-2 flex items-center"><i class="fas fa-phone-alt mr-2"></i>電話番号</h3>
+                        <a href="tel:0138438118" class="text-lg font-bold hover:text-navy transition">0138-43-8118</a>
+                    </div>
+                    <div>
+                        <h3 class="text-gold font-bold mb-2 flex items-center"><i class="fas fa-clock mr-2"></i>定休日</h3>
+                        <p class="text-sm">第１・第３水曜日</p>
+                    </div>
+                    <div class="pt-2 sm:pt-4">
+                        <a href="https://maps.app.goo.gl/y6N8x4y9X6z8B8X9A" target="_blank" rel="noopener" class="inline-block bg-slate-900 text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-slate-700 active:bg-slate-800 transition">Googleマップで開く</a>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-50 aspect-video">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974.27541735626!2d140.73644957499266!3d41.800826970250384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f9ef411b7d0d5d9%3A0x71e8d1b3e58b4027!2z44Os44K544OI44Op44OzIOODqeODu-OCv-ODvOODgQ!5e0!3m2!1sja!2sjp!4v1771894679147!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ラ・タージュ 地図"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA (最終) -->
+    <section id="cta-form" class="py-16 sm:py-24 px-4 bg-navy text-white">
+        <div class="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4 section-title">RESERVATION & COUPON</h2>
+            <p class="text-lg sm:text-xl opacity-90">以下のフォームから今すぐ受け取れます！</p>
+        </div>
+
+        <div class="max-w-xl mx-auto bg-white p-6 sm:p-10 rounded-[2rem] shadow-2xl text-slate-900">
+            <div class="mb-6 sm:mb-8 text-center">
+                <p class="text-navy font-bold text-base sm:text-lg mb-2">ポタージュ引換券をGETする</p>
+                <p class="text-xs text-slate-400">※ご入力いただいた情報は厳重に管理されます。</p>
+            </div>
+            <form class="space-y-5 sm:space-y-6">
+                <div>
+                    <label for="name" class="block text-xs font-bold uppercase mb-2 text-slate-500 ml-2">お名前 <span class="text-red-600">必須</span></label>
+                    <input id="name" name="name" type="text" required placeholder="例：函館 太郎" class="w-full px-6 py-4 rounded-full bg-slate-100 focus:outline-gold border-none text-base">
+                </div>
+                <div>
+                    <label for="email" class="block text-xs font-bold uppercase mb-2 text-slate-500 ml-2">メールアドレス <span class="text-red-600">必須</span></label>
+                    <input id="email" name="email" type="email" required placeholder="example@mail.com" class="w-full px-6 py-4 rounded-full bg-slate-100 focus:outline-gold border-none text-base">
+                </div>
+                <button type="submit" class="w-full bg-red-700 hover:bg-red-800 active:bg-red-900 text-white font-bold py-4 sm:py-5 rounded-full shadow-xl transition-all text-lg sm:text-xl mt-2 sm:mt-4">
+                    無料プレゼントを今すぐ受け取る
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-slate-950 text-white text-center">
+        <div class="flex justify-center gap-6 sm:gap-8 mb-6 sm:mb-8 opacity-60">
+            <a href="https://www.instagram.com/hitosara_official/" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="Instagram"><i class="fab fa-instagram text-2xl"></i></a>
+            <a href="https://hitosara.com/0005011336/?cid=gm_hp" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="店舗情報サイト"><i class="fas fa-external-link-alt text-2xl"></i></a>
+            <a href="https://www.youtube.com/channel/UCXm-kmfVbWvp34cJ5FjWdZg" target="_blank" rel="noopener" class="hover:text-gold transition" aria-label="YouTube"><i class="fab fa-youtube text-2xl"></i></a>
+        </div>
+        <p class="text-xs opacity-50 tracking-widest px-4">&copy; 2025 RESTAURANT LA TÂCHE. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+</body>
+</html>
