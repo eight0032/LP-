@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>ビストロ ミヨー (Millau) | 札幌すすきのの隠れ家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #b39359;
+            --color-bg-dark: #11100e;
+            --color-bg-light: #f4f1ea;
+            --color-bg-gray: #2a2a28;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg-dark);
+            color: #d1d1d1;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .bodoni { font-family: 'Bodoni Moda', serif; }
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        /* パララックス背景装飾（PCのみ・スマホは固定描画で軽量化） */
+        .parallax-bg {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        @media (min-width: 769px) {
+            .parallax-bg { background-attachment: fixed; }
+        }
+
+        .bg-hero {
+            background-image: linear-gradient(to bottom, rgba(17,16,14,0.35), rgba(17,16,14,0.85)), url('images/main.png');
+        }
+        .bg-concept {
+            background-color: var(--color-bg-light);
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+        .bg-signature {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/main.png');
+            background-blend-mode: multiply;
+        }
+        .bg-chef {
+            background-color: #e5e5e0;
+            background-image: url('https://www.transparenttextures.com/patterns/worn-dots.png');
+        }
+        .bg-reviews {
+            background-color: #1a1917;
+            position: relative;
+        }
+        .bg-reviews::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(179, 147, 89, 0.05), transparent);
+            pointer-events: none;
+        }
+        .bg-access { background-color: #000000; }
+
+        /* フェードインアニメーション */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* 地図 */
+        .map-wrapper {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            filter: grayscale(100%) contrast(1.2) invert(90%);
+            transition: filter 0.5s ease;
+        }
+        .map-wrapper:hover,
+        .map-wrapper:active {
+            filter: grayscale(0%) contrast(1) invert(0%);
+        }
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .insta-link svg {
+            transition: transform 0.3s ease, fill 0.3s ease;
+        }
+        .insta-link:hover svg {
+            transform: scale(1.1);
+            fill: var(--color-gold);
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        #mobile-menu.open { max-height: 400px; }
+
+        .hamburger span {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* スマホでのタップ領域確保 */
+        a, button { min-height: 44px; display: inline-flex; align-items: center; }
+    </style>
+</head>
+<body>
+
+    <!-- ナビゲーション -->
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-5 sm:px-8 py-4 sm:py-6 mix-blend-difference">
+        <div class="bodoni text-xl sm:text-2xl tracking-widest text-white">MILLAU</div>
+        <div class="flex items-center gap-4 sm:gap-8">
+            <div class="hidden md:flex gap-8 text-[10px] tracking-[0.3em] text-white uppercase">
+                <a href="#concept" class="hover:text-gold transition min-h-0">Concept</a>
+                <a href="#menu" class="hover:text-gold transition min-h-0">Menu</a>
+                <a href="#chef" class="hover:text-gold transition min-h-0">Chef</a>
+                <a href="#future" class="hover:text-gold transition min-h-0">Future</a>
+                <a href="#access" class="hover:text-gold transition min-h-0">Access</a>
+            </div>
+            <a href="https://www.instagram.com/millau.takahashi/" target="_blank" class="insta-link text-white min-h-0" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path></svg>
+            </a>
+            <!-- ハンバーガーメニュー（モバイル用） -->
+            <button id="hamburger-btn" class="hamburger md:hidden flex flex-col justify-center items-center gap-[5px] w-8 min-h-0" aria-label="メニューを開く">
+                <span class="block w-6 h-[1.5px] bg-white"></span>
+                <span class="block w-6 h-[1.5px] bg-white"></span>
+                <span class="block w-6 h-[1.5px] bg-white"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- モバイルメニュー展開部 -->
+    <div id="mobile-menu" class="fixed top-[64px] w-full z-40 bg-[#11100e]/98 backdrop-blur-sm border-b border-stone-800 md:hidden">
+        <div class="flex flex-col px-6 py-8 gap-6 text-xs tracking-[0.3em] text-white uppercase">
+            <a href="#concept" class="mobile-link border-b border-stone-800 pb-4">Concept</a>
+            <a href="#menu" class="mobile-link border-b border-stone-800 pb-4">Menu</a>
+            <a href="#chef" class="mobile-link border-b border-stone-800 pb-4">Chef</a>
+            <a href="#future" class="mobile-link border-b border-stone-800 pb-4">Future</a>
+            <a href="#access" class="mobile-link">Access</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-hero parallax-bg">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="reveal active">
+                <p class="bodoni text-gold text-xl sm:text-2xl md:text-4xl mb-4 sm:mb-6 tracking-[0.3em] sm:tracking-[0.4em] uppercase">Bistro Millau</p>
+                <div class="w-16 h-[1px] bg-gold mx-auto mb-6 sm:mb-8 opacity-50"></div>
+                <p class="serif text-white text-sm sm:text-lg md:text-xl font-extralight tracking-[0.15em] sm:tracking-[0.3em] opacity-90 leading-loose sm:leading-relaxed">
+                    札幌・すすきのの地下に佇む、<br>
+                    肉料理とワインの私邸。
+                </p>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-70">
+            <span class="text-[9px] sm:text-[10px] uppercase tracking-widest mb-2 text-white">Scroll</span>
+            <div class="w-[1px] h-10 sm:h-12 bg-white/30 relative overflow-hidden">
+                <div class="absolute top-0 w-full h-1/2 bg-gold animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPT SECTION -->
+    <section id="concept" class="py-20 sm:py-32 md:py-40 bg-concept relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center reveal">
+                <span class="bodoni text-gold tracking-[0.4em] text-xs uppercase mb-4 sm:mb-6 block font-bold">Concept</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl text-stone-900 mb-10 sm:mb-16 leading-relaxed tracking-wide sm:tracking-wider">
+                    銀座で磨かれた感性が、<br>北の大地で響き合う。
+                </h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto mb-10 sm:mb-16"></div>
+                <p class="text-stone-600 leading-[2.2] sm:leading-[2.5] tracking-[0.1em] sm:tracking-[0.2em] font-light mb-10 sm:mb-16 text-sm md:text-base text-left sm:text-center">
+                    喧騒を抜け、地下へと続く階段。その先に広がるのは、<br class="hidden md:block">
+                    時間さえもゆっくりと流れる大人のための社交場。<br><br>
+                    オーナーシェフ高橋が銀座の名店で培ったのは、<br class="hidden md:block">
+                    食材の呼吸を読み、一皿の物語を紡ぐ技術。<br>
+                    すすきの駅から徒歩二分。ここは、日常を脱ぎ捨てる場所。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE MENU -->
+    <section id="menu" class="py-20 sm:py-32 bg-signature parallax-bg relative">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 sm:gap-20">
+                <div class="w-full lg:w-1/2 reveal">
+                    <div class="relative group max-w-md mx-auto lg:max-w-none">
+                        <img src="images/sansai.jpg" alt="山菜のソテー" class="w-full shadow-2xl grayscale group-hover:grayscale-0 transition duration-1000">
+                        <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 border-t border-l border-gold w-16 h-16 sm:w-24 sm:h-24"></div>
+                        <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 border-b border-r border-gold w-16 h-16 sm:w-24 sm:h-24"></div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 reveal text-center lg:text-left">
+                    <span class="bodoni text-gold tracking-[0.4em] text-xs uppercase">The Signature</span>
+                    <h3 class="serif text-2xl sm:text-3xl md:text-4xl text-white mt-4 sm:mt-6 mb-6 sm:mb-10 tracking-[0.2em] sm:tracking-[0.3em]">山菜のソテー</h3>
+                    <p class="text-stone-300 leading-loose mb-8 sm:mb-12 font-light tracking-wider sm:tracking-widest text-sm">
+                        その日、その瞬間にしか出会えない最高級の山菜を。<br>
+                        強火で一気に香りを立たせ、フレンチのソースが優しく包み込む。<br>
+                        ペアリングワインと共に、季節の移ろいを舌で感じる、ミヨーの象徴的な一皿。
+                    </p>
+                    <a href="https://www.instagram.com/millau.takahashi/" target="_blank" class="inline-flex items-center gap-6 text-white hover:text-gold transition group">
+                        <span class="text-xs tracking-[0.3em] uppercase">Seasonal Gallery</span>
+                        <div class="w-16 h-[1px] bg-white group-hover:bg-gold transition"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEF STORY -->
+    <section id="chef" class="py-20 sm:py-32 md:py-40 bg-chef text-stone-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row-reverse gap-12 sm:gap-20 items-center max-w-6xl mx-auto">
+                <div class="w-full md:w-1/2 reveal text-center md:text-left">
+                    <span class="bodoni text-gold tracking-[0.4em] text-xs uppercase font-bold">The Story</span>
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl text-stone-900 mt-4 sm:mt-6 mb-8 sm:mb-12 leading-snug sm:leading-tight">銀座の伝統を、<br>札幌の自由で解き放つ。</h2>
+                    <p class="text-stone-600 leading-loose font-light mb-8 sm:mb-10 tracking-wider sm:tracking-widest text-sm text-left">
+                        札幌出身。東京・銀座の最前線で十数年。<br>
+                        人気ビストロのシェフとして数多の舌を肥えさせてきた高橋が、<br>
+                        自らの理想を追求するために戻ってきたのは、故郷の地。<br><br>
+                        「形式にとらわれない、ひらめきの料理を」<br>
+                        2021年11月、すすきのの一角に灯した明かりは、<br>
+                        肉料理とワインへの飽くなき探求心の結晶です。
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2 reveal">
+                    <div class="relative max-w-sm mx-auto md:max-w-none">
+                        <div class="aspect-[3/4] overflow-hidden shadow-2xl grayscale transition-all duration-1000 hover:grayscale-0">
+                            <img src="images/chef.png" alt="Chef" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-4 lg:-bottom-10 lg:-right-10">
+                            <span class="bodoni text-5xl sm:text-7xl lg:text-[8rem] text-gold/10 leading-none select-none">Est.2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-20 sm:py-32 bg-reviews overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-12 sm:gap-16">
+                <div class="reveal">
+                    <div class="text-gold text-4xl bodoni mb-6 sm:mb-8 opacity-50">"</div>
+                    <p class="serif text-stone-200 leading-loose mb-6 sm:mb-8 italic font-light tracking-wider sm:tracking-widest text-sm sm:text-base">「至福のうにのパスタ。気さくなシェフが醸し出す、落ち着く空気感がたまらない。」</p>
+                    <p class="text-[10px] tracking-[0.5em] text-gold uppercase">Local Gourmet</p>
+                </div>
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <div class="text-gold text-4xl bodoni mb-6 sm:mb-8 opacity-50">"</div>
+                    <p class="serif text-stone-200 leading-loose mb-6 sm:mb-8 italic font-light tracking-wider sm:tracking-widest text-sm sm:text-base">「銀座クオリティの料理をこの隠れ家で。ワインのペアリングは、もはや一つの芸術。」</p>
+                    <p class="text-[10px] tracking-[0.5em] text-gold uppercase">Wine Lover</p>
+                </div>
+                <div class="reveal sm:col-span-2 md:col-span-1" style="transition-delay: 0.4s;">
+                    <div class="text-gold text-4xl bodoni mb-6 sm:mb-8 opacity-50">"</div>
+                    <p class="serif text-stone-200 leading-loose mb-6 sm:mb-8 italic font-light tracking-wider sm:tracking-widest text-sm sm:text-base">「二軒目に訪れたくなる、深い居心地。シェフとの会話が夜を贅沢にしてくれる。」</p>
+                    <p class="text-[10px] tracking-[0.5em] text-gold uppercase">Solo Diner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SERVICES -->
+    <section id="future" class="py-20 sm:py-36 bg-stone-900 border-t border-b border-stone-800/60 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mx-auto text-center reveal mb-14 sm:mb-20">
+                <span class="bodoni text-gold tracking-[0.4em] text-xs uppercase block mb-4 font-bold">Coming Soon</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide sm:tracking-widest leading-relaxed">
+                    ひとときを、もっと深く余韻へ。<br>準備中の特別な試み。
+                </h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto mt-6 sm:mt-8 opacity-60"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-10 max-w-4xl mx-auto">
+                <!-- Service 1: Menu Card -->
+                <div class="reveal border border-stone-800 bg-black/40 p-7 sm:p-10 rounded-sm relative group hover:border-gold/50 transition duration-500">
+                    <div class="text-gold bodoni text-xs tracking-[0.3em] uppercase mb-4 opacity-70">01 / Experience</div>
+                    <h3 class="serif text-lg sm:text-xl text-white mb-4 sm:mb-6 tracking-wider">メモリアル・メニューカード</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light tracking-wider sm:tracking-widest mb-6 sm:mb-8">
+                        その日召し上がった特別な料理と、ペアリングしたワインのストーリーを記した上質な特注メニューカード。旅の記憶や大切な記念日の余韻を、ご自宅までお持ち帰りいただけます。
+                    </p>
+                    <span class="inline-flex text-[9px] tracking-[0.3em] text-gold uppercase px-3 py-1 border border-gold/30 rounded-full min-h-0">Preparation</span>
+                </div>
+
+                <!-- Service 2: Secret Wine Salon -->
+                <div class="reveal border border-stone-800 bg-black/40 p-7 sm:p-10 rounded-sm relative group hover:border-gold/50 transition duration-500" style="transition-delay: 0.15s;">
+                    <div class="text-gold bodoni text-xs tracking-[0.3em] uppercase mb-4 opacity-70">02 / Community</div>
+                    <h3 class="serif text-lg sm:text-xl text-white mb-4 sm:mb-6 tracking-wider">プライベート・ワインサロン</h3>
+                    <p class="text-stone-400 text-xs leading-relaxed font-light tracking-wider sm:tracking-widest mb-6 sm:mb-8">
+                        市場に出回らない希少ヴィンテージや、シェフが厳選した裏メニューの特別ペアリングコースを最優先でご案内する会員様限定のサロンコミュニティ。
+                    </p>
+                    <span class="inline-flex text-[9px] tracking-[0.3em] text-gold uppercase px-3 py-1 border border-gold/30 rounded-full min-h-0">Preparation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS & INFO -->
+    <section id="access" class="py-20 sm:py-32 md:py-40 bg-access">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col lg:flex-row gap-14 sm:gap-20 items-start reveal">
+                    <!-- Text Info -->
+                    <div class="w-full lg:w-2/5">
+                        <h2 class="serif text-2xl sm:text-3xl text-white mb-10 sm:mb-12 tracking-wide sm:tracking-widest text-center lg:text-left">Information</h2>
+                        <dl class="space-y-8 sm:space-y-10 text-xs tracking-[0.2em] sm:tracking-[0.3em]">
+                            <div class="border-b border-stone-800 pb-6 flex flex-col gap-2 text-center lg:text-left">
+                                <dt class="text-gold font-bold">Address</dt>
+                                <dd class="text-stone-400 leading-relaxed">札幌市中央区南5条西3丁目8<br>N・グランビル B1F</dd>
+                            </div>
+                            <div class="border-b border-stone-800 pb-6 flex flex-col gap-2 text-center lg:text-left">
+                                <dt class="text-gold font-bold">Telephone</dt>
+                                <dd class="text-stone-400">011-206-6201</dd>
+                            </div>
+                            <div class="border-b border-stone-800 pb-6 flex flex-col gap-2 text-center lg:text-left">
+                                <dt class="text-gold font-bold">Access</dt>
+                                <dd class="text-white font-bold">すすきの駅 徒歩2分</dd>
+                            </div>
+                        </dl>
+                        <div class="mt-10 sm:mt-12 flex flex-col items-center lg:items-start">
+                            <p class="serif text-stone-500 text-sm leading-loose mb-8 sm:mb-10 text-center lg:text-left">
+                                お席に限りがございます。<br>
+                                銀座の伝統と北の旬が奏でる一夜を、<br>
+                                どうぞお見逃しなく。
+                            </p>
+                            <a href="tel:011-206-6201" class="group relative py-7 sm:py-8 px-12 sm:px-16 border border-gold/50 overflow-hidden inline-flex w-full sm:w-auto justify-center">
+                                <div class="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                                <span class="relative z-10 text-gold group-hover:text-black tracking-[0.4em] sm:tracking-[0.5em] text-xs uppercase transition-colors duration-500 font-bold">Book Now</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Map Integration -->
+                    <div class="w-full lg:w-3/5">
+                        <div class="p-2 border border-stone-800 rounded-sm">
+                            <div class="map-wrapper shadow-2xl">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3672230009684!2d141.35203377507185!3d43.054743590932944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b295ee665432d%3A0x676460c4d74d6c47!2z44Of44Oo44O8!5e0!3m2!1sja!2sjp!4v1771561093132!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-16 sm:py-24 bg-black border-t border-stone-900 text-center">
+        <div class="bodoni text-2xl sm:text-4xl text-white opacity-10 mb-8 sm:mb-10 tracking-[0.5em] sm:tracking-[1em]">MILLAU</div>
+        <div class="flex justify-center gap-10 sm:gap-16 items-center mb-8 sm:mb-10">
+            <a href="https://www.instagram.com/millau.takahashi/" target="_blank" class="insta-link text-stone-600 min-h-0" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path></svg>
+            </a>
+            <a href="#" class="text-[10px] uppercase tracking-[0.4em] sm:tracking-[0.5em] text-stone-600 hover:text-gold transition-colors min-h-0">Privacy</a>
+        </div>
+        <p class="text-[9px] text-stone-800 tracking-[0.3em] sm:tracking-[0.4em] uppercase px-4">&copy; 2024 Bistro Millau. Excellence in Sapporo.</p>
+    </footer>
+
+    <script>
+        // スクロール時のフェードイン制御
+        const reveals = document.querySelectorAll('.reveal');
+        const revealHandler = () => {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealHandler);
+        window.addEventListener('load', revealHandler);
+
+        // パララックスの微調整（PCのみ）
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelectorAll('.parallax-bg');
+                parallax.forEach(bg => {
+                    const speed = 0.4;
+                    bg.style.backgroundPositionY = -(scrolled * speed) + 'px';
+                });
+            });
+        }
+
+        // モバイルメニュー開閉
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function closeMenu() {
+            hamburgerBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+        }
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>
