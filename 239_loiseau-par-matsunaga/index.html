@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>L'Oiseau par Matsunaga | 函館の隠れ家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --brand-gold: #b3945a;
+            --brand-dark: #0f1112;
+            --brand-bg: #fdfcf8;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--brand-bg);
+            color: #333;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .gold-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--brand-gold), transparent);
+        }
+
+        .hero-zoom {
+            animation: heroZoom 20s infinite alternate;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom { animation: none; }
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.12); }
+        }
+
+        /* セクション間の余白: モバイルでは詰める */
+        .section-padding { padding: 72px 0; }
+        @media (min-width: 768px) {
+            .section-padding { padding: 120px 0; }
+        }
+
+        .btn-elegant {
+            position: relative;
+            padding: 1rem 2.25rem;
+            border: 1px solid var(--brand-gold);
+            color: var(--brand-gold);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            letter-spacing: 0.1em;
+            display: inline-block;
+        }
+        @media (min-width: 768px) {
+            .btn-elegant { padding: 1.25rem 3rem; }
+        }
+        .btn-elegant:hover, .btn-elegant:active {
+            color: white;
+            background-color: var(--brand-gold);
+        }
+
+        .image-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+        .image-reveal::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 17, 18, 0.1);
+        }
+
+        .map-container {
+            filter: grayscale(100%);
+            transition: filter 0.7s ease;
+        }
+        .map-container:hover, .map-container:active {
+            filter: grayscale(0%);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-el {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        /* 百名店バッジ: モバイルでは小さく内側に */
+        .badge-circle {
+            width: 6.5rem;
+            height: 6.5rem;
+            padding: 1rem;
+        }
+        @media (min-width: 768px) {
+            .badge-circle { width: 10rem; height: 10rem; padding: 2.5rem; }
+        }
+
+        .info-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        @media (min-width: 480px) {
+            .info-row {
+                flex-direction: row;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <!-- 1. FVエリア: 映画のような没入感 -->
+    <section class="relative h-[100svh] w-full overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="images/store.png"
+                 alt="Restaurant interior" class="w-full h-full object-cover hero-zoom">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <div class="mb-6 md:mb-8 fade-in-el" style="animation-delay: 0.2s;">
+                <span class="serif text-sm sm:text-lg md:text-xl tracking-[0.3em] md:tracking-[0.4em] uppercase">HAKODATE KASHIWAGI</span>
+            </div>
+            <h1 class="serif text-3xl sm:text-5xl md:text-8xl mb-6 md:mb-8 tracking-tighter leading-tight fade-in-el" style="animation-delay: 0.5s;">
+                L'Oiseau par Matsunaga
+            </h1>
+            <div class="flex justify-center items-center gap-4 md:gap-6 fade-in-el" style="animation-delay: 1s;">
+                <div class="h-[1px] w-8 md:w-12 bg-white/50"></div>
+                <p class="serif text-base sm:text-xl md:text-2xl tracking-[0.15em] md:tracking-[0.2em]">優しさが薫く、函館のひと皿</p>
+                <div class="h-[1px] w-8 md:w-12 bg-white/50"></div>
+            </div>
+        </div>
+
+        <!-- 縦書きのサイドコピー: デスクトップのみ表示 -->
+        <div class="absolute right-8 top-[60%] -translate-y-1/2 z-20 hidden lg:block">
+            <p class="vertical-text serif text-white/70 tracking-[0.5em] text-[10px] md:text-[11px] leading-relaxed">
+                ミシュランに認められた技術と、北海道の至宝が出逢う場所
+            </p>
+        </div>
+
+        <!-- スクロールヒント: モバイル -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-white/60 text-xs tracking-[0.3em] fade-in-el lg:hidden" style="animation-delay: 1.4s;">
+            <i class="fas fa-chevron-down animate-bounce"></i>
+        </div>
+    </section>
+
+    <!-- 2. CTA: 洗練されたナビゲーション -->
+    <section class="relative z-30 -mt-8 md:-mt-10 max-w-5xl mx-auto px-4">
+        <div class="bg-white p-6 sm:p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 border-t-4 border-[#b3945a]">
+            <div class="text-center md:text-left">
+                <span class="serif text-[#b3945a] font-bold block mb-1 text-sm tracking-widest">RESERVATION</span>
+                <p class="serif text-lg sm:text-xl text-gray-800">【完全予約制】至福の隠れ家へ</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 w-full md:w-auto">
+                <a href="https://www.r-loiseau.com/reservation/index.html" target="_blank" rel="noopener noreferrer" class="btn-elegant serif font-bold group flex-1 sm:flex-none text-center">
+                    <span class="relative z-10">WEB予約</span>
+                </a>
+                <a href="tel:0138-84-1858" class="flex flex-col items-center justify-center text-gray-700 hover:text-[#b3945a] transition flex-1 sm:flex-none">
+                    <span class="text-xs mb-1">TEL. 0138-84-1858</span>
+                    <span class="text-xs sm:text-sm font-light">12:00 - 15:00 / 18:00 - 22:00</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ビジュアル & キャッチ: シズル感の追求 -->
+    <section class="section-padding overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="image-reveal rounded-tr-[60px] md:rounded-tr-[100px]">
+                        <img src="images/soup.png"
+                             alt="Seasonal Soup" class="w-full shadow-2xl">
+                    </div>
+                    <!-- 百名店のバッジデザイン -->
+                    <div class="badge-circle absolute -bottom-6 -left-6 md:-bottom-8 md:-left-8 bg-[#1a1a1a] text-white rounded-full flex flex-col items-center justify-center text-center border-2 border-[#b3945a]">
+                        <span class="text-[8px] md:text-[10px] tracking-widest mb-1">Tabelog</span>
+                        <span class="serif text-xs md:text-sm font-bold leading-tight">フレンチ<br>百名店 2025</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 mt-10 lg:mt-0">
+                    <div class="gold-line mb-6 md:mb-8 mx-auto lg:mx-0"></div>
+                    <span class="serif text-[#b3945a] tracking-widest block mb-3 md:mb-4 text-center lg:text-left">SIGNATURE DISH</span>
+                    <h2 class="serif text-2xl sm:text-3xl md:text-5xl leading-tight mb-6 md:mb-8 text-center lg:text-left">
+                        北海道の「甘み」を<br>
+                        記憶に刻むスープ。
+                    </h2>
+                    <p class="text-gray-600 mb-6 md:mb-8 leading-relaxed text-center lg:text-left">
+                        函館近郊の肥沃な大地で育ったカボチャ。そのポテンシャルを最大限に引き出すのは、フランスの星付き店で磨き上げた松永シェフの感性。一口運べば、野菜が持つ「優しさ」が心まで解きほぐします。
+                    </p>
+                    <div class="p-5 md:p-6 border-l-2 border-[#b3945a] bg-white italic serif text-gray-500">
+                        "素材の声を聴き、その優しさを一皿に込めて。"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ストーリー: 匠人の系譜 -->
+    <section class="py-16 md:py-24 bg-[#1a1a1a] text-white relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full opacity-20 pointer-events-none hidden md:block">
+            <p class="vertical-text serif text-6xl tracking-[1em] text-white/10 uppercase">Matsunaga</p>
+        </div>
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <span class="serif text-[#b3945a] tracking-widest block mb-4">THE STORY</span>
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-8 md:mb-12 leading-snug">
+                        坂井宏行の魂、<br>
+                        フランス三つ星の矜持。
+                    </h2>
+                    <div class="serif text-base sm:text-lg font-light leading-loose space-y-6 text-gray-300">
+                        <p>「ラ・ロシェル南青山」にて料理の匠人・坂井宏行氏に師事し、フレンチの真髄を学んだ7年半。その後、本場フランスの3つ星「ミッシェル・トラマ」やリヨンの名店で副料理長として腕を振るいました。</p>
+                        <p>松永和之が辿り着いたのは、妻の故郷・函館。日本人らしい繊細な表現で、世界基準の技術を身近に届ける。その想いは一軒家の隠れ家で、今日も静かに、そして力強く続いています。</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative">
+                    <div class="p-3 md:p-4 border border-[#b3945a]/30">
+                        <img src="images/chef.png"
+                             alt="Chef's technique" class="w-full grayscale hover:grayscale-0 transition duration-1000">
+                    </div>
+                    <div class="mt-6 md:mt-8 text-center md:text-right">
+                        <p class="serif text-sm italic text-[#b3945a]">"優しさを提供することが、料理の本質。"</p>
+                        <p class="text-xs mt-2 opacity-60">― Owner Chef Kazuyuki Matsunaga</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ベネフィット -->
+    <section class="section-padding bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="serif text-xl sm:text-2xl md:text-4xl mb-12 md:mb-16 tracking-widest">特別な時間を、確かなものに。</h3>
+            <div class="grid sm:grid-cols-3 gap-10 md:gap-12">
+                <div class="space-y-4">
+                    <div class="h-px w-8 bg-[#b3945a] mx-auto"></div>
+                    <h4 class="serif text-lg">Anniversary</h4>
+                    <p class="text-sm text-gray-500">記念日を彩る、行き届いたサービスと感動の演出。</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="h-px w-8 bg-[#b3945a] mx-auto"></div>
+                    <h4 class="serif text-lg">Local Fresh</h4>
+                    <p class="text-sm text-gray-500">北海道の特産品を最も美味しい状態で、驚きとともに。</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="h-px w-8 bg-[#b3945a] mx-auto"></div>
+                    <h4 class="serif text-lg">Hospitality</h4>
+                    <p class="text-sm text-gray-500">アレルギー対応、車椅子対応も万全な、誰もが寛げる空間。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ -->
+    <section class="py-16 md:py-24 bg-[#f9f7f2]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 text-center md:text-left gap-4">
+                <div>
+                    <span class="serif text-[#b3945a] tracking-widest block mb-2">VOICE</span>
+                    <h3 class="serif text-2xl md:text-3xl">至福の余韻を語る</h3>
+                </div>
+                <a href="https://www.instagram.com/loiseau.par.matsunaga.official/" target="_blank" rel="noopener noreferrer" class="text-sm border-b border-gray-400 pb-1 hover:border-[#b3945a] transition">Follow us on Instagram</a>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-8 md:p-10 shadow-sm hover:shadow-xl transition">
+                    <div class="flex gap-1 text-[#b3945a] mb-6 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="serif text-sm leading-relaxed mb-8">「一組ずつスペースが確保されていて広々。サービスが行き届いている。他の季節にまた来たいです。」</p>
+                    <p class="text-[10px] tracking-widest text-gray-400 uppercase">Guest Review</p>
+                </div>
+                <div class="bg-white p-8 md:p-10 shadow-sm hover:shadow-xl transition">
+                    <div class="flex gap-1 text-[#b3945a] mb-6 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="serif text-sm leading-relaxed mb-8">「気さくなシェフにお見送りいただき、料理にもシェフにも感動。幸せな気分になりました。」</p>
+                    <p class="text-[10px] tracking-widest text-gray-400 uppercase">Guest Review</p>
+                </div>
+                <div class="bg-[#1a1a1a] p-8 md:p-10 text-white flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                    <h4 class="serif text-xl text-[#b3945a] mb-4 sm:mb-0">Seasonal Gift</h4>
+                    <p class="text-xs opacity-70 leading-loose">
+                        今、最も美味しい瞬間のカボチャ。その濃厚な一雫を、コースの始まりにお届けします。
+                    </p>
+                    <a href="https://www.r-loiseau.com/menu/index.html" target="_blank" rel="noopener noreferrer" class="text-[10px] tracking-[0.2em] underline underline-offset-4 decoration-[#b3945a] mt-4 inline-block">VIEW FULL MENU</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5. COMING SOON: 今後の新たな取り組み -->
+    <section class="py-16 md:py-24 bg-[#141618] text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1 border border-[#b3945a] text-[#b3945a] text-xs tracking-[0.3em] uppercase mb-4 rounded-full">Coming Soon</span>
+                <h3 class="serif text-2xl sm:text-3xl md:text-4xl mb-6 leading-tight">思い出をカタチに刻む、<br>特別な「メモリーカード」</h3>
+                <div class="h-px w-12 bg-[#b3945a] mx-auto mb-6"></div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    極上の料理とワインの余韻を、ご自宅に持ち帰った後もずっと愉しんでいただくために。特別なひとときに華を添える新たなサービスを準備しております。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-[#1c1f22] p-7 md:p-8 rounded-lg border border-[#b3945a]/20 hover:border-[#b3945a]/60 transition duration-500">
+                    <div class="text-[#b3945a] text-2xl mb-4"><i class="fas fa-wine-glass"></i></div>
+                    <h4 class="serif text-lg mb-3 text-white">食材・ペアリングストーリー</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        その日に味わった一皿のこだわり食材や北海道の旬、ソムリエが厳選したペアリングワインのマリアージュ背景を詳しく記録。
+                    </p>
+                </div>
+                <div class="bg-[#1c1f22] p-7 md:p-8 rounded-lg border border-[#b3945a]/20 hover:border-[#b3945a]/60 transition duration-500">
+                    <div class="text-[#b3945a] text-2xl mb-4"><i class="fas fa-calendar-check"></i></div>
+                    <h4 class="serif text-lg mb-3 text-white">記念日のパーソナライズ印字</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        ご来店日やおふたりのお名前、お誕生日や結婚記念日といった特別なタイトルを印字。世界にひとつだけのメニューカードをお届けします。
+                    </p>
+                </div>
+                <div class="bg-[#1c1f22] p-7 md:p-8 rounded-lg border border-[#b3945a]/20 hover:border-[#b3945a]/60 transition duration-500 sm:col-span-2 lg:col-span-1">
+                    <div class="text-[#b3945a] text-2xl mb-4"><i class="fas fa-envelope-open-text"></i></div>
+                    <h4 class="serif text-lg mb-3 text-white">余韻を持ち帰るメモリアル</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        上質な質感の用紙に箔押しを施した洗練されたデザイン。お食事の思い出として、アルバムやフレームに飾っていただける仕上がりです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 最終CTA & Access -->
+    <section class="section-padding bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-14 lg:gap-20">
+            <div>
+                <h3 class="serif text-2xl md:text-3xl mb-8">Information</h3>
+                <div class="space-y-5 md:space-y-6 text-sm">
+                    <div class="info-row border-b border-gray-100 pb-4">
+                        <span class="serif w-32 font-bold shrink-0">Address</span>
+                        <span class="opacity-80">〒042-0942 北海道函館市柏木町4-5</span>
+                    </div>
+                    <div class="info-row border-b border-gray-100 pb-4">
+                        <span class="serif w-32 font-bold shrink-0">Closed</span>
+                        <span class="opacity-80">火曜日 / 毎週</span>
+                    </div>
+                    <div class="info-row border-b border-gray-100 pb-4">
+                        <span class="serif w-32 font-bold shrink-0">Parking</span>
+                        <span class="opacity-80">5台完備</span>
+                    </div>
+                    <div class="info-row border-b border-gray-100 pb-4">
+                        <span class="serif w-32 font-bold shrink-0">Service</span>
+                        <span class="opacity-80">完全予約制 / 16席 / 車椅子・アレルギー対応可</span>
+                    </div>
+                </div>
+                <div class="mt-10 md:mt-12 flex flex-col sm:flex-row gap-4">
+                    <a href="https://www.r-loiseau.com/reservation/index.html" target="_blank" rel="noopener noreferrer" class="btn-elegant w-full text-center">WEB予約</a>
+                    <a href="tel:0138-84-1858" class="btn-elegant w-full text-center">電話予約</a>
+                </div>
+            </div>
+            <div class="h-[280px] sm:h-[350px] md:h-[400px] bg-gray-100 rounded-lg overflow-hidden shadow-2xl map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974.7320047285334!2d140.76191157499215!3d41.79098897086533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f9ef4668c749771%3A0x2c12afc664213cb8!2zTCdPaXNlYXUgcGFyIE1hdHN1bmFnYSAo44Ot44Ov44K-44O844O744OR44O844O744Oe44OE44OK44KsKQ!5e0!3m2!1sja!2sjp!4v1771555692372!5m2!1sja!2sjp"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+  <footer class="py-12 bg-[#0a0a0a] text-center px-4">
+        <div class="gold-line mx-auto mb-8 h-12"></div>
+        <p class="serif text-white/40 text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] mb-4 uppercase">L'Oiseau par Matsunaga</p>
+        <div class="flex justify-center gap-6 text-white/60 text-lg mb-8">
+            <a href="https://www.instagram.com/loiseau.par.matsunaga.official/" target="_blank" rel="noopener noreferrer" class="hover:text-[#b3945a] transition">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.r-loiseau.com/" target="_blank" rel="noopener noreferrer" class="hover:text-[#b3945a] transition">
+                <i class="fas fa-globe"></i>
+            </a>
+        </div>
+        <p class="text-[10px] text-white/20 tracking-widest">&copy; 2025 L'Oiseau par Matsunaga. All rights reserved.</p>
+    </footer>
+
+    <!-- モバイル固定予約バー -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 bg-[#1a1a1a]/95 backdrop-blur border-t border-[#b3945a]/40 flex md:hidden" style="padding-bottom: env(safe-area-inset-bottom);">
+        <a href="https://tabelog.com/hokkaido/A0105/A010501/1043997/" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-4 text-[#b3945a] serif text-sm tracking-widest border-r border-[#b3945a]/20">WEB予約</a>
+        <a href="tel:0138-84-1858" class="flex-1 text-center py-4 text-white serif text-sm tracking-widest">電話予約</a>
+    </div>
+    <div class="h-16 md:hidden"></div>
+
+</body>
+</html>
