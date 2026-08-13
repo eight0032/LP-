@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>2Plats (ドゥプラ) | 北海道旭川の至高のフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #b38e44;
+            --dark-gold: #8a6d32;
+            --dark-gray: #121212;
+            --light-beige: #f4f1ea;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fff;
+            -webkit-text-size-adjust: 100%;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .text-gold { color: var(--primary-gold); }
+        .bg-gold { background-color: var(--primary-gold); }
+        .bg-dark-gold { background-color: var(--dark-gold); }
+
+        .nobr { display: inline-block; white-space: nowrap; }
+
+        /* 縦書きのアクセント */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 高級感のあるオーバーレイ */
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.75) 100%);
+        }
+
+        /* 参考サイトにあるような重なりデザイン(モバイルは控えめに) */
+        .overlap-section {
+            margin-top: -2.5rem;
+        }
+        @media (min-width: 768px) {
+            .overlap-section { margin-top: -5rem; }
+        }
+
+        /* アニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* テクスチャ背景 */
+        .washi-bg {
+            background-color: #fcfaf5;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        /* タップ領域を広げる(スマホ操作性向上) */
+        a, button { -webkit-tap-highlight-color: rgba(179,142,68,0.2); }
+    </style>
+</head>
+<body class="text-gray-900 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gold/20 shadow-sm">
+        <div class="container mx-auto px-5 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="serif text-[10px] sm:text-xs tracking-[0.3em] text-gold font-bold">ASAHIKAWA FRENCH</span>
+                <h1 class="serif text-xl sm:text-2xl font-black tracking-tighter text-gray-900 leading-none">2Plats</h1>
+            </div>
+
+            <nav id="main-nav" class="hidden lg:flex items-center space-x-10 text-xs font-bold tracking-widest uppercase">
+                <a href="#" class="hover:text-gold transition-colors">Top</a>
+                <a href="#strength-section" class="hover:text-gold transition-colors">strengths</a>
+                <a href="#profile-section" class="hover:text-gold transition-colors">history</a>
+                <a href="#testimonials-section" class="hover:text-gold transition-colors">Review</a>
+                <a href="#access-section" class="hover:text-gold transition-colors">access</a>
+                <a href="tel:0166748133" class="bg-gold text-white px-8 py-3 rounded-none hover:bg-dark-gold transition-all shadow-lg flex items-center gap-2">
+                    お問い合わせ
+                </a>
+            </nav>
+
+            <button class="lg:hidden text-gray-900 p-2 -mr-2" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- First View (FV) -->
+    <section class="relative min-h-[100svh] flex items-center justify-start text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/beef.jpg" alt="" class="w-full h-full object-cover scale-105">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 w-full container mx-auto px-5 sm:px-6 flex flex-col items-start text-left pt-20">
+            <div class="fade-in visible max-w-xl">
+                <h2 class="serif text-[7.5vw] xs:text-4xl sm:text-4xl md:text-5xl font-black mb-6 sm:mb-8 leading-[1.4] flex flex-col">
+                    <span class="nobr">極上の柔らかさと</span>
+                    <span class="nobr text-gold">【豚のスペアリブ】</span>
+                </h2>
+                <div class="h-1 w-16 bg-gold mb-8 sm:mb-10"></div>
+                <p class="text-sm sm:text-base font-light mb-10 sm:mb-12 max-w-lg leading-relaxed text-gray-200">
+                    一皿一皿に込めた、北海道産食材への深い敬意。<br class="hidden sm:block">
+                    シェフ自慢のスペアリブが、あなたのフレンチの概念を覆す。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                    <a href="#strength-section" class="bg-gold text-white text-center px-8 py-4 sm:py-3 text-base font-bold hover:bg-dark-gold transition-all shadow-2xl tracking-widest">
+                        2Platsのこだわり
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 縦書きキャッチコピー: デスクトップのみ表示 -->
+        <div class="absolute right-10 bottom-24 hidden xl:block">
+            <p class="vertical-text serif font-light border-r border-gold/50 pr-4">
+                <span class="text-2xl tracking-[0.5em] mb-4 block">五感</span>
+                <span class="text-xs tracking-[0.3em] opacity-80 block pt-4">で愉しむ、北の美食体験。</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Overlap Content: Recommendation -->
+    <section class="relative z-20 overlap-section px-4 sm:px-4">
+        <div class="container mx-auto bg-dark-gray text-white p-6 sm:p-10 md:p-16 shadow-2xl border-b-4 border-gold">
+            <div class="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center">
+                <div class="md:w-1/3">
+                    <span class="text-gold serif font-bold tracking-widest block mb-2 text-xs sm:text-sm">RECOMMENDATION</span>
+                    <h3 class="serif text-xl sm:text-2xl font-bold mb-2 md:mb-4 italic leading-relaxed">
+                        「こんなフレンチ、<br>食べたことがない」
+                    </h3>
+                </div>
+                <div class="md:w-2/3 border-l-0 md:border-l md:border-white/10 pt-4 md:pt-0 md:pl-12 border-t md:border-t-0 border-white/10">
+                    <p class="text-gray-300 leading-loose text-sm md:text-base">
+                        洞爺生の無農薬野菜、道産の頬肉、そして独自ルートで仕入れるトリュフ。素材の声を聴き、その魅力を最大限に引き出すのが2Platsのスタイルです。特に、時間をかけて丁寧に仕上げる「肉のスペアリブ」は、多くの美食家を虜にしています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strength Section -->
+    <section id="strength-section" class="py-20 md:py-28 lg:py-32 washi-bg">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col items-center mb-14 sm:mb-20 lg:mb-24">
+                <span class="text-gold serif tracking-[0.4em] mb-2 font-bold text-xs sm:text-sm">STRENGTHS</span>
+                <h3 class="serif text-3xl sm:text-4xl font-black text-center">三つの至福</h3>
+                <div class="w-12 h-0.5 bg-gold mt-6"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-16">
+                <!-- Strength 1 -->
+                <div class="fade-in group">
+                    <div class="relative mb-6 sm:mb-10 overflow-hidden shadow-2xl">
+                        <img src="images/main.png" alt="" class="w-full h-64 sm:h-80 object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gold text-white p-3 sm:p-4 font-black text-lg sm:text-xl serif">01</div>
+                    </div>
+                    <h4 class="serif text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-900 border-b-2 border-gold/20 pb-3 sm:pb-4">北海道産食材の真髄</h4>
+                    <p class="text-gray-600 leading-loose text-xs sm:text-sm">
+                        洞爺産の無農薬野菜や道産食肉を直送。季節ごとに表情を変える北の恵みを、フレンチの技法で昇華させます。
+                    </p>
+                </div>
+                <!-- Strength 2 -->
+                <div class="fade-in group" style="transition-delay: 0.2s;">
+                    <div class="relative mb-6 sm:mb-10 overflow-hidden shadow-2xl">
+                        <img src="images/store.png" alt="" class="w-full h-64 sm:h-80 object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gold text-white p-3 sm:p-4 font-black text-lg sm:text-xl serif">02</div>
+                    </div>
+                    <h4 class="serif text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-900 border-b-2 border-gold/20 pb-3 sm:pb-4">隠れ家の贅沢なひととき</h4>
+                    <p class="text-gray-600 leading-loose text-xs sm:text-sm">
+                        お洒落で明るい店内は、住宅街にひっそりと佇む隠れ家。特別な記念日はもちろん、日常を忘れるランチにも最適です。
+                    </p>
+                </div>
+                <!-- Strength 3 -->
+                <div class="fade-in group sm:col-span-2 lg:col-span-1" style="transition-delay: 0.4s;">
+                    <div class="relative mb-6 sm:mb-10 overflow-hidden shadow-2xl">
+                        <img src="images/fish.png" alt="" class="w-full h-64 sm:h-80 object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute bottom-0 left-0 bg-gold text-white p-3 sm:p-4 font-black text-lg sm:text-xl serif">03</div>
+                    </div>
+                    <h4 class="serif text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-900 border-b-2 border-gold/20 pb-3 sm:pb-4">五感に響く盛り付け</h4>
+                    <p class="text-gray-600 leading-loose text-xs sm:text-sm">
+                        シェフから絶賛される独自料理。色彩豊かなポタージュや、絵画のような美しい盛り付けは、一目見た瞬間に心を奪います。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials-section" class="py-20 md:py-28 lg:py-32 bg-gray-50 text-gray-900">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 sm:mb-20 gap-6 sm:gap-8 border-b border-gray-200 pb-8 sm:pb-10">
+                <div>
+                    <span class="text-gold serif tracking-[0.4em] font-bold block mb-3 sm:mb-4 uppercase text-xs sm:text-sm">Testimonials</span>
+                    <h3 class="serif text-3xl sm:text-4xl font-black">至極の余韻に包まれて</h3>
+                </div>
+                <p class="text-gray-500 max-w-sm italic text-sm">
+                    訪れるすべての人に、忘れられない時間を提供したい。<br>お客様からいただいた温かい言葉の一部をご紹介します。
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6 sm:gap-10">
+                <div class="fade-in bg-white p-6 sm:p-10 shadow-lg border-t-4 border-gold">
+                    <div class="flex text-gold mb-4 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
+                    <p class="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 serif italic font-medium">
+                        「一皿一皿が上質で、全てが美味しすぎました。最高のおもてなしを受け、素晴らしい時間を過ごせました。来年も楽しみにしています！」
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-px bg-gold"></div>
+                        <p class="text-xs font-bold tracking-widest text-gray-400">BIRTHDAY DINNER</p>
+                    </div>
+                </div>
+                <div class="fade-in bg-white p-6 sm:p-10 shadow-lg border-t-4 border-gold">
+                    <div class="flex text-gold mb-4 sm:mb-6 text-lg sm:text-xl">★★★★★</div>
+                    <p class="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 serif italic font-medium">
+                        「こんな贅沢で2,750円は驚きです。旅の目的の一つでしたが、期待を裏切らない素晴らしい料理。機会があれば、また必ず行きたいです。」
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-px bg-gold"></div>
+                        <p class="text-xs font-bold tracking-widest text-gray-400">LUNCH VISIT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile-section" class="py-20 md:py-28 lg:py-32 washi-bg relative">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-10 sm:gap-14 lg:gap-20">
+                <div class="lg:w-1/2 relative w-full">
+                    <img src="https://images.unsplash.com/photo-1577214190541-0a69389f41b2?q=80&w=2070&auto=format&fit=crop" alt="" class="relative z-10 shadow-xl grayscale-[20%] w-full h-auto">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-gold serif tracking-[0.4em] font-bold block mb-3 sm:mb-4 text-xs sm:text-sm">CHEF'S HISTORY</span>
+                    <h3 class="serif text-2xl sm:text-3xl font-black mb-6 sm:mb-8">妥協なき一皿への信念</h3>
+                    <p class="text-gray-700 leading-[2.2] mb-6 font-light text-sm">
+                        「気難しい」という声を聞くこともあるかもしれません。しかし、それは素材のベストな状態を見極め、お客様の口に運ばれるその一瞬にすべてを賭けているからです。<br>
+                        パンのおかわり自由、お肉とお魚の両方が愉しめるコースは、その全てが「お腹も心も満たされてほしい」というシェフの純粋な想いから。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-20 md:py-28 lg:py-32 bg-dark-gray text-white relative overflow-hidden">
+        <!-- 装飾用背景パターン -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#b38e44 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="flex flex-col items-center mb-14 sm:mb-20 text-center">
+                <span class="inline-block bg-gold/20 text-gold border border-gold/40 text-xs px-4 py-1.5 rounded-full serif tracking-[0.3em] font-bold mb-4 uppercase">
+                    COMING SOON
+                </span>
+                <h3 class="serif text-2xl sm:text-3xl md:text-4xl font-black text-white mb-5 sm:mb-6">心に残る「記念のひととき」をカタチに</h3>
+                <p class="text-gray-400 max-w-2xl text-xs md:text-sm leading-relaxed">
+                    2Platsでは、お食事の「その瞬間」だけでなく、帰宅された後も余韻を楽しんでいただける新しいおもてなしを準備しております。
+                </p>
+                <div class="w-12 h-0.5 bg-gold mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="fade-in bg-white/5 border border-white/10 p-6 sm:p-8 relative flex flex-col justify-between hover:border-gold/50 transition-colors duration-300">
+                    <div class="absolute -top-3 right-6 bg-gold text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1">
+                        準備中
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center mb-5 sm:mb-6 text-gold">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <h4 class="serif text-lg font-bold text-white mb-3 sm:mb-4">メモリアル・メニューカード</h4>
+                        <p class="text-gray-300 text-xs leading-loose mb-5 sm:mb-6">
+                            ご来店日やお祝いの種類(誕生日・結婚記念日など)を刻印。本日召し上がった料理・厳選食材の産地・ソムリエおすすめのペアリング理由を記載したオリジナルの記念カードを進呈いたします。
+                        </p>
+                    </div>
+                    <span class="text-gold/60 text-[11px] serif tracking-wider">#思い出をお持ち帰り</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="fade-in bg-white/5 border border-white/10 p-6 sm:p-8 relative flex flex-col justify-between hover:border-gold/50 transition-colors duration-300" style="transition-delay: 0.2s;">
+                    <div class="absolute -top-3 right-6 bg-gold text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1">
+                        準備中
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center mb-5 sm:mb-6 text-gold">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h0.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h4 class="serif text-lg font-bold text-white mb-3 sm:mb-4">パーソナライズ・フォトサービス</h4>
+                        <p class="text-gray-300 text-xs leading-loose mb-5 sm:mb-6">
+                            特別な日のお食事風景を当店で撮影。その場で専用フォトスタンドとメッセージを添えて、笑顔の瞬間を形に残します。
+                        </p>
+                    </div>
+                    <span class="text-gold/60 text-[11px] serif tracking-wider">#特別な記念日の演出</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-20 md:py-28 lg:py-32 bg-white">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+                <div class="lg:w-1/2">
+                    <div class="mb-10 sm:mb-16">
+                        <span class="text-gold serif tracking-[0.4em] font-bold block mb-3 sm:mb-4 uppercase text-xs sm:text-sm">Access Info</span>
+                        <h3 class="serif text-2xl sm:text-3xl font-black mb-8 sm:mb-10">2Plats ドゥプラ</h3>
+
+                        <div class="space-y-5 sm:space-y-6 text-sm">
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-5 sm:pb-6 items-start gap-1 sm:gap-0">
+                                <span class="serif font-bold text-gold w-32 shrink-0">ADDRESS</span>
+                                <p class="text-gray-600">〒070-8006 北海道旭川市神楽６条８丁目５‐３</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-5 sm:pb-6 items-start gap-1 sm:gap-0">
+                                <span class="serif font-bold text-gold w-32 shrink-0">TEL</span>
+                                <p class="text-gray-900 font-black text-lg sm:text-xl">0166-74-8133</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-5 sm:pb-6 items-start gap-1 sm:gap-0">
+                                <span class="serif font-bold text-gold w-32 shrink-0">HOLIDAY</span>
+                                <p class="text-gray-600">火曜日（定休）</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="tel:0166748133" class="w-full bg-white border-2 border-dark-gray text-dark-gray py-5 sm:py-6 flex items-center justify-center gap-4 hover:bg-dark-gray hover:text-white transition-all group shadow-sm text-sm sm:text-base">
+                        <span class="serif tracking-[0.15em] sm:tracking-[0.2em] font-bold text-center">ご予約・お問い合わせはこちら</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="h-[280px] sm:h-[340px] lg:h-full lg:min-h-[400px] overflow-hidden shadow-2xl rounded-sm border border-gray-100 relative group">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2881.8893711502155!2d142.346131575117!3d43.75439404588159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0ce8a013741a91%3A0xbc47045e790fd029!2zMlBsYXRzIOODieOCpeODl-ODqQ!5e0!3m2!1sja!2sjp!4v1771552968083!5m2!1sja!2sjp"
+                            width="100%"
+                            height="100%"
+                            style="border:0; position: absolute; top:0; left:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-900 py-14 sm:py-20 border-t border-gray-100">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <h2 class="serif text-2xl sm:text-3xl font-black mb-3 sm:mb-4 tracking-tighter">2Plats</h2>
+            <p class="text-gold serif tracking-[0.5em] mb-10 sm:mb-12 text-xs">DEUX PLATS</p>
+
+            <div class="flex flex-wrap justify-center gap-x-6 sm:gap-x-12 gap-y-4 sm:gap-y-6 mb-10 sm:mb-16 text-[10px] font-bold tracking-[0.2em] text-gray-400">
+                <a href="#" class="hover:text-gold transition">TOP</a>
+                <a href="#strength-section" class="hover:text-gold transition">STRENGTHS</a>
+                <a href="#profile-section" class="hover:text-gold transition">HISTORY</a>
+                <a href="#testimonials-section" class="hover:text-gold transition">REVIEW</a>
+                <a href="#access-section" class="hover:text-gold transition">ACCESS</a>
+            </div>
+
+            <p class="text-[9px] text-gray-300 tracking-[0.3em] uppercase">
+                &copy; 2Plats. Fine Dining in Asahikawa.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll behavior
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const nav = document.getElementById('main-nav');
+        const menuIconOpen = 'M4 6h16M4 12h16m-7 6h7';
+        const menuIconClose = 'M6 18L18 6M6 6l12 12';
+
+        function closeMenu() {
+            nav.classList.add('hidden');
+            nav.classList.remove('flex', 'absolute', 'top-16', 'left-0', 'w-full', 'bg-white', 'flex-col', 'p-8', 'space-y-6', 'shadow-2xl', 'border-t', 'border-gray-100');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.querySelector('path').setAttribute('d', menuIconOpen);
+        }
+
+        function openMenu() {
+            nav.classList.remove('hidden');
+            nav.classList.add('flex', 'absolute', 'top-16', 'left-0', 'w-full', 'bg-white', 'flex-col', 'p-8', 'space-y-6', 'shadow-2xl', 'border-t', 'border-gray-100');
+            menuBtn.setAttribute('aria-expanded', 'true');
+            menuBtn.querySelector('path').setAttribute('d', menuIconClose);
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = nav.classList.contains('flex');
+            isOpen ? closeMenu() : openMenu();
+        });
+
+        // Smooth scroll (+ close mobile menu after tap)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+
+                if (window.innerWidth < 1024 && nav.classList.contains('flex')) {
+                    closeMenu();
+                }
+
+                if (href === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    window.scrollTo({
+                        top: target.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
