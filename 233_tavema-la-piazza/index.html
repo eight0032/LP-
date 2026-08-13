@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>タベルナ・ラ・ピアッツア | 旭川・本格イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f9f7f2;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+                        url('images/pizza2.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .bg-italian-red { background-color: #a21b1b; }
+        .text-italian-red { color: #a21b1b; }
+        .bg-italian-green { background-color: #008c45; }
+        .text-italian-green { color: #008c45; }
+
+        .gold-line::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #c5a059;
+            margin: 1.5rem auto;
+        }
+
+        .overlap-img {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 6px solid white;
+        }
+        @media (min-width: 768px) {
+            .overlap-img { border-width: 8px; }
+        }
+
+        /* タップ領域をスマホでも押しやすく */
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        /* スマホでの横スクロール事故防止 */
+        html, body { max-width: 100%; overflow-x: hidden; }
+    </style>
+</head>
+<body class="text-stone-900">
+
+    <!-- 1. FVエリア -->
+    <header class="hero-bg min-h-[100svh] relative flex items-center justify-center text-white px-5 py-24">
+        <div class="absolute top-6 left-6 md:top-10 md:left-10 hidden sm:block border-l border-white/50 pl-4 py-2">
+            <p class="text-xs md:text-sm tracking-[0.3em] uppercase font-bold">Taverna La Piazza</p>
+        </div>
+
+        <div class="z-10 text-center max-w-3xl mx-auto">
+            <p class="serif text-base sm:text-xl md:text-2xl mb-3 md:mb-4 tracking-[0.15em] md:tracking-[0.2em]">札幌、南23条。静宵に佇む名店。</p>
+            <div class="relative inline-block mb-6 md:mb-8">
+                <h1 class="text-4xl sm:text-5xl md:text-8xl font-black leading-tight tracking-tighter serif">
+                    至福を刻む、<br>薪窯の記憶。
+                </h1>
+            </div>
+            <p class="text-sm sm:text-lg md:text-xl font-light tracking-wide md:tracking-widest mb-8 md:mb-10">1993年創業 | 本格イタリアンの真髄</p>
+
+            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6 items-center">
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                    <span class="border border-white/60 px-4 py-2 md:px-6 rounded-full text-xs md:text-sm backdrop-blur-sm">薪窯場完備</span>
+                    <span class="border border-white/60 px-4 py-2 md:px-6 rounded-full text-xs md:text-sm backdrop-blur-sm">個室あり</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-center text-xs md:text-sm tracking-widest uppercase opacity-70">
+            Scroll down
+            <div class="w-px h-10 md:h-16 bg-white mx-auto mt-3 md:mt-4 animate-pulse"></div>
+        </div>
+    </header>
+
+    <!-- 2. CTA (1回目) -->
+    <section id="cta" class="relative z-20 -mt-8 md:-mt-10 max-w-4xl mx-auto px-4">
+        <div class="bg-italian-red text-white p-6 sm:p-8 md:p-12 shadow-2xl rounded-sm flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div class="text-center md:text-left">
+                <h2 class="serif text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-white">五感で味わう、ランチコース</h2>
+                <p class="text-white/80 text-sm sm:text-base">前菜・ドルチェ付 1,650円（税込）〜</p>
+            </div>
+            <div class="flex flex-col gap-3 md:gap-4 w-full md:w-auto">
+                <a href="tel:0115637717" class="bg-white text-italian-red px-6 sm:px-10 py-4 sm:py-5 rounded-sm font-bold text-lg sm:text-xl hover:bg-stone-100 active:scale-95 transition shadow-lg flex items-center justify-center">
+                    <i class="fas fa-phone-alt mr-3"></i> 011-563-7717
+                </a>
+                <a href="https://www.instagram.com/taverna_la_piazza1993/" target="_blank" class="text-white text-center flex items-center justify-center gap-2 text-sm hover:opacity-80">
+                    <i class="fab fa-instagram text-xl"></i> 最新情報はInstagramから
+                </a>
+            </div>
+        </div>
+        <p class="text-center text-[11px] md:text-xs mt-4 text-stone-500 tracking-widest uppercase">Reservations &amp; Inquiries (Closed on Mondays)</p>
+    </section>
+
+    <!-- 3. コンセプト -->
+    <section class="py-16 md:py-24 px-5 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative max-w-sm md:max-w-none mx-auto">
+                    <div class="aspect-[4/5] overflow-hidden overlap-img">
+                        <img src="images/chef.png" alt="職人の手仕事" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-16 h-16 md:w-24 md:h-24 bg-italian-green hidden md:block -z-10"></div>
+                </div>
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <span class="text-italian-red serif tracking-[0.3em] font-bold block mb-3 md:mb-4 uppercase text-sm md:text-base">Concept</span>
+                    <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 leading-tight">有名シェフを輩出してきた<br>「札幌イタリアンの源流」</h2>
+                    <p class="leading-relaxed text-stone-600 mb-6 md:mb-8 text-base md:text-lg">
+                        1993年、まだ本格的な薪窯が珍しかった時代から、私たちは火を灯し続けてきました。<br><br>
+                        当店の厨房で技を磨き、巣立っていったシェフたちは全国で活躍しています。その源流にあるのは、素材への誠実さと、イタリア本来の温かなホスピタリティです。
+                    </p>
+                    <div class="inline-flex items-center gap-4 justify-center md:justify-start">
+                        <div class="w-10 md:w-12 h-px bg-italian-red"></div>
+                        <p class="serif italic text-lg md:text-xl">薪窯の香りと、丁寧な手仕事を。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. イチオシ：ピッツァへのこだわり -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative px-5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 gold-line">極上のピッツァ</h2>
+                <p class="tracking-widest opacity-70 uppercase text-xs md:text-base">Signature Menu: Neapolitan Pizza</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div>
+                    <img src="images/pizza.png" alt="薪窯ピッツァ" class="rounded-lg shadow-2xl w-full" loading="lazy">
+                </div>
+                <div class="space-y-6 md:space-y-8 text-left">
+                    <div class="border-l-4 border-italian-red pl-5 md:pl-6">
+                        <h3 class="serif text-xl md:text-2xl font-bold mb-2">450℃の薪窯が命。</h3>
+                        <p class="opacity-80 text-sm md:text-base">職人が秒単位で見極める、外はカリッと、中はモチモチの食感。薪特有の芳醇な香りが生地の旨みを引き立てます。</p>
+                    </div>
+                    <div class="border-l-4 border-italian-green pl-5 md:pl-6">
+                        <h3 class="serif text-xl md:text-2xl font-bold mb-2">ボリューム満点の満足感。</h3>
+                        <p class="opacity-80 text-sm md:text-base">「お腹いっぱい食べてほしい」という創業からの想い。お一人でも、シェアしても大満足のボリュームを維持しています。</p>
+                    </div>
+                    <div class="pt-4 md:pt-6 text-center md:text-left">
+                        <a href="https://www.instagram.com/taverna_la_piazza1993/" target="_blank" class="inline-flex items-center gap-3 border border-white px-6 md:px-8 py-3.5 md:py-4 hover:bg-white hover:text-black active:scale-95 transition uppercase tracking-widest text-xs md:text-sm font-bold">
+                            <i class="fab fa-instagram text-xl"></i> View More on Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 恵み・解決 -->
+    <section class="py-16 md:py-24 px-5 bg-[#f2ede4]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="serif text-2xl sm:text-3xl font-bold">大切な時間を、ここで。</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div class="flex gap-5 md:gap-6">
+                    <div class="text-italian-red text-3xl md:text-4xl serif italic shrink-0">01.</div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg md:text-xl mb-2">お子様連れでも安心。</h3>
+                        <p class="text-stone-600 text-sm md:text-base">住宅街の隠れ家だからこそ、ご家族連れを歓迎しています。広々とした店内で気兼ねなく本格イタリアンをお楽しみください。</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 md:gap-6">
+                    <div class="text-italian-red text-3xl md:text-4xl serif italic shrink-0">02.</div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg md:text-xl mb-2">個室・貸切で特別な日を。</h3>
+                        <p class="text-stone-600 text-sm md:text-base">記念日や女子会、大切な接待に。個室完備で、ワンちゃんを連れての個室利用も可能です。</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 md:gap-6">
+                    <div class="text-italian-red text-3xl md:text-4xl serif italic shrink-0">03.</div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg md:text-xl mb-2">駐車場完備。</h3>
+                        <p class="text-stone-600 text-sm md:text-base">札幌中央区の住宅街にありながら、お車でのご来店がスムーズ。ドライブデートのランチにも最適です。</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 md:gap-6">
+                    <div class="text-italian-red text-3xl md:text-4xl serif italic shrink-0">04.</div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg md:text-xl mb-2">細やかな気配り。</h3>
+                        <p class="text-stone-600 text-sm md:text-base">「シェアしたい」というお声には、お料理を分けてお出しすることも。老舗ならではの阿吽の呼吸で対応いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ -->
+    <section class="py-16 md:py-24 px-5 bg-white relative">
+        <div class="absolute top-10 left-4 md:top-20 md:left-10 text-stone-100 text-6xl md:text-9xl font-black uppercase pointer-events-none select-none serif">Buono</div>
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold mb-12 md:mb-20 italic">"幸せを運ぶ、お客様の声"</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+                <div class="border border-stone-100 p-7 md:p-10 shadow-sm hover:shadow-xl transition text-left">
+                    <div class="text-yellow-500 mb-5 md:mb-6 flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="serif text-base md:text-lg leading-relaxed mb-5 md:mb-6 italic">「具材とソースのバランスが絶妙。食べていて本当に幸せな気持ちになりました。スタッフの方の気配りも心地よく、次はコースでゆっくりお伺いしたいです。」</p>
+                    <p class="text-sm font-bold text-stone-400">— 紹介のトマトパスタを堪能</p>
+                </div>
+                <div class="border border-stone-100 p-7 md:p-10 shadow-sm hover:shadow-xl transition md:scale-105 bg-white text-left">
+                    <div class="text-yellow-500 mb-5 md:mb-6 flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star text-stone-200"></i></div>
+                    <p class="serif text-base md:text-lg leading-relaxed mb-5 md:mb-6 italic">「デートでランチに伺いました。広くて雰囲気抜群。シェアをお願いしたら半分ずつ盛り付けて出してくれて感動。パンも最高に美味しいです！」</p>
+                    <p class="text-sm font-bold text-stone-400">— デート利用のお客様</p>
+                </div>
+                <div class="border border-stone-100 p-7 md:p-10 shadow-sm hover:shadow-xl transition text-left">
+                    <div class="text-yellow-500 mb-5 md:mb-6 flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star text-stone-200"></i></div>
+                    <p class="serif text-base md:text-lg leading-relaxed mb-5 md:mb-6 italic">「隠れ家的な雰囲気が素敵。個室でゆっくりできました。薪で焼くピッツァは耳まで美味しく、ボリュームたっぷりで家族も大満足でした。」</p>
+                    <p class="text-sm font-bold text-stone-400">— 家族でディナー利用</p>
+                </div>
+            </div>
+            <div class="mt-12 md:mt-16 text-center">
+                <a href="https://www.instagram.com/taverna_la_piazza1993/" target="_blank" class="inline-flex items-center gap-2 text-stone-400 hover:text-pink-600 transition font-bold text-sm md:text-base">
+                    <i class="fab fa-instagram"></i> Instagramでもっと見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. COMING SOON セクション -->
+    <section class="py-16 md:py-24 px-5 bg-stone-100 relative border-t border-stone-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-italian-red text-white text-[11px] md:text-xs px-4 py-1.5 rounded-full font-bold tracking-widest uppercase mb-3">Coming Soon</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-bold text-stone-800">「あったらいいな」を、カタチに。</h2>
+                <p class="text-stone-500 text-sm md:text-base mt-4">お客様の多くのご要望にお応えし、現在スタートに向けて準備中の新サービスです。</p>
+                <div class="w-16 h-0.5 bg-stone-300 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1: ピッツァテイクアウト -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm border border-stone-200/80 flex flex-col justify-between hover:shadow-xl transition group">
+                    <div>
+                        <div class="w-14 h-14 rounded-full bg-red-50 text-italian-red flex items-center justify-center text-2xl mb-5 md:mb-6 group-hover:bg-italian-red group-hover:text-white transition duration-300">
+                            <i class="fas fa-pizza-slice"></i>
+                        </div>
+                        <span class="text-xs font-bold text-italian-red tracking-wider uppercase block mb-1">01. Takeout</span>
+                        <h3 class="serif text-lg md:text-xl font-bold text-stone-800 mb-3">薪窯ピッツァ テイクアウト</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            450℃の薪窯で焼き上げた出来たてピッツァをご自宅やオフィスで。ホームパーティーや記念日の食卓を手軽に本格イタリアンで彩ります。
+                        </p>
+                    </div>
+                    <span class="inline-flex items-center text-xs font-bold text-stone-400 bg-stone-100 px-3 py-1.5 rounded-full w-fit">
+                        <i class="far fa-clock mr-1.5"></i> 順次サービス開始予定
+                    </span>
+                </div>
+
+                <!-- Service 2: 冷凍ピッツァ全国通販 -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm border border-stone-200/80 flex flex-col justify-between hover:shadow-xl transition group">
+                    <div>
+                        <div class="w-14 h-14 rounded-full bg-green-50 text-italian-green flex items-center justify-center text-2xl mb-5 md:mb-6 group-hover:bg-italian-green group-hover:text-white transition duration-300">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <span class="text-xs font-bold text-italian-green tracking-wider uppercase block mb-1">02. Online Store</span>
+                        <h3 class="serif text-lg md:text-xl font-bold text-stone-800 mb-3">急速冷凍 ピッツァ全国通販</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            窯上がりの香ばしさとモチモチ感を急速冷凍で閉じ込めました。遠方にお住まいのご家族へのギフトや、ストック用にも最適です。
+                        </p>
+                    </div>
+                    <span class="inline-flex items-center text-xs font-bold text-stone-400 bg-stone-100 px-3 py-1.5 rounded-full w-fit">
+                        <i class="far fa-clock mr-1.5"></i> 順次サービス開始予定
+                    </span>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 text-center text-stone-500 text-xs md:text-sm px-4">
+                ※新サービスの開始時期や詳細情報は<a href="https://www.instagram.com/taverna_la_piazza1993/" target="_blank" class="text-italian-red underline hover:opacity-80">公式Instagram</a>にて随時発信してまいります。
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA (最終) / アクセス -->
+    <section class="py-16 md:py-24 bg-italian-red text-white px-5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="text-center md:text-left">
+                    <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 leading-tight">薪窯の香りに包まれる<br>極上のひとときを。</h2>
+                    <div class="space-y-4 text-white/80 text-left text-sm md:text-base">
+                        <p class="flex items-start md:items-center gap-3 md:gap-4 border-b border-white/20 pb-2">
+                            <i class="fas fa-map-marker-alt w-5 text-italian-green bg-white rounded-full p-1 shrink-0 mt-0.5 md:mt-0"></i> 札幌市中央区南23条西11丁目1-35
+                        </p>
+                        <p class="flex items-center gap-3 md:gap-4 border-b border-white/20 pb-2">
+                            <i class="fas fa-clock w-5 text-italian-green bg-white rounded-full p-1 shrink-0"></i> ランチ：11:30〜 / ディナー：17:00〜
+                        </p>
+                        <p class="flex items-center gap-3 md:gap-4 border-b border-white/20 pb-2">
+                            <i class="fas fa-calendar-times w-5 text-italian-green bg-white rounded-full p-1 shrink-0"></i> 定休日：月曜日
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 sm:p-10 rounded-sm shadow-2xl text-stone-900 text-center">
+                    <p class="serif text-lg md:text-xl mb-6 md:mb-8">お電話でのご予約はこちら</p>
+                    <a href="tel:0115637717" class="block w-full bg-italian-red text-white py-5 md:py-6 rounded-sm font-bold text-2xl sm:text-3xl shadow-lg hover:bg-red-800 active:scale-95 transition mb-6">
+                        <i class="fas fa-phone-alt mr-2"></i> 011-563-7717
+                    </a>
+                    <div class="flex justify-center gap-6 mb-4">
+                        <a href="https://www.instagram.com/taverna_la_piazza1993/" target="_blank" class="text-stone-400 hover:text-pink-600 transition flex items-center gap-2 text-sm font-bold">
+                            <i class="fab fa-instagram text-2xl"></i> Instagram
+                        </a>
+                    </div>
+                    <p class="text-sm text-stone-400">駐車場4台完備 / テラス席あり</p>
+                </div>
+            </div>
+
+            <div class="mt-14 md:mt-20 text-center opacity-40 text-[10px] md:text-xs tracking-widest uppercase">
+                &copy; 2024 Taverna La Piazza Since 1993. All Rights Reserved.
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Google Map -->
+    <div class="w-full h-[300px] md:h-[450px] grayscale hover:grayscale-0 transition duration-1000 overflow-hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2916.6025185092285!2d141.34137297507024!3d43.02875289259557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2a0c3d6fcdb9%3A0xb2e448e225268f80!2z44K_44OZ44Or44OK44O744Op44O744OU44Ki44OD44OE44Ki!5e0!3m2!1sja!2sjp!4v1771549777570!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+</body>
+</html>
