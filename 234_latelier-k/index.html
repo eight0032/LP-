@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ラトリエ・ケイ | 旭川・見とワインの隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --gold: #c6a355;
+            --gold-light: #e0c58a;
+            --dark: #0a0a0a;
+            --dark-accent: #161616;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--dark);
+            color: #d1d1d1;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .eng-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+        .gold-text { color: var(--gold); }
+        .gold-bg { background-color: var(--gold); }
+        .gold-gradient {
+            background: linear-gradient(45deg, #c6a355, #e0c58a, #c6a355);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 縦書き設定 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* アニメーション */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-zoom {
+            animation: zoomOut 20s infinite alternate;
+        }
+        @keyframes zoomOut {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom { animation: none; }
+            .reveal { transition: none; opacity: 1; transform: none; }
+        }
+
+        .cta-premium {
+            background: linear-gradient(45deg, #8a6d3b, #c6a355, #8a6d3b);
+            background-size: 200% auto;
+            transition: 0.5s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+        }
+        .cta-premium:hover, .cta-premium:focus-visible {
+            background-position: right center;
+            transform: translateY(-2px);
+        }
+        .cta-premium:focus-visible {
+            outline: 2px solid var(--gold-light);
+            outline-offset: 2px;
+        }
+
+        /* 装飾的なライン */
+        .decorative-line {
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0 auto;
+        }
+
+        /* セクションごとの特殊背景 */
+        .bg-gradient-philosophy {
+            background: linear-gradient(135deg, #050505 0%, #0a1128 100%);
+        }
+        .bg-testimonial {
+            background-color: #f7f3f0;
+            color: #2d2d2d;
+        }
+        .bg-scenario {
+            background: radial-gradient(circle at center, #222 0%, #000 100%);
+        }
+
+        /* Map responsive container */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* taller ratio for mobile */
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; } /* 16:9 on desktop */
+        }
+
+        a, button { -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body class="overflow-x-hidden bg-black">
+
+    <!-- Loading Overlay -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-black flex items-center justify-center transition-opacity duration-1000">
+        <div class="text-center">
+            <div class="eng-serif text-2xl sm:text-3xl gold-text mb-2 tracking-widest">l'atelier-k</div>
+            <div class="h-[1px] w-12 bg-gold-text mx-auto animate-pulse"></div>
+        </div>
+    </div>
+
+    <!-- 1. FVエリア (ダーク・ドラマチック) -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="w-full h-full bg-[url('images/kaki.jpg')] bg-cover bg-center hero-zoom opacity-40"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 flex flex-col items-center py-24">
+            <div class="mb-8 md:mb-12 opacity-80 tracking-[0.3em] uppercase text-xs gold-text eng-serif text-center">Asahikawa / Hokkaido</div>
+
+            <div class="flex items-center gap-8 md:gap-16">
+                <div class="vertical-text serif text-lg md:text-xl tracking-[0.5em] leading-relaxed hidden md:block pt-12 text-white">
+                    心、<span class="gold-text">解</span>き放つ<br>至高の一時。
+                </div>
+
+                <div class="text-center md:text-left">
+                    <h1 class="serif text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.4] mb-6 md:mb-8 text-white">
+                        五感を震わせる、<br>
+                        <span class="gold-gradient">一皿の叙事詩。</span>
+                    </h1>
+                    <p class="serif text-base sm:text-lg md:text-xl tracking-widest font-light opacity-90 text-white">
+                        「甘エビのフリッター」が誘う<br>
+                        貝とワインの秘められた対話。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 md:mt-20 animate-bounce opacity-40">
+                <div class="decorative-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Sticky CTA -->
+    <nav class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <div class="serif text-lg sm:text-xl gold-text tracking-tighter">l'atelier-k</div>
+            <div class="flex items-center gap-6">
+                <a href="tel:0166747899" class="cta-premium text-white px-5 sm:px-8 py-2.5 sm:py-3 rounded-sm text-xs sm:text-sm font-bold tracking-widest flex items-center gap-2 whitespace-nowrap">
+                    <i class="fas fa-calendar-check"></i> ご予約
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. メインディッシュ (純白・モダン) -->
+    <section class="py-20 md:py-32 bg-white text-zinc-900">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-12 items-center gap-10 md:gap-12">
+                <div class="md:col-span-7 relative reveal">
+                    <div class="hidden sm:block absolute -top-10 -left-10 w-40 h-40 border-t border-l border-gold/40"></div>
+                    <img src="images/ebi.jpg" alt="旭ビのフリッター" class="w-full shadow-2xl">
+                </div>
+                <div class="md:col-span-5 reveal" style="transition-delay: 0.2s;">
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-6 md:mb-8 leading-tight text-zinc-800">
+                        <span class="text-sm gold-text eng-serif block mb-2">Signature Dish</span>
+                        海風を纏う、<br>甘美なるカリカリ。
+                    </h2>
+                    <p class="text-zinc-600 mb-8 leading-loose">
+                        新鮮な甘エビを、独自の温度管理で一気にフリット。<br>
+                        サクッとした衣、口内に広がる濃厚な甘みと、ジャパチーズが織りなす薫り。
+                    </p>
+                    <div class="h-[2px] w-20 bg-[#c6a355] mb-8"></div>
+                    <p class="serif italic gold-text font-bold">ワイン：白・辛口のシャルドネと共に</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介 (ミッドナイトブルー・重厚) -->
+    <section class="py-20 md:py-32 bg-gradient-philosophy text-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-14 md:mb-20 reveal">
+                <h3 class="serif text-3xl md:text-4xl mb-4 text-white">哲学を語らう</h3>
+                <p class="eng-serif gold-text tracking-widest text-lg">Philosophy</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 reveal">
+                    <img src="images/chef.png" alt="Chef" class="rounded-sm shadow-2xl ring-1 ring-white/10 w-full">
+                </div>
+                <div class="w-full md:w-1/2 reveal" style="transition-delay: 0.3s;">
+                    <h4 class="serif text-xl sm:text-2xl mb-6 gold-text">オーナーシェフ 大西 健一</h4>
+                    <p class="text-gray-300 leading-loose mb-8">
+                        2012年、旭川に「ラトリエ・ケイ」をオープン。<br>
+                        2019年、コンセプトを貝類メインに昇華。<br>
+                        輸入食材との大胆な融合は、これまでのイタリアンの既成概念を覆します。
+                    </p>
+                    <div class="border-l border-gold/50 pl-6 sm:pl-8 py-2 bg-white/5">
+                        <p class="serif text-base sm:text-lg leading-relaxed italic text-gray-200">
+                            「私は、単なる料理人ではなく、<br>
+                            旭川という地で食材の魂を紡ぐ<br>
+                            翻訳家でありたい。」
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩みへの共鳴 (ラジアル・ダークグレー) -->
+    <section class="py-20 md:py-32 bg-scenario relative">
+        <div class="container mx-auto px-6 max-w-4xl text-center reveal">
+            <h3 class="serif text-2xl sm:text-3xl mb-12 md:mb-16 text-white tracking-widest">その夜、あなたは「特別」を知る。</h3>
+            <div class="grid md:grid-cols-2 gap-0 overflow-hidden rounded-sm ring-1 ring-white/10">
+                <div class="bg-zinc-900/80 p-8 sm:p-12 text-left">
+                    <p class="text-xs gold-text mb-6 tracking-widest uppercase">Target Scenario</p>
+                    <ul class="space-y-6 text-gray-300">
+                        <li class="flex gap-4"><i class="fas fa-minus text-gold mt-2"></i><span>喧騒を忘れ、大切な人と深く対話したい</span></li>
+                        <li class="flex gap-4"><i class="fas fa-minus text-gold mt-2"></i><span>知的好奇心を満たす、独創的な一皿を求めている</span></li>
+                        <li class="flex gap-4"><i class="fas fa-minus text-gold mt-2"></i><span>ワインとの完璧なマリアージュを静かに味わいたい</span></li>
+                    </ul>
+                </div>
+                <div class="bg-zinc-800/80 p-8 sm:p-12 flex items-center justify-center">
+                    <div class="text-center">
+                        <p class="serif text-lg sm:text-xl mb-6 text-white leading-relaxed">ラトリエ・ケイが提供するのは、<br>ただの食事ではなく、<br><span class="gold-text">「物語」</span>です。</p>
+                        <div class="w-12 h-[1px] bg-gold/50 mx-auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 社会的証明 (シャンパンベージュ・優美) -->
+    <section class="py-20 md:py-32 bg-testimonial">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-14 md:mb-16">
+                <i class="fas fa-star gold-text text-sm mx-1"></i>
+                <i class="fas fa-star gold-text text-sm mx-1"></i>
+                <i class="fas fa-star gold-text text-sm mx-1"></i>
+                <i class="fas fa-star gold-text text-sm mx-1"></i>
+                <i class="fas fa-star gold-text text-sm mx-1"></i>
+                <h3 class="serif text-xl sm:text-2xl mt-4 text-zinc-800">Guests' Voices</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+                <div class="reveal bg-white/50 p-8 rounded-sm">
+                    <p class="serif text-lg mb-8 leading-relaxed text-zinc-700 italic">「厚岸産の牡蠣グラタンが好みにドンピシャ。ホワイトソースの濃厚さが忘れられません。」</p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-[1px] w-8 bg-gold"></div>
+                        <span class="text-[10px] tracking-widest uppercase text-zinc-400">Gourmet Guest</span>
+                    </div>
+                </div>
+                <div class="reveal bg-white/50 p-8 rounded-sm" style="transition-delay: 0.2s;">
+                    <p class="serif text-lg mb-8 leading-relaxed text-zinc-700 italic">「清潔感ある洗練された店内。この体験なら、むしろ価値がある。」</p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-[1px] w-8 bg-gold"></div>
+                        <span class="text-[10px] tracking-widest uppercase text-zinc-400">Executive Guest</span>
+                    </div>
+                </div>
+                <div class="reveal bg-white/50 p-8 rounded-sm" style="transition-delay: 0.4s;">
+                    <p class="serif text-lg mb-8 leading-relaxed text-zinc-700 italic">「ジャパチーズさんのチーズをイタリアンで。地元の食材への敬意を感じる。」</p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-[1px] w-8 bg-gold"></div>
+                        <span class="text-[10px] tracking-widest uppercase text-zinc-400">Local Gourmet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. アクセス & マップ (ライトグレー・機能的) -->
+    <section class="py-20 md:py-32 bg-zinc-100 text-zinc-900">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+                <div class="reveal">
+                    <h3 class="serif text-3xl sm:text-4xl mb-10 md:mb-12">Access</h3>
+                    <div class="space-y-8">
+                        <div>
+                            <p class="gold-text text-xs uppercase tracking-widest mb-2 font-bold">Address</p>
+                            <p class="text-lg sm:text-xl serif">〒070-0037 <br>北海道旭川市7条通6丁目左10 <br>ロジエ7 6MS 1F</p>
+                        </div>
+                        <div>
+                            <p class="gold-text text-xs uppercase tracking-widest mb-2 font-bold">Station</p>
+                            <p class="text-lg">JR旭川駅より徒歩約14分</p>
+                        </div>
+                        <div>
+                            <p class="gold-text text-xs uppercase tracking-widest mb-2 font-bold">Closed</p>
+                            <p class="text-lg serif">月曜日</p>
+                        </div>
+                        <div class="pt-4">
+                            <a href="https://maps.app.goo.gl/r5R8v1j7fM6p1X5K6" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border-b-2 border-gold pb-1 font-bold hover:opacity-70 transition">
+                                
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal shadow-2xl rounded-sm overflow-hidden border border-zinc-200" style="transition-delay: 0.2s;">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.9860482271256!2d142.35879877511826!3d43.773148444666155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0ce60e11edd6b1%3A0xb26ba4554fbaa609!2z44Op44OI44Oq44Ko44O744Kx44KkLyDml63lt50gbGF0ZWxpZXItaw!5e0!3m2!1sja!2sjp!4v1771550634583!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Coming Soon (新しい体験の予告) -->
+    <section class="py-20 md:py-32 bg-gradient-to-b from-zinc-950 via-zinc-900 to-black text-white relative overflow-hidden border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="text-center mb-14 md:mb-20 reveal">
+                <span class="eng-serif gold-text tracking-[0.3em] text-sm uppercase block mb-3">Future Visions</span>
+                <h3 class="serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-widest text-white mb-4">Coming Soon</h3>
+                <p class="text-zinc-400 text-sm md:text-base max-w-xl mx-auto font-light">
+                    食の枠を超え、五感で楽しむ新たなプロジェクト。<br class="hidden sm:inline">
+                    ラトリエ・ケイが贈る、これからのプレミアムな体験をご期待ください。
+                </p>
+                <div class="w-12 h-[1px] bg-gold/60 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- 企画1: 見窓ワークショップ -->
+                <div class="reveal bg-white/5 border border-gold/20 p-6 sm:p-8 rounded-sm backdrop-blur-sm hover:border-gold/50 transition duration-500 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs gold-text tracking-widest uppercase font-bold">Workshop</span>
+                            <span class="px-3 py-1 bg-gold/10 border border-gold/30 gold-text text-[10px] tracking-widest uppercase rounded-full">準備中</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center gold-text mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-gem text-xl"></i>
+                        </div>
+                        <h4 class="serif text-lg sm:text-xl mb-4 text-white group-hover:gold-text transition">貝殻アート×ジュエリー<br>体験ワークショップ</h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            厳選された貝の美しさを永遠に。グラスワインを片手に、上質な貝殻を磨き上げ、世界にひとつだけのオリジナルアクセサリーやインテリアを作る特別な休日プログラム。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-500">
+                        <span>開催予定: 随時告知</span>
+                        <i class="fas fa-arrow-right gold-text opacity-0 group-hover:opacity-100 transition duration-300"></i>
+                    </div>
+                </div>
+
+                <!-- 企画2: ペアリングサロン -->
+                <div class="reveal bg-white/5 border border-gold/20 p-6 sm:p-8 rounded-sm backdrop-blur-sm hover:border-gold/50 transition duration-500 flex flex-col justify-between group" style="transition-delay: 0.2s;">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs gold-text tracking-widest uppercase font-bold">Masterclass</span>
+                            <span class="px-3 py-1 bg-gold/10 border border-gold/30 gold-text text-[10px] tracking-widest uppercase rounded-full">準備中</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center gold-text mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fas fa-wine-glass-alt text-xl"></i>
+                        </div>
+                        <h4 class="serif text-lg sm:text-xl mb-4 text-white group-hover:gold-text transition">貝とワインのマリアージュ<br>限定ペアリングサロン</h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            シェフ大西が紐解く、貝の旨味成分とナチュラルワインの深遠な相性。少人数限定で味わいと知識を深める、大人のための秘密のサロン。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-500">
+                        <span>会員優先案内</span>
+                        <i class="fas fa-arrow-right gold-text opacity-0 group-hover:opacity-100 transition duration-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. 特典・最終誘導 (漆黒・ミニマル) -->
+    <section class="py-20 md:py-32 bg-black border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-4xl text-center reveal">
+            <h3 class="serif text-2xl sm:text-3xl mb-8 gold-text">Exclusive Customization</h3>
+            <p class="text-gray-400 mb-10 md:mb-12 leading-loose">
+                その日の最高の食材を、あなたの気分に合わせて仕立てます。<br>
+                特別なワイン、苦手な食材、あるいは思い出の味。
+            </p>
+            <div class="inline-block w-full sm:w-auto px-6 sm:px-12 py-10 sm:py-12 bg-zinc-900 border border-gold/20 rounded-sm shadow-2xl relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gold/5 translate-y-full group-hover:translate-y-0 transition-transform duration-700"></div>
+                <p class="text-xs gold-text mb-4 tracking-widest uppercase relative z-10">Direct Reservation</p>
+                <a href="tel:0166747899" class="serif text-3xl sm:text-4xl md:text-6xl text-white relative z-10 hover:gold-text transition duration-500 break-words">0166-74-7899</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 md:py-20 bg-zinc-950 text-center">
+        <div class="container mx-auto px-6">
+            <div class="eng-serif text-3xl sm:text-4xl gold-text mb-10 md:mb-12 tracking-widest">l'atelier-k</div>
+
+            <div class="flex justify-center gap-8 items-center mb-10 md:mb-12">
+                <a href="https://www.instagram.com/latelier_k_asahikawa/" target="_blank" rel="noopener" class="text-2xl text-gray-400 hover:gold-text transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://latelier-k.co/" target="_blank" rel="noopener" class="text-2xl text-gray-400 hover:gold-text transition"><i class="fas fa-globe"></i></a>
+            </div>
+
+            <p class="text-[10px] tracking-[0.3em] sm:tracking-[0.5em] text-gray-600 uppercase">l'atelier-k Asahikawa | &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 1000);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        };
+    </script>
+</body>
+</html>
