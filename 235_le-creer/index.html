@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ル クレエ | 旭川・東区の古民家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        antique: '#fdfaf4',
+                        main: '#5d4037',
+                        accent: '#b08d57',
+                        highlight: '#d32f2f',
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        hand: ['"Zen Maru Gothic"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; color: #333; background-color: #fdfaf4; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Noto Serif JP', serif; }
+        .font-handwriting { font-family: 'Zen Maru Gothic', serif; }
+
+        /* 手書き風装飾 */
+        .tape-deco {
+            background-color: rgba(176, 141, 87, 0.3);
+            transform: rotate(-2deg);
+            padding: 2px 10px;
+            display: inline-block;
+        }
+
+        .hero-title-bg {
+            background: linear-gradient(transparent 70%, rgba(176, 141, 87, 0.4) 70%);
+        }
+
+        /* シズル感を出すための写真ホバー効果 */
+        .photo-frame {
+            position: relative;
+            padding: 10px;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: rotate(1deg);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* マップのレスポンス対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal { transition: none; }
+            .animate-bounce { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FVエリア -->
+    <header class="relative h-[100svh] min-h-[560px] flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <div class="w-full h-full bg-cover bg-center" style="background-image: url('images/pizza.png');"></div>
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4">
+            <div class="mb-6 inline-block">
+                <span class="text-white border border-white px-4 sm:px-6 py-2 tracking-[0.2em] sm:tracking-[0.3em] font-light text-xs sm:text-sm">EST. 2007 SAPPORO</span>
+            </div>
+            <h1 class="text-white text-4xl sm:text-5xl md:text-7xl font-black mb-6 leading-tight drop-shadow-lg">
+                <span class="text-lg sm:text-2xl md:text-3xl font-light block mb-2 opacity-90">昭和初期の古民家で、</span>
+                <span class="hero-title-bg">記憶に残る、一皿を。</span>
+            </h1>
+            <p class="text-white text-base sm:text-lg md:text-xl font-handwriting mb-8 sm:mb-10 tracking-widest px-2">
+                — アンティークな空間で、本格イタリアンを驚きのコスパで —
+            </p>
+            <div class="flex flex-col items-center">
+                <a href="#cta" class="group relative bg-white text-main px-8 sm:px-12 py-4 sm:py-5 rounded-sm overflow-hidden transition-all shadow-2xl w-full max-w-xs sm:w-auto">
+                    <span class="relative z-10 font-bold text-base sm:text-lg">まずは限定クーポンをGET</span>
+                    <div class="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </a>
+                <div class="mt-4 animate-bounce">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 導入メッセージ -->
+    <section class="py-14 sm:py-20 text-center container mx-auto px-4 max-w-3xl">
+        <span class="text-accent font-bold tracking-widest block mb-4 text-sm sm:text-base">— Welcome to Le creer —</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-relaxed mb-6 sm:mb-8">
+            住宅街にひっそりと佇む<br>
+            「教会の隠れ家」のようなイタリアン
+        </h2>
+        <p class="text-gray-600 leading-loose font-handwriting text-base sm:text-lg">
+            扉を開けると、そこは昭和初期の古民家を再生した別世界。<br>
+            アンティーク家具、ステンドグラス、そして漂う岩のりの香り。<br>
+            都会の喧騒を忘れ、大切な人と心ゆくまで語り合える場所です。
+        </p>
+    </section>
+
+    <!-- CTAエリア (1回目) -->
+    <section id="cta" class="py-14 sm:py-16 bg-accent relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="bg-white p-6 sm:p-8 md:p-12 max-w-4xl mx-auto rounded-lg shadow-2xl transform sm:-rotate-1">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2 text-left">
+                        <span class="tape-deco text-sm font-bold text-main mb-2">OFFER</span>
+                        <h2 class="text-xl sm:text-2xl font-bold mb-4 mt-2">公式LINE 友だち登録特典</h2>
+                        <ul class="space-y-2 text-gray-700 font-bold text-sm sm:text-base">
+                            <li>・「前菜プレート」無料クーポン配布中</li>
+                            <li>・月1回の「生ライブ」開催情報をお届け</li>
+                            <li>・季節の限定メニューをいち早くご案内</li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <button onclick="mockAction()" class="w-full bg-[#06C755] hover:bg-[#05b34c] text-white py-5 sm:py-6 rounded-lg font-bold text-lg sm:text-xl shadow-lg transition-all flex items-center justify-center gap-3">
+                            LINEで今すぐ特典を受け取る
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- イチオシ商品 -->
+    <section class="py-20 sm:py-32 relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-accent/5 -z-10"></div>
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative max-w-md md:max-w-none mx-auto">
+                    <div class="photo-frame">
+                        <img src="images/pasta.jpg" alt="山のりパスタ" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-red-600 text-white p-4 sm:p-6 rounded-full w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center text-center font-bold leading-tight transform rotate-12 shadow-xl border-4 border-white text-sm sm:text-base">
+                        リピート率<br>No.1
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-accent font-bold block mb-2 text-sm sm:text-base">SPECIALITY</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-6 leading-tight">「一体どうした⁉」と驚かれる、<br><span class="text-accent">磯の香りと濃厚クリームの至福。</span></h2>
+                    <p class="text-gray-600 text-base sm:text-lg leading-loose mb-8">
+                        当店の看板メニュー「岩のりのクリームパスタ」。一口食べれば、濃厚なクリームの奥から薪の香りが鼻やかに広がります。素材へのこだわり、調理への情熱。それらを驚くほどリーズナブルな価格でお届けするのが、ル クレエの流儀です。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-[1px] bg-accent"></div>
+                        <span class="font-handwriting text-accent font-bold text-sm sm:text-base">サラダ・ワインセットも＋200円台〜</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 自己紹介 -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 max-w-md md:max-w-none mx-auto">
+                    <div class="relative">
+                        <img src="images/chef.png" alt="オーナーシェフ" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 text-left">
+                    <h3 class="text-accent text-sm tracking-widest mb-2">OWNER STORY</h3>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 italic">「古民家に、新しい息吹を吹き込む」</h2>
+                    <p class="text-gray-600 leading-loose mb-6 text-sm sm:text-base">
+                        オーナーシェフ小本元が2007年12月にオープンしたル クレエ。昭和初期の古民家を自らリノベーションし、隠れ家としての魅力を磨き上げました。本格イタリアンを誰もが楽しめる価格で提供するという、開店当初からの約束を守り続けています。
+                    </p>
+                    <p class="font-handwriting text-lg sm:text-xl text-main font-bold">
+                        「最高の時間だった」というお声が、私の最高の喜びです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 口コミ -->
+    <section class="py-20 sm:py-32">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto border-4 border-double border-accent p-6 sm:p-8 md:p-16 relative">
+                <div class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-antique px-6 sm:px-8 py-2 text-xl sm:text-2xl font-bold text-accent whitespace-nowrap">Voice</div>
+                <div class="space-y-10 sm:space-y-12 mt-4">
+                    <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                        <div class="md:w-3/4">
+                            <p class="text-base sm:text-lg italic leading-loose mb-4">「お料理が一つひとつ丁寧で、本当にきれい。誕生日の祝いで利用しましたが、個室の提供やデザートメッセージまで用意してくださり、二人とも大満足。最高の記念日になりました。」</p>
+                            <span class="text-sm text-gray-400">— 50代 女性 / 記念日利用</span>
+                        </div>
+                        <div class="md:w-1/4 text-center flex md:block gap-3 items-center">
+                            <span class="text-2xl sm:text-3xl text-accent font-black">5.0</span>
+                            <div class="flex justify-center text-yellow-500 mt-0 md:mt-2">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="h-px bg-accent/20"></div>
+                    <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                        <div class="md:w-3/4">
+                            <p class="text-base sm:text-lg italic leading-loose mb-4">「泊まったホテルのそばでふらっと予約しましたが、あまりに安くて衝撃！シェフのこだわりがたっぷり伝わってくる料理。偶然にも月一の生演奏の日で、最高の気分でした。」</p>
+                            <span class="text-sm text-gray-400">— 30代 女性 / 旅行者</span>
+                        </div>
+                        <div class="md:w-1/4 text-center flex md:block gap-3 items-center">
+                            <span class="text-2xl sm:text-3xl text-accent font-black">5.0</span>
+                            <div class="flex justify-center text-yellow-500 mt-0 md:mt-2">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon セクション -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#b08d57_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="container mx-auto px-4 relative z-10 max-w-5xl">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-accent font-bold tracking-[0.2em] uppercase text-xs sm:text-sm block mb-2">Future Services</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black font-serif text-white tracking-widest">COMING SOON</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mt-4"></div>
+                <p class="mt-4 text-stone-300 font-handwriting text-base sm:text-lg">ル クレエが準備中の「あったら嬉しい」新サービス</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                <!-- サービス1 -->
+                <div class="bg-stone-800/80 border border-accent/30 p-6 sm:p-8 rounded-xl relative hover:border-accent transition-all group">
+                    <span class="absolute top-4 right-4 bg-accent/20 text-accent text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">近次スタート予定</span>
+                    <div class="text-3xl mb-4 mt-8 sm:mt-0">🍂 🌰</div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-white font-serif group-hover:text-accent transition-colors">四季を味わう「季節限定シェフ特製コース」</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed mb-4">
+                        北海道の四季折々の旬食材（春の山菜・秋のポルチーニ茸・冬の道産白子やエゾシカ等）を惜しみなく使用した、期間限定の贅沢ディナーコースを展開予定。
+                    </p>
+                    <span class="text-xs text-accent/80 font-handwriting">※LINE友だち限定で先行予約案内をお届けします</span>
+                </div>
+
+                <!-- サービス2 -->
+                <div class="bg-stone-800/80 border border-accent/30 p-6 sm:p-8 rounded-xl relative hover:border-accent transition-all group">
+                    <span class="absolute top-4 right-4 bg-accent/20 text-accent text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">開発中</span>
+                    <div class="text-3xl mb-4 mt-8 sm:mt-0">🍝 🎁</div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-white font-serif group-hover:text-accent transition-colors">おうちでル クレエ「岩のりのパスタキット」</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed mb-4">
+                        看板メニュー「岩のりのクリームソース」をご自宅でも。急速冷凍したシェフ特製ソースと生パスタをセットにしたテイクアウト・全国発送用ギフトボックス。
+                    </p>
+                    <span class="text-xs text-accent/80 font-handwriting">※店頭お持ち帰りからスタート予定</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- マップセクション -->
+    <section class="py-14 sm:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10 sm:mb-12">Access Map</h2>
+            <div class="max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-gray-100">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.290320929518!2d141.3540596750734!3d43.077391389483466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29116d768ad3%3A0xfd956a1918c39442!2z44OrIOOCr-ODrOOCqA!5e0!3m2!1sja!2sjp!4v1771551522321!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="p-6 bg-antique text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-600 text-sm sm:text-base">札幌市営地下鉄東線「北13条東駅」3番出口より徒歩3分</p>
+                    <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" class="bg-main text-white px-6 py-2 rounded-full text-sm font-bold whitespace-nowrap">Googleマップで開く</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="py-16 sm:py-24 bg-accent text-black text-center relative">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 leading-tight font-handwriting">古民家が奏でる、<br>特別な夜への招待状。</h2>
+            <p class="text-lg sm:text-xl mb-10 sm:mb-12 opacity-80 font-medium">札幌・東区の隠れ家で、スタッフ一同お待ちしております。</p>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="tel:0117420880" class="bg-white text-accent py-5 rounded-lg text-lg sm:text-xl font-bold shadow-xl hover:scale-105 transition-all">電話で今すぐ予約</a>
+                <button onclick="mockAction()" class="bg-[#06C755] text-white py-5 rounded-lg text-lg sm:text-xl font-bold shadow-xl hover:scale-105 transition-all">LINEで特典をGET</button>
+            </div>
+            <p class="mt-6 text-sm opacity-60">※日曜定休 / 現金払いのみとなります</p>
+        </div>
+    </section>
+
+   <!-- フッター -->
+    <footer class="py-16 sm:py-20 bg-main text-white text-sm">
+        <div class="container mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">ル クレエ (Le creer)</h4>
+                <p>〒065-0013 北海道札幌市東区北13条東3丁目1-3</p>
+                <p>TEL: 011-742-0880</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">営業時間・定休日</h4>
+                <p>定休日: 日曜日</p>
+                <p>※生演奏ライブは不定期開催です</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">その他</h4>
+                <p>席数：36席 / 個室場あり</p>
+                <p>支払方法：現金のみ</p>
+                <!-- Instagramリンク（アイコン付き） -->
+                <div class="mt-4">
+                    <a href="https://www.instagram.com/le__creer/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
+                        <i class="fab fa-instagram text-xl"></i>
+                        <span>Instagram公式アカウント</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-10 sm:mt-12 pt-8 border-t border-white/10 text-center opacity-60 text-xs">
+            &copy; 2024 Le creer. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        function mockAction() {
+            const message = document.createElement('div');
+            message.className = 'fixed top-10 left-1/2 -translate-x-1/2 bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-2xl z-50 text-sm sm:text-base whitespace-nowrap';
+            message.textContent = 'LINE連携画面へ移動します（デモ）';
+            document.body.appendChild(message);
+            setTimeout(() => message.remove(), 2000);
+        }
+
+        // スクロールリビール
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('.scroll-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.15 });
+            targets.forEach(t => observer.observe(t));
+        });
+    </script>
+</body>
+</html>
