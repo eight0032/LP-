@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistaurant Fuji | 北海道の旬を味わう創作フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            color: #2D2D2D;
+            -webkit-text-size-adjust: 100%;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.05em;
+        }
+        .bg-olive { background-color: #3B4232; }
+        .text-olive { color: #3B4232; }
+        .bg-gold-light { background-color: #D4B483; }
+        .text-gold-dark { color: #9A7B4F; }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.4)), url('images/french.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .border-elegant {
+            border: 1px solid rgba(154, 123, 79, 0.3);
+        }
+
+        @keyframes scroll-line {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .animate-scroll-line {
+            animation: scroll-line 2s infinite ease-in-out;
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        #mobile-menu.open {
+            max-height: 320px;
+        }
+
+        /* 動きを減らす設定に配慮 */
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal, .animate-scroll-line {
+                transition: none !important;
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* テーブルをスマホでスタック表示 */
+        @media (max-width: 640px) {
+            table.stack-mobile, table.stack-mobile tbody, table.stack-mobile tr, table.stack-mobile th, table.stack-mobile td {
+                display: block;
+                width: 100%;
+            }
+            table.stack-mobile tr {
+                padding: 12px 0;
+            }
+            table.stack-mobile th {
+                padding-bottom: 4px !important;
+            }
+            table.stack-mobile td {
+                padding-top: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#FCFAFA] overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav class="absolute top-0 w-full z-50 py-6 md:py-8 px-5 md:px-6 flex justify-between items-center">
+        <div class="text-white text-xl md:text-2xl font-bold serif">Bistaurant Fuji</div>
+
+        <!-- PC メニュー -->
+        <div class="hidden md:flex gap-8 text-white text-sm tracking-widest">
+            <a href="#concept" class="hover:text-gold-light transition">CONCEPT</a>
+            <a href="#points" class="hover:text-gold-light transition">POINTS</a>
+            <a href="#coming-soon" class="hover:text-gold-light transition">MEMBERSHIP</a>
+            <a href="#access" class="hover:text-gold-light transition">ACCESS</a>
+        </div>
+
+        <!-- モバイル ハンバーガーボタン -->
+        <button id="menu-btn" aria-label="メニューを開く" aria-expanded="false" class="md:hidden text-white text-2xl w-10 h-10 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gold-light rounded">
+            <i class="fas fa-bars" id="menu-icon"></i>
+        </button>
+    </nav>
+
+    <!-- モバイルメニュー本体 -->
+    <div id="mobile-menu" class="md:hidden absolute top-[64px] w-full z-40 bg-olive/95 backdrop-blur-sm">
+        <div class="flex flex-col text-white text-sm tracking-widest divide-y divide-white/10">
+            <a href="#concept" class="menu-link px-6 py-4">CONCEPT</a>
+            <a href="#points" class="menu-link px-6 py-4">POINTS</a>
+            <a href="#coming-soon" class="menu-link px-6 py-4">MEMBERSHIP</a>
+            <a href="#access" class="menu-link px-6 py-4">ACCESS</a>
+        </div>
+    </div>
+
+   <!-- FV AREA -->
+    <section class="relative min-h-[100svh] flex items-center justify-center text-white hero-gradient overflow-hidden">
+        <div class="container mx-auto px-5 md:px-6 text-center">
+            <div class="mb-5 md:mb-6 inline-block border-b border-white pb-2 text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] uppercase opacity-90">Sapporo Modern French</div>
+            <h1 class="text-3xl sm:text-4xl md:text-7xl font-bold mb-6 md:mb-8 leading-[1.4] md:leading-[1.3] serif">
+                北海道の、土と、水と、<br>
+                <span class="text-gold-light">一皿の記憶。</span>
+            </h1>
+            <p class="text-sm md:text-lg mb-8 md:mb-12 font-light max-w-2xl mx-auto leading-loose tracking-wider md:tracking-widest">
+                和の感性とフレンチの技法が溶け合う。<br>
+                ここでしか出会えない、芳醇なフォアグラの誘惑。
+            </p>
+            <div class="mt-8 md:mt-10">
+                <!-- リンク先を指定のURLに変更しました -->
+                <a href="https://sapporo-bonvoyage.com/reservation" class="bg-gold-light hover:bg-[#C5A059] active:bg-[#C5A059] text-white font-bold py-4 px-8 md:py-5 md:px-12 rounded-full text-base md:text-lg shadow-xl transition-all duration-300 inline-block">
+                    特別な一夜を予約する <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <span class="text-[10px] tracking-widest mb-2 opacity-70">SCROLL</span>
+            <div class="w-[1px] h-10 md:h-12 bg-white/50 relative overflow-hidden">
+                <div class="absolute top-0 w-full h-full bg-white -translate-y-full animate-scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPT / STORY -->
+    <section id="concept" class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative scroll-reveal">
+                    <img src="images/foagura.png" alt="料理シーン" class="rounded-sm shadow-sm grayscale hover:grayscale-0 transition duration-700 w-full">
+                    <div class="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 w-32 h-32 md:w-48 md:h-48 bg-gold-light/20 -z-10 rounded-full"></div>
+                </div>
+                <div class="w-full md:w-1/2 scroll-reveal">
+                    <h2 class="text-sm text-gold-dark font-bold mb-4 tracking-[0.3em]">THE PHILOSOPHY</h2>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 serif leading-snug">「今だけ」という、<br>最高の贅沢を。</h3>
+                    <p class="text-gray-600 mb-8 leading-loose tracking-wide md:tracking-wider text-sm md:text-base">
+                        北海道の厳格な自然が育む、今この瞬間にしか手に入らない旬の食材。私たちはその生命力を、和の繊細な味付けとフレンチの重厚な技法で昇華させます。<br><br>
+                        名物のフォアグラ料理は、あえて「和」のニュアンスを加えることで、日本人の味覚に寄り添い、驚きと共に心に深く刻まれる味わいを目指しました。
+                    </p>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POINTS -->
+    <section id="points" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 md:px-6">
+            <h2 class="text-center text-2xl md:text-3xl font-bold mb-12 md:mb-20 serif">Bistaurant Fujiのこだわり</h2>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-12">
+                <!-- Point 01 -->
+                <div class="text-center scroll-reveal group">
+                    <div class="relative flex flex-col items-center">
+                        <div class="text-6xl md:text-8xl text-gold-light/20 font-bold serif mb-[-1.5rem] md:mb-[-3rem] transition-all duration-500 group-hover:text-gold-light/40">01</div>
+                        <div class="w-4/5 md:w-3/4 mx-auto overflow-hidden rounded-sm shadow-lg mb-6 md:mb-8">
+                            <img src="images/main.png" alt="旬の食材" class="w-full aspect-square object-cover transform group-hover:scale-110 transition duration-700">
+                        </div>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 serif">厳選された北海道の「旬」</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed max-w-[280px] mx-auto">道内の信頼できる農家・漁師から直接仕入れる、その日最高の食材のみを使用します。</p>
+                </div>
+                <!-- Point 02 -->
+                <div class="text-center scroll-reveal group">
+                    <div class="relative flex flex-col items-center">
+                        <div class="text-6xl md:text-8xl text-gold-light/20 font-bold serif mb-[-1.5rem] md:mb-[-3rem] transition-all duration-500 group-hover:text-gold-light/40">02</div>
+                        <div class="w-4/5 md:w-3/4 mx-auto overflow-hidden rounded-sm shadow-lg mb-6 md:mb-8">
+                            <img src="images/paring.png" alt="ワイン" class="w-full aspect-square object-cover transform group-hover:scale-110 transition duration-700">
+                        </div>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 serif">ソムリエによるペアリング</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed max-w-[280px] mx-auto">完成されたワインセラーから、一皿の余韻を最も引き立てる1杯をご提案します。</p>
+                </div>
+                <!-- Point 03 -->
+                <div class="text-center scroll-reveal group sm:col-span-2 md:col-span-1">
+                    <div class="relative flex flex-col items-center">
+                        <div class="text-6xl md:text-8xl text-gold-light/20 font-bold serif mb-[-1.5rem] md:mb-[-3rem] transition-all duration-500 group-hover:text-gold-light/40">03</div>
+                        <div class="w-4/5 md:w-3/4 mx-auto overflow-hidden rounded-sm shadow-lg mb-6 md:mb-8">
+                            <img src="images/store.png" alt="店内" class="w-full aspect-square object-cover transform group-hover:scale-110 transition duration-700">
+                        </div>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 serif">静寂と温もり、14席の空間</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed max-w-[280px] mx-auto">都心にありながら隠れ家のような静けさ。特別な日を邪魔しない、落ち着いた店内環境。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON - VIP MEMBERSHIP -->
+    <section id="coming-soon" class="py-16 md:py-24 bg-olive text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4B483_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="container mx-auto px-5 md:px-6 relative z-10 max-w-5xl">
+            <div class="text-center mb-12 md:mb-16 scroll-reveal">
+                <span class="inline-block px-4 py-1.5 bg-[#2B3024] border border-gold-light/40 text-gold-light text-xs font-bold tracking-[0.3em] rounded-full mb-4 uppercase">
+                    COMING SOON
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold serif mb-5 md:mb-6 leading-snug">
+                    ご来店者様限定 シークレット会員サービス
+                </h2>
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light tracking-wide md:tracking-widest">
+                    一度当店でお食事をお楽しみいただいたお客様へ。<br>
+                    さらに特別な食の体験とおもてなしをお届けするプレミアム会員プログラムを準備中です。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-12 md:mb-16">
+                <!-- Feature 1 -->
+                <div class="bg-[#2B3024]/80 p-6 md:p-8 rounded-sm border border-gold-light/20 scroll-reveal hover:border-gold-light/50 transition duration-500">
+                    <div class="w-12 h-12 rounded-full bg-gold-light/10 flex items-center justify-center text-gold-light text-xl mb-5 md:mb-6">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-lg font-bold serif mb-3 text-gold-light">新メニュー・限定コース優先案内</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        季節の超希少食材を使用した誂え、特別試作コースのご案内を一般公開に先駆けて優先的にご提供します。
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-[#2B3024]/80 p-6 md:p-8 rounded-sm border border-gold-light/20 scroll-reveal hover:border-gold-light/50 transition duration-500">
+                    <div class="w-12 h-12 rounded-full bg-gold-light/10 flex items-center justify-center text-gold-light text-xl mb-5 md:mb-6">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3 class="text-lg font-bold serif mb-3 text-gold-light">会員様限定 アミューズプレゼント</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        ご来店時に会員証をご提示いただくと、その日ソムリエとシェフが厳選した「賄いメニューアミューズ」をお届けします。
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-[#2F3529] via-[#3B4232] to-[#2F3529] p-6 md:p-8 rounded-sm border border-gold-light/30 text-center scroll-reveal">
+                <p class="text-sm md:text-base font-bold serif mb-2 text-gold-light">
+                    会員募集のご案内は、お会計時のご案内カードまたはメールマガジンにて順次スタートいたします。
+                </p>
+                <p class="text-xs text-gray-300">
+                    まずはメルマガにご登録いただくことで、サービス開始時に優先でお知らせを受け取っていただけます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICE / REVIEWS -->
+    <section class="py-16 md:py-24 bg-[#FAF9F6]">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold serif">お客様の記憶に残った瞬間</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-6 sm:p-10 border-elegant relative scroll-reveal">
+                    <div class="flex text-gold-dark mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic leading-loose mb-6 text-sm md:text-base">「記念日に利用。カツオのサラダとミョウガ、いちごの組み合わせに驚き、初めての味に感動しました。店主さんの丁寧な対応も素敵です。」</p>
+                    <p class="text-xs tracking-widest text-gray-400">— 札幌市中央区 A様</p>
+                </div>
+                <div class="bg-white p-6 sm:p-10 border-elegant relative scroll-reveal">
+                    <div class="flex text-gold-dark mb-4 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic leading-loose mb-6 text-sm md:text-base">「6,600円のコースでしたが、見た目・香り・味、どれをとっても素晴らしく、必ず値段以上の満足感を得られます。人におすすめしたい店です。」</p>
+                    <p class="text-xs tracking-widest text-gray-400">— ご友人との会食利用 B様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- SHOP INFORMATION -->
+    <section id="access" class="py-16 md:py-24 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-5 md:px-6 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16">
+                <div class="scroll-reveal">
+                    <!-- タイトル部分にリンクとアイコンを追加 -->
+                    <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 serif flex items-center gap-3">
+                        Bistaurant Fuji
+                        <a href="https://sapporo-bonvoyage.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-black transition">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </h2>
+                    
+                    <table class="w-full text-sm leading-loose stack-mobile">
+                        <tr class="border-b border-gray-100">
+                            <th class="text-left py-3 md:py-4 md:w-32 font-bold">住所</th>
+                            <td class="py-1 md:py-4 text-gray-600">〒060-0052 北海道札幌市中央区南2条東5丁目7−2 1F</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="text-left py-3 md:py-4 font-bold">アクセス</th>
+                            <td class="py-1 md:py-4 text-gray-600">バスセンター前駅から徒歩3分</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="text-left py-3 md:py-4 font-bold">電話番号</th>
+                            <td class="py-1 md:py-4 text-gray-600"><a href="tel:0112529250" class="hover:text-gold-dark">011-252-9250</a></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <th class="text-left py-3 md:py-4 font-bold">ご予算</th>
+                            <td class="py-1 md:py-4 text-gray-600">ディナー 10,000円〜</td>
+                        </tr>
+                    </table>
+                    <div class="mt-8 md:mt-10">
+                        <p class="text-xs text-gray-400">※8名様〜20名様の貸切、ウェディング会食も承っております。</p>
+                    </div>
+                </div>
+                <!-- Google Maps Embed -->
+                <div class="h-72 sm:h-96 bg-gray-200 rounded-sm scroll-reveal grayscale hover:grayscale-0 transition duration-500 overflow-hidden shadow-inner">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.102682939628!2d141.36088507507225!3d43.06030789057688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29790271aa93%3A0xe9194231431b99!2sBistaurant%20Fuji!5e0!3m2!1sja!2sjp!4v1771548492391!5m2!1sja!2sjp"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- FINAL CTA -->
+    <section class="py-20 md:py-32 bg-olive text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('images/dinner.png')] bg-cover bg-center"></div>
+        <div class="relative z-10 container mx-auto px-5 md:px-6">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 md:mb-8 serif leading-snug">心を尽くした一夜を、<br>ご用意してお待ちしております。</h2>
+            <!-- リンク先を指定のURLに変更しました -->
+            <a href="https://sapporo-bonvoyage.com/reservation" class="inline-block border border-white px-8 py-4 md:px-12 md:py-5 hover:bg-white hover:text-olive active:bg-white active:text-olive transition-all duration-500 tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm">
+                RESERVATION
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-10 md:py-12 text-center text-[10px] tracking-widest text-gray-400 bg-white px-5">
+        &copy; BISTAURANT FUJI ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // モバイルメニュー開閉
+        const menuBtn = document.getElementById('menu-btn');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuIcon.classList.toggle('fa-bars', !isOpen);
+            menuIcon.classList.toggle('fa-xmark', isOpen);
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Form handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const input = this.querySelector('input');
+            btn.innerHTML = '登録完了';
+            btn.classList.replace('bg-olive', 'bg-gold-light');
+            input.value = '';
+            input.placeholder = 'ご登録ありがとうございます。';
+            input.disabled = true;
+        });
+    </script>
+</body>
+</html>
