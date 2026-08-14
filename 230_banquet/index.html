@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>レストラン・バンケット | ミシュラン一つ星の至高のサブレ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b2935b;
+            --dark-gold: #8e7340;
+            --deep-brown: #2c241a;
+            --bg-cream: #f9f6f1;
+        }
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-cream);
+            color: var(--deep-brown);
+            overflow-x: hidden;
+        }
+        .text-gold { color: var(--gold); }
+        .text-dark-gold { color: var(--dark-gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold\/30 { border-color: rgba(178,147,91,0.3); }
+        .border-gold\/20 { border-color: rgba(178,147,91,0.2); }
+        .border-gold\/10 { border-color: rgba(178,147,91,0.1); }
+        .bg-cream { background-color: var(--bg-cream); }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-washu {
+            background-image: url('https://www.transparenttextures.com/patterns/washi.png');
+        }
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: var(--deep-brown);
+            letter-spacing: 0.15em;
+        }
+        .cta-button:hover {
+            background: var(--gold);
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--gold);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .line-deco {
+            width: 1px;
+            height: 70px;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+        }
+        @media (min-width: 768px) {
+            .line-deco { height: 100px; }
+        }
+
+        /* マップレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* mobile: taller aspect */
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; /* 16:9 on larger screens */ }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* 縦書き見出し：極小画面でも折り返し過ぎないよう調整 */
+        .hero-vertical {
+            font-size: 1.5rem;
+        }
+        @media (min-width: 480px) {
+            .hero-vertical { font-size: 1.875rem; }
+        }
+        @media (min-width: 768px) {
+            .hero-vertical { font-size: 3rem; }
+        }
+
+        /* タップ領域確保 */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating { animation: none; }
+            .cta-button { transition: none; }
+        }
+    </style>
+</head>
+<body class="bg-washu">
+
+  <!-- 1. FVエリア -->
+<header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-neutral-900 text-white">
+    <!-- モダンなグラデーションとラグジュアリーな光の演出（背景 overlay） -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none"></div>
+
+    <div class="relative z-20 flex flex-col md:flex-row items-center gap-8 md:gap-12 px-4 sm:px-6 py-16 md:py-20 w-full max-w-6xl">
+
+        <!-- 縦書きキャッチコピー -->
+        <div class="hero-vertical font-bold tracking-[0.2em] md:tracking-[0.3em] leading-relaxed drop-shadow-md shrink-0 text-neutral-100">
+            能動的な美食の世界に<br>
+            <span class="text-gold mt-4">引き摺り込まれる体験。</span>
+        </div>
+
+        <!-- 店舗・商品紹介 -->
+        <div class="text-center md:text-left mt-8 md:mt-0">
+            <p class="text-xs sm:text-sm tracking-[0.3em] sm:tracking-[0.4em] mb-3 sm:mb-4 uppercase text-gold font-bold">Michelin One Star Restaurant</p>
+            <div class="w-20 h-[1px] bg-gold mb-6 sm:mb-8 mx-auto md:mx-0 opacity-80"></div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl mb-8 sm:mb-12 leading-relaxed font-bold text-neutral-100">
+                札幌・円山、一日二組限定。<br>
+                ミシュラン一つ星が贈る、<br>
+                至高の「味」と「香り」。
+            </h2>
+
+            <!-- 商品イメージ（浮遊アニメーション） -->
+            <div class="floating w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 mx-auto md:mx-0 border border-gold/40 rounded-full p-2 flex items-center justify-center bg-neutral-800/80 backdrop-blur-sm shadow-2xl">
+                <img src="images/sabure.jpg" alt="至高のサブレ" class="rounded-full w-full h-full object-cover" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <!-- 下スクロール促し -->
+    <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
+        <span class="text-[9px] sm:text-[10px] tracking-[0.5em] uppercase mb-3 md:mb-4 text-gold">Scroll</span>
+        <div class="line-deco"></div>
+    </div>
+</header>
+
+ <!-- 2. CTA (1回目) -->
+<section class="py-16 sm:py-20 px-4 sm:px-6 bg-white text-center">
+    <div class="max-w-4xl mx-auto border border-gold/20 p-8 sm:p-12 relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-6">
+            <span class="text-gold text-xl sm:text-2xl">◆</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6 tracking-widest text-dark-gold uppercase">Special Invitation</h2>
+        <p class="mb-8 sm:mb-10 text-gray-600 leading-loose text-sm sm:text-base">
+            「お酒が欲しくなる」と美食家が唸るアンチョビバターサブレ。<br>
+            公式Instagramをフォローして最新情報や限定特典を受け取る。
+        </p>
+        <a href="https://www.instagram.com/banquet_sapporo/" target="_blank" rel="noopener noreferrer" class="cta-button inline-block w-full sm:w-auto text-white px-8 sm:px-16 py-5 sm:py-6 rounded-sm text-base sm:text-lg font-bold">
+            Instagramをフォローする
+        </a>
+    </div>
+</section>
+
+    <!-- 3. シズル・ストーリー -->
+    <section class="py-20 sm:py-28 md:py-32 bg-cream overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 mb-10 md:mb-0 relative">
+                <div class="hidden sm:block absolute -top-10 -left-10 w-40 h-40 border border-gold/20 rounded-full"></div>
+                <div class="aspect-[4/5] bg-gray-200 shadow-2xl overflow-hidden">
+                    <img src="images/main.png" alt="調理シーン" class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" loading="lazy">
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 md:pl-20">
+                <span class="text-gold text-sm tracking-widest mb-4 block">The Essence of Banquet</span>
+                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 leading-relaxed">
+                    炭火の「焼」、<br>
+                    立ち昇る「香り」。<br>
+                    五感の全てを支配する。
+                </h3>
+                <p class="text-gray-600 leading-loose mb-8 text-sm sm:text-base">
+                    パリの三つ星レストラン「ミッシェル・ゲラール」で腕を磨いた若手が、北海道の旬をフレンチの技法で昇華。<br>
+                    一皿一皿に宿る「熱気」が、あなたを能動的な美食の世界へといざないます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介 -->
+    <section class="py-20 sm:py-28 md:py-32 bg-white px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-14 sm:mb-20">
+                <h3 class="section-title text-2xl sm:text-3xl font-bold tracking-widest">料理人・若杉 幸平</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10 sm:gap-16 items-start">
+                <div>
+                    <img src="images/chef.png" alt="若杉シェフ" class="w-full grayscale hover:grayscale-0 transition duration-700" loading="lazy">
+                </div>
+                <div class="space-y-6">
+                    <p class="text-sm leading-loose text-gray-600">
+                        1998年より渡仏。パリ、ブルゴーニュ、バスク...<br>
+                        美食の聖地で、数々の星付き名店を渡り歩く。
+                    </p>
+                    <ul class="text-xs space-y-3 text-gray-500">
+                        <li class="flex justify-between gap-4 border-b pb-2"><span>ミッシェル・ゲラール（★★★）</span><span class="text-right">副担当シェフ</span></li>
+                        <li class="flex justify-between gap-4 border-b pb-2"><span>ヴィヴァロワ（★★）</span><span class="text-right">パリ</span></li>
+                        <li class="flex justify-between gap-4 border-b pb-2"><span>レ・ピレネー（★★）</span><span class="text-right">バスク</span></li>
+                        <li class="flex justify-between gap-4 border-b pb-2 text-gold font-bold"><span>ミシュランガイド北海道</span><span class="text-right">一つ星獲得</span></li>
+                    </ul>
+                    <p class="text-sm italic leading-loose pt-4 border-t border-gold/20">
+                        「丁寧であること。本格的であること。そして、気さくであること。野球好きの店主として、カジュアルに美食を語り合える場でありたい。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 価値提案 -->
+    <section class="py-20 sm:py-28 md:py-32 bg-[#2c241a] text-white px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center">
+            <div class="hidden md:block md:w-1/3 mb-12 md:mb-0 vertical-text text-xl tracking-[0.5em] leading-relaxed text-gold/60">
+                本物の美食を知る人へ。
+            </div>
+            <div class="md:w-2/3 md:border-l border-gold/30 md:pl-12">
+                <p class="md:hidden text-gold/70 text-sm tracking-[0.3em] mb-4">本物の美食を知る人へ。</p>
+                <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 leading-relaxed">
+                    その一口に、<br>
+                    「驚き」は宿っていますか。
+                </h3>
+                <p class="text-gray-400 text-sm leading-loose mb-10 sm:mb-12">
+                    有名店の看板だけで選ぶのではなく、心から「美味しい」と震える体験を。<br>
+                    大切な方への贈り物、ありふれたものではなく、ストーリーのある逸品を。
+                </p>
+                <div class="bg-white/5 p-6 sm:p-8 border border-white/10">
+                    <h4 class="text-gold font-bold mb-4">バンケットの約束</h4>
+                    <p class="text-sm leading-loose">
+                        私たちは、北海道の厳選食材をフレンチの伝統技法で再解釈します。<br>
+                        1日2組限定。シェフの目が行き届く範囲でしか作れない、<br>
+                        最高峰の美食をお約束します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-20 sm:py-28 md:py-32 bg-cream px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
+                <div class="relative p-8 sm:p-10 bg-white shadow-sm border-l-2 border-gold/30">
+                    <p class="text-sm leading-relaxed italic text-gray-600">
+                        「メインの鴨肉がとてつもなく美味しくて感動しました。2組限定なのでとても居心地がいい空間です。妻への気遣いも快く対応していただき、素晴らしい時間を過ごせました。」
+                    </p>
+                    <div class="mt-6 text-xs text-right text-gold">— 札幌市 30代 男性</div>
+                </div>
+                <div class="relative p-8 sm:p-10 bg-white shadow-sm border-l-2 border-gold/30">
+                    <p class="text-sm leading-relaxed italic text-gray-600">
+                        「炭火で焼いたバゲットにつける、トリュフバターが絶品。まさに美食の世界に引き摺り込まれました。お肉を調理前に見せてくれる演出も素敵です。」
+                    </p>
+                    <div class="mt-6 text-xs text-right text-gold">— 美食家 A様</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 6. Coming Soon（新サービス構想） -->
+<section class="py-20 sm:py-28 md:py-32 bg-white px-4 sm:px-6 border-t border-b border-gold/10">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16">
+            <span class="text-gold text-xs sm:text-sm tracking-[0.3em] font-bold uppercase block mb-2">New Experience</span>
+            <h3 class="section-title text-2xl sm:text-3xl md:text-4xl font-bold tracking-widest uppercase">Coming Soon</h3>
+            <p class="mt-6 text-gray-500 text-sm leading-relaxed">
+                バンケットでは、ご来店いただく全てのゲストへさらなる感動と余韻をお届けするため、<br class="hidden md:inline">
+                知識やお土産となる新たなおもてなし・限定サービスを準備中です。
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            <!-- サービス1 -->
+            <div class="bg-gradient-to-br from-stone-50 to-neutral-100/60 border border-gold/20 p-6 sm:p-8 rounded-sm relative flex flex-col justify-between shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="absolute -top-3 right-6 bg-gold text-white text-[10px] tracking-widest px-3 py-1 font-bold rounded-full shadow-sm">
+                    PREPARATION
+                </div>
+                <div>
+                    <span class="text-gold text-2xl font-bold block mb-4">01</span>
+                    <h4 class="text-base sm:text-lg font-bold mb-3 leading-snug text-neutral-800">当日の料理とワインを解説する「ストーリーカード」</h4>
+                    <p class="text-xs leading-relaxed text-gray-600 mb-6">
+                        本日お召し上がりいただいたお料理の背景、シェフのこだわり、ペアリングの物語を綴った特製コースカードを各テーブルへお渡しします。ご自宅に帰られた後も余韻をお楽しみいただけます。
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gold/15 text-[11px] text-gold font-bold">
+                    提供予定：ご来店ゲスト限定
+                </div>
+            </div>
+
+            <!-- サービス2 -->
+            <div class="bg-gradient-to-br from-stone-50 to-neutral-100/60 border border-gold/20 p-6 sm:p-8 rounded-sm relative flex flex-col justify-between shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="absolute -top-3 right-6 bg-gold text-white text-[10px] tracking-widest px-3 py-1 font-bold rounded-full shadow-sm">
+                    PREPARATION
+                </div>
+                <div>
+                    <span class="text-gold text-2xl font-bold block mb-4">02</span>
+                    <h4 class="text-base sm:text-lg font-bold mb-3 leading-snug text-neutral-800">季節限定アンチョビバターサブレ ギフトボックス全国配送</h4>
+                    <p class="text-xs leading-relaxed text-gray-600 mb-6">
+                        「大切な方へ贈りたい」という多くのお声にお応えし、シェフ手作りのプレミアムサブレをご指定の場所へお送りする完全受注生産のギフトBOXサービスを開始予定です。
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-gold/15 text-[11px] text-gold font-bold">
+                    提供予定：公式LINEメンバー先行案内
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- アクセス・マップセクション -->
+    <section class="py-20 sm:py-28 md:py-32 bg-white px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h3 class="section-title text-2xl sm:text-3xl font-bold tracking-widest">Access</h3>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-10 sm:gap-12 items-start lg:items-center">
+                <!-- 店舗情報 -->
+                <div class="w-full lg:w-1/3 space-y-6 sm:space-y-8">
+                    <div>
+                        <h4 class="text-gold text-sm tracking-widest mb-2 uppercase">Location</h4>
+                        <p class="text-lg font-bold mb-1">バンケット (Banquet)</p>
+                        <p class="text-sm leading-loose text-gray-600">
+                            〒064-0804 北海道札幌市中央区南４条西１８丁目２−２３<br>
+                            ピュアコート円山 1F
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-gold text-sm tracking-widest mb-2 uppercase">Contact</h4>
+                        <p class="text-lg font-bold mb-1"><a href="tel:0115621221" class="hover:text-gold transition-colors">011-562-1221</a></p>
+                        <p class="text-sm text-gray-600 italic">※お電話でのご予約・お問い合わせを承っております。</p>
+                    </div>
+                    <div>
+                        <h4 class="text-gold text-sm tracking-widest mb-2 uppercase">Hours</h4>
+                        <p class="text-sm text-gray-600 mb-1">1日2組限定・完全予約制</p>
+                        <p class="text-sm text-gray-600 font-bold">定休日：月曜日・火曜日</p>
+                    </div>
+                </div>
+                <!-- Google Map -->
+                <div class="w-full lg:w-2/3 shadow-2xl border border-gold/10">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d866.7704089956721!2d141.32721967769243!3d43.05286521858525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29ec934d5325%3A0xb85444c67028780d!2z44OQ44Oz44Kx44OD44OI!5e0!3m2!1sja!2sjp!4v1771477276295!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="バンケット 地図"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1510] text-gray-400 py-16 sm:py-20 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 md:gap-12 text-center md:text-left">
+                <div class="hidden md:block vertical-text text-white text-3xl font-bold tracking-[0.5em]">
+                    バンケット
+                </div>
+                <div class="space-y-4 text-sm leading-loose">
+                    <p class="text-white font-bold tracking-widest text-lg md:text-base">バンケット</p>
+                    <p class="text-white font-bold tracking-widest">RESTAURANT BANQUET</p>
+                    <p>Sapporo, Hokkaido</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
+                        <a href="http://www.banquet-s.com/" target="_blank" rel="noopener noreferrer" class="border border-white/20 px-4 py-2 hover:bg-white/5 transition">Official HP</a>
+                        <a href="https://www.instagram.com/banquet_sapporo/" target="_blank" rel="noopener noreferrer" class="border border-white/20 px-4 py-2 hover:bg-white/5 transition">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-14 sm:mt-20 text-[10px] tracking-widest text-center border-t border-white/10 pt-8">
+                © BANQUET SAPPORO. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
