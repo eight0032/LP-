@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロ ラ・プロヴァンス | プレミアホテル中島公園旭川</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('images/main.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .magazine-border {
+            border: 1px solid #d4af37;
+            padding: 2px;
+            outline: 1px solid #d4af37;
+            outline-offset: 4px;
+        }
+        @media (max-width: 640px) {
+            .magazine-border {
+                outline-offset: 3px;
+            }
+        }
+        .cta-button {
+            background: #1a1a1a;
+            color: #fff;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover, .cta-button:active {
+            background: #d4af37;
+            transform: translateY(-2px);
+        }
+        .overlap-text {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+        }
+        .bg-paper {
+            background-color: #f4f1ea;
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+
+        /* Zoom Effect for Images */
+        .img-reveal {
+            overflow: hidden;
+        }
+        .img-reveal img {
+            transform: scale(1.08);
+            transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active img {
+            transform: scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .reveal.active, .img-reveal img {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #d4af37;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-paper text-stone-900 leading-relaxed overflow-x-hidden">
+
+    <!-- ナビゲーション -->
+    <nav class="py-4 sm:py-6 px-4 sm:px-8 flex justify-between items-center border-b border-stone-200 bg-white sticky top-0 z-50">
+        <div class="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] font-bold uppercase hidden md:block italic">Premier Hotel Lifestyle</div>
+        <div class="serif text-lg sm:text-xl font-black tracking-tighter">LA PROVENCE</div>
+        <a href="#reserve" class="text-[11px] sm:text-xs font-bold border-b border-stone-900 pb-1 hover:text-yellow-600 transition-colors whitespace-nowrap">RESERVATION</a>
+    </nav>
+
+    <!-- ファーストビュー：雑誌の表紙風 -->
+    <header class="relative min-h-[85vh] sm:h-[95vh] overflow-hidden flex items-center">
+        <div class="absolute inset-0 hero-bg"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between h-full py-24 sm:py-20">
+            <div class="md:w-2/3 text-white reveal active">
+                <p class="playfair italic text-lg sm:text-2xl md:text-3xl mb-3 sm:mb-4 overlap-text">The Art of Gastronomy</p>
+                <h1 class="serif text-4xl sm:text-5xl md:text-8xl font-black leading-[1.15] mb-6 sm:mb-8 overlap-text">
+                    素材が躍る、<br>至福のプリフィクス。
+                </h1>
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <span class="h-[1px] w-12 sm:w-20 bg-white"></span>
+                    <p class="text-xs sm:text-sm tracking-widest uppercase">Bistro La Provence / Sapporo</p>
+                </div>
+            </div>
+            <div class="hidden lg:block vertical-text text-white/80 serif text-lg tracking-[0.5em] h-64 border-r border-white/30 pr-4 mr-8 reveal active reveal-delay-2">
+                中島公園の四季を、一皿に込めて。
+            </div>
+        </div>
+        <div class="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 text-white playfair text-4xl sm:text-6xl opacity-20 italic reveal active reveal-delay-3">No.05</div>
+    </header>
+
+    <!-- 導入セクション：エディトリアル・イントロ -->
+    <section class="py-16 sm:py-32 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <span class="serif italic text-yellow-600 text-base sm:text-lg mb-4 sm:mb-6 block">— Gourmet Report —</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-bold mb-8 sm:mb-12 leading-snug">
+                    とろける「牛肉の白ワイン煮込み」が、<br class="hidden sm:inline">
+                    日常を特別な物語に変える。
+                </h2>
+                <div class="grid sm:grid-cols-2 gap-8 sm:gap-12 text-left mt-10 sm:mt-20">
+                    <p class="text-stone-600 text-sm sm:text-base leading-loose reveal reveal-delay-1">
+                        プレミアホテル中島公園旭川の5階。エレベーターの扉が開くと、そこには中島公園の緑（あるいは白銀の景色）と、食欲をそそる芳醇な香りが広がっています。私たちが目指すのは、ホテルの上質さを持ちながら、ビストロのように親しみやすい場所。
+                    </p>
+                    <p class="text-stone-600 text-sm sm:text-base leading-loose reveal reveal-delay-2">
+                        看板メニューの「牛肉の白ワイン煮込み」は、料理人がじっくりと時間をかけ、繊維一本一本に旨味を染み込ませた自信作。素材の良さと手間の大事さを、一皿一皿に込めてお届けします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特集記事風レイアウト（ビジュアル重視） -->
+    <section class="py-12 sm:py-20 overflow-hidden bg-paper">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="relative flex flex-col lg:flex-row items-center">
+                <!-- 大きなメイン写真 -->
+                <div class="lg:w-7/12 relative reveal img-reveal w-full">
+                    <div class="magazine-border">
+                        <img src="images/beef.jpg" alt="看板メニュー 牛肉の白ワイン煮込み" class="w-full grayscale-[0.2] hover:grayscale-0">
+                    </div>
+                    <div class="relative lg:absolute lg:-bottom-10 lg:-right-10 mt-6 lg:mt-0 bg-white p-5 sm:p-6 shadow-xl max-w-full lg:max-w-xs reveal reveal-delay-2">
+                        <p class="serif text-sm italic mb-2 text-yellow-600">Specialty</p>
+                        <p class="text-xs text-stone-500 leading-relaxed">
+                            低温で12時間。シェフのこだわりが詰まった煮込み料理は、ナイフを入れた瞬間の柔らかさが魅力を語ります。
+                        </p>
+                    </div>
+                </div>
+                <!-- テキストオーバーレイ -->
+                <div class="lg:w-5/12 lg:-ml-20 mt-16 lg:mt-0 z-10 reveal reveal-delay-1 w-full">
+                    <div class="bg-stone-900 text-white p-8 sm:p-10 md:p-16 shadow-2xl">
+                        <h3 class="serif text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 italic">Selected Buffet Styles</h3>
+                        <p class="text-stone-400 mb-6 sm:mb-8 leading-loose text-sm">
+                            「好きなものを、好きなだけ」という贅沢を。当店のビュッフェは、混雑を避けるためサラダをあらかじめカップに盛り付けるなど、スマートなスタイルを提案しています。
+                        </p>
+                        <div class="border-t border-stone-700 pt-6 sm:pt-8 flex gap-8 sm:gap-10">
+                            <div>
+                                <span class="block playfair text-3xl sm:text-4xl text-yellow-500 italic">50+</span>
+                                <span class="text-[10px] tracking-widest uppercase">Variety</span>
+                            </div>
+                            <div>
+                                <span class="block playfair text-3xl sm:text-4xl text-yellow-500 italic">5F</span>
+                                <span class="text-[10px] tracking-widest uppercase">View</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3つのコラム（雑誌のコーナー風） -->
+    <section class="py-16 sm:py-32 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12 md:gap-16">
+                <div class="space-y-5 sm:space-y-6 reveal">
+                    <div class="aspect-[3/4] overflow-hidden img-reveal">
+                        <img src="images/wine.png" alt="ワインの一杯" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-bold tracking-[0.3em] text-yellow-600 uppercase">Column 01</span>
+                    <h4 class="serif text-lg sm:text-xl font-bold">泡の贅沢、フリーフロー。</h4>
+                    <p class="text-sm text-stone-500 leading-loose">
+                        ランチタイムにはスパークリングワインもビュッフェに。昼下がりのひとときをより優雅に演出します。
+                    </p>
+                </div>
+                <div class="space-y-5 sm:space-y-6 reveal reveal-delay-1">
+                    <div class="aspect-[3/4] overflow-hidden img-reveal">
+                        <img src="images/cookie.jpg" alt="焼きたてパン" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-bold tracking-[0.3em] text-yellow-600 uppercase">Column 02</span>
+                    <h4 class="serif text-lg sm:text-xl font-bold">焼き立ての香り。</h4>
+                    <p class="text-sm text-stone-500 leading-loose">
+                        レストランで焼き上げる自家製クッキー。香ばしい香りが漂う店内は、まるでお菓子の工房のよう。
+                    </p>
+                </div>
+                <div class="space-y-5 sm:space-y-6 reveal reveal-delay-2 sm:col-span-2 md:col-span-1">
+                    <div class="aspect-[3/4] overflow-hidden img-reveal">
+                        <img src="images/panorama.jpg" alt="窓からの景色" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-bold tracking-[0.3em] text-yellow-600 uppercase">Column 03</span>
+                    <h4 class="serif text-lg sm:text-xl font-bold">中島公園の特等席。</h4>
+                    <p class="text-sm text-stone-500 leading-loose">
+                        窓の外に広がるパノラマビュー。四季折々の表情を見せる公園は、最高のご馳走のひとつです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ：読者の声セクション -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="serif text-center text-2xl sm:text-3xl mb-12 sm:mb-16 italic reveal">Voices from our Guests</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-10 sm:gap-12 max-w-5xl mx-auto">
+                <div class="md:w-1/2 border-l border-stone-700 pl-6 sm:pl-8 relative reveal reveal-delay-1">
+                    <span class="text-5xl sm:text-6xl playfair text-yellow-600 absolute -left-3 sm:-left-4 -top-5 sm:-top-6 opacity-40">"</span>
+                    <p class="text-base sm:text-lg leading-loose serif mb-6">
+                        素材のよさと手間の大事さを感じる秀逸な料理でした。ビュッフェのスープカレーも絶品で、ついつい食べ過ぎてしまいました。
+                    </p>
+                    <p class="text-xs tracking-widest uppercase text-stone-500">— Male Guest / Friday</p>
+                </div>
+                <div class="md:w-1/2 border-l border-stone-700 pl-6 sm:pl-8 relative reveal reveal-delay-2">
+                    <span class="text-5xl sm:text-6xl playfair text-yellow-600 absolute -left-3 sm:-left-4 -top-5 sm:-top-6 opacity-40">"</span>
+                    <p class="text-base sm:text-lg leading-loose serif mb-6">
+                        サラダがカップに入っているのが画期的。メインの甘鯛の鱗焼、サクサクで身はふっくら、最高に美味しかったです。
+                    </p>
+                    <p class="text-xs tracking-widest uppercase text-stone-500">— Female Guest / with Friends</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- COMING SOON：新しいサービス構想 -->
+<section class="py-16 sm:py-32 bg-paper border-t border-stone-200 overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center mb-12 sm:mb-20 reveal">
+            <span class="playfair italic text-yellow-600 text-lg sm:text-xl block mb-2">Next Stories &amp; Future Projects</span>
+            <h2 class="serif text-3xl sm:text-4xl md:text-6xl font-black tracking-tight mb-6">COMING SOON</h2>
+            <div class="w-12 h-[2px] bg-stone-900 mx-auto mb-6"></div>
+            <p class="text-stone-600 text-sm md:text-base leading-relaxed">
+                「あったらいいな」をカタチに。ラ・プロヴァンスが準備中の、食と空間を楽しむ新しいプロジェクトです。
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto">
+            <!-- Project 01: シェフの解説付きランチイベント -->
+            <div class="bg-white p-6 sm:p-8 magazine-border flex flex-col justify-between reveal">
+                <div>
+                    <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-6">
+                        <span class="playfair italic text-stone-400 text-2xl">01</span>
+                        <span class="text-[10px] tracking-[0.2em] uppercase bg-stone-900 text-white px-3 py-1 font-bold">Event</span>
+                    </div>
+                    <h3 class="serif text-lg sm:text-xl font-bold mb-4 leading-snug">シェフが紡ぐ、一皿の物語。<br><span class="text-sm font-normal text-stone-500">解説付きトワイライト・ランチコース</span></h3>
+                    <p class="text-stone-600 text-xs leading-loose mb-6">
+                        シェフ自らが各テーブルを巡り、素材の生産背景や調理法、ワインペアリングの極意を直接解説。五感と知性で味わう月1回限定のプレミアムサロンイベント。
+                    </p>
+                </div>
+                <span class="text-[10px] tracking-widest text-stone-400 uppercase italic border-t border-stone-100 pt-4 block">Scheduled for Autumn</span>
+            </div>
+
+            <!-- Project 02: 外向き店舗スタイルのテイクアウト -->
+            <div class="bg-white p-6 sm:p-8 magazine-border flex flex-col justify-between reveal reveal-delay-1">
+                <div>
+                    <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-6">
+                        <span class="playfair italic text-stone-400 text-2xl">02</span>
+                        <span class="text-[10px] tracking-[0.2em] uppercase bg-stone-900 text-white px-3 py-1 font-bold">Boulangerie</span>
+                    </div>
+                    <h3 class="serif text-lg sm:text-xl font-bold mb-4 leading-snug">街角の小さなブーランジェリー。<br><span class="text-sm font-normal text-stone-500">外貼りスタンド型 焼きたてパン&スイーツ</span></h3>
+                    <p class="text-stone-600 text-xs leading-loose mb-6">
+                        ホテルの外壁沿いにオープンする特設ウィンドウ。焼き立てのクロワッサンや客室パティシエ特製タルトを、お散歩ついでに気軽にテイクアウトしていただけます。
+                    </p>
+                </div>
+                <span class="text-[10px] tracking-widest text-stone-400 uppercase italic border-t border-stone-100 pt-4 block">Planning Phase</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- アクセス：インフォメーション -->
+    <section class="py-16 sm:py-32 bg-white" id="reserve">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row gap-10 sm:gap-16 items-start">
+                <div class="lg:w-1/2 w-full reveal">
+                    <div class="magazine-border">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.7099436453245!2d141.3496132750715!3d43.04753399139422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2a2742363087%3A0x57efe0e3b8303a7a!2z44OT44K544OI44OtIOODqeODu-ODl-ODreODtOOCoeODs-OCuQ!5e0!3m2!1sja!2sjp!4v1771476212779!5m2!1sja!2sjp" width="100%" height="320" class="sm:h-[450px]" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 space-y-10 sm:space-y-12 reveal reveal-delay-1 w-full">
+                    <div>
+                        <h2 class="serif text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">SHOP INFO</h2>
+                        <div class="space-y-5 sm:space-y-6 text-stone-600">
+                            <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                                <span class="font-bold text-stone-900 sm:w-24 shrink-0">所在地</span>
+                                <p class="text-sm">〒064-0810 札幌市中央区南10条西6丁目1-21<br>プレミアホテル中島公園札幌 5F</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                                <span class="font-bold text-stone-900 sm:w-24 shrink-0">電話番号</span>
+                                <p class="text-xl font-black text-stone-900">011-804-8392</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                                <span class="font-bold text-stone-900 sm:w-24 shrink-0">営業時間</span>
+                                <p class="text-sm">ランチタイム：12:00 〜 14:00<br>定休日：無休</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 sm:pt-8">
+                        <a href="https://premier.kenhotels.com/nakajimapark/restaurant/laprovence/" target="_blank" class="cta-button block w-full text-center py-5 sm:py-6 text-lg sm:text-xl font-bold shadow-lg">
+                            RESERVATION <i class="fa-solid fa-arrow-right ml-3 sm:ml-4"></i>
+                        </a>
+                        <p class="text-[10px] text-center mt-4 text-stone-400 tracking-widest uppercase italic">Click to visit our reservation page</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- フッター -->
+<footer class="py-14 sm:py-20 bg-stone-100 border-t border-stone-200 reveal">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+        <div class="serif text-2xl sm:text-3xl font-black mb-8 sm:mb-12 tracking-tighter">LA PROVENCE</div>
+        <div class="flex justify-center gap-6 sm:gap-10 mb-8 sm:mb-12 flex-wrap text-sm">
+            <a href="https://www.instagram.com/premier_hotel_nakajima_park/" target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-stone-900 transition-colors">Instagram</a>
+            <a href="https://premier.kenhotels.com/nakajimapark/restaurant/laprovence/" target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-stone-900 transition-colors">Official Site</a>
+        </div>
+        <p class="text-[10px] text-stone-400 tracking-[0.2em]">© BISTRO LA PROVENCE. ALL RIGHTS RESERVED.</p>
+    </div>
+</footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.12
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, options);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
