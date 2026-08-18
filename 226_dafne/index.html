@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>森彦のフレンチ DAFNE（ダフネ）| 縄文カレーと迎昼のフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --color-primary: #1a1a1a;
+            --color-gold: #bfa37e;
+            --color-bg: #f8f6f2;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-primary);
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        /* 縦書きクラス（PC基準。モバイルでは個別に無効化） */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 装飾的なゴールドライン */
+        .gold-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+        }
+
+        /* ヒーローエリアの調整 */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+        }
+
+        .btn-elegant {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid var(--color-gold);
+        }
+        .btn-elegant:hover,
+        .btn-elegant:focus-visible {
+            background-color: var(--color-gold);
+            color: white;
+        }
+        .btn-elegant:focus-visible {
+            outline: 2px solid var(--color-gold);
+            outline-offset: 3px;
+        }
+
+        /* マップの彩度調整 */
+        .map-container iframe {
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* --- スクロールアニメーション用スタイル --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-left.active, .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .delay-200 { transition-delay: 200ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* モバイル：縦書きだと画面幅を圧迫し読みにくいため、
+           768px未満では横書きに切り替える */
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+                letter-spacing: 0.15em !important;
+                border-right: none !important;
+                padding-right: 0 !important;
+                border-left: none !important;
+            }
+            .vertical-text.hero-catch {
+                text-align: center;
+            }
+        }
+
+        /* モーション低減設定を尊重 */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .reveal-left, .reveal-right {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* タップ領域を十分に確保 */
+        a.btn-elegant { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/store.jpg" alt="DAFNE 店内空間" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-white flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 px-5 sm:px-6 w-full max-w-6xl">
+            <div class="vertical-text hero-catch serif text-xl sm:text-2xl md:text-4xl tracking-[0.3em] md:tracking-[0.5em] leading-relaxed md:pt-12 md:border-r border-white/30 md:pr-8 reveal active">
+                フレンチの入口、<br class="hidden md:block"><span class="md:hidden"> </span>ドラマの幕開け。
+            </div>
+            <div class="mt-2 md:mt-auto pb-6 md:pb-12 reveal active delay-200 text-center md:text-left w-full">
+                <p class="serif text-sm sm:text-base md:text-lg tracking-[0.15em] md:tracking-[0.2em] opacity-80 mb-3 md:mb-4">MORIHICO. が贈る至高のフレンチ</p>
+                <h1 class="serif text-3xl sm:text-4xl md:text-6xl font-light mb-6 md:mb-8 leading-tight">森彦のフレンチ <br>DAFNE</h1>
+                <div class="max-w-sm mx-auto md:mx-0 bg-white/10 backdrop-blur-sm p-5 md:p-6 border-l-2 border-gold text-left">
+                    <p class="text-sm md:text-base leading-relaxed">
+                        【期間限定】<br>
+                        大好評の「縄文カレー」と共に、<br>
+                        MORIHICO.厳選の自家燻製鮭料理を。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4">
+            <span class="text-white text-[10px] md:text-xs tracking-widest opacity-60">SCROLL</span>
+            <div class="gold-line !h-16 md:!h-[100px]"></div>
+        </div>
+    </header>
+
+    <!-- 導入: コンセプト -->
+    <section class="py-20 md:py-32 px-5 sm:px-6 overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center reveal">
+            <div class="flex justify-center mb-8 md:mb-12">
+                <div class="gold-line !h-16 md:!h-20"></div>
+            </div>
+            <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-8 md:mb-12 tracking-[0.12em] md:tracking-[0.2em] leading-loose">
+                旬を迎えた食材が織りなす、<br>
+                一皿ごとの「物語」。
+            </h2>
+            <p class="text-stone-600 leading-loose tracking-wide md:tracking-widest text-sm md:text-base mb-8 md:mb-12">
+                高さ十メートルの天井が創り出す、非日常の静寂。<br>
+                札幌市民交流プラザ二階。劇場の鼓動を感じる場所で、<br>
+                伝統的なフレンチに北海道の息吹を吹き込む。<br>
+                私たちは「フレンチの入口」として、<br>
+                マナーの枠を超えた真の美食体験をご提案します。
+            </p>
+        </div>
+    </section>
+
+    <!-- 縄文カレー -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative reveal-left">
+                    <div class="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-20 h-20 md:w-32 md:h-32 border-t border-l border-gold"></div>
+                    <img src="images/curry.jpg" alt="縄文カレー" class="w-full h-auto shadow-2xl">
+                </div>
+                <div class="w-full md:w-1/2 reveal-right">
+                    <span class="text-gold serif tracking-widest mb-3 md:mb-4 block text-sm md:text-base">Recommended Selection</span>
+                    <h3 class="serif text-3xl md:text-4xl mb-6 md:mb-8">縄文カレー</h3>
+                    <p class="text-stone-600 leading-loose mb-8">
+                        フレンチの命である「フォン（出汁）」と、厳選されたスパイスの邂逅。<br>
+                        北海道の力強い大地が育んだ食材を、シェフ古里の感性でカレーという芸術に昇華させました。<br>
+                        観劇前の高揚感と共に、あるいは大切な方とのランチに。<br>
+                        DAFNEが誇る、最も身近なスペシャリテです。
+                    </p>
+                    <a href="https://dafne.morihico.com/contact/" class="btn-elegant w-full md:w-auto px-8 md:px-10 py-4 text-sm tracking-[0.2em] serif">
+                        ご予約はこちら <i class="fas fa-arrow-right ml-4 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- 自己紹介 -->
+    <section class="py-20 md:py-32 px-5 sm:px-6 overflow-hidden">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-20">
+            <div class="md:w-1/3 serif text-xl md:text-2xl tracking-[0.2em] md:tracking-[0.4em] md:pt-4 reveal-left vertical-text text-center md:text-left">
+                空間と、料理。<br class="hidden md:block"> 二人の表現者が創る世界。
+            </div>
+            <div class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+                <div class="space-y-4 md:space-y-6 reveal delay-200">
+                    <h4 class="serif text-lg md:text-xl border-b border-gold pb-2 inline-block">市川 草介 <span class="text-xs font-sans">S. Ichikawa</span></h4>
+                    <p class="text-xs leading-loose text-stone-500">
+                        MORIHICO.代表。デザイン事務所から始まった彼のキャリアは、「空間」という器に「コーヒー」という文化を注ぐことから始まりました。DAFNEではその空間哲学をフレンチに捧げます。
+                    </p>
+                </div>
+                <div class="space-y-4 md:space-y-6 reveal delay-400">
+                    <h4 class="serif text-lg md:text-xl border-b border-gold pb-2 inline-block">古里 雅之 <span class="text-xs font-sans">H. Furusato</span></h4>
+                    <p class="text-xs leading-loose text-stone-500">
+                        総料理長。名店ミクニで磨いた確かな技術。「迎昼」をテーマに、北海道食材のポテンシャルを最大限に引き出すドラマティックな一皿を追求し続けています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-16 md:py-24 bg-white border-y border-stone-100 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+                <div class="relative p-6 md:p-8">
+                    <div class="absolute top-0 left-2 md:left-0 text-gold opacity-20 text-5xl md:text-6xl serif">&ldquo;</div>
+                    <p class="serif text-sm leading-loose mb-6 relative z-10 pt-4">
+                        丁寧な接客と食事、量に大満足でした。気楽に食べられるフレンチだったので、フレンチ初心者の友人も誘いやすくていいなと思いました。
+                    </p>
+                    <p class="text-xs tracking-widest text-stone-400">— 30代 女性のお客様</p>
+                </div>
+                <div class="relative p-6 md:p-8 md:border-l border-stone-100">
+                    <div class="absolute top-0 left-2 md:left-0 text-gold opacity-20 text-5xl md:text-6xl serif">&ldquo;</div>
+                    <p class="serif text-sm leading-loose mb-6 relative z-10 pt-4">
+                        カフェのような店内のイメージ以上に本格的な物でした。吹き抜けの開放感が素晴らしく、特別な時間を感じられました。
+                    </p>
+                    <p class="text-xs tracking-widest text-stone-400">— 40代 男性のお客様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約特典 -->
+    <section class="py-20 md:py-32 px-5 sm:px-6 bg-[#2a2a2a] text-white overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center reveal">
+            <span class="serif text-gold tracking-[0.3em] md:tracking-[0.5em] mb-6 md:mb-8 block text-sm md:text-base">SPECIAL GIFT</span>
+            <h2 class="serif text-xl sm:text-2xl md:text-3xl mb-8 md:mb-12 leading-loose">
+                食事の余韻に、<br>最高の一杯を。
+            </h2>
+            <p class="text-sm leading-loose opacity-70 mb-8 md:mb-12">
+                WEBよりご予約をいただいたお客様へ。<br>
+                お食事の締めくくりに、MORIHICO.がこのためだけに選んだ<br>
+                自家燻製珈琲を、心を込めてお淹れいたします。
+            </p>
+            <a href="https://dafne.morihico.com/contact/" class="btn-elegant w-full md:w-auto px-10 md:px-16 py-5 md:py-6 inline-block bg-transparent text-white border-white/30 hover:border-gold focus-visible:border-gold serif tracking-widest">
+                席を予約する
+            </a>
+        </div>
+    </section>
+
+   <!-- COMING SOON: 観劇チケット優待サービス -->
+    <section class="py-20 md:py-32 px-5 sm:px-6 bg-stone-100/60 overflow-hidden relative border-t border-stone-200">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-10 md:mb-16 reveal">
+                <span class="inline-block px-4 py-1 border border-gold text-gold text-xs serif tracking-[0.2em] md:tracking-[0.3em] mb-4">COMING SOON</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl tracking-[0.12em] md:tracking-[0.2em] leading-relaxed">
+                    劇場の感動を、そのままDAFNEで。<br>
+                    観劇チケット優待サービス
+                </h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="bg-white p-6 sm:p-8 md:p-14 shadow-xl border border-stone-200/80 rounded-sm reveal">
+                <div class="space-y-5 md:space-y-6">
+                    <div class="inline-flex items-center gap-2 text-xs tracking-widest text-gold border-b border-gold pb-1 font-serif">
+                        <i class="fas fa-ticket-alt"></i> TICKET &amp; SPECIAL PASS
+                    </div>
+                    <h3 class="serif text-xl md:text-2xl leading-snug">
+                        当日の観賞チケット（半券）ご提示で<br>
+                        特別なおもてなしを。
+                    </h3>
+                    <p class="text-stone-600 text-sm leading-loose">
+                        札幌市民交流プラザ（hitaru）での公演・コンサート観劇前後の優雅なひとときに。<br>
+                        当日のチケットまたは半券（電子チケット可）をご提示いただいたお客様へ、DAFNEからささやかな贈り物をご用意いたします。
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3 text-xs md:text-sm text-stone-700">
+                            <span class="bg-stone-900 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] shrink-0 mt-0.5">1</span>
+                            <span><strong>お食事利用で 10% OFF</strong>（または本日のアミューズサービス）</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-xs md:text-sm text-stone-700">
+                            <span class="bg-stone-900 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] shrink-0 mt-0.5">2</span>
+                            <span><strong>MORIHICO. スペシャルティコーヒー または パティシエ特製ミニデザート</strong>を1杯プレゼント</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-stone-400 pt-2 leading-relaxed">
+                        ※準備が整い次第、順次サービスを開始いたします。<br>
+                        ※他のクーポン・割引サービスとの併用はできません。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- インフォメーション -->
+    <section class="py-20 md:py-32 px-5 sm:px-6 overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+                <div class="reveal-left">
+                    <h3 class="serif text-2xl md:text-3xl mb-8 md:mb-12">Information</h3>
+                    <dl class="space-y-5 md:space-y-6 text-sm">
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2 gap-1 sm:gap-0">
+                            <dt class="sm:w-24 serif shrink-0">店名</dt>
+                            <dd>森彦のフレンチ DAFNE（ダフネ）</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2 gap-1 sm:gap-0">
+                            <dt class="sm:w-24 serif shrink-0">住所</dt>
+                            <dd>北海道札幌市中央区北1条西1丁目 市民交流プラザ 2F</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2 gap-1 sm:gap-0">
+                            <dt class="sm:w-24 serif shrink-0">電話</dt>
+                            <dd><a href="tel:0112110813" class="hover:text-gold">011-211-0813</a></dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-2 gap-1 sm:gap-0">
+                            <dt class="sm:w-24 serif shrink-0">営業時間</dt>
+                            <dd>11:00 — 22:00（L.O 21:00）</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="map-container w-full aspect-video md:aspect-square rounded-sm overflow-hidden shadow-lg border border-stone-200 reveal-right">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.9808273274084!2d141.3529772750724!3d43.062870790412795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b292e64b09845%3A0xeb794e163016edfe!2z5qOu5b2m44Gu44OV44Os44Oz44OBIERBRk5F77yI44OA44OV44ON77yJ!5e0!3m2!1sja!2sjp!4v1771474048033!5m2!1sja!2sjp"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 md:py-12 bg-white text-center border-t border-stone-100">
+        <p class="serif text-xs tracking-widest text-stone-400">&copy; MORIHICO. DAFNE</p>
+    </footer>
+
+    <script>
+        // スクロール検知用のIntersection Observer設定
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 10%が見えたら発火
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // 監視対象の要素を登録
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
