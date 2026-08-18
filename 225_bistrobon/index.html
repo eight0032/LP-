@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>bistrobon.nob | 駅前直結・本格肉ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --rich-black: #1a1a1a;
+            --shop-brown: #5d4037;
+            --pink-bg: #fff0f5;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(to bottom, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F5D76E 50%, #D4AF37 100%);
+        }
+
+        .skew-bg {
+            position: relative;
+            z-index: 1;
+        }
+        .skew-bg::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: inherit;
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+
+        .bg-mesh-pink {
+            background-color: var(--pink-bg);
+            background-image: radial-gradient(rgba(212, 175, 55, 0.3) 0.5px, transparent 0.5px), radial-gradient(rgba(212, 175, 55, 0.3) 0.5px, var(--pink-bg) 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-zoom {
+            animation: zoom 20s infinite alternate;
+        }
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .text-shop-brown {
+            color: var(--shop-brown);
+        }
+        .border-shop-brown {
+            border-color: rgba(93, 64, 55, 0.2);
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-marquee {
+            animation: marquee 25s linear infinite;
+            width: max-content;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* スマホでの縦文字崩れ・タップ領域を安全に */
+        @media (max-width: 640px) {
+            .hero-zoom { animation-duration: 24s; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom, .float-anim, .animate-marquee, .animate-fadeIn {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- FV AREA -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0">
+            <img src="images/beef.png" alt="肉料理イメージ" class="w-full h-full object-cover opacity-60 hero-zoom">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-5 sm:px-6 text-center max-w-3xl">
+            <div class="inline-block border-2 border-white px-4 py-1.5 sm:px-6 sm:py-2 mb-6 sm:mb-8">
+                <span class="text-white tracking-[0.2em] sm:tracking-[0.3em] font-bold text-[11px] sm:text-base">SAPPORO STATION DIRECT ACCESS</span>
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-5 sm:mb-6 leading-snug sm:leading-tight drop-shadow-2xl">
+                駅前直結、<br>
+                <span class="text-gradient-gold text-3xl sm:text-4xl md:text-5xl">肉の聖域へ。</span>
+            </h1>
+
+            <p class="text-white text-sm sm:text-base md:text-lg mb-8 sm:mb-12 font-medium tracking-wide sm:tracking-wider opacity-90 px-2">
+                本格肉ビストロ <span class="text-gradient-gold font-black">bistrobon.nob</span>
+            </p>
+
+            <!-- Floating Badge -->
+            <div class="flex justify-center gap-3 sm:gap-4 mb-4">
+                <div class="bg-red-600 text-white rounded-full w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 flex flex-col items-center justify-center font-bold text-[10px] sm:text-xs md:text-sm rotate-12 shadow-xl float-anim shrink-0">
+                    <span>ビール・ワイン</span>
+                    <span class="text-lg sm:text-xl md:text-2xl font-black">¥380〜</span>
+                </div>
+                <div class="bg-white text-black rounded-full w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 flex flex-col items-center justify-center font-bold text-[10px] sm:text-xs md:text-sm -rotate-12 shadow-xl float-anim shrink-0" style="animation-delay: 0.5s;">
+                    <span>駅直結</span>
+                    <span class="text-lg sm:text-xl md:text-2xl font-black">徒歩2分</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+            <p class="text-[10px] sm:text-xs tracking-widest uppercase mb-1 sm:mb-2 text-center">Scroll Down</p>
+            <i class="fas fa-chevron-down text-xl sm:text-2xl block text-center"></i>
+        </div>
+    </header>
+
+    <!-- TRUST STRIP -->
+    <div class="bg-rich-black py-3 sm:py-4 border-y border-white/10 overflow-hidden whitespace-nowrap">
+        <div class="flex animate-marquee items-center gap-8 sm:gap-12 text-white/40 font-bold tracking-tighter uppercase text-base sm:text-xl">
+            <span>Fresh Meat everyday</span> <span>•</span> <span>Hokkaido Beef 100%</span> <span>•</span> <span>Craft Beer &amp; Wine</span> <span>•</span> <span>Sattate Sapporo 1F</span> <span>•</span> <span>Fresh Meat everyday</span> <span>•</span> <span>Hokkaido Beef 100%</span> <span>•</span> <span>Craft Beer &amp; Wine</span> <span>•</span> <span>Sattate Sapporo 1F</span>
+        </div>
+    </div>
+
+    <!-- MAIN OFFER: ROAST BEEF -->
+    <section class="py-14 sm:py-20 md:py-24 bg-white relative">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="text-gold font-bold tracking-widest block mb-2 text-xs sm:text-sm">MUST EAT</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black italic serif">ICHIOSHI MENU</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
+                <div class="w-full lg:w-3/5 relative group">
+                    <img src="images/roast.png" alt="ローストビーフ定食" class="w-full rounded-2xl sm:rounded-3xl shadow-2xl transition group-hover:scale-[1.02]">
+                    <div class="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-6 bg-gold-gradient px-5 py-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-xl">
+                        <p class="text-black font-black text-lg sm:text-3xl leading-tight">絶品！<br>ローストビーフ定食</p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/5 mt-6 lg:mt-0">
+                    <h3 class="text-2xl sm:text-3xl font-black mb-4 sm:mb-6 leading-tight">毎日届くフレッシュ肉を<br><span class="text-red-600">プロの技術で。</span></h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
+                        厳選された肉を店内で丁寧に手仕込み。口の中でとろけるような食感と、噛むほどに溢れる肉汁。ランチタイムの不動の人気No.1メニューです。
+                    </p>
+                    <ul class="space-y-3 sm:space-y-4 mb-8 sm:mb-10 text-base sm:text-lg">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-gold shrink-0"></i>
+                            <span>豊西牛100%使用</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-gold shrink-0"></i>
+                            <span>道産牛ヒレ肉のレアカットも絶品</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-gold shrink-0"></i>
+                            <span>サラダ・スープ付きの高コスパ</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM & SOLUTION -->
+    <section class="py-14 sm:py-20 md:py-24 bg-gray-50 skew-bg">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-rich-black p-6 sm:p-10 md:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-2xl text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 sm:p-12 opacity-10">
+                        <i class="fas fa-quote-right text-6xl sm:text-9xl"></i>
+                    </div>
+
+                    <h2 class="text-xl sm:text-2xl md:text-4xl font-black mb-8 sm:mb-12 text-center relative z-10">駅前周辺で、<br class="md:hidden">こんなお悩みありませんか？</h2>
+
+                    <div class="space-y-4 sm:space-y-6 mb-8 sm:mb-12 relative z-10">
+                        <div class="flex items-center gap-3 sm:gap-4 bg-white/5 p-4 sm:p-5 rounded-2xl border border-white/10">
+                            <i class="fas fa-question-circle text-red-500 text-xl sm:text-2xl shrink-0"></i>
+                            <p class="font-medium text-sm sm:text-lg">お洒落に昼飲みしたいけど、場所が限られている…</p>
+                        </div>
+                        <div class="flex items-center gap-3 sm:gap-4 bg-white/5 p-4 sm:p-5 rounded-2xl border border-white/10">
+                            <i class="fas fa-question-circle text-red-500 text-xl sm:text-2xl shrink-0"></i>
+                            <p class="font-medium text-sm sm:text-lg">本格的な肉料理が食べたいけど、敷居が高いのは嫌</p>
+                        </div>
+                        <div class="flex items-center gap-3 sm:gap-4 bg-white/5 p-4 sm:p-5 rounded-2xl border border-white/10">
+                            <i class="fas fa-question-circle text-red-500 text-xl sm:text-2xl shrink-0"></i>
+                            <p class="font-medium text-sm sm:text-lg">電車の待ち時間にサクッと、でも質に妥協したくない</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center relative z-10">
+                        <i class="fas fa-arrow-down text-gold text-2xl sm:text-3xl mb-4 sm:mb-6 block"></i>
+                        <p class="text-xl sm:text-2xl md:text-4xl font-black text-gradient-gold mb-2">bistrobon.nobにお任せください！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-14 sm:py-20 md:py-24 relative overflow-hidden">
+        <div class="bg-mesh-pink"></div>
+
+        <div class="container mx-auto px-5 sm:px-6 text-center mb-10 sm:mb-16 relative z-10">
+            <h2 class="text-2xl sm:text-3xl font-black mb-4">お客様の喜びの声</h2>
+            <div class="flex justify-center text-gold text-xl sm:text-2xl mb-4">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-gray-500 text-sm sm:text-base">Googleクチコミでも高評価をいただいています</p>
+        </div>
+
+        <div class="container mx-auto px-5 sm:px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
+            <!-- Review 1 -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 relative shadow-xl hover:shadow-2xl transition duration-300">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 shrink-0"><i class="fas fa-user text-xl"></i></div>
+                    <span class="font-bold">ランチ利用 A様</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-sm">「骨付きチキンレッグのカレーを食べました。このボリュームで820円はコスパ◎！夜は気軽に入れるダイニングバーの雰囲気で、お酒を楽しみたい時にも最高！」</p>
+            </div>
+            <!-- Review 2 -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 relative shadow-xl hover:shadow-2xl transition duration-300">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 shrink-0"><i class="fas fa-user text-xl"></i></div>
+                    <span class="font-bold">晩飲み利用 B様</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-sm">「昼飲みセット1200円を利用。鶏白レバーのパテ、サバのスモークどちらもオシャレで美味しい。なみなみ注いでくれるもっきりワインが嬉しい！」</p>
+            </div>
+            <!-- Review 3 -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 relative shadow-xl hover:shadow-2xl transition duration-300 sm:col-span-2 lg:col-span-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 shrink-0"><i class="fas fa-user text-xl"></i></div>
+                    <span class="font-bold">ディナー利用 C様</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-sm">「牛肉の何かがとても美味しかったです！店内はお洒落な雰囲気でお肉料理がメイン。お手洗いも綺麗で女性も利用しやすいのがポイント高いです。」</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON / FUTURE PROJECTS -->
+    <section class="py-14 sm:py-20 md:py-24 bg-neutral-900 text-white relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="bg-gold-gradient text-black text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider inline-block mb-3">Future Projects</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black italic serif text-gradient-gold">COMING SOON</h2>
+                <p class="text-gray-400 mt-3 text-xs sm:text-sm md:text-base px-2">bistrobon.nob がお届けする「あればいいな」をカタチにする新サービス・新メニュー</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+                <!-- Project 1: POP Story -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-gold/50 transition duration-300 relative group">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gold-gradient text-black rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-black shrink-0">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gold font-bold uppercase tracking-widest block">In-Store Experience</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-gold transition">食材のストーリーを語る「食の物語POP」</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        豊西牛をはじめとする北海道自慢の食材たち。その生産者様のこだわりや想い、育まれた背景を店内にポップ展示。「知って食べる」ことで、お肉の美味しさが何倍にも膨らむ新しい食体験をご提供します。
+                    </p>
+                </div>
+
+                <!-- Project 2: Craft Beer Demi Source -->
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 hover:border-gold/50 transition duration-300 relative group">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gold-gradient text-black rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-black shrink-0">
+                            <i class="fas fa-beer"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gold font-bold uppercase tracking-widest block">New Menu Item</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-gold transition">クラフトビール仕込みの特製デミグラスソース</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        厳選したクラフトビールを贅沢に使い、深みのある芳醇なコクを引き出した特製デミグラスソースを現在開発中！自慢のお肉と濃厚なソースが織りなす、これまでにない至高のマリアージュをお楽しみに。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & SHOP INFO -->
+    <section id="cta" class="py-14 sm:py-20 md:py-24 bg-rich-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1550966841-391ad552b533?auto=format&fit=crop&q=80&w=1200" alt="店内イメージ" class="w-full h-full object-cover opacity-20">
+        </div>
+
+        <div class="container mx-auto px-5 sm:px-6 relative z-10 text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-black mb-6 sm:mb-8 leading-snug">札幌の夜を、<br class="md:hidden">極上の肉とワインで彩る。</h2>
+            <p class="text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base px-2">
+                予約可能。カウンター席で一人飲みから、テーブル席でのグループ利用まで。本格ビストロの世界へようこそ。
+            </p>
+
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 text-left mb-10 sm:mb-16">
+                <!-- 店舗情報カード -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl">
+                    <h4 class="text-lg sm:text-xl font-bold mb-5 sm:mb-6 flex items-center gap-2 text-shop-brown">
+                        <i class="fas fa-store"></i> 店舗詳細
+                    </h4>
+                    <dl class="space-y-3 sm:space-y-4 text-sm md:text-base text-shop-brown">
+                        <div class="flex flex-col sm:flex-row border-b border-shop-brown pb-2 gap-0.5 sm:gap-0">
+                            <dt class="sm:w-24 opacity-70 shrink-0">店名</dt>
+                            <dd class="flex-1 font-bold">bistrobon.nob</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-shop-brown pb-2 gap-0.5 sm:gap-0">
+                            <dt class="sm:w-24 opacity-70 shrink-0">住所</dt>
+                            <dd class="flex-1 font-medium">〒060-0002 札幌市中央区北2条西3丁目 sitatte sapporo 1F</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-shop-brown pb-2 gap-0.5 sm:gap-0">
+                            <dt class="sm:w-24 opacity-70 shrink-0">電話</dt>
+                            <dd class="flex-1"><a href="tel:0112114158" class="font-black text-base sm:text-lg underline decoration-dotted">011-211-4158</a></dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-0.5 sm:gap-0">
+                            <dt class="sm:w-24 opacity-70 shrink-0">定休日</dt>
+                            <dd class="flex-1 font-medium">日曜日</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="flex flex-col gap-4 justify-center">
+                    <a href="http://www.tfs-co.jp/shop/bon/" target="_blank" rel="noopener" class="bg-gold-gradient text-black font-black py-5 sm:py-6 rounded-2xl text-lg sm:text-xl text-center shadow-lg transition transform hover:-translate-y-1 active:translate-y-0">
+                        公式サイトで今すぐ予約
+                    </a>
+                    <a href="https://www.instagram.com/bistrobon.nob/" target="_blank" rel="noopener" class="bg-white/5 border border-white/20 text-white font-bold py-4 sm:py-5 rounded-2xl text-base sm:text-lg text-center flex items-center justify-center gap-2 hover:bg-white/10 transition active:bg-white/15">
+                        <i class="fab fa-instagram"></i> Instagramで最新情報をチェック
+                    </a>
+                </div>
+            </div>
+
+            <p class="text-gray-500 text-[11px] sm:text-xs leading-relaxed px-2">
+                Free Wi-Fi ｜ 英語メニュー ｜ 車椅子対応 ｜ 貸切可 ｜ テイクアウト可
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-6 sm:py-8 bg-black text-gray-600 text-center text-xs sm:text-sm border-t border-white/5 px-4">
+        &copy; bistrobon.nob - Authentic Meat Bistro in Sapporo.
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
