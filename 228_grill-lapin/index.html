@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>洋食屋 グリルラパン | 40年変わらぬ伝統のデミグラスソース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-deep-brown: #2c1a12;
+            --color-gold: #b69354;
+            --color-accent-red: #9e1c1c;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdfaf5;
+        }
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+        .shizzle-overlay {
+            background: linear-gradient(0deg, rgba(44,26,18,1) 0%, rgba(44,26,18,0) 100%);
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #c0392b 0%, #8e1e14 100%);
+            box-shadow: 0 10px 20px -5px rgba(142, 30, 20, 0.4);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 15px auto;
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- スクロールアニメーション用スタイル --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
+        .reveal-delay-3 { transition-delay: 0.6s; }
+
+        /* FVコピーのアニメーション */
+        @keyframes fadeInUpVertical {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fv-text-anim {
+            animation: fadeInUpVertical 1.5s ease-out forwards;
+        }
+
+        /* --- モバイル最適化 --- */
+        /* スマホでは縦書きの見出しを横書きに切り替え、読みやすさと画面高さを確保 */
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: mixed;
+            }
+        }
+        /* タップ領域を確保 */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* 横スクロール防止 */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        /* 動きを抑えたいユーザーへの配慮 */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .fv-text-anim {
+                transition: none !important;
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-stone-900 bg-pattern">
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-[100svh] flex items-center overflow-hidden bg-black">
+        <div class="absolute inset-0">
+            <img src="images/beef.png" alt="ビーフシチュー" class="w-full h-full object-cover opacity-70 scale-105 hover:scale-100 transition duration-[10s]">
+            <div class="absolute inset-0 shizzle-overlay"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center h-full py-24 md:py-0 gap-8 md:gap-0">
+            <div class="flex flex-col items-start text-white fv-text-anim" style="animation-delay: 0.5s;">
+                <img src="https://www.grill-lapin.com/common/img/header_logo.png" alt="Logo" class="w-24 md:w-32 mb-6 md:mb-8 brightness-0 invert" onerror="this.style.display='none'">
+                <p class="serif text-base md:text-2xl tracking-[0.15em] md:tracking-[0.2em] mb-4 text-stone-300">札幌・中央区静修学園前</p>
+                <div class="h-1 w-16 md:w-20 mb-6 md:mb-8" style="background-color: var(--color-gold);"></div>
+            </div>
+
+            <div class="vertical-text serif text-white text-3xl sm:text-4xl md:text-6xl tracking-[0.15em] md:tracking-[0.3em] leading-relaxed fv-text-anim" style="animation-delay: 1s;">
+                <span class="block">四十余年、</span>
+                <span class="block">継ぎ足し守る</span>
+                <span class="block" style="color: var(--color-gold);">至高の洋食。</span>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 text-white flex flex-col items-center">
+            <p class="serif mb-3 md:mb-4 tracking-widest text-sm md:text-base">Scroll</p>
+            <div class="w-[1px] h-12 md:h-16 bg-gradient-to-b from-white to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- 2. 即時CTA -->
+    <div class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-md py-3">
+        <div class="container mx-auto px-4 flex justify-between items-center gap-3">
+            <div class="hidden md:block">
+                <p class="text-xs font-bold text-stone-500">ご予約・お問い合わせ</p>
+                <p class="serif text-xl font-bold">011-512-2695</p>
+            </div>
+            <div class="flex gap-3 w-full md:w-auto">
+                <a href="tel:0115122695" class="flex-1 md:flex-none text-center bg-stone-800 text-white px-4 md:px-6 py-3 rounded-sm text-xs md:text-sm font-bold hover:bg-black transition">電話で予約</a>
+                <a href="#cta" class="flex-1 md:flex-none text-center cta-button text-white px-4 md:px-8 py-3 rounded-sm text-xs md:text-sm font-bold transform hover:-translate-y-1 transition">WEBで店舗詳細</a>
+            </div>
+        </div>
+    </div>
+
+ 
+    <!-- 4. 創業者ストーリー -->
+    <section class="py-16 md:py-24 bg-stone-50 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-5/12 relative reveal">
+                    <div class="absolute -top-6 -left-4 md:-top-10 md:-left-10 serif text-stone-200 text-6xl md:text-9xl z-0 select-none">History</div>
+                    <img src="images/chef.png" alt="Master" class="relative z-10 shadow-3xl grayscale hover:grayscale-0 transition duration-1000 w-full">
+                    <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 p-5 md:p-8 text-white z-20" style="background-color: var(--color-gold);">
+                        <p class="serif text-lg md:text-2xl">広田 幸喜</p>
+                        <p class="text-[10px] md:text-xs tracking-tighter uppercase">Second Generation Master</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-7/12 reveal reveal-delay-1 mt-6 md:mt-0">
+                    <span class="font-bold tracking-[0.3em] mb-4 block text-sm" style="color: var(--color-gold);">EST. 1983</span>
+                    <h2 class="serif text-2xl sm:text-3xl md:text-5xl mb-6 md:mb-8 leading-tight">受け継がれる<br>「うさぎ」の願い。</h2>
+                    <div class="space-y-5 md:space-y-6 text-stone-600 leading-relaxed text-sm md:text-base">
+                        <p>
+                            「ラパン」とはフランス語でうさぎ。モンマルトルのカフェにちなんで名付けられたその名には、先代オーナーの「大勢の人が足しげく通う店にしたい」という素朴な願いが込められています。
+                        </p>
+                        <p>
+                            二代目マスターとして厨房に立つ広田は、かつてここで料理のいろはを学びました。その後、十年の研鑽を積んで帰ってきた彼が守るのは、ただのレシピではありません。
+                        </p>
+                        <p class="font-bold text-stone-900">
+                            「あぁ、この味だ」と言っていただける、変わらない安心感。
+                        </p>
+                        <p>
+                            そのために、毎日鍋と向き合い、ソースの声を聞き、40年の歴史を更新し続けています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ベネフィット/悩み解決 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-4">本物の洋食、その「深み」を知る。</h2>
+                <p class="text-stone-400 italic text-sm md:text-base">Finding Real Excellence</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="group reveal">
+                    <div class="overflow-hidden mb-5 md:mb-6">
+                        <img src="images/demigurasu.png" alt="デミグラス" class="w-full aspect-[4/5] object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 border-b pb-2">継ぎ足しの黄金比</h3>
+                    <p class="text-sm text-stone-600">しょっぱすぎず、コク深い。料理ごとに微調整を加える伝統のデミグラスソースが、素材の旨味を何倍にも引き立てます。</p>
+                </div>
+                <div class="group reveal reveal-delay-1">
+                    <div class="overflow-hidden mb-5 md:mb-6">
+                        <img src="images/omuraisu.png" alt="オムライス" class="w-full aspect-[4/5] object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 border-b pb-2">ふわとろの誕生</h3>
+                    <p class="text-sm text-stone-600">熟練の火入れで作られるオムライスは、スプーンを入れた瞬間溢れ出す「ふわふわ」の魔法。一度食べれば虜になる食感です。</p>
+                </div>
+                <div class="group reveal reveal-delay-2 sm:col-span-2 md:col-span-1">
+                    <div class="overflow-hidden mb-5 md:mb-6">
+                        <img src="images/pasta.png" alt="店内" class="w-full aspect-[4/5] object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 border-b pb-2">家族と刻む時間</h3>
+                    <p class="text-sm text-stone-600">お一人様から家族連れまで。温かい手書きメニューと接客が、都会の喧騒を忘れさせる穏やかなひとときを演出します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="py-16 md:py-24 bg-stone-100">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="serif text-center text-2xl sm:text-3xl mb-12 md:mb-16 reveal">受け取った、喜びの声。</h2>
+            <div class="space-y-6 md:space-y-8">
+                <div class="bg-white p-6 sm:p-8 md:p-12 shadow-sm flex flex-col md:flex-row gap-4 md:gap-8 items-start reveal">
+                    <div class="text-3xl md:text-4xl serif" style="color: var(--color-gold);">01</div>
+                    <div>
+                        <div class="flex text-yellow-500 mb-3 md:mb-4">★★★★★</div>
+                        <p class="serif text-lg md:text-xl mb-3 md:mb-4">「絶対になくなってほしくない街の洋食屋さん」</p>
+                        <p class="text-stone-500 text-sm leading-relaxed">カニクリームコロッケはカニしか入ってないじゃんってくらいカニがたっぷり！ハンバーグもデミソースもとっても美味しかった。大満足です。</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 sm:p-8 md:p-12 shadow-sm flex flex-col md:flex-row gap-4 md:gap-8 items-start reveal reveal-delay-1">
+                    <div class="text-3xl md:text-4xl serif" style="color: var(--color-gold);">02</div>
+                    <div>
+                        <div class="flex text-yellow-500 mb-3 md:mb-4">★★★★★</div>
+                        <p class="serif text-lg md:text-xl mb-3 md:mb-4">「1983年から続く老舗、その理由がわかります」</p>
+                        <p class="text-stone-500 text-sm leading-relaxed">王道のオムライスを頂きました。玉子はふわふわでチキンライスの味はスプーンが止まらなくなるほど美味しい！絶対また来たいと思いました。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 6. 特典/テイクアウト -->
+<section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 text-center">
+        <div class="reveal">
+            <div class="inline-block border-2 border-stone-800 p-2 mb-6 md:mb-8">
+                <div class="border border-stone-800 px-5 sm:px-8 py-3 md:py-4">
+                    <h2 class="serif text-xl sm:text-2xl md:text-3xl">ご自宅で愉しむ、伝統の味。</h2>
+                </div>
+            </div>
+            <p class="text-stone-600 mb-10 md:mb-12 max-w-2xl mx-auto text-sm md:text-base">
+                忙しい日の夕食に、特別な日のホームパーティーに。<br class="hidden sm:block">
+                グリルラパンの人気メニューをテイクアウトでお持ち帰りいただけます。
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto reveal reveal-delay-1">
+            <div class="relative group aspect-square overflow-hidden">
+                <img src="images/hanbagu.png" alt="Hamburg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white font-bold serif text-sm md:text-base">ハンバーグ</div>
+            </div>
+            <div class="relative group aspect-square overflow-hidden">
+                <img src="images/ebifly.png" alt="Ebi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white font-bold serif text-sm md:text-base">エビフライ</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 6.5. Coming Soon セクション -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden border-t border-b border-stone-800">
+        <div class="absolute inset-0 opacity-10 pointer-events-none flex justify-center items-center">
+            <span class="serif text-[22vw] font-bold text-stone-100 select-none">NEXT</span>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 max-w-5xl">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <span class="inline-block bg-stone-800 text-amber-400 text-[10px] md:text-xs font-bold tracking-[0.3em] px-4 py-1 rounded-full mb-4 uppercase border border-amber-400/30">
+                    Coming Soon
+                </span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl mb-4 md:mb-6">グリルラパンが贈る、新しい体験。</h2>
+                <p class="text-stone-400 max-w-2xl mx-auto leading-relaxed text-xs sm:text-sm md:text-base">
+                    皆様の食卓とひとときをより豊かに。現在準備中の新しいプロジェクト・サービスをご紹介します。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- 企画1: 季節限定メニュー -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-sm border border-stone-700 hover:border-amber-500/50 transition duration-300 reveal flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-400 mb-5 md:mb-6 text-xl">
+                            🍂
+                        </div>
+                        <span class="text-xs text-amber-400 tracking-widest font-bold uppercase block mb-2">01. Seasonal Special</span>
+                        <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 text-white">北海道の旬を味わう<br>「四季の限定卓」</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-5 md:mb-6">
+                            春の極太アスパラ、秋の道産きのこなど、北海道の豊かな四季の恵みを伝統のソースと融合させた「季節限定メニュー」を期間限定で展開します。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex justify-between items-center text-xs text-stone-500">
+                        <span>順次展開予定</span>
+                        <span class="text-amber-400 font-bold">In Preparation</span>
+                    </div>
+                </div>
+
+                <!-- 企画2: お取り寄せ通販 -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-sm border border-stone-700 hover:border-amber-500/50 transition duration-300 reveal reveal-delay-1 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-400 mb-5 md:mb-6 text-xl">
+                            🎁
+                        </div>
+                        <span class="text-xs text-amber-400 tracking-widest font-bold uppercase block mb-2">02. Online Direct</span>
+                        <h3 class="serif text-lg md:text-xl mb-3 md:mb-4 text-white">40年の味をご自宅へ<br>「おうちでラパン」お取り寄せ</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-5 md:mb-6">
+                            全国のお客様のご要望にお応えし、自慢のデミグラスハンバーグやビーフシチューの「真空冷凍ギフトセット」をオンラインショップにて準備中です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex justify-between items-center text-xs text-stone-500">
+                        <span>オープン準備中</span>
+                        <span class="text-amber-400 font-bold">In Preparation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- バナー案内 -->
+            <div class="mt-12 md:mt-16 bg-stone-800/40 border border-stone-700 p-6 md:p-8 rounded-sm text-center reveal">
+                <p class="serif text-base sm:text-lg md:text-xl text-stone-200 mb-2">新メニューやイベントの最新情報は公式Instagramにて随時発信中</p>
+                <p class="text-stone-400 text-xs md:text-sm mb-6">フォローして、限定情報やシェフの最新作をいち早くチェックしてください。</p>
+                <a href="https://www.instagram.com/grilllapin.n7/" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-bold px-6 sm:px-8 py-3 rounded-full text-sm hover:opacity-90 transition shadow-lg">
+                    公式Instagramをチェック
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 最終CTA -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative" id="cta">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+                <div class="w-full md:w-1/2 reveal">
+                    <h2 class="serif text-3xl sm:text-4xl md:text-5xl mb-6 md:mb-8 leading-tight">心、解ける。<br>伝統が綴りなす至福。</h2>
+                    <p class="text-stone-400 leading-loose mb-8 text-sm md:text-base">
+                        地下鉄円山公園駅から徒歩6分。市電静修学園前から徒歩1分。<br>
+                        静かな街角で、あなたのご来店を心よりお待ちしております。
+                    </p>
+
+                    <div class="space-y-4 border-l border-white/20 pl-6 md:pl-8">
+                        <div>
+                            <span class="text-xs text-stone-500 uppercase tracking-widest">Address</span>
+                            <p class="serif text-sm sm:text-base">北海道札幌市中央区南17条西6丁目4-1 ラパンビル 1F</p>
+                        </div>
+                        <div class="flex gap-8 md:gap-12">
+                            <div>
+                                <span class="text-xs text-stone-500 uppercase tracking-widest">Tel</span>
+                                <p class="serif text-lg md:text-xl">011-512-2695</p>
+                            </div>
+                            <div>
+                                <span class="text-xs text-stone-500 uppercase tracking-widest">Open</span>
+                                <p class="serif text-sm sm:text-base">ランチ11:00～　ディナー17：00～ (火曜定休)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 bg-white text-stone-900 p-6 sm:p-8 md:p-12 reveal reveal-delay-1">
+                    <div class="text-center mb-6 md:mb-8">
+                        <img src="https://www.grill-lapin.com/common/img/header_logo.png" alt="Logo" class="w-20 md:w-24 mx-auto mb-4" onerror="this.style.display='none'">
+                        <p class="serif text-base md:text-lg text-stone-900">店舗のご案内（アクセスマップ）</p>
+                    </div>
+
+                    <div class="map-container mb-6 md:mb-8 shadow-inner border border-stone-200">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2916.1668089274153!2d141.3492456750708!3d43.03792169200927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2a1829c2e381%3A0x282ce2dd4e23f2c0!2z5rSL6aOf5bGLIOOCsOODquODq-ODqeODkeODsw!5e0!3m2!1sja!2sjp!4v1771475500709!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3 md:gap-4">
+                        <a href="tel:0115122695" class="cta-button text-white text-center py-4 font-bold rounded-sm shadow-lg transform hover:scale-[1.02] transition">お電話で今すぐ予約</a>
+                        <div class="flex gap-3 md:gap-4 text-stone-900">
+                            <a href="http://www.grill-lapin.com/" target="_blank" class="flex-1 bg-stone-100 text-center py-3 text-sm font-bold hover:bg-stone-200 transition">公式サイト</a>
+                            <a href="https://www.instagram.com/grilllapin.n7/" target="_blank" class="flex-1 bg-stone-100 text-center py-3 text-sm font-bold hover:bg-stone-200 transition">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 md:py-12 bg-black text-stone-600 text-center text-[10px] md:text-xs tracking-[0.2em] px-4">
+        <div class="container mx-auto px-4">
+            <p class="mb-4 text-stone-400">GRILL LAPIN - SAPPORO SINCE 1983</p>
+            <p>&copy; 2024 洋食屋 グリルラパン. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スクロール監視の設定
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // 15%見えたら発火
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // 対象となる全要素を監視
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+    </script>
+
+</body>
+</html>
