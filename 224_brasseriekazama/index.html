@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブラッスリー風間 | 札幌・西11丁目の洋食フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-gold: #C5A059;
+            --dark-bg: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .bg-gold { background-color: var(--primary-gold); }
+        .text-gold { color: var(--primary-gold); }
+        .border-gold { border-color: var(--primary-gold); }
+
+        /* FV Animation & Glassmorphism */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)), url('images/fish.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .floating-cta {
+            transition: transform 0.3s ease;
+            transform: translateY(100%);
+        }
+        .floating-cta.show {
+            transform: translateY(0);
+        }
+
+        .check-list li::before {
+            content: '\2713';
+            color: var(--primary-gold);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #C5A059 0%, #E2C284 50%, #C5A059 100%);
+        }
+
+        /* Stripes Background for Review Section */
+        .bg-stripes {
+            background-color: #f5f5f4;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.5) 50%, transparent 50%);
+            background-size: 40px 100%;
+        }
+
+        /* Map responsive container */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Prevent horizontal scroll on small screens */
+        html, body { overflow-x: hidden; max-width: 100%; }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+        }
+
+        /* Ensure tap targets are comfortable on mobile */
+        @media (max-width: 767px) {
+            .floating-cta a { min-height: 48px; display: flex; align-items: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900 leading-relaxed">
+
+    <!-- FLOATING CTA (mobile only) -->
+    <div id="floating-cta" class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t border-stone-200 p-3 sm:p-4 shadow-2xl md:hidden floating-cta">
+        <div class="flex items-center justify-between gap-3">
+            <div class="text-left shrink-0">
+                <p class="text-[10px] text-stone-500 font-bold whitespace-nowrap">予約必須の名店</p>
+                <p class="text-sm font-bold whitespace-nowrap">ランチ 2,500円〜</p>
+            </div>
+            <a href="tel:011-272-1012" class="gold-gradient text-white font-bold py-3 px-4 rounded-lg text-sm flex-1 text-center shadow-lg">
+                <i class="fa fa-phone mr-1"></i> 今すぐ電話予約
+            </a>
+        </div>
+    </div>
+
+    <!-- HEADER / FV -->
+    <header class="hero-bg min-h-[100svh] flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 z-10">
+            <div class="max-w-3xl text-white">
+                <div class="inline-block border-l-4 border-gold pl-4 mb-6">
+                    <p class="text-base sm:text-lg md:text-2xl font-bold tracking-widest">札幌・西11丁目、静寂の住宅街に佇む。</p>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8 leading-tight serif">
+                    熟練の技が<br>
+                    <span class="text-gold">心を解く</span><br>
+                    至福のソース。
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl mb-8 md:mb-10 opacity-90 font-light leading-loose">
+                    昔の北海道食材と、40年以上向き合い続けるシェフ。<br class="hidden md:block">
+                    看板メニュー「牛肉の煮込み」は、お腹一面に幸せが広がります。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#booking" class="gold-gradient hover:brightness-110 text-white font-bold py-4 sm:py-5 px-8 sm:px-12 rounded-full transition text-base sm:text-lg shadow-2xl text-center">
+                       至福のフルコース
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce hidden md:block">
+            <i class="fa fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- PROOF / SOCIAL -->
+    <section class="py-10 md:py-12 bg-stone-900 text-white border-y border-gold/30">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+                <div>
+                    <p class="text-gold text-xs sm:text-sm font-bold mb-1">口コミ評価</p>
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-black serif">4.5<span class="text-xs sm:text-sm ml-1 font-normal">/5.0</span></p>
+                </div>
+                <div>
+                    <p class="text-gold text-xs sm:text-sm font-bold mb-1">駅から徒歩</p>
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-black serif">5<span class="text-xs sm:text-sm ml-1 font-normal">分</span></p>
+                </div>
+                <div>
+                    <p class="text-gold text-xs sm:text-sm font-bold mb-1">ランチコース</p>
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-black serif">2,500<span class="text-xs sm:text-sm ml-1 font-normal">円〜</span></p>
+                </div>
+                <div>
+                    <p class="text-gold text-xs sm:text-sm font-bold mb-1">スタイル</p>
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-black serif">予約<span class="text-xs sm:text-sm ml-1 font-normal">必須</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REASON / BENEFIT -->
+    <section class="py-14 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div>
+                    <img src="images/beef.jpg" alt="牛肉の煮込み" class="rounded-2xl shadow-2xl rotate-1 w-full h-auto">
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 serif leading-tight">なぜ「ブラッスリー風間」は<br>選ばれ続けるのか。</h2>
+                    <ul class="check-list space-y-5 md:space-y-6 text-base sm:text-lg">
+                        <li><strong>熟練のソース：</strong> 「丼ぶりにしたい」と評される、極上の煮込み料理。</li>
+                        <li><strong>驚きのコスパ：</strong> 前菜、スープ、魚、肉、デザートまで揃う。</li>
+                        <li><strong>隠れ家の静寂：</strong> 都会の喧騒を忘れる、中央区役所近くの住宅街。</li>
+                        <li><strong>プロの目配り：</strong> シェフが常に客席を観察し、最適なタイミングで提供。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEP / FLOW -->
+    <section class="py-14 md:py-20 bg-stone-100">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 md:mb-16 serif">ご来店までの3ステップ</h2>
+            <div class="grid md:grid-cols-3 gap-8 md:gap-8 max-w-5xl mx-auto">
+                <div class="relative p-6 sm:p-8 bg-white rounded-xl shadow-lg mt-6 md:mt-0">
+                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 w-12 h-12 bg-gold text-white flex items-center justify-center rounded-full font-bold text-xl">1</span>
+                    <i class="fa fa-phone text-3xl sm:text-4xl text-stone-300 mb-6 block"></i>
+                    <h4 class="font-bold mb-3">ご予約</h4>
+                    <p class="text-sm text-stone-600">お電話、または公式サイトよりご希望の日時をお知らせください。</p>
+                </div>
+                <div class="relative p-6 sm:p-8 bg-white rounded-xl shadow-lg mt-6 md:mt-0">
+                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 w-12 h-12 bg-gold text-white flex items-center justify-center rounded-full font-bold text-xl">2</span>
+                    <i class="fa fa-utensils text-3xl sm:text-4xl text-stone-300 mb-6 block"></i>
+                    <h4 class="font-bold mb-3">お食事</h4>
+                    <p class="text-sm text-stone-600">熟練シェフが贈る、その日一番の食材を使ったコースをご堪能ください。</p>
+                </div>
+                <div class="relative p-6 sm:p-8 bg-white rounded-xl shadow-lg mt-6 md:mt-0">
+                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 w-12 h-12 bg-gold text-white flex items-center justify-center rounded-full font-bold text-xl">3</span>
+                    <i class="fa fa-gift text-3xl sm:text-4xl text-stone-300 mb-6 block"></i>
+                    <h4 class="font-bold mb-3">お土産（特典）</h4>
+                    <p class="text-sm text-stone-600">本ページをご覧の方限定で、食後の焼き菓子をサービスいたします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS / MAP SECTION -->
+    <section class="py-14 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold serif mb-3 md:mb-4 text-stone-900">アクセス</h2>
+                <p class="text-gold tracking-widest uppercase text-xs sm:text-sm font-bold">Access &amp; Location</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="map-container shadow-2xl border-4 border-white">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.286413381273!2d141.33621857507194!3d43.05644339082419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29910bdb4e27%3A0x1c68eb8a0af6ed84!2z44OW44Op44OD44K544Oq6aKo6ZaT!5e0!3m2!1sja!2sjp!4v1771467788829!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 space-y-8">
+                    <div class="border-l-4 border-gold pl-6">
+                        <h4 class="text-lg sm:text-xl font-bold mb-2">所在地</h4>
+                        <p class="text-stone-600 leading-relaxed">
+                            〒060-0062<br>
+                            北海道札幌市中央区南2条西12丁目323-12<br>
+                            パシフィック三和 1F
+                        </p>
+                    </div>
+                    <div class="border-l-4 border-gold pl-6">
+                        <h4 class="text-lg sm:text-xl font-bold mb-2">公共交通機関でのアクセス</h4>
+                        <ul class="text-stone-600 space-y-3">
+                            <li><i class="fa fa-subway text-gold mr-2 w-4"></i>地下鉄東西線<strong>「西11丁目駅」</strong>から徒歩5分</li>
+                            <li><i class="fa fa-train text-gold mr-2 w-4"></i>市電<strong>「中央区役所前駅」</strong>から徒歩3分</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-gold pl-6">
+                        <h4 class="text-lg sm:text-xl font-bold mb-2">営業時間・定休日</h4>
+                        <p class="text-stone-600">
+                            
+                            ディナー：17:00 〜<br>
+                            定休日：<strong>毎週水曜日</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-14 md:py-20 bg-stripes text-stone-900">
+        <div class="container mx-auto px-4 sm:px-6 max-w-6xl text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 md:mb-16 serif">喜びの声が、私たちの誇りです。</h2>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="text-left bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex gap-1 text-yellow-500 mb-4">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </div>
+                    <p class="text-base sm:text-lg italic leading-relaxed mb-6">「牛肉のコースは味が濃くて最高！エスカベージュもワインが進みます。ソースが本当に美味しくて常にニタニタ。お腹が苦しいけど美味しい物は入るのですね。」</p>
+                    <p class="text-stone-500 text-sm">札幌市在住・T様</p>
+                </div>
+                <div class="text-left bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex gap-1 text-yellow-500 mb-4">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-base sm:text-lg italic leading-relaxed mb-6">「熟練シェフと奥様が営む温かなお店。メインがお肉お魚選べてコスパ抜群です。パンのバターもたっぷりで贅沢。最後にメニューにないお菓子まで付いてきて感激です。」</p>
+                    <p class="text-stone-500 text-sm">札幌市在住・M様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SECTION -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest text-gold border border-gold/40 mb-3">FUTURE PROJECTS</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold serif mb-4">Coming Soon</h2>
+                <p class="text-stone-400 text-sm md:text-base max-w-2xl mx-auto">
+                    「もっとフレンチを身近に、もっと楽しく。」<br>
+                    ブラッスリー風間がこれから準備している、新しいおもてなしのアイデアです。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+                <!-- Card 1 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 hover:border-gold/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa fa-book-open"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-gold/80 block mb-1">In-Store Service</span>
+                        <h3 class="text-base sm:text-lg font-bold mb-3 serif group-hover:text-gold transition">料理・食材の解説カード配布</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed">
+                            シェフこだわりのソースの秘密や北海道生産者様の物語を記載した特製ミニカードをお渡し。お食事の余韻をご自宅でもお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-stone-700/40 text-[11px] text-stone-500 font-semibold flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span> 準備中（店頭にて順次）
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 hover:border-gold/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa fa-newspaper"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-gold/80 block mb-1">Publication</span>
+                        <h3 class="text-base sm:text-lg font-bold mb-3 serif group-hover:text-gold transition">風間ブログの「ZINE」出版</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed">
+                            40年以上書きためたシェフの想いや料理の裏話、札幌の四季の味わいをまとめた手作りの小冊子（ZINE）を発行予定です。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-stone-700/40 text-[11px] text-stone-500 font-semibold flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span> 企画・構成進行中
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 hover:border-gold/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa fa-store"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-gold/80 block mb-1">Local Events</span>
+                        <h3 class="text-base sm:text-lg font-bold mb-3 serif group-hover:text-gold transition">食フェス出展・地域PR</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed">
+                            札幌市内のフードフェスや地域のイベントに出展。「西11丁目」エリアと本格フレンチの魅力を街の皆様へ直接お届けします。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-stone-700/40 text-[11px] text-stone-500 font-semibold flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span> イベント時期調整中
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 hover:border-gold/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa fa-jar"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-gold/80 block mb-1">Takeout &amp; Online</span>
+                        <h3 class="text-base sm:text-lg font-bold mb-3 serif group-hover:text-gold transition">「至福のソース」瓶詰め販売</h3>
+                        <p class="text-xs text-stone-400 leading-relaxed">
+                            「ご飯にかけて食べたい」と評判の煮込みソースや特製ドレッシングをお持ち帰り、お取り寄せ可能にするプロジェクトです。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-stone-700/40 text-[11px] text-stone-500 font-semibold flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span> パッケージ開発中
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL BOOKING / CTA -->
+    <section id="booking" class="py-16 md:py-24 gold-gradient">
+        <div class="container mx-auto px-4 sm:px-6 max-w-4xl text-center text-white">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 serif">大切な方と、極上の一夜を。</h2>
+            <p class="text-base sm:text-xl mb-10 md:mb-12 opacity-90">席数に限りがございます。本日中のご予約がおすすめです。</p>
+
+            <div class="bg-white text-stone-900 p-8 sm:p-10 md:p-16 rounded-3xl shadow-2xl relative">
+                <div class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-stone-900 text-white py-2 px-6 sm:px-8 rounded-full text-xs sm:text-sm font-bold tracking-widest whitespace-nowrap">
+                    RESERVATION
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-center mt-4 md:mt-0">
+                    <div class="text-left">
+                        <p class="text-stone-500 text-xs sm:text-sm mb-2 font-bold uppercase tracking-widest">Phone Order</p>
+                        <a href="tel:011-272-1012" class="text-3xl sm:text-4xl md:text-5xl font-black text-gold block mb-4 hover:opacity-70 transition break-all">011-272-1012</a>
+                        <p class="text-sm text-stone-500 mb-6">※「LPを見た」で焼き菓子サービス</p>
+                    </div>
+                    <div class="space-y-4">
+                        <a href="https://www.pkazama.com/" target="_blank" rel="noopener noreferrer" class="block w-full bg-stone-900 text-white font-black py-4 sm:py-5 rounded-xl text-base sm:text-lg hover:bg-black transition shadow-lg">
+                            公式サイトで空席確認
+                        </a>
+                        <a href="https://www.facebook.com/brasseriekazama" target="_blank" rel="noopener noreferrer" class="block w-full bg-blue-600 text-white font-black py-4 sm:py-5 rounded-xl text-base sm:text-lg hover:bg-blue-700 transition shadow-lg">
+                            Facebookで今日の食材を見る
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 md:py-12 bg-stone-900 text-stone-500 text-xs border-t border-white/5 pb-24 md:pb-12">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <p class="mb-4 text-white font-bold tracking-widest uppercase">Brasserie Kazama</p>
+            <p>&copy; 2024 Brasserie Kazama. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Floating CTA Visibility Toggle
+        window.addEventListener('scroll', () => {
+            const cta = document.getElementById('floating-cta');
+            if (window.scrollY > 500) {
+                cta.classList.add('show');
+            } else {
+                cta.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
