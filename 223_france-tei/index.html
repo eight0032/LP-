@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ラ・フランス亭 | 札幌市清田区の本格フレンチレストラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-gold: #b39356;
+            --color-dark: #1a1a1a;
+            --color-bg: #f9f7f2;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            /* prevents iOS Safari from auto-zooming on tap and keeps layout stable */
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            /* leave room for the fixed mobile CTA bar so the footer isn't hidden behind it */
+            padding-bottom: 64px;
+        }
+
+        @media (min-width: 768px) {
+            body { padding-bottom: 0; }
+        }
+
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .cursive { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        /* 和紙のような質感の背景 */
+        .washi-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('images/main.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .text-vertical {
+            writing-mode: vertical-rl;
+        }
+
+        .btn-gold {
+            background: var(--color-gold);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background: #967a45;
+            transform: translateY(-2px);
+        }
+
+        .btn-gold:active {
+            transform: translateY(0);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--color-gold);
+            margin: 1.5rem auto;
+        }
+
+        .img-overlap {
+            box-shadow: 12px 12px 40px rgba(0,0,0,0.12);
+        }
+
+        /* マップのレスポンシブ調整 */
+        .map-container {
+            position: relative;
+            padding-bottom: 66%;
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 45%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: 0;
+        }
+
+        /* 固定モバイルCTAのセーフエリア対応 (iPhoneのホームバー避け) */
+        .mobile-cta {
+            padding-bottom: env(safe-area-inset-bottom, 0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- ヒーローセクション -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 hero-bg"></div>
+        <div class="relative z-10 text-white text-center px-6 max-w-3xl">
+            <p class="cursive text-xl sm:text-2xl mb-2 text-gold">Restaurant La FranceTei</p>
+            <h1 class="serif text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-8 tracking-tight">
+                日常に、<br class="md:hidden">最高のフレンチを。
+            </h1>
+            <div class="flex flex-col items-center">
+                <div class="w-px h-16 sm:h-24 bg-white/50 mb-8"></div>
+                <a href="#cta" class="btn-gold text-white px-10 sm:px-12 py-4 sm:py-5 rounded-sm serif tracking-widest text-base sm:text-lg inline-block">ご予約はこちら</a>
+            </div>
+        </div>
+        <!-- 縦書きコピー（デスクトップのみ） -->
+        <div class="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 text-white serif text-vertical tracking-[0.5em] text-xl opacity-80">
+            北海道の旬を、ソースで愉しむ。
+        </div>
+    </section>
+
+    <!-- コンセプト -->
+    <section class="py-16 sm:py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-2xl text-center">
+            <p class="text-gold cursive text-lg sm:text-xl mb-4">Concept</p>
+            <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-12 leading-loose">
+                札幌市清田区で愛されて、<br>
+                シェフが守り抜く「丁寧な仕事」
+            </h2>
+            <p class="text-stone-600 leading-loose text-base sm:text-lg font-light">
+                フランスと札幌で12年。当たり前のことを徹底的に追求する。<br>
+                北海道の力強い食材に、伝統のソースを添えて。<br>
+                高級食材を身近に、そしてカジュアルに楽しんでいただきたい。<br>
+                それが、ラ・フランス亭の想いです。
+            </p>
+        </div>
+    </section>
+
+    <!-- イチオシ：牛サーロイン -->
+    <section class="py-16 sm:py-20 bg-stone-100/50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-24">
+                <div class="w-full md:w-1/2 relative max-w-md md:max-w-none">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 border-t border-l border-gold hidden lg:block"></div>
+                    <img src="images/beef.jpg" alt="牛サーロインステーキ" class="img-overlap rounded-sm relative z-10 w-full">
+                    <div class="absolute -bottom-5 -right-5 sm:-bottom-6 sm:-right-6 bg-gold w-24 h-24 sm:w-32 sm:h-32 flex flex-col items-center justify-center text-white p-3 sm:p-4 text-center leading-tight z-20 rounded-sm">
+                        <span class="text-[10px] sm:text-xs">名物</span>
+                        <span class="serif text-sm sm:text-lg font-bold">牛サーロイン<br>ステーキ</span>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <p class="text-gold cursive text-lg sm:text-xl mb-2">Signature Dish</p>
+                    <h3 class="serif text-2xl sm:text-3xl mb-6">厳選した火入れと、<br>重厚なソース。</h3>
+                    <p class="text-stone-600 leading-loose mb-8 text-sm sm:text-base">
+                        数日かけて仕込む特製ソース。肉の繊維一本一本に絡みつく、芳醇な香りと旨み。
+                        シェフが最も自信を持って提供する、当店のアイデンティティとも言える一皿です。
+                    </p>
+                    <div class="bg-white p-5 sm:p-6 border-l-4 border-gold italic text-stone-700 text-sm sm:text-base">
+                        「ホームページを見た」とお伝えください。<br>
+                        食後のコーヒーまたは紅茶をサービスいたします。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon: 新企画・サービス -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-12 sm:mb-16">
+                <p class="text-gold cursive text-xl sm:text-2xl mb-2">New Plans</p>
+                <h2 class="serif text-3xl sm:text-4xl font-bold tracking-wider mb-4">Coming Soon</h2>
+                <p class="text-stone-400 text-sm md:text-base">お客様の声にお応えし、準備を進めている新しい取り組みです。</p>
+                <div class="w-12 h-px bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- 企画1: オードブルコース -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-sm border border-stone-700/60 relative flex flex-col justify-between hover:border-gold/50 transition-all">
+                    <div>
+                        <span class="inline-block bg-gold/20 text-gold text-xs px-3 py-1 rounded-full mb-6 font-semibold tracking-wider">NEW COURSE</span>
+                        <div class="w-12 h-12 rounded-full bg-stone-700 flex items-center justify-center mb-6 text-gold text-xl">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="serif text-lg sm:text-xl font-bold mb-4 leading-snug">多彩な旬を味わう<br>彩りオードブル盛り合わせコース</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            北海道産の厳選素材を一皿に少しずつ。色とりどりのテクスチャーとシェフ特製ソースが奏でる、欲張りな前菜コースをご用意中。
+                        </p>
+                    </div>
+                    <div class="text-xs text-gold/80 italic font-mono pt-4 border-t border-stone-700/50">
+                        開発中・今期夏次スタート予定
+                    </div>
+                </div>
+
+                <!-- 企画2: テイクアウト・アニバーサリーBOX -->
+                <div class="bg-stone-800/80 p-6 sm:p-8 rounded-sm border border-stone-700/60 relative flex flex-col justify-between hover:border-gold/50 transition-all">
+                    <div>
+                        <span class="inline-block bg-gold/20 text-gold text-xs px-3 py-1 rounded-full mb-6 font-semibold tracking-wider">TAKE OUT</span>
+                        <div class="w-12 h-12 rounded-full bg-stone-700 flex items-center justify-center mb-6 text-gold text-xl">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="serif text-lg sm:text-xl font-bold mb-4 leading-snug">ご自宅で愉しむ<br>ラ・フランス亭 パーティーBOX</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            大切な日の食卓をレストランに変える特製デリバリー、テイクアウトBOX。お店の味覚をそのままご家庭にお届けします。
+                        </p>
+                    </div>
+                    <div class="text-xs text-gold/80 italic font-mono pt-4 border-t border-stone-700/50">
+                        予約限定・企画進行中
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お約束 -->
+    <section class="py-16 sm:py-24 washi-bg border-y border-stone-200">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12 sm:mb-16">
+                <p class="text-gold cursive text-lg sm:text-xl mb-4">Comfortable</p>
+                <h2 class="serif text-2xl sm:text-3xl section-title">フレンチをもっと、自由に。</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-10 sm:gap-12">
+                <div class="flex gap-5 sm:gap-6">
+                    <span class="serif text-3xl sm:text-4xl text-gold opacity-30 shrink-0">01</span>
+                    <div>
+                        <h4 class="serif text-lg sm:text-xl mb-3">ドレスコードはございません</h4>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            普段着で、バンドTシャツで。ありのままのあなたでお越しください。
+                            私たちが提供するのは、形式ではなく「食事の愉しみ」です。
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-5 sm:gap-6">
+                    <span class="serif text-3xl sm:text-4xl text-gold opacity-30 shrink-0">02</span>
+                    <div>
+                        <h4 class="serif text-lg sm:text-xl mb-3">初めての方もご安心を</h4>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            マナーがわからなくても大丈夫です。ホールのスタッフが、
+                            お料理を一番美味しく召し上がる方法をそっとお教えいたします。
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-5 sm:gap-6">
+                    <span class="serif text-3xl sm:text-4xl text-gold opacity-30 shrink-0">03</span>
+                    <div>
+                        <h4 class="serif text-lg sm:text-xl mb-3">高級食材を、日常の価格で</h4>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            フォアグラやトリュフも、より多くの方に。
+                            ランチから本格的なコースまで、手に届く贅沢をお約束します。
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-5 sm:gap-6">
+                    <span class="serif text-3xl sm:text-4xl text-gold opacity-30 shrink-0">04</span>
+                    <div>
+                        <h4 class="serif text-lg sm:text-xl mb-3">アクセスの良さと落ち着き</h4>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            地下鉄駅から徒歩圏内、お車でのアクセスもスムーズ。
+                            都会の喧騒を忘れる、洗練された空間でお待ちしております。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 sm:mb-16 gap-6">
+                <div class="text-left">
+                    <p class="text-gold cursive text-lg sm:text-xl mb-2">Voice</p>
+                    <h2 class="serif text-3xl sm:text-4xl">お客様からのお便り</h2>
+                </div>
+                <div class="flex gap-2 text-gold">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="text-stone-800 font-bold ml-2">4.5</span>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="p-6 sm:p-8 border-t border-gold bg-stone-50">
+                    <p class="text-stone-600 text-sm leading-loose mb-6 italic">「ど緊張してたらホールの方がすぐ教えてくれるし和ませてくれた。最後は楽しめました！味も最高です。」</p>
+                    <p class="text-xs font-bold">— 初フレンチのお客様</p>
+                </div>
+                <div class="p-6 sm:p-8 border-t border-gold bg-stone-50">
+                    <p class="text-stone-600 text-sm leading-loose mb-6 italic">「バンドTシャツでフレンチというミスマッチが面白かった。当日予約にも快く対応してくれた。」</p>
+                    <p class="text-xs font-bold">— 音楽好きのお客様</p>
+                </div>
+                <div class="p-6 sm:p-8 border-t border-gold bg-stone-50 sm:col-span-2 md:col-span-1">
+                    <p class="text-stone-600 text-sm leading-loose mb-6 italic">「基礎もしっかりしているし、とても美味しい料理。スタッフ問題も改善してくれると期待です。」</p>
+                    <p class="text-xs font-bold">— 常連のお客様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA エリア -->
+    <section id="cta" class="py-16 sm:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 hero-bg grayscale"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="serif text-3xl sm:text-4xl md:text-5xl mb-8 leading-tight">心尽くしの一皿で、<br>お待ちしております。</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 mt-10 sm:mt-12">
+                <a href="tel:011-882-1195" class="w-full md:w-auto px-10 py-4 sm:py-5 border border-white hover:bg-white hover:text-stone-900 transition-all font-bold tracking-widest">
+                    <i class="fas fa-phone mr-2"></i> 011-882-1195
+                </a>
+                <a href="http://www.france-tei.jp/contact.html" target="_blank" class="w-full md:w-auto btn-gold px-10 sm:px-12 py-4 sm:py-5 font-bold tracking-widest">
+                    WEBで予約・相談
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-stone-400">火曜日・水曜日は定休日をいただいております。</p>
+        </div>
+    </section>
+
+    <!-- アクセス・インフォ -->
+    <footer class="py-12 sm:py-16 washi-bg border-t border-stone-200">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
+                <div>
+                    <h3 class="serif text-xl sm:text-2xl mb-6">ラ・フランス亭</h3>
+                    <div class="space-y-3 text-stone-600 text-sm sm:text-base">
+                        <p><i class="fas fa-map-marker-alt w-6 text-gold"></i> 〒004-0843 札幌市清田区清田3条2丁目12-13</p>
+                        <p><i class="fas fa-clock w-6 text-gold"></i> Lunch 12:00 - / Dinner 18:00 -</p>
+                        <p><i class="fas fa-calendar-times w-6 text-gold"></i> 定休日：火曜日・水曜日</p>
+                    </div>
+                    <div class="mt-8 flex gap-5">
+                        <a href="https://x.com/franceteisappor" target="_blank" class="text-2xl text-stone-400 hover:text-gold" title="X (Twitter)" aria-label="X (Twitter)">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="http://www.france-tei.jp/" target="_blank" class="text-2xl text-stone-400 hover:text-gold" title="公式サイト" aria-label="公式サイト">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="map-container rounded-sm shadow-inner bg-stone-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2917.933671780495!2d141.43018477506848!3d43.00073119438731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2acd96b7d963%3A0x86f11deda09cf56c!2z44Op44O744OV44Op44Oz44K55LqtIFJlc3RhdXJhbnQgTGEgRnJhbmNlVGVi!5e0!3m2!1sja!2sjp!4v1771466872331!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ラ・フランス亭 地図"></iframe>
+                </div>
+            </div>
+            <div class="mt-12 sm:mt-16 pt-8 border-t border-stone-200 text-center text-xs text-stone-400">
+                &copy; Restaurant La FranceTei All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- モバイル固定CTA -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 mobile-cta bg-white">
+        <a href="tel:011-882-1195" class="bg-white text-stone-900 py-4 text-center font-bold border-t border-stone-200 text-sm">電話予約</a>
+        <a href="http://www.france-tei.jp/contact.html" class="btn-gold text-white py-4 text-center font-bold text-sm">WEB予約</a>
+    </div>
+
+</body>
+</html>
