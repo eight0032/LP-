@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>オホーツクイタリアン アルベテッコ | 絶品！鹿肉の生ハム</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-red: #8B0000;
+            --brand-gold: #C5A059;
+            --stone-900: #1C1917;
+        }
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--stone-900);
+            overflow-x: hidden;
+        }
+        .font-serif-jp {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .font-serif-en {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url('images/roast.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .text-keep-all {
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--brand-gold);
+            margin: 1.5rem auto 0;
+        }
+
+        .bg-dark {
+            background-color: var(--stone-900);
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(0.3);
+        }
+        .map-container iframe:hover {
+            filter: grayscale(0);
+            transition: 0.5s;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* Mobile nav drawer */
+        #mobile-nav {
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-nav.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        /* Visible keyboard focus */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--brand-gold);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-[#fcfaf7]">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-[9px] sm:text-[10px] tracking-[0.2em] text-stone-500 uppercase">Okhotsk Italian</span>
+                <span class="text-lg sm:text-xl font-bold tracking-tighter text-red-900 font-serif-jp">アルベテッコ</span>
+            </div>
+
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-[13px] font-medium tracking-wider">
+                <a href="#" class="hover:text-red-800 transition">Top</a>
+                <a href="#strength-section" class="hover:text-red-800 transition uppercase tracking-widest">strengths</a>
+                <a href="#profile-section" class="hover:text-red-800 transition uppercase tracking-widest">history</a>
+                <a href="#coming-soon" class="hover:text-red-800 transition uppercase tracking-widest">coming soon</a>
+                <a href="#problem-section" class="hover:text-red-800 transition uppercase tracking-widest">Q&A</a>
+                <a href="#access-section" class="hover:text-red-800 transition uppercase tracking-widest">access</a>
+                <a href="http://4th-fujii.jp/albetecco/" target="_blank" class="bg-[#8B0000] text-white px-6 py-2.5 rounded-full shadow-md hover:bg-red-900 transition flex items-center">
+                    お問い合わせ
+                </a>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav" class="md:hidden p-2 -mr-2 text-stone-900">
+                <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile nav drawer -->
+        <nav id="mobile-nav" class="md:hidden border-t border-stone-200 bg-white">
+            <div class="flex flex-col px-6 py-4 space-y-1 text-sm font-medium tracking-wider">
+                <a href="#" class="py-3 border-b border-stone-100">Top</a>
+                <a href="#strength-section" class="py-3 border-b border-stone-100 uppercase tracking-widest">strengths</a>
+                <a href="#profile-section" class="py-3 border-b border-stone-100 uppercase tracking-widest">history</a>
+                <a href="#coming-soon" class="py-3 border-b border-stone-100 uppercase tracking-widest">coming soon</a>
+                <a href="#problem-section" class="py-3 border-b border-stone-100 uppercase tracking-widest">Q&A</a>
+                <a href="#access-section" class="py-3 uppercase tracking-widest">access</a>
+                <a href="http://4th-fujii.jp/albetecco/" target="_blank" class="mt-3 mb-2 text-center bg-[#8B0000] text-white px-6 py-3 rounded-full shadow-md">
+                    お問い合わせ
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- First View -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-center text-white px-4 relative pt-24 pb-16">
+        <div class="max-w-4xl z-10">
+            <div class="mb-6 inline-block border-y border-white/30 py-2 px-4">
+                <p class="text-xs sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.3em] font-light uppercase">Sapporo Susukino Since 2015</p>
+            </div>
+            <h1 class="text-xl sm:text-2xl md:text-4xl font-bold leading-[1.7] sm:leading-[1.6] mb-8 font-serif-jp tracking-wider text-keep-all">
+                巧むほどに、<br class="md:hidden">
+                心の底から笑みがこぼれる。<br>
+                <span class="text-[#E2C691] drop-shadow-lg">【鹿肉の生ハム】</span>
+            </h1>
+            <p class="text-sm sm:text-base md:text-lg mb-10 font-light tracking-widest opacity-90 leading-relaxed">
+                オホーツクの恵みを、熟練のイタリア技法で。<br>
+                ここでしか味わえない、命の輝き。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#strength-section" class="border border-white px-8 sm:px-10 py-4 rounded-full hover:bg-white hover:text-stone-900 transition tracking-widest text-sm">
+                    STORY & COMMITMENT
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <!-- Intro Message -->
+    <section class="py-16 sm:py-24 bg-white overflow-hidden reveal">
+        <div class="container mx-auto px-4 sm:px-6 max-w-4xl text-center">
+            <span class="text-[#C5A059] font-serif-en italic text-xl sm:text-2xl mb-4 block tracking-widest">Hospitality</span>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-serif-jp leading-loose mb-8 text-keep-all">道産素材をイタリア技法で昇華。<br>すすきのの喧騒を離れた、大人の隠れ家。</h2>
+            <div class="w-12 h-[1px] bg-stone-300 mx-auto mb-8"></div>
+            <p class="text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl mx-auto tracking-wide">
+                「アルベテッコ」とは北海道弁の「あるべ（持つ）」と店主のあだ名「テッコ」から。<br>
+                地元オホーツクの厳選された食材を、最高の一皿に変えてお届けします。<br>
+                今夜は、計算された居心地の良い椅子に身を委ね、<br>
+                店主との会話と、厳選されたお酒に酔いしれませんか。
+            </p>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section class="py-16 sm:py-24 bg-[#1C1917] text-white overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-10 sm:gap-16">
+                <div class="w-full lg:w-1/2 relative reveal">
+                    <div class="relative z-10 aspect-[4/3] bg-stone-800 flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl">
+                        <img src="images/shika.jpg" alt="鹿肉の生ハム" class="object-cover w-full h-full opacity-80" loading="lazy">
+                    </div>
+                    <div class="hidden sm:block absolute -top-4 -left-4 w-full h-full border border-[#C5A059] z-0 rounded-2xl"></div>
+                </div>
+                <div class="w-full lg:w-1/2 reveal" style="transition-delay: 200ms;">
+                    <span class="text-[#C5A059] tracking-[0.2em] text-sm font-bold uppercase mb-4 block">Main Signature</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp mb-6 sm:mb-8 leading-snug">
+                        野趣あふれる旨味、<br>雑味なき「極み」の生ハム。
+                    </h2>
+                    <p class="text-stone-400 mb-8 leading-relaxed text-base sm:text-lg font-light">
+                        鹿肉処理の徹底したこだわりが、余分な雑みを完璧に排除しました。噛みしめるたびに溢れ出すのは、濃厚な赤身の力強さと、熟成によって育まれた芳醇な香り。
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <span class="text-[#C5A059] text-xl font-serif-en">01.</span>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">厳選されたエゾシカ</h4>
+                                <p class="text-stone-400 text-sm">オホーツクの自然が育んだ野生の命。その中でも最高の状態の肉だけを厳選。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="text-[#C5A059] text-xl font-serif-en">02.</span>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">熟成へのこだわり</h4>
+                                <p class="text-stone-400 text-sm">イタリア伝統の技法に独自の工夫を加え、旨味を最大限に引き出す絶妙な塩梅。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strengths Section -->
+    <section id="strength-section" class="py-16 sm:py-24 bg-[#fcfaf7]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp font-bold section-title">私たちの強み</h2>
+                <p class="text-stone-500 mt-4 tracking-widest uppercase text-xs">Our Strengths</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+                <div class="group reveal" style="transition-delay: 100ms;">
+                    <div class="mb-6 overflow-hidden h-56 sm:h-64 bg-stone-200 flex items-center justify-center rounded-2xl shadow-lg">
+                        <img src="images/pasta.png" alt="オホーツクイタリアン" class="object-cover w-full h-full group-hover:scale-110 transition duration-500" loading="lazy">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-serif-jp font-bold mb-3 group-hover:text-red-800 transition">唯一無二のオホーツクイタリアン</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">道産素材をイタリア技法で昇華させた料理。ボロネーゼやエゾシカのロースト、こだわりでしか出会えない一品が並びます。</p>
+                </div>
+                <div class="group reveal" style="transition-delay: 200ms;">
+                    <div class="mb-6 overflow-hidden h-56 sm:h-64 bg-stone-200 flex items-center justify-center rounded-2xl shadow-lg">
+                        <img src="images/paring.png" alt="ワインと日本酒" class="object-cover w-full h-full group-hover:scale-110 transition duration-500" loading="lazy">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-serif-jp font-bold mb-3 group-hover:text-red-800 transition">酒、酒、酒。最高のマリアージュ</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">ワイン、日本酒、ウイスキー、カクテル。お酒好きな店主が選ぶ充実のラインナップが、料理の旨味を倍加させます。</p>
+                </div>
+                <div class="group reveal sm:col-span-2 md:col-span-1" style="transition-delay: 300ms;">
+                    <div class="mb-6 overflow-hidden h-56 sm:h-64 bg-stone-200 flex items-center justify-center rounded-2xl shadow-lg">
+                        <img src="images/store.png" alt="店内の様子" class="object-cover w-full h-full group-hover:scale-110 transition duration-500" loading="lazy">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-serif-jp font-bold mb-3 group-hover:text-red-800 transition">計算された居心地の良さ</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">こだわりの椅子、会話が弾む距離感。すすきの駅徒歩3分の好立地ながら、喧騒を忘れさせる静かな時間を提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile-section" class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="bg-[#fcfaf7] border border-stone-200 p-6 sm:p-8 md:p-16 relative rounded-[2rem] reveal">
+                <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 items-center">
+                    <div class="w-40 sm:w-48 lg:w-1/3 reveal" style="transition-delay: 200ms;">
+                        <div class="border-4 border-white shadow-xl aspect-square bg-stone-200 overflow-hidden rounded-full">
+                            <img src="images/chef.png" alt="オーナーシェフ 大森哲也" class="object-cover w-full h-full" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3 reveal text-center lg:text-left" style="transition-delay: 400ms;">
+                        <span class="text-[#C5A059] font-serif-en italic mb-2 block tracking-widest text-base sm:text-lg">Owner Story</span>
+                        <h2 class="text-2xl sm:text-3xl font-serif-jp font-bold mb-6">大森 哲也 <span class="text-sm font-normal text-stone-500 block sm:inline">Tetsuya Omori</span></h2>
+                        <div class="space-y-4 text-stone-600 leading-relaxed text-sm md:text-base text-left">
+                            <p>北見観光大使としての顔も持つ店主は、地元オホーツクへの思いが深く、29歳で札幌へ移り調理師専門学校へ。ホテルやフレンチ、スペイン料理など多岐にわたる修業を経て、2015年に一人でアルベテッコを立ち上げました。</p>
+                            <p>コロナ禍という苦境も、「店舗継続支援プロジェクト」や地域との絆、それとお客さまの温かな会話に支えられ、今日まで歩んできました。今日もカウンター越しに、一皿に込めた想いを語り合います。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-16 sm:py-24 bg-[#fcfaf7] border-t border-b border-stone-200/80 overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 reveal">
+                <span class="text-[#C5A059] font-serif-en italic text-xl sm:text-2xl mb-2 block tracking-widest">New Projects</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp font-bold section-title">COMING SOON</h2>
+                <p class="text-stone-500 mt-4 tracking-wider text-sm">アルベテッコがお届けする、新しい食のカタチ</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/80 shadow-sm relative overflow-hidden flex flex-col justify-between reveal" style="transition-delay: 100ms;">
+                    <div class="absolute top-4 right-4 bg-[#C5A059]/10 text-[#C5A059] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                        In Preparation
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-[#8B0000]/10 text-[#8B0000] rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V6a2 2 0 10-2 2h2zm0 13C10.832 21 2 20 2 15V8a2 2 0 012-2h16a2 2 0 012 2v7c0 5-8.832 6-10 6z"></path></svg>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-serif-jp font-bold mb-3 text-stone-900">道産食材の極上オードブル</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            オホーツク産エゾシカの生ハムをはじめ、厳選した道産食材を盛り合わせた特選オードブル。ご自宅での特別な会食や記念日、お祝いの贈り物にもご利用いただけます。
+                        </p>
+                    </div>
+                    <span class="text-xs text-[#C5A059] font-bold tracking-widest uppercase">テイクアウト / ギフト対応</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/80 shadow-sm relative overflow-hidden flex flex-col justify-between reveal" style="transition-delay: 200ms;">
+                    <div class="absolute top-4 right-4 bg-[#C5A059]/10 text-[#C5A059] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                        In Preparation
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-[#8B0000]/10 text-[#8B0000] rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-serif-jp font-bold mb-3 text-stone-900">季節のペアリングコース</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            その日最高の旬食材と一皿にあわせ、ワイン・日本酒・ウイスキーをプロデュース。お客様のお好みに合わせたパーソナルなマリアージュ体験をご提案します。
+                        </p>
+                    </div>
+                    <span class="text-xs text-[#C5A059] font-bold tracking-widest uppercase">事前ご予約制ディナー</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-16 sm:py-24 bg-[#1C1917] text-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl font-serif-jp font-bold text-center mb-12 sm:mb-16 section-title reveal">お客様の声</h2>
+            <div class="grid sm:grid-cols-2 gap-8">
+                <div class="border-l-2 border-[#C5A059] pl-6 py-4 reveal" style="transition-delay: 100ms;">
+                    <div class="flex text-yellow-500 mb-4">★★★★★</div>
+                    <p class="text-stone-300 italic mb-4 leading-relaxed text-sm sm:text-base">「鹿肉処理がしっかりしているため嫌な臭いもなく旨味だけがかむほどに出てきて笑みが出てしまうほど美味しかったです。鹿肉と日本酒好きにはたまらないお勧めのお店でした。」</p>
+                </div>
+                <div class="border-l-2 border-[#C5A059] pl-6 py-4 reveal" style="transition-delay: 200ms;">
+                    <div class="flex text-yellow-500 mb-4">★★★★★</div>
+                    <p class="text-stone-300 italic mb-4 leading-relaxed text-sm sm:text-base">「オホーツクとイタリアンのマリアージュ。気さくなマスターの人柄が素敵。お料理もワインもいつも楽しみです。」</p>
+                </div>
+                <div class="border-l-2 border-[#C5A059] pl-6 py-4 reveal" style="transition-delay: 300ms;">
+                    <div class="flex text-yellow-500 mb-4">★★★★★</div>
+                    <p class="text-stone-300 italic mb-4 leading-relaxed text-sm sm:text-base">「エゾシカ肉の料理が絶品なので、こちらに行った際にはぜひ食べてみてほしいです。ボロネーゼも美味しくてワイン進んでしまう一品です。」</p>
+                </div>
+                <div class="border-l-2 border-[#C5A059] pl-6 py-4 reveal" style="transition-delay: 400ms;">
+                    <div class="flex text-yellow-500 mb-4">★★★★★</div>
+                    <p class="text-stone-300 italic mb-4 leading-relaxed text-sm sm:text-base">「落ち着いた内装と計算された椅子が居心地良い。入れたらラッキーかもしれません。シェフのおもてなしに癒やされます。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 max-w-3xl">
+            <h2 class="text-2xl sm:text-3xl font-serif-jp font-bold text-center mb-12 sm:mb-16 section-title text-keep-all reveal">よくある質問</h2>
+            <dl class="space-y-8">
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <dt class="flex items-start gap-3 sm:gap-4 font-bold text-base sm:text-lg mb-2">
+                        <span class="text-[#C5A059] font-serif-en text-xl sm:text-2xl leading-none">Q.</span>
+                        <span>鹿肉が苦手な人でも大丈夫ですか？</span>
+                    </dt>
+                    <dd class="pl-8 sm:pl-10 text-stone-600 leading-relaxed text-sm sm:text-base">
+                        当店の鹿肉料理は「これまでのイメージが覆った」と多くのお客様から仰っていただけます。徹底した処理と熟成により、雑味を排除した濃厚な旨味を楽しめるよう工夫しています。
+                    </dd>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <dt class="flex items-start gap-3 sm:gap-4 font-bold text-base sm:text-lg mb-2">
+                        <span class="text-[#C5A059] font-serif-en text-xl sm:text-2xl leading-none">Q.</span>
+                        <span>宴会や貸切の相談は可能ですか？</span>
+                    </dt>
+                    <dd class="pl-8 sm:pl-10 text-stone-600 leading-relaxed text-sm sm:text-base">
+                        はい、承っております。人数やご予算、お好みの食材など、ご要望に応じて柔軟に対応いたしますので、まずはお気軽にお電話でご相談ください。
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- Access & Contact Section -->
+    <section id="access-section" class="py-16 sm:py-24 bg-[#fcfaf7]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                <div class="reveal">
+                    <h2 class="text-2xl sm:text-3xl font-serif-jp font-bold mb-8 section-title ml-0 text-left after:mx-0">Access & Info</h2>
+                    <div class="space-y-6 text-stone-700">
+                        <div class="border-b border-stone-200 pb-4">
+                            <p class="text-xs text-[#C5A059] uppercase tracking-widest mb-1 font-bold">Address</p>
+                            <p class="text-sm sm:text-base">〒064-0804 北海道札幌市中央区南４条西５丁目 第４藤井ビル 2F<br>（すすきの駅 徒歩3分）</p>
+                        </div>
+                        <div class="border-b border-stone-200 pb-4">
+                            <p class="text-xs text-[#C5A059] uppercase tracking-widest mb-1 font-bold">Phone</p>
+                            <a href="tel:0118390834" class="text-xl sm:text-2xl font-serif-en font-bold hover:text-red-800 transition">011-839-0834</a>
+                        </div>
+                        <div class="border-b border-stone-200 pb-4">
+                            <p class="text-xs text-[#C5A059] uppercase tracking-widest mb-1 font-bold">Regular Holiday</p>
+                            <p class="text-sm sm:text-base">日曜日</p>
+                        </div>
+                        <div class="flex flex-wrap gap-4 pt-4">
+                            <a href="https://www.instagram.com/albe_tecco/" target="_blank" rel="noopener noreferrer" class="text-xs bg-white border border-stone-300 px-6 py-2.5 rounded-full hover:bg-stone-900 hover:text-white transition shadow-sm">Instagram</a>
+                            <a href="http://4th-fujii.jp/albetecco/" target="_blank" rel="noopener noreferrer" class="text-xs bg-white border border-stone-300 px-6 py-2.5 rounded-full hover:bg-stone-900 hover:text-white transition shadow-sm">Official Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow-2xl rounded-2xl overflow-hidden reveal" style="transition-delay: 300ms;">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3251213096055!2d141.347743375072!3d43.0556291908763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2985aecb384d%3A0x19c5e41afd4ff053!2z44Kq44Ob44O844OE44Kv44Kk44K_44Oq44Ki44Oz44Ki44Or44OZ44OG44OD44Kz!5e0!3m2!1sja!2sjp!4v1771465955885!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="アルベテッコ 地図"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 sm:mt-24 text-center reveal">
+                <a href="http://4th-fujii.jp/albetecco/" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#8B0000] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full shadow-2xl hover:bg-red-900 transition-all transform hover:-translate-y-1 tracking-widest font-bold text-sm sm:text-base">
+                    ご予約・お問い合わせはこちら
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-stone-500 py-10 sm:py-12 text-center">
+        <div class="container mx-auto px-4">
+            <p class="font-serif-en tracking-[0.3em] mb-4 text-white">ALBE TECCO</p>
+            <p class="text-[10px] tracking-widest opacity-60">&copy; 2024 オホーツクイタリアン アルベテッコ. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll-reveal animation
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        function closeMenu() {
+            mobileNav.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            iconOpen.classList.toggle('hidden', isOpen);
+            iconClose.classList.toggle('hidden', !isOpen);
+        });
+
+        // Close mobile menu after tapping a link
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+
+</body>
+</html>
