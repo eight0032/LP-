@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>プティサレ | 札幌・赤れんがテラス 昼を味わうビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600;900&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap');
+
+        :root {
+            --gold: #c2a373;
+            --deep-stone: #1c1917;
+            --soft-white: #fdfcfb;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--soft-white);
+            color: var(--deep-stone);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+
+        /* 和紙のようなテクスチャ */
+        .washi-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* 明るい木目調のテクスチャ */
+        .wood-bg-light {
+            background-color: #f7f3f0;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            background-blend-mode: multiply;
+        }
+
+        /* アニメーション用 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button {
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(194, 163, 115, 0.3);
+        }
+        /* タップ時にホバーと同じ拡大が残らないよう調整 */
+        @media (hover: none) {
+            .cta-button:active {
+                transform: scale(0.98);
+            }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 66%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                padding-bottom: 56.25%;
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* スマホでの見出しの改行崩れを防ぐ */
+        .balance-text {
+            text-wrap: balance;
+        }
+
+        /* iOSでのタップ時の余白ズレ防止 */
+        a, button {
+            -webkit-touch-callout: none;
+        }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- FV -->
+    <header class="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/main.png" alt="料理の佇む写真" class="w-full h-full object-cover scale-110">
+            <div class="absolute inset-0 bg-black/45"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <div class="mb-5 sm:mb-6 opacity-80 tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm md:text-lg">FRENCH BISTRO PTIT SALE</div>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl serif mb-8 sm:mb-10 leading-tight tracking-wider balance-text">プティサレ</h1>
+            <a href="#booking" class="cta-button bg-gold text-white px-8 py-4 sm:px-12 sm:py-5 rounded-sm inline-block serif text-base sm:text-lg font-bold">
+                お席のご予約
+            </a>
+        </div>
+
+        <div class="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- イントロダクション -->
+    <section class="py-16 sm:py-24 px-6 md:px-12 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-gold serif block mb-4 italic text-sm sm:text-base">— 札幌の風を感じて。</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl serif mb-6 sm:mb-8 leading-relaxed balance-text">開放感あふれるテラスで<br>「本物」のカジュアルフレンチを</h2>
+            <p class="text-stone-600 leading-loose text-base sm:text-lg font-light">
+                JR札幌駅から徒歩5分。地下歩行空間から直結する「赤れんがテラス」。<br class="hidden sm:block">
+                そこには、道産食材の可能性を追求し続ける小さな名店があります。<br class="hidden sm:block">
+                自家製パスタ、厳選されたジビエ、そしてソムリエが選ぶ至極の一皿。<br class="hidden sm:block">
+                日常のランチを、忘れられないひとときに。
+            </p>
+        </div>
+    </section>
+
+    <!-- イチオシ：ワンプレートランチ -->
+    <section class="py-16 sm:py-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1/2 bg-stone-100 -z-10"></div>
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <div class="w-full lg:w-3/5 relative">
+                    <img src="images/fish.png" alt="ワンプレートランチ" class="rounded shadow-2xl z-10 relative w-full">
+                    <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-20 h-20 sm:w-32 sm:h-32 border-t-2 border-l-2 border-gold -z-0"></div>
+                </div>
+                <div class="w-full lg:w-2/5">
+                    <span class="text-gold font-bold tracking-widest text-sm mb-2 block uppercase">Recommend Menu</span>
+                    <h2 class="text-3xl sm:text-4xl serif mb-6">ワンプレートランチ</h2>
+                    <div class="space-y-4 text-stone-700 leading-relaxed mb-8">
+                        <p class="border-b border-stone-200 pb-2">・本日のメインディッシュ</p>
+                        <p class="border-b border-stone-200 pb-2">・自家製シャルキュトリー盛り合わせ</p>
+                        <p class="border-b border-stone-200 pb-2">・道産野菜の新鮮サラダ</p>
+                        <p class="border-b border-stone-200 pb-2">・旬の食材を使ったサイドディリ</p>
+                    </div>
+                    <p class="text-stone-500 text-sm mb-6 italic">
+                        「あれもこれも食べたい」という願いを叶える、プティサレ自慢の一皿。ランチコースは2,860円より。
+                    </p>
+                    <a href="https://ptit-sale.owst.jp/" target="_blank" class="text-gold border-b border-gold pb-1 hover:opacity-70 transition inline-block">
+                        メニュー詳細を見る <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ（明るい木目調デザイン） -->
+    <section class="py-16 sm:py-24 wood-bg-light relative border-y border-stone-100">
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <h2 class="text-center serif text-2xl sm:text-3xl md:text-4xl mb-12 sm:mb-16 tracking-widest text-gold">お客様の声</h2>
+            <div class="grid md:grid-cols-2 gap-10 sm:gap-12">
+                <div class="relative p-6 sm:p-10 border border-gold/20 bg-white/60 backdrop-blur-sm hover:bg-white/80 transition shadow-sm">
+                    <i class="fa-solid fa-quote-left absolute -top-4 left-6 text-gold text-3xl sm:text-4xl px-2"></i>
+                    <p class="italic leading-loose mb-6 text-stone-700 pt-2">
+                        「札幌駅周辺に来る度に寄りたいお店。フルコース4,800円は超絶破格です。ワインの質問にも即座に答えてくれるスタッフのレベルの高さに感動しました。」
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                        <span class="text-sm text-stone-500">コンサート帰りの女性客様</span>
+                    </div>
+                </div>
+                <div class="relative p-6 sm:p-10 border border-gold/20 bg-white/60 backdrop-blur-sm hover:bg-white/80 transition shadow-sm md:mt-20">
+                    <i class="fa-solid fa-quote-left absolute -top-4 left-6 text-gold text-3xl sm:text-4xl px-2"></i>
+                    <p class="italic leading-loose mb-6 text-stone-700 pt-2">
+                        「蝦夷鹿肉のミートソースを頂きました。臭みを上手に消しており、ソースは非常にクリーミー。本格派をワインと楽しみたい方に絶対おすすめです。」
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                        <span class="text-sm text-stone-500">ワイン愛好家様</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 空間・特典 -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-4 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-2xl sm:text-3xl serif mb-6">特別な日を、彩るサービス。</h2>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <span class="bg-gold/10 text-gold w-12 h-12 flex items-center justify-center rounded-full shrink-0"><i class="fa-solid fa-cake-candles"></i></span>
+                            <div>
+                                <h4 class="font-bold mb-1">記念日プレート無料</h4>
+                                <p class="text-stone-500 text-sm">大切な方のお祝いに。デザートプレートを無料でご用意します。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="bg-gold/10 text-gold w-12 h-12 flex items-center justify-center rounded-full shrink-0"><i class="fa-solid fa-wine-glass"></i></span>
+                            <div>
+                                <h4 class="font-bold mb-1">ソムリエ厳選のワインリスト</h4>
+                                <p class="text-stone-500 text-sm">料理とのマリアージュを提案。ランチワインも充実しています。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="bg-gold/10 text-gold w-12 h-12 flex items-center justify-center rounded-full shrink-0"><i class="fa-solid fa-paw"></i></span>
+                            <div>
+                                <h4 class="font-bold mb-1">テラス席ペット同伴可</h4>
+                                <p class="text-stone-500 text-sm">札幌の爽やかな風を感じながら、愛犬と一緒に優雅なランチを。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2 grid grid-cols-2 gap-3 sm:gap-4">
+                    <img src="images/cake.png" alt="店内" class="rounded shadow-lg mt-8 w-full h-full object-cover">
+                    <img src="images/paring.png" alt="テラス" class="rounded shadow-lg w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON セクション -->
+    <section class="py-16 sm:py-24 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c2a373_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-gold tracking-[0.3em] text-xs font-bold uppercase block mb-2">Upcoming Services</span>
+                <h2 class="text-3xl md:text-4xl serif tracking-widest text-white">COMING SOON</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-6"></div>
+                <p class="text-stone-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                    お客様からの「あったら嬉しい」にお応えして。プティサレの味を日常や特別な日にもっと身近に楽しめる新サービスを準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- 1. テイクアウト：ケーキ・焼き菓子・パン -->
+                <div class="bg-stone-800/80 border border-stone-700/80 rounded p-6 sm:p-8 relative flex flex-col justify-between hover:border-gold/50 transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full border border-gold/30 font-bold tracking-wider">PREPARING</span>
+                            <i class="fa-solid fa-cake-candles text-gold text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl serif font-bold text-white mb-3">自家製ケーキ・焼き菓子・パンのテイクアウト</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            好評いただいている自家製パンに加え、シェフ特製のビストロケーキや香ばしい焼き菓子（フィナンシェ・カヌレなど）のテイクアウトを開始予定。おうちでのティータイムやお持ち帰りの手土産に。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-400">
+                        <span><i class="fa-regular fa-clock mr-1"></i>随次スタート予定</span>
+                        <span class="text-gold font-semibold">Takeout / Gift</span>
+                    </div>
+                </div>
+
+                <!-- 2. ホームパーティー用ビストロディー・オードブル -->
+                <div class="bg-stone-800/80 border border-stone-700/80 rounded p-6 sm:p-8 relative flex flex-col justify-between hover:border-gold/50 transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full border border-gold/30 font-bold tracking-wider">PREPARING</span>
+                            <i class="fa-solid fa-utensils text-gold text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl serif font-bold text-white mb-3">本格ビストロ オードブルBOX</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            名物「シャルキュトリー盛り合わせ」や道産食材を使った料理を特製BOXに。ご自宅でのパーティーや赤れんがテラスでのピクニックに最適な贅沢テイクアウトセットです。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-400">
+                        <span><i class="fa-regular fa-clock mr-1"></i>事前予約制予定</span>
+                        <span class="text-gold font-semibold">Deli &amp; Party</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約セクション (CTA) -->
+    <section id="booking" class="py-16 sm:py-24 bg-stone-100 washi-bg border-y border-stone-200">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+            <h2 class="text-3xl sm:text-4xl serif mb-6 sm:mb-8 tracking-widest">ご予約・お問い合わせ</h2>
+            <p class="mb-10 sm:mb-12 text-stone-600">お電話、またはWEB予約にて承っております。<br>少人数から貸切まで、お気軽にご相談ください。</p>
+
+            <div class="flex flex-col md:flex-row gap-5 sm:gap-6 justify-center items-stretch">
+                <a href="tel:011-206-0281" class="flex-1 bg-white border border-stone-300 py-7 sm:py-8 px-6 rounded hover:bg-stone-50 transition flex flex-col items-center">
+                    <span class="text-xs text-gold tracking-widest mb-2">RESERVATION BY PHONE</span>
+                    <span class="text-xl sm:text-2xl font-bold tracking-tighter mb-2">011-206-0281</span>
+                    <span class="text-xs text-stone-400">営業時間：11:00 〜 22:30（不定休）</span>
+                </a>
+                <a href="https://ptit-sale.owst.jp/" target="_blank" class="flex-1 bg-gold text-white py-7 sm:py-8 px-6 rounded shadow-lg hover:opacity-90 transition flex flex-col items-center justify-center">
+                    <span class="text-xs opacity-80 tracking-widest mb-2">ONLINE BOOKING</span>
+                    <span class="text-xl sm:text-2xl font-bold mb-2">24時間WEB予約</span>
+                    <span class="text-xs opacity-80">公式HPから空席確認</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.9246022304296!2d141.34792437507258!3d43.064053290337206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b299ddfdc2d31%3A0x875afabc45abd754!2z44OX44OG44Kj44K144Os!5e0!3m2!1sja!2sjp!4v1771462606875!5m2!1sja!2sjp" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="serif">
+                    <h3 class="text-xl sm:text-2xl mb-6 sm:mb-8 border-b-2 border-gold pb-4 inline-block">店舗案内</h3>
+                    <dl class="space-y-6">
+                        <div>
+                            <dt class="text-gold text-sm font-bold mb-1 uppercase tracking-widest">Address</dt>
+                            <dd class="text-stone-700">〒060-0002 札幌市中央区北2条西4丁目1<br>赤れんがテラス 1F</dd>
+                        </div>
+                        <div>
+                            <dt class="text-gold text-sm font-bold mb-1 uppercase tracking-widest">Access</dt>
+                            <dd class="text-stone-700">JR「札幌駅」徒歩5分<br>地下鉄「さっぽろ駅」徒歩2分<br><span class="text-sm opacity-70 italic">※地下歩行空間からエスカレーター直結</span></dd>
+                        </div>
+                        <div>
+                            <dt class="text-gold text-sm font-bold mb-1 uppercase tracking-widest">Official Links</dt>
+                            <dd class="flex gap-6 mt-2">
+                                <a href="https://www.instagram.com/ptit_sale/" class="hover:text-gold transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                                <a href="https://ptit-sale.owst.jp/" class="hover:text-gold transition"><i class="fa-solid fa-globe text-2xl"></i></a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-stone-900 text-white text-center">
+        <div class="serif text-xl sm:text-2xl tracking-[0.3em] mb-4">プティサレ</div>
+        <p class="text-stone-500 text-xs tracking-widest px-6">&copy; PTIT SALE. SAPPORO RED BRICK TERRACE.</p>
+    </footer>
+
+    <script>
+        // フェードインアニメーション
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
