@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>ル フェール (Le Phare) | 札幌・円山の隠れ家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+        :root {
+            --primary: #0f172a;
+            --accent: #c5a059;
+            --bg-light: #fafaf9;
+            --text-main: #334155;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.05em;
+        }
+
+        .en-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+        .text-primary { color: var(--primary); }
+        .bg-primary { background-color: var(--primary); }
+
+        /* 縦書きのアクセント */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 背景のアニメーションや装飾 */
+        .bg-pattern {
+            background-image: radial-gradient(var(--accent) 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--accent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before { left: 0; }
+        .cta-button:hover { color: white !important; }
+
+        .img-frame {
+            position: relative;
+            padding: 12px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* モバイルメニュー */
+        .mobile-menu {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* テーブルをモバイルでカード風に */
+        @media (max-width: 640px) {
+            .info-table tr {
+                display: flex;
+                flex-direction: column;
+                padding: 12px 0;
+            }
+            .info-table th {
+                padding: 0 0 4px 0 !important;
+                font-size: 0.75rem;
+                color: var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .info-table td {
+                padding: 0 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="container mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
+            <div class="text-xl sm:text-2xl font-bold serif tracking-widest text-primary">Le Phare</div>
+
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-light">
+                <a href="#concept" class="hover:text-accent transition">Concept</a>
+                <a href="#menu" class="hover:text-accent transition">Menu</a>
+                <a href="#chef" class="hover:text-accent transition">Chef</a>
+                <a href="#coming-soon" class="hover:text-accent transition">Coming Soon</a>
+                <a href="#access" class="hover:text-accent transition">Access</a>
+            </div>
+
+            <a href="#reservation" class="hidden md:inline-block text-xs font-bold border border-accent px-4 py-2 hover:bg-accent hover:text-white transition text-primary">RESERVATION</a>
+
+            <!-- ハンバーガーメニュー(モバイル用) -->
+            <button id="menuToggle" class="hamburger md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5" aria-label="メニューを開く" aria-expanded="false">
+                <span class="block w-6 h-px bg-primary"></span>
+                <span class="block w-6 h-px bg-primary"></span>
+                <span class="block w-6 h-px bg-primary"></span>
+            </button>
+        </div>
+
+        <!-- モバイルメニュー本体 -->
+        <div id="mobileMenu" class="mobile-menu md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg">
+            <div class="flex flex-col divide-y divide-gray-100">
+                <a href="#concept" class="menu-link px-6 py-4 text-sm tracking-widest text-primary">Concept</a>
+                <a href="#menu" class="menu-link px-6 py-4 text-sm tracking-widest text-primary">Menu</a>
+                <a href="#chef" class="menu-link px-6 py-4 text-sm tracking-widest text-primary">Chef</a>
+                <a href="#coming-soon" class="menu-link px-6 py-4 text-sm tracking-widest text-primary">Coming Soon</a>
+                <a href="#access" class="menu-link px-6 py-4 text-sm tracking-widest text-primary">Access</a>
+                <a href="#reservation" class="menu-link px-6 py-4 text-sm tracking-widest text-accent font-bold">Reservation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Visual (FV) -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/store.png" alt="ル フェール店内" class="w-full h-full object-cover scale-105">
+            <div class="absolute inset-0 bg-black/40 sm:bg-black/30"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 sm:px-4">
+            <span class="en-font italic text-xl sm:text-2xl md:text-3xl mb-4 block tracking-widest">Sapporo Maruyama Bistro</span>
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-light mb-6 sm:mb-8 leading-tight serif text-white">
+                灯火が導く、<br><span class="text-accent">至福の隠れ家。</span>
+            </h1>
+            <div class="h-12 sm:h-16 w-px bg-white/50 mx-auto mb-6 sm:mb-8"></div>
+            <p class="text-sm sm:text-lg md:text-xl font-extralight tracking-[0.15em] sm:tracking-[0.2em] uppercase text-white">1 Day 2 Tables Only</p>
+        </div>
+
+        <!-- 縦書きコピー(デスクトップのみ) -->
+        <div class="absolute right-10 top-1/2 -translate-y-1/2 hidden lg:block">
+            <p class="vertical-text text-white/80 serif tracking-[0.5em] text-sm">
+                フランス三つ星の技を円山で味わう贅沢
+            </p>
+        </div>
+
+        <!-- スクロール誘導(モバイル向け) -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 text-xs tracking-widest animate-bounce">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="py-16 sm:py-24 bg-white relative scroll-mt-16">
+        <div class="bg-pattern absolute inset-0"></div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 img-frame">
+                    <img src="images/main.png" alt="料理イメージ" class="w-full h-auto grayscale-[20%] hover:grayscale-0 transition duration-700">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="en-font text-accent text-lg sm:text-xl mb-2 block">Our Philosophy</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 serif leading-relaxed text-primary">
+                        一日に昼夜各二組。<br>
+                        その限られた時間は、<br>
+                        あなただけの為に。
+                    </h2>
+                    <p class="text-gray-600 mb-8 leading-loose text-sm sm:text-base">
+                        「ル ファル」とはフランス語で「灯台」を意味します。札幌・円山の閑静な街並みを見下ろす三階の特等席で、シェフ佐々木真人が一皿ずつ魂を込めて作り上げる料理。フランスの名だたる三つ星レストランで培った確かな技術と、北海道が誇る極上の食材が、ここで一つに溶け合います。
+                    </p>
+                    <a href="#reservation" class="cta-button inline-block px-10 sm:px-12 py-4 text-accent font-medium text-sm">VIEW MORE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu / Speciality Section -->
+    <section id="menu" class="py-16 sm:py-24 bg-stone-100 scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="en-font text-accent text-lg sm:text-xl">Signature Dish</span>
+                <h2 class="text-3xl sm:text-4xl font-bold serif section-title mt-2 text-primary">珠玉の逸品</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-10 sm:gap-12 max-w-6xl mx-auto">
+                <!-- Item 1 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden mb-5 sm:mb-6 aspect-[4/3]">
+                        <img src="images/galleto.jpg" alt="ガレット" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 serif text-primary">生ハムとチーズのガレット</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 mb-4 tracking-wider">Traditional Galette with Prosciutto &amp; Cheese</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        北海道産の発酵小麦を使用した、香り高い生地。精密な火入れでパリッと仕上げた外側と、素材の旨味が溢れる内側のコントラストをお楽しみください。
+                    </p>
+                </div>
+                <!-- Item 2 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden mb-5 sm:mb-6 aspect-[4/3]">
+                        <img src="images/cake.jpg" alt="ガトーショコラ" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 serif text-primary">名物 ガトーショコラ</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 mb-4 tracking-wider">Signature Gateau au Chocolat</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        まるでトリュフのような、なめらかで濃厚な口溶け。食後の余韻を最高潮に高める、ゲストの皆様が魅了される逸品です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef Story -->
+    <section id="chef" class="py-16 sm:py-24 bg-stone-200 text-primary overflow-hidden scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6 relative">
+            <div class="absolute -right-20 top-0 opacity-5 pointer-events-none hidden sm:block">
+                <span class="en-font text-[120px] md:text-[200px] leading-none font-bold italic">Sasaki</span>
+            </div>
+
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <span class="en-font text-accent text-lg sm:text-xl mb-2 block tracking-widest">Master of Cuisine</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 serif text-primary">
+                        佐々木 真人 <br>
+                        <span class="text-base sm:text-lg font-light opacity-60">Chef &amp; Sommelier</span>
+                    </h2>
+                    <div class="space-y-6 text-primary/90 font-light leading-loose text-sm md:text-base">
+                        <p>
+                            栃木県出身。若くしてフランス・アヴィニョンのエコール・オテリエールへ。
+                            その後、パリの三つ星<span class="text-accent font-medium">「ランブロワジー」</span>、<span class="text-accent font-medium">「ルドワイヤン」</span>、リヨンの<span class="text-accent font-medium">「ギ・ラソーセ」</span>といった名だたる名店で修業。
+                        </p>
+                        <p>
+                            極限まで磨き上げられた「火入れ」の技術と、ソムリエとしての感性。2008年、北海道の食材の力強さに惹かれ、この地で自身の理想とする「少人数制の隠れ家」を形にしました。
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="relative">
+                        <img src="images/chef.png" alt="シェフ作業風景" class="w-full h-auto rounded-sm shadow-xl">
+                        <div class="absolute -bottom-5 -left-5 sm:-bottom-6 sm:-left-6 border border-accent p-5 sm:p-8 bg-white/90 backdrop-blur-sm">
+                            <p class="serif text-base sm:text-xl italic tracking-widest text-accent">"Cuisine is Art"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Reviews) -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
+                    <div class="md:w-1/3">
+                        <h2 class="text-2xl sm:text-3xl font-bold serif border-l-4 border-accent pl-5 sm:pl-6 text-primary">お客様の記憶</h2>
+                        <p class="mt-4 text-sm text-gray-400 en-font tracking-[0.3em] uppercase">Testimonials</p>
+                    </div>
+                    <div class="md:w-2/3 space-y-10 sm:space-y-12">
+                        <blockquote class="relative pl-2">
+                            <i class="fas fa-quote-left absolute -top-4 -left-2 sm:-left-8 text-accent/20 text-3xl sm:text-4xl"></i>
+                            <p class="text-gray-700 italic leading-loose mb-4 pt-4 sm:pt-0">
+                                「円山の隠れ家。丁寧に作られたお料理の数々をゆったりと頂けます。シェフの説明も素敵で、火入れの精度が素晴らしかった。」
+                            </p>
+                            <cite class="text-xs text-gray-400 not-italic tracking-widest">— ランチコースご利用のお客様</cite>
+                        </blockquote>
+                        <blockquote class="relative pl-2">
+                            <i class="fas fa-quote-left absolute -top-4 -left-2 sm:-left-8 text-accent/20 text-3xl sm:text-4xl"></i>
+                            <p class="text-gray-700 italic leading-loose mb-4 pt-4 sm:pt-0">
+                                「急なお願いでデザートに文字を入れて頂きましたが、心温まるサービスでした。味の盛りあげ方がとても上手で、次のお皿が楽しみになる構成です。」
+                            </p>
+                            <cite class="text-xs text-gray-400 not-italic tracking-widest">— 記念日ご利用のお客様</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-16 sm:py-24 bg-stone-50 border-t border-b border-stone-200/60 relative overflow-hidden scroll-mt-16">
+        <div class="bg-pattern absolute inset-0"></div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="en-font text-accent text-xl sm:text-2xl tracking-widest">Future Experience</span>
+                <h2 class="text-3xl sm:text-4xl font-bold serif section-title mt-2 text-primary">Coming Soon</h2>
+                <p class="text-gray-500 text-sm mt-4 tracking-widest">ル ファルがお届けする、新しいおもてなしの形</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="text-accent text-2xl mb-4"><i class="fas fa-book-open"></i></div>
+                        <span class="text-[10px] tracking-widest text-accent uppercase font-bold block mb-1">Story Card</span>
+                        <h3 class="text-lg font-bold text-primary mb-3 serif">一皿の物語を届ける「ストーリーカード」</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            北海道の生産者の想いや、シェフが施した火入れの秘密・仕込みの背景を記したカードをお渡し。お食事の余韻をご自宅でもお楽しみいただけます。
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-gray-400 tracking-wider uppercase mt-6 block border-t border-stone-100 pt-3">店頭配布準備中</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="text-accent text-2xl mb-4"><i class="fas fa-wine-glass-alt"></i></div>
+                        <span class="text-[10px] tracking-widest text-accent uppercase font-bold block mb-1">Pairing Notes</span>
+                        <h3 class="text-lg font-bold text-primary mb-3 serif">ソムリエ厳選「ペアリングテイスティングメモ」</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            シェフ兼ソムリエの佐々木が選んだワインのマリアージュポイントを解説した特別なガイド。ワインと料理の深淵なる世界へご案内します。
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-gray-400 tracking-wider uppercase mt-6 block border-t border-stone-100 pt-3">順次展開予定</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & Access Section -->
+    <section id="access" class="py-16 sm:py-24 bg-stone-100 scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 serif text-primary">Information</h2>
+                    <table class="info-table w-full text-sm text-left">
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 font-bold w-1/3 align-top">店名</th>
+                            <td class="py-4 font-medium text-primary">ル ファルル (Le Phare)</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 font-bold align-top">所在地</th>
+                            <td class="py-4 text-primary">〒064-0802 北海道札幌市中央区南２条西２５丁目１−１ クラスAビル 3F</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 font-bold align-top">電話番号</th>
+                            <td class="py-4 text-primary">011-622-0087</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 font-bold align-top">アクセス</th>
+                            <td class="py-4 text-primary">地下鉄東西線「円山公園駅」より徒歩2-3分</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 font-bold align-top">定員</th>
+                            <td class="py-4 text-accent font-medium">1日ランチ・ディナー各2組限定 (全6席)</td>
+                        </tr>
+                    </table>
+                    <div class="mt-8 flex gap-4">
+                        <a href="https://instagram.com/lephare.jp?igshid=NGVhN2U2NjQ0Yg==" target="_blank" rel="noopener" class="w-10 h-10 border border-accent flex items-center justify-center text-accent hover:bg-accent hover:text-white transition rounded-full shadow-sm">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-gray-100 h-[300px] sm:h-[400px] relative rounded-sm shadow-inner overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3648840363876!2d141.31795647507184!3d43.0547927909298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29ea3af6ec2d%3A0xa0b75c87b3c2f573!2z44OrIOODleOCoeODqw!5e0!3m2!1sja!2sjp!4v1771463493442!5m2!1sja!2sjp"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="grayscale contrast-125 hover:grayscale-0 transition-all duration-700">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="reservation" class="py-20 sm:py-32 bg-stone-200 text-primary text-center relative overflow-hidden scroll-mt-16">
+        <div class="bg-pattern absolute inset-0 opacity-5"></div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 serif text-primary">大切な方と、記憶に残る夜を。</h2>
+            <p class="text-primary/60 mb-10 sm:mb-12 tracking-widest uppercase font-medium text-sm sm:text-base">Reservation Required</p>
+            <div class="max-w-lg mx-auto bg-white/40 border border-white/20 backdrop-blur-xl p-8 sm:p-12 rounded-sm shadow-2xl">
+                <p class="text-lg sm:text-xl mb-6 sm:mb-8 font-medium">お電話にて承っております</p>
+                <a href="tel:0116220087" class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary hover:text-accent transition duration-300 break-all">
+                    011-622-0087
+                </a>
+                <p class="mt-6 sm:mt-8 text-xs text-primary/70 leading-loose">
+                    ※各組限定のため、ご希望の日時がございましたらお早めにご相談ください。<br>
+                    ※貸切パーティーのご予約も承っております。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 sm:py-12 bg-white border-t border-gray-100 text-center px-5">
+        <div class="text-lg sm:text-xl font-bold serif tracking-[0.3em] sm:tracking-[0.5em] mb-4 text-primary">LE PHARE</div>
+        <p class="text-[10px] text-gray-400 tracking-widest uppercase">&copy; 2024 Le Phare Sapporo. Designed for Excellence.</p>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        function closeMenu() {
+            menuToggle.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // モバイルメニュー内リンククリックで閉じる
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // スムーススクロール(ヘッダー分オフセット調整はscroll-mt-16で対応済み)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
