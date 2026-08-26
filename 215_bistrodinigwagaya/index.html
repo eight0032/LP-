@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="札幌すすきののビストロダイニング我が家。老舗ホテル総料理長の技が息づく、肉汁溢れるハンバーグと至高のオムレツ。">
+    <title>ビストロDining我が家 | 至高のデミグラスソースオムレツ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Playfair+Display:ital,wght@1,700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --gold-light: #d9bd85;
+            --dark: #1a1a1a;
+            --stone: #f8f5f0;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--stone);
+            overflow-x: hidden;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        h1, h2, h3 { font-family: 'Noto Serif JP', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+
+        .bg-gold { background-color: var(--gold); }
+        .text-gold { color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(26,26,26,1)),
+                        url('images/hanbagu.png');
+            background-size: cover;
+            background-position: center;
+            padding-top: env(safe-area-inset-top);
+        }
+
+        /* 明るい網掛け背景（ライトメッシュ） */
+        .bg-mesh-light {
+            background-color: var(--stone);
+            background-image: radial-gradient(rgba(197, 160, 89, 0.25) 1px, transparent 1px);
+            background-size: 18px 18px;
+        }
+
+        .cta-shine {
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cta-shine::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -150%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        .cta-shine:hover::after,
+        .cta-shine:active::after {
+            left: 100%;
+        }
+
+        /* 見出しの背景に薄く重なる欧文タイトル。長い語でもはみ出さない */
+        .section-title-en {
+            font-size: clamp(2.75rem, 12vw, 5rem);
+            opacity: 0.06;
+            position: absolute;
+            top: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Map: 16:9 を保ちつつスマホでも潰れない */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* タップ領域を広めに確保 */
+        a, button { touch-action: manipulation; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-stone-900 leading-relaxed">
+
+    <!-- FIRST VIEW -->
+    <header class="hero-section min-h-[100svh] flex items-center relative px-4 sm:px-6 overflow-hidden pb-16 pt-28 sm:pt-24">
+        <div class="absolute top-6 left-4 right-4 sm:left-10 sm:right-auto z-20 flex items-center justify-between sm:justify-start gap-4 sm:gap-6">
+            <p class="text-gold font-bold tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-base border-l-2 border-gold pl-3 sm:pl-4">SAPPORO / SUSUKINO</p>
+            <a href="https://www.instagram.com/bistorodiningwagaya/" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-gold active:text-gold transition-colors" aria-label="Instagramを見る">
+                <i data-lucide="instagram" class="w-6 h-6"></i>
+            </a>
+        </div>
+
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between relative z-10 gap-10 md:gap-8">
+            <div class="w-full md:w-1/2 text-white text-center md:text-left">
+                <span class="inline-block bg-gold text-white px-4 py-1 mb-5 sm:mb-6 text-xs sm:text-sm font-bold tracking-widest rounded-full">EST. 2015</span>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl mb-5 sm:mb-6 leading-tight font-black">
+                    一味違う、<br>
+                    <span class="text-gold">本物の洋食。</span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl text-stone-300 mb-8 max-w-md mx-auto md:mx-0">
+                    老舗ホテル総料理長の技術が息づく、<br>
+                    肉汁溢れるハンバーグと至高のオムレット。
+                </p>
+            </div>
+
+            <div class="w-full sm:max-w-sm md:w-5/12 relative">
+                <div class="bg-white/5 backdrop-blur-md border border-white/20 p-6 sm:p-8 text-white rounded-3xl shadow-2xl">
+                    <p class="text-gold font-bold text-center mb-3 sm:mb-4 tracking-tighter text-lg sm:text-xl underline decoration-double">LIMITED OFFER</p>
+                    <h2 class="text-xl sm:text-2xl text-center font-bold mb-6 text-white">LINE登録で「増量30g」<br>無料クーポン配布中</h2>
+                    <a href="#cta" class="cta-shine block w-full bg-gold text-white text-center py-4 font-bold text-base sm:text-lg tracking-widest transition-all rounded-full">
+                        特典を受け取る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN PRODUCT (SIGNATURE) -->
+    <section class="py-16 sm:py-24 bg-mesh-light text-stone-900 relative border-y border-stone-200">
+        <span class="section-title-en font-playfair text-stone-900">Specialty</span>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-12">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <img src="images/omuretto.jpg" alt="デミグラスソースオムレット" loading="lazy" class="rounded-3xl shadow-2xl w-full">
+                        <div class="absolute -bottom-5 -left-3 sm:-bottom-6 sm:-left-6 bg-gold p-4 sm:p-6 text-white shadow-lg rounded-2xl max-w-[75%] sm:max-w-none">
+                            <p class="text-xs sm:text-sm tracking-widest">SIGNATURE DISH</p>
+                            <p class="text-lg sm:text-2xl font-bold">デミグラスソース<br>オムレット</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 mt-6 md:mt-0">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 leading-snug">フォークから溢れ出す、<br><span class="text-gold">肉汁の黄金律。</span></h2>
+                    <p class="text-stone-600 mb-8 leading-loose font-medium text-sm sm:text-base">
+                        「我が家」のハンバーグは、フォークを入れた瞬間に溢れ出す肉汁が最大の特徴。老舗ホテルでの修業と、日本領事館総料理長としての誇りが、一皿一皿に凝縮されています。30g単位で増量可能な「自分だけのサイズ」で、至福の時を。
+                    </p>
+                    <div class="flex items-center justify-center md:justify-start space-x-4">
+                        <div class="h-[1px] w-12 bg-gold"></div>
+                        <p class="font-playfair italic text-gold text-lg sm:text-xl">The Art of Western Cuisine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER VOICES -->
+    <section class="py-16 sm:py-24 bg-stone-50 overflow-hidden relative">
+        <span class="section-title-en font-playfair text-stone-900/10">Reviews</span>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <h2 class="text-center text-2xl sm:text-3xl mb-12 sm:mb-16 font-bold text-stone-900">お客様から届いた感動の声</h2>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-white p-6 sm:p-8 border-b-4 border-gold shadow-sm rounded-2xl">
+                    <div class="flex text-gold mb-4 text-lg" aria-label="評価5つ星">★★★★★</div>
+                    <p class="text-stone-600 text-sm mb-6 leading-relaxed">「オムライスのチーズトッピングを頼みました！とてもふわふわでデミグラスソースとベストマッチング！」</p>
+                    <p class="font-bold text-xs text-stone-400">— 札幌市 30代女性</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 border-b-4 border-gold shadow-sm rounded-2xl">
+                    <div class="flex text-gold mb-4 text-lg" aria-label="評価4つ星">★★★★☆</div>
+                    <p class="text-stone-600 text-sm mb-6 leading-relaxed">「基本の200gでも十分ですが、30g単位で増やせるのが嬉しい。肉汁が凄くて完食できました。」</p>
+                    <p class="font-bold text-xs text-stone-400">— 中央区 40代男性</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 border-b-4 border-gold shadow-sm rounded-2xl sm:col-span-2 md:col-span-1">
+                    <div class="flex text-gold mb-4 text-lg" aria-label="評価5つ星">★★★★★</div>
+                    <p class="text-stone-600 text-sm mb-6 leading-relaxed">「店長さんがとても親切。地下の隠れ家的な雰囲気で、大切な人とゆっくり過ごせます。」</p>
+                    <p class="font-bold text-xs text-stone-400">— 豊平区 20代カップル</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- CHEF STORY -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row items-stretch border border-stone-200 rounded-3xl overflow-hidden shadow-lg">
+                <div class="md:w-2/5 bg-stone-100 flex items-center justify-center p-8 sm:p-12">
+                    <div class="text-center">
+                        <div class="w-32 h-32 sm:w-48 sm:h-48 bg-stone-300 rounded-full mx-auto mb-6 grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden flex items-center justify-center">
+                            <!-- 画像タグを追加しました -->
+                            <img src="images/chef.png" alt="オーナーシェフ 斉藤友幸" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-2 text-stone-900">斉藤 友幸</h3>
+                        <p class="text-gold text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.2em]">TOMOYUKI SAITO</p>
+                    </div>
+                </div>
+                <div class="md:w-3/5 p-8 sm:p-10 md:p-16 flex flex-col justify-center text-stone-900 bg-white">
+                    <h2 class="text-2xl sm:text-3xl mb-6 sm:mb-8 border-l-4 border-gold pl-5 sm:pl-6">領事館総料理長が、<br>日常の食卓を「特別」に変える。</h2>
+                    <p class="text-stone-600 leading-loose text-sm md:text-base">
+                        札幌の老舗ホテルから、海外の日本領事館へ。世界中の舌を唸らせてきたオーナーシェフ斉藤が、2015年に自らの理想を形にしたのが「ビストロDining我が家」です。<br><br>
+                        技術、経験、そして情熱。すべては、お客様が一口食べた瞬間にこぼれる「美味しい」という笑顔のために。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON (FUTURE SERVICES & EVENTS) -->
+    <section class="py-16 sm:py-24 bg-stone-100 relative overflow-hidden border-t border-stone-200">
+        <span class="section-title-en font-playfair text-stone-900/10">Coming Soon</span>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-gold/20">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> Future Projects
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 mb-6">Coming Soon</h2>
+                <p class="text-stone-600 leading-relaxed font-medium text-sm sm:text-base">
+                    「我が家」では、お店の味をさらに深く楽しんでいただくため、<br class="hidden md:inline">
+                    そして食を通じた最高の体験をお届けするために、新たなプロジェクトを鋭意準備しております。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+                <!-- Card 1: Collaboration & Events -->
+                <div class="bg-white rounded-3xl p-7 sm:p-8 md:p-10 shadow-lg border border-stone-200/80 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gold/10 text-gold rounded-2xl flex items-center justify-center">
+                                <i data-lucide="utensils-crossed" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+                            </div>
+                            <span class="bg-stone-900 text-gold text-xs font-bold px-3 py-1 rounded-full tracking-wider">EVENT & COLLAB</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-stone-900 mb-4">特別コラボ & BBQイベントの拡充</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            ご好評いただいている「他店シェフとのプレミアムコラボディナー」や「開放感あふれる特別BBQイベント」をさらにパワーアップ。食の可能性を広げる魅力的な限定企画を継続的・持続的に開催してまいります。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-bold text-gold">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>最新情報は公式Instagramにて随時発表</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Takeout & Demiglace Sauce Sales -->
+                <div class="bg-white rounded-3xl p-7 sm:p-8 md:p-10 shadow-lg border border-stone-200/80 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gold/10 text-gold rounded-2xl flex items-center justify-center">
+                                <i data-lucide="shopping-bag" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+                            </div>
+                            <span class="bg-stone-900 text-gold text-xs font-bold px-3 py-1 rounded-full tracking-wider">NEW SERVICE</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-stone-900 mb-4">特選デミグラスソース販売 & テイクアウト</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            長年愛される自慢の「秘伝デミグラスソース」をボトル詰めで販売予定。また、オフィスやご家庭でも「我が家」の味をそのまま楽しめる本格テイクアウト・デリバリーメニューの開発を進めています。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-bold text-gold">
+                        <i data-lucide="package" class="w-4 h-4"></i>
+                        <span>店頭およびオンラインストアでの展開を準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM & SOLUTION -->
+    <section class="py-16 sm:py-24 bg-[#1a1a1a] text-white">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <p class="text-gold font-serif italic text-lg sm:text-xl mb-4">Dining Experience</p>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl mb-12 sm:mb-16 leading-tight">心おきなく、<br>至福の洋食を楽しみたい方へ。</h2>
+            <div class="max-w-4xl mx-auto grid sm:grid-cols-2 gap-0 border border-white/10 rounded-3xl overflow-hidden">
+                <div class="p-8 sm:p-10 border-b sm:border-b-0 sm:border-r border-white/10">
+                    <p class="text-gold mb-4 font-bold">ACCESS</p>
+                    <h3 class="text-lg sm:text-xl mb-4">大通・すすきの徒歩3分</h3>
+                    <p class="text-stone-400 text-sm">ショッピング帰りや仕事帰りに、ふらりと立ち寄れる隠れ家立地。</p>
+                </div>
+                <div class="p-8 sm:p-10">
+                    <p class="text-gold mb-4 font-bold">ATMOSPHERE</p>
+                    <h3 class="text-lg sm:text-xl mb-4">上品でゆったりとした店内</h3>
+                    <p class="text-stone-400 text-sm">地下1階の静かな空間は、デートや大切な人との語らいに最適です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="cta" class="py-16 sm:py-24 bg-stone-50">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <div class="max-w-3xl mx-auto bg-white p-7 sm:p-10 md:p-16 shadow-2xl relative rounded-[2rem] overflow-hidden">
+                <h2 class="text-gold text-lg sm:text-xl tracking-[0.2em] sm:tracking-[0.3em] mb-4">SPECIAL BONUS</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 italic text-stone-900">さらにお得に、<br class="sm:hidden">自慢の味を。</h3>
+                <div class="bg-stone-900 text-white p-6 sm:p-8 mb-8 sm:mb-10 rounded-2xl">
+                    <p class="text-base sm:text-lg mb-4">LINE友だち登録で今すぐ使える</p>
+                    <p class="text-3xl sm:text-4xl md:text-5xl font-black text-gold mb-4">増量30g無料クーポン</p>
+                    <p class="text-xs sm:text-sm opacity-60 italic">※「LPを見た」とお伝えいただくとスムーズです</p>
+                </div>
+                <a href="https://www.instagram.com/bistorodiningwagaya/" target="_blank" rel="noopener noreferrer" class="cta-shine block w-full bg-gold text-white font-bold py-5 sm:py-6 px-6 sm:px-10 rounded-full text-lg sm:text-2xl tracking-[0.1em] sm:tracking-[0.2em] shadow-xl mb-4">
+                    特典を受け取って予約する
+                </a>
+                <div class="flex justify-center items-center gap-2 text-stone-400 mt-6">
+                    <span class="text-xs sm:text-sm">公式Instagramもチェック</span>
+                    <a href="https://www.instagram.com/bistorodiningwagaya/" target="_blank" rel="noopener noreferrer" class="text-gold hover:scale-110 active:scale-110 transition-transform" aria-label="Instagramを見る">
+                        <i data-lucide="instagram" class="w-7 h-7 sm:w-8 sm:h-8"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORE INFO & MAP -->
+    <footer class="bg-[#1a1a1a] text-white pt-16 sm:pt-24 pb-10 sm:pb-12" style="padding-bottom: max(2.5rem, env(safe-area-inset-bottom));">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-12 mb-14 md:mb-16">
+                <!-- Contact Info -->
+                <div class="md:w-1/2">
+                    <div class="flex items-center gap-4 mb-8">
+                        <h2 class="text-3xl sm:text-4xl font-serif text-gold">ビストロDining我が家</h2>
+                        <a href="https://www.instagram.com/bistorodiningwagaya/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-white transition-colors" aria-label="Instagramを見る">
+                            <i data-lucide="instagram" class="w-7 h-7 sm:w-8 sm:h-8"></i>
+                        </a>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-white font-bold mb-2 tracking-widest text-sm text-stone-400">ADDRESS</p>
+                            <p class="text-stone-300 leading-relaxed">
+                                〒060-0062 北海道札幌市中央区南２条西３丁目13−4<br>
+                                カタオカビル B1F
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-white font-bold mb-1 tracking-widest text-sm text-stone-400">PHONE</p>
+                                <a href="tel:0115227815" class="text-xl sm:text-2xl font-bold text-gold">011-522-7815</a>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold mb-1 tracking-widest text-sm text-stone-400">HOLIDAY</p>
+                                <p class="text-stone-300">日曜日</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold mb-2 tracking-widest text-sm text-stone-400">ACCESS</p>
+                            <p class="text-stone-300">地下鉄南北線「大通駅」「すすきの駅」より徒歩3分</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map -->
+                <div class="md:w-1/2">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.2053397096142!2d141.35095467507213!3d43.058148690715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b299100000001%3A0xb0a6abe72eb4484b!2z44OT44K544OI44OtRGluaW5n5oiR44GM5a62!5e0!3m2!1sja!2sjp!4v1771391167305!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ビストロDining我が家 地図"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 text-center text-stone-600 text-xs tracking-widest">
+                &copy; Bistro Dining Wagaya. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
