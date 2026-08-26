@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロ・ポワル | 帯広・大人のオムライスと本格フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdfcf9;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold { color: #b39352; }
+        .bg-gold { background-color: #b39352; }
+        .bg-wine { background-color: #5d1414; }
+        .border-gold { border-color: #b39352; }
+
+        .hero-title {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        .floating-cta {
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+        }
+        .award-badge {
+            background: linear-gradient(135deg, #b39352 0%, #d4bb8a 50%, #b39352 100%);
+        }
+
+        /* Google Map responsive container (16:9〜4:3 の中間で見やすい比率) */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* モバイル時、フローティングCTAの高さ分だけ本文下部に余白を確保 */
+        @media (max-width: 767px) {
+            body { padding-bottom: 76px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- FLOATING CTA (Mobile & Desktop) -->
+    <div class="fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md p-3 md:p-4 floating-cta border-t border-stone-100 flex justify-between items-center px-4 md:px-12">
+        <div class="hidden md:block">
+            <p class="text-xs text-stone-500 font-bold mb-1">【帯広・フレンチ】ビストロ・ポワル</p>
+            <p class="text-lg font-bold serif">大人のオムライスと本格フレンチ</p>
+        </div>
+        <a href="tel:0155-21-8118" class="w-full md:w-auto bg-wine hover:bg-red-950 active:scale-95 text-white font-bold py-3 px-6 md:px-8 rounded-full transition-all text-center flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            <span class="text-base md:text-lg whitespace-nowrap">今すぐ予約: 0155-21-8118</span>
+        </a>
+    </div>
+
+    <!-- FV AREA -->
+    <section class="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden bg-stone-900">
+        <div class="absolute inset-0 z-0">
+            <img src="images/omuraisu.jpg" alt="大人のオムライス" class="w-full h-full object-cover opacity-70">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-stone-900/30"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 max-w-5xl py-24">
+            <div class="inline-block px-4 py-1 border border-gold text-gold mb-6 tracking-widest text-xs md:text-sm font-bold uppercase">Hokkaido Obihiro | Bistro Poire</div>
+            <h1 class="hero-title text-3xl sm:text-4xl md:text-6xl text-white serif font-black mb-6 md:mb-8 leading-tight">
+                甘美なる、<br>
+                <span class="text-gold italic">大人のオムライス。</span>
+            </h1>
+            <p class="text-white text-base sm:text-lg md:text-2xl mb-8 md:mb-10 leading-relaxed font-light tracking-wide">
+                砂糖を使わず、素材の甘みだけで仕上げる。<br class="hidden md:inline">
+                創業以来、美食家を唸らせてきた「究極の一皿」を。
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
+                <div class="award-badge text-white px-6 py-2 rounded shadow-lg text-sm font-bold flex items-center gap-2">
+                    <span>★</span> Tabelog 人気店 獲得
+                </div>
+                <div class="text-white border-b border-white/50 pb-1 text-sm tracking-widest">
+                    帯広駅から徒歩圏内 | 駐車場完備
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-xs animate-bounce flex flex-col items-center">
+            <span>SCROLL</span>
+            <div class="w-px h-8 bg-white/30 mt-2"></div>
+        </div>
+    </section>
+
+    <!-- INTRODUCTION (PHILOSOPHY) -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-gold font-bold tracking-[0.3em] block mb-2 text-xs md:text-sm">PHILOSOPHY</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl serif font-bold mb-6 leading-snug">「本物」を知る大人のための、<br class="md:hidden">優しきフランス料理。</h2>
+                <p class="text-stone-500 leading-loose text-sm md:text-base">
+                    特別な日はもちろん、何気ない日常のランチでも。<br>
+                    ビストロ・ポワルは、十勝の豊かな大地の恵みを、<br>
+                    余計なものを削ぎ落とした「純粋な旨み」で提供します。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16">
+                <div>
+                    <img src="images/poware.jpg" alt="魚介のポワレ" class="rounded-lg shadow-2xl w-full">
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-xl md:text-2xl serif font-bold border-l-4 border-gold pl-4">3回通って、ハズレなし。</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm md:text-base">
+                        「今までハズレの料理が無いです👍」と常連様に言わしめる信頼。<br>
+                        皮をパリッパリに焼き上げたチキン、肉汁溢れるスパイシーハンバーグ。<br>
+                        素材ごとの個性を最大限に活かす火入れと、秘伝のソース。
+                    </p>
+                    <a href="#benefits" class="inline-block text-gold border-b-2 border-gold font-bold pb-1 hover:text-stone-900 hover:border-stone-900 transition-all">
+                        人気のランチメニューを見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIALTY SECTION -->
+    <section class="py-16 md:py-24 bg-stone-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <h4 class="text-gold font-bold mb-2 text-sm">Signature Dish</h4>
+                    <h2 class="text-3xl md:text-4xl serif font-bold mb-6">大人のオムライス</h2>
+                    <div class="space-y-4 text-stone-600 leading-loose text-sm md:text-base">
+                        <p>なぜ「大人」なのか。それは、卵本来の濃厚さと、シェフが時間をかけて煮込んだビタークラシックソースの調和にあります。</p>
+                        <p>一口食べれば、ふわふわの食感とともに、重層的な旨みが口いっぱいに広がります。単品1,050円。この価格で味わえる「本物」をご体験ください。</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2">
+                    <div class="relative max-w-sm mx-auto">
+                        <img src="images/omuraisu.jpg" alt="オムライス イメージ" class="rounded-full w-full aspect-square object-cover shadow-2xl">
+                        <div class="absolute -bottom-4 -right-4 bg-wine text-white p-6 rounded-full w-24 h-24 md:w-32 md:h-32 flex flex-col items-center justify-center font-bold serif shadow-xl">
+                            <span class="text-xs">一番人気</span>
+                            <span class="text-lg md:text-xl">¥1,050</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OWNER STORY -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <img src="images/chef.png" alt="シェフ 岡田宏佑" class="rounded-lg shadow-2xl relative z-10 w-full">
+                        <div class="hidden md:block absolute -right-16 -bottom-16 text-[8rem] lg:text-[10rem] font-serif text-stone-100 -z-0 select-none">Poire</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-gold font-bold tracking-widest block mb-4 text-sm">CHEF STORY</span>
+                    <h2 class="text-2xl md:text-3xl serif font-bold mb-6 md:mb-8 italic leading-snug">化学調味料は使わない。<br>素材が持つ「声」を届ける。</h2>
+                    <div class="space-y-5 text-stone-600 leading-relaxed text-sm md:text-base">
+                        <p>オーナーシェフ 岡田宏佑。<br>2001年開業。既に23年以上、この地でフライパンを振ってきました。</p>
+                        <p>アルザス地方の郷土料理や十勝ハーブ牛、そして何気ないパスタ一皿。私の料理に砂糖はほとんど使いません。それは、食材そのものが持つ甘みを信じているからです。</p>
+                        <p>お料理で海外旅行に出るような。そんなワクワクする体験を、ここビストロ・ポワルでお楽しみください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl serif font-bold text-center mb-12 md:mb-16 text-gold">お客様の声</h2>
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-sm leading-relaxed mb-6 italic">「見た目フレンチなのに、絶妙な味のバランス。まるでお料理で海外旅行に出てるみたいでした。お値段もリーズナブルで、家族とも来てみたいです。」</p>
+                    <p class="text-xs font-bold text-stone-400">— ワイン会参加のお客様</p>
+                </div>
+                <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="text-yellow-400 mb-4">★★★★</div>
+                    <p class="text-sm leading-relaxed mb-6 italic">「魚介のポワレが絶品。海老4つに帆立、白身魚…これでお値打ちは驚きです。ソースが美味しすぎてパンを頼めばよかったと後悔しました(笑)」</p>
+                    <p class="text-xs font-bold text-stone-400">— 3回目訪問のお客様</p>
+                </div>
+                <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-sm leading-relaxed mb-6 italic">「夫婦で営まれているのでしょうか？雰囲気が優しくてパスタもとってもおいしかったです。エビクリームパスタが最高でした！」</p>
+                    <p class="text-xs font-bold text-stone-400">— 初訪問のお客様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS / SPECIAL OFFER -->
+    <section id="benefits" class="py-16 md:py-24 bg-white relative">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-stone-50 border-2 border-gold p-8 sm:p-10 md:p-16 rounded-[2rem] md:rounded-[3rem] text-center relative">
+                <div class="absolute -top-6 md:-top-10 left-1/2 -translate-x-1/2 bg-white px-5 md:px-8 py-3 md:py-4 border-2 border-gold rounded-full font-bold text-gold serif text-sm sm:text-lg md:text-xl shadow-lg whitespace-nowrap">
+                    LP限定・特別優待
+                </div>
+                <h3 class="text-xl sm:text-2xl md:text-3xl serif font-bold mb-6 md:mb-8 mt-6 md:mt-4 leading-snug">
+                    ご予約時に「LPを見た」で<br>
+                    <span class="text-wine text-3xl sm:text-4xl md:text-5xl">自家製プチデザート</span>を<br class="md:hidden">無料プレゼント。
+                </h3>
+                <p class="text-stone-500 mb-8 md:mb-10 leading-relaxed text-sm md:text-base">
+                    23席のこじんまりしたお店のため、お席に限りがございます。<br>
+                    ぜひ、余裕を持ってのご予約をお勧めいたします。
+                </p>
+
+                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-inner mb-8 md:mb-10 flex flex-col md:flex-row gap-4 md:gap-6 justify-center">
+                    <div class="flex-1 md:border-r border-stone-100 last:border-0 p-3 md:p-4 border-b md:border-b-0 last:border-b-0">
+                        <span class="block text-xs font-bold text-stone-400 mb-2">おすすめ</span>
+                        <p class="font-bold serif text-sm md:text-base">大人のオムライス</p>
+                    </div>
+                    <div class="flex-1 md:border-r border-stone-100 last:border-0 p-3 md:p-4 border-b md:border-b-0 last:border-b-0">
+                        <span class="block text-xs font-bold text-stone-400 mb-2">人気</span>
+                        <p class="font-bold serif text-sm md:text-base">スパイシーハンバーグ</p>
+                    </div>
+                    <div class="flex-1 p-3 md:p-4">
+                        <span class="block text-xs font-bold text-stone-400 mb-2">贅沢</span>
+                        <p class="font-bold serif text-sm md:text-base">十勝産ハーブ牛ソテー</p>
+                    </div>
+                </div>
+
+                <a href="tel:0155-21-8118" class="inline-block bg-wine hover:bg-red-950 active:scale-95 text-white font-bold py-5 px-8 md:py-6 md:px-12 rounded-full transition-all text-lg sm:text-xl md:text-2xl shadow-2xl w-full sm:w-auto">
+                    今すぐお電話で予約する
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section class="py-16 md:py-24 bg-white border-t border-stone-100">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-gold font-bold tracking-[0.3em] block mb-2 text-xs md:text-sm">COMING SOON</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl serif font-bold mb-6 leading-snug">さらに愛されるお店へ。<br class="md:hidden">現在準備中のサービス</h2>
+                <p class="text-stone-500 leading-loose text-sm md:text-base">
+                    お客様の「あったらいいな」にお応えするため、<br>
+                    ビストロ・ポワルでは新しい取り組みを準備しております。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="bg-stone-50 p-6 md:p-8 rounded-2xl border-2 border-dashed border-gold/40 relative overflow-hidden transition-all hover:border-gold hover:bg-stone-100">
+                    <div class="text-gold mb-4 md:mb-6">
+                        <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg md:text-xl serif font-bold mb-3 md:mb-4">SNSでの発信強化</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm">
+                        旬の食材を使った新作メニューのご案内や、不定期で開催されるワイン会の告知など、皆様の来店動機になるようなワクワクする情報を、公式SNSを通じて積極的にお届けしていく予定です。
+                    </p>
+                    <div class="absolute top-4 right-4 bg-white border border-stone-200 text-stone-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                        Planning
+                    </div>
+                </div>
+
+                <div class="bg-stone-50 p-6 md:p-8 rounded-2xl border-2 border-dashed border-gold/40 relative overflow-hidden transition-all hover:border-gold hover:bg-stone-100">
+                    <div class="text-gold mb-4 md:mb-6">
+                        <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg md:text-xl serif font-bold mb-3 md:mb-4">テイクアウトの導入</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm">
+                        「ビストロ・ポワルの味を、ご自宅でも楽しみたい」という多くのお客様の声にお応えし、ご家庭で手軽に本格フレンチを味わえるテイクアウトメニューの提供を検討しております。
+                    </p>
+                    <div class="absolute top-4 right-4 bg-white border border-stone-200 text-stone-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                        Planning
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP INFO / MAP -->
+    <section class="py-16 md:py-24 bg-stone-50">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
+                <div>
+                    <h2 class="text-2xl md:text-3xl serif font-bold mb-6 md:mb-8">Access &amp; Info</h2>
+                    <table class="w-full text-sm leading-loose md:leading-[3]">
+                        <tr class="border-b border-stone-200">
+                            <th class="text-left font-bold w-20 md:w-24 align-top py-2 md:py-0">住所</th>
+                            <td class="py-2 md:py-0">〒080-0012 北海道帯広市西2条南23丁目11</td>
+                        </tr>
+                        <tr class="border-b border-stone-200">
+                            <th class="text-left font-bold w-20 md:w-24 align-top py-2 md:py-0">電話</th>
+                            <td class="text-base md:text-lg font-bold text-wine py-2 md:py-0">0155-21-8118</td>
+                        </tr>
+                        <tr class="border-b border-stone-200">
+                            <th class="text-left font-bold w-20 md:w-24 align-top py-2 md:py-0">営業時間</th>
+                            <td class="py-2 md:py-0">ランチ 11:30〜 / ディナー 〜21:00</td>
+                        </tr>
+                        <tr class="border-b border-stone-200">
+                            <th class="text-left font-bold w-20 md:w-24 align-top py-2 md:py-0">定休日</th>
+                            <td class="py-2 md:py-0">日曜日</td>
+                        </tr>
+                        <tr class="border-b border-stone-200">
+                            <th class="text-left font-bold w-20 md:w-24 align-top py-2 md:py-0">設備</th>
+                            <td class="py-2 md:py-0">23席（カウンター・テーブル）/ 駐車場完備</td>
+                        </tr>
+                    </table>
+                    <div class="mt-8">
+                        <a href="https://m.facebook.com/%E3%83%93%E3%82%B9%E3%83%88%E3%83%AD-%E3%83%9D%E3%83%AF%E3%83%AB-304268699746750/?locale2=ja_JP" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-stone-500 hover:text-blue-600 transition-colors">
+                            <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            Facebook公式アカウント
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-stone-200 rounded-2xl overflow-hidden shadow-inner">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5845.0147167715495!2d143.19806540101058!3d42.90433968783229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f73997adba64fb1%3A0x45aaf534feb1a214!2z44OT44K544OI44Ot44Od44Ov44Or!5e0!3m2!1sja!2sjp!4v1771390588594!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="ビストロ・ポワル 地図"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-stone-900 text-stone-500 text-center text-xs">
+        <p class="mb-4">BISTRO POIRE | 北海道帯広のビストロ・ポワル</p>
+        <p>&copy; 2025 Bistro Poire. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
