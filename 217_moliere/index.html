@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン・モリエール | 北海道が育む、ミシュラン三ツ星の至福</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #bfa57d;
+            --dark: #1a1a1a;
+        }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--dark);
+            line-height: 1.8;
+            letter-spacing: 0.03em;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-dark { background-color: var(--dark); }
+
+        .huge-text {
+            font-size: clamp(2.5rem, 12vw, 8rem);
+            line-height: 1.15;
+            font-weight: 900;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-hover:hover {
+            letter-spacing: 0.2em;
+            background-color: var(--dark);
+            color: white;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .map-container {
+            transition: opacity 0.5s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .animate-\[scroll_2s_infinite\] { animation: none; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- FV -->
+    <header class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/main.png" alt="モリエールの料理" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <div class="mb-5 sm:mb-6 overflow-hidden">
+                <p class="text-xs sm:text-base tracking-[0.35em] sm:tracking-[0.5em] uppercase animate-pulse">Sapporo, Hokkaido</p>
+            </div>
+            <h1 class="huge-text mb-6 sm:mb-8">
+                <span class="block">大地を、</span>
+                <span class="block">喰らう。</span>
+            </h1>
+            <p class="text-base sm:text-xl font-light tracking-[0.15em] sm:tracking-[0.2em] px-2">ミシュラン三ツ星、その極致へ。</p>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center">
+            <span class="text-[9px] sm:text-[10px] tracking-widest uppercase mb-2">Scroll</span>
+            <div class="w-[1px] h-10 sm:h-12 bg-white/50 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-white -translate-y-full animate-[scroll_2s_infinite]"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 実績 -->
+    <section class="py-16 sm:py-24 bg-gray-50 border-y border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-10 sm:gap-12 md:gap-24">
+                <div class="text-center">
+                    <span class="text-gold text-4xl sm:text-5xl font-serif block mb-2">★★★</span>
+                    <p class="text-[10px] sm:text-xs tracking-widest text-gray-400">MICHELIN GUIDE SAPPORO</p>
+                    <p class="font-bold text-sm sm:text-base">ミシュラン三ツ星獲得</p>
+                </div>
+                <div class="w-16 h-[1px] md:w-[1px] md:h-20 bg-gray-200"></div>
+                <div class="text-center">
+                    <span class="text-3xl sm:text-4xl font-serif block mb-2 italic">Golden Prize</span>
+                    <p class="text-[10px] sm:text-xs tracking-widest text-gray-400">WORLD COOKING CONCURS</p>
+                    <p class="font-bold text-sm sm:text-base">世界料理コンクール金賞</p>
+                </div>
+                <div class="w-16 h-[1px] md:w-[1px] md:h-20 bg-gray-200"></div>
+                <div class="text-center">
+                    <span class="text-3xl sm:text-4xl font-serif block mb-2 italic">1st Place</span>
+                    <p class="text-[10px] sm:text-xs tracking-widest text-gray-400">GOURMET REVIEW</p>
+                    <p class="font-bold text-sm sm:text-base">札幌フレンチ満足度 No.1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- メッセージ -->
+    <section class="py-20 sm:py-32 bg-white reveal">
+        <div class="container mx-auto px-6 flex flex-col items-center">
+            <div class="max-w-3xl text-center">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl leading-relaxed mb-8 sm:mb-12 serif">
+                    北海道という名の<br>贅沢を、知る。
+                </h2>
+                <p class="text-gray-500 leading-loose text-base sm:text-lg font-light mb-10 sm:mb-16">
+                    すべての食材を北海道産にこだわり、<br class="hidden sm:block">
+                    ホタテ、十勝牛、冬野菜、王様野菜など地元素材を美しく調理。<br class="hidden sm:block">
+                    一口ごとに味が変わる23〜30種類の野菜サラダは、<br class="hidden sm:block">
+                    食べる楽しみを再発見させる、私たちの誇りです。
+                </p>
+                <a href="http://www.sapporo-moliere.com/" class="inline-block px-8 sm:px-12 py-4 border border-black text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase cta-hover transition-all duration-500">
+                    Discover More
+                </a>
+            </div>
+        </div>
+    </section>
+
+ <!-- ギャラリー -->
+<section class="grid grid-cols-1 md:grid-cols-2">
+    <!-- 1段目：毛蟹のリゾット -->
+    <div class="aspect-square overflow-hidden group">
+        <img src="images/rissot.jpg" alt="毛蟹のリゾット" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+    </div>
+    <div class="bg-dark text-white p-8 sm:p-12 md:p-24 flex flex-col justify-center reveal">
+        <span class="text-gold tracking-widest text-sm mb-4">Signature Dish</span>
+        <h3 class="text-2xl sm:text-3xl md:text-4xl mb-6 serif">毛蟹のリゾット</h3>
+        <p class="text-gray-400 font-light mb-8">
+            蟹の風味が凝縮された濃厚なソース。バケットの旨々パリパリ感とのコントラストは、パンが主役かと思えるほど。ミシュラン三ツ星ならではの演出と共にお楽しみください。
+        </p>
+        <div class="w-12 h-[1px] bg-gold"></div>
+    </div>
+
+    <!-- 2段目：30種類の温野菜（テキストを左、画像を右に配置） -->
+    <div class="bg-gray-50 p-8 sm:p-12 md:p-24 flex flex-col justify-center reveal">
+        <span class="text-gold tracking-widest text-sm mb-4">Specialite</span>
+        <h3 class="text-2xl sm:text-3xl md:text-4xl mb-6 serif">30種類の温野菜</h3>
+        <p class="text-gray-600 font-light mb-8">
+            都会の高級店では味わえない、朝採れの鮮度。北海道中の生産者を訪ね歩き、その時期に最も力強い食材だけを。サラダに23〜30種類の野菜を使い、食べるごとに表情を変える工夫を凝らしています。
+        </p>
+        <div class="w-12 h-[1px] bg-gold"></div>
+    </div>
+    <div class="aspect-square overflow-hidden group">
+        <img src="images/yasai.jpg" alt="温野菜" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+    </div>
+</section>
+
+    <!-- シェフ -->
+    <section class="py-20 sm:py-32 bg-white overflow-hidden reveal">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 sm:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-6 -left-4 sm:-top-10 sm:-left-10 text-[4.5rem] sm:text-[10rem] font-black text-gray-50 leading-none select-none pointer-events-none">STORY</div>
+                    <img src="images/chef.png" alt="中道博" class="relative z-10 w-full rounded-sm grayscale hover:grayscale-0 transition-all duration-1000">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-gold tracking-[0.3em] text-xs block mb-2 uppercase">The Master of Hokkaido French</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 serif">中道 博 <span class="block sm:inline text-base sm:text-lg font-light mt-2 sm:mt-0 sm:ml-4">Hiroshi Nakamichi</span></h2>
+                    <div class="space-y-6 text-gray-600 font-light text-sm sm:text-base">
+                        <p>1951年、北海道稚内市生まれ。フランス修行を経て1984年、札幌円山で「モリエール」を開業。現在は宮の丘の地で、ミシュラン三ツ星の名店として君臨する。</p>
+                        <p>2008年洞爺湖サミットでの料理提供、そして農林水産省「料理マスターズ」認定。地元食材を活かした「地産地消」の先駆者として、北海道フレンチの象徴的な存在であり続けています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-16 sm:py-24 bg-dark text-white reveal">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-xl sm:text-3xl serif italic">Guest Voices</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12">
+                <div class="border-l border-white/20 pl-5 sm:pl-6">
+                    <p class="text-gold mb-4">★★★★★</p>
+                    <p class="text-sm font-light leading-relaxed text-gray-400">「毛蟹のリゾットは、蟹の風味がしっかり出ていて最高でした。鹿のジビエは松でスモークされていて、香り付けが良く合っていました。」</p>
+                </div>
+                <div class="border-l border-white/20 pl-5 sm:pl-6">
+                    <p class="text-gold mb-4">★★★★★</p>
+                    <p class="text-sm font-light leading-relaxed text-gray-400">「スタッフのみなさんもとても対応も良く、一流のレストランだと感じることができました。札幌フレンチだとおすすめしたいお店です。」</p>
+                </div>
+                <div class="border-l border-white/20 pl-5 sm:pl-6">
+                    <p class="text-gold mb-4">★★★★☆</p>
+                    <p class="text-sm font-light leading-relaxed text-gray-400">「ホールの方々のお声掛けのおもてなし感は硬すぎず過ごしやすい雰囲気にしてくれていて最高でした。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON 新サービス企画 -->
+    <section class="py-20 sm:py-32 bg-stone-100 reveal">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-14 sm:mb-20">
+                <span class="inline-block px-4 py-1 border border-gold text-gold text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase mb-4">Future Experience</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif tracking-widest mb-6">COMING SOON</h2>
+                <p class="text-gray-500 font-light text-sm md:text-base max-w-2xl mx-auto">
+                    モリエールでの体験を、お食事のその先へ。<br>
+                    ご来店いただいたお客様により深く美味の余韻をお楽しみいただくため、新たなサービスを準備しております。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- サービス 1 -->
+                <div class="bg-white p-7 sm:p-8 md:p-10 shadow-sm border border-stone-200/60 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex items-center justify-between mb-6 gap-2 flex-wrap">
+                            <span class="text-xs text-gold tracking-widest font-serif">PROJECT 01</span>
+                            <span class="bg-stone-100 text-stone-600 text-[10px] px-2 py-1 tracking-wider uppercase">Digital Experience</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-4 leading-snug">シェフの解説付き<br>余韻ムービー ／ QRカード</h3>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed mb-6">
+                            お食事の余韻に浸る特別な仕掛け。お会計時に「QRコード付きメッセージカード」をお渡しします。スマートフォンで読み込むと、当日お召し上がりいただいた一皿のこだわりや裏話を、シェフが自ら語る限定解説動画をお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-stone-400 font-light">
+                        <span>準備中</span>
+                        <span>配布開始予定</span>
+                    </div>
+                </div>
+
+                <!-- サービス 2 -->
+                <div class="bg-white p-7 sm:p-8 md:p-10 shadow-sm border border-stone-200/60 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex items-center justify-between mb-6 gap-2 flex-wrap">
+                            <span class="text-xs text-gold tracking-widest font-serif">PROJECT 02</span>
+                            <span class="bg-stone-100 text-stone-600 text-[10px] px-2 py-1 tracking-wider uppercase">Publication</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-4 leading-snug">モリエール公式ZINE<br>「大地と歩む（仮）」</h3>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed mb-6">
+                            シェフ中道博の料理人としての歩み、円山で創業してからミシュラン三ツ星に至る歴史、そして北海道の生産者との深い絆を編み込んだオリジナル冊子（ZINE）を発行いたします。ご来店の記念としてお持ち帰りいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-stone-400 font-light">
+                        <span>準備中</span>
+                        <span>店頭にて進呈予定</span>
+                    </div>
+                </div>
+
+                <!-- サービス 3 -->
+                <div class="bg-white p-7 sm:p-8 md:p-10 shadow-sm border border-stone-200/60 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex items-center justify-between mb-6 gap-2 flex-wrap">
+                            <span class="text-xs text-gold tracking-widest font-serif">PROJECT 03</span>
+                            <span class="bg-stone-100 text-stone-600 text-[10px] px-2 py-1 tracking-wider uppercase">Member Privileges</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-4 leading-snug">旬の生産者ストーリー／<br>季節限定レシピ配信</h3>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed mb-6">
+                            北海道各地の朝採れ食材を届けてくれる農家や漁師たちの物語と、ご家庭でも北海道の旬を美味しく愉しむためのモリエール流・ワンポイントアプローチを収めたスペシャルコンテンツ。限定Webページにて順次公開予定です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-stone-400 font-light">
+                        <span>準備中</span>
+                        <span>会員限定先行公開</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約・情報 -->
+    <section class="py-20 sm:py-32 bg-white reveal">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row gap-12 sm:gap-16 mb-16 sm:mb-24">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 serif italic">Reservation</h2>
+                    <p class="mb-8 sm:mb-12 text-gray-500 font-light">円山公園の木々を眺めながら、贅沢な時間をお過ごしください。毎日席をいただいておりますため、早めのご予約をお薦めいたします。</p>
+                    <a href="http://www.sapporo-moliere.com/" class="block text-center py-5 sm:py-6 bg-black text-white text-sm sm:text-base tracking-[0.25em] sm:tracking-[0.4em] font-bold hover:bg-gold transition-colors duration-500">
+                        WEB RESERVATION
+                    </a>
+                </div>
+                <div class="w-full md:w-1/2 space-y-5 sm:space-y-6 text-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-gray-100 pb-4">
+                        <span class="text-gray-400 uppercase tracking-widest">Address</span>
+                        <span class="sm:text-right">北海道札幌市中央区宮ケ丘2丁目1-1<br>ラフィイエット宮ケ丘 1F</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-gray-100 pb-4">
+                        <span class="text-gray-400 uppercase tracking-widest">Phone</span>
+                        <span class="sm:text-right font-bold">011-631-3155</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-gray-100 pb-4">
+                        <span class="text-gray-400 uppercase tracking-widest">Holiday</span>
+                        <span class="sm:text-right">水曜日（他不定休あり）</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-4">
+                        <span class="text-gray-400 uppercase tracking-widest">Links</span>
+                        <div class="flex gap-4">
+                            <a href="https://www.facebook.com/moliere.sapporo/" target="_blank" rel="noopener" class="underline hover:text-gold transition-colors">Facebook</a>
+                            <a href="http://www.sapporo-moliere.com/" target="_blank" rel="noopener" class="underline hover:text-gold transition-colors">Official HP</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Map 埋め込み -->
+        <div class="w-full h-[280px] sm:h-[380px] md:h-[450px] map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3272.282374219987!2d141.30656820226895!3d43.05674251275591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29c3912185d7%3A0x5d4f3c449d204c60!2z44Oi44Oq44Ko44O844Or!5e0!3m2!1sja!2sjp!4v1771461347383!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-gray-50 text-center border-t border-gray-100 px-4">
+        <p class="text-[9px] sm:text-[10px] tracking-widest sm:tracking-[0.5em] text-gray-400 uppercase">&copy; Restaurant Moliere. The Spirit of Hokkaido.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
