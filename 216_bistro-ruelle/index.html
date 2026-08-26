@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロ リュエル | ランボールカレー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4af37; /* Gold for a premium feel */
+            --bg-light: #f9f8f6;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-light);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .header-glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .fv-text {
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .no-split {
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(184, 134, 11, 0.3);
+        }
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .image-container img {
+            transition: transform 0.5s ease;
+        }
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        /* モバイル用の微調整 */
+        @media (max-width: 767px) {
+            .fv-text h1, h1.fv-text {
+                line-height: 1.3;
+            }
+        }
+        /* タップ操作で拡大表示を発生させにくくする */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 header-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-lg sm:text-2xl font-bold tracking-tighter text-gray-900 uppercase">Bistro Ruelle</span>
+            </div>
+
+            <!-- PC用ナビゲーション -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#" class="hover:text-amber-600 transition">Top</a>
+                <a href="#strength-section" class="hover:text-amber-600 transition">Strengths</a>
+                <a href="#coming-soon-section" class="hover:text-amber-600 transition">Coming Soon</a>
+                <a href="#profile-section" class="hover:text-amber-600 transition">History</a>
+                <a href="#problem-section" class="hover:text-amber-600 transition">Q&A</a>
+                <a href="#access-section" class="hover:text-amber-600 transition">Access</a>
+                <!-- 外部リンク修正:公式HPのコンタクト(またはHPトップ)へ -->
+                <a href="https://bistro-ruelle.com/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full text-white btn-gradient">問い合わせ</a>
+            </nav>
+
+            <!-- スマホ用:問い合わせボタン + ハンバーガーメニュー -->
+            <div class="flex items-center gap-2 md:hidden">
+                <a href="https://bistro-ruelle.com/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full text-white text-sm btn-gradient whitespace-nowrap">問い合わせ</a>
+                <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" class="p-2 text-gray-900">
+                    <svg id="icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- スマホ用ドロップダウンメニュー -->
+        <div id="mobile-menu" class="hidden md:hidden header-glass border-t border-gray-100">
+            <nav class="flex flex-col px-6 py-4 space-y-4 text-sm font-medium">
+                <a href="#" class="py-1 hover:text-amber-600 transition">Top</a>
+                <a href="#strength-section" class="py-1 hover:text-amber-600 transition">Strengths</a>
+                <a href="#coming-soon-section" class="py-1 hover:text-amber-600 transition">Coming Soon</a>
+                <a href="#profile-section" class="py-1 hover:text-amber-600 transition">History</a>
+                <a href="#problem-section" class="py-1 hover:text-amber-600 transition">Q&A</a>
+                <a href="#access-section" class="py-1 hover:text-amber-600 transition">Access</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- First View (FV) -->
+    <section class="relative h-screen min-h-[560px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/curry.jpg" alt="[ランボールカレーのイメージ画像]" class="w-full h-full object-cover brightness-75">
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 sm:px-4">
+            <p class="text-amber-400 font-bold tracking-widest mb-3 md:mb-4 text-xs sm:text-sm animate-fade-in-up uppercase">Special Lunch Menu</p>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-5 md:mb-6 fv-text leading-tight">
+                <span class="no-split">ビストロ仕込みの</span><br class="md:hidden">
+                <span class="no-split text-amber-400 italic font-serif">ランボールカレー</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 md:mb-10 opacity-90 leading-relaxed">
+                北海道産食材の旨味と、フレンチの技法が溶け合う。<br>
+                一口ごとに驚きがある、至福のワンプレートを。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#strength-section" class="px-8 py-4 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-100 transition shadow-xl">こだわりを見る</a>
+                <a href="#access-section" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition">ご来店はこちら</a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Strengths Section -->
+<section id="strength-section" class="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">ビストロ リュエルの強み</h2>
+        <div class="w-12 h-1 bg-amber-500 mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <div class="space-y-4">
+            <h3 class="text-lg sm:text-xl font-bold">厳選された北海道産食材</h3>
+            <p class="text-gray-600 leading-relaxed text-sm">
+                シェフが自ら厳選した旬の地元食材をふんだんに使用。季節ごとに表情を変えるコース料理は、常に新しい発見と感動を届けます。
+            </p>
+        </div>
+        <div class="space-y-4">
+            <h3 class="text-lg sm:text-xl font-bold">上品で落ち着いた隠れ家空間</h3>
+            <p class="text-gray-600 leading-relaxed text-sm">
+                温もりある照明と洗練されたインテリア。カウンター席やソファ席を完備し、デートや記念日にも最適なプライベート感を演出します。
+            </p>
+        </div>
+        <div class="space-y-4">
+            <h3 class="text-lg sm:text-xl font-bold">温かなおもてなしの心</h3>
+            <p class="text-gray-600 leading-relaxed text-sm">
+                「ハキハキと朗らかな」シェフの人柄が評判。お一人様でも安心して寛げる、アットホームで優雅な時間を提供します。
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- Menu Showcase -->
+    <section class="bg-stone-900 text-white py-16 md:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-6 -left-2 sm:-top-10 sm:-left-10 text-amber-500/20 text-6xl sm:text-9xl font-serif italic">Curry</div>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6 md:mb-8 relative z-10 leading-tight">
+                    フレンチが創る、<br><span class="text-amber-500">究極のランボールカレー</span>
+                </h2>
+                <div class="space-y-6 text-gray-300">
+                    <p class="leading-relaxed text-sm sm:text-base">
+                        ランチで不動の人気を誇る看板メニュー。フレンチのデミグラスソースの技法をベースに、スパイスの奥行きを加えた贅沢な一品です。
+                    </p>
+                    <ul class="space-y-4 text-sm sm:text-base">
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-3 mt-1">✔</span>
+                            <span>肉厚でジューシーな特選ランボール</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-3 mt-1">✔</span>
+                            <span>野菜の甘みと芳醇なスパイスの調和</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-500 mr-3 mt-1">✔</span>
+                            <span>五感で楽しむ美しい盛り付け</span>
+                        </li>
+                    </ul>
+                    <div class="pt-6 border-l-2 border-amber-500/30 pl-4">
+                        <p class="text-sm italic text-gray-400">「今回のプレートはクラシカルよりも現代的で、素材の味わいが活きる構成。大変美味しかったです。」(クチコミより)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                <div class="image-container aspect-[3/4] translate-y-6 sm:translate-y-8">
+                    <img src="images/curry.jpg" alt="[カレーのクローズアップ画像]" class="w-full h-full object-cover">
+                </div>
+                <div class="image-container aspect-[3/4]">
+                    <img src="images/zensai.png" alt="[前菜盛り合わせの画像]" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="py-16 md:py-24 bg-stone-100 border-y border-amber-500/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+            <span class="inline-block px-4 py-1.5 bg-amber-500 text-stone-900 font-bold text-xs uppercase tracking-widest rounded-full mb-4 shadow-sm">Coming Soon</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 font-serif">ランチレギュラー化 進行中プロジェクト</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed text-sm md:text-base">
+                お客様からの熱いご要望にお応えし、これまで不定期営業だった大人気のランチ営業を<strong class="text-gray-900 font-bold">「レギュラー化」</strong>するプロジェクトがスタート!<br>
+                平日のビジネスランチから週末のご褒美ランチまで、より気軽にお楽しみいただける新しいサービスを準備中です。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-md border border-stone-200/60 relative overflow-hidden group hover:shadow-xl transition">
+                    <div class="absolute -right-4 -bottom-4 text-stone-100 text-7xl sm:text-8xl font-bold font-serif select-none group-hover:text-amber-50 transition">01</div>
+                    <span class="text-amber-600 text-xs font-bold tracking-wider uppercase block mb-2">Weekday Plan</span>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900">平日限定 クイック&スパイスランチ</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed relative z-10">
+                        「仕事の合間に手軽に本格カレーを食べたい」という声にお応えし、平日限定の特選ランボールカレーランチをスタート予定。忙しい平日に極上のランチタイムをお届けします。
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-md border border-stone-200/60 relative overflow-hidden group hover:shadow-xl transition">
+                    <div class="absolute -right-4 -bottom-4 text-stone-100 text-7xl sm:text-8xl font-bold font-serif select-none group-hover:text-amber-50 transition">02</div>
+                    <span class="text-amber-600 text-xs font-bold tracking-wider uppercase block mb-2">Weekend Plan</span>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900">週末限定 フルコース仕立てランチ</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed relative z-10">
+                        休日にゆっくり味わいたい方のための「前菜盛り合わせ+ランボールカレー+特選デザート」の贅沢ランチセット。大切なご家族やご友人との優雅なひとときにぴったりです。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 inline-flex flex-col sm:flex-row items-center justify-center gap-4 bg-amber-500/10 p-4 sm:p-6 rounded-2xl border border-amber-500/30">
+                <span class="text-stone-800 text-sm font-medium flex items-center text-center sm:text-left">
+                    <svg class="w-5 h-5 mr-2 text-amber-600 fill-current shrink-0" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/></svg>
+                    開始時期や最新スケジュールはSNSでいち早くご案内します!
+                </span>
+                <a href="https://www.facebook.com/people/%E3%83%93%E3%82%B9%E3%83%88%E3%83%AD%E3%83%AA%E3%83%A5%E3%82%A8%E3%83%AB/100083014376970/" target="_blank" rel="noopener noreferrer" class="text-xs px-5 py-2.5 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition font-bold whitespace-nowrap shadow-sm">
+                    公式Facebookで最新情報をゲット
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="profile-section" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-12">
+                <div class="w-40 sm:w-56 md:w-1/3 shrink-0">
+                    <div class="aspect-square rounded-full overflow-hidden border-4 border-amber-500/20 shadow-2xl">
+                        <img src="images/chef.png" alt="[大矢春寿シェフのイメージ画像]" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 text-center md:text-left">
+                    <h2 class="text-sm font-bold text-amber-600 mb-2 uppercase tracking-widest">Owner Chef</h2>
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-4">大矢 春寿 <span class="text-base sm:text-lg font-normal text-gray-500 ml-2">Haruhisa Oya</span></h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base">
+                        地元密着型のフレンチビストロを志し、千歳市の住宅街に「ビストロ リュエル」を創業。
+                        「地元食材を活かした本格料理を、日常に」という想いを軸に、日々オープンキッチンで堂々とした調理を披露しています。
+                        お客様との温かな交流を何より大切にする、朗らかなおもてなしを体験してください。
+                    </p>
+                    <div class="flex justify-center md:justify-start flex-wrap gap-x-6 gap-y-2">
+                        <a href="https://www.facebook.com/people/%E3%83%93%E3%82%B9%E3%83%88%E3%83%AD%E3%83%AA%E3%83%A5%E3%82%A8%E3%83%AB/100083014376970/" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-600 hover:underline transition">
+                            <span class="font-bold">Facebook</span>
+                        </a>
+                        
+                        <a href="https://bistro-ruelle.com/" target="_blank" rel="noopener noreferrer" class="flex items-center text-amber-600 hover:underline transition">
+                            <span class="font-bold">Official HP</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-16 md:py-24 bg-stone-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-10 md:mb-12 text-center italic font-serif text-amber-700">Questions & Answers</h2>
+            <div class="space-y-6">
+                <div class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h4 class="font-bold flex items-start mb-2">
+                        <span class="bg-amber-100 text-amber-700 px-2 py-1 rounded mr-3 text-xs shrink-0">Q</span>
+                        <span>ランチに予約は必要ですか?</span>
+                    </h4>
+                    <p class="text-gray-600 pl-8 text-sm sm:text-base">ランチは予約なしでもお気軽にご来店いただけます。ディナーは前日までの完全予約制で、ゆったりとした時間をお過ごしいただけます。</p>
+                </div>
+                <div class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h4 class="font-bold flex items-start mb-2">
+                        <span class="bg-amber-100 text-amber-700 px-2 py-1 rounded mr-3 text-xs shrink-0">Q</span>
+                        <span>子供連れでも大丈夫ですか?</span>
+                    </h4>
+                    <p class="text-gray-600 pl-8 text-sm sm:text-base">はい、お子様連れのお客様も歓迎しております。アレルギー対策も柔軟に承っておりますので、お気軽にご相談ください。</p>
+                </div>
+                <div class="bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h4 class="font-bold flex items-start mb-2">
+                        <span class="bg-amber-100 text-amber-700 px-2 py-1 rounded mr-3 text-xs shrink-0">Q</span>
+                        <span>駐車場はありますか?</span>
+                    </h4>
+                    <p class="text-gray-600 pl-8 text-sm sm:text-base">はい、駐車場を完備しております。お車でお越しの方も安心してお立ち寄りください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 md:mb-8">Access Information</h2>
+                <div class="space-y-4 sm:space-y-6 text-gray-700">
+                    <div class="p-4 bg-stone-50 rounded-lg">
+                        <p class="font-bold text-gray-900 mb-1">住所</p>
+                        <p class="text-sm sm:text-base">〒066-0039 北海道千歳市富士2丁目1−14</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-stone-50 rounded-lg">
+                            <p class="font-bold text-gray-900 mb-1">電話番号</p>
+                            <p class="text-amber-700 font-bold text-lg"><a href="tel:0123253935">0123-25-3935</a></p>
+                        </div>
+                        <div class="p-4 bg-stone-50 rounded-lg">
+                            <p class="font-bold text-gray-900 mb-1">定休日</p>
+                            <p class="text-sm sm:text-base">日曜日</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-stone-50 rounded-lg">
+                        <p class="font-bold text-gray-900 mb-1">席数・設備</p>
+                        <p class="text-sm sm:text-base">16席(カウンター・ソファ席あり)、駐車場完備、子連れOK</p>
+                    </div>
+                    <div class="pt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                        <span class="text-sm font-bold text-gray-500">Official Links:</span>
+                        <a href="https://bistro-ruelle.com/" target="_blank" class="text-amber-600 underline text-sm">Website</a>
+                        <a href="https://www.facebook.com/people/%E3%83%93%E3%82%B9%E3%83%88%E3%83%AD%E3%83%AA%E3%83%A5%E3%82%A8%E3%83%AB/100083014376970/" target="_blank" class="text-amber-600 underline text-sm">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[380px] lg:h-[450px] border border-gray-100">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2928.32483832104!2d141.63737527663243!3d42.82348557115324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f75191d8e62f597%3A0x633d7b3726d4007b!2z44CSMDY2LTAwMzkg5YyX5rW36YGT5Y2D5q2z5biC5a-M5aOr77yS5LiB55uu77yR4oiS77yR77yU!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold font-serif italic mb-2 tracking-widest">BISTRO RUELLE</h2>
+            <p class="text-amber-500 text-xs sm:text-sm mb-8 md:mb-10 tracking-[0.2em]">Hokkaido Chitose French Bistro</p>
+
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-10 md:mb-12 text-sm font-medium">
+                <a href="#" class="hover:text-amber-400 transition">Top</a>
+                <a href="#strength-section" class="hover:text-amber-400 transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-amber-400 transition">History</a>
+                <a href="#problem-section" class="hover:text-amber-400 transition">Q&A</a>
+                <a href="#access-section" class="hover:text-amber-400 transition">Access</a>
+                <a href="https://bistro-ruelle.com/" target="_blank" class="hover:text-amber-400 transition">Official HP</a>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs opacity-40 uppercase tracking-widest">&copy; 2024 Bistro Ruelle. All rights reserved.</p>
+                <div class="flex space-x-6 opacity-60 text-xs">
+                    <a href="https://bistro-ruelle.com/" target="_blank" class="hover:opacity-100 transition">Privacy Policy</a>
+                    <a href="https://bistro-ruelle.com/" target="_blank" class="hover:opacity-100 transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スマホ用ハンバーガーメニューの開閉制御
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        menuToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+            menuToggle.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        });
+
+        // メニュー内リンクをタップしたら自動で閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
