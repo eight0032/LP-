@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>食堂ろらんじゅ | 帯広・すすきののカウンターフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --color-deep-navy: #0a1128;
+            --color-gold: #c5a059;
+            --color-paper: #f9f7f2;
+        }
+
+        html {
+            /* prevent iOS text auto-zoom on rotate while keeping user zoom */
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-paper);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        /* 縦書きクラス */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* アニメーション用 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .animate-infinite-scroll {
+                animation: none !important;
+            }
+        }
+
+        .hero-bg {
+            background: linear-gradient(to right, rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.35)),
+                        url('images/oden.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (max-width: 767px) {
+            .hero-bg {
+                background: linear-gradient(to bottom, rgba(10, 17, 40, 0.55), rgba(10, 17, 40, 0.9)),
+                            url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            }
+        }
+
+        .gold-border {
+            border-color: var(--color-gold);
+        }
+
+        .bg-navy {
+            background-color: var(--color-deep-navy);
+        }
+
+        .text-gold {
+            color: var(--color-gold);
+        }
+
+        /* 装飾的なライン */
+        .deco-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+            margin: 0 auto;
+        }
+
+        /* Google Map のカスタマイズ */
+        .map-container {
+            filter: grayscale(0.3) contrast(1.1) invert(0.05);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        @keyframes infinite-scroll {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .animate-infinite-scroll {
+            animation: infinite-scroll 2s linear infinite;
+        }
+
+        /* タップ時のハイライトを控えめに */
+        a, button {
+            -webkit-tap-highlight-color: rgba(197, 160, 89, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center hero-bg overflow-hidden">
+        <div class="container mx-auto px-6 sm:px-8 relative z-10 flex justify-between items-center h-full py-24 md:py-0">
+            <div class="text-white max-w-2xl">
+                <p class="serif tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm md:text-base mb-5 md:mb-6 border-l-2 border-[#c5a059] pl-4">CHEF-1 GRAND PRIX 2022 CHAMPION</p>
+                <h1 class="serif text-2xl sm:text-3xl md:text-5xl leading-[1.7] md:leading-[1.6] mb-6 md:mb-8">
+                    一皿に、<br>
+                    正解を探る<br>
+                    悦びを。
+                </h1>
+                <p class="text-base md:text-xl font-light opacity-90 leading-relaxed mb-8 md:mb-10">
+                    札幌・すすきののの片隅、十席のカウンター。<br>
+                    ひらまつグループで研鑽を積んだ大原正雄が、<br>
+                    北海道の旬をクラシカルな技法で昇華させる。
+                </p>
+                <div class="flex items-center gap-6">
+                    <a href="#reservation" class="bg-[#c5a059] hover:bg-[#b38f4d] active:bg-[#b38f4d] text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full transition-all serif tracking-widest text-sm shadow-lg inline-block">ご予約を承る</a>
+                </div>
+            </div>
+
+            <!-- 縦書きのサブコピー -->
+            <div class="hidden lg:block vertical-text text-white serif text-xl tracking-[0.5em] opacity-80 h-3/4">
+                五感を研ぎ澄まします、カウンターフレンチの真髄
+            </div>
+        </div>
+        <!-- 下部へのスクロールライン -->
+        <div class="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center">
+            <span class="text-[10px] tracking-widest uppercase mb-2">Scroll</span>
+            <div class="w-[1px] h-10 md:h-12 bg-white/30 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full bg-[#c5a059] animate-infinite-scroll"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 紹介・リード文 -->
+    <section class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
+            <div class="deco-line mb-10 md:mb-12"></div>
+            <h2 class="serif text-lg sm:text-xl md:text-2xl leading-[2] md:leading-[2.2] mb-10 md:mb-12 tracking-wide md:tracking-widest">
+                「万人受け」という言葉に、<br>
+                どこか物足りなさを感じる大人たちへ。
+            </h2>
+            <p class="text-stone-600 leading-[2] md:leading-[2.2] mb-4 text-sm md:text-base">
+                私たちの料理は、決して分かりやすいだけではありません。<br>
+                素材の個性が時に鋭味にさえ感じられるほどの繊細さ。<br>
+                それは、計算し尽くされたクラシックの技法が<br>
+                北海道の力強い食材と衝突し、生まれる奥行きです。<br>
+                一口ごとに「この美味しさの正解は何か」と自問する。<br>
+                その知的な悦びこそが、食堂ろらんじゅの真骨頂です。
+            </p>
+        </div>
+    </section>
+
+<!-- 特徴：3つのこだわり -->
+    <section class="pt-16 md:pt-24 pb-16 md:pb-24">
+        <div class="container mx-auto px-6 sm:px-8">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="group">
+                    <h3 class="serif text-base md:text-lg mb-3 md:mb-4 border-b pb-3 md:pb-4 border-stone-200">01. 独自のクラシカル技法</h3>
+                    <p class="text-xs md:text-sm text-stone-600 leading-relaxed">ひらまつグループ、そしてパリでの経験。王道のフランス料理をベースに、現代の感性を加えた唯一無二の構成。</p>
+                </div>
+                <div class="group">
+                    <h3 class="serif text-base md:text-lg mb-3 md:mb-4 border-b pb-3 md:pb-4 border-stone-200">02. 究極のペアリング</h3>
+                    <p class="text-xs md:text-sm text-stone-600 leading-relaxed">元ワインバー支配人のソムリエが、料理のポテンシャルを最大限に引き出す一杯をご提案します。</p>
+                </div>
+                <div class="group sm:col-span-2 md:col-span-1">
+                    <h3 class="serif text-base md:text-lg mb-3 md:mb-4 border-b pb-3 md:pb-4 border-stone-200">03. 臨場感と寛ぎの共存</h3>
+                    <p class="text-xs md:text-sm text-stone-600 leading-relaxed">目の前で仕上がる一皿。シェフの鼓動が伝わるカウンター席は、食というライブステージです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- イチオシ：ジャスミン茶 -->
+    <section class="py-16 md:py-24 bg-navy text-white overflow-hidden">
+        <div class="container mx-auto px-6 sm:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="hidden sm:block absolute -top-8 -left-8 md:-top-10 md:-left-10 w-28 h-28 md:w-40 md:h-40 border-t border-l border-gold/30 rounded-tl-3xl"></div>
+                    <img src="images/tea.jpg" alt="至福のジャスミン茶" loading="lazy" class="relative z-10 shadow-2xl rounded-2xl w-full">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-gold tracking-[0.3em] md:tracking-[0.4em] text-[10px] uppercase mb-4 block">Signature Beverage</span>
+                    <h2 class="serif text-xl sm:text-2xl md:text-3xl mb-6 md:mb-8 leading-relaxed text-[#c5a059]">
+                        食後の静寂を彩る、<br>
+                        「黄金のジャスミン茶」
+                    </h2>
+                    <p class="text-white/70 leading-loose mb-8 md:mb-10 text-sm">
+                        コースの締めくくり。余韻を打ち消すのではなく、<br>
+                        料理の記憶を優しく、しかし鮮やかに結晶化させる一杯。<br>
+                        ソムリエとシェフが選び抜いた茶葉の香りは、<br>
+                        すすきののの夜を静かに閉じ込めます。
+                    </p>
+                    <div class="border border-gold/50 p-5 md:p-6 inline-block rounded-2xl">
+                        <p class="serif text-gold tracking-widest text-xs text-[#c5a059]">
+                            「インスタグラムを見た」とお伝えください。<br>
+                            食後のティータイムをアップグレードいたします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- COMING SOON：あればいいなと思う新サービス企画 -->
+    <section class="py-16 md:py-24 bg-stone-100 border-y border-stone-200/60 relative overflow-hidden">
+        <div class="container mx-auto px-6 sm:px-8 max-w-3xl relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1 border border-[#c5a059] text-[#c5a059] rounded-full text-xs serif tracking-widest mb-4">COMING SOON</span>
+                <h2 class="serif text-xl sm:text-2xl md:text-3xl tracking-wide md:tracking-widest text-stone-800 mb-4 leading-relaxed">
+                    【初来店・数量限定】<br class="md:hidden">一期一会の「フレンチおでん×ペアリング」
+                </h2>
+                <p class="text-stone-500 text-xs md:text-sm tracking-wider">
+                    「まずはろらんじゅの魅力を軽やかに愉しみたい」という声にお応えする特別セット企画を開始いたします。
+                </p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-sm border border-stone-200/80 space-y-6 md:space-y-8">
+                <div>
+                    <span class="text-[10px] text-[#c5a059] uppercase tracking-widest block font-bold mb-1">First Visit Special Experience</span>
+                    <h3 class="serif text-lg md:text-xl text-stone-800 leading-snug">
+                        「本日のおでん三種」と<br>ソムリエ厳選 ワイン or 日本酒 ペアリングセット
+                    </h3>
+                </div>
+
+                <p class="text-xs text-stone-600 leading-relaxed">
+                    北海道の旬素材をクラシカルなフランス料理の技法（コンソメ・ブイヨン）で炊き上げた「ろらんじゅ流・フレンチおでん」。<br>
+                    素材の深みに寄り添うワイン、または意外な化学反応を生む日本酒をソムリエが一杯選定。カウンターフレンチの入り口として、まずはお気軽にお試しいただけます。
+                </p>
+
+                <div class="bg-stone-50 p-4 rounded-xl border border-stone-200/60 text-xs space-y-2">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 border-b border-stone-200/60 pb-2">
+                        <span class="font-bold text-stone-700">【セット内容】</span>
+                        <span class="serif font-bold text-[#c5a059] text-sm">特別価格（準備中）</span>
+                    </div>
+                    <ul class="text-stone-600 space-y-1 text-[11px] list-disc list-inside">
+                        <li>シェフ特選フレンチおでん 厳選3種</li>
+                        <li>ソムリエ厳選ペアリング（グラスワイン または プレミアム日本酒 1杯）</li>
+                    </ul>
+                </div>
+
+                <div class="border-l-2 border-[#c5a059] pl-4 py-1">
+                    <p class="text-[11px] text-stone-500 leading-normal">
+                        <span class="font-bold text-stone-700">★リピート特典：</span><br>
+                        本セットをご利用いただいたお客様には、次回フルコースご予約時に使える<strong class="text-stone-800 font-bold">「ソムリエ厳選 食前酒/食後酒チケット」</strong>を進呈いたします。
+                    </p>
+                </div>
+
+                <p class="text-[10px] text-stone-400 italic">※開始日・事前予約のご案内は公式Instagramにて優先発信いたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- シェフ・ストーリー -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6 sm:px-8 flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+            <div class="w-full md:w-1/2">
+                <img src="images/chef.png" alt="大原シェフ" loading="lazy" class="grayscale hover:grayscale-0 transition-all duration-1000 rounded-2xl shadow-lg w-full">
+            </div>
+            <div class="w-full md:w-1/2">
+                <p class="serif text-stone-400 mb-2 text-xs">Owner Chef</p>
+                <h2 class="serif text-xl md:text-2xl mb-8 md:mb-10 border-b border-stone-200 pb-5 md:pb-6">大原 正雄</h2>
+                <div class="space-y-5 md:space-y-6 text-stone-600 leading-loose text-xs md:text-sm">
+                    <p>1984年 北海道生まれ。幼少期より料理を志し、ひらまつグループにて東京、金沢、パリ、大阪、京都と各地の名店で腕を磨く。</p>
+                    <p>2007年 ボキューズ・ドール国際料理コンクール日本代表アシスタント。2015年「ラ・フェット ひらまつ」料理長を経て、2018年 故郷・帯広にて独立。</p>
+                    <p class="text-stone-900 font-bold">2022年、CHEF-1グランプリ優勝。<br>461名の料理人の頂点に立ち、その技術を今、この10席に捧げる。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-16 md:py-24 bg-stone-50">
+        <div class="container mx-auto px-6 sm:px-8">
+            <h2 class="text-center serif text-xl md:text-2xl mb-12 md:mb-16 tracking-wide md:tracking-widest">Customer Voice</h2>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <div class="bg-white p-8 md:p-10 shadow-sm relative italic leading-relaxed text-stone-600 rounded-3xl">
+                    <span class="text-5xl md:text-6xl text-stone-100 absolute top-4 left-4 font-serif leading-none">&ldquo;</span>
+                    <p class="relative z-10 text-sm">
+                        「この美味しさのポイントは何だ？」と、美味しさの正解を探るようにいただきました。いろんなフレンチを食べ慣れた人こそ、この《奥ゆかしい味》を楽しめると思います。
+                    </p>
+                    <div class="mt-6 text-[10px] text-stone-400 not-italic text-right">— 帯広市 A様</div>
+                </div>
+                <div class="bg-white p-8 md:p-10 shadow-sm relative italic leading-relaxed text-stone-600 rounded-3xl">
+                    <span class="text-5xl md:text-6xl text-stone-100 absolute top-4 left-4 font-serif leading-none">&ldquo;</span>
+                    <p class="relative z-10 text-sm">
+                        最初に、豪快なコロッケが出てきました。いきなり、めちゃくちゃ美味しい！パテドカンパーニュも最高でした。ワインの注ぎ方での味変体験も素晴らしかったです。
+                    </p>
+                    <div class="mt-6 text-[10px] text-stone-400 not-italic text-right">— 観光でのご利用 B様</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約・店舗情報 -->
+    <section id="reservation" class="py-16 md:py-24 bg-navy text-white">
+        <div class="container mx-auto px-6 sm:px-8 max-w-6xl">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="serif text-2xl md:text-3xl mb-4 tracking-wide md:tracking-widest text-[#c5a059]">RESERVATION</h2>
+                <p class="text-[10px] opacity-60 uppercase tracking-[0.3em]">ご予約と店舗案内</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 md:gap-16 items-start">
+                <div class="space-y-10 md:space-y-12">
+                    <div class="grid sm:grid-cols-2 gap-6 md:gap-8">
+                        <div>
+                            <h3 class="serif text-[#c5a059] text-base mb-3 md:mb-4 border-b border-gold/30 pb-2">Location</h3>
+                            <p class="text-xs leading-loose opacity-80">
+                                〒064-0805 北海道帯広市中央区南5条西3丁目1-5<br>
+                                　3ビル 2F（すすきのの口 徒歩3分）
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="serif text-[#c5a059] text-base mb-3 md:mb-4 border-b border-gold/30 pb-2">Phone</h3>
+                            <p class="text-lg md:text-xl font-bold">
+                                <a href="tel:0116002002" class="hover:text-gold transition-colors">011-600-2002</a>
+                            </p>
+                            <p class="text-[8px] opacity-40 mt-1 uppercase tracking-widest italic">Always welcome your call</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="serif text-[#c5a059] text-base mb-3 md:mb-4 border-b border-gold/30 pb-2">Google Map</h3>
+                        <div class="map-container rounded-3xl overflow-hidden aspect-video w-full shadow-lg">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3947199355885!2d141.35230727507192!3d43.05416519096994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2932e272bcd1%3A0x9a451b5a3a00e0!2z6aOf5aCC44KN44KJ44KT44GY44KF772cT0RFTuOBqOODr-OCpOODs-OBqOaXpeacrOmFkg!5e0!3m2!1sja!2sjp!4v1771387697074!5m2!1sja!2sjp"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="serif text-[#c5a059] text-base mb-3 md:mb-4 border-b border-gold/30 pb-2">Information</h3>
+                        <ul class="text-[11px] grid grid-cols-2 gap-y-2 opacity-80">
+                            <li>・カウンター10席</li>
+                            <li>・おまかせコース：4，200円〜</li>
+                            <li>・土日限定ランチ営業あり</li>
+                            <li>・英語メニュー完備</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-between border border-gold/20 p-6 sm:p-8 md:p-12 bg-black/20 h-full rounded-3xl">
+                    <div>
+                        <h3 class="serif text-xl mb-6 md:mb-8 text-center tracking-wide md:tracking-widest">Latest Information</h3>
+                        <p class="text-xs opacity-70 mb-8 md:mb-10 leading-relaxed text-center max-w-sm mx-auto">
+                            旬の食材に合わせた新作料理や、ソムリエのおすすめワイン、週末の空席状況はInstagramにて随時更新しております。
+                        </p>
+                    </div>
+                    <div class="space-y-6">
+                        <a href="https://www.instagram.com/syokudoulorange/" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 w-full py-4 md:py-5 border border-gold text-[#c5a059] hover:bg-gold hover:text-navy active:bg-gold active:text-navy transition-all text-center serif tracking-widest group rounded-full text-xs">
+                            <i class="fab fa-instagram text-lg"></i>
+                            INSTAGRAM を見る
+                        </a>
+                        <p class="text-center text-[10px] opacity-30 mt-6 md:mt-8 tracking-tighter">
+                            ※お席に限りがあるため、お早めのご予約をお勧めいたします。
+                        </p>
+                    </div>
+                    <p class="text-center mt-10 md:mt-12 text-[10px] opacity-20 uppercase tracking-widest">&copy; 2024 Syokudou L'orange</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // シンプルなスクロールフェードインアニメーション
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
