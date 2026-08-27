@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>オーベルジュ・ド・リル サッポロ | シュークルート</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@200;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a40;
+            --accent: #c5a059;
+            --text-dark: #2d2d2d;
+            --bg-light: #fdfcf9;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+            line-height: 1.8;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+
+        /* 縦書きテキストのスタイル */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* FVの高級感あふれるオーバーレイ */
+        .fv-container {
+            min-height: 100svh;
+            background: linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.25)), url('images/main.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-glass {
+            background: rgba(253, 252, 249, 0.95);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+        }
+
+        .btn-gold {
+            background-color: var(--accent);
+            color: white;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #b38d45;
+            letter-spacing: 0.15em;
+        }
+
+        .gold-line {
+            width: 40px;
+            height: 1px;
+            background-color: var(--accent);
+        }
+
+        .nobreak {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        /* サンプルLP風の画像配置スタイル */
+        .img-offset {
+            position: relative;
+            z-index: 1;
+        }
+        .img-offset::after {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            right: -16px;
+            bottom: -16px;
+            background: var(--accent);
+            opacity: 0.1;
+            z-index: -1;
+        }
+        @media (min-width: 1024px) {
+            .img-offset::after {
+                top: 20px;
+                left: 20px;
+                right: -20px;
+                bottom: -20px;
+            }
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .hamburger-line {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        #menu-toggle.open .line-1 { transform: translateY(7px) rotate(45deg); }
+        #menu-toggle.open .line-2 { opacity: 0; }
+        #menu-toggle.open .line-3 { transform: translateY(-7px) rotate(-45deg); }
+
+        /* フォーカス表示 */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 header-glass border-b border-gray-100">
+        <div class="container mx-auto px-5 sm:px-8 py-4 sm:py-5 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="font-cinzel text-lg sm:text-2xl font-bold tracking-[0.15em] sm:tracking-[0.2em] text-slate-900">Auberge de L'ill</span>
+                <span class="text-[9px] sm:text-[10px] tracking-[0.3em] sm:tracking-[0.4em] text-slate-400 -mt-1 uppercase">Sapporo France</span>
+            </div>
+
+            <!-- PC Nav -->
+            <nav class="hidden lg:flex items-center space-x-10 text-[13px] font-medium tracking-widest">
+                <a href="#" class="hover:text-[#c5a059] transition-colors uppercase">Top</a>
+                <a href="#strength-section" class="hover:text-[#c5a059] transition-colors uppercase">strengths</a>
+                <a href="#profile-section" class="hover:text-[#c5a059] transition-colors uppercase">history</a>
+                <a href="#coming-soon-section" class="hover:text-[#c5a059] transition-colors uppercase">Coming Soon</a>
+                <a href="#problem-section" class="hover:text-[#c5a059] transition-colors uppercase">Q&A</a>
+                <a href="#access-section" class="hover:text-[#c5a059] transition-colors uppercase">access</a>
+                <a href="https://www.hiramatsurestaurant.jp/smp/aubergedelill-sapporo/contact/" target="_blank" class="btn-gold px-8 py-3 rounded-none text-xs uppercase font-bold">お問い合わせ</a>
+            </nav>
+
+            <!-- Mobile hamburger -->
+            <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" class="lg:hidden relative w-8 h-6 flex flex-col justify-between">
+                <span class="hamburger-line line-1 block w-full h-[2px] bg-slate-900"></span>
+                <span class="hamburger-line line-2 block w-full h-[2px] bg-slate-900"></span>
+                <span class="hamburger-line line-3 block w-full h-[2px] bg-slate-900"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav id="mobile-menu" class="lg:hidden flex flex-col px-5 pb-2 text-sm font-medium tracking-widest border-t border-gray-100">
+            <a href="#" class="py-3 border-b border-gray-100 uppercase">Top</a>
+            <a href="#strength-section" class="py-3 border-b border-gray-100 uppercase">strengths</a>
+            <a href="#profile-section" class="py-3 border-b border-gray-100 uppercase">history</a>
+            <a href="#coming-soon-section" class="py-3 border-b border-gray-100 uppercase">Coming Soon</a>
+            <a href="#problem-section" class="py-3 border-b border-gray-100 uppercase">Q&A</a>
+            <a href="#access-section" class="py-3 border-b border-gray-100 uppercase">access</a>
+            <a href="https://www.hiramatsurestaurant.jp/smp/aubergedelill-sapporo/contact/" target="_blank" class="btn-gold text-center mt-4 mb-4 px-8 py-3 text-xs uppercase font-bold">お問い合わせ</a>
+        </nav>
+    </header>
+
+    <!-- First View -->
+    <section class="fv-container relative flex items-center pt-24 pb-16 lg:pt-0 lg:pb-0">
+        <div class="container mx-auto px-5 sm:px-8 lg:px-20 text-white">
+            <div class="flex items-start gap-6 sm:gap-12">
+                <div class="hidden md:block vertical-text text-sm tracking-[0.5em] opacity-80 pt-20 border-r border-white/30 pr-4">
+                    伝統と革新が織りなす極上の逸品
+                </div>
+                <div>
+                    <p class="font-cinzel text-base sm:text-lg mb-4 sm:mb-6 tracking-[0.3em] sm:tracking-[0.4em] text-[#c5a059] font-bold">THE SPECIALITE</p>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.4] mb-8 sm:mb-10">
+                        <span class="nobreak tracking-tighter">至高の</span><br>
+                        <span class="nobreak tracking-widest">シュークルート</span>
+                    </h1>
+                    <p class="max-w-xl text-base sm:text-lg leading-[1.9] sm:leading-[2] mb-10 sm:mb-12 font-light opacity-90">
+                        フランス・アルザスの地で半世紀以上愛される味。<br>
+                        北海道の厳選素材と伝統の技が、<br>
+                        記憶に残る至福の瞬間を演出します。
+                    </p>
+                    <div class="flex flex-wrap gap-4 sm:gap-6">
+                        <a href="#strength-section" class="btn-gold px-8 sm:px-12 py-4 sm:py-5 text-sm font-bold shadow-2xl text-center">物語を読む</a>
+                        <a href="#access-section" class="bg-white/5 backdrop-blur-md border border-white/20 px-8 sm:px-12 py-4 sm:py-5 text-sm font-bold hover:bg-white/10 transition-all text-center">ご予約・アクセス</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden sm:block absolute bottom-8 right-8 lg:bottom-12 lg:right-12 text-white/40 text-xs tracking-[0.5em] vertical-text">
+            SCROLL DOWN
+        </div>
+    </section>
+
+    <!-- Strength Section -->
+    <section id="strength-section" class="py-20 sm:py-32 overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-10 sm:gap-20">
+                <div class="w-full lg:w-1/2 img-offset">
+                    <img src="images/syukuruto.jpg" alt="シュークルート" class="w-full shadow-2xl object-cover h-[280px] sm:h-[420px] lg:h-[600px]">
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="gold-line mb-6 sm:mb-8"></div>
+                    <span class="text-[#c5a059] font-bold tracking-[0.3em] text-sm block mb-4 uppercase">Strengths 01</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 leading-snug">北海道とアルザスの<br>幸せな出会い</h2>
+                    <p class="text-gray-600 mb-8 sm:mb-10 leading-[2] sm:leading-[2.2]">
+                        当店のシュークルートは、ただの伝統料理ではありません。北海道ならではの力強い大地の恵みを受けた豚肉や、繊細な旨みを持つ野菜。これらをアルザスの伝統的な発酵技術と合わせることで、ここでしか味わえない「究極の一皿」へと昇華させました。
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 sm:gap-8 border-t border-gray-100 pt-8 sm:pt-10">
+                        <div>
+                            <h4 class="font-bold mb-2 text-sm sm:text-base">厳選された素材</h4>
+                            <p class="text-xs sm:text-sm text-gray-500">道内各地の生産者から届く新鮮な食材を贅沢に使用。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2 text-sm sm:text-base">伝統の醸法</h4>
+                            <p class="text-xs sm:text-sm text-gray-500">本国フランスのレシピを忠実に守り、じっくりと時間をかけて。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History / Profile -->
+    <section id="profile-section" class="py-20 sm:py-32 bg-[#1a2a40] text-white overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-8 relative">
+            <div class="hidden lg:block absolute top-0 right-10 vertical-text opacity-10 text-9xl font-bold tracking-[0.1em] pointer-events-none">
+                HISTORY
+            </div>
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-10 sm:gap-20">
+                <div class="w-full lg:w-1/2">
+                    <img src="images/store.jpg" alt="洋館の外観" class="w-full shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 h-[280px] sm:h-[400px] lg:h-auto object-cover">
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <span class="text-[#c5a059] font-bold tracking-[0.3em] text-sm block mb-4">OUR STORY</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8">冬山の麓に佇む、<br>フランスの記憶。</h2>
+                    <p class="text-gray-300 mb-6 sm:mb-8 leading-[2] sm:leading-[2.2]">
+                        1967年、フランス・アルザスのイローゼンという村で、一軒のレストランがミシュランの三つ星に輝きました。その名は「オーベルジュ・ド・リル」。
+                    </p>
+                    <p class="text-gray-300 mb-6 sm:mb-8 leading-[2] sm:leading-[2.2]">
+                        札幌・円山公園の麓、静寂に包まれたこの地で、私たちはその誇り高き歴史を継承しています。ヨーロッパの古城を思わせる洋館、時代を越えて愛される調度品。ここでは、流れる時間さえもが特別な調味料となります。
+                    </p>
+                    <a href="https://www.hiramatsurestaurant.jp/smp/aubergedelill-sapporo/" target="_blank" class="inline-block border-b border-[#c5a059] pb-2 text-[#c5a059] font-bold tracking-widest hover:text-white hover:border-white transition-all italic">Read More...</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Section -->
+    <section class="py-20 sm:py-32 bg-white">
+        <div class="container mx-auto px-5 sm:px-8">
+            <div class="text-center mb-14 sm:mb-20">
+                <span class="text-[#c5a059] font-bold tracking-[0.3em] text-sm block mb-2 uppercase">Voice</span>
+                <h2 class="text-2xl sm:text-3xl font-bold">お客様からのお言葉</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="p-8 sm:p-10 bg-[#fdfcf9] border border-gray-100 relative group">
+                    <div class="absolute top-4 right-4 text-4xl text-gray-100 font-serif">"</div>
+                    <div class="text-yellow-500 text-xs mb-4 tracking-tighter">★★★★★</div>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6 italic">緑に囲まれた洋館はフランスを思わせる佇まいでとても素敵です。お料理の構成のバランスも良く、最後まで美味しくいただくことができました。</p>
+                    <div class="h-px w-10 bg-[#c5a059]"></div>
+                </div>
+                <div class="p-8 sm:p-10 bg-[#fdfcf9] border border-gray-100 relative group">
+                    <div class="absolute top-4 right-4 text-4xl text-gray-100 font-serif">"</div>
+                    <div class="text-yellow-500 text-xs mb-4 tracking-tighter">★★★★</div>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6 italic">身内の結婚式を行いました。外観内装雰囲気も落ち着いており、レストランとしての料理はどれも美味しいものばかり。突然の飛び入りにも快く引き受けて頂き嬉しかったです。</p>
+                    <div class="h-px w-10 bg-[#c5a059]"></div>
+                </div>
+                <div class="p-8 sm:p-10 bg-[#fdfcf9] border border-gray-100 relative group md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-4 right-4 text-4xl text-gray-100 font-serif">"</div>
+                    <div class="text-yellow-500 text-xs mb-4 tracking-tighter">★★★★★</div>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6 italic">スタッフさんの対応が素晴らしかったです。空間も素敵でした。季節のものがたくさん使われていてよかったです。</p>
+                    <div class="h-px w-10 bg-[#c5a059]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="py-20 sm:py-32 bg-[#121c2b] text-white relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
+                <span class="text-[#c5a059] font-cinzel font-bold tracking-[0.3em] sm:tracking-[0.4em] text-sm block mb-3 uppercase">Future Initiatives</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold tracking-widest text-white mb-6">Coming Soon</h2>
+                <div class="w-12 h-px bg-[#c5a059] mx-auto mb-6"></div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    より深く北海道とアルザスの魅力に触れていただくために。<br class="hidden sm:inline">
+                    オーベルジュ・ド・リル サッポロが準備を進めている、新しいおもてなしの構想です。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-[#1a2a40]/80 border border-[#c5a059]/30 p-6 sm:p-8 rounded-none backdrop-blur-sm flex flex-col justify-between hover:border-[#c5a059] transition-all group">
+                    <div>
+                        <div class="flex justify-between items-center mb-6 gap-2">
+                            <span class="text-xs font-cinzel text-[#c5a059] tracking-widest">PROJECT 01</span>
+                            <span class="text-[10px] bg-[#c5a059]/20 text-[#c5a059] border border-[#c5a059]/40 px-3 py-1 font-medium tracking-wider whitespace-nowrap">COMING SOON</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 group-hover:text-[#c5a059] transition-colors leading-snug">
+                            北海道食材の物語を紡ぐ<br>「ストーリーカード」配布
+                        </h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-8">
+                            シュークルートに使用される厳選豚肉やキャベツなど、道内各地の生産者の情熱や歴史を記した特製カードをお料理と共にお届け。カード裏面のQRコードから特別映像もお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-700/60 pt-4 flex justify-between items-center text-xs text-gray-400">
+                        <span>対象：ご来店のお客様</span>
+                        <span>準備中</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-[#1a2a40]/80 border border-[#c5a059]/30 p-6 sm:p-8 rounded-none backdrop-blur-sm flex flex-col justify-between hover:border-[#c5a059] transition-all group">
+                    <div>
+                        <div class="flex justify-between items-center mb-6 gap-2">
+                            <span class="text-xs font-cinzel text-[#c5a059] tracking-widest">PROJECT 02</span>
+                            <span class="text-[10px] bg-[#c5a059]/20 text-[#c5a059] border border-[#c5a059]/40 px-3 py-1 font-medium tracking-wider whitespace-nowrap">COMING SOON</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 group-hover:text-[#c5a059] transition-colors leading-snug">
+                            ご自宅で味わう<br>「至高のシュークルート BOX」
+                        </h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-8">
+                            グランシェフの味をご自宅や大切な方へのギフトに。真空低温調理した特製シュークルートとソムリエ厳選のアルザスワインをセットにした、特別テイクアウト・全国配送ギフトBOXをご用意します。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-700/60 pt-4 flex justify-between items-center text-xs text-gray-400">
+                        <span>対象：全国配送 / 店頭お渡し</span>
+                        <span>順次予約開始</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-20 sm:py-32 bg-[#fdfcf9]">
+        <div class="container mx-auto px-5 sm:px-8 max-w-4xl">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-12 sm:mb-16 text-center">よくあるご質問</h2>
+            <div class="space-y-10 sm:space-y-12">
+                <div class="flex gap-5 sm:gap-8 group">
+                    <span class="text-2xl sm:text-3xl font-cinzel text-[#c5a059] opacity-30 group-hover:opacity-100 transition-opacity shrink-0">Q.</span>
+                    <div>
+                        <h4 class="text-base sm:text-lg font-bold mb-3 sm:mb-4">ドレスコードはありますか？</h4>
+                        <p class="text-sm sm:text-base text-gray-500 leading-relaxed">スマートカジュアルを推奨しております。特別な一日を演出するため、男性の方はジャケットの着用をおすすめしております。</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 sm:gap-8 group">
+                    <span class="text-2xl sm:text-3xl font-cinzel text-[#c5a059] opacity-30 group-hover:opacity-100 transition-opacity shrink-0">Q.</span>
+                    <div>
+                        <h4 class="text-base sm:text-lg font-bold mb-3 sm:mb-4">シュークルートは事前予約が必要ですか？</h4>
+                        <p class="text-sm sm:text-base text-gray-500 leading-relaxed">当店のスペシャリテとして常にご用意しておりますが、数に限りがございます。ご希望の際は、ご予約時にお申し付けいただけますと確実です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-20 sm:py-32 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-5 sm:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 sm:gap-24">
+                <div class="w-full lg:w-1/3">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12">Access</h2>
+                    <div class="space-y-6 sm:space-y-8 text-sm">
+                        <div>
+                            <p class="text-[#c5a059] font-bold mb-2 uppercase tracking-widest">Address</p>
+                            <p>〒064-0801 北海道札幌市中央区南1条西28丁目3-1</p>
+                        </div>
+                        <div>
+                            <p class="text-[#c5a059] font-bold mb-2 uppercase tracking-widest">Phone</p>
+                            <p class="text-lg sm:text-xl font-bold tracking-tighter">011-632-7810</p>
+                        </div>
+                        <div>
+                            <p class="text-[#c5a059] font-bold mb-2 uppercase tracking-widest">Closed</p>
+                            <p>火曜日</p>
+                        </div>
+                    </div>
+                    <div class="mt-10 sm:mt-12 flex gap-6">
+                        <a href="https://www.instagram.com/aubergedelill__sapporo/" target="_blank" class="inline-block opacity-40 hover:opacity-100 transition-opacity">Instagram</a>
+                        <a href="https://www.youtube.com/channel/UCcmov-zAAMckBfjT77X2Ttw" target="_blank" class="inline-block opacity-40 hover:opacity-100 transition-opacity">YouTube</a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/3 h-[280px] sm:h-[380px] lg:h-[500px] shadow-2xl relative">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d728.8403512849386!2d141.31368450993892!3d43.054865969253854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29c27b69c5dd%3A0x1f46988da1fafbf7!2z44Kq44O844OZ44Or44K444Ol44O744OJ44O744Oq44OrIOOCteODg-ODneODrQ!5e0!3m2!1sja!2sjp!4v1771380191749!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a2a40] text-white py-16 sm:py-20">
+        <div class="container mx-auto px-5 sm:px-8 text-center">
+            <div class="flex flex-col items-center">
+                <div class="font-cinzel text-2xl sm:text-3xl font-bold tracking-[0.3em] sm:tracking-[0.4em] mb-6">Auberge de L'ill</div>
+                <div class="w-12 h-px bg-[#c5a059] mb-8 sm:mb-10"></div>
+                <nav class="flex flex-wrap justify-center gap-5 sm:gap-8 text-[10px] uppercase tracking-[0.3em] mb-10 sm:mb-12 opacity-60">
+                    <a href="#" class="hover:text-[#c5a059]">Top</a>
+                    <a href="#strength-section" class="hover:text-[#c5a059]">Strengths</a>
+                    <a href="#profile-section" class="hover:text-[#c5a059]">History</a>
+                    <a href="#coming-soon-section" class="hover:text-[#c5a059]">Coming Soon</a>
+                    <a href="#access-section" class="hover:text-[#c5a059]">Access</a>
+                </nav>
+                <p class="text-[10px] tracking-widest opacity-30">© 2024 Hiramatsu Restaurant Group. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
