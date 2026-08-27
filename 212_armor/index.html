@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armor（アルムール）| 札幌・西28丁目の本格ガレット・フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --gold: #C5A059;
+            --dark: #1A1A1A;
+            --cream: #F9F7F2;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            color: #333;
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* 背景テクスチャ */
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('images/fish.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* fixed attachment is heavy/buggy on iOS Safari, so only enable on larger screens */
+        @media (min-width: 768px) {
+            .hero-bg {
+                background-attachment: fixed;
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.5rem auto;
+        }
+
+        .section-title-left::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.5rem 0;
+        }
+
+        .btn-luxury {
+            background: var(--gold);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.4s;
+            z-index: -1;
+        }
+
+        .btn-luxury:hover::before {
+            left: 100%;
+        }
+
+        /* 角丸とシャドウの強調（PCのみオーバーラップ、モバイルは通常配置） */
+        .overlap-img {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        @media (min-width: 768px) {
+            .overlap-img {
+                margin-top: -50px;
+            }
+        }
+
+        /* 縦書きのアクセント */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            letter-spacing: 0.5em;
+        }
+
+        .map-container {
+            aspect-ratio: 4 / 3;
+        }
+
+        @media (min-width: 768px) {
+            .map-container {
+                aspect-ratio: auto;
+                height: 100%;
+            }
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            display: block;
+        }
+
+        /* タップ時のスケールを少し抑える（モバイルでの誤操作感を軽減） */
+        @media (hover: none) {
+            .group:active img {
+                transform: scale(1.05);
+            }
+        }
+
+        /* フォーカス時のアクセシビリティ */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            * {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- 1. FVエリア -->
+    <header class="hero-bg min-h-screen flex flex-col items-center justify-center text-white px-4 py-24 text-center relative">
+        <div class="absolute top-6 left-6 md:top-10 md:left-10 hidden lg:block">
+            <p class="vertical-text text-base md:text-lg border-r border-white/30 pr-4 font-light">至福のガレットと、北の海の幸。</p>
+        </div>
+
+        <div class="max-w-4xl">
+            <span class="text-sm sm:text-lg md:text-xl mb-3 md:mb-4 block font-serif tracking-[0.15em] sm:tracking-[0.2em] uppercase">Galette &amp; French Cuisine</span>
+            <h1 class="text-4xl sm:text-6xl md:text-8xl font-black mb-6 md:mb-8 leading-tight drop-shadow-lg">
+                Armor <br>
+                <span class="text-2xl sm:text-3xl md:text-5xl font-bold">アルムール</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl mb-8 md:mb-12 tracking-wide sm:tracking-widest font-light px-2">幌加内産蕎麦粉100%。札幌で触れるブルターニュの風。</p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                <a href="#contact" class="btn-luxury py-4 px-8 sm:py-5 sm:px-12 rounded-full text-base sm:text-lg tracking-widest font-bold shadow-2xl">
+                    RESERVE / お問い合わせ
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 md:bottom-10 animate-bounce">
+            <i class="fas fa-chevron-down text-xl md:text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- 2. 第1CTA: 角丸を適用 -->
+    <section class="py-12 md:py-16 px-4">
+        <div class="max-w-4xl mx-auto bg-white p-2 border border-gray-100 shadow-xl rounded-2xl">
+            <div class="border border-[var(--gold)] p-6 sm:p-8 text-center rounded-xl">
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 tracking-tight">【Web限定】Armorからのささやかなおもてなし</h2>
+                <p class="mb-6 text-gray-600 text-sm sm:text-base">本ページをご覧いただき、LINE公式アカウントへご登録いただいた方へ<br class="hidden sm:block">
+                    <span class="text-[var(--gold)] font-bold text-xl sm:text-2xl block sm:inline mt-2 sm:mt-0">「お食事に合わせた乾杯ドリンク」</span>をプレゼントいたします。</p>
+                <a href="https://armor-sapporo.com/contact" class="inline-block bg-[#06C755] text-white py-4 px-8 sm:px-10 rounded-full font-bold hover:brightness-110 transition shadow-lg text-sm sm:text-base">
+                    <i class="fab fa-line mr-2 text-xl"></i> LINEで特典を受け取る
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- 3. コンセプト: 角丸を適用 -->
+    <section class="py-16 md:py-24 px-4 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="aspect-video bg-gray-200 shadow-2xl rounded-2xl overflow-hidden relative group">
+                    <img src="images/garetto.jpg" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700" alt="Armorのガレット" loading="lazy">
+                </div>
+                <div class="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-8 bg-[var(--gold)] p-4 sm:p-6 text-white shadow-xl rounded-lg">
+                    <p class="text-lg sm:text-2xl font-serif italic">French Spirit</p>
+                    <p class="text-[10px] sm:text-xs tracking-widest mt-1 uppercase">Sapporo Local Ingredients</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 mt-6 md:mt-0">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 section-title-left text-left">ガレットって、<br>こんなに美味しかったんだ。</h2>
+                <p class="text-gray-600 leading-loose mb-6 text-sm sm:text-base">
+                    「フランスで食べた時より美味しい気がします」<br>
+                    そんなお言葉をいただくArmorのガレットは、幌加内産の蕎麦粉を100%使用。
+                    香ばしい香りとモチモチの食感、そして生地から上げたばかりの新鮮な蕎麦の香りが、あなたを一瞬でブルターニュの海岸線へと誘います。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介: 画像を丸く -->
+    <section class="py-16 md:py-24 px-4 bg-stone-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+                <div class="w-full md:w-5/12">
+                    <img src="images/chef.png" class="rounded-2xl shadow-2xl overlap-img border-4 sm:border-[12px] border-white w-full" alt="オーナーシェフ 堀池成久" loading="lazy">
+                </div>
+                <div class="w-full md:w-7/12">
+                    <p class="text-[var(--gold)] font-bold tracking-widest mb-3 md:mb-4 text-sm">OWNER CHEF</p>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 md:mb-8">堀池 成久 <small class="text-gray-400 ml-2 sm:ml-4 font-normal text-base sm:text-lg block sm:inline mt-1 sm:mt-0">Narihisa Horiike</small></h2>
+                    <div class="space-y-5 md:space-y-6 text-gray-700 leading-relaxed border-l-2 border-[var(--gold)] pl-6 sm:pl-8 text-sm sm:text-base">
+                        <p>東京「丘の内ホテル」で基礎を学び、2008年に渡仏。ブルターニュ地方のレストランでスーシェフとして3年間、本場の味と文化を吸収しました。</p>
+                        <p>2018年、札幌・西28丁目にArmorを開業。北海道の豊かな食材と、フランスで学んだ技術の融合。私たちの使命は、ただ美味しい料理を出すことではなく、ここにしかない「体験」をお届けすることです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 5. コース紹介: カードを丸く -->
+<section class="py-16 md:py-24 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 md:mb-16 section-title italic font-serif text-stone-800">Menus</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+            <!-- Course 1 -->
+            <div class="group cursor-pointer bg-stone-50 p-6 rounded-3xl hover:shadow-2xl transition duration-500">
+                <div class="px-2">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2">ガレットランチコース</h3>
+                    <p class="text-[var(--gold)] font-bold mb-4 text-base sm:text-lg">¥2,750 〜</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>本日のアミューズ</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>選べる前菜</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>幌加内ガレット（10種類以上）</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>選べるデザート ＆ カフェ</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Course 2 -->
+            <div class="group cursor-pointer bg-stone-50 p-6 rounded-3xl hover:shadow-2xl transition duration-500">
+                <div class="px-2">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2">メインが選べるコース</h3>
+                    <p class="text-[var(--gold)] font-bold mb-4 text-base sm:text-lg">¥3,500 〜</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>一口のアミューズ</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>選べる前菜</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>本日のお魚 または お肉料理</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>デザート・クレープ ＆ カフェ</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Course 3 -->
+            <div class="group cursor-pointer bg-stone-50 p-6 rounded-3xl hover:shadow-2xl transition duration-500 sm:col-span-2 md:col-span-1">
+                <div class="px-2">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2">ディナー・生牡蠣フレンチ</h3>
+                    <p class="text-[var(--gold)] font-bold mb-4 text-base sm:text-lg">¥5,000 〜</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>生牡蠣の目のポッシェ</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>季節を活かした本格フレンチ</li>
+                        <li><i class="fas fa-check text-[var(--gold)] mr-2"></i>ブルターニュ産シードルと共に</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 5.5 Coming Soon セクション -->
+    <section class="py-14 md:py-20 px-4 bg-stone-100/70">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-10 md:mb-14">
+                <span class="text-[var(--gold)] font-bold tracking-[0.25em] text-xs uppercase block mb-2">Future Services</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-serif italic text-stone-800">Coming Soon</h2>
+                <p class="text-gray-600 text-sm md:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+                    小さなお子様やご家族とも一緒に安心してお食事を楽しんでいただけるよう、<br class="hidden md:block">新メニュー・サービスの準備を進めております。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Service 1: お子様向けガレット・スープセット -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-stone-200/70 flex flex-col justify-between relative overflow-hidden group hover:shadow-xl transition duration-300">
+                    <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">
+                        準備中
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-[var(--gold)]/10 text-[var(--gold)] rounded-2xl flex items-center justify-center text-xl mb-5">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-stone-800 mb-3">キッズガレット ＆ スーププレート</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            小さなお子様にも本格フレンチの味覚を。ミニサイズの幌加内ガレット、季節野菜の優しいポタージュ、自家製プチクレープとドリンクがセットになったお子様限定プレートです。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-100 pt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500 font-medium">
+                        <span><i class="fas fa-utensils text-[var(--gold)] mr-1.5"></i> 対象：未就学児〜小学生</span>
+                        <span class="text-[var(--gold)] font-bold">順次スタート予定</span>
+                    </div>
+                </div>
+
+                <!-- Service 2: 親子で楽しむ取り分けシェアセット -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-stone-200/70 flex flex-col justify-between relative overflow-hidden group hover:shadow-xl transition duration-300">
+                    <div class="absolute top-4 right-4 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">
+                        準備中
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 bg-[var(--gold)]/10 text-[var(--gold)] rounded-2xl flex items-center justify-center text-xl mb-5">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-stone-800 mb-3">親子取り分けファミリーコース</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            大人向けコースの満足感はそのままに、お子様と一緒に笑顔で取り分けられるシェアスタイルの特別プラン。お子様用カトラリーやベビーチェアもご用意いたします。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-100 pt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500 font-medium">
+                        <span><i class="fas fa-users text-[var(--gold)] mr-1.5"></i> 予約制ファミリープラン</span>
+                        <span class="text-[var(--gold)] font-bold">順次スタート予定</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- アイデア募集・お問い合わせメッセージ -->
+            <div class="mt-8 bg-white/80 p-6 rounded-2xl border border-dashed border-[var(--gold)]/50 text-center shadow-sm">
+                <p class="text-xs md:text-sm text-stone-600 leading-relaxed">
+                    <i class="fas fa-lightbulb text-[var(--gold)] mr-2"></i>
+                    「こんなメニューやサービスがあったら嬉しい」というご意見がございましたら、ぜひお問合せフォームや公式LINEよりお気軽にお聞かせください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. クチコミ: 背景セクションの角を丸く -->
+    <section class="py-16 md:py-24 px-4 bg-texture border-y border-stone-200">
+        <div class="max-w-4xl mx-auto bg-white/60 p-6 sm:p-10 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-sm">
+            <div class="text-center mb-12 md:mb-16">
+                <i class="fas fa-quote-right text-3xl md:text-4xl text-gray-200 mb-6"></i>
+                <h2 class="text-2xl sm:text-3xl font-bold">多くのお客様に愛されて。</h2>
+            </div>
+
+            <div class="space-y-10 md:space-y-12">
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+                    <div class="w-full md:w-1/3 text-[var(--gold)] text-lg sm:text-xl font-serif">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <p class="text-gray-400 text-xs mt-2 font-sans tracking-widest uppercase">Verified Guest</p>
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <p class="text-base sm:text-lg leading-relaxed italic text-gray-700">「前菜のビスクスープでノックアウトした私。ガレットチップスのアミューズからデザートのクレープまで、気配りの行き届いたサービスにも感動しました。」</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start border-t border-stone-200 pt-10 md:pt-12">
+                    <div class="w-full md:w-1/3 text-[var(--gold)] text-lg sm:text-xl font-serif">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <p class="text-base sm:text-lg leading-relaxed italic text-gray-700">「ウッド調の内装もナチュラルでいい。お料理は勿論、お手洗いもとても綺麗で、自信をもってお勧めできるお店です。」</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 7. アクセス -->
+<section id="contact" class="py-16 md:py-24 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="bg-stone-900 text-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row">
+            <!-- アクセス情報 -->
+            <div class="w-full md:w-1/2 p-8 sm:p-10 md:p-14 flex flex-col justify-between border-b md:border-b-0 md:border-r border-stone-800">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6 md:mb-8 font-serif italic text-[var(--gold)]">Access</h2>
+                    <div class="space-y-5 md:space-y-6 text-gray-300 text-sm sm:text-base">
+                        <p class="flex items-center"><i class="fas fa-phone mr-4 text-[var(--gold)] w-6 text-center"></i> 011-213-8074</p>
+                        <p class="flex items-start"><i class="fas fa-map-marker-alt mr-4 mt-1 text-[var(--gold)] w-6 text-center"></i> 〒064-0823 北海道札幌市中央区北3条西28丁目3−10 寺山ビル 1F</p>
+                        <p class="flex items-center"><i class="fas fa-subway mr-4 text-[var(--gold)] w-6 text-center"></i> 地下鉄 西28丁目駅 徒歩3分</p>
+                        <p class="flex items-center"><i class="fas fa-calendar-times mr-4 text-[var(--gold)] w-6 text-center"></i> 定休日：日曜日</p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-stone-800">
+                        <p class="text-sm text-gray-400 leading-relaxed italic">円山公園、北海道神宮からもほど近く、お参りやお散歩の際にもぜひお立ち寄りください。</p>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <a href="https://www.instagram.com/armorsapporo/" class="text-2xl sm:text-3xl hover:text-[var(--gold)] transition inline-block" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <!-- Google Map -->
+            <div class="w-full md:w-1/2 map-container bg-stone-800">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.147384215056!2d141.3110563750722!3d43.05936769063699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b295146077e49%3A0x882cd0463698e236!2sArmor!5e0!3m2!1sja!2sjp!4v1771388898357!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Armor 店舗地図"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="py-10 md:py-12 text-center text-gray-400 text-xs tracking-widest uppercase px-4">
+        <p>&copy; Armor Sapporo. Fine Galette &amp; French Cuisine.</p>
+    </footer>
+
+</body>
+</html>
