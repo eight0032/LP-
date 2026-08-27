@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン プロヴァンサル キムラ | パントスカーナ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --dark-bg: #1a1714;
+            --soft-bg: #fdfaf6;
+            --text-main: #2d2a26;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-main);
+            background-color: var(--soft-bg);
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .serif { font-family: 'Noto Serif JP', serif; }
+        .cinzel { font-family: 'Cinzel', serif; }
+        .bg-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.65) 100%);
+        }
+        .btn-luxury {
+            background: linear-gradient(135deg, #c5a059 0%, #a67c37 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-luxury:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(197,160,89,0.3); }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: var(--primary-gold);
+            margin: 1.25rem auto;
+        }
+        .keep-all { word-break: keep-all; overflow-wrap: break-word; }
+        .map-container iframe { width: 100% !important; height: 100% !important; border: 0; }
+
+        /* --- Mobile nav drawer --- */
+        #mobile-menu {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #mobile-menu.is-open { opacity: 1; visibility: visible; }
+        #mobile-menu:not(.is-open) { opacity: 0; visibility: hidden; }
+        #mobile-panel { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+        #mobile-menu:not(.is-open) #mobile-panel { transform: translateX(100%); }
+
+        /* --- Hamburger icon animation --- */
+        #hamburger span { transition: transform 0.3s ease, opacity 0.3s ease; }
+        #hamburger.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        #hamburger.is-active span:nth-child(2) { opacity: 0; }
+        #hamburger.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="site-header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="container mx-auto px-5 sm:px-6 py-3.5 sm:py-4 flex justify-between items-center">
+            <div class="flex flex-col items-start leading-none">
+                <span class="cinzel text-base sm:text-xl font-bold tracking-[0.15em] sm:tracking-[0.2em] text-gray-800">PROVEN&Ccedil;AL KIMURA</span>
+                <span class="text-[8px] sm:text-[10px] mt-1 tracking-widest text-gray-500 uppercase">Sapphire French Cuisine</span>
+            </div>
+
+            <!-- Desktop nav -->
+            <nav class="hidden lg:flex items-center space-x-8 text-[13px] tracking-widest font-bold uppercase">
+                <a href="#" class="hover:text-amber-600 transition">Top</a>
+                <a href="#strength-section" class="hover:text-amber-600 transition">strengths</a>
+                <a href="#profile-section" class="hover:text-amber-600 transition">history</a>
+                <a href="#coming-soon-section" class="hover:text-amber-600 transition">coming soon</a>
+                <a href="#problem-section" class="hover:text-amber-600 transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-amber-600 transition">access</a>
+                <a href="http://provencal.jp/" target="_blank" rel="noopener" class="btn-luxury text-white px-8 py-3 rounded-full text-sm shadow-lg">問い合わせ</a>
+            </nav>
+
+            <!-- Mobile hamburger button -->
+            <button id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden relative w-10 h-10 flex flex-col justify-center items-center gap-[6px] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded">
+                <span class="block w-6 h-[2px] bg-gray-800"></span>
+                <span class="block w-6 h-[2px] bg-gray-800"></span>
+                <span class="block w-6 h-[2px] bg-gray-800"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 z-40 opacity-0 invisible">
+        <div id="mobile-backdrop" class="absolute inset-0 bg-black/50"></div>
+        <div id="mobile-panel" class="absolute top-0 right-0 h-full w-[78%] max-w-xs bg-[#1a1714] text-white pt-24 px-8 flex flex-col shadow-2xl">
+            <nav class="flex flex-col space-y-7 text-sm tracking-[0.2em] uppercase font-bold">
+                <a href="#" class="mobile-link hover:text-amber-400 transition">Top</a>
+                <a href="#strength-section" class="mobile-link hover:text-amber-400 transition">Strengths</a>
+                <a href="#profile-section" class="mobile-link hover:text-amber-400 transition">History</a>
+                <a href="#coming-soon-section" class="mobile-link hover:text-amber-400 transition">Coming Soon</a>
+                <a href="#problem-section" class="mobile-link hover:text-amber-400 transition">Q&amp;A</a>
+                <a href="#access-section" class="mobile-link hover:text-amber-400 transition">Access</a>
+            </nav>
+            <a href="http://provencal.jp/" target="_blank" rel="noopener" class="btn-luxury text-white text-center px-6 py-4 rounded-full text-sm font-bold tracking-widest mt-10 shadow-lg">
+                お問い合わせ
+            </a>
+            <span class="cinzel text-xs tracking-[0.3em] text-zinc-500 mt-auto mb-10">PROVEN&Ccedil;AL KIMURA</span>
+        </div>
+    </div>
+
+    <!-- First View (FV) -->
+    <section class="relative h-[100svh] min-h-[520px] flex items-center justify-center">
+        <div class="absolute inset-0">
+            <img src="images/toscana.jpg" alt="パントスカーナ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-overlay"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-5 sm:px-4">
+            <span class="inline-block text-xs sm:text-base tracking-[0.3em] sm:tracking-[0.4em] mb-5 sm:mb-6 uppercase opacity-90 cinzel">Fine Dining Experience</span>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-black mb-6 sm:mb-8 serif leading-[1.3] keep-all tracking-tight">
+                至極の<br><span class="text-[#f1e4c8]">パントスカーナ</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-xl mb-9 sm:mb-12 opacity-90 leading-relaxed font-light keep-all">
+                南仏の太陽と北海道の肥沃な大地が出会う場所。<br>
+                一皿に込められた、記憶に刻まれるプロヴァンスの香り。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4 sm:px-0">
+                <a href="#strength-section" class="w-full sm:w-auto border border-white/40 hover:bg-white hover:text-black active:bg-white active:text-black px-10 sm:px-12 py-4 sm:py-5 transition duration-300 tracking-widest text-sm uppercase text-center">Explore More</a>
+                <a href="http://provencal.jp/" target="_blank" rel="noopener" class="w-full sm:w-auto btn-luxury text-white px-10 sm:px-12 py-4 sm:py-5 font-bold tracking-widest text-sm uppercase text-center">Book Now</a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <div class="w-[1px] h-12 sm:h-16 bg-white mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- Strengths (Concept) -->
+    <section id="strength-section" class="py-16 sm:py-24 bg-white relative overflow-hidden scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center mb-14 sm:mb-20">
+                <h2 class="text-xs sm:text-sm tracking-[0.3em] text-amber-700 uppercase mb-4 cinzel font-bold">Strengths</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-5xl font-bold serif section-title keep-all">北の大地で奏でる、<br class="sm:hidden">南仏の旋律</h3>
+                <p class="text-gray-500 leading-loose text-sm sm:text-base keep-all">北海道の恵まれた食材を、南フランス・プロヴァンスの技法で。<br class="hidden sm:inline">伝統と現代が融合した、ここだけの味わいをお届けします。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center mb-16 sm:mb-24 lg:mb-32">
+                <div class="order-2 lg:order-1">
+                    <img src="images/yasai.png" alt="旬の野菜" class="w-full h-[280px] sm:h-[420px] lg:h-[600px] object-cover shadow-2xl rounded-sm">
+                </div>
+                <div class="order-1 lg:order-2 space-y-5 sm:space-y-8">
+                    <span class="text-4xl sm:text-5xl font-black text-gray-100 serif italic block">01</span>
+                    <h4 class="text-2xl sm:text-3xl font-bold serif keep-all">契約農家の息吹をそのままに</h4>
+                    <p class="text-gray-600 leading-loose text-sm sm:text-base keep-all">季節の契約農家野菜や地中海風の魚介料理が、口コミで高い評価をいただいております。ブイヤベースコースやフレンチ鍋など、季節の移ろいを箸で感じるメニューの数々。</p>
+                    <ul class="space-y-3 sm:space-y-4 text-sm text-gray-500">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-amber-600 rounded-full mr-3 flex-shrink-0"></span> 自家製スモークサーモン</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-amber-600 rounded-full mr-3 flex-shrink-0"></span> 十勝牛の熟成グリル</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-amber-600 rounded-full mr-3 flex-shrink-0"></span> 伝統的なブイヤベース</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
+                <div class="space-y-5 sm:space-y-8">
+                    <span class="text-4xl sm:text-5xl font-black text-gray-100 serif italic block">02</span>
+                    <h4 class="text-2xl sm:text-3xl font-bold serif keep-all">五感を満たす空間と、<br>ソムリエの誘い</h4>
+                    <p class="text-gray-600 leading-loose text-sm sm:text-base keep-all">一軒家レストランならではの明るく広々とした店内。特にサンルーム席は、柔らかな光に包まれた特別な時間を提供します。在籍するソムリエが、料理に完璧に調和するワインをセレクトいたします。</p>
+                </div>
+                <div>
+                    <img src="images/store.png" alt="サンルーム席" class="w-full h-[280px] sm:h-[420px] lg:h-[600px] object-cover shadow-2xl rounded-sm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History -->
+    <section id="profile-section" class="py-16 sm:py-24 bg-zinc-900 text-white relative scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12 sm:gap-16">
+                <div class="lg:w-1/2 relative w-full">
+                    <img src="images/chef.png" alt="木村シェフ" class="w-full h-[380px] sm:h-[500px] lg:h-[650px] object-cover grayscale hover:grayscale-0 transition duration-700 shadow-2xl">
+                    <div class="absolute -bottom-5 -right-5 sm:-bottom-8 sm:-right-8 bg-[#c5a059] p-5 sm:p-8 hidden md:block">
+                        <p class="cinzel text-2xl sm:text-4xl font-bold">Chef's Spirit</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 space-y-6 sm:space-y-8">
+                    <h2 class="text-xs sm:text-sm tracking-[0.3em] text-amber-500 uppercase cinzel font-bold">History</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold serif leading-tight">オーナーシェフ 木村 浩</h3>
+                    <p class="text-zinc-400 leading-relaxed text-sm sm:text-base keep-all">
+                        1968年札幌出身。大阪あべの辻調理師専門学校を卒業後、単身渡仏。南フランス・ニームやエクサンプロヴァンスの名店「クロ・ド・プルヴォワ」で研鑽を積み、プロヴァンス料理の真髄を学びました。<br><br>
+                        「北海道の食材で、本物の南仏の風を吹かせたい」という想いから、1990年代後半に一軒家レストランをオープン。伝統を重んじつつ、現代の感性を融合させたスタイルを追求し続けています。
+                    </p>
+                    <div class="grid grid-cols-2 gap-5 sm:gap-6 text-sm">
+                        <div class="border-l-2 border-amber-500 pl-4">
+                            <p class="font-bold mb-1">趣味・人柄</p>
+                            <p class="text-zinc-500 text-xs sm:text-sm">読書、ジンギスカン愛好家、AB型</p>
+                        </div>
+                        <div class="border-l-2 border-amber-500 pl-4">
+                            <p class="font-bold mb-1">Favorite</p>
+                            <p class="text-zinc-500 text-xs sm:text-sm">矢沢永吉、綾瀬はるか</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews (Social Proof) -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-xs sm:text-sm tracking-[0.3em] text-amber-700 uppercase mb-4 cinzel font-bold">Guest Voices</h2>
+                <h3 class="text-2xl sm:text-3xl font-bold serif">お寄せいただいた感動の声</h3>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-zinc-50 p-7 sm:p-10 relative">
+                    <div class="text-amber-500 text-sm mb-4">★★★★★</div>
+                    <p class="text-gray-600 text-sm leading-loose mb-6">「お値段以上の美味しさに、本当にこの金額でいいのですか！？と思うぐらいおすすめです。デザートもパンも美味しくお腹いっぱいになりました。」</p>
+                    <p class="text-xs font-bold text-gray-400">— 1年振りに来店のゲスト様</p>
+                </div>
+                <div class="bg-zinc-50 p-7 sm:p-10 border-t-4 border-amber-600">
+                    <div class="text-amber-500 text-sm mb-4">★★★★★</div>
+                    <p class="text-gray-600 text-sm leading-loose mb-6">「夫婦の記念日に伺いました。入りやすい雰囲気の素敵なお店とサービスでした。温かい雰囲気で会話もとても楽しめました。コースも全て美味。」</p>
+                    <p class="text-xs font-bold text-gray-400">— 記念日利用のゲスト様</p>
+                </div>
+                <div class="bg-zinc-50 p-7 sm:p-10 sm:col-span-2 lg:col-span-1">
+                    <div class="text-amber-500 text-sm mb-4">★★★★★</div>
+                    <p class="text-gray-600 text-sm leading-loose mb-6">「お店の暖かいおもてなしに感謝します。料理はとても繊細で量も十分でした。特にマカロンはとても美味しかったです。」</p>
+                    <p class="text-xs font-bold text-gray-400">— 接待・会食利用のゲスト様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="py-16 sm:py-24 bg-zinc-900 text-white relative overflow-hidden scroll-mt-16">
+        <div class="absolute -right-20 -bottom-20 w-72 h-72 sm:w-96 sm:h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-12 sm:mb-16 max-w-2xl mx-auto">
+                <span class="inline-block text-xs font-bold tracking-[0.3em] sm:tracking-[0.4em] text-amber-500 uppercase mb-3 cinzel border border-amber-500/30 px-4 py-1 rounded-full">New Projects</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold serif mt-2">COMING SOON</h2>
+                <p class="text-zinc-400 text-sm mt-4 leading-relaxed keep-all">
+                    お客様の「あったらいいな」をカタチに。<br class="hidden sm:inline">近隣の文化施設との調和や、日常を少し贅沢に彩る新たなサービスを準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-lg p-6 sm:p-8 active:border-amber-500/50 hover:border-amber-500/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 sm:mb-6">
+                            <span class="text-amber-500 cinzel font-bold text-sm tracking-widest">PLAN 01</span>
+                            <span class="text-[10px] bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full font-bold whitespace-nowrap">開発中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-4 text-white keep-all">アート鑑賞の余韻を楽しむ<br><span class="text-amber-400">「ミュージアム・クイックコース」</span></h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6 keep-all">
+                            北海道立近代美術館や三岸好太郎美術館の観覧券（チケット半券）をご提示の方へ。鑑賞後の余韻に浸りながら、軽やかにお召し上がりいただけるライトなランチコースを準備しております。
+                        </p>
+                    </div>
+                    <div class="border-t border-zinc-700/60 pt-4 mt-auto">
+                        <span class="text-xs text-zinc-500">対象：美術館・ギャラリーご利用のゲスト様</span>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-800/60 border border-zinc-700/50 rounded-lg p-6 sm:p-8 active:border-amber-500/50 hover:border-amber-500/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 sm:mb-6">
+                            <span class="text-amber-500 cinzel font-bold text-sm tracking-widest">PLAN 02</span>
+                            <span class="text-[10px] bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full font-bold whitespace-nowrap">準備中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif mb-4 text-white keep-all">青空の下でプロヴァンスの味を<br><span class="text-amber-400">「プレステージ・ピクニックバスケット」</span></h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6 keep-all">
+                            近隣の緑豊かな公園や散策路で贅沢なひとときを。焼き立てのパンとスカーナ、自家製スモークサーモン、旬のキッシュを詰めた特製テイクアウトバスケットをご提供予定です。
+                        </p>
+                    </div>
+                    <div class="border-t border-zinc-700/60 pt-4 mt-auto">
+                        <span class="text-xs text-zinc-500">内容：宴用バスケット／クロス貸出付き</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="problem-section" class="py-16 sm:py-24 bg-[#fdfaf6] scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6 max-w-3xl">
+            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-12 sm:mb-16 serif section-title">よくあるご質問</h2>
+            <div class="space-y-4">
+                <details class="group bg-white p-5 sm:p-6 shadow-sm cursor-pointer open:shadow-md transition">
+                    <summary class="flex justify-between items-center gap-4 font-bold text-gray-800 list-none text-sm sm:text-base">
+                        <span>どのような服装で伺えばよろしいですか？</span>
+                        <span class="group-open:rotate-180 transition-transform flex-shrink-0 text-amber-600">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed border-t pt-4">堅苦しいドレスコードはございません。多くのお客様が「入りやすい雰囲気」と仰ってくださいます。普段着より少しお洒落をして、リラックスしてお越しください。</p>
+                </details>
+                <details class="group bg-white p-5 sm:p-6 shadow-sm cursor-pointer open:shadow-md transition">
+                    <summary class="flex justify-between items-center gap-4 font-bold text-gray-800 list-none text-sm sm:text-base">
+                        <span>子供を連れての利用は可能ですか？</span>
+                        <span class="group-open:rotate-180 transition-transform flex-shrink-0 text-amber-600">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed border-t pt-4">はい、大歓迎です。一軒家ならではの広めの店内と明るい雰囲気で、お子様連れでも安心してお食事いただけます。</p>
+                </details>
+                <details class="group bg-white p-5 sm:p-6 shadow-sm cursor-pointer open:shadow-md transition">
+                    <summary class="flex justify-between items-center gap-4 font-bold text-gray-800 list-none text-sm sm:text-base">
+                        <span>アレルギーや苦手な食材への対応は？</span>
+                        <span class="group-open:rotate-180 transition-transform flex-shrink-0 text-amber-600">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed border-t pt-4">事前にご相談いただければ、可能な限り対応させていただきます。ご予約の際にお気軽にお申し付けください。</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & Access -->
+    <section id="access-section" class="py-16 sm:py-24 bg-white border-t border-gray-100 scroll-mt-16">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-16">
+                <div>
+                    <h2 class="text-xs sm:text-sm tracking-[0.3em] text-amber-700 uppercase mb-6 sm:mb-8 cinzel font-bold">Access &amp; Info</h2>
+                    <h3 class="text-2xl sm:text-3xl font-bold serif mb-8 sm:mb-10 leading-tight">レストラン<br>プロヴァンサル キムラ</h3>
+                    <div class="space-y-5 sm:space-y-6 text-gray-600 text-sm sm:text-base">
+                        <div class="flex flex-col sm:flex-row">
+                            <span class="w-full sm:w-32 font-bold text-gray-900 mb-1 sm:mb-0">住所</span>
+                            <span class="flex-1">〒060-0003<br>北海道旭川市中央区北3条西17丁目2−1</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row">
+                            <span class="w-full sm:w-32 font-bold text-gray-900 mb-1 sm:mb-0">電話番号</span>
+                            <span class="flex-1">011-612-4005</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-t border-gray-100 pt-5 sm:pt-6">
+                            <span class="w-full sm:w-32 font-bold text-gray-900 mb-1 sm:mb-0">交通機関</span>
+                            <span class="flex-1">市営地下鉄 西18丁目駅から徒歩6-8分</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row">
+                            <span class="w-full sm:w-32 font-bold text-gray-900 mb-1 sm:mb-0">駐車場</span>
+                            <span class="flex-1">敷地内 5台分完備</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row">
+                            <span class="w-full sm:w-32 font-bold text-gray-900 mb-1 sm:mb-0">営業時間</span>
+                            <span class="flex-1">ランチ / ディナー（詳細はお問い合わせ下さい）</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row">
+                            <span class="w-full sm:w-32 font-bold text-red-700 mb-1 sm:mb-0">定休日</span>
+                            <span class="flex-1">月曜日</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 sm:mt-10 flex space-x-6 text-sm tracking-widest uppercase font-bold text-zinc-500">
+                        <a href="https://www.instagram.com/provencalkimura0701/" target="_blank" rel="noopener" class="hover:text-amber-600 transition py-2">Instagram</a>
+                        <a href="http://provencal.jp/" target="_blank" rel="noopener" class="hover:text-amber-600 transition py-2">Official HP</a>
+                    </div>
+                </div>
+                <div class="h-[320px] sm:h-[450px] lg:h-[600px] bg-zinc-100 rounded-lg overflow-hidden relative shadow-inner map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.025060034218!2d141.32725837507238!3d43.061940490472374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29bdc3133cc1%3A0xf9a6ae76f7fe1c08!2z44Os44K544OI44Op44OzIOODl-ODreODtOOCoeODs-OCteODqyDjgq3jg6Djg6k!5e0!3m2!1sja!2sjp!4v1771382587241!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 text-white py-14 sm:py-20 border-t border-white/5">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <div class="mb-10 sm:mb-12">
+                <p class="cinzel text-xl sm:text-3xl font-bold tracking-[0.2em] sm:tracking-[0.3em] mb-2">PROVEN&Ccedil;AL KIMURA</p>
+                <p class="text-zinc-500 text-[10px] sm:text-xs tracking-widest uppercase">The Essence of French Hospitality</p>
+            </div>
+            <div class="w-10 h-10 sm:w-12 sm:h-12 border border-amber-600 mx-auto rotate-45 flex items-center justify-center mb-10 sm:mb-12">
+                <span class="rotate-[-45deg] text-amber-600 cinzel font-bold text-lg sm:text-xl">K</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-x-8 sm:gap-x-12 gap-y-5 sm:gap-y-6 text-[10px] tracking-[0.2em] uppercase font-bold text-zinc-400 mb-12 sm:mb-16">
+                <a href="#" class="hover:text-amber-500 transition py-1">TOP</a>
+                <a href="#strength-section" class="hover:text-amber-500 transition py-1">STRENGTHS</a>
+                <a href="#profile-section" class="hover:text-amber-500 transition py-1">HISTORY</a>
+                <a href="#access-section" class="hover:text-amber-500 transition py-1">ACCESS</a>
+            </div>
+            <p class="text-[9px] text-zinc-600 tracking-widest">&copy; 2024 RESTAURANT PROVEN&Ccedil;AL KIMURA. CRAFTED FOR GOURMET LOVERS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky header shrink on scroll
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'shadow-md');
+                header.classList.remove('py-3.5', 'sm:py-4');
+            } else {
+                header.classList.add('py-3.5', 'sm:py-4');
+                header.classList.remove('py-2', 'shadow-md');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBackdrop = document.getElementById('mobile-backdrop');
+        const mobileLinks = document.querySelectorAll('.mobile-link, #mobile-menu a.btn-luxury');
+
+        function openMenu() {
+            mobileMenu.classList.add('is-open');
+            hamburger.classList.add('is-active');
+            hamburger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('overflow-hidden');
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('is-open');
+            hamburger.classList.remove('is-active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+        });
+        mobileBackdrop.addEventListener('click', closeMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        // Close mobile menu on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) closeMenu();
+        });
+    </script>
+</body>
+</html>
