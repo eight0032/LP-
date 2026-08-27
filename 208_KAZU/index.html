@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新洋食 KAZU | 13年継ぎ足しのデミグラスソース大きなハンバーグ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-red: #721c24;
+            --brand-gold: #c5a059;
+            --bg-beige: #f9f6f2;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-beige);
+        }
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        /* 固定ヘッダー分、アンカーリンク先が隠れないようにする */
+        section[id] {
+            scroll-margin-top: 76px;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/hanbagu.png');
+            background-size: cover;
+            background-position: center;
+        }
+        /* fixed background はモバイルでちらつき・パフォーマンス問題が出やすいためPCのみ */
+        @media (min-width: 768px) {
+            .hero-bg {
+                background-attachment: fixed;
+            }
+        }
+        .keep-all {
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+        .text-gold { color: var(--brand-gold); }
+        .bg-brand-red { background-color: var(--brand-red); }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--brand-gold);
+            margin: 1.5rem auto;
+        }
+        /* スマホ用ナビゲーション */
+        #mobile-nav {
+            transform: translateY(-8px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        #mobile-nav.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* 見出し・本文サイズを画面幅に応じて滑らかに変化させる */
+        .fluid-hero-title { font-size: clamp(1.75rem, 5.5vw, 3rem); }
+        .fluid-h2 { font-size: clamp(1.6rem, 4.5vw, 3rem); }
+        .fluid-h3 { font-size: clamp(1.25rem, 3.2vw, 1.875rem); }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+        <div class="container mx-auto px-4 sm:px-6 h-[68px] md:h-20 flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="text-xl sm:text-2xl font-serif font-black tracking-tighter text-[#721c24]">新洋食 KAZU</span>
+            </div>
+
+            <!-- PC用ナビゲーション -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-bold text-stone-600">
+                <a href="#" class="hover:text-[#721c24] transition">Top</a>
+                <a href="#strength-section" class="hover:text-[#721c24] transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-[#721c24] transition">History</a>
+                <a href="#problem-section" class="hover:text-[#721c24] transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-[#721c24] transition">Access</a>
+                <a href="https://ameblo.jp/chef-kazu/" target="_blank" rel="noopener" class="bg-[#721c24] text-white px-6 py-2.5 rounded shadow-lg hover:bg-red-900 transition flex items-center">
+                    お問い合わせ
+                </a>
+            </nav>
+
+            <!-- スマホ用ハンバーガーボタン -->
+            <button id="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav" class="md:hidden w-11 h-11 flex items-center justify-center text-2xl text-[#721c24]">
+                <span id="menu-icon">&#9776;</span>
+            </button>
+        </div>
+
+        <!-- スマホ用ドロップダウンメニュー -->
+        <nav id="mobile-nav" class="md:hidden absolute top-full left-0 w-full bg-white border-b border-stone-200 shadow-lg flex flex-col text-stone-700 font-bold">
+            <a href="#" class="px-6 py-4 border-b border-stone-100 min-h-[44px] flex items-center">Top</a>
+            <a href="#strength-section" class="px-6 py-4 border-b border-stone-100 min-h-[44px] flex items-center">Strengths</a>
+            <a href="#profile-section" class="px-6 py-4 border-b border-stone-100 min-h-[44px] flex items-center">History</a>
+            <a href="#problem-section" class="px-6 py-4 border-b border-stone-100 min-h-[44px] flex items-center">Q&amp;A</a>
+            <a href="#access-section" class="px-6 py-4 border-b border-stone-100 min-h-[44px] flex items-center">Access</a>
+            <a href="https://ameblo.jp/chef-kazu/" target="_blank" rel="noopener" class="px-6 py-4 min-h-[44px] flex items-center text-[#721c24]">お問い合わせ</a>
+        </nav>
+    </header>
+
+    <!-- First View (FV) -->
+    <section class="hero-bg min-h-[100svh] flex items-center relative overflow-hidden pt-20 pb-16">
+        <div class="container mx-auto px-4 sm:px-6 flex flex-col items-center md:items-start text-center md:text-left text-white">
+            <div class="bg-black/25 p-6 sm:p-8 md:p-12 backdrop-blur-sm border-l-4 border-[#c5a059] max-w-2xl">
+                <p class="text-base sm:text-lg md:text-2xl mb-3 md:mb-4 font-serif tracking-[0.15em] md:tracking-[0.2em] text-[#c5a059]">2011年開店・狸小路大通の隠れ家</p>
+                <h1 class="fluid-hero-title font-serif font-black mb-5 md:mb-6 leading-tight keep-all tracking-tight">
+                    デミグラスソース<br>大きなハンバーグ<span class="text-lg sm:text-xl md:text-3xl align-middle ml-1 md:ml-2 font-normal text-[#c5a059]">トッピング</span>
+                </h1>
+                <p class="text-sm sm:text-base md:text-xl mb-7 md:mb-8 opacity-90 leading-relaxed font-light">
+                    13年以上、毎日丁寧に継ぎ足された秘伝のソース。<br class="hidden md:block">
+                    都内なら倍の値がつく本格フレンチの技法を、カジュアルな「新洋食」で。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#access-section" class="bg-[#c5a059] text-white px-8 sm:px-12 py-4 text-base sm:text-lg font-bold hover:bg-[#b08b45] transition-all shadow-2xl text-center min-h-[44px] flex items-center justify-center">
+                        ご予約はこちら(電話・Web)
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 縦書きのアクセントコピー(PCのみ表示) -->
+        <div class="absolute right-10 top-[65%] -translate-y-1/2 hidden lg:block">
+            <p class="vertical-text font-serif text-white/50 text-base tracking-[0.6em] border-r border-white/20 pr-4">
+                五感で愉しむ、和と洋の融合
+            </p>
+        </div>
+    </section>
+
+    <!-- Strength Section -->
+    <section id="strength-section" class="py-16 md:py-24">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-[#c5a059] font-bold tracking-widest uppercase text-sm">Our Strengths</span>
+                <h2 class="fluid-h2 font-serif font-bold mt-2 section-title">新洋食KAZUが選ばれる理由</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-16 md:mb-24">
+                <div class="relative">
+                    <img src="images/hanbagu.png" alt="極上のハンバーグ" class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-sm shadow-2xl relative z-10">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-2 border-[#c5a059] z-0"></div>
+                </div>
+                <div class="space-y-5 md:space-y-6">
+                    <h3 class="fluid-h3 font-serif font-bold text-[#721c24] flex items-center">
+                        <span class="text-4xl md:text-5xl mr-3 md:mr-4 opacity-20">01</span>
+                        13年継ぎ足しのデミグラスソース
+                    </h3>
+                    <p class="text-stone-600 leading-loose text-sm sm:text-base">
+                        2011年の開店以来、13年以上にわたり一度も絶やすことなく継ぎ足され、熟成されてきた秘伝のデミグラスソース。肉と野菜の旨味が幾重にも重なり、深みのあるコクが、ジューシーなハンバーグの旨味を最大限に引き立てます。
+                    </p>
+                    <ul class="space-y-3 text-stone-700 font-bold text-sm sm:text-base">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-[#c5a059] mr-3 flex-shrink-0"></span>ふわふわのオムレツとの相性も抜群</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-[#c5a059] mr-3 flex-shrink-0"></span>一口食べれば、丁寧な手仕事が伝わります</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="order-2 md:order-1 space-y-5 md:space-y-6">
+                    <h3 class="fluid-h3 font-serif font-bold text-[#721c24] flex items-center">
+                        <span class="text-4xl md:text-5xl mr-3 md:mr-4 opacity-20">02</span>
+                        本格フレンチをコース仕立てで
+                    </h3>
+                    <p class="text-stone-600 leading-loose text-sm sm:text-base">
+                        「新洋食」の名の通り、和と洋を融合させた独創的なメニューが魅力。鰹だしベースのビームスープ(小豆・黒豆入り)から始まり、サラダ、前菜、メイン、そして自家製デザートまで、まるでコース料理のような満足感を提供します。
+                    </p>
+                    <div class="p-4 bg-white border-l-4 border-[#c5a059] shadow-sm italic text-stone-500 text-sm">
+                        「1600円でこの美味しさ、ボリューム、クオリティはここでしか出せない(お客様の声より)」
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <img src="images/fish.png" alt="コースの前菜" class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-sm shadow-2xl relative z-10">
+                    <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-[#c5a059] z-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History / Profile Section -->
+    <section id="profile-section" class="py-16 md:py-24 bg-[#721c24] text-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/3">
+                    <div class="relative">
+                        <img src="images/chef.png" alt="古田一美シェフ" class="w-full rounded-sm grayscale hover:grayscale-0 transition-all duration-700">
+                        <p class="absolute bottom-4 left-4 font-serif text-sm tracking-widest bg-black/40 px-2 py-1">Chef: Kazumi Furuta</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3">
+                    <span class="text-[#c5a059] font-bold tracking-widest text-sm block mb-4">Founder Story</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-6 md:mb-8">「新洋食」という、誇り。</h2>
+                    <div class="space-y-5 md:space-y-6 text-white/80 leading-relaxed font-light text-sm sm:text-base">
+                        <p>
+                            シェフ古田一美は、ホテルフレンチの第一線で長年腕を磨いてきました。
+                            培ったフレンチの技法を、もっと身近に、もっと驚きのある形で提供したい。その想いから2011年、札幌大通のビル地下に「新洋食 KAZU」を誕生させました。
+                        </p>
+                        <p>
+                            私たちの料理は、単なる洋食ではありません。北海道の厳選食材と、繊細な和の出汁、転がし継ぎ足されたデミグラスソースが融合した唯一無二の味わい。
+                            プレジデント松井ビルの地下という隠れ家的な場所で、一皿一皿に魂を込めています。
+                        </p>
+                        <p class="text-[#c5a059] font-bold italic">「一生懸命な接客」と「最高のデミグラス」で、お客様を笑顔に。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="comingsoon-section" class="py-16 md:py-24 bg-stone-900 text-stone-200 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-[#c5a059]/10 rounded-full blur-3xl -z-0"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-[#721c24]/20 rounded-full blur-3xl -z-0"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1 bg-[#c5a059] text-stone-950 font-black tracking-widest uppercase text-xs rounded-full mb-3">Next Project</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-wide">Coming Soon</h2>
+                <p class="text-stone-400 mt-4 max-w-xl mx-auto text-sm md:text-base">
+                    「お店の味をご自宅やオフィスでも楽しみたい」というお声に応え、<br class="hidden md:inline">新たなサービスを順次準備しております。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <!-- サービス1: EC・冷凍/レトルト販売 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-xl p-6 sm:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-[#c5a059] transition duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-5 md:mb-6">
+                            <span class="text-3xl">📦</span>
+                            <span class="bg-[#721c24] text-white text-xs font-bold px-3 py-1 rounded-full">準備中</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-serif font-bold text-white mb-3">
+                            秘伝デミグラス・ハンバーグ<br>全国オンラインEC販売
+                        </h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            13年継ぎ足しの秘伝デミグラスソースや手仕込みの極上ハンバーグを、急速冷凍・レトルト技術で届け込み全国へ。お店の美味しさをそのまま湯煎・温めるだけで食卓でお愉しみいただけます。贈り物やお中元やお歳暮にも。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700/80 pt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-[#c5a059] font-bold">
+                        <span>提供形態: 冷凍パック・ギフトBOX</span>
+                        <span>順次開設予定</span>
+                    </div>
+                </div>
+
+                <!-- サービス2: テイクアウト・デリバリー(中食) -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-xl p-6 sm:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-[#c5a059] transition duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-5 md:mb-6">
+                            <span class="text-3xl">🍱</span>
+                            <span class="bg-[#721c24] text-white text-xs font-bold px-3 py-1 rounded-full">順次対応</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-serif font-bold text-white mb-3">
+                            本格洋食弁当<br>テイクアウト・宅配サービス
+                        </h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            会議用のお弁当や、大切な記念日・ご家庭での特別なひとときに。出来立ての洋食弁当・オードブルをご用意いたします。各種宅配アプリとの連携や店舗受取で、より身近にKAZUの味をお届けします。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700/80 pt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-[#c5a059] font-bold">
+                        <span>提供形態: お弁当・オードブル</span>
+                        <span>近隣エリア配送対応</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-16 md:py-24">
+        <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-[#c5a059] font-bold tracking-widest uppercase text-sm">FAQ</span>
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold mt-2 section-title">よくあるご質問</h2>
+            </div>
+            <div class="space-y-4">
+                <details class="group bg-white rounded-lg border border-stone-200 shadow-sm transition-all overflow-hidden" open>
+                    <summary class="flex justify-between items-center gap-4 p-5 sm:p-6 cursor-pointer font-bold list-none min-h-[44px]">
+                        <span>予約は必須ですか?</span>
+                        <span class="text-[#c5a059] transition-transform group-open:rotate-180 flex-shrink-0">&#9660;</span>
+                    </summary>
+                    <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-stone-600 border-t border-stone-50 text-sm sm:text-base">
+                        はい、席数が限られており大変混み合うため、事前のご予約を強くお勧めしております。特にランチタイムはご案内が難しい場合もございます。
+                    </div>
+                </details>
+                <details class="group bg-white rounded-lg border border-stone-200 shadow-sm transition-all overflow-hidden">
+                    <summary class="flex justify-between items-center gap-4 p-5 sm:p-6 cursor-pointer font-bold list-none min-h-[44px]">
+                        <span>どのような利用シーンが多いですか?</span>
+                        <span class="text-[#c5a059] transition-transform group-open:rotate-180 flex-shrink-0">&#9660;</span>
+                    </summary>
+                    <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-stone-600 border-t border-stone-50 text-sm sm:text-base">
+                        ビジネスランチや大切な方との会食、観光でのご利用など、幅広くご利用いただいております。隠れ家的な雰囲気でお食事をお楽しみいただけます。
+                    </div>
+                </details>
+                <details class="group bg-white rounded-lg border border-stone-200 shadow-sm transition-all overflow-hidden">
+                    <summary class="flex justify-between items-center gap-4 p-5 sm:p-6 cursor-pointer font-bold list-none min-h-[44px]">
+                        <span>駐車場はありますか?</span>
+                        <span class="text-[#c5a059] transition-transform group-open:rotate-180 flex-shrink-0">&#9660;</span>
+                    </summary>
+                    <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-stone-600 border-t border-stone-50 text-sm sm:text-base">
+                        専用駐車場はございませんので、近隣の有料駐車場をご利用いただくか、公共交通機関(大通駅より徒歩3分)をご利用ください。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-16 md:py-24 bg-stone-100">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-stretch">
+                <div class="bg-white p-6 sm:p-10 shadow-xl border-t-8 border-[#721c24]">
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold mb-6 md:mb-8">Access / Contact</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-[#c5a059] text-xs font-bold uppercase tracking-widest mb-1">Address</p>
+                            <p class="font-bold text-sm sm:text-base">〒060-0061 北海道札幌市中央区南1条西5丁目 プレジデント松井ビル 100地下1階</p>
+                            <p class="text-sm text-stone-500 mt-2">大通駅1番出口より徒歩3分。雨・雪の日もほぼ濡れずにお越しいただけます。</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-[#c5a059] text-xs font-bold uppercase tracking-widest mb-1">Phone</p>
+                                <p class="font-bold text-lg sm:text-xl">011-252-3711</p>
+                            </div>
+                            <div>
+                                <p class="text-[#c5a059] text-xs font-bold uppercase tracking-widest mb-1">Holiday</p>
+                                <p class="font-bold text-sm sm:text-base">月曜日定休</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#c5a059] text-xs font-bold uppercase tracking-widest mb-1">Follow Us</p>
+                            <a href="https://ameblo.jp/chef-kazu/" class="inline-block mt-2 bg-stone-100 px-4 py-2 rounded hover:bg-[#c5a059] hover:text-white transition min-h-[44px] flex items-center w-fit">公式ブログ (シェフKAZU)</a>
+                        </div>
+                        <div class="pt-4 sm:pt-6">
+                            <a href="tel:0112523711" class="block w-full text-center bg-[#721c24] text-white py-4 rounded-lg font-bold shadow-lg hover:bg-red-900 transition min-h-[44px]">今すぐ電話で予約</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Google Maps Embed -->
+                <div class="min-h-[320px] sm:min-h-[400px] bg-stone-200 relative overflow-hidden group">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.161837554592!2d141.34738657507228!3d43.0590636906565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29845318181f%3A0xc3f958f62c03831!2z5paw5rSL6aOfIEtBWlU!5e0!3m2!1sja!2sjp!4v1771381417950!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12 md:py-16 text-center">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h3 class="text-white font-serif font-black text-xl sm:text-2xl mb-8">新洋食 KAZU</h3>
+            <div class="flex flex-wrap justify-center gap-5 sm:gap-8 mb-10 md:mb-12 text-sm">
+                <a href="#" class="hover:text-white transition">Top</a>
+                <a href="#strength-section" class="hover:text-white transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-white transition">History</a>
+                <a href="#problem-section" class="hover:text-white transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-white transition">Access</a>
+            </div>
+            <p class="text-xs">&copy; 2011-2024 Shin-Yoshoku KAZU. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スマホ用ハンバーガーメニューの開閉
+        const menuBtn = document.getElementById('menu-btn');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        function closeMenu() {
+            mobileNav.classList.remove('open');
+            menuIcon.innerHTML = '&#9776;';
+            menuBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            menuIcon.innerHTML = isOpen ? '&#10005;' : '&#9776;';
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // メニュー内のリンクをタップしたら自動で閉じる
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>
