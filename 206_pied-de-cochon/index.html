@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピエドコション | 極上のパテ・ド・カンパーニュ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Shippori Mincho', serif;
+            scroll-behavior: smooth;
+        }
+        .font-serif-jp {
+            font-family: 'Noto Serif JP', serif;
+        }
+        /* リファレンス風のシズル感オーバーレイ */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+        }
+        .text-vertical {
+            writing-mode: vertical-rl;
+        }
+        .gold-gradient {
+            background: linear-gradient(45deg, #b8860b, #e6be8a, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-title-bg {
+            position: relative;
+        }
+        .section-title-bg::before {
+            content: attr(data-en);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            color: rgba(0,0,0,0.03);
+            font-family: serif;
+            z-index: -1;
+            white-space: nowrap;
+        }
+        @media (min-width: 768px) {
+            .section-title-bg::before {
+                font-size: 4rem;
+            }
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* アニメーション */
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1.05); }
+            50% { transform: scale(1); }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 10s infinite ease-in-out;
+        }
+        /* モバイルメニュー */
+        #mobile-menu {
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .hamburger-line {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        #menu-toggle.open .line-1 {
+            transform: translateY(6px) rotate(45deg);
+        }
+        #menu-toggle.open .line-2 {
+            opacity: 0;
+        }
+        #menu-toggle.open .line-3 {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fdfcf9] text-stone-900 leading-relaxed overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="mr-4">
+                    <span class="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] text-stone-400 block mb-0.5">SAPPORO FRENCH</span>
+                    <h1 class="text-lg md:text-2xl font-black tracking-tighter font-serif-jp leading-none">PIED DE COCHON</h1>
+                </div>
+            </div>
+
+            <!-- PC Nav -->
+            <nav class="hidden lg:flex items-center space-x-8 text-[11px] font-bold tracking-widest uppercase">
+                <a href="#" class="nav-link">Top</a>
+                <a href="#strength-section" class="nav-link">strengths</a>
+                <a href="#profile-section" class="nav-link">history</a>
+                <a href="#coming-soon-section" class="nav-link">coming soon</a>
+                <a href="#problem-section" class="nav-link">Q&amp;A</a>
+                <a href="#access-section" class="nav-link">access</a>
+                <a href="https://www.instagram.com/pied_de_cochon1560/?hl=ja" target="_blank" class="bg-stone-900 text-white px-6 py-2.5 rounded-none hover:bg-stone-700 transition shadow-lg ml-4">お問い合わせ</a>
+            </nav>
+
+            <!-- Hamburger Button (mobile/tablet) -->
+            <button id="menu-toggle" class="lg:hidden relative w-8 h-6 flex flex-col justify-between items-end focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 rounded-sm" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger-line line-1 block w-8 h-[2px] bg-stone-900"></span>
+                <span class="hamburger-line line-2 block w-6 h-[2px] bg-stone-900"></span>
+                <span class="hamburger-line line-3 block w-8 h-[2px] bg-stone-900"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav id="mobile-menu" class="lg:hidden bg-white border-t border-stone-100">
+            <div class="flex flex-col px-6 py-6 space-y-5 text-sm font-bold tracking-widest uppercase">
+                <a href="#" class="mobile-nav-link">Top</a>
+                <a href="#strength-section" class="mobile-nav-link">Strengths</a>
+                <a href="#profile-section" class="mobile-nav-link">History</a>
+                <a href="#coming-soon-section" class="mobile-nav-link">Coming Soon</a>
+                <a href="#problem-section" class="mobile-nav-link">Q&amp;A</a>
+                <a href="#access-section" class="mobile-nav-link">Access</a>
+                <a href="https://www.instagram.com/pied_de_cochon1560/?hl=ja" target="_blank" class="bg-stone-900 text-white text-center px-6 py-3 mt-2">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FV (Hero Section) -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/beef.png" alt="肉のテクスチャ" class="w-full h-full object-cover animate-pulse-slow">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <!-- 縦書きキャッチコピー(PCのみ) -->
+            <div class="hidden md:block text-white text-vertical h-80 border-r border-white/30 pr-8">
+                <p class="text-2xl tracking-[0.5em] leading-relaxed">
+                    札幌の地で磨き抜かれた<br>
+                    一皿の、深い物語。
+                </p>
+            </div>
+
+            <div class="text-center md:text-right text-white w-full">
+                <div class="mb-4 inline-block px-3 md:px-4 py-1 border border-white/50 text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em]">AUTHENTIC FRENCH</div>
+                <h2 class="font-black mb-6 md:mb-8 leading-[1.2] font-serif-jp">
+                    <span class="block text-xl md:text-4xl mb-3 md:mb-4 font-normal opacity-90">極み、</span>
+                    <span class="text-2xl md:text-5xl tracking-widest italic block md:inline-block">【パテ・ド・カンパーニュ】</span>
+                </h2>
+                <div class="space-y-3 md:space-y-4 text-sm md:text-lg font-light opacity-80 tracking-wide md:tracking-widest px-2 md:px-0">
+                    <p>厳選された肉、繊細なスパイス、熟成の時。</p>
+                    <p>「小料理屋スタイル」が生む、本格の味。</p>
+                </div>
+                <div class="mt-8 md:mt-12">
+                    <a href="#strength-section" class="group relative inline-flex items-center justify-center px-8 py-3.5 md:px-12 md:py-5 overflow-hidden font-bold text-white transition duration-300 ease-out border-2 border-white shadow-md text-sm md:text-base">
+                        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-stone-900 duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
+                            VIEW DETAILS
+                        </span>
+                        <span class="absolute flex items-center justify-center w-full h-full transition-all duration-300 transform group-hover:translate-x-full ease tracking-[0.2em]">そのこだわりを知る</span>
+                        <span class="relative invisible">そのこだわりを知る</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strength Section -->
+    <section id="strength-section" class="py-20 md:py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 md:mb-24 section-title-bg" data-en="OUR STRENGTHS">
+                <h2 class="text-2xl md:text-5xl font-black font-serif-jp tracking-tighter">ピエドコションが選ばれる理由</h2>
+                <div class="w-12 h-1 bg-[#d4af37] mx-auto mt-6"></div>
+            </div>
+
+            <div class="space-y-16 md:space-y-32">
+                <!-- Strength 01 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-24">
+                    <div class="md:w-1/2 relative w-full">
+                        <div class="absolute -top-4 -left-2 md:-top-10 md:-left-10 text-5xl md:text-[10rem] font-black text-stone-100 z-0">01</div>
+                        <img src="images/pasta.png" alt="料理の技術" class="relative z-10 w-full h-[260px] md:h-[500px] object-cover rounded-sm shadow-2xl">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-xl md:text-3xl font-black mb-4 md:mb-6 font-serif-jp flex items-center">
+                            <span class="w-8 h-[2px] bg-stone-900 mr-4 shrink-0"></span>
+                            満足度の高い本格フレンチ
+                        </h3>
+                        <p class="text-stone-600 text-sm md:text-lg leading-loose mb-8">
+                            イタリアンの要素を巧みに取り入れ、日本人の感性に響くフレンチを追求。腕のジビエも手がける職人の腕前は、一口食べればその違いがわかります。小規模店だからこそできる、緻密な火入れと調味をご堪能ください。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Strength 02 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-24">
+                    <div class="md:w-1/2 relative w-full text-right">
+                        <div class="absolute -top-4 -right-2 md:-top-10 md:-right-10 text-5xl md:text-[10rem] font-black text-stone-100 z-0">02</div>
+                        <img src="images/paring.png" alt="ワイン" class="relative z-10 w-full h-[260px] md:h-[500px] object-cover rounded-sm shadow-2xl">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-xl md:text-3xl font-black mb-4 md:mb-6 font-serif-jp flex items-center">
+                            <span class="w-8 h-[2px] bg-stone-900 mr-4 shrink-0"></span>
+                            ワインとの究極の調和
+                        </h3>
+                        <p class="text-stone-600 text-sm md:text-lg leading-loose mb-8">
+                            名物のパテ・ド・カンパーニュには、選び抜かれたワインが不可欠。リーズナブルでありながら、料理を一層引き立てるペアリングを店主が自ら提案。お酒を嗜む大人たちが、静かに、そして深く親しめる空間がここにあります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History / Profile -->
+    <section id="profile-section" class="py-20 md:py-32 bg-[#1a1816] text-white relative overflow-hidden">
+        <div class="absolute right-0 top-0 opacity-10 pointer-events-none hidden md:block">
+            <span class="text-[20rem] font-serif-jp font-black text-vertical">情熱</span>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center">
+                <div class="md:w-1/2 space-y-6 md:space-y-12">
+                    <div class="inline-block border-b border-stone-500 pb-2 tracking-[0.4em] md:tracking-[0.5em] text-xs md:text-sm text-stone-400 uppercase">OUR STORY</div>
+                    <h2 class="text-2xl md:text-5xl font-black font-serif-jp leading-tight">店主の腕一本、<br>心ゆくまで。</h2>
+                    <div class="space-y-5 md:space-y-6 text-stone-300 text-sm md:text-lg leading-loose font-light">
+                        <p>「自分のお店で、思う存分腕を振るいたい」。その想いから生まれたピエドコションは、実質ワンオペという、ストイックなスタイルを選びました。</p>
+                        <p>一人ひとりの顔を見て、一皿を仕上げる。タイミングよくお出しすることは難しいかもしれません。しかし、一皿に込める「密度」は誰にも負けません。</p>
+                        <p>かつてお世話になった方、新しい出会い、すべてのお客様に最高の一皿を届けることが私の誇りです。</p>
+                    </div>
+                    <div class="pt-2 md:pt-8">
+                        <p class="text-lg md:text-2xl font-serif-jp italic">— 店主自ら、厨を込めて。</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-3 md:gap-4 w-full">
+                    <img src="images/chef.png" class="w-full h-36 md:h-64 object-cover mt-6 md:mt-12 rounded-sm grayscale hover:grayscale-0 transition duration-700" alt="厨房">
+                    <img src="images/fish.png" class="w-full h-48 md:h-80 object-cover rounded-sm grayscale hover:grayscale-0 transition duration-700" alt="盛り付け">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="py-20 md:py-32 bg-stone-100 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-20 section-title-bg" data-en="NEW PROJECTS">
+                <span class="text-xs md:text-sm tracking-[0.3em] md:tracking-[0.4em] text-[#d4af37] font-bold block mb-2 uppercase">Coming Soon</span>
+                <h2 class="text-2xl md:text-5xl font-black font-serif-jp">これからのお楽しみ</h2>
+                <p class="text-stone-500 text-xs md:text-base mt-4">ピエドコションが目指す、新しい食の体験</p>
+                <div class="w-12 h-1 bg-[#d4af37] mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Plan 1 -->
+                <div class="bg-white p-6 md:p-10 shadow-md border border-stone-200 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-[#d4af37] text-white text-[9px] md:text-[10px] tracking-widest font-bold px-3 md:px-4 py-1 uppercase">Plan 01</div>
+                    <div class="text-[#d4af37] text-2xl md:text-3xl mb-3 md:mb-4">◆</div>
+                    <h3 class="text-lg md:text-xl font-bold font-serif-jp mb-3 md:mb-4 leading-snug">初めての地中海フレンチ<br>「入門テイスティングコース」</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        「フレンチや地中海料理は少しハードルが高い…」という方へ。看板メニューの「パテ・ド・カンパーニュ」をはじめ、人気のポトフやクロックムッシュを一口ずつ楽しめる初心者限定の入門セットを準備中です。
+                    </p>
+                    <span class="inline-block text-xs font-bold text-stone-400 tracking-widest border-b border-stone-200 pb-1">準備中 / 近日公開予定</span>
+                </div>
+
+                <!-- Plan 2 -->
+                <div class="bg-white p-6 md:p-10 shadow-md border border-stone-200 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-[#d4af37] text-white text-[9px] md:text-[10px] tracking-widest font-bold px-3 md:px-4 py-1 uppercase">Plan 02</div>
+                    <div class="text-[#d4af37] text-2xl md:text-3xl mb-3 md:mb-4">◆</div>
+                    <h3 class="text-lg md:text-xl font-bold font-serif-jp mb-3 md:mb-4 leading-snug">ノンアルコール派も楽しむ<br>「ペアリングモクテルセット」</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        「お酒が飲めないけれど、夜の本格料理を楽しみたい」というお客様の声にお応えし、ハーブやスパイスを効かせた自家製モクテル(ノンアルコールドリンク)と料理の極上ペアリングメニューを開発しています。
+                    </p>
+                    <span class="inline-block text-xs font-bold text-stone-400 tracking-widest border-b border-stone-200 pb-1">準備中 / 近日公開予定</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-20 md:py-32 bg-stone-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12 md:mb-20 section-title-bg" data-en="QUESTIONS">
+                <h2 class="text-2xl md:text-4xl font-black font-serif-jp">よくあるご質問</h2>
+            </div>
+            <div class="space-y-4">
+                <details class="group bg-white border border-stone-200 shadow-sm" open>
+                    <summary class="list-none cursor-pointer p-5 md:p-8 flex justify-between items-center gap-4 font-bold">
+                        <span class="text-sm md:text-base">料理の提供時間について教えてください。</span>
+                        <span class="group-open:rotate-180 transition-transform text-stone-400 shrink-0">▼</span>
+                    </summary>
+                    <div class="p-5 md:p-8 pt-0 text-stone-600 border-t border-stone-100 leading-loose text-sm md:text-base">
+                        当店は店主一人で調理とサービスを行っております。混雑時は、お時間をいただくことがございます。お急ぎの方は、時間に余裕がある際のご来店をおすすめしております。
+                    </div>
+                </details>
+                <details class="group bg-white border border-stone-200 shadow-sm">
+                    <summary class="list-none cursor-pointer p-5 md:p-8 flex justify-between items-center gap-4 font-bold">
+                        <span class="text-sm md:text-base">カウンター席とテーブル席、どちらが良いですか?</span>
+                        <span class="group-open:rotate-180 transition-transform text-stone-400 shrink-0">▼</span>
+                    </summary>
+                    <div class="p-5 md:p-8 pt-0 text-stone-600 border-t border-stone-100 leading-loose text-sm md:text-base">
+                        店内は手狭なため、店主の動きが間近で見られるカウンター席が特に和める好評です。テーブル席は少人数での語らいに適しています。
+                    </div>
+                </details>
+                <details class="group bg-white border border-stone-200 shadow-sm">
+                    <summary class="list-none cursor-pointer p-5 md:p-8 flex justify-between items-center gap-4 font-bold">
+                        <span class="text-sm md:text-base">お酒を飲まなくても楽しめますか?</span>
+                        <span class="group-open:rotate-180 transition-transform text-stone-400 shrink-0">▼</span>
+                    </summary>
+                    <div class="p-5 md:p-8 pt-0 text-stone-600 border-t border-stone-100 leading-loose text-sm md:text-base">
+                        もちろんです。ランチタイムの「豚肩ロースのソテー」や「クロックムッシュ」など、お食事のみの目的でいらっしゃるお客様も多くいらっしゃいます。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Info -->
+    <section id="access-section" class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+                <div class="lg:w-1/2">
+                    <div class="mb-10 md:mb-12">
+                        <h2 class="text-3xl md:text-5xl font-black font-serif-jp mb-3 md:mb-4">店舗情報</h2>
+                        <p class="text-stone-400 tracking-[0.2em] md:tracking-[0.3em] font-serif-jp uppercase text-xs md:text-sm">ACCESS INFO</p>
+                    </div>
+                    <dl class="space-y-5 md:space-y-8 border-t border-stone-100 pt-8 md:pt-10">
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <dt class="w-full md:w-40 font-bold text-stone-400 uppercase text-[10px] tracking-widest mb-1 md:mb-0">Shop Name</dt>
+                            <dd class="text-base md:text-xl font-bold">ピエドコション (PIED DE COCHON)</dd>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <dt class="w-full md:w-40 font-bold text-stone-400 uppercase text-[10px] tracking-widest mb-1 md:mb-0">Address</dt>
+                            <dd class="text-sm md:text-lg">〒001-0016 北海道札幌市北区北16条西4丁目1-35 896BLDG 1F</dd>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <dt class="w-full md:w-40 font-bold text-stone-400 uppercase text-[10px] tracking-widest mb-1 md:mb-0">Phone</dt>
+                            <dd class="text-base md:text-xl font-bold">
+                                <a href="tel:0112995222" class="hover:text-[#d4af37] transition">011-299-5222</a>
+                            </dd>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center">
+                            <dt class="w-full md:w-40 font-bold text-stone-400 uppercase text-[10px] tracking-widest mb-1 md:mb-0">Holiday</dt>
+                            <dd class="text-sm md:text-lg">火曜日</dd>
+                        </div>
+                    </dl>
+                    <div class="mt-10 md:mt-16">
+                        <a href="https://www.instagram.com/pied_de_cochon1560/?hl=ja" target="_blank" class="inline-flex items-center space-x-4 group">
+                            <span class="bg-stone-900 text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full group-hover:scale-110 transition shadow-lg shrink-0">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </span>
+                            <span class="font-bold border-b border-stone-300 group-hover:border-stone-900 transition text-sm md:text-base">Instagramをフォローする</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 min-h-[300px] md:min-h-[500px] relative shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.1873942161947!2d141.34455937507352!3d43.07955548934494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29be53764be5%3A0x41c6fd02004c8277!2z44OU44Ko44OJ44Kz44K344On44Oz!5e0!3m2!1sja!2sjp!4v1771378530609!5m2!1sja!2sjp" width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="grayscale hover:grayscale-0 transition duration-1000"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-500 py-14 md:py-20 border-t border-stone-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-xl md:text-3xl font-black font-serif-jp text-white mb-8 md:mb-10 tracking-[0.2em] md:tracking-[0.3em] uppercase">PIED DE COCHON</h2>
+            <nav class="flex flex-wrap justify-center gap-4 md:gap-10 text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.2em] mb-12 md:mb-16 uppercase">
+                <a href="#" class="hover:text-white transition">Top</a>
+                <a href="#strength-section" class="hover:text-white transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-white transition">History</a>
+                <a href="#coming-soon-section" class="hover:text-white transition">Coming Soon</a>
+                <a href="#problem-section" class="hover:text-white transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-white transition">Access</a>
+            </nav>
+            <div class="pt-8 md:pt-10 border-t border-stone-800 text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] opacity-30">
+                &copy; 2024 PIED DE COCHON. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉制御
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function closeMenu() {
+            menuToggle.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = menuToggle.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>
