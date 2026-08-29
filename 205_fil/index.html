@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Restaurant fil | 札幌・北4条 季節を奏でるフレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-dark: #1a2c3d;
+            --brand-gold: #c5a059;
+            --brand-blue-light: #f4f9ff;
+        }
+        body {
+            font-family: 'Shippori Mincho', serif;
+            scroll-behavior: smooth;
+            color: var(--brand-dark);
+            background-color: #fff;
+            -webkit-text-size-adjust: 100%;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-noto { font-family: 'Noto Serif JP', serif; }
+        .text-brand-dark { color: var(--brand-dark); }
+        .text-brand-gold { color: var(--brand-gold); }
+        .bg-brand-dark { background-color: var(--brand-dark); }
+        .bg-brand-gold { background-color: var(--brand-gold); }
+        .bg-brand-blue-light { background-color: var(--brand-blue-light); }
+        .border-brand-dark { border-color: var(--brand-dark); }
+        .border-brand-gold { border-color: var(--brand-gold); }
+
+        .bg-texture {
+            background-image: url('images/main.png');
+        }
+
+        .gold-line {
+            position: relative;
+        }
+        .gold-line::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--brand-gold);
+        }
+
+        .btn-elegant {
+            background-color: var(--brand-dark);
+            color: #fff;
+            transition: all 0.4s ease;
+            border: 1px solid var(--brand-dark);
+        }
+        .btn-elegant:hover {
+            background-color: transparent;
+            color: var(--brand-dark);
+        }
+
+        .hero-zoom {
+            animation: zoom-out 20s infinite alternate;
+        }
+        @keyframes zoom-out {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .nobrk { white-space: nowrap; }
+
+        section { overflow: hidden; }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 480px;
+            opacity: 1;
+        }
+        .hamburger-line {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        #menu-toggle.open .line-1 { transform: translateY(7px) rotate(45deg); }
+        #menu-toggle.open .line-2 { opacity: 0; }
+        #menu-toggle.open .line-3 { transform: translateY(-7px) rotate(-45deg); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom, .hamburger-line { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 h-20 md:h-24 flex items-center justify-between">
+            <div class="flex flex-col">
+                <h1 class="font-cinzel text-2xl md:text-3xl font-bold tracking-[0.2em] text-brand-dark">fil</h1>
+                <p class="text-[8px] md:text-[9px] tracking-[0.3em] uppercase opacity-60">Restaurant fil Sapporo</p>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-10 text-sm tracking-widest font-medium">
+                <a href="#top" class="hover:text-brand-gold transition text-brand-gold">Top</a>
+                <a href="#strength-section" class="hover:text-brand-gold transition">strengths</a>
+                <a href="#profile-section" class="hover:text-brand-gold transition">history</a>
+                <a href="#problem-section" class="hover:text-brand-gold transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-brand-gold transition">access</a>
+                <a href="https://www.instagram.com/restaurant_fil/" target="_blank" rel="noopener" class="btn-elegant px-8 py-3 rounded-sm shadow-xl flex items-center gap-2">
+                    <span>RESERVATION</span>
+                </a>
+            </nav>
+
+            <!-- Mobile Hamburger -->
+            <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden relative w-9 h-8 flex flex-col justify-center items-center gap-[6px]">
+                <span class="hamburger-line line-1 block w-7 h-[1.5px] bg-brand-dark"></span>
+                <span class="hamburger-line line-2 block w-7 h-[1.5px] bg-brand-dark"></span>
+                <span class="hamburger-line line-3 block w-7 h-[1.5px] bg-brand-dark"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Panel -->
+        <nav id="mobile-menu" class="lg:hidden bg-white border-t border-gray-100">
+            <div class="flex flex-col px-6 py-6 space-y-5 text-sm tracking-widest font-medium">
+                <a href="#top" class="mobile-link py-1 text-brand-gold">Top</a>
+                <a href="#strength-section" class="mobile-link py-1">strengths</a>
+                <a href="#profile-section" class="mobile-link py-1">history</a>
+                <a href="#problem-section" class="mobile-link py-1">Q&amp;A</a>
+                <a href="#access-section" class="mobile-link py-1">access</a>
+                <a href="https://www.instagram.com/restaurant_fil/" target="_blank" rel="noopener" class="btn-elegant px-6 py-3 rounded-sm shadow-xl text-center mt-2">RESERVATION</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="top" class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0">
+            <img src="https://r.jina.ai/i/6803767f40754802901962306d871780" alt="フィル ロースト" class="w-full h-full object-cover hero-zoom">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center text-white px-6">
+            <div class="text-center mt-8 md:mt-12">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 md:mb-8 leading-tight tracking-widest font-noto">
+                    <span class="nobrk">希少な道産羊、</span><br>
+                    <span class="nobrk text-[#c5a059]">ローストランプ</span>
+                </h2>
+                <div class="w-px h-16 md:h-24 bg-white/50 mx-auto mb-6 md:mb-8"></div>
+                <p class="max-w-2xl mx-auto text-sm sm:text-lg md:text-xl tracking-widest opacity-90 font-light leading-relaxed">
+                    札幌・北4条の静かなマンションの一角。<br>
+                    夫婦が営む小さなレストラン「フィル」。
+                </p>
+            </div>
+        </div>
+
+        <!-- Scroll Down -->
+        <div class="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 text-white/60 text-[10px] tracking-widest uppercase">
+            Scroll Down
+            <div class="w-px h-10 md:h-12 bg-white/30 mx-auto mt-4"></div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="font-cinzel text-brand-gold tracking-[0.3em] block mb-4 text-sm md:text-base">CONCEPT</span>
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 md:mb-16 tracking-widest gold-line inline-block pb-4">「畏まらず、ゆったりと。」</h3>
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="md:w-1/2">
+                    <img src="images/fish.png" alt="フィルの店内" class="rounded-sm shadow-2xl w-full">
+                </div>
+                <div class="md:w-1/2 text-left leading-loose text-gray-700 text-sm sm:text-base">
+                    <p class="mb-6 md:mb-8">
+                        名店「ラ・サンテ」で長年スーシェフを務めた長浜陽が、妻・尚子と共に2023年11月にオープンしました。私たちが大切にしているのは、北海道の旬を素直に、そして丁寧にお皿に表現すること。
+                    </p>
+                    <p>
+                        シェフの実家で育てられた瑞々しい野菜や、産地を厳選した希少なラム肉。小さな店だからこそできる、心の通ったおもてなしで皆様をお迎えいたします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Strengths (Visual Card Style) -->
+<section id="strength-section" class="py-20 md:py-32 bg-brand-blue-light">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14 md:mb-24">
+            <h3 class="font-cinzel text-3xl md:text-4xl mb-2 tracking-widest text-brand-dark">Strengths</h3>
+            <div class="w-12 h-[1px] bg-brand-gold mx-auto"></div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-0 shadow-2xl rounded-sm overflow-hidden">
+            <div class="relative h-[380px] sm:h-[480px] lg:h-[600px] group overflow-hidden">
+                <img src="images/poware.png" alt="羊肉のポワレ" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-white">
+                    <span class="text-brand-gold font-cinzel text-lg md:text-xl mb-3 md:mb-4">01</span>
+                    <h4 class="text-xl md:text-2xl font-bold mb-3 md:mb-6 tracking-widest">季節を奏でるフレンチ</h4>
+                    <p class="text-xs md:text-sm leading-loose opacity-80">道産食材を中心に、その瞬間にしか味わえない「旬」をコースに凝縮。特に絶妙な火入れで仕上げる肉料理は、多くの美食家に愛されています。</p>
+                </div>
+            </div>
+            <div class="relative h-[380px] sm:h-[480px] lg:h-[600px] group overflow-hidden">
+                <img src="images/yasai.png" alt="実家直送の野菜" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition duration-500"></div>
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-white">
+                    <span class="text-brand-gold font-cinzel text-lg md:text-xl mb-3 md:mb-4">02</span>
+                    <h4 class="text-xl md:text-2xl font-bold mb-3 md:mb-6 tracking-widest">実家直送の野菜たち</h4>
+                    <p class="text-xs md:text-sm leading-loose opacity-80">シェフの実家から届く新鮮な道産野菜。添え物ではなく、その生命力を主役として際立たせる一皿は、フィルならではの魅力です。</p>
+                </div>
+            </div>
+            <div class="relative h-[380px] sm:h-[480px] lg:h-[600px] group overflow-hidden sm:col-span-2 lg:col-span-1">
+                <img src="images/dessert.png" alt="季節のデザート" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition duration-500"></div>
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-white">
+                    <span class="text-brand-gold font-cinzel text-lg md:text-xl mb-3 md:mb-4">03</span>
+                    <h4 class="text-xl md:text-2xl font-bold mb-3 md:mb-6 tracking-widest">至福のデザート</h4>
+                    <p class="text-xs md:text-sm leading-loose opacity-80">「焦がした蜂蜜のブラマンジェ」など、細部までこだわり抜いたデザート。最後の瞬間まで驚きと喜びが続く時間を提供いたします。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Signature Menu Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="lg:w-1/2 relative w-full">
+                    <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 border-t-2 border-l-2 border-brand-gold z-0"></div>
+                    <img src="images/roast.png" alt="ローストランプ" class="relative z-10 rounded-sm shadow-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 tracking-[0.1em]">究極の一皿<br><span class="text-brand-gold text-3xl sm:text-4xl md:text-5xl">ローストランプ</span></h3>
+                    <p class="text-sm sm:text-base md:text-lg leading-loose text-gray-700 mb-8 md:mb-10">
+                        「これが羊肉？」と驚かれるほど、臭みのない濃厚な肉の旨み。背肉、もも肉、ミンチと異なる食感を一皿で表現することも。シェフが自ら調達し、火入れの秒数にまでこだわったロースは、フィルの顔そのものです。
+                    </p>
+                    <div class="space-y-3 md:space-y-4 border-l border-brand-gold pl-5 md:pl-6 text-sm sm:text-base">
+                        <p class="font-bold">・希少な日本産ラムを使用</p>
+                        <p class="font-bold">・素材のポテンシャルを引き出すソース</p>
+                        <p class="font-bold">・食べ応えのあるボリューム感</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile-section" class="py-20 md:py-32 bg-brand-dark text-white bg-[url('https://www.transparenttextures.com/patterns/dark-leather.png')]">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <span class="font-cinzel text-brand-gold tracking-[0.4em] md:tracking-[0.5em] block mb-2 text-sm md:text-base">CHEF'S STORY</span>
+            <h3 class="text-2xl sm:text-3xl font-bold tracking-widest mb-14 md:mb-20 gold-line inline-block pb-4">物語を紡ぐ、一皿のために。</h3>
+
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center text-left">
+                <div class="w-40 sm:w-48 md:w-auto md:1/3 mx-auto">
+                    <img src="images/chef.png" alt="シェフ 長浜 輝" class="rounded-full border-2 border-brand-gold p-2 grayscale hover:grayscale-0 transition duration-700 w-full aspect-square object-cover">
+                </div>
+                <div class="md:w-2/3 leading-loose opacity-90 text-sm sm:text-base">
+                    <h4 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 font-noto">オーナーシェフ 長浜 陽</h4>
+                    <p class="mb-4 md:mb-6 italic text-brand-gold">Akira Nagahama</p>
+                    <p class="mb-4 md:mb-6">
+                        札幌の名店「ラ・サンテ」で長くスーシェフを務めた日々。そこでの経験は私の料理の礎となりました。食材の調達から調理、研究から。すべてを自分たちの手で届けたいという想いから、2023年、この場所で「フィル」をスタートさせました。
+                    </p>
+                    <p>
+                        私の実家の畑で育った野菜たちは、私にとって家族と同じ。その力強い味わいを、最高の状態でお届けすることをお約束します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="py-20 md:py-32 bg-[#fafafa]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14 md:mb-24">
+                <h3 class="font-cinzel text-2xl md:text-3xl mb-4 tracking-widest text-brand-dark">Reviews</h3>
+                <p class="text-gray-400 text-sm italic">お客様からいただいた温かなお言葉</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="bg-white p-8 md:p-10 border border-gray-100 shadow-sm relative">
+                    <div class="absolute top-4 left-4 text-4xl text-gray-100 font-serif">&ldquo;</div>
+                    <p class="text-sm leading-loose mb-6 relative z-10">「羊は3種楽しめ、臭みの一切ない絶妙な調理でした。添えられた野菜も火入れが丁度よく、それぞれの良さを引き出しているといった感じ。」</p>
+                    <div class="text-right text-brand-gold tracking-widest">★★★★★</div>
+                </div>
+                <div class="bg-white p-8 md:p-10 border border-gray-100 shadow-sm relative">
+                    <div class="absolute top-4 left-4 text-4xl text-gray-100 font-serif">&ldquo;</div>
+                    <p class="text-sm leading-loose mb-6 relative z-10">「内装が可愛らしい。よく練られたカフェのような爽やかな色味。店主実家の野菜が主役に近い使われ方をしているのが嬉しい。」</p>
+                    <div class="text-right text-brand-gold tracking-widest">★★★★☆</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-20 md:py-32 bg-white text-brand-dark relative overflow-hidden border-t border-b border-gray-100">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-14 md:mb-20">
+                <span class="inline-block px-4 py-1 border border-brand-gold text-brand-gold text-xs tracking-[0.3em] uppercase mb-4 rounded-full">Future Services</span>
+                <h3 class="font-cinzel text-3xl sm:text-4xl md:text-5xl tracking-[0.15em] md:tracking-[0.2em] text-brand-dark mb-6">COMING SOON</h3>
+                <p class="text-sm md:text-base tracking-widest text-gray-700 max-w-2xl mx-auto font-light leading-relaxed">
+                    「fil」でのひとときを、より深く、より身近にお楽しみいただくために。<br>
+                    現在、新しいおもてなしの形を準備しております。
+                </p>
+                <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <!-- Service Card 1 -->
+                <div class="bg-gray-50/80 border border-gray-200/80 p-6 sm:p-8 rounded-sm hover:border-brand-gold transition duration-500 hover:shadow-lg group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="font-cinzel text-brand-gold text-2xl font-bold">01</span>
+                            <span class="text-[10px] tracking-widest uppercase bg-brand-gold/15 text-brand-gold px-3 py-1 rounded-full font-bold">Pairing</span>
+                        </div>
+                        <h4 class="text-lg sm:text-xl font-bold mb-4 tracking-wider text-brand-dark group-hover:text-brand-gold transition">季節を彩るペアリング提案</h4>
+                        <p class="text-xs leading-relaxed text-gray-600 mb-6">
+                            ソムリエ厳選のナチュラルワインはもちろん、シェフの実家野菜やハーブを用いた「自家製ノンアルコールペアリング」をご用意。お酒を飲まれない方にも一皿ごとのストーリーをご堪能いただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200 text-right">
+                        <span class="text-[11px] text-brand-gold italic font-medium">準備中 / 近日スタート予定</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-gray-50/80 border border-gray-200/80 p-6 sm:p-8 rounded-sm hover:border-brand-gold transition duration-500 hover:shadow-lg group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="font-cinzel text-brand-gold text-2xl font-bold">02</span>
+                            <span class="text-[10px] tracking-widest uppercase bg-brand-gold/15 text-brand-gold px-3 py-1 rounded-full font-bold">Atelier &amp; Gift</span>
+                        </div>
+                        <h4 class="text-lg sm:text-xl font-bold mb-4 tracking-wider text-brand-dark group-hover:text-brand-gold transition">filの味をご自宅で - テイクアウト・ギフト</h4>
+                        <p class="text-xs leading-relaxed text-gray-600 mb-6">
+                            シェフ特製の「自家製ハーブソルト」や「旬野菜のコンフィチュール」、希少な羊肉の旨みを詰めたポタージュなど、ご自宅での食卓や贈り物にぴったりな限定プロダクトを展開予定です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200 text-right">
+                        <span class="text-[11px] text-brand-gold italic font-medium">オンラインショップ開設予定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-20 md:py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h3 class="font-cinzel text-2xl md:text-3xl mb-12 md:mb-16 text-center tracking-widest text-brand-dark">Questions</h3>
+            <div class="space-y-6 md:space-y-8">
+                <details class="group border-b border-gray-100 pb-6 cursor-pointer" open>
+                    <summary class="flex justify-between items-center list-none font-bold text-base sm:text-lg">
+                        <span>予約方法について教えてください。</span>
+                        <span class="group-open:rotate-180 transition-transform ml-4 shrink-0">↓</span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 leading-relaxed text-sm sm:text-base">
+                        当店は完全予約制となっております。お電話（011-213-9928）またはInstagramのダイレクトメッセージにて承っております。
+                    </p>
+                </details>
+                <details class="group border-b border-gray-100 pb-6 cursor-pointer">
+                    <summary class="flex justify-between items-center list-none font-bold text-base sm:text-lg">
+                        <span>子供連れやベビーカーでの入店は可能ですか？</span>
+                        <span class="group-open:rotate-180 transition-transform ml-4 shrink-0">↓</span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 leading-relaxed text-sm sm:text-base">
+                        はい、もちろんです。赤ちゃん連れのお客様も歓迎しております。事前にお伝えいただければ、お席の調整をさせていただきます。
+                    </p>
+                </details>
+                <details class="group border-b border-gray-100 pb-6 cursor-pointer">
+                    <summary class="flex justify-between items-center list-none font-bold text-base sm:text-lg">
+                        <span>駐車場はありますか？</span>
+                        <span class="group-open:rotate-180 transition-transform ml-4 shrink-0">↓</span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        専用駐車場はございませんので、近隣のコインパーキング（北5条通りから入ってすぐ周辺にございます）をご利用ください。
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-20 md:py-32 bg-brand-blue-light">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+                <div class="lg:w-1/2">
+                    <h3 class="font-cinzel text-3xl md:text-4xl mb-10 md:mb-12 tracking-widest text-brand-dark">Access</h3>
+                    <div class="space-y-6 md:space-y-8 text-base md:text-lg font-light">
+                        <div>
+                            <p class="font-bold text-brand-gold text-sm mb-2 uppercase tracking-widest">Address</p>
+                            <p class="text-sm sm:text-base">〒060-0004 北海道札幌市中央区北4条西19丁目1−4<br>シャトーム北4条 106号</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-gold text-sm mb-2 uppercase tracking-widest">Phone</p>
+                            <a href="tel:0112139928" class="text-xl sm:text-2xl border-b border-brand-dark hover:text-brand-gold transition">011-213-9928</a>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-gold text-sm mb-2 uppercase tracking-widest">Closed</p>
+                            <p class="text-sm sm:text-base">日曜日・月曜日</p>
+                        </div>
+                        <div class="pt-6 md:pt-10">
+                            <a href="https://www.instagram.com/restaurant_fil/" class="btn-elegant px-8 sm:px-10 py-4 sm:py-5 inline-block text-sm tracking-[0.2em] shadow-2xl">CONTACT ON INSTAGRAM</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 min-h-[300px] sm:min-h-[400px] lg:min-h-[450px] bg-gray-200 shadow-2xl rounded-sm overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13472.270865696195!2d141.30393482753573!3d43.058561185183784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29005e730395%3A0x10667cdb3e9121bb!2z44OV44Kj44Or!5e0!3m2!1sja!2sjp!4v1771377164560!5m2!1sja!2sjp" width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark py-14 md:py-20 text-center px-6">
+        <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.4em] md:tracking-[0.5em] text-brand-gold mb-6">fil</h2>
+        <p class="text-[10px] tracking-widest uppercase mb-4 text-brand-gold opacity-80">RESTAURANT FIL SAPPORO</p>
+        <p class="text-[10px] tracking-widest uppercase text-brand-gold opacity-60">&copy; 2024 Restaurant fil. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function closeMenu() {
+            menuToggle.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = menuToggle.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>
