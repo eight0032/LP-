@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン ミヤヴィ | 至高の自家熟成パンと北海道フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c5a059;
+            --stone-dark: #2c2c2c;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--primary);
+            scroll-behavior: smooth;
+            background-color: #fff;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+        .cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        .text-gold { color: var(--accent); }
+        .bg-gold { background-color: var(--accent); }
+        .border-gold { border-color: var(--accent); }
+        .header-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        /* FV: 参考サイトを意識したインパクトのある構成 */
+        .hero-section {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #000;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 100%), url('images/hokkaido.png');
+            background-size: cover;
+            background-position: center;
+        }
+        @media (min-width: 768px) {
+            .hero-bg {
+                background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, transparent 80%), url('images/hokkaido.png');
+            }
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #c5a059 0%, #b08d4a 100%);
+            color: white;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            letter-spacing: 0.1em;
+        }
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+        }
+        .parallax-text {
+            font-size: 16vw;
+            color: rgba(0,0,0,0.03);
+            position: absolute;
+            z-index: 0;
+            white-space: nowrap;
+            font-weight: 900;
+            line-height: 1;
+            pointer-events: none;
+        }
+        @media (min-width: 768px) {
+            .parallax-text { font-size: 12vw; }
+        }
+        /* Map responsiveness */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* taller on mobile */
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-top: 75%; } /* 4:3 on larger screens */
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+        .scroll-down::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: white;
+            display: block;
+            margin: 10px auto 0;
+            animation: scrolldown 2s infinite;
+        }
+        @keyframes scrolldown {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            51% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+        /* Mobile nav */
+        #mobile-menu {
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        #menu-toggle span {
+            transition: all 0.3s ease;
+        }
+        #menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        #menu-toggle.open span:nth-child(2) { opacity: 0; }
+        #menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    </style>
+</head>
+<body id="top" class="overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 header-glass">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="cinzel text-lg sm:text-xl font-bold tracking-widest uppercase">MiYa-Vie</span>
+                <span class="text-[8px] sm:text-[9px] tracking-[0.2em] font-light">RESTAURANT SAPPORO</span>
+            </div>
+            <nav class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-widest">
+                <a href="#top" class="hover:text-gold transition">Top</a>
+                <a href="#strength-section" class="hover:text-gold transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-gold transition">History</a>
+                <a href="#coming-soon-section" class="hover:text-gold transition">Coming Soon</a>
+                <a href="#problem-section" class="hover:text-gold transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-gold transition">Access</a>
+                <a href="http://www.miya-vie.jp/" target="_blank" class="btn-gold px-8 py-3 rounded-sm text-white shadow-lg">
+                    Reservation
+                </a>
+            </nav>
+            <!-- Mobile hamburger -->
+            <button id="menu-toggle" class="lg:hidden relative w-8 h-6 flex flex-col justify-between items-center" aria-label="メニューを開く" aria-expanded="false">
+                <span class="block w-8 h-[2px] bg-black"></span>
+                <span class="block w-8 h-[2px] bg-black"></span>
+                <span class="block w-8 h-[2px] bg-black"></span>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <nav id="mobile-menu" class="lg:hidden header-glass px-5 pb-2">
+            <div class="flex flex-col text-sm font-bold uppercase tracking-widest divide-y divide-stone-100">
+                <a href="#top" class="py-4 hover:text-gold transition">Top</a>
+                <a href="#strength-section" class="py-4 hover:text-gold transition">Strengths</a>
+                <a href="#profile-section" class="py-4 hover:text-gold transition">History</a>
+                <a href="#coming-soon-section" class="py-4 hover:text-gold transition">Coming Soon</a>
+                <a href="#problem-section" class="py-4 hover:text-gold transition">Q&amp;A</a>
+                <a href="#access-section" class="py-4 hover:text-gold transition">Access</a>
+                <a href="http://www.miya-vie.jp/" target="_blank" class="btn-gold mt-4 mb-4 px-8 py-4 rounded-sm text-white shadow-lg text-center">
+                    Reservation
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FV (Hero Section) -->
+    <section class="hero-section pt-24">
+        <div class="hero-bg"></div>
+        <div class="max-w-7xl mx-auto w-full px-5 sm:px-6 relative z-10 text-white">
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
+                <div class="md:w-2/3">
+                    <p class="cinzel tracking-[0.3em] sm:tracking-[0.5em] mb-4 sm:mb-6 text-xs sm:text-sm text-gold opacity-90">THE ART OF HOMEMADE BREAD</p>
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-black mb-6 sm:mb-8 leading-[1.3] sm:leading-[1.2] tracking-tight">
+                        一皿の記憶を<br><span class="text-gold">完結させる、</span><br>最後の一切れ。
+                    </h1>
+                    <div class="flex items-center gap-4 sm:gap-6 mb-10 sm:mb-12">
+                        <div class="h-[1px] w-12 sm:w-20 bg-gold shrink-0"></div>
+                        <p class="text-sm sm:text-lg md:text-xl font-light tracking-wide sm:tracking-widest">ミシュラン一星が辿り着いた、自家製パンの真髄</p>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/3 text-right">
+                    <p class="vertical-text text-xl tracking-[0.5em] font-serif border-r border-gold pr-4 mr-0 ml-auto">
+                        雅と人生が、<br>ここで交差する。
+                    </p>
+                </div>
+            </div>
+            <div class="mt-2 sm:mt-4 flex flex-wrap gap-4">
+                <a href="#strength-section" class="btn-gold px-8 sm:px-12 py-4 sm:py-5 text-xs sm:text-sm font-bold uppercase tracking-widest text-center w-full sm:w-auto">自慢のパンを詳しく見る</a>
+            </div>
+        </div>
+        <div class="scroll-down">Scroll</div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="py-20 sm:py-32 relative overflow-hidden bg-white">
+        <div class="parallax-text cinzel">AUTHENTIC FLAVOR</div>
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 sm:gap-20 items-center">
+                <div class="relative">
+                    <img src="images/pan.jpg" alt="" class="w-full h-[320px] sm:h-[480px] lg:h-[600px] object-cover rounded-sm shadow-2xl">
+                    <div class="absolute -bottom-6 -left-4 sm:-bottom-10 sm:-left-10 bg-gold p-6 sm:p-10 text-white max-w-[85%] sm:max-w-none shadow-xl">
+                        <p class="font-serif text-lg sm:text-3xl leading-relaxed italic">"野菜の旨味を<br>余さず受け止める"</p>
+                    </div>
+                </div>
+                <div class="pt-6 lg:pt-0">
+                    <span class="text-gold font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Homemade Bread Philosophy</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 sm:mb-10 leading-snug">
+                        主役を譲り、<br>自らも心に刻まれる。
+                    </h2>
+                    <div class="space-y-6 sm:space-y-8 text-gray-700 leading-loose text-base sm:text-lg">
+                        <p>
+                            レストラン ミヤヴィのパンは, 単なる「主食」ではありません. それは, シェフ横須賀が描くコース料理という物語における, <span class="font-bold border-b-2 border-gold pb-1">「最後の大切な句読点」</span>です.
+                        </p>
+                        <p>
+                            北海道産小麦の香ばしい香りが鼻腔をくすぐり, 指先で触れるだけで伝わるその温度. 外側の小気味良い食感と, 驚くほど多湿で柔らかな内側のコントラスト.
+                        </p>
+                        <p>
+                            野菜, 魚, 肉. 厳選された北海道食材のソースを, 最後の一滴までパンで拭い取る. その瞬間, 料理とパンは一つになり, 未体験の多幸感が訪れます.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strength Highlight -->
+    <section id="strength-section" class="py-20 sm:py-32 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-14 sm:mb-20">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black mb-6">ミヤヴィが選ばれる理由</h2>
+                <div class="w-16 h-1 bg-gold mx-auto"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
+                <div class="bg-white p-8 sm:p-12 text-center group hover:bg-stone-900 transition-all duration-500">
+                    <div class="text-4xl sm:text-5xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500">🌾</div>
+                    <h3 class="text-lg sm:text-xl font-extrabold mb-4 sm:mb-6 group-hover:text-gold">北海道産小麦100%</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-stone-300">
+                        シェフが惚れ込んだ道産小麦の芳醇な風味. そのポテンシャルを最大限に引き出すため, 独自の水分配合と発酵時間を見出しました.
+                    </p>
+                </div>
+                <div class="bg-white p-8 sm:p-12 text-center group hover:bg-stone-900 transition-all duration-500">
+                    <div class="text-4xl sm:text-5xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500">🎖️</div>
+                    <h3 class="text-lg sm:text-xl font-extrabold mb-4 sm:mb-6 group-hover:text-gold">キャリア34年の結晶</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-stone-300">
+                        ウィンザーホテル料理長, フランスのミシュラン星付き店での研鑽. 数多のパンを焼いてきた経験が, この一つに凝縮されています.
+                    </p>
+                </div>
+                <div class="bg-white p-8 sm:p-12 text-center group hover:bg-stone-900 transition-all duration-500 sm:col-span-2 lg:col-span-1">
+                    <div class="text-4xl sm:text-5xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500">🤝</div>
+                    <h3 class="text-lg sm:text-xl font-extrabold mb-4 sm:mb-6 group-hover:text-gold">料理との究極の相性</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-stone-300">
+                        穴子とエゴマ, 野菜の旨味. 繊細なソースの味を邪魔せず, かつ美しく広げる「レストランのパン」としての完成形.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History -->
+    <section id="profile-section" class="py-20 sm:py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-10 sm:gap-16 items-center">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <h2 class="section-title text-2xl sm:text-3xl font-bold mb-8 sm:mb-10">日本人としての誇りと,<br>フランス料理への情熱.</h2>
+                    <div class="space-y-6 text-gray-600 leading-relaxed italic">
+                        <p>「14歳で決めた, フランス料理の道. 」</p>
+                        <p>18歳でホテルオークラへ. 24歳で単身渡仏. ミシュラン二つ星, 三つ星の厨房で部門長を歴任. 計5年間の過酷な修業を経て, 帰国. ウィンザーホテル洞爺の日本人料理長として, その名を轟かせました. </p>
+                        <p>「MiYa-Vie（ミヤヴィ）」は, 自身の名「雅（まさあき）」と, フランス語の「Vie（人生）」を融合させた造語. それは, 日本の精神とフレンチの技術の結晶です. </p>
+                    </div>
+                    <div class="mt-8 sm:mt-10">
+                        <p class="font-serif text-lg sm:text-xl font-bold">オーナーシェフ 横須賀 雅明</p>
+                        <p class="text-gold text-sm tracking-widest">Masaaki Yokosuka</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 relative order-1 md:order-2 max-w-xs sm:max-w-none mx-auto">
+                    <div class="border-2 border-gold absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-full h-full z-0"></div>
+                    <img src="images/chef.png" alt="[シェフの肖像]" class="w-full h-auto shadow-2xl relative z-10 rounded-sm grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Section -->
+    <section class="py-20 sm:py-32 bg-stone-900 text-white overflow-hidden relative">
+        <div class="parallax-text cinzel text-white opacity-5 translate-y-16 sm:translate-y-20">TESTIMONIALS</div>
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+            <h2 class="text-2xl sm:text-4xl font-bold text-center mb-14 sm:mb-20 tracking-widest">GUEST VOICES</h2>
+            <div class="grid lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-stone-800 p-8 sm:p-10 rounded-sm border-t-4 border-gold shadow-2xl">
+                    <p class="text-gold mb-4">★★★★★</p>
+                    <p class="text-base sm:text-lg leading-loose mb-8 italic">「とにかく野菜が美味しい！料理の付け合わせがメインと化す旨さ. 自家熟成パンでソースを拭って食べる幸せは, ここでしか味わえません. 」</p>
+                    <p class="text-sm font-bold tracking-widest">— 2024.10 訪問のお客様</p>
+                </div>
+                <div class="bg-stone-800 p-8 sm:p-10 rounded-sm border-t-4 border-gold shadow-2xl">
+                    <p class="text-gold mb-4">★★★★★</p>
+                    <p class="text-base sm:text-lg leading-loose mb-8 italic">「ミシュラン星付きの実力は本物. カウンターフレンチの温もりに溢れ, 斬新なメニューに驚きの連続. 鴨肉の調理, そして焼きたてのパン. 最高でした. 」</p>
+                    <p class="text-sm font-bold tracking-widest">— 記念日利用のお客様</p>
+                </div>
+                <div class="bg-stone-800 p-8 sm:p-10 rounded-sm border-t-4 border-gold shadow-2xl">
+                    <p class="text-gold mb-4">★★★★★</p>
+                    <p class="text-base sm:text-lg leading-loose mb-8 italic">「新鮮な野菜と丁寧な仕事. 最後のお茶菓子に焼きたてのパウンドケーキが出てきて驚きました. 自家製パンの香りは忘れられません. 」</p>
+                    <p class="text-sm font-bold tracking-widest">— 出張旅行中のお客様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A -->
+    <section id="problem-section" class="py-20 sm:py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black">Q&amp;A</h2>
+                <p class="text-gold mt-4 tracking-widest uppercase">よくあるご質問</p>
+            </div>
+            <div class="space-y-4">
+                <details class="group bg-stone-50 rounded-sm" open>
+                    <summary class="flex justify-between items-center gap-4 p-6 sm:p-8 cursor-pointer font-bold list-none">
+                        <span class="text-base sm:text-lg">どのようなシチュエーションに適していますか？</span>
+                        <span class="text-gold shrink-0 transform group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="px-6 sm:px-8 pb-6 sm:pb-8 text-gray-600 leading-loose text-sm sm:text-base">
+                        隠れ家的な雰囲気と落ち着いた内装で, 大切な記念日や少人数の会食, 自分へのご褒美ランチに最適です. 個室もございますので, プライベートな空間でお楽しみいただけます.
+                    </div>
+                </details>
+                <details class="group bg-stone-50 rounded-sm">
+                    <summary class="flex justify-between items-center gap-4 p-6 sm:p-8 cursor-pointer font-bold list-none">
+                        <span class="text-base sm:text-lg">パンの追加は可能ですか？</span>
+                        <span class="text-gold shrink-0 transform group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="px-6 sm:px-8 pb-6 sm:pb-8 text-gray-600 leading-loose text-sm sm:text-base">
+                        はい, コースに合わせて焼きたてのパンを提供しております. 多くのお客様がおかわりを希望される自慢のパンですので, ぜひ存分にお楽しみください.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="py-20 sm:py-32 bg-stone-900 text-white relative overflow-hidden">
+        <div class="parallax-text cinzel text-white opacity-5 translate-y-8 sm:translate-y-10">NEW EXPERIENCE</div>
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+                <span class="inline-block px-4 py-1 border border-gold text-gold text-xs tracking-[0.3em] font-bold uppercase mb-4">Future Concept</span>
+                <h2 class="cinzel text-3xl sm:text-4xl md:text-5xl font-bold tracking-widest text-gold mb-6">COMING SOON</h2>
+                <p class="text-base sm:text-xl font-serif text-stone-300 leading-relaxed">
+                    一皿の余韻をより深く, 心に届ける.<br>ミヤヴィが準備を進めている「特別なひととき」の演出.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-stone-800/80 p-8 sm:p-10 rounded-sm border border-stone-700 hover:border-gold transition-all duration-500 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-3xl">🍽️</span>
+                            <span class="text-[10px] tracking-widest font-bold text-gold uppercase border-b border-gold pb-1">Pairing &amp; Story</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 group-hover:text-gold transition-colors">ストーリーカード & 厳選ペアリング</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            旬の北海道食材の生産背景やシェフのこだわりを記した「食のストーリーカード」をお手元に. ソムリエによる特選ワイン, プレミアムノンアルコールペアリングで, 一皿ごとに広がる味覚の物語をお愉しみいただけます.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex justify-between items-center text-xs text-stone-500">
+                        <span>提供開始予定</span>
+                        <span class="text-gold font-bold">準備中</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-stone-800/80 p-8 sm:p-10 rounded-sm border border-stone-700 hover:border-gold transition-all duration-500 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-3xl">✨</span>
+                            <span class="text-[10px] tracking-widest font-bold text-gold uppercase border-b border-gold pb-1">Live Experience</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 group-hover:text-gold transition-colors">シェフズ・プライベート演出</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            お席での最後の仕上げや, 焼き立てパンが運ばれる最高の瞬間の演出. シェフ自らが料理の背景を直接言葉で伝え, 五感すべてで料理と対話する特別な時間を創出します.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex justify-between items-center text-xs text-stone-500">
+                        <span>提供開始予定</span>
+                        <span class="text-gold font-bold">順次導入</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 sm:mt-16 text-center">
+                <p class="text-stone-400 text-xs tracking-widest italic px-4">※ 内容および提供時期は予告なく変更となる場合がございます. 最新情報は公式Instagramにて随時お知らせいたします.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-20 sm:py-32 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-16">
+                <div class="order-2 lg:order-1">
+                    <div class="map-container rounded-sm shadow-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.080165599112!2d141.3137778750723!3d43.06078149054657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29eddaaaaaab%3A0x4369491d59fdee65!2z44Os44K544OI44Op44OzIOODn-ODpOODtOOCow!5e0!3m2!1sja!2sjp!4v1771307051406!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 flex flex-col justify-center">
+                    <h2 class="section-title text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 tracking-widest uppercase">Location</h2>
+                    <div class="space-y-6 sm:space-y-8 text-gray-700">
+                        <div>
+                            <p class="text-gold text-xs font-bold uppercase tracking-widest mb-1">Address</p>
+                            <p class="text-lg sm:text-xl">〒064-0823 札幌市中央区北3条西26丁目3-8<br>N2ビル地下1階</p>
+                        </div>
+                        <div>
+                            <p class="text-gold text-xs font-bold uppercase tracking-widest mb-1">Station</p>
+                            <p class="text-base sm:text-lg">地下鉄東西線「西28丁目駅」から徒歩3分</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6 sm:gap-8">
+                            <div>
+                                <p class="text-gold text-xs font-bold uppercase tracking-widest mb-1">Call</p>
+                                <p class="text-lg sm:text-xl font-bold">011-688-9788</p>
+                            </div>
+                            <div>
+                                <p class="text-gold text-xs font-bold uppercase tracking-widest mb-1">Holiday</p>
+                                <p class="text-lg sm:text-xl">火曜日</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 sm:mt-12">
+                        <a href="tel:0116889788" class="inline-block btn-gold px-10 sm:px-16 py-5 sm:py-6 font-bold shadow-xl rounded-sm text-center w-full sm:w-auto">電話で空席を確認する</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-16 sm:py-20 border-t border-stone-100">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 text-center">
+            <span class="cinzel text-2xl sm:text-4xl font-bold tracking-[0.3em] sm:tracking-[0.4em] uppercase">MiYa-Vie</span>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 sm:space-x-8 my-8 sm:my-10 text-xs font-bold uppercase tracking-widest">
+                <a href="http://www.miya-vie.jp/" target="_blank" class="hover:text-gold transition">Website</a>
+                <a href="https://www.instagram.com/restaurant.miya_vie/" target="_blank" class="hover:text-gold transition">Instagram</a>
+                <a href="#top" class="hover:text-gold transition">Back to Top</a>
+            </div>
+            <p class="text-stone-400 text-[10px] tracking-widest">© 2024 RESTAURANT MiYa-Vie. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
