@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロデジャ | 札幌・北3条の至福フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9a3412; /* orange-800 */
+            --bg-base: #fdfbf7;
+        }
+        body {
+            font-family: 'Shippori Mincho', serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-base);
+        }
+        .noto-serif { font-family: 'Noto Serif JP', serif; }
+
+        /* 縦書きの装飾 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* ヒーローエリアのオーバーレイグラデーション */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+        }
+
+        /* アニメーション用 */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .text-keep { word-break: keep-all; overflow-wrap: anywhere; }
+
+        /* Google Maps responsive container */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 on mobile, taller for usability */
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                padding-bottom: 42%; /* wider ratio on larger screens */
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* Mobile nav */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        #mobile-menu.open {
+            max-height: 480px;
+        }
+
+        /* Prevent horizontal scroll from long tracking/letter-spacing text on very small screens */
+        html, body { max-width: 100%; overflow-x: hidden; }
+    </style>
+</head>
+<body class="text-stone-900">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-stone-100">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl md:text-2xl font-bold tracking-[0.2em] text-stone-900">DEJA</span>
+                <span class="text-[10px] tracking-widest text-stone-400 mt-1 uppercase hidden sm:block italic">Bistrot de la passion</span>
+            </div>
+
+            <!-- Desktop nav -->
+            <nav class="hidden lg:flex items-center space-x-10 text-[11px] tracking-[0.2em] font-bold uppercase">
+                <a href="#" class="hover:text-orange-800 transition">Top</a>
+                <a href="#strength-section" class="hover:text-orange-800 transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-orange-800 transition">History</a>
+                <a href="#problem-section" class="hover:text-orange-800 transition">Q&A</a>
+                <a href="#access-section" class="hover:text-orange-800 transition">Access</a>
+                <a href="http://www.117shop.jp/deja/" target="_blank" class="bg-stone-900 text-white px-8 py-3 rounded-none hover:bg-orange-800 transition shadow-lg">お問い合わせ</a>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <button id="menu-btn" aria-label="メニューを開く" aria-expanded="false" class="lg:hidden text-2xl w-10 h-10 flex items-center justify-center">
+                <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile nav panel -->
+        <div id="mobile-menu" class="lg:hidden bg-white border-t border-stone-100">
+            <nav class="flex flex-col px-6 py-6 space-y-5 text-xs tracking-[0.2em] font-bold uppercase">
+                <a href="#" class="py-1">Top</a>
+                <a href="#strength-section" class="py-1">Strengths</a>
+                <a href="#profile-section" class="py-1">History</a>
+                <a href="#problem-section" class="py-1">Q&amp;A</a>
+                <a href="#access-section" class="py-1">Access</a>
+                <a href="http://www.117shop.jp/deja/" target="_blank" class="inline-block bg-stone-900 text-white text-center px-6 py-4 mt-2">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FV (First View) -->
+    <section class="relative min-h-[100svh] flex items-center overflow-hidden pt-16">
+        <div class="absolute inset-0 z-0">
+            <img src="images/tara.jpg" alt="鱈のポワレ" class="w-full h-full object-cover scale-105">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 flex flex-col items-start text-white">
+            <div class="mb-5 md:mb-6 fade-in" style="animation-delay: 0.2s;">
+                <span class="inline-block w-8 md:w-12 h-[1px] bg-white align-middle mr-3 md:mr-4"></span>
+                <span class="text-[11px] sm:text-sm tracking-[0.3em] sm:tracking-[0.4em] uppercase font-light">Sapporo / Bistro / French</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.35] text-keep mb-6 md:mb-8 fade-in" style="animation-delay: 0.4s;">
+                肉厚の極み、<br>
+                <span class="text-orange-400 italic font-light noto-serif">鱈のポワレ</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl max-w-xl mb-8 md:mb-12 opacity-90 leading-relaxed font-light fade-in" style="animation-delay: 0.6s;">
+                札幌ファクトリーの目の前、<br>
+                隠れ家のような空間で出逢う、<br>
+                火入れの魔法がかかった一皿。
+            </p>
+            <div class="fade-in" style="animation-delay: 0.8s;">
+                <a href="#strength-section" class="group relative inline-block px-8 sm:px-12 py-4 sm:py-5 border border-white/30 overflow-hidden transition-all duration-500 hover:border-white">
+                    <span class="relative z-10 tracking-[0.25em] sm:tracking-[0.3em] text-[11px] sm:text-xs font-bold">RESERVATION &amp; MENU</span>
+                    <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                    <span class="absolute inset-0 z-20 group-hover:text-stone-900 flex items-center justify-center tracking-[0.25em] sm:tracking-[0.3em] text-[11px] sm:text-xs font-bold opacity-0 group-hover:opacity-100">RESERVATION &amp; MENU</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Strength Section -->
+    <section id="strength-section" class="py-20 md:py-32 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-16 md:mb-24 space-y-6 lg:space-y-0">
+                <div class="max-w-xl">
+                    <h2 class="text-xs tracking-[0.4em] sm:tracking-[0.5em] text-orange-800 font-bold mb-4 md:mb-6 uppercase">Our Philosophy</h2>
+                    <p class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-keep">すべてを手作りに、<br>驚きを日常に。</p>
+                </div>
+                <div class="lg:w-1/3 text-stone-500 text-sm leading-loose text-keep">
+                    ビストロデジャの料理に妥協はありません。パテ、キッシュ、手作りパン、そしてサプライズのコーヒーシャーベットまで。新鮮な驚きを提供し続けること、それが私たちの誇りです。
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 sm:gap-x-12 gap-y-14 md:gap-y-20">
+                <div class="relative group pt-6">
+                    <span class="absolute top-0 left-0 text-5xl md:text-6xl font-black text-stone-100 -z-10">01</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight text-keep">至高の火入れ、鴨のポワレ</h3>
+                    <p class="text-stone-500 text-sm leading-loose text-keep">
+                        見たこともないような肉厚の鴨。表面は香ばしく、中はしっとりと。この「火入れ」こそが、デジャが長年愛される最大の理由です。
+                    </p>
+                </div>
+                <div class="relative group pt-6">
+                    <span class="absolute top-0 left-0 text-5xl md:text-6xl font-black text-stone-100 -z-10">02</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight text-keep">絶品のパテとキッシュ</h3>
+                    <p class="text-stone-500 text-sm leading-loose text-keep">
+                        多くの方が「絶品」と口を揃える白レバーパテ。前菜からメインまで、手作りにこだわった重厚な味わいをお約束します。
+                    </p>
+                </div>
+                <div class="relative group sm:col-span-2 lg:col-span-1 pt-6">
+                    <span class="absolute top-0 left-0 text-5xl md:text-6xl font-black text-stone-100 -z-10">03</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight text-keep">圧倒的な満足感</h3>
+                    <p class="text-stone-500 text-sm leading-loose text-keep">
+                        ボリュームたっぷりのランチコース。味、量、価格、そのすべてにおいて「コスパが良すぎる」とのお声をいただいております。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History / Profile -->
+    <section id="profile-section" class="py-20 md:py-32 bg-[#1a1a1a] text-white">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-12 md:gap-20">
+            <div class="lg:w-1/2">
+                <h2 class="text-xs tracking-[0.4em] sm:tracking-[0.5em] text-orange-400 font-bold mb-6 md:mb-8 uppercase">Our History</h2>
+                <h3 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 leading-tight text-keep">札幌、岩佐ビルから。<br>変わらぬ情熱を。</h3>
+                <div class="space-y-5 md:space-y-6 text-stone-400 font-light leading-loose text-sm md:text-base">
+                    <p>札幌中央区北3条。歴史を感じさせるビルの1Fに、私たちのビストロはあります。</p>
+                    <p>全27席という、決して広くはない空間だからこそできる「家庭的なおもてなし」。まるで友人の邸宅に招かれたような落ち着きの中で、本格的なフレンチをリーズナブルに楽しんでいただきたい。</p>
+                    <p>それが創業以来、私たちが守り続けてきた想いです。</p>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <img src="images/chef.png" alt="店内の様子" class="w-full grayscale hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute -bottom-6 -left-4 md:-bottom-10 md:-left-10 bg-orange-800 px-6 py-6 md:p-12 shadow-2xl">
+                    <p class="text-3xl md:text-5xl font-bold mb-1 md:mb-2">27</p>
+                    <p class="text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.3em] opacity-70 whitespace-nowrap">GUEST CAPACITY</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="py-20 md:py-32 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="text-xs tracking-[0.4em] sm:tracking-[0.5em] text-stone-400 font-bold mb-3 md:mb-4 uppercase">Voice of Guests</h2>
+                <p class="text-2xl sm:text-3xl font-bold text-keep">お客様からいただいた感動の声</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="bg-white p-8 md:p-12 shadow-sm border border-stone-100">
+                    <div class="flex mb-5 md:mb-6 text-orange-400">★★★★★</div>
+                    <p class="text-stone-600 text-[15px] leading-loose mb-6 md:mb-8 text-keep">
+                        「真だらのポワレもこんな肉厚の真だら見たことありません！前菜のサラダも量が多くてうれしい悲鳴。続いてかぼちゃスープも美味しかったし、最後は勢いつけない食べれないほどボリューム満点。感動しています。」
+                    </p>
+                    <p class="text-[10px] font-bold tracking-[0.2em] text-stone-400">— 土曜ランチ Dコースご利用</p>
+                </div>
+                <div class="bg-white p-8 md:p-12 shadow-sm border border-stone-100">
+                    <div class="flex mb-5 md:mb-6 text-orange-400">★★★★</div>
+                    <p class="text-stone-600 text-[15px] leading-loose mb-6 md:mb-8 text-keep">
+                        「メインの白身魚のポワレ、これで1500円くらいなのはコスパが良すぎます！ワインセット（泡、白、赤 1500円）をつけて昼から贅沢飲み。3000円でこんなに楽しめるお店はなかなかないと思います。」
+                    </p>
+                    <p class="text-[10px] font-bold tracking-[0.2em] text-stone-400">— ランチコース &amp; ワインセットご利用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-20 md:py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-14 md:mb-20 tracking-tight italic">Questions &amp; Answers</h2>
+            <div class="space-y-10 md:space-y-12">
+                <div class="flex gap-5 md:gap-8 group">
+                    <span class="text-xl md:text-2xl font-bold text-orange-800 shrink-0">Q.</span>
+                    <div class="pb-8 border-b border-stone-100 flex-1">
+                        <p class="text-base md:text-lg font-bold mb-3 md:mb-4 text-keep">お昼の予約は必須ですか？</p>
+                        <p class="text-stone-500 text-sm leading-loose text-keep">平日から予約で満席になることが多い人気店です。特に木曜日限定のパスタランチや週末のランチコースをご希望の場合は、事前のお電話（011-219-6235）をおすすめしております。</p>
+                    </div>
+                </div>
+                <div class="flex gap-5 md:gap-8 group">
+                    <span class="text-xl md:text-2xl font-bold text-orange-800 shrink-0">Q.</span>
+                    <div class="pb-8 border-b border-stone-100 flex-1">
+                        <p class="text-base md:text-lg font-bold mb-3 md:mb-4 text-keep">どんなシーンでの利用が多いですか？</p>
+                        <p class="text-stone-500 text-sm leading-loose text-keep">こじんまりとした静かで落ち着いたビストロですので、大切な方との記念日ランチや、ご友人同士のゆったりしたお食事に最適です。カウンター席もございますので、お一人様でも気兼ねなくご利用いただけます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-20 md:py-32 bg-stone-900 text-white relative overflow-hidden border-t border-stone-800">
+        <!-- Background Accent -->
+        <div class="absolute -right-20 -bottom-20 w-72 h-72 md:w-96 md:h-96 bg-orange-950/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-14 md:mb-20">
+                <span class="inline-block px-4 py-1.5 bg-orange-950/80 border border-orange-800/50 text-orange-400 text-[10px] sm:text-[11px] font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-5 md:mb-6 rounded-full">
+                    Upcoming Services
+                </span>
+                <h2 class="text-3xl md:text-5xl font-bold mb-5 md:mb-6 tracking-tight">
+                    Coming Soon
+                </h2>
+                <p class="text-stone-400 text-sm leading-relaxed font-light text-keep">
+                    ビストロデジャの「あったらいいな」を形に。<br class="hidden sm:inline">
+                    お客様の日常にもっと寄り添う、新しいサービスを準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-stone-800/50 border border-stone-700/50 p-6 sm:p-8 rounded-none hover:border-orange-800/60 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-stone-700/50 rounded-full flex items-center justify-center mb-5 md:mb-6 text-orange-400 group-hover:bg-orange-900/40 group-hover:text-orange-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <span class="text-[10px] tracking-widest text-orange-400 font-bold uppercase block mb-2">LINE Notification</span>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-stone-100 text-keep">本日のメニュー・仕入れ情報 毎朝配信</h3>
+                    <p class="text-stone-400 text-xs leading-loose font-light text-keep">
+                        「今日の真だらの肉厚感」や「木曜限定パスタのソース」「日替わりスープ」の情報を毎朝LINEでお届け。数量限定メニューも逃さずチェックできます。
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-stone-800/50 border border-stone-700/50 p-6 sm:p-8 rounded-none hover:border-orange-800/60 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-stone-700/50 rounded-full flex items-center justify-center mb-5 md:mb-6 text-orange-400 group-hover:bg-orange-900/40 group-hover:text-orange-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <span class="text-[10px] tracking-widest text-orange-400 font-bold uppercase block mb-2">Easy Reservation</span>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-stone-100 text-keep">LINEで24時間 カンタン席予約</h3>
+                    <p class="text-stone-400 text-xs leading-loose font-light text-keep">
+                        お電話での受け付けに加え、LINEチャットから24時間いつでも空席確認とご予約が可能に。ランチタイムの「本日のお席」の確保もよりスムーズになります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-20 md:py-32 bg-stone-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 mb-12 md:mb-16">
+            <h2 class="text-xs tracking-[0.4em] sm:tracking-[0.5em] text-stone-400 font-bold mb-8 md:mb-10 uppercase">Access Info</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                <div>
+                    <p class="text-[10px] tracking-widest text-stone-400 mb-2 uppercase font-bold">Address</p>
+                    <p class="text-stone-900 leading-loose text-keep">〒060-0033<br>札幌市中央区北3条東5丁目5番地<br>岩佐ビル1F（札幌ファクトリー向かい）</p>
+                </div>
+                <div>
+                    <p class="text-[10px] tracking-widest text-stone-400 mb-2 uppercase font-bold">Contact</p>
+                    <p class="text-2xl md:text-3xl font-bold text-stone-900 mb-2">011-219-6235</p>
+                    <p class="text-[10px] text-stone-500">お電話でのご予約を承っております</p>
+                </div>
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <p class="text-[10px] tracking-widest text-stone-400 mb-2 uppercase font-bold">Business Days</p>
+                    <p class="text-stone-900">定休日：火曜日、第1・第3水曜日</p>
+                    <p class="text-[10px] text-stone-500 mt-2">※臨時休業等はFacebookをご確認ください</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Google Map -->
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
+            <div class="map-container shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.826560759447!2d141.36036557507268!3d43.06611519020519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2971a84b6469%3A0x6f6ea77fb82b96b1!2z44OT44K544OI44Ot44OH44K444Oj!5e0!3m2!1sja!2sjp!4v1771375098343!5m2!1sja!2sjp"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-14 md:py-20 border-t border-stone-100">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 text-center">
+            <div class="text-2xl md:text-3xl font-bold tracking-[0.3em] text-stone-900 mb-6 md:mb-8">DEJA</div>
+            <p class="text-[10px] tracking-[0.15em] sm:tracking-[0.2em] text-stone-400 mb-8 md:mb-12 uppercase">Bistrot deja / Sapporo North 3 East 5</p>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 sm:space-x-8 text-[11px] font-bold tracking-widest">
+                <a href="#" class="hover:text-orange-800 transition underline underline-offset-8 decoration-stone-200">TOP</a>
+                <a href="https://www.facebook.com/BISTROTdeja" target="_blank" class="hover:text-orange-800 transition underline underline-offset-8 decoration-stone-200">FACEBOOK</a>
+                <a href="http://www.117shop.jp/deja/" target="_blank" class="hover:text-orange-800 transition underline underline-offset-8 decoration-stone-200">OFFICIAL SITE</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            iconOpen.classList.toggle('hidden', isOpen);
+            iconClose.classList.toggle('hidden', !isOpen);
+            menuBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile menu when a link is tapped
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+</body>
+</html>
