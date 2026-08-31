@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロ アルモニー | すすきのの隠れ家で味わう至高のカルパッチョ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --gold-light: #e0c58e;
+            --dark-red: #4a0404;
+            --bg-dark: #0f0f0f;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: #fff;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+        .font-accent { font-family: 'Cinzel', serif; }
+
+        /* 縦書き対応(PCのみ。スマホでは横書きに切り替え) */
+        .tategaki {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @media (max-width: 767px) {
+            .tategaki {
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+            }
+        }
+
+        /* 背景グラデーションオーバーレイ */
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.75) 100%);
+        }
+        @media (min-width: 768px) {
+            .hero-overlay {
+                background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: white;
+            transition: all 0.4s;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
+        }
+
+        .no-wrap {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .card-border {
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ハンバーガーメニュー用トランジション */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+        }
+
+        .hamburger-line {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        #menu-toggle.open .line-1 { transform: translateY(7px) rotate(45deg); }
+        #menu-toggle.open .line-2 { opacity: 0; }
+        #menu-toggle.open .line-3 { transform: translateY(-7px) rotate(-45deg); }
+    </style>
+</head>
+<body id="top" class="overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-white/95 border-b border-gold/10">
+        <div class="container mx-auto px-5 md:px-6 py-3 flex justify-between items-center">
+            <div class="flex flex-col items-start leading-none">
+                <span class="text-[9px] md:text-[10px] tracking-[0.3em] text-[var(--gold)] mb-1 uppercase">Sapporo Susukino</span>
+                <h1 class="font-accent text-lg md:text-2xl font-bold tracking-widest text-gray-900">HARMONIE</h1>
+            </div>
+
+            <!-- PC用ナビ -->
+            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold tracking-tighter">
+                <a href="#top" class="nav-link uppercase">Top</a>
+                <a href="#strength-section" class="nav-link uppercase">strengths</a>
+                <a href="#profile-section" class="nav-link uppercase">history</a>
+                <a href="#coming-soon-section" class="nav-link uppercase">coming soon</a>
+                <a href="#problem-section" class="nav-link uppercase">Q&A</a>
+                <a href="#access-section" class="nav-link uppercase">access</a>
+                <a href="https://www.facebook.com/harmonie2001sapporo" target="_blank" class="btn-gold px-6 py-2.5 rounded-sm uppercase tracking-widest text-[10px]">お問い合わせ</a>
+            </nav>
+
+            <!-- スマホ用ハンバーガーボタン -->
+            <button id="menu-toggle" class="lg:hidden relative w-8 h-6 flex flex-col justify-between" aria-label="メニューを開く">
+                <span class="hamburger-line line-1 block w-full h-[2px] bg-gray-900"></span>
+                <span class="hamburger-line line-2 block w-full h-[2px] bg-gray-900"></span>
+                <span class="hamburger-line line-3 block w-full h-[2px] bg-gray-900"></span>
+            </button>
+        </div>
+
+        <!-- スマホ用ドロップダウンメニュー -->
+        <nav id="mobile-menu" class="lg:hidden bg-white border-t border-gold/10">
+            <div class="flex flex-col px-5 py-4 space-y-4 text-sm font-bold tracking-wide">
+                <a href="#top" class="nav-link uppercase py-1">Top</a>
+                <a href="#strength-section" class="nav-link uppercase py-1">strengths</a>
+                <a href="#profile-section" class="nav-link uppercase py-1">history</a>
+                <a href="#coming-soon-section" class="nav-link uppercase py-1">coming soon</a>
+                <a href="#problem-section" class="nav-link uppercase py-1">Q&A</a>
+                <a href="#access-section" class="nav-link uppercase py-1">access</a>
+                <a href="https://www.facebook.com/harmonie2001sapporo" target="_blank" class="btn-gold text-center px-6 py-3 rounded-sm uppercase tracking-widest text-xs mt-2">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- First View -->
+    <section class="relative min-h-[100svh] flex items-center overflow-hidden pt-16">
+        <div class="absolute inset-0 z-0">
+            <img src="images/kalpaccyo.png" alt="ワインとカルパッチョ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="container mx-auto px-5 md:px-6 relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center h-full gap-10 md:gap-0 py-16 md:py-0">
+            <!-- キャッチコピー -->
+            <div class="tategaki text-white md:mr-20 self-start md:self-center">
+                <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl leading-relaxed md:leading-loose tracking-[0.15em] md:tracking-[0.3em]">
+                    <span class="no-wrap">すすきの、</span><br>
+                    <span class="no-wrap">地上七階の</span><br>
+                    <span class="no-wrap text-[var(--gold)]">美食の聖域。</span>
+                </h2>
+            </div>
+
+            <!-- メイン商品訴求 -->
+            <div class="text-left md:text-right text-white w-full md:w-auto">
+                <p class="font-accent text-[var(--gold)] tracking-[0.4em] mb-3 md:mb-4 text-xs md:text-sm uppercase">Signature Dish</p>
+                <h3 class="font-serif text-3xl sm:text-4xl md:text-6xl mb-4 md:mb-6 leading-tight">
+                    <span class="no-wrap">鮮烈なる、</span><br>
+                    <span class="no-wrap text-[var(--gold)]">カルパッチョ</span>
+                </h3>
+                <p class="text-sm md:text-base font-light tracking-widest mb-8 md:mb-10 opacity-80">
+                    ソムリエが贈る、三十種のワインとの共鳴。
+                </p>
+                <a href="#access-section" class="inline-block btn-gold px-10 md:px-12 py-4 md:py-5 text-sm font-bold tracking-[0.2em]">
+                    ご予約・店舗案内を見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴・強み -->
+    <section id="strength-section" class="bg-white py-16 md:py-24">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="font-accent text-[var(--gold)] tracking-widest block mb-2 text-sm">PHILOSOPHY</span>
+                <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl section-title inline-block">アルモニーが愛される理由</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="relative">
+                    <img src="images/paring.png" alt="ワインセラー" class="rounded-sm shadow-2xl w-full">
+                    <div class="absolute -bottom-6 -right-4 md:-bottom-8 md:-right-8 bg-[var(--gold)] text-white p-5 md:p-8 max-w-[220px] md:max-w-none">
+                        <p class="font-serif text-base md:text-2xl leading-relaxed">東京の半値で愉しむ<br>本格ワインの悦び</p>
+                    </div>
+                </div>
+                <div class="space-y-10 md:space-y-12 mt-8 lg:mt-0">
+                    <div class="flex gap-5 md:gap-6">
+                        <span class="font-accent text-3xl md:text-4xl text-[var(--gold)]/30 shrink-0">01</span>
+                        <div>
+                            <h4 class="font-serif text-lg md:text-xl mb-2 md:mb-3">三十種を超える圧倒的なストック</h4>
+                            <p class="text-gray-600 leading-relaxed text-sm">ソムリエ資格を持つシェフが、世界中から厳選。リーズナブルな価格設定で、ワイン初心者から愛好家まてを虜にします。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 md:gap-6">
+                        <span class="font-accent text-3xl md:text-4xl text-[var(--gold)]/30 shrink-0">02</span>
+                        <div>
+                            <h4 class="font-serif text-lg md:text-xl mb-2 md:mb-3">ワインを主役にする「五感」の料理</h4>
+                            <p class="text-gray-600 leading-relaxed text-sm">看板のカルパッチョ、スペイン生ハム、魚白レバーのパテ。すべてはワインとの最高のマリアージュのために設計されています。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 md:gap-6">
+                        <span class="font-accent text-3xl md:text-4xl text-[var(--gold)]/30 shrink-0">03</span>
+                        <div>
+                            <h4 class="font-serif text-lg md:text-xl mb-2 md:mb-3">喧噪を忘れる、地上七階の隠れ家</h4>
+                            <p class="text-gray-600 leading-relaxed text-sm">カウンターでの語らい、仕切られたテーブル席での親密な時間。夫婦二人三脚で営む、温かくも洗練された大人の空間です。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロフィール -->
+    <section id="profile-section" class="bg-stone-900 text-white overflow-hidden py-20 md:py-32 relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-[var(--gold)]/5 -skew-x-12 hidden md:block"></div>
+        <div class="container mx-auto px-5 md:px-6 relative z-10">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-20">
+                <div class="md:w-1/2 relative w-full">
+                    <img src="images/chef.png" alt="シェフのストーリー" class="grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl w-full">
+                    <div class="absolute top-3 left-3 md:top-4 md:left-4 border border-[var(--gold)] w-full h-full -z-10"></div>
+                </div>
+                <div class="md:w-1/2">
+                    <span class="font-accent text-[var(--gold)] tracking-widest block mb-3 md:mb-4 text-sm">CRAFTSMANSHIP</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl mb-6 md:mb-8 leading-tight">料理道三十四年。<br>フランスでの修行が、<br>この一皿に宿る。</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6 font-light text-sm md:text-base">
+                        オーナーシェフ 北村善弘。旭川・東京で基盤を築き、本場フランスへ。四年に及ぶ修行で培ったのは、技術以上に「ワインと共にある食卓」への情熱でした。
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8 md:mb-10 font-light text-sm md:text-base">
+                        二〇一八年、現在のすすきの五・五ビルへ。副業時から受け継ぐワインコルクの壁は、お客様と共に刻んできた二十四年の歴史の象徴です。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-[1px] bg-[var(--gold)]"></div>
+                        <span class="font-serif text-base md:text-lg tracking-widest">オーナーシェフ 北村善弘</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section id="coming-soon-section" class="py-16 md:py-24 bg-stone-950 text-white relative overflow-hidden border-y border-[var(--gold)]/20">
+        <div class="absolute inset-0 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none"></div>
+
+        <div class="container mx-auto px-5 md:px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1 border border-[var(--gold)]/50 text-[var(--gold)] text-xs font-accent tracking-[0.3em] uppercase mb-4 rounded-full">New Planning</span>
+                <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl">COMING SOON</h2>
+                <p class="text-gray-400 text-xs md:text-sm mt-3 tracking-widest">アルモニーが贈る、これからの新しい愉しみ方</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
+                <!-- サービス1 -->
+                <div class="card-border p-6 sm:p-8 md:p-10 rounded-sm relative group hover:border-[var(--gold)] transition-all duration-500">
+                    <span class="absolute top-4 right-4 bg-[var(--gold)]/20 text-[var(--gold)] text-[10px] font-accent tracking-widest px-3 py-1 uppercase rounded">In Preparation</span>
+                    <div class="text-[var(--gold)] font-accent text-3xl mb-4 opacity-50">01</div>
+                    <h3 class="font-serif text-xl md:text-2xl mb-4 pr-24 md:pr-0 group-hover:text-[var(--gold)] transition-colors">
+                        すすきの観光・散策の合間に<br>
+                        <span class="text-[var(--gold)]">「至高のカルパッチョ ちょい飲みアペロセット」</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                        「ディナーの前にちょっと1杯」「観光や買い物帰りに極上の味をサクッと愉しみたい」という声にお応えし、名物カルパッチョハーフサイズ×ソムリエ厳選ペアリンググラスワインの限定アペロセットを準備中。地上7階の隠れ家で、贅沢なひと休みを。
+                    </p>
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--gold)]/80 font-accent tracking-wider">
+                        <span># 観光の合間に</span>
+                        <span># 0次会利用</span>
+                        <span># ペアリング体験</span>
+                    </div>
+                </div>
+
+                <!-- サービス2 -->
+                <div class="card-border p-6 sm:p-8 md:p-10 rounded-sm relative group hover:border-[var(--gold)] transition-all duration-500">
+                    <span class="absolute top-4 right-4 bg-[var(--gold)]/20 text-[var(--gold)] text-[10px] font-accent tracking-widest px-3 py-1 uppercase rounded">In Preparation</span>
+                    <div class="text-[var(--gold)] font-accent text-3xl mb-4 opacity-50">02</div>
+                    <h3 class="font-serif text-xl md:text-2xl mb-4 pr-24 md:pr-0 group-hover:text-[var(--gold)] transition-colors">
+                        ご自宅で名店の味を<br>
+                        <span class="text-[var(--gold)]">「おうちでアルモニー」テイクアウト・お取り寄せ</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                        大人気の「鶏白レバーのパテ」や「スペイン産生ハム」、「特選キッシュ」をご自宅やホテルのお部屋でも。シェフ手作りの本格ビストロパタイザーを真空パックでお届けするテイクアウト・配送サービスをスタート予定です。
+                    </p>
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--gold)]/80 font-accent tracking-wider">
+                        <span># 鶏白レバーパテ</span>
+                        <span># ホームパーティー</span>
+                        <span># ギフト</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 text-center">
+                <p class="text-xs text-stone-400 tracking-widest">
+                    ※サービス開始時期や詳細は、公式Facebookにて順次発表いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A (Guest Voice) -->
+    <section id="problem-section" class="py-16 md:py-24 bg-stone-50">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="font-accent text-[var(--gold)] tracking-widest block mb-2 text-sm">GUEST VOICES</span>
+                <h2 class="font-serif text-2xl md:text-3xl section-title inline-block">お客様との対話</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-[var(--gold)] relative">
+                    <span class="absolute top-4 right-6 text-[var(--gold)] text-4xl font-accent opacity-20">&ldquo;</span>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        はじめて寄らせて頂きました。おすすめのチーズを食べて、美味しくて嬉しくなっちゃいました。お食事やワインも予想以上の美味しさ。またぜひ伺いたいと思いました。
+                    </p>
+                    <div class="text-yellow-500 text-xs mb-2">★★★★★</div>
+                    <p class="text-[10px] tracking-widest text-gray-400 uppercase">A Happy Guest</p>
+                </div>
+                <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-[var(--gold)] relative">
+                    <span class="absolute top-4 right-6 text-[var(--gold)] text-4xl font-accent opacity-20">&ldquo;</span>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        ワイン三種類選んで飲み比べが出来ます。キッシュも、お勧めも、何を食べても美味しくいただけました。広くはないけど、静かで良いですよ。
+                    </p>
+                    <div class="text-yellow-500 text-xs mb-2">★★★★☆</div>
+                    <p class="text-[10px] tracking-widest text-gray-400 uppercase">Regular Customer</p>
+                </div>
+                <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-[var(--gold)] relative">
+                    <span class="absolute top-4 right-6 text-[var(--gold)] text-4xl font-accent opacity-20">&ldquo;</span>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        どれを食べても美味しい。レバパテは必ず頼みます。ワインも美味しいのを取り揃えてあるので、飲み放題でもお気に入りのものが見つかると思います!
+                    </p>
+                    <div class="text-yellow-500 text-xs mb-2">★★★★★</div>
+                    <p class="text-[10px] tracking-widest text-gray-400 uppercase">Wine Enthusiast</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access & Contact -->
+    <section id="access-section" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="flex flex-col lg:flex-row gap-10 md:gap-20">
+                <div class="lg:w-1/3">
+                    <h3 class="font-accent text-[var(--gold)] text-base md:text-lg mb-4 tracking-widest uppercase">Location</h3>
+                    <h2 class="font-serif text-2xl md:text-4xl mb-8 md:mb-10">静寂の七階でお待ちしております。</h2>
+
+                    <div class="space-y-6 md:space-y-8 text-sm">
+                        <div class="flex items-start gap-4">
+                            <span class="font-accent text-[var(--gold)] uppercase tracking-widest w-20 shrink-0">Address</span>
+                            <p class="text-gray-600 leading-relaxed">
+                                〒060-0805<br>北海道札幌市中央区南5条西5丁目20番地<br>すすきの5・5ビル 7階
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="font-accent text-[var(--gold)] uppercase tracking-widest w-20 shrink-0">Phone</span>
+                            <p class="text-lg md:text-xl font-accent text-gray-900 tracking-wider">011-562-0433</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="font-accent text-[var(--gold)] uppercase tracking-widest w-20 shrink-0">Business</span>
+                            <p class="text-gray-600 leading-relaxed">定休日:日曜日・月曜日</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 md:mt-12 flex gap-4">
+                        <a href="https://www.facebook.com/harmonie2001sapporo" target="_blank" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-blue-600 hover:border-blue-600 transition-all" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.94v-3.403h2.94v-2.511c0-2.91 1.777-4.493 4.371-4.493 1.242 0 2.309.092 2.619.134v3.038l-1.798.001c-1.412 0-1.686.671-1.686 1.656v2.166h3.364l-.438 3.403h-2.926v8.741h6.101c.732 0 1.325-.593 1.325-1.325v-21.351c0-.732-.593-1.325-1.325-1.325z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 h-[300px] md:h-[500px] shadow-2xl rounded-sm overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.4851213000885!2d141.351296!3d43.052219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b2984922115f5%3A0xc0688688ca04a88!2z44CSMDYwLTA4MDUg6YGT6YGT5YyX5bmM5biC5Lit5aSu5Yy65Y2X77yV5p2h6KW_77yV5LiB55uu77yS77yQ4oiS77yVIOOBmeOBmeOBjeOBru-8leODu--8leODkOODqyA36ZqO!5e0!3m2!1sja!2sjp!4v1715600000000!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-white py-10 md:py-12">
+        <div class="container mx-auto px-5 md:px-6 text-center">
+            <h2 class="font-accent text-xl md:text-2xl font-bold tracking-[0.3em] md:tracking-[0.5em] mb-4">HARMONIE</h2>
+            <p class="text-[var(--gold)] text-xs tracking-[0.2em] mb-8">BISTRO HARMONIE - SAPPORO</p>
+            <div class="w-10 h-[1px] bg-[var(--gold)]/50 mx-auto mb-8"></div>
+            <p class="text-gray-500 text-[10px] tracking-widest">&copy; 2024 BISTRO HARMONIE ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ヘッダーのスクロール演出
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.classList.remove('bg-white/95');
+                header.classList.add('bg-white');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.add('bg-white/95');
+                header.classList.remove('bg-white');
+            }
+        });
+
+        // スマホ用ハンバーガーメニューの開閉
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // メニュー内リンクをタップしたら自動で閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
