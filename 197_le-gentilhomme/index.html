@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LE GENTILHOMME | 札幌の正統派フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b89551;
+            --gold-light: #dfc18d;
+            --dark: #0f0f0f;
+            --bg-light: #fdfcf9;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-light);
+            color: #333;
+        }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .en-serif { font-family: 'Cinzel', serif; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-dark { background-color: var(--dark); }
+        .text-dark { color: var(--dark); }
+        .border-gold { border-color: var(--gold); }
+
+        .tracking-extra { letter-spacing: 0.25em; }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .hero-title-shadow {
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .bg-gold-grad {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        }
+        .text-gold-grad {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            width: 100%;
+        }
+
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 1.2s ease;
+        }
+        @media (hover: hover) {
+            .img-zoom-container:hover img {
+                transform: scale(1.08);
+            }
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 480px;
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        /* Reveal-on-scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body id="top" class="overflow-x-hidden">
+
+    <!-- Header Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 h-16 md:h-20 flex items-center justify-between">
+            <a href="#top" class="flex flex-col items-center leading-none">
+                <span class="en-serif text-base md:text-xl font-bold tracking-[0.2em] md:tracking-[0.3em]">LE GENTILHOMME</span>
+                <span class="text-[7px] md:text-[9px] tracking-[0.3em] md:tracking-[0.4em] text-gray-400 mt-1 uppercase">Sapporo French Cuisine</span>
+            </a>
+
+            <!-- Desktop nav -->
+            <div class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-widest">
+                <a href="#top" class="hover:text-gold transition">Top</a>
+                <a href="#strength-section" class="hover:text-gold transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-gold transition">History</a>
+                <a href="#coming-soon-section" class="hover:text-gold transition">Coming Soon</a>
+                <a href="#problem-section" class="hover:text-gold transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-gold transition">Access</a>
+                <a href="http://www.le-gentilhomme.com/" target="_blank" class="bg-dark text-white px-8 py-3 hover:bg-gold transition shadow-sm">お問い合わせ</a>
+            </div>
+
+            <!-- Mobile hamburger -->
+            <button id="menu-btn" aria-label="メニューを開く" aria-expanded="false" class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]">
+                <span class="block w-6 h-px bg-dark transition-transform duration-300" id="bar1"></span>
+                <span class="block w-6 h-px bg-dark transition-opacity duration-300" id="bar2"></span>
+                <span class="block w-6 h-px bg-dark transition-transform duration-300" id="bar3"></span>
+            </button>
+        </div>
+
+        <!-- Mobile nav panel -->
+        <div id="mobile-menu" class="lg:hidden glass-nav border-t border-gray-100">
+            <div class="flex flex-col px-6 py-6 space-y-5 text-[12px] font-bold uppercase tracking-widest">
+                <a href="#top" class="mobile-link">Top</a>
+                <a href="#strength-section" class="mobile-link">Strengths</a>
+                <a href="#profile-section" class="mobile-link">History</a>
+                <a href="#coming-soon-section" class="mobile-link">Coming Soon</a>
+                <a href="#problem-section" class="mobile-link">Q&amp;A</a>
+                <a href="#access-section" class="mobile-link">Access</a>
+                <a href="http://www.le-gentilhomme.com/" target="_blank" class="bg-dark text-white text-center px-8 py-3 hover:bg-gold transition">お問い合わせ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- First View (FV) -->
+    <header class="relative h-[100svh] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/hana.png" alt="LE GENTILHOMME 店内" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/45"></div>
+        </div>
+
+        <!-- Vertical Accent Text -->
+        <div class="absolute right-6 xl:right-10 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
+            <p class="vertical-text text-white/60 text-xs tracking-[0.8em] font-light">ELEGANCE SINCE 1988 IN SAPPORO</p>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 sm:px-6 w-full max-w-3xl">
+            <div class="mb-5 md:mb-6">
+                <span class="en-serif tracking-[0.3em] md:tracking-[0.5em] text-[11px] sm:text-sm md:text-base border-b border-white/30 pb-2 uppercase">Tradition &amp; Innovation</span>
+            </div>
+            <h1 class="serif hero-title-shadow">
+                <span class="text-xl sm:text-2xl md:text-3xl block mb-3 md:mb-4 font-light tracking-extra">繊細なる至福の逸品</span>
+                <span class="text-2xl sm:text-3xl md:text-4xl block font-bold tracking-wider md:tracking-widest text-gold-grad">【花ズッキーニのフリット】</span>
+            </h1>
+            <div class="gold-line my-8 md:my-10 max-w-[220px] sm:max-w-sm mx-auto"></div>
+            <p class="serif text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-loose tracking-wide md:tracking-widest opacity-90">
+                北海道の大地が育んだ旬の恵みを、<br>
+                フランスの伝統技法で昇華させる。<br>
+                30年以上にわたり愛され続ける、一皿の物語。
+            </p>
+            <div class="mt-10 md:mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                <a href="#strength-section" class="w-full sm:w-48 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-[10px] tracking-widest uppercase hover:bg-white hover:text-black transition text-center">View Concept</a>
+                <a href="#access-section" class="w-full sm:w-48 py-4 bg-gold text-white text-[10px] tracking-widest uppercase hover:bg-gold-light transition text-center">Reservation</a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-50">
+            <span class="text-[9px] tracking-[0.3em] text-white uppercase mb-2">Scroll</span>
+            <div class="w-px h-10 md:h-12 bg-white/50"></div>
+        </div>
+    </header>
+
+    <!-- Introduction / Main Visual Text -->
+    <section class="reveal py-16 md:py-28 px-5 sm:px-6 bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="serif text-xl sm:text-2xl md:text-4xl leading-relaxed mb-8 md:mb-12 tracking-[0.1em] md:tracking-[0.2em]">
+                「食べる」という体験を<br class="sm:hidden">最高の芸術へ。
+            </h2>
+            <p class="text-gray-500 leading-loose text-[13px] sm:text-sm md:text-base tracking-wider md:tracking-widest">
+                ル・ジャンティオムが大切にしているのは、<br>
+                余計な装飾を排し、食材そのものの声を聞くこと。<br>
+                静寂の中に響くカトラリーの音、そしてソースの一滴までこだわり抜いた至福の味わい。<br>
+                札幌の地で刻み続ける、正統派フレンチの真髄がここにあります。
+            </p>
+        </div>
+    </section>
+
+    <!-- Strength Section -->
+    <section id="strength-section" class="reveal py-16 md:py-24 px-5 sm:px-6 bg-[#f7f3ee]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col items-center mb-14 md:mb-20">
+                <span class="en-serif text-gold text-xs tracking-[0.4em] md:tracking-[0.5em] mb-3 md:mb-4 uppercase">Our Identity</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-bold tracking-wider md:tracking-widest text-center">三つの真髄</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+                <!-- Strength 1 -->
+                <div class="group relative pt-10 md:pt-12">
+                    <div class="absolute top-0 left-0 en-serif text-6xl md:text-7xl text-gray-200/50 group-hover:text-gold/20 transition">01</div>
+                    <h3 class="serif text-lg md:text-xl font-bold mb-3 md:mb-4 tracking-widest border-l-2 border-gold pl-4">ソースに宿る魂</h3>
+                    <p class="text-gray-600 text-[13px] leading-loose tracking-wider">
+                        フランス料理の命とも言えるソース。数日間かけて煮詰められるフォンドボー、ワインとの対話から生まれる調和。伝統的な技法を一切妥協せず継承しています。
+                    </p>
+                </div>
+                <!-- Strength 2 -->
+                <div class="group relative pt-10 md:pt-12">
+                    <div class="absolute top-0 left-0 en-serif text-6xl md:text-7xl text-gray-200/50 group-hover:text-gold/20 transition">02</div>
+                    <h3 class="serif text-lg md:text-xl font-bold mb-3 md:mb-4 tracking-widest border-l-2 border-gold pl-4">歓喜のデザートワゴン</h3>
+                    <p class="text-gray-600 text-[13px] leading-loose tracking-wider">
+                        食後の余韻を、選ぶ楽しみとともに。「全部盛り」という贅沢な選択さえ叶うワゴンサービスは、多くのゲストに愛される当店の幸福な象徴です。
+                    </p>
+                </div>
+                <!-- Strength 3 -->
+                <div class="group relative pt-10 md:pt-12">
+                    <div class="absolute top-0 left-0 en-serif text-6xl md:text-7xl text-gray-200/50 group-hover:text-gold/20 transition">03</div>
+                    <h3 class="serif text-lg md:text-xl font-bold mb-3 md:mb-4 tracking-widest border-l-2 border-gold pl-4">温かなグランメゾン</h3>
+                    <p class="text-gray-600 text-[13px] leading-loose tracking-wider">
+                        一流の矜持を持ちながら、決して心を縛らない。シェフ自らがお見送りする温もり。明日への糧となるような心地よい時間をご提供します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Quote -->
+    <section class="reveal relative py-24 md:py-0 md:h-[80vh] flex items-center justify-center text-white bg-dark">
+        <div class="absolute inset-0 opacity-40 grayscale">
+            <img src="images/store.jpg" class="w-full h-full object-cover" alt="店内背景">
+        </div>
+        <div class="relative z-10 text-center px-5 sm:px-6 max-w-4xl">
+            <span class="en-serif text-gold text-xs tracking-[0.6em] md:tracking-[1em] block mb-6 md:mb-8 uppercase">Culinary Philosophy</span>
+            <h2 class="serif text-xl sm:text-2xl md:text-5xl leading-loose tracking-[0.1em] md:tracking-[0.2em] mb-8 md:mb-12">
+                "美味しいことは、<br class="md:hidden">それだけで人生を豊かにする。"
+            </h2>
+            <div class="h-px w-24 bg-gold mx-auto mb-6 md:mb-8"></div>
+            <p class="text-[11px] sm:text-sm tracking-[0.25em] md:tracking-[0.4em] opacity-80 uppercase">The essence of hospitality</p>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile-section" class="reveal py-16 md:py-28 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 flex flex-col lg:flex-row items-center gap-12 md:gap-20">
+            <div class="w-full lg:w-1/2 relative max-w-md lg:max-w-none mx-auto">
+                <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-full h-full border border-gold/20 z-0"></div>
+                <img src="images/chef.png" alt="大川 正人" class="relative z-10 w-full shadow-2xl grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+            <div class="w-full lg:w-1/2">
+                <span class="en-serif text-gold text-xs tracking-[0.4em] md:tracking-[0.5em] block mb-4 md:mb-6">Chef Profile</span>
+                <h2 class="serif text-2xl md:text-4xl font-bold mb-8 md:mb-10 tracking-widest border-b border-gray-100 pb-6 md:pb-8 uppercase">大川 正人</h2>
+                <div class="space-y-6 md:space-y-8 text-gray-700 leading-loose tracking-wide md:tracking-widest text-[13px] sm:text-sm md:text-base">
+                    <p>
+                        ホテルニューオータニ勤務を経て1979年に渡仏。ギー・サボア、トロワグロといった名立たる星付きレストランで修業。フランス料理の王道である「ソース」の真髄を学ぶ。
+                    </p>
+                    <p>
+                        1988年、札幌にル・ジャンティオムを開店。以来、北海道の食材を主役に据え、正統派フレンチの文化をこの地に根付かせるべく、30年以上の歳月を一貫して厨房に立ち続ける。
+                    </p>
+                    <div class="bg-gray-50 p-6 md:p-8 italic text-gray-500 border-l-4 border-gold text-[13px] sm:text-sm md:text-base">
+                        「人生のハレの日を彩る。その責任と喜びを胸に、今日も最高の一皿を追求し続けています。」
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="reveal py-16 md:py-28 bg-[#fdfcf9] text-dark relative overflow-hidden border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6 relative z-10">
+            <div class="flex flex-col items-center mb-14 md:mb-20 text-center">
+                <span class="en-serif text-gold text-xs tracking-[0.5em] md:tracking-[0.8em] mb-3 md:mb-4 uppercase">New Initiatives</span>
+                <h2 class="en-serif text-2xl sm:text-3xl md:text-5xl font-bold tracking-[0.1em] md:tracking-[0.2em] text-dark">COMING SOON</h2>
+                <div class="w-16 h-px bg-gold mt-5 md:mt-6"></div>
+                <p class="serif text-gray-600 text-xs md:text-sm tracking-widest mt-4">さらなる最高峰のダイニング体験へ向けた準備中の新しいサービス</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <!-- Idea 1 -->
+                <div class="bg-white p-7 sm:p-10 border border-gray-200/80 shadow-sm hover:border-gold hover:shadow-md transition duration-500 relative flex flex-col justify-between">
+                    <div>
+                        <span class="en-serif text-gold text-xs tracking-widest block mb-3 font-bold">01 / WINE &amp; DINING</span>
+                        <h3 class="serif text-lg md:text-xl font-bold mb-4 tracking-widest text-dark">ソムリエによる極上ワインペアリングのご提案</h3>
+                        <p class="text-gray-600 text-xs leading-relaxed tracking-wider mb-8">
+                            当日のコース料理と【花ズッキーニのフリット】の風味に完璧に寄り添うグラスワインの特選コース。ソムリエが料理一品一品の背景とともにお供する特別なワインをご提案いたします。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
+                        <span class="text-[10px] text-gold tracking-widest uppercase font-bold">Preparation in Progress</span>
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                    </div>
+                </div>
+
+                <!-- Idea 2 -->
+                <div class="bg-white p-7 sm:p-10 border border-gray-200/80 shadow-sm hover:border-gold hover:shadow-md transition duration-500 relative flex flex-col justify-between">
+                    <div>
+                        <span class="en-serif text-gold text-xs tracking-widest block mb-3 font-bold">02 / PRIVATE DESSERT</span>
+                        <h3 class="serif text-lg md:text-xl font-bold mb-4 tracking-widest text-dark">プライベート・ワゴンデセール演出</h3>
+                        <p class="text-gray-600 text-xs leading-relaxed tracking-wider mb-8">
+                            記念日やお祝いの席限定で、テーブル専属のパティシエがワゴンからお好みのデザートをお席に直接盛り付ける特別な演出プログラムをご用意。最高峰の思い出づくりを叶えます。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-4 flex items-center justify-between">
+                        <span class="text-[10px] text-gold tracking-widest uppercase font-bold">Preparation in Progress</span>
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="reveal py-16 md:py-24 bg-[#f9f7f2] text-dark border-y border-gray-100">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-14 md:mb-20">
+                <span class="en-serif text-gold text-xs tracking-[0.6em] md:tracking-[1em] block mb-4 uppercase">Guest Voice</span>
+                <h2 class="serif text-2xl md:text-3xl tracking-widest text-dark">称賛の声</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+                <div class="border-t border-gray-200 pt-8">
+                    <div class="flex text-dark text-xs mb-4">★★★★★</div>
+                    <p class="serif italic text-base md:text-lg mb-6 leading-relaxed text-dark">「格調高き空間で味わう、カニのムースとその絶品ソース。お腹が満たされた後の小菓子まで包んでくださる、心尽くしの接客に感動いたしました。」</p>
+                    <p class="text-[10px] tracking-widest text-gray-400 uppercase">— Business Guest</p>
+                </div>
+                <div class="border-t border-gray-200 pt-8">
+                    <div class="flex text-dark text-xs mb-4">★★★★★</div>
+                    <p class="serif italic text-base md:text-lg mb-6 leading-relaxed text-dark">「大通り沿いとは思えない静寂。選び抜かれたお皿の上に広がる芸術。特別な日を任せるにふさわしい、札幌が誇る名店です。」</p>
+                    <p class="text-[10px] tracking-widest text-gray-400 uppercase">— Anniversary Guest</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A -->
+    <section id="problem-section" class="reveal py-16 md:py-24 bg-white px-5 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-14 md:mb-20">
+                <h2 class="serif text-2xl md:text-3xl tracking-widest mb-4 uppercase">Q &amp; A</h2>
+                <div class="w-12 h-px bg-gold mx-auto"></div>
+            </div>
+            <div class="space-y-8 md:space-y-10">
+                <div>
+                    <div class="flex items-start gap-4 mb-3">
+                        <span class="en-serif text-gold font-bold">Q.</span>
+                        <h4 class="font-bold tracking-widest text-sm text-dark">ドレスコードについて教えてください。</h4>
+                    </div>
+                    <div class="pl-8 text-gray-500 text-[13px] leading-loose border-l border-gray-100">
+                        「ハレの日」を彩る場所として、男性はジャケット等の着用をお勧めしておりますが、何よりお客様が心地よく過ごされることを最優先しております。
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-start gap-4 mb-3">
+                        <span class="en-serif text-gold font-bold">Q.</span>
+                        <h4 class="font-bold tracking-widest text-sm text-dark">苦手な食材やアレルギー対応は可能ですか？</h4>
+                    </div>
+                    <div class="pl-8 text-gray-500 text-[13px] leading-loose border-l border-gray-100">
+                        はい、事前にご相談いただければシェフが特別な配慮をさせていただきます。予約時に詳細をお聞かせください。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access -->
+    <section id="access-section" class="reveal py-16 md:py-28 bg-[#fdfcf9] border-t border-gray-100 px-5 sm:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-start">
+            <div class="lg:sticky lg:top-32">
+                <span class="en-serif text-gold text-xs tracking-[0.4em] md:tracking-[0.5em] block mb-4">Location</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-8 md:mb-12 tracking-widest">アクセス情報</h2>
+                <div class="space-y-6 text-sm md:text-base tracking-wide md:tracking-widest leading-loose text-dark">
+                    <div>
+                        <p class="text-gray-400 text-[10px] uppercase mb-1">Address</p>
+                        <p>〒064-0804 北海道札幌市中央区南4条西8丁目2-1-3<br>サンプラーザ札幌 1F</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-[10px] uppercase mb-1">Contact</p>
+                        <p class="text-xl md:text-2xl en-serif">011-531-2251</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-gray-400 text-[10px] uppercase mb-1">Closed</p>
+                            <p>毎週火曜日・水曜日</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-[10px] uppercase mb-1">Opening</p>
+                            <p>Lunch / Dinner</p>
+                        </div>
+                    </div>
+                    <div class="pt-4 md:pt-8">
+                        <a href="http://www.le-gentilhomme.com/" class="inline-block border-b-2 border-gold pb-1 hover:border-dark transition font-bold">Visit Official Website</a>
+                    </div>
+                </div>
+            </div>
+            <div class="h-[320px] sm:h-[400px] md:h-[500px] shadow-2xl relative w-full">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3796356408457!2d141.3439173750718!3d43.054482490949724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298f98c39651%3A0xe968233e9e06eb1a!2sLE%20GENTILHOMME!5e0!3m2!1sja!2sjp!4v1771295623783!5m2!1sja!2sjp"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#f2f0eb] text-dark pt-16 md:pt-24 pb-10 md:pb-12 text-center overflow-hidden border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="mb-12 md:mb-16">
+                <h2 class="en-serif text-2xl sm:text-3xl md:text-5xl tracking-[0.2em] md:tracking-[0.4em] mb-4 text-dark">LE GENTILHOMME</h2>
+                <div class="h-px w-16 bg-gold mx-auto"></div>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-5 sm:gap-10 mb-14 md:mb-20 text-[10px] tracking-[0.2em] sm:tracking-[0.3em] uppercase opacity-60">
+                <a href="#top" class="hover:text-gold transition">Top</a>
+                <a href="#strength-section" class="hover:text-gold transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-gold transition">History</a>
+                <a href="#coming-soon-section" class="hover:text-gold transition">Coming Soon</a>
+                <a href="#problem-section" class="hover:text-gold transition">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-gold transition">Access</a>
+            </nav>
+            <p class="text-[9px] sm:text-[10px] tracking-[0.3em] sm:tracking-[0.5em] text-gray-400 uppercase">&copy; LE GENTILHOMME. SAPPORO CLASSIC FRENCH Since 1988.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+        let menuOpen = false;
+
+        function setMenu(open) {
+            menuOpen = open;
+            mobileMenu.classList.toggle('open', open);
+            menuBtn.setAttribute('aria-expanded', String(open));
+            bar1.style.transform = open ? 'translateY(6px) rotate(45deg)' : 'none';
+            bar2.style.opacity = open ? '0' : '1';
+            bar3.style.transform = open ? 'translateY(-6px) rotate(-45deg)' : 'none';
+        }
+
+        menuBtn.addEventListener('click', () => setMenu(!menuOpen));
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => setMenu(false));
+        });
+
+        // Smooth scroll interaction (accounts for fixed header height)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#") return;
+
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const headerOffset = window.innerWidth < 1024 ? 64 : 80;
+                    window.scrollTo({
+                        top: target.offsetTop - headerOffset,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for a single, gentle reveal per section
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
