@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビストロ・ルプラ | 36年愛される「魂のリエット」と至高 of ワイン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bordeaux: #4a0404;
+            --gold: #b8860b;
+            --sumi: #1a1a1a;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdfcf8;
+            color: var(--sumi);
+        }
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+        /* 縦書きアクセント */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        /* 背景テクスチャ */
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+        .fv-bg {
+            background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 100%), url('images/kakuteru.png') center/cover no-repeat;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        /* スムーズなフェードイン */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .text-keep-all {
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+        /* モバイルメニュー */
+        #mobile-menu {
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+        #menu-toggle.open .line-1 {
+            transform: translateY(7px) rotate(45deg);
+        }
+        #menu-toggle.open .line-2 {
+            opacity: 0;
+        }
+        #menu-toggle.open .line-3 {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    </style>
+</head>
+<body class="bg-paper overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="top" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-stone-200">
+        <div class="container mx-auto px-5 md:px-6 py-3 md:py-4 flex justify-between items-center">
+            <div class="flex flex-col items-start leading-none">
+                <span class="text-[9px] md:text-[10px] tracking-[0.3em] text-stone-500 mb-1 uppercase">Sapporo Susukino</span>
+                <span class="text-lg md:text-xl font-bold tracking-widest text-stone-900 serif">ビストロ・ルプラ</span>
+            </div>
+
+            <!-- PC Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-widest">
+                <a href="#top" class="hover:text-amber-700 transition">Top</a>
+                <a href="#strength-section" class="hover:text-amber-700 transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-amber-700 transition">History</a>
+                <a href="#coming-soon-section" class="hover:text-amber-700 transition">Coming Soon</a>
+                <a href="#problem-section" class="hover:text-amber-700 transition">Q&A</a>
+                <a href="#access-section" class="hover:text-amber-700 transition">Access</a>
+                <a href="https://ja-jp.facebook.com/pages/%E3%83%93%E3%82%B9%E3%83%88%E3%83%AD%E3%83%AB%E3%83%97%E3%83%A9/571508349549398" target="_blank" class="btn-gold text-white px-8 py-2.5 rounded-sm shadow-lg">お問い合わせ</a>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-toggle" class="lg:hidden relative w-8 h-6 flex flex-col justify-between" aria-label="メニューを開く" aria-expanded="false">
+                <span class="hamburger-line line-1 block w-full h-[2px] bg-stone-900"></span>
+                <span class="hamburger-line line-2 block w-full h-[2px] bg-stone-900"></span>
+                <span class="hamburger-line line-3 block w-full h-[2px] bg-stone-900"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="lg:hidden bg-white border-t border-stone-200">
+            <div class="flex flex-col px-6 py-4 space-y-1 text-sm font-medium tracking-widest">
+                <a href="#top" class="py-3 border-b border-stone-100 hover:text-amber-700 transition">Top</a>
+                <a href="#strength-section" class="py-3 border-b border-stone-100 hover:text-amber-700 transition">Strengths</a>
+                <a href="#profile-section" class="py-3 border-b border-stone-100 hover:text-amber-700 transition">History</a>
+                <a href="#coming-soon-section" class="py-3 border-b border-stone-100 hover:text-amber-700 transition">Coming Soon</a>
+                <a href="#problem-section" class="py-3 border-b border-stone-100 hover:text-amber-700 transition">Q&A</a>
+                <a href="#access-section" class="py-3 border-b border-stone-100 hover:text-amber-700 transition">Access</a>
+                <a href="https://ja-jp.facebook.com/pages/%E3%83%93%E3%82%B9%E3%83%88%E3%83%AD%E3%83%AB%E3%83%97%E3%83%A9/571508349549398" target="_blank" class="btn-gold text-white text-center px-8 py-3 rounded-sm shadow-lg mt-3">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Visual (FV) -->
+    <section class="fv-bg min-h-screen flex items-center relative overflow-hidden pt-24 pb-16 lg:pt-0 lg:pb-0">
+        <div class="container mx-auto px-5 md:px-6 z-10">
+            <div class="max-w-3xl text-white">
+                <div class="flex items-center gap-4 mb-6 reveal active">
+                    <div class="w-10 md:w-12 h-[1px] bg-amber-500"></div>
+                    <p class="text-xs sm:text-sm md:text-lg tracking-[0.3em] md:tracking-[0.4em] serif uppercase">Since 1989 Sapporo</p>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl mb-6 md:mb-8 leading-[1.3] md:leading-[1.2] serif font-bold text-keep-all">
+                    <span class="block text-xl sm:text-2xl md:text-4xl mb-2 opacity-90 font-light">時を刻む</span>
+                    <span class="text-amber-400">「豚のリエット」</span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-2xl mb-8 md:mb-12 leading-relaxed font-light tracking-wide md:tracking-widest text-keep-all">
+                    すすきのの喧噪を離れ、豊平川のほとりへ。<br class="hidden md:block">
+                    36年変わらぬ想いが、一皿に宿る。
+                </p>
+                <div class="reveal active">
+                    <a href="#strength-section" class="inline-block btn-gold text-white px-8 md:px-12 py-4 md:py-5 text-base md:text-lg font-bold tracking-widest w-full sm:w-auto text-center">
+                        物語を読み解く
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute right-12 top-1/2 -translate-y-1/2 text-white/40 serif text-2xl vertical-text tracking-[0.5em] hidden lg:block">
+            本場フランスの空気、そのままに。
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="py-20 md:py-32 relative bg-white">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <div class="w-full lg:w-1/2 relative reveal">
+                    <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-32 h-32 md:w-64 md:h-64 border border-amber-200 -z-10"></div>
+                    <img src="images/rietto.jpg" alt="魂のリエット" class="rounded-sm shadow-2xl w-full">
+                    <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-stone-900 text-white p-5 md:p-8">
+                        <p class="serif text-lg md:text-2xl tracking-tighter">至福の口どけ。</p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 reveal mt-8 lg:mt-0">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 serif leading-snug">
+                        300種のワインと、<br>
+                        語り合うリエット。
+                    </h2>
+                    <p class="text-base md:text-lg text-stone-600 leading-loose mb-8">
+                        当店の「豚のリェット」は、単なる前菜ではありません。それは、シェフがフランス料理の真髄に触れた修行時代から続く、情熱の結晶です。<br><br>
+                        脂の旨みと肉の力強い旨味。合わせるのは、セラーに眠る300種のフランスワイン。マダムが選ぶ最高の一杯と共に、ゆっくりと流れる時間をお楽しみください。
+                    </p>
+                    <div class="flex items-center gap-4 text-amber-800 font-bold">
+                        <span class="w-10 h-[2px] bg-amber-800 shrink-0"></span>
+                        <span class="tracking-widest text-sm md:text-base">一人ひとりに、最良の距離感で。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strengths -->
+    <section id="strength-section" class="py-20 md:py-32 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+            <img src="https://www.transparenttextures.com/patterns/black-paper.png" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-5 md:px-6 text-center relative z-10">
+            <span class="text-amber-500 tracking-[0.5em] text-xs mb-4 block">STRENGTHS</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-14 md:mb-20 serif section-title">ルプラが愛される理由</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:gap-8 text-left reveal">
+                    <div class="text-4xl md:text-5xl serif text-amber-500 italic opacity-50 shrink-0">01</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 serif">本格フレンチをカジュアルに</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">一皿のボリュームに驚かれるかもしれません。それがフランスの「ビストロ」の粋。シェアして笑い合う時間を大切にしています。</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:gap-8 text-left reveal">
+                    <div class="text-4xl md:text-5xl serif text-amber-500 italic opacity-50 shrink-0">02</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 serif">世界、300銘柄のワイン</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">ボルドー、ブルゴーニュ…フランス各地から集めた名品たち。ワイン好きのオーナー夫妻が、あなたの一皿に最適な一本を選びます。</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:gap-8 text-left reveal">
+                    <div class="text-4xl md:text-5xl serif text-amber-500 italic opacity-50 shrink-0">03</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 serif">隠れ家という贅沢</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">豊平川沿いに佇む10席の小宇宙。都会の喧噪が嘘のような、静謐で温かな空間がここにはあります。</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:gap-8 text-left reveal">
+                    <div class="text-4xl md:text-5xl serif text-amber-500 italic opacity-50 shrink-0">04</div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 serif">「人に会いに行く」場所</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">ムッシュの料理とマダムの笑顔。36年続く理由は、技術以上に、お二人を慕って集まる温かな絆にあります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History (Story) -->
+    <section id="profile-section" class="py-20 md:py-32 bg-stone-50">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-stretch border border-stone-200 bg-white shadow-sm reveal">
+                <div class="md:w-1/2 overflow-hidden h-64 md:h-auto">
+                    <img src="images/chef.png" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+                </div>
+                <div class="md:w-1/2 p-8 sm:p-12 lg:p-20 flex flex-col justify-center">
+                    <span class="text-stone-400 text-xs tracking-widest mb-4">THE HISTORY</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 serif">24歳、修行の日から始まった。<br>理想のビストロ。</h2>
+                    <p class="text-stone-600 leading-loose mb-8 text-sm md:text-base">
+                        1989年創業。シェフの新居さんが東京で培ったフレンチの技法とワインへの情熱を、故郷・札幌で形にしました。<br><br>
+                        「こんなお店があったらいいな」<br>
+                        その想いは、今や札幌のビストロ文化の礎となり、36年の月日を経てなお、輝きを増しています。ご夫妻二人三脚で守り続ける、変わらない「美味しさ」がここにあります。
+                    </p>
+                    <p class="text-right text-stone-900 serif font-bold">— シェフ 新居某</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="py-20 md:py-32">
+        <div class="container mx-auto px-5 md:px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-14 md:mb-20 serif section-title">幸せな記憶の声</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="w-full md:w-[320px] text-left p-8 border-t-4 border-amber-600 bg-white shadow-sm relative reveal">
+                    <span class="absolute -top-6 left-8 text-6xl text-amber-100 serif">"</span>
+                    <p class="text-stone-700 mb-6 relative z-10 leading-relaxed italic">
+                        「ウニとキャビアのトースト、ホタテと本しめじのソテー…。どれも味付けが美味しいだけでなく、しっかり素材の味も活きている。ワインにも拘りを感じました。」
+                    </p>
+                    <p class="text-sm font-bold text-amber-800">★★★★★ 女性のお客様</p>
+                </div>
+                <div class="w-full md:w-[320px] text-left p-8 border-t-4 border-amber-600 bg-white shadow-sm relative reveal">
+                    <span class="absolute -top-6 left-8 text-6xl text-amber-100 serif">"</span>
+                    <p class="text-stone-700 mb-6 relative z-10 leading-relaxed italic">
+                        「ボリュームたっぷりの食べごたえのあるお料理。本場のフランスのビストロに近い感じがしました。幸せな気分にしてくれるお店です。」
+                    </p>
+                    <p class="text-sm font-bold text-amber-800">★★★★★ 4名様グループ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-20 md:py-32 bg-stone-100">
+        <div class="container mx-auto px-5 md:px-6 max-w-4xl">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 serif">心地よい時間のために</h2>
+                <p class="text-stone-500 text-sm md:text-base">ご来店の前にぜひお読みください</p>
+            </div>
+            <div class="space-y-4 reveal">
+                <details class="group bg-white rounded-sm shadow-sm" open>
+                    <summary class="flex justify-between items-center gap-4 p-5 md:p-6 cursor-pointer list-none">
+                        <span class="font-bold serif text-sm md:text-base">ボリュームが気になります。少人数でも大丈夫ですか？</span>
+                        <span class="text-amber-600 transition group-open:rotate-180 shrink-0">▼</span>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-6 text-stone-600 leading-relaxed text-sm md:text-base">
+                        はい、もちろんです。当店は一皿のボリュームが多いため、2〜3名様でシェアしていただくのが理想的ですが、お一人様でワインとリエットをゆっくり楽しまれる方も多くいらっしゃいます。
+                    </div>
+                </details>
+                <details class="group bg-white rounded-sm shadow-sm">
+                    <summary class="flex justify-between items-center gap-4 p-5 md:p-6 cursor-pointer list-none">
+                        <span class="font-bold serif text-sm md:text-base">ワインは詳しくなくても選んでもらえますか？</span>
+                        <span class="text-amber-600 transition group-open:rotate-180 shrink-0">▼</span>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-6 text-stone-600 leading-relaxed text-sm md:text-base">
+                        お任せください。オーナー夫妻はワインへの知識が深く、お客様のお好みやその日の料理に合わせて、最適な一本をご提案させていただきます。会話を楽しみながら選びましょう。
+                    </div>
+                </details>
+                <details class="group bg-white rounded-sm shadow-sm">
+                    <summary class="flex justify-between items-center gap-4 p-5 md:p-6 cursor-pointer list-none">
+                        <span class="font-bold serif text-sm md:text-base">特別な日のためのコースはありますか？</span>
+                        <span class="text-amber-600 transition group-open:rotate-180 shrink-0">▼</span>
+                    </summary>
+                    <div class="px-5 md:px-6 pb-6 text-stone-600 leading-relaxed text-sm md:text-base">
+                        基本はアラカルトですが、4名様以上などでリクエストをいただければ、季節の素材を盛り込んだ特別コースをご用意することも可能です。お気軽にお電話にてご相談ください。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="py-20 md:py-32 bg-stone-900 text-white relative overflow-hidden">
+        <div class="container mx-auto px-5 md:px-6 relative z-10">
+            <div class="text-center mb-14 md:mb-20 reveal">
+                <span class="text-amber-500 tracking-[0.5em] text-xs mb-4 block uppercase">Coming Soon</span>
+                <h2 class="text-2xl md:text-4xl font-bold mb-4 serif section-title">「あったらいいな」を、形に。</h2>
+                <p class="text-stone-400 max-w-2xl mx-auto text-sm leading-relaxed mt-6">
+                    ルプラの味と空間をもっと身近に、もっと深めていただくために。<br class="hidden md:block">
+                    お客様のお声をもとに準備を進めている、新しい取り組みをご紹介します。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1 -->
+                <div class="bg-stone-800/80 p-6 md:p-8 rounded-sm border border-stone-700/50 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="text-amber-500 text-xs tracking-widest uppercase mb-3 font-mono">Service 01</div>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 serif text-amber-200">21時からの「夜半のペアリングセット」</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            「すすきので食事のあとに、もう少しワインを飲みたい」「まずはルプラの雰囲気を試したい」という声にお応えし、遅めの時間限定で軽めのオードブル(特選リエット・旬のひと品)とペアリングワインのセットを企画中。本気の一皿と一杯を、気軽な入口として。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700 pt-4 flex justify-between items-center text-xs text-stone-400">
+                        <span>対象: 2件目利用・お一人様</span>
+                        <span class="text-amber-500 font-bold">準備中</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-stone-800/80 p-6 md:p-8 rounded-sm border border-stone-700/50 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="text-amber-500 text-xs tracking-widest uppercase mb-3 font-mono">Service 02</div>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 serif text-amber-200">ルプラ謹製「おうちでリエットBOX」</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            36年愛される名物「豚のリエット」と相性抜群のワイン、特選パンを詰めたテイクアウト・ギフトセット。大切な方への手土産や、ご自宅での特別な記念日ディナーのテーブルを彩ります。
+                        </p>
+                    </div>
+                    <div class="border-t border-stone-700 pt-4 flex justify-between items-center text-xs text-stone-400">
+                        <span>対象: ご自宅用・ギフト</span>
+                        <span class="text-amber-500 font-bold">準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-5 md:px-6">
+            <div class="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-16">
+                <div class="w-full lg:w-1/2 flex flex-col justify-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-12 serif section-title">アクセス</h2>
+                    <div class="space-y-6 md:space-y-8 mb-10 md:mb-12">
+                        <div class="flex items-start gap-4">
+                            <span class="bg-stone-900 text-white px-3 py-1 text-xs font-bold mt-1 shrink-0">住所</span>
+                            <p class="text-base md:text-lg">〒064-0807 北海道札幌市中央区南7条西2丁目2−10 南向き</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="bg-stone-900 text-white px-3 py-1 text-xs font-bold mt-1 shrink-0">電話</span>
+                            <p class="text-xl md:text-2xl font-bold serif">011-562-6394</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="bg-stone-900 text-white px-3 py-1 text-xs font-bold mt-1 shrink-0">営業</span>
+                            <p class="text-base md:text-lg">定休日：火曜日</p>
+                        </div>
+                    </div>
+                    <a href="tel:0115626394" class="inline-block btn-gold text-white px-8 md:px-12 py-4 md:py-5 rounded-sm font-bold text-lg md:text-xl tracking-widest w-full text-center">
+                        お電話でのご予約はこちら
+                    </a>
+                </div>
+                <div class="w-full lg:w-1/2 min-h-[300px] md:min-h-[450px] shadow-lg rounded-sm overflow-hidden reveal">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.508379336748!2d141.35399457507174!3d43.051774291122975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b298706510b1d%3A0xfe9c37ed9071a4ec!2z44OT44K544OI44Ot44O7IOODq-ODl-ODqQ!5e0!3m2!1sja!2sjp!4v1771301788451!5m2!1sja!2sjp"
+                        width="100%"
+                        height="100%"
+                        style="border:0; min-height:300px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-white py-14 md:py-20 border-t border-amber-900/30">
+        <div class="container mx-auto px-5 md:px-6 text-center">
+            <div class="mb-8">
+                <span class="text-2xl md:text-3xl font-bold tracking-[0.3em] md:tracking-[0.5em] serif">ビストロ・ルプラ</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 md:gap-x-12 mb-10 md:mb-12 text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] text-stone-400 uppercase">
+                <a href="#top" class="hover:text-amber-500 transition">Top</a>
+                <a href="#strength-section" class="hover:text-amber-500 transition">Strengths</a>
+                <a href="#access-section" class="hover:text-amber-500 transition">Contact</a>
+            </div>
+            <p class="text-stone-600 text-[10px] tracking-widest uppercase">&copy; 1989 BISTRO LE PLAT. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.15
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('py-2', 'bg-white/95', 'shadow-md');
+                header.classList.remove('py-3', 'md:py-4', 'bg-white/80');
+            } else {
+                header.classList.add('py-3', 'md:py-4', 'bg-white/80');
+                header.classList.remove('py-2', 'bg-white/95', 'shadow-md');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.classList.toggle('open', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
