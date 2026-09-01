@@ -97,7 +97,7 @@
     </div>
   </header>
 
-  <!-- Hero -->
+<!-- Hero -->
   <section id="top" class="relative pt-16 sm:pt-20 min-h-[92vh] flex items-center overflow-hidden bg-[--char] grain">
     <div class="absolute inset-0">
       <div class="absolute -right-24 -top-24 w-[26rem] h-[26rem] sm:w-[36rem] sm:h-[36rem] rounded-full bg-[--brick]/25 blur-3xl"></div>
@@ -124,26 +124,27 @@
         </div>
       </div>
 
-      <!-- Illustrated hero visual: steaming pasta bowl -->
-      <div class="order-1 lg:order-2 flex justify-center">
-        <svg viewBox="0 0 320 320" class="w-56 h-56 sm:w-72 sm:h-72" role="img" aria-label="トマトとニンニクのスパゲティのイラスト">
-          <ellipse cx="160" cy="235" rx="120" ry="26" fill="#000" opacity="0.25"/>
-          <path class="steam-path" d="M120 90 C110 70 130 55 118 30" stroke="#f4ded0" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path class="steam-path" d="M160 90 C150 65 172 50 158 20" stroke="#f4ded0" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path class="steam-path" d="M200 90 C190 70 210 55 198 30" stroke="#f4ded0" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <ellipse cx="160" cy="205" rx="118" ry="46" fill="#efe3d0"/>
-          <ellipse cx="160" cy="198" rx="102" ry="36" fill="#c62e21"/>
-          <g class="swirl-pin" stroke="#e8a15c" stroke-width="7" fill="none" stroke-linecap="round">
-            <path d="M95 190 q30 -26 60 0 q30 26 60 0 q20 -18 45 -4"/>
-            <path d="M85 205 q30 -22 60 2 q30 24 60 -2 q18 -16 50 -2"/>
-            <path d="M100 215 q28 -18 55 2 q28 20 58 -2 q16 -12 42 0"/>
-          </g>
-          <circle cx="118" cy="185" r="6" fill="#4c7a3c"/>
-          <circle cx="205" cy="178" r="6" fill="#4c7a3c"/>
-          <circle cx="168" cy="200" r="6" fill="#4c7a3c"/>
-          <circle cx="145" cy="215" r="5" fill="#8a3c2a"/>
-        </svg>
-      </div>
+     <!-- Hero Image (Replaces SVG) -->
+<div class="order-1 lg:order-2 flex justify-center items-center relative">
+  <!-- 写真を円形に配置し、背景のサークルと合わせるためのコンテナ -->
+  <div class="relative w-56 h-56 sm:w-72 sm:h-72">
+    
+    <!-- 背景のブラー付きサークル（元のSVGの雰囲気を残すため、少し薄く残しています） -->
+    <div class="absolute inset-0 rounded-full bg-[--brick]/20 blur-md scale-110"></div>
+    
+    <!-- 実際の写真 -->
+    <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
+      <img 
+        src="images/pasta.jpg" 
+        alt="トマトとニンニクのスパゲティ" 
+        class="w-full h-full object-cover"
+        loading="lazy"
+      >
+    </div>
+    
+    <!-- (オプション) 写真の上に湯気などの装飾をSVGで追加したい場合はここに記述 -->
+  </div>
+</div>
     </div>
 
     <a href="#concept" class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/60">
@@ -192,7 +193,7 @@
               創業時から変わらぬ、カプリチョーザの絶対的な王者。コク、酸味、香りが渾然一体となった極上のソースを、アルデンテのパスタに絡めて。
             </p>
             <div class="inline-block text-2xl sm:text-3xl font-bold border-b-2 border-[--brick] pb-1">
-              ¥1,230 <span class="text-sm font-normal text-stone-500">(税込)</span>
+             
             </div>
           </div>
         </div>
@@ -209,7 +210,7 @@
               ラグソースで味付けしたライスに、たっぷりのチーズを包み込んで揚げました。驚きのボリュームと、とろけ出すチーズが魅力です。
             </p>
             <div class="inline-block text-2xl sm:text-3xl font-bold border-b-2 border-[--brick] pb-1">
-              ¥860 <span class="text-sm font-normal text-stone-500">(税込)</span>
+           
             </div>
           </div>
         </div>
