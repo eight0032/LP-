@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Nove(ビストロ ノーヴェ)| 至極の和牛テール赤ワイン煮込み</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --deep-red: #580c0c;
+            --dark-charcoal: #121212;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            scroll-behavior: smooth;
+            background-color: #fdfbf7;
+            color: var(--dark-charcoal);
+            overflow-x: hidden;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+
+        /* FV Animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 1.2s ease forwards; opacity: 0; }
+
+        .fv-bg {
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.8)), url('images/tale.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        @media (min-width: 768px) {
+            .fv-bg { background-attachment: fixed; }
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.5rem auto;
+        }
+
+        .glass-nav {
+            background: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #c5a059 0%, #a38144 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-premium:active { transform: translateY(0); }
+
+        .nobreak { display: inline-block; white-space: nowrap; }
+
+        .bg-washi {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        /* Mobile nav */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        #mobile-menu.open {
+            max-height: 480px;
+        }
+        .hamburger-line {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        #menu-toggle.open .line-1 { transform: translateY(7px) rotate(45deg); }
+        #menu-toggle.open .line-2 { opacity: 0; }
+        #menu-toggle.open .line-3 { transform: translateY(-7px) rotate(-45deg); }
+
+        /* touch target comfort */
+        a, button, summary { -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body class="bg-washi">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 flex justify-between items-center text-white glass-nav">
+        <div class="text-xl sm:text-2xl font-bold font-cinzel tracking-widest text-amber-100">
+            Bistro Nove
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center space-x-10 text-xs font-bold tracking-widest uppercase">
+            <a href="#top" class="hover:text-amber-400 transition">Top</a>
+            <a href="#strength-section" class="hover:text-amber-400 transition">Strengths</a>
+            <a href="#profile-section" class="hover:text-amber-400 transition">History</a>
+            <a href="#coming-soon" class="hover:text-amber-400 transition">Coming Soon</a>
+            <a href="#problem-section" class="hover:text-amber-400 transition">Q&amp;A</a>
+            <a href="#access-section" class="hover:text-amber-400 transition">Access</a>
+            <a href="https://bistronove-susukino.owst.jp/" target="_blank" class="btn-premium px-6 py-3 rounded-full">
+                問い合わせ
+            </a>
+        </nav>
+
+        <!-- Mobile hamburger button -->
+        <button id="menu-toggle" class="lg:hidden relative w-8 h-6 flex flex-col justify-between" aria-label="メニューを開く" aria-expanded="false">
+            <span class="hamburger-line line-1 block h-0.5 w-full bg-white rounded"></span>
+            <span class="hamburger-line line-2 block h-0.5 w-full bg-white rounded"></span>
+            <span class="hamburger-line line-3 block h-0.5 w-full bg-white rounded"></span>
+        </button>
+    </header>
+
+    <!-- Mobile nav panel -->
+    <div id="mobile-menu" class="fixed top-[60px] left-0 w-full z-40 glass-nav lg:hidden">
+        <nav class="flex flex-col text-sm font-bold tracking-widest uppercase text-white">
+            <a href="#top" class="px-6 py-4 border-b border-white/10 active:bg-white/5">Top</a>
+            <a href="#strength-section" class="px-6 py-4 border-b border-white/10 active:bg-white/5">Strengths</a>
+            <a href="#profile-section" class="px-6 py-4 border-b border-white/10 active:bg-white/5">History</a>
+            <a href="#coming-soon" class="px-6 py-4 border-b border-white/10 active:bg-white/5">Coming Soon</a>
+            <a href="#problem-section" class="px-6 py-4 border-b border-white/10 active:bg-white/5">Q&amp;A</a>
+            <a href="#access-section" class="px-6 py-4 border-b border-white/10 active:bg-white/5">Access</a>
+            <a href="https://bistronove-susukino.owst.jp/" target="_blank" class="btn-premium m-6 text-center py-4 rounded-full normal-case tracking-wide">
+                問い合わせ
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Visual (FV) -->
+    <section id="top" class="relative min-h-screen flex items-center justify-center fv-bg overflow-hidden">
+        <div class="relative z-10 text-center text-white px-4 py-32 sm:py-0">
+            <div class="animate-fade-up" style="animation-delay: 0.2s;">
+                <span class="inline-block border-l border-r border-amber-400 px-4 sm:px-6 py-1 text-xs sm:text-base tracking-[0.3em] sm:tracking-[0.4em] mb-6">すすきの 徒歩3分の至福</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 sm:mb-8 drop-shadow-lg animate-fade-up" style="animation-delay: 0.5s;">
+                <span class="nobreak">和牛テールの</span><br>
+                <span class="nobreak text-amber-200">赤ワイン煮込み</span>
+            </h1>
+            <div class="animate-fade-up" style="animation-delay: 0.8s;">
+                <p class="text-base sm:text-xl md:text-2xl mb-10 sm:mb-12 font-light leading-relaxed tracking-wide sm:tracking-widest">
+                    数日間、ただひたすらに向き合い、<br>
+                    極限まで柔らかく、濃密に。
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-5 sm:gap-6">
+                    <a href="tel:0115226024" class="btn-premium px-10 sm:px-12 py-4 sm:py-5 rounded-sm font-bold tracking-widest text-base sm:text-lg w-full md:w-auto">
+                        今すぐ予約する
+                    </a>
+                    <span class="text-sm font-bold">TEL: 011-522-6024</span>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-[10px] tracking-[0.5em] animate-pulse">
+            SCROLL DOWN
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="py-20 sm:py-32 px-5 sm:px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center mb-14 sm:mb-20">
+            <h2 class="text-xs sm:text-sm font-bold tracking-[0.4em] sm:tracking-[0.5em] text-amber-600 mb-4">THE CONCEPT</h2>
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-black leading-snug mb-8">
+                一口で、物語が完結する。<br>
+                Bistro Nove 渾身のスペシャリテ。
+            </h3>
+            <div class="w-16 h-px bg-stone-300 mx-auto mb-8"></div>
+            <p class="text-gray-600 leading-loose sm:leading-[2.5] text-base sm:text-lg text-left sm:text-center">
+                上質な和牛のテールを、厳選された赤ワインと共に。<br>
+                じっくりと、そして静かに時間をかけて煮込むことで、<br>
+                肉の繊維ひとつひとつに旨みが染み渡ります。<br>
+                <br>
+                ナイフを必要としないほどの柔らかさと、<br>
+                自家製フォカッチャで最後の一滴まで堪能したくなる濃厚なソース。<br>
+                すすきのの喧騒を離れた「大人のための隠れ家」で、<br>
+                あなただけの贅沢な時間をお届けします。
+            </p>
+        </div>
+        <div class="max-w-6xl mx-auto grid grid-cols-2 gap-2 sm:gap-4">
+            <img src="images/tale.jpg" alt="和牛テールの赤ワイン煮込み 近影" class="w-full h-56 sm:h-[500px] object-cover rounded-lg shadow-2xl">
+            <img src="images/wine.png" alt="赤ワインを注ぐ様子" class="w-full h-56 sm:h-[500px] object-cover rounded-lg shadow-2xl sm:mt-12">
+        </div>
+    </section>
+
+<!-- Strength Section -->
+    <section id="strength-section" class="py-20 sm:py-32 bg-stone-900 text-white">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-16 sm:mb-24">
+                <h2 class="text-2xl sm:text-4xl font-bold font-cinzel tracking-[0.2em] sm:tracking-[0.3em] mb-4">STRENGTHS</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto mb-6"></div>
+                <p class="text-amber-200/70 tracking-widest text-sm">私たちが選ばれる3つの理由</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-14 sm:gap-16">
+                <!-- Strength 01 -->
+                <div class="relative group">
+                    <div class="text-[90px] sm:text-[120px] font-cinzel font-bold text-white/5 absolute -top-14 sm:-top-20 -left-2 sm:-left-4 leading-none select-none">01</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">本格ジビエと肉料理</h3>
+                        <p class="text-gray-400 leading-loose text-sm sm:text-base">
+                            稚内の指定猟師から直接仕入れる蝦夷鹿など、徹底した品質管理のもと提供されるジビエ。肉本来の力強さを引き出す熟練の技が光ります。
+                        </p>
+                    </div>
+                </div>
+                <!-- Strength 02 -->
+                <div class="relative group">
+                    <div class="text-[90px] sm:text-[120px] font-cinzel font-bold text-white/5 absolute -top-14 sm:-top-20 -left-2 sm:-left-4 leading-none select-none">02</div>
+                    <div class="relative z-10 md:mt-12">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">自家製へのこだわり</h3>
+                        <p class="text-gray-400 leading-loose text-sm sm:text-base">
+                            モチモチのパスタや、密かなファンが多い自家製フォカッチャ。全ての料理に「手作りの温もり」と「専門性」を込めて作り上げています。
+                        </p>
+                    </div>
+                </div>
+                <!-- Strength 03 -->
+                <div class="relative group">
+                    <div class="text-[90px] sm:text-[120px] font-cinzel font-bold text-white/5 absolute -top-14 sm:-top-20 -left-2 sm:-left-4 leading-none select-none">03</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">「ただいま」と言える場所</h3>
+                        <p class="text-white/70 leading-loose text-sm sm:text-base">
+                            アットホームな接客と、深夜まで開いている安心感。カジュアルなデートから、お一人様の深夜の語らいまで。日常に寄り添う一軒です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Section -->
+    <section class="py-20 sm:py-32 bg-stone-50 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-14 sm:mb-16 section-title">CUSTOMER'S VOICE</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+                <!-- Voice 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 flex flex-col h-full">
+                    <div class="flex text-amber-500 mb-4">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="text-sm text-gray-600 flex-grow italic mb-4">「インスタグラマーさんの投稿を見て来店。牛テール、鹿肉、リゾットどれも絶品。フォカッチャが他店と違い質があって甘く、ソースとの相性が最高でした!」</p>
+                    <div class="flex items-center gap-3 border-t pt-4">
+                        <div class="w-10 h-10 bg-stone-200 rounded-full"></div>
+                        <span class="text-xs font-bold text-gray-500 tracking-widest">K.Gohan様</span>
+                    </div>
+                </div>
+                <!-- Voice 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 flex flex-col h-full">
+                    <div class="flex text-amber-500 mb-4">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                    </div>
+                    <p class="text-sm text-gray-600 flex-grow italic mb-4">「すすきの駅からすぐで利用しやすい。洋食を気軽に食べられて、シェフとの会話も楽しい!元気をもらえる良いお店です。」</p>
+                    <div class="flex items-center gap-3 border-t pt-4">
+                        <div class="w-10 h-10 bg-stone-200 rounded-full"></div>
+                        <span class="text-xs font-bold text-gray-500 tracking-widest">Local Guide様</span>
+                    </div>
+                </div>
+                <!-- Voice 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 flex flex-col h-full">
+                    <div class="flex text-amber-500 mb-4">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="text-sm text-gray-600 flex-grow italic mb-4">「指定猟師さんから仕入れている鹿肉が全く臭み無し。宴会で利用しましたが、次は単品料理も色々頼んでみたいです。」</p>
+                    <div class="flex items-center gap-3 border-t pt-4">
+                        <div class="w-10 h-10 bg-stone-200 rounded-full"></div>
+                        <span class="text-xs font-bold text-gray-500 tracking-widest">Gourmet Fan様</span>
+                    </div>
+                </div>
+                <!-- Voice 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 flex flex-col h-full">
+                    <div class="flex text-amber-500 mb-4">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="text-sm text-gray-600 flex-grow italic mb-4">「どの料理も本当においしい。特に鹿肉は最高でした。ワインの種類も豊富で深夜までやってるのが嬉しい。」</p>
+                    <div class="flex items-center gap-3 border-t pt-4">
+                        <div class="w-10 h-10 bg-stone-200 rounded-full"></div>
+                        <span class="text-xs font-bold text-gray-500 tracking-widest">Visitor様</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History/Profile Section -->
+    <section id="profile-section" class="py-20 sm:py-32 bg-white relative">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-xs sm:text-sm font-bold tracking-[0.4em] sm:tracking-[0.5em] text-amber-600 mb-4">Owner's Spirit</h2>
+                <h3 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8">「ちょうどいい」が、<br>一番むずかしい。</h3>
+                <p class="text-gray-600 leading-loose mb-5 sm:mb-6 text-sm sm:text-base">
+                    気合を入れすぎた高級イタリアンでもなく、かといってありふれた洋食店でもない。
+                    本格的な味を、肩肘張らずに楽しめる「街中のレストラン」。
+                </p>
+                <p class="text-gray-600 leading-loose mb-8 sm:mb-10 text-sm sm:text-base">
+                    北海道の豊かな食材と、私たちが愛するイタリアの食文化を融合させ、
+                    「また明日も頑張ろう」と思えるような、活力の湧く一皿を。
+                    すすきのの夜を彩る、温かな灯火のような店でありたいと願っています。
+                </p>
+                <div class="border-l-4 border-amber-500 pl-6 py-2">
+                    <p class="text-base sm:text-lg font-bold">Bistro Nove オーナーシェフ</p>
+                    <p class="text-sm text-gray-400">こだわりを詰め込んだ、和牛テールの物語。</p>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 relative">
+                <img src="images/chef.png" alt="オーナーシェフの想い" class="rounded shadow-2xl relative z-10 w-full">
+                <div class="hidden sm:block absolute -top-10 -right-10 w-64 h-64 bg-amber-50 rounded-full -z-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-20 sm:py-28 bg-stone-900 text-white relative overflow-hidden border-t border-b border-amber-900/40">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-14 sm:mb-16">
+                <span class="inline-block px-4 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 tracking-widest mb-4">
+                    In Development
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-cinzel tracking-[0.1em] sm:tracking-[0.2em] mb-4">COMING SOON</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto mb-6"></div>
+                <p class="text-gray-300 tracking-wider text-sm max-w-2xl mx-auto">
+                    Bistro Noveをさらに身近に、もっと楽しくお過ごしいただくため、新しいサービスや仕掛けを準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Project 1 -->
+                <div class="bg-stone-800/80 border border-amber-500/20 rounded-2xl p-6 sm:p-8 hover:border-amber-500/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6 flex-wrap gap-2">
+                            <span class="text-amber-400 font-cinzel font-bold text-sm tracking-widest">PROJECT 01</span>
+                            <span class="text-xs bg-amber-900/60 text-amber-200 px-3 py-1 rounded-full border border-amber-600/30">メニュー開発中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-4 leading-snug">
+                            初めてでも安心!<br>ジビエ味わい×ペアリング表
+                        </h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            「鹿肉はどんな味?」「どのワインが合う?」という疑問を即解決。肉質の柔らかさ・風味の強さ・相性抜群のワインが一目でわかるビジュアルチャート付き専用メニューを制作中。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/60 text-xs text-amber-200/70 font-bold">
+                        ◆ ジビエ初心者の方に特におすすめ
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-stone-800/80 border border-amber-500/20 rounded-2xl p-6 sm:p-8 hover:border-amber-500/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6 flex-wrap gap-2">
+                            <span class="text-amber-400 font-cinzel font-bold text-sm tracking-widest">PROJECT 02</span>
+                            <span class="text-xs bg-amber-900/60 text-amber-200 px-3 py-1 rounded-full border border-amber-600/30">EC準備中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-4 leading-snug">
+                            おうちでBistro Nove<br>急速真空パック通販・持ち帰り
+                        </h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            看板商品「和牛テールの赤ワイン煮込み」や自家製フォカッチャをご家庭で。店舗の味を閉じ込めた急速冷凍パックで、お好きなときにお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/60 text-xs text-amber-200/70 font-bold">
+                        ◆ ご進物や特別な日のハレの日ディナーに
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-20 sm:py-32 bg-stone-100">
+        <div class="max-w-3xl mx-auto px-5 sm:px-6">
+            <h2 class="text-center text-2xl sm:text-3xl font-bold mb-14 sm:mb-16 section-title tracking-widest">Q &amp; A</h2>
+            <div class="space-y-4">
+                <details class="group bg-white rounded-lg shadow-sm overflow-hidden" open>
+                    <summary class="flex justify-between items-center gap-4 p-5 sm:p-6 cursor-pointer font-bold list-none text-sm sm:text-base">
+                        <span>一人での利用は可能ですか?</span>
+                        <span class="transition group-open:rotate-180 text-amber-600 shrink-0">▼</span>
+                    </summary>
+                    <div class="px-5 sm:px-6 pb-6 text-gray-600 border-t pt-4 text-sm sm:text-base">
+                        もちろんです。カウンター席もございますので、お仕事帰りの一杯や、自分へのご褒美ディナーに気軽にお立ち寄りください。シェフとの会話を楽しみに来られる方も多いですよ。
+                    </div>
+                </details>
+                <details class="group bg-white rounded-lg shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center gap-4 p-5 sm:p-6 cursor-pointer font-bold list-none text-sm sm:text-base">
+                        <span>アレルギー対応はしていますか?</span>
+                        <span class="transition group-open:rotate-180 text-amber-600 shrink-0">▼</span>
+                    </summary>
+                    <div class="px-5 sm:px-6 pb-6 text-gray-600 border-t pt-4 text-sm sm:text-base">
+                        はい、可能な限り対応させていただきます。ご予約の際、またはご注文の際にスタッフまでお気軽にお申し付けください。
+                    </div>
+                </details>
+                <details class="group bg-white rounded-lg shadow-sm overflow-hidden">
+                    <summary class="flex justify-between items-center gap-4 p-5 sm:p-6 cursor-pointer font-bold list-none text-sm sm:text-base">
+                        <span>深夜何時まで入店できますか?</span>
+                        <span class="transition group-open:rotate-180 text-amber-600 shrink-0">▼</span>
+                    </summary>
+                    <div class="px-5 sm:px-6 pb-6 text-gray-600 border-t pt-4 text-sm sm:text-base">
+                        平日・日祝は深夜2時、金土・祝前日は深夜3時まで営業しております。ラストオーダーは閉店の約1時間前となりますが、お電話いただければ状況を確認いたします。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+  <section id="access-section" class="py-20 sm:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+                <div class="lg:w-1/3">
+                    <h2 class="text-3xl sm:text-4xl font-bold font-cinzel mb-8 sm:mb-10 tracking-widest border-b-2 border-amber-500 pb-4 inline-block">ACCESS</h2>
+                    <div class="space-y-6 sm:space-y-8">
+                        <div>
+                            <p class="text-amber-600 text-xs font-bold mb-1">ADDRESS</p>
+                            <p class="text-base sm:text-lg">〒064-0805<br>北海道札幌市中央区南5条西3丁目10 グランド桂和ビル2階</p>
+                        </div>
+                        <div>
+                            <p class="text-amber-600 text-xs font-bold mb-1">OPENING HOURS</p>
+                            <p class="text-sm">
+                                平日・日祝 / 18:00 〜 翌2:00<br>
+                                金土・祝前日 / 18:00 〜 翌3:00
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-amber-600 text-xs font-bold mb-1">CONTACT</p>
+                            <p class="text-xl sm:text-2xl font-bold">011-522-6024</p>
+                        </div>
+                        <div class="pt-2 sm:pt-6 space-y-4">
+                            <div>
+                                <a href="https://maps.app.goo.gl/3A5rCAnGz7Uo6tP58" target="_blank" class="inline-flex items-center text-amber-600 font-bold hover:underline text-sm sm:text-base">
+                                    <svg class="w-5 h-5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                                    Google Mapsでルートを確認
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.instagram.com/bistro_nove_sapporo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-amber-600 font-bold hover:underline text-sm sm:text-base">
+                                    <svg class="w-5 h-5 mr-2 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                    Instagramで最新情報をみる
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-2/3 h-72 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl relative">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.3600777426673!2d141.35157977507183!3d43.054893890923296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29007996b0ef%3A0x1815b9227699f7fe!2sBistro%20Nove!5e0!3m2!1sja!2sjp!4v1771301222612!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 sm:py-32 bg-amber-600 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="text-[120px] sm:text-[200px] font-black absolute top-0 left-0 leading-none">NOVE</div>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-black mb-6 sm:mb-8 leading-tight">
+                あなたの「一番好きな隠れ家」に。<br>今夜、お待ちしております。
+            </h2>
+            <p class="text-amber-100 mb-10 sm:mb-12 text-base sm:text-lg">
+                一夜の幸せを、大切な人と、あるいは贅沢な一人の時間に。
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                <a href="tel:0115226024" class="bg-white text-amber-600 px-10 sm:px-16 py-5 sm:py-6 rounded-sm font-black text-xl sm:text-2xl hover:bg-amber-50 transition transform hover:scale-105 shadow-2xl w-full md:w-auto">
+                    ☎ 011-522-6024
+                </a>
+            </div>
+            <p class="mt-8 text-xs sm:text-sm opacity-80 tracking-widest px-4">Grand Eiwa Building 2F, Minami 5 Nishi 3, Chuo-ku, Sapporo</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 py-10 sm:py-12 text-center px-5">
+        <div class="text-white font-cinzel tracking-[0.4em] sm:tracking-[0.5em] mb-6">BISTRO NOVE</div>
+        <div class="flex justify-center space-x-6 mb-8 text-sm">
+            <a href="https://bistronove-susukino.owst.jp/" target="_blank" class="text-stone-500 hover:text-white transition">HP</a>
+            <a href="https://www.instagram.com/bistro_nove_sapporo/" class="text-stone-500 hover:text-white transition">Instagram</a>
+            
+        </div>
+        <p class="text-stone-700 text-[10px] tracking-[0.15em] sm:tracking-[0.2em]">
+            &copy; 2024 Bistro Nove. Curating the best Italian meat dishes in Sapporo.
+        </p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when a link is tapped
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
