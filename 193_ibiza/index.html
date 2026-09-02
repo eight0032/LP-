@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン イビサ | 上山市で愛される親子二代の極上洋食</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b4513;
+            --accent: #d97706;
+            --bg-light: #fdfbf7;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-light);
+        }
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .font-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        .text-keep {
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7) 100%);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1rem auto;
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.4);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(139, 69, 19, 0.1);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .deco-border {
+            border: 1px solid rgba(139, 69, 19, 0.2);
+            padding: 10px;
+            position: relative;
+        }
+        .deco-border::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+        }
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Mobile nav */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        #mobile-menu.open {
+            max-height: 420px;
+        }
+        @media (max-width: 375px) {
+            .map-container { min-height: 280px; }
+        }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-[10px] sm:text-xs tracking-tighter text-stone-500 font-bold uppercase">Kaminoyama Restaurant</span>
+                <span class="text-xl sm:text-2xl font-serif font-black text-amber-900 leading-none">イビサ</span>
+            </div>
+
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-bold tracking-widest text-stone-600">
+                <a href="#top" class="nav-link">TOP</a>
+                <a href="#strength-section" class="nav-link">STRENGTHS</a>
+                <a href="#coming-soon" class="nav-link">COMING SOON</a>
+                <a href="#profile-section" class="nav-link">HISTORY</a>
+                <a href="#access-section" class="nav-link">ACCESS</a>
+                <a href="https://www.instagram.com/ibiza_yamagata/" target="_blank" rel="noopener noreferrer" class="text-stone-600 hover:text-amber-700 transition-colors" title="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="tel:023-673-3034" class="bg-amber-800 text-white px-6 py-3 rounded-sm hover:bg-amber-900 transition-all transform hover:-translate-y-0.5 shadow-lg">RESERVATION</a>
+            </nav>
+
+            <!-- Mobile controls -->
+            <div class="flex items-center gap-3 md:hidden">
+                <a href="tel:023-673-3034" class="bg-amber-800 text-white px-3 py-2 rounded-sm text-xs font-bold shadow-lg">予約</a>
+                <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" class="p-2 -mr-2 text-stone-700">
+                    <svg id="icon-open" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" /></svg>
+                    <svg id="icon-close" class="w-7 h-7 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile nav panel -->
+        <nav id="mobile-menu" class="md:hidden bg-white border-t border-stone-100">
+            <div class="flex flex-col px-6 py-4 text-sm font-bold tracking-widest text-stone-600">
+                <a href="#top" class="py-3 border-b border-stone-100">TOP</a>
+                <a href="#strength-section" class="py-3 border-b border-stone-100">STRENGTHS</a>
+                <a href="#coming-soon" class="py-3 border-b border-stone-100">COMING SOON</a>
+                <a href="#profile-section" class="py-3 border-b border-stone-100">HISTORY</a>
+                <a href="#access-section" class="py-3 border-b border-stone-100">ACCESS</a>
+                <a href="https://www.instagram.com/ibiza_yamagata/" target="_blank" rel="noopener noreferrer" class="py-3 flex items-center gap-2 text-stone-600">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                    Instagram
+                </a>
+            </div>
+        </nav>
+    </header>
+
+ <!-- FV (Hero) -->
+<section id="top" class="relative min-h-screen flex items-center overflow-hidden bg-stone-900 pt-24 md:pt-0">
+    <!-- ID名を変更して外部JSの干渉を防ぐ -->
+    <div id="custom-fv-image" class="absolute inset-0 opacity-80 overflow-hidden">
+        <img src="images/sufure.jpg" alt="イビサのスペシャリテ スフレオムライス" class="w-full h-full object-cover">
+    </div>
+
+    <!-- 暗めのオーバーレイ（文字を読みやすくするため） -->
+    <div class="absolute inset-0 hero-overlay bg-black/40 pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 relative z-10 text-white py-16 md:py-0">
+        <div class="max-w-3xl">
+            <span class="inline-block border-l-4 border-amber-500 pl-3 sm:pl-4 mb-4 text-xs sm:text-sm md:text-base tracking-widest font-medium uppercase text-amber-400">Since 1978 | Kaminoyama Yamagata</span>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-serif font-black mb-6 md:mb-8 leading-[1.3] md:leading-[1.2] text-keep">
+                その一口で、<br>
+                <span class="text-amber-400">心まで解ける</span><br>
+                至高のスフレ。
+            </h1>
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-6 mt-8 md:mt-12">
+                <div class="text-left">
+                    <p class="text-lg sm:text-xl font-serif border-b border-white/30 pb-2 mb-2 inline-block">イビサ 究極のスフレオムライス</p>
+                    <p class="text-sm opacity-80">40年以上磨き上げた、親子二代の職人技。</p>
+                </div>
+                <a href="#access-section" class="group flex items-center gap-4 bg-amber-600 hover:bg-amber-500 transition-all p-1 pr-6 rounded-full overflow-hidden w-full md:w-auto justify-center md:justify-start">
+                    <span class="bg-white text-amber-900 w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full group-hover:rotate-12 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                    </span>
+                    <span class="font-bold tracking-widest uppercase">Visit Us</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="hidden sm:block absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest animate-bounce">SCROLL DOWN</div>
+</section>
+
+    <!-- Introduction -->
+    <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <span class="font-script text-3xl md:text-4xl text-amber-700/30 block mb-2">Feeling</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-black mb-10 md:mb-12 leading-tight text-keep">
+                温泉街のランチで、<br>
+                「最高に贅沢な洋食」を味わいたいあなたへ。
+            </h2>
+            <div class="grid sm:grid-cols-3 gap-4 md:gap-8 text-stone-500 mb-12 md:mb-16">
+                <div class="p-6 md:p-8 bg-stone-50 rounded-2xl text-sm md:text-base">「和食以外で美味しいものが食べたい」</div>
+                <div class="p-6 md:p-8 bg-stone-50 rounded-2xl text-sm md:text-base">「コスパも味も妥協したくない」</div>
+                <div class="p-6 md:p-8 bg-stone-50 rounded-2xl text-sm md:text-base">「地元で愛される確かな味を知りたい」</div>
+            </div>
+            <div class="flex justify-center">
+                <div class="w-1 h-16 md:h-20 bg-gradient-to-b from-amber-600 to-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+  <section id="strength-section" class="py-16 md:py-24 bg-stone-50">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-14 md:mb-20">
+            <span class="text-amber-600 font-bold tracking-widest text-sm uppercase mb-2 block">Why Choose IBIZA</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-black section-title">選ばれる3つの理由</h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-10 md:space-y-12">
+                <div class="relative pl-14 md:pl-16">
+                    <span class="absolute left-0 top-0 text-5xl md:text-6xl font-serif text-amber-700/10 font-black">01</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">温泉街で「本格洋食」を愉しむ贅沢</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm md:text-base">かみのやま温泉駅から徒歩7分。肉汁溢れるハンバーグや絶品カニクリームコロッケを堪能できる名店です。</p>
+                </div>
+                <div class="relative pl-14 md:pl-16">
+                    <span class="absolute left-0 top-0 text-5xl md:text-6xl font-serif text-amber-700/10 font-black">02</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">驚きのコストパフォーマンス</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm md:text-base">スープ、デザートまで付くランチセットが1,000円前後。「この価格でこのクオリティ?」という驚きを提供します。</p>
+                </div>
+                <div class="relative pl-14 md:pl-16">
+                    <span class="absolute left-0 top-0 text-5xl md:text-6xl font-serif text-amber-700/10 font-black">03</span>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">親子二代で続く、40年の信頼</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm md:text-base">1978年創業。熟練の父から、情熱の息子へ受け継がれる「安心の味」があります。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-10 md:mb-16 gap-3 sm:gap-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-black">五感を満たす、<br>スペシャリテの数々</h2>
+            <span class="font-script text-4xl md:text-5xl text-amber-800/20">Menu</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+            <div class="md:col-span-8 group relative overflow-hidden rounded-3xl h-[380px] sm:h-[460px] md:h-[600px] shadow-xl">
+                <img id="custom-menu-main" src="images/sufure.jpg" alt="スフレオムライス" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 p-6 sm:p-10 md:p-12 text-white pointer-events-none">
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-2">スフレオムライス</h3>
+                    <p class="max-w-md text-sm opacity-80 leading-relaxed">限界までふわふわに仕上げた卵に、深みのあるデミグラスソースが絡み合う芸術品。</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 flex flex-row md:flex-col gap-4 md:gap-6">
+                <!-- ID名を変更して外部JSの干渉を防ぐ -->
+                <div id="custom-menu-side-1" class="flex-1 bg-stone-50 rounded-3xl overflow-hidden group relative min-h-[180px] sm:min-h-[220px] md:min-h-[280px] shadow-lg">
+                    <img src="images/kakifly.png" alt="カキフライ" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <!-- ID名を変更して外部JSの干渉を防ぐ -->
+                <div id="custom-menu-side-2" class="flex-1 bg-stone-50 rounded-3xl overflow-hidden group relative min-h-[180px] sm:min-h-[220px] md:min-h-[280px] shadow-lg">
+                    <img src="images/roast.png" alt="ロースト料理" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" class="py-16 md:py-24 bg-amber-900/5 relative overflow-hidden border-y border-amber-900/10">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1.5 bg-amber-800 text-amber-100 rounded-full text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
+                    Coming Soon
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-black text-stone-900 mb-5 md:mb-6 leading-tight text-keep">
+                    「あったらいいな」を、かたちに。<br>
+                    準備中の新サービス
+                </h2>
+                <p class="text-stone-600 leading-relaxed font-medium text-sm md:text-base">
+                    お客様から寄せられたたくさんの温かいお声にお応えし、<br class="hidden md:inline">
+                    イビサの味をもっと身近にお楽しみいただける新しい取り組みを準備しています。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1: Takeout & Bento -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-stone-200/50 border border-stone-100 relative group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-amber-800 group-hover:text-white transition-colors duration-300">
+                            🍱
+                        </div>
+                        <span class="text-xs font-bold text-amber-700 tracking-wider uppercase block mb-1">01. Takeout & Bento</span>
+                        <h3 class="text-lg sm:text-xl font-serif font-bold text-stone-900 mb-3">特製洋食弁当 & テイクアウト</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            自慢のスフレオムライスやハンバーグ、カニクリームコロッケなど、お店の本格洋食をご自宅やオフィス、行楽のお供にお召し上がりいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-stone-400">
+                        <span>サービス開始予定</span>
+                        <span class="text-amber-800 font-serif">2024. Autumn</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Original Sauce & Dressing -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-stone-200/50 border border-stone-100 relative group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-amber-800 group-hover:text-white transition-colors duration-300">
+                            🍾
+                        </div>
+                        <span class="text-xs font-bold text-amber-700 tracking-wider uppercase block mb-1">02. Original Dressing</span>
+                        <h3 class="text-lg sm:text-xl font-serif font-bold text-stone-900 mb-3">秘伝デミソース & 特製ドレッシング販売</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            「お店のドレッシングを家でも使いたい」というリクエストにお応えして瓶詰め販売を開始。秘伝のデミグラスソースもご家庭用に登場します。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-stone-400">
+                        <span>店頭・オンライン順次開始</span>
+                        <span class="text-amber-800 font-serif">2024. Winter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- History / Founder Section -->
+<section id="profile-section" class="py-16 md:py-24 bg-stone-900 text-white relative">
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div class="w-full max-w-xs md:max-w-none md:w-5/12">
+                <div class="deco-border">
+                    <!-- ID名を変更し、中に<img>タグを追加（ホバー時のモノクロ→カラー効果を維持） -->
+                    <div id="custom-founder-image" class="aspect-[3/4] rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                        <img src="images/chef.png" alt="イビサの歴史・創業者" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-7/12 text-center md:text-left">
+                <span class="font-script text-3xl md:text-4xl text-amber-500/30 block mb-2">History</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-black mb-6 md:mb-8 leading-tight text-keep">40年間、一度も欠かさなかった<br>「真心」という隠し味。</h2>
+                <p class="text-stone-300 leading-relaxed font-light mb-8 text-sm md:text-base">
+                    上山市八日町で産声を上げ、創業以来「できるだけ休まずに店を開けておくこと」を信条としてきました。親子二代、洋食の歴史と誇りを一皿に込めて提供し続けています。
+                </p>
+                <div class="flex gap-8 justify-center md:justify-start border-t border-white/10 pt-8">
+                    <div>
+                        <p class="text-3xl font-serif font-black text-amber-500">1978</p>
+                        <p class="text-[10px] tracking-widest opacity-50 uppercase">Establishment</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-serif font-black text-amber-500">45+</p>
+                        <p class="text-[10px] tracking-widest opacity-50 uppercase">Years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row shadow-2xl rounded-3xl overflow-hidden border border-stone-100">
+                <div class="lg:w-5/12 p-8 sm:p-12 lg:p-20 bg-stone-50">
+                    <h2 class="text-3xl md:text-4xl font-serif font-black mb-10 md:mb-12">店舗案内</h2>
+                    <div class="space-y-8 md:space-y-10">
+                        <div>
+                            <p class="text-xs font-bold text-stone-400 uppercase mb-1">Address</p>
+                            <p class="text-base sm:text-lg leading-relaxed font-medium">〒999-3123 <br>山形県上山市美咲町1-5-27-5</p>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-stone-400 uppercase mb-1">Phone</p>
+                            <a href="tel:023-673-3034" class="text-xl sm:text-2xl font-serif font-bold hover:text-amber-800 transition-colors">023-673-3034</a>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-stone-400 uppercase mb-1">Hours</p>
+                            <p class="text-base sm:text-lg font-medium">11:30 - 20:00 </p>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-7/12 relative">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6275.067636235713!2d140.27298856248106!3d38.15103159891552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb2cc2fccd159%3A0x9aebba187bc9d7b4!2z44Kk44OT44K1!5e0!3m2!1sja!2sjp!4v1771292019373!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <footer class="py-20 md:py-32 bg-stone-900 text-white text-center">
+        <div class="px-4">
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-serif font-black mb-10 md:mb-12 leading-tight">心ほどけるひとときを、<br>イビサで。</h2>
+            <div class="flex flex-col items-center gap-6">
+                <a href="tel:023-673-3034" class="inline-block bg-amber-600 hover:bg-amber-50 text-white hover:text-amber-900 px-10 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-xl transition-all shadow-2xl w-full max-w-xs sm:w-auto">お電話で予約する</a>
+                <a href="https://www.instagram.com/ibiza_yamagata/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-stone-400 hover:text-white transition-colors group">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                    <span class="text-xs tracking-widest font-bold">FOLLOW US ON INSTAGRAM</span>
+                </a>
+            </div>
+            <p class="mt-16 md:mt-20 text-[10px] text-stone-700 uppercase tracking-widest">&copy; 2024 Restaurant IBIZA. All images AI generated for safety.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            iconOpen.classList.toggle('hidden', isOpen);
+            iconClose.classList.toggle('hidden', !isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        const apiKey = "";
+
+        // High quality fallback stock photos for when API key is not present or API fails
+        const fallbackImages = {
+            "fv-image-container": "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?auto=format&fit=crop&w=1600&q=80",
+            "strength-image-container": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+            "menu-main-image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1200&q=80",
+            "menu-side-1": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+            "menu-side-2": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80",
+            "founder-image": "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80"
+        };
+
+        async function generateSafeImage(prompt, containerId, extraClasses = "w-full h-full object-cover") {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const renderImage = (src) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = extraClasses;
+                img.alt = "Restaurant Image";
+                img.loading = "lazy";
+                img.onerror = function() {
+                    this.src = 'https://placehold.co/800x600/e2e8f0/475569?text=Image+Unavailable';
+                };
+                container.innerHTML = '';
+                container.appendChild(img);
+            };
+
+            // If API key is empty, load reliable fallback directly without throwing an error
+            if (!apiKey) {
+                renderImage(fallbackImages[containerId] || 'https://placehold.co/800x600/e2e8f0/475569?text=Food+Image');
+                return;
+            }
+
+            const loader = document.createElement('div');
+            loader.className = 'loading-overlay';
+            loader.innerHTML = '<div class="spinner"></div><p class="text-[10px] mt-4 text-stone-500 font-bold tracking-widest">AI GENERATING...</p>';
+            container.appendChild(loader);
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        instances: [{ prompt: prompt + " --no text, professional high-end photography, cinematic lighting, sharp focus" }],
+                        parameters: { sampleCount: 1 }
+                    })
+                });
+
+                if (!response.ok) throw new Error('Generation failed');
+
+                const result = await response.json();
+                const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                renderImage(imageUrl);
+            } catch (error) {
+                console.warn(`[Image Fallback] Loading static image for ${containerId}:`, error.message);
+                renderImage(fallbackImages[containerId] || 'https://placehold.co/800x600/e2e8f0/475569?text=Food+Image');
+            }
+        }
+
+        window.onload = function() {
+            generateSafeImage("Extreme close up of a Japanese fluffy cloud-like souffle omelet with shiny brown demi-glace sauce poured over it, steam rising, high-end culinary photography", "fv-image-container");
+            generateSafeImage("Warm and cozy interior of a classic Japanese western-style restaurant with dark wood tables, ambient warm lighting, nostalgic retro atmosphere", "strength-image-container");
+            generateSafeImage("A spoon cutting into a thick fluffy golden yellow souffle omelet, very airy texture visible, professional food commercial style", "menu-main-image");
+            generateSafeImage("Crispy golden Japanese crab cream croquettes on a luxury plate with micro-greens garnish, studio lighting", "menu-side-1");
+            generateSafeImage("Gourmet Japanese hamburger steak with thick brown sauce and vegetables on a white plate, shallow depth of field", "menu-side-2");
+            generateSafeImage("Portrait of an elderly Japanese master chef with a kind smile, wearing a professional white chef jacket, holding a kitchen towel, soft bokeh background", "founder-image");
+        };
+    </script>
+</body>
+</html>
