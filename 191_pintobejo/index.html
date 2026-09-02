@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピントビージョ | 隠れ家の辛味と旨味。究極のアラビアータ。</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif JP', serif;
+            scroll-behavior: smooth;
+            background-color: #0c0c0c;
+        }
+        .font-accent {
+            font-family: 'Playfair Display', serif;
+        }
+        /* AI生成画像によるFV背景 */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(12,12,12,1) 100%),
+                        url('images/alabiata.png');
+            background-size: cover;
+            background-position: center;
+        }
+        /* テキストの泣き別れ防止 */
+        .text-keep {
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+        .glass-header {
+            background: rgba(12, 12, 12, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .gold-text {
+            background: linear-gradient(45deg, #b8860b, #e6b422, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+        }
+        .section-title {
+            letter-spacing: 0.2em;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(1) contrast(1.2) invert(0.9);
+        }
+        /* モバイルメニュー */
+        #mobile-menu {
+            transition: max-height 0.35s ease, opacity 0.25s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 480px;
+            opacity: 1;
+        }
+        #menu-toggle:focus-visible,
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #e6b422;
+            outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body class="text-stone-200">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-header border-b border-white/10 shadow-2xl">
+        <div class="container mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
+            <div class="text-xl sm:text-2xl font-black tracking-[0.15em] sm:tracking-[0.2em] text-white">
+                PINTO BEJO
+            </div>
+            <nav class="hidden lg:flex items-center space-x-8 text-[11px] tracking-widest uppercase">
+                <a href="#" class="text-white hover:text-yellow-500 transition">Top</a>
+                <a href="#strength-section" class="text-white hover:text-yellow-500 transition">strengths</a>
+                <a href="#profile-section" class="text-white hover:text-yellow-500 transition">history</a>
+                <a href="#coming-soon-section" class="text-white hover:text-yellow-500 transition">coming soon</a>
+                <a href="#problem-section" class="text-white hover:text-yellow-500 transition">Q&A</a>
+                <a href="#access-section" class="text-white hover:text-yellow-500 transition">access</a>
+                <a href="https://www.facebook.com/pintobejo/" target="_blank" rel="noopener" class="bg-red-700 text-white px-8 py-2.5 rounded-sm hover:bg-red-600 transition tracking-widest font-bold">
+                    CONTACT
+                </a>
+            </nav>
+            <!-- モバイルメニューボタン -->
+            <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden relative w-9 h-9 flex flex-col justify-center items-center gap-[5px]">
+                <span class="menu-bar block w-6 h-[2px] bg-white transition-transform duration-300"></span>
+                <span class="menu-bar block w-6 h-[2px] bg-white transition-opacity duration-300"></span>
+                <span class="menu-bar block w-6 h-[2px] bg-white transition-transform duration-300"></span>
+            </button>
+        </div>
+        <!-- モバイルメニュー本体 -->
+        <nav id="mobile-menu" class="lg:hidden border-t border-white/10">
+            <div class="flex flex-col px-5 py-4 space-y-1 text-sm tracking-widest uppercase">
+                <a href="#" class="py-3 border-b border-white/5 text-white">Top</a>
+                <a href="#strength-section" class="py-3 border-b border-white/5 text-white">strengths</a>
+                <a href="#profile-section" class="py-3 border-b border-white/5 text-white">history</a>
+                <a href="#coming-soon-section" class="py-3 border-b border-white/5 text-white">coming soon</a>
+                <a href="#problem-section" class="py-3 border-b border-white/5 text-white">Q&A</a>
+                <a href="#access-section" class="py-3 border-b border-white/5 text-white">access</a>
+                <a href="https://www.facebook.com/pintobejo/" target="_blank" rel="noopener" class="mt-3 bg-red-700 text-white text-center py-3 rounded-sm font-bold">CONTACT</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (FV) -->
+    <section class="relative min-h-[100svh] flex items-center justify-center hero-section overflow-hidden pt-24 pb-16">
+        <div class="container mx-auto px-5 sm:px-6 text-center z-10">
+            <div class="mb-4">
+                <span class="inline-block px-3 sm:px-4 py-1 border border-yellow-600 text-yellow-500 text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] mb-4 uppercase">Authentic Tendo Italian</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl md:text-[100px] font-black mb-8 tracking-tighter text-keep leading-[1.15] text-white">
+                <span class="text-xl sm:text-3xl md:text-5xl block mb-2 font-normal opacity-80">一瞬で、心を奪う。</span>
+                悶絶の<span class="text-red-600">アラビアーター</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-10 sm:mb-12 text-stone-300 leading-relaxed font-light text-keep">
+                山形の隠れ家「ピントビージョ」が贈る、衝撃のひと皿。<br class="hidden md:block">
+                濃厚なトマトのコクと、激烈な唐辛子の余韻が共鳴する。
+            </p>
+            <div class="flex flex-col md:flex-row gap-5 md:gap-6 justify-center items-center">
+                <a href="#access-section" class="group relative w-full sm:w-auto px-10 sm:px-12 py-4 sm:py-5 overflow-hidden font-bold text-white bg-red-700 rounded-sm">
+                    <span class="relative z-10 tracking-[0.2em]">席を予約する</span>
+                    <div class="absolute inset-0 bg-red-800 transition-transform duration-300 transform translate-x-full group-hover:translate-x-0"></div>
+                </a>
+                <span class="text-xs sm:text-sm tracking-widest text-stone-400">※ランチタイムはご予約をおすすめします</span>
+            </div>
+        </div>
+        <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden xl:block">
+            <span class="vertical-text text-white/10 text-9xl font-black select-none uppercase tracking-tighter">Arabbiata</span>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="py-20 sm:py-32 bg-[#0c0c0c] relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-6 -left-4 sm:-top-10 sm:-left-10 text-5xl sm:text-8xl font-accent italic text-red-900/30 select-none">Spicy</div>
+                    <!-- AI生成イメージ: 激烈な赤唐辛子とオリーブオイル -->
+                    <img src="images/alabiata.png" alt="唐辛子のシズル" class="rounded-sm shadow-2xl relative z-10 w-full grayscale-[0.2] hover:grayscale-0 transition duration-700">
+                </div>
+                <div class="w-full md:w-5/12">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 leading-tight">
+                        <span class="gold-text text-lg sm:text-xl block mb-3 sm:mb-4 font-accent">The Signature</span>
+                        ただの「辛い」で、<br>終わらせない。
+                    </h2>
+                    <p class="text-stone-400 leading-[1.9] sm:leading-[2] mb-8 sm:mb-10 text-sm sm:text-base">
+                        私たちの自慢は、唐辛子のキレだけではありません。ベースとなるトマトソースの徹底した煮込み、そして厳選されたオリーブオイルの香り。これらが偶然一体となったとき、ピントビージョにしかない「究極のアラビアータ」が完成します。
+                    </p>
+                    <div class="border-l-2 border-red-700 pl-5 sm:pl-6 italic text-stone-300 text-sm sm:text-base">
+                        「一度食べたら、他のアラビアータには戻れない。」<br>
+                        そう仰ってくださる常連様が、今日もこの扉を叩きます。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strength Section -->
+    <section id="strength-section" class="py-20 sm:py-32 bg-stone-50 text-stone-900">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-16 sm:mb-24">
+                <span class="font-accent text-red-800 tracking-[0.3em] font-bold block mb-4 uppercase">Why Us</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black section-title tracking-tighter">選ばれ続ける理由</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-0 border border-stone-200">
+                <div class="p-8 sm:p-12 border-b md:border-b-0 md:border-r border-stone-200 bg-white hover:bg-red-900 hover:text-white transition duration-500 group">
+                    <span class="text-4xl font-accent italic mb-6 block text-red-800 group-hover:text-white">01</span>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">パスタ大盛り無料の恩恵</h3>
+                    <p class="text-stone-500 group-hover:text-stone-200 leading-relaxed text-sm">
+                        美食を心ゆくまで堪能していただくのが当店の流儀。ランチタイム、パスタの大盛りはすべてのお客様に無料で提供しております。
+                    </p>
+                </div>
+                <div class="p-8 sm:p-12 border-b md:border-b-0 md:border-r border-stone-200 bg-white hover:bg-red-900 hover:text-white transition duration-500 group">
+                    <span class="text-4xl font-accent italic mb-6 block text-red-800 group-hover:text-white">02</span>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">ハズレのないフルコース</h3>
+                    <p class="text-stone-500 group-hover:text-stone-200 leading-relaxed text-sm">
+                        前菜のカルパッチョから、メインの肉料理、そしてドルチェまで。一皿たりとも妥協を許さないクオリティをお約束します。
+                    </p>
+                </div>
+                <div class="p-8 sm:p-12 bg-white hover:bg-red-900 hover:text-white transition duration-500 group">
+                    <span class="text-4xl font-accent italic mb-6 block text-red-800 group-hover:text-white">03</span>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">ワインが共鳴する、夜</h3>
+                    <p class="text-stone-500 group-hover:text-stone-200 leading-relaxed text-sm">
+                        ディナー（3,000円〜）では、ソムリエが厳選したワインとのマリアージュをご提案。隠れ家のような空間で贅沢なひとときを。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile-section" class="py-20 sm:py-32 bg-[#0c0c0c]">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse gap-12 md:gap-20 items-center">
+                <div class="w-full md:w-1/2">
+                    <!-- AI生成イメージ: 調理中の炎やプロの手元 -->
+                    <img src="images/chef.png" alt="店主のこだわり" class="rounded-sm w-full grayscale hover:grayscale-0 transition duration-1000 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 gold-text uppercase tracking-widest font-accent">Since Foundation</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 leading-tight">天童の地に根ざし、<br>本質を問い続ける。</h3>
+                    <p class="text-stone-400 leading-loose mb-8 text-sm sm:text-base">
+                        山形県天童市、東本町の細い路地裏。決して目立つ場所ではありません。しかし、その不便さこそが私たちの誇りです。わざわざ足を運んでくださるお客様へ、最高の一皿を提供するために。「ピントビージョ」という名は、情熱を絶やさない私たちの約束です。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-[1px] bg-yellow-600"></div>
+                        <span class="text-sm tracking-[0.4em] font-bold text-yellow-600 uppercase">Craftsmanship</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon-section" class="py-20 sm:py-32 bg-[#141414] border-t border-b border-white/10 relative overflow-hidden">
+        <div class="absolute -right-16 top-6 text-[90px] sm:text-[180px] font-accent italic text-white/[0.02] select-none pointer-events-none">Future</div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+                <span class="inline-block px-4 py-1 border border-yellow-600/60 text-yellow-500 text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] mb-4 uppercase">Next Project</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white font-accent mb-6">COMING SOON</h2>
+                <p class="text-stone-400 leading-relaxed text-sm md:text-base">
+                    ピントビージョでの体験を、より快適に、より特別に。<br class="hidden sm:block">
+                    お客様から寄せられた声をもとに、新たな取り組みを順次展開いたします。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- 01: Web予約 -->
+                <div class="bg-stone-900/80 border border-white/10 p-7 sm:p-10 rounded-sm hover:border-red-700/80 transition duration-500 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-accent gold-text tracking-widest uppercase">Phase 01</span>
+                            <span class="text-[10px] bg-red-950/80 text-red-400 border border-red-800/50 px-3 py-1 rounded-full uppercase tracking-wider font-bold">開発中</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 group-hover:text-yellow-500 transition">24時間 Web予約システム導入</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                            お電話に加え、スマホからいつでも簡単に席やコースを即時予約可能に。記念日プレートの指定や人数変更もスムーズに行っていただけます。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between text-xs text-stone-500">
+                        <span>提供開始予定</span>
+                        <span class="text-stone-300 font-semibold">順次リリース</span>
+                    </div>
+                </div>
+
+                <!-- 02: SNS発信強化 -->
+                <div class="bg-stone-900/80 border border-white/10 p-7 sm:p-10 rounded-sm hover:border-red-700/80 transition duration-500 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-accent gold-text tracking-widest uppercase">Phase 02</span>
+                            <span class="text-[10px] bg-yellow-950/80 text-yellow-400 border border-yellow-800/50 px-3 py-1 rounded-full uppercase tracking-wider font-bold">始動中</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 group-hover:text-yellow-500 transition">SNS限定情報・裏メニュー公開</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                            Instagram / Facebookにて「本日のシェフ気まぐれパスタ」や「本日入荷の限定ワイン」を毎日発信。フォロワー限定の特別アミューズ特典も企画中。
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between text-xs text-stone-500">
+                        <span>公式アカウント</span>
+                        <a href="https://www.facebook.com/pintobejo/" target="_blank" rel="noopener" class="text-yellow-600 hover:underline flex items-center gap-1 font-semibold">Facebookを見る →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section id="problem-section" class="py-20 sm:py-32 bg-white text-stone-900">
+        <div class="container mx-auto px-5 sm:px-6 max-w-4xl">
+            <div class="text-center mb-16 sm:mb-24">
+                <h2 class="text-4xl sm:text-5xl font-black section-title uppercase">Question</h2>
+                <p class="text-red-800 mt-4 tracking-widest font-bold">よくあるご質問</p>
+            </div>
+            <div class="space-y-10 sm:space-y-12">
+                <div class="group">
+                    <div class="flex items-start gap-4 sm:gap-6 border-b border-stone-200 pb-8">
+                        <span class="text-xl sm:text-2xl font-accent font-bold text-red-800">Q.</span>
+                        <div>
+                            <h4 class="text-lg sm:text-xl font-bold mb-4">場所がわかりづらいと聞きましたが？</h4>
+                            <p class="text-stone-500 leading-relaxed text-sm sm:text-base">
+                                はい。天童ホテルの裏手の細い道に位置しており、まさに「隠れ家」的な立地です。ナビゲーションアプリで「天童市東本町1丁目9−12」を検索し、慎重にお越しください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="flex items-start gap-4 sm:gap-6 border-b border-stone-200 pb-8">
+                        <span class="text-xl sm:text-2xl font-accent font-bold text-red-800">Q.</span>
+                        <div>
+                            <h4 class="text-lg sm:text-xl font-bold mb-4">子連れや一人での入店は可能ですか？</h4>
+                            <p class="text-stone-500 leading-relaxed text-sm sm:text-base">
+                                もちろん歓迎いたします。落ち着いた空間ですので、お一人でゆっくりとお食事を楽しむ方も多くいらっしゃいます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access-section" class="py-20 sm:py-32 bg-[#111]">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+                <div class="bg-stone-900 p-8 sm:p-12 md:p-16 border border-white/5 flex flex-col justify-center order-2 lg:order-1">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 flex items-center gap-4">
+                        <span class="w-2 h-10 bg-red-800"></span>
+                        INFORMATION
+                    </h2>
+                    <table class="w-full text-left text-stone-300">
+                        <tr class="border-b border-white/10">
+                            <th class="py-5 sm:py-6 font-bold w-1/3 text-stone-500 uppercase text-xs tracking-widest align-top">Shop Name</th>
+                            <td class="py-5 sm:py-6 text-lg sm:text-xl">ピントビージョ (Pinto Bejo)</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <th class="py-5 sm:py-6 font-bold text-stone-500 uppercase text-xs tracking-widest align-top">Address</th>
+                            <td class="py-5 sm:py-6 text-sm sm:text-base">〒994-0026 <br>山形県天童市東本町１丁目９−１２</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <th class="py-5 sm:py-6 font-bold text-stone-500 uppercase text-xs tracking-widest align-top">Phone</th>
+                            <td class="py-5 sm:py-6 text-xl sm:text-2xl font-black gold-text tracking-tighter">023-651-2678</td>
+                        </tr>
+                        <tr class="border-b border-white/10">
+                            <th class="py-5 sm:py-6 font-bold text-stone-500 uppercase text-xs tracking-widest align-top">Holiday</th>
+                            <td class="py-5 sm:py-6 text-sm sm:text-base">月曜日</td>
+                        </tr>
+                    </table>
+                    <div class="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4">
+                        <a href="https://www.facebook.com/pintobejo/" target="_blank" rel="noopener" class="flex-1 bg-white text-black text-center py-4 font-bold hover:bg-yellow-500 transition uppercase text-xs tracking-widest">Facebook</a>
+                        <a href="tel:023-651-2678" class="flex-1 bg-red-800 text-white text-center py-4 font-bold hover:bg-red-700 transition uppercase text-xs tracking-widest">Call Now</a>
+                    </div>
+                </div>
+
+                <div class="min-h-[320px] sm:min-h-[420px] lg:min-h-[500px] relative rounded-sm overflow-hidden border border-white/10 map-container order-1 lg:order-2">
+                    <!-- ご提示いただいたGoogle Map Embed -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3128.5123184897034!2d140.37328877478623!3d38.36026817822009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc5083473877f%3A0x6fd88ebde7d9d8b!2z44OU44Oz44OI44OT44O844K444On!5e0!3m2!1sja!2sjp!4v1771290227583!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ピントビージョ 地図"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-16 sm:py-20 border-t border-white/5">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-black tracking-[0.3em] sm:tracking-[0.5em] text-white mb-8">PINTO BEJO</h2>
+            <nav class="flex flex-wrap justify-center gap-x-6 gap-y-3 sm:space-x-8 text-[10px] tracking-widest uppercase mb-12 opacity-50">
+                <a href="#" class="hover:text-white transition">Top</a>
+                <a href="#strength-section" class="hover:text-white transition">Strengths</a>
+                <a href="#profile-section" class="hover:text-white transition">History</a>
+                <a href="#coming-soon-section" class="hover:text-white transition">Coming Soon</a>
+                <a href="#access-section" class="hover:text-white transition">Access</a>
+            </nav>
+            <p class="text-[10px] text-stone-600 tracking-widest uppercase">&copy; Pinto Bejo. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューの開閉とハンバーガー→×アニメーション
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const bars = menuToggle.querySelectorAll('.menu-bar');
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            bars[0].style.transform = '';
+            bars[1].style.opacity = '1';
+            bars[2].style.transform = '';
+        }
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            if (isOpen) {
+                bars[0].style.transform = 'translateY(7px) rotate(45deg)';
+                bars[1].style.opacity = '0';
+                bars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                closeMenu();
+            }
+        });
+
+        // メニュー内リンクをタップしたら自動で閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+</body>
+</html>
