@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>HAVE A GOOD SLICE 山形本店 | ニューヨークスタイルピザ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #d62828;
+            --deep-blue: #003049;
+            --warm-cream: #fdf0d5;
+        }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        .font-anton { font-family: 'Anton', sans-serif; }
+        .font-mincho { font-family: 'Shippori Mincho', serif; }
+
+        /* シズル演出用背景。スマホでは fixed だとカクつくため通常スクロールに切替 */
+        .parallax-bg {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        @media (min-width: 1024px) {
+            .parallax-bg {
+                background-attachment: fixed;
+            }
+        }
+
+        /* 浮遊する装飾要素。狭い画面では動きを抑える */
+        .float-item {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-14px) rotate(5deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .float-item { animation: none; }
+            .scroll-reveal { transition: none; opacity: 1 !important; transform: none !important; }
+        }
+
+        /* カスタムボタンアニメーション */
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%) rotate(45deg) scale(0);
+            transition: transform 0.6s;
+        }
+        .btn-hover-effect:hover::after {
+            transform: translate(-50%, -50%) rotate(45deg) scale(1);
+        }
+        .btn-hover-effect:active {
+            transform: scale(0.97);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        /* キーボードフォーカスを明示 */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 3px solid var(--deep-blue);
+            outline-offset: 2px;
+        }
+
+        /* iOSでの入力欄拡大ズーム防止 */
+        input, select { font-size: 16px; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <div class="flex flex-col min-w-0">
+                <span class="font-anton text-xl sm:text-2xl lg:text-3xl tracking-tighter text-red-600 leading-none truncate">HAVE A GOOD SLICE</span>
+                <span class="text-[8px] sm:text-[10px] tracking-widest font-bold text-gray-400 mt-1 uppercase truncate">Yamagata NY Style Pizza Shop</span>
+            </div>
+            <nav class="hidden lg:flex items-center gap-6 font-bold text-sm tracking-tight shrink-0">
+                <a href="#" class="hover:text-red-600 transition uppercase">Top</a>
+                <a href="#strength-section" class="hover:text-red-600 transition uppercase">Strengths</a>
+                <a href="#profile-section" class="hover:text-red-600 transition uppercase">History</a>
+                <a href="#coming-soon-section" class="hover:text-red-600 transition uppercase text-red-600">Coming Soon</a>
+                <a href="#problem-section" class="hover:text-red-600 transition uppercase">Q&amp;A</a>
+                <a href="#access-section" class="hover:text-red-600 transition uppercase">Access</a>
+                <a href="https://haveagoodslice.com/" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-6 py-2.5 rounded-full btn-hover-effect shadow-lg shadow-red-200">問い合わせ</a>
+            </nav>
+            <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden shrink-0 w-10 h-10 flex items-center justify-center text-2xl">
+                <svg id="icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="lg:hidden bg-white border-t border-stone-100 px-6">
+            <div class="flex flex-col py-4 gap-1 font-bold text-sm tracking-tight">
+                <a href="#" class="py-3 border-b border-stone-100 uppercase">Top</a>
+                <a href="#strength-section" class="py-3 border-b border-stone-100 uppercase">Strengths</a>
+                <a href="#profile-section" class="py-3 border-b border-stone-100 uppercase">History</a>
+                <a href="#coming-soon-section" class="py-3 border-b border-stone-100 uppercase text-red-600">Coming Soon</a>
+                <a href="#problem-section" class="py-3 border-b border-stone-100 uppercase">Q&amp;A</a>
+                <a href="#access-section" class="py-3 border-b border-stone-100 uppercase">Access</a>
+                <a href="https://haveagoodslice.com/" target="_blank" rel="noopener noreferrer" class="mt-3 mb-2 bg-red-600 text-white text-center px-6 py-3 rounded-full btn-hover-effect shadow-lg shadow-red-200">問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- First View (FV) -->
+    <section class="relative min-h-screen flex items-center pt-24 lg:pt-20 pb-16 lg:pb-0 overflow-hidden">
+        <div class="absolute inset-0 bg-stone-50 pointer-events-none">
+            <div class="absolute top-16 right-4 sm:right-10 w-40 h-40 sm:w-64 sm:h-64 bg-red-100 rounded-full blur-3xl opacity-50"></div>
+            <div class="absolute bottom-16 left-4 sm:left-10 w-56 h-56 sm:w-96 sm:h-96 bg-yellow-50 rounded-full blur-3xl opacity-50"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative">
+            <!-- Left: Text -->
+            <div class="lg:col-span-6 z-10 order-2 lg:order-1">
+                <div class="flex items-center gap-3 mb-5 sm:mb-6">
+                    <div class="h-[2px] w-10 sm:w-12 bg-red-600"></div>
+                    <span class="text-red-600 font-bold tracking-[0.2em] text-xs sm:text-sm uppercase">Original NY Recipe</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-[4rem] font-black leading-[1.25] lg:leading-[1.2] mb-6 sm:mb-8 font-mincho">
+                    山形で出会う、<br>
+                    <span class="text-red-600">自由な1枚。</span>
+                </h1>
+                <p class="text-base sm:text-xl lg:text-2xl mb-8 sm:mb-10 leading-relaxed text-gray-600 font-medium">
+                    直径50cmの円倒的スケール。<br>
+                    なのに「おやつ」のように軽く、<br>
+                    耳まで夢中になる究極のクリスピー生地。
+                </p>
+                <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+                    <a href="#coming-soon-section" class="bg-red-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold btn-hover-effect shadow-xl inline-flex items-center justify-center gap-3">
+                        WEB予約(Coming Soon)
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                    </a>
+                    <a href="#access-section" class="bg-black text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold btn-hover-effect shadow-xl inline-flex items-center justify-center gap-3">
+                        SHOP INFO
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Visual -->
+            <div class="lg:col-span-6 relative order-1 lg:order-2">
+                <div class="relative z-10 group max-w-sm mx-auto lg:max-w-none">
+                    <img src="images/pizza.jpg" alt="NYスタイルピザのメイン画像" class="rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl w-full transform transition duration-700 group-hover:scale-[1.02]">
+                    <div class="absolute -bottom-6 -right-3 sm:-bottom-10 sm:-right-6 bg-white p-4 sm:p-6 rounded-2xl shadow-xl flex items-center gap-3 sm:gap-4 border border-stone-100">
+                        <div class="bg-red-600 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white shrink-0">
+                            <span class="font-anton text-sm sm:text-base">50</span>
+                        </div>
+                        <p class="font-bold leading-tight text-sm sm:text-base">1 SLICE<br><span class="text-[10px] sm:text-xs text-gray-400 font-normal tracking-wider">BIG SIZE &amp; LIGHT</span></p>
+                    </div>
+                </div>
+                <div class="absolute -top-6 -left-4 sm:-top-10 sm:-left-10 w-20 h-20 sm:w-32 sm:h-32 opacity-20 float-item hidden sm:block">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3558/3558231.png" alt="トマトのデコレーション">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Point Section (Reason Why) -->
+    <section id="strength-section" class="py-20 sm:py-32 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 sm:mb-20 gap-6 sm:gap-8">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 leading-tight">
+                        本場ニューヨークの名店<br>
+                        <span class="text-red-600">"Best Pizza"</span>から学んだ魂。
+                    </h2>
+                    <p class="text-gray-500 text-base sm:text-lg leading-relaxed">
+                        ただ大きいだけではありません。私たちが追求したのは「山形の日常に溶け込むNYピザ」。ジャンクな見た目に隠された、職人の繊細な技術が凝縮されています。
+                    </p>
+                </div>
+                <div class="font-anton text-[5rem] sm:text-[8rem] leading-none text-stone-100 hidden lg:block shrink-0">FEATURE</div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12">
+                <!-- Strength 1 -->
+                <div class="scroll-reveal">
+                    <div class="mb-6 sm:mb-8">
+                        <span class="text-red-500 font-anton text-xl sm:text-2xl">01</span>
+                        <h3 class="text-stone-900 text-xl sm:text-2xl font-bold mt-2">究極のサクモチ生地</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed font-medium text-sm sm:text-base">
+                        粉の配合から発酵時間まで、何十回も試行錯誤しました。サクッとした縁と、掴むほどに広がる小麦の甘み。耳まで残さず食べられるのが「GOOD SLICE」の証です。
+                    </p>
+                </div>
+
+                <!-- Strength 2 -->
+                <div class="scroll-reveal" style="transition-delay: 0.15s;">
+                    <div class="mb-6 sm:mb-8">
+                        <span class="text-red-500 font-anton text-xl sm:text-2xl">02</span>
+                        <h3 class="text-stone-900 text-xl sm:text-2xl font-bold mt-2">黄金比のブレンドチーズ</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed font-medium text-sm sm:text-base">
+                        モッツァレラでミルキーなコクを、ゴーダで芳醇な香りを。トマトソースの甘みを最大限に引き立てる、計算し尽くされた2種のブレンドチーズを採用しています。
+                    </p>
+                </div>
+
+                <!-- Strength 3 -->
+                <div class="scroll-reveal" style="transition-delay: 0.3s;">
+                    <div class="mb-6 sm:mb-8">
+                        <span class="text-red-500 font-anton text-xl sm:text-2xl">03</span>
+                        <h3 class="text-stone-900 text-xl sm:text-2xl font-bold mt-2">山形ならではの旬</h3>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed font-medium text-sm sm:text-base">
+                        原木舞茸やかぼちゃなど、地元の農家さんから届く新鮮な食材を使用した「ウィークリースペシャル」を展開。山形とNYの美味しい出会いを楽しめます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid Banner / Parallax -->
+    <section class="h-[45vh] sm:h-[55vh] lg:h-[60vh] parallax-bg relative flex items-center justify-center" style="background-image: url('images/pizza.png');">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative text-center text-white px-6">
+            <h2 class="text-2xl sm:text-4xl lg:text-6xl font-black mb-4 sm:mb-6 italic tracking-tight leading-snug">"Have a Good Time with a Good Slice."</h2>
+            <p class="text-base sm:text-xl lg:text-2xl font-bold">笑顔のそばには、いつだってピザがある。</p>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="profile-section" class="py-20 sm:py-32 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-20 items-center">
+                <div class="order-2 lg:order-1 relative max-w-sm mx-auto lg:max-w-none">
+                    <div class="relative z-10 p-3 sm:p-4 bg-white shadow-2xl rounded-sm">
+                        <img src="images/pizza.jpg" alt="ピザショップの店内" class="rounded-sm w-full" loading="lazy">
+                    </div>
+                    <div class="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-28 h-28 sm:w-48 sm:h-48 bg-red-600 -z-10 rounded-full"></div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <span class="font-anton text-red-600 tracking-widest text-lg sm:text-xl mb-4 block underline decoration-yellow-400 decoration-4">STORY</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-8 sm:mb-10 leading-tight font-mincho">
+                        18歳の時の約束。<br>
+                        プレハブ小屋からの挑戦。
+                    </h2>
+                    <div class="space-y-6 sm:space-y-8 text-gray-600 leading-[1.9] sm:leading-[2] text-base sm:text-lg">
+                        <p class="font-bold text-gray-900 border-l-4 border-red-600 pl-4">
+                            「地元・山形を、もっと面白くしたい。」
+                        </p>
+                        <p>
+                            オーナー・小林とシェフ・金沢は、徒歩2分の距離に住んでいた幼馴染。東京でNYスタイルのピザに出会い、その衝撃をそのまま山形へ持ち帰ることを決意しました。
+                        </p>
+                        <p>
+                            実家のプレハブ小屋にピザ窯を入れ、生地と向き合うこと3年。NYの名店に直談判し、現地の空気を肌で感じ、ようやく辿り着いたのがこの味です。
+                        </p>
+                        <p>
+                            目指しているのは、おじいちゃんが孫の手を引いて歩いてピザを買いに来る、そんな「街の風景」になることです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON Section -->
+    <section id="coming-soon-section" class="py-20 sm:py-32 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-72 h-72 sm:w-96 sm:h-96 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-72 h-72 sm:w-96 sm:h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-red-600 text-white font-anton tracking-widest text-xs sm:text-sm rounded-full mb-6">
+                    <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                    COMING SOON
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight mb-5 sm:mb-6 font-mincho leading-snug">
+                    事前予約テイクアウト<br class="hidden sm:block">Webオーダーを開始予定！
+                </h2>
+                <p class="text-stone-300 text-sm sm:text-lg leading-relaxed font-medium">
+                    「焼きたてを待ち時間なしで持ち帰りたい」「パーティー用にホールで頼み、カット数も指定したい」<br class="hidden md:block">
+                    そんな声にお応えして、スマホから簡単に事前注文・決済ができる機能を準備中です。
+                </p>
+            </div>
+
+            <!-- Preview Interactive Form Card -->
+            <div class="max-w-4xl mx-auto bg-stone-800/90 border border-stone-700/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 shadow-2xl backdrop-blur-md">
+                <div class="flex flex-wrap items-center justify-between gap-3 pb-6 sm:pb-8 mb-6 sm:mb-8 border-b border-stone-700">
+                    <div>
+                        <span class="text-red-500 text-xs font-bold tracking-widest uppercase block mb-1">Pre-order Simulator</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white">テイクアウトWeb予約（体験版）</h3>
+                    </div>
+                    <span class="px-3 py-1 bg-stone-700 text-stone-300 text-xs font-bold rounded-lg uppercase tracking-wider">予約デモ</span>
+                </div>
+
+                <form id="takeout-demo-form" onsubmit="handleReserve(event)" class="space-y-6 sm:space-y-8">
+                    <!-- 1. Order Type Selection -->
+                    <div>
+                        <label class="block text-sm font-bold text-stone-300 mb-3">1. 注文タイプを選択</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="relative flex items-center justify-between p-4 bg-stone-900/80 border border-stone-700 rounded-2xl cursor-pointer hover:border-red-500 transition">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="orderType" value="hole" checked onchange="toggleOrderType()" class="accent-red-600 w-5 h-5 shrink-0">
+                                    <div>
+                                        <p class="font-bold text-white">ホールピザ (50cm)</p>
+                                        <p class="text-xs text-stone-400">カット数の指定が可能です</p>
+                                    </div>
+                                </div>
+                                <span class="font-anton text-red-500 text-base sm:text-lg shrink-0">WHOLE</span>
+                            </label>
+                            <label class="relative flex items-center justify-between p-4 bg-stone-900/80 border border-stone-700 rounded-2xl cursor-pointer hover:border-red-500 transition">
+                                <div class="flex items-center gap-3">
+                                    <input type="radio" name="orderType" value="slice" onchange="toggleOrderType()" class="accent-red-600 w-5 h-5 shrink-0">
+                                    <div>
+                                        <p class="font-bold text-white">スライスピザ</p>
+                                        <p class="text-xs text-stone-400">1ピースからお気軽に</p>
+                                    </div>
+                                </div>
+                                <span class="font-anton text-red-500 text-base sm:text-lg shrink-0">SLICE</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Pizza Menu & Quantity Selection -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="pizzaMenu" class="block text-sm font-bold text-stone-300 mb-2">2. ピザの種類を選択</label>
+                            <select id="pizzaMenu" class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 font-medium">
+                                <option value="cheese">Cheese Slice / Whole (定番チーズ)</option>
+                                <option value="pepperoni">Pepperoni Slice / Whole (ペパロニ)</option>
+                                <option value="hawaiian">Hawaiian Slice / Whole (ハワイアン)</option>
+                                <option value="weekly">Weekly Special (季節の限定ピザ)</option>
+                            </select>
+                        </div>
+
+                        <!-- Cut Option for Whole Pizza -->
+                        <div id="cut-option-container">
+                            <label for="cutNumber" class="block text-sm font-bold text-stone-300 mb-2">3. カット数の指定 (ホールのみ)</label>
+                            <select id="cutNumber" class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 font-medium">
+                                <option value="8">8カット（おすすめ・定番NYサイズ）</option>
+                                <option value="6">6カット（大きめ）</option>
+                                <option value="4">4カット（超ビッグ）</option>
+                                <option value="none">カットなし（ご自身でカット）</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 3. Pickup Date & Time -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="pickupDate" class="block text-sm font-bold text-stone-300 mb-2">4. 受取日</label>
+                            <input type="date" id="pickupDate" required class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 font-medium">
+                        </div>
+                        <div>
+                            <label for="pickupTime" class="block text-sm font-bold text-stone-300 mb-2">5. 受取希望時間</label>
+                            <select id="pickupTime" required class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 font-medium">
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 4. Remarks / Special Requests -->
+                    <div>
+                        <label for="remarks" class="block text-sm font-bold text-stone-300 mb-2">6. ご要望・アレルギー等（任意）</label>
+                        <input type="text" id="remarks" placeholder="例: トッピング追加希望、焼き加減強めなど" class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 font-medium placeholder-stone-500">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-2 sm:pt-4">
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-base sm:text-lg py-4 sm:py-5 rounded-full btn-hover-effect shadow-xl transition flex items-center justify-center gap-3">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                            予約内容を確認する（シミュレーション）
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem / Q&A -->
+    <section id="problem-section" class="py-20 sm:py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-14 sm:mb-20">
+                <span class="inline-block px-4 py-1 bg-black text-white text-xs font-bold tracking-[0.3em] uppercase mb-4">FAQ &amp; Voice</span>
+                <h2 class="text-3xl sm:text-4xl font-black italic">EAT BETTER, FEEL BETTER.</h2>
+            </div>
+
+            <div class="space-y-4 sm:space-y-6">
+                <details class="group bg-stone-50 rounded-2xl p-5 sm:p-8 transition duration-300" open>
+                    <summary class="flex justify-between items-center gap-4 cursor-pointer list-none">
+                        <span class="text-base sm:text-xl font-bold flex items-center gap-3 sm:gap-4">
+                            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-anton text-xs sm:text-sm shrink-0">Q</span>
+                            初めてなのですが、おすすめの買い方は？
+                        </span>
+                        <span class="transition group-open:rotate-180 shrink-0">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-5 sm:mt-6 text-gray-600 leading-relaxed pl-10 sm:pl-12 border-l-2 border-stone-200 text-sm sm:text-base">
+                        ショーケースを見て好きなスライスを注文してください。ランチなら ピザ2枚(2p) セットがボリューム満点でおすすめです！もちろん1ピースだけでもお腹いっぱいになりますよ。
+                    </div>
+                </details>
+
+                <details class="group bg-stone-50 rounded-2xl p-5 sm:p-8 transition duration-300">
+                    <summary class="flex justify-between items-center gap-4 cursor-pointer list-none">
+                        <span class="text-base sm:text-xl font-bold flex items-center gap-3 sm:gap-4">
+                            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-anton text-xs sm:text-sm shrink-0">Q</span>
+                            お店の場所が分かりにくいと聞きましたが…
+                        </span>
+                        <span class="transition group-open:rotate-180 shrink-0">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-5 sm:mt-6 text-gray-600 leading-relaxed pl-10 sm:pl-12 border-l-2 border-stone-200 text-sm sm:text-base">
+                        西バイパスの「ステーキ宮」さんの向かい側、茶色い建物の「裏側」に店舗がございます。秘密基地のような外観ですが、一歩入ればそこはニューヨークです。
+                    </div>
+                </details>
+
+                <details class="group bg-stone-50 rounded-2xl p-5 sm:p-8 transition duration-300">
+                    <summary class="flex justify-between items-center gap-4 cursor-pointer list-none">
+                        <span class="text-base sm:text-xl font-bold flex items-center gap-3 sm:gap-4">
+                            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-anton text-xs sm:text-sm shrink-0">Q</span>
+                            Web予約テイクアウト機能はいつから始まりますか？
+                        </span>
+                        <span class="transition group-open:rotate-180 shrink-0">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-5 sm:mt-6 text-gray-600 leading-relaxed pl-10 sm:pl-12 border-l-2 border-stone-200 text-sm sm:text-base">
+                        現在サービスイン向けて最終調整中です！リリース日は公式Instagramにて最初にご案内いたしますので、ぜひフォローしてお待ちください。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Info -->
+    <section id="access-section" class="py-20 sm:py-32 bg-stone-50 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="bg-white rounded-[1.5rem] sm:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-6 sm:p-12 lg:p-20">
+                    <h2 class="text-4xl sm:text-5xl font-black mb-8 sm:mb-12 font-anton tracking-tight">VISIT US</h2>
+                    <div class="space-y-6 sm:space-y-8">
+                        <div>
+                            <p class="text-xs font-bold text-red-600 tracking-widest uppercase mb-2">Location</p>
+                            <p class="text-lg sm:text-xl font-medium leading-relaxed">〒990-2476 山形市飯沢506-5</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6 sm:gap-8">
+                            <div>
+                                <p class="text-xs font-bold text-red-600 tracking-widest uppercase mb-2">Phone</p>
+                                <p class="text-base sm:text-xl font-bold">023-673-0371</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-red-600 tracking-widest uppercase mb-2">Holiday</p>
+                                <p class="text-base sm:text-xl font-bold">水曜日 / 第1・3木曜日</p>
+                            </div>
+                        </div>
+                        <div class="pt-6 sm:pt-8 border-t border-gray-100 flex flex-wrap gap-3 sm:gap-4">
+                            <a href="https://www.instagram.com/haveagoodslice/" target="_blank" rel="noopener noreferrer" class="bg-stone-900 text-white px-6 sm:px-8 py-3 rounded-full font-bold btn-hover-effect text-sm sm:text-base">Instagram</a>
+                            <a href="https://haveagoodslice.com/" target="_blank" rel="noopener noreferrer" class="bg-stone-100 text-black px-6 sm:px-8 py-3 rounded-full font-bold hover:bg-stone-200 transition text-sm sm:text-base">Official HP</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 min-h-[300px] sm:min-h-[400px] lg:min-h-[450px] bg-stone-200 relative">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1317.5579727274865!2d140.30478381993333!3d38.24009995371598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb67b751bb115%3A0x9cb69a364059ef97!2sHAVE%20A%20GOOD%20SLICE!5e0!3m2!1sja!2sjp!4v1771290875232!5m2!1sja!2sjp" width="100%" height="100%" style="border:0; min-height:300px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-white py-14 sm:py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="flex flex-col items-center text-center">
+                <div class="font-anton text-[11vw] sm:text-[10vw] leading-none opacity-5 mb-8 sm:mb-10 tracking-tighter whitespace-nowrap">HAVE A GOOD SLICE</div>
+                <p class="text-stone-500 font-bold tracking-[0.3em] sm:tracking-[0.4em] uppercase text-xs sm:text-sm mb-5 sm:mb-6 px-4">Enjoy Your Slice, Enjoy Your Life</p>
+                <p class="text-stone-600 text-xs px-4">© HAVE A GOOD SLICE YAMAGATA. Established with Love &amp; Pizza.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Dialog for Coming Soon Demo -->
+    <div id="demo-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4 sm:p-6">
+        <div class="bg-stone-900 border border-stone-700 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-red-600/20 text-red-500 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-6 text-xl sm:text-2xl">
+                🍕
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">ご予約入力ありがとうございます！</h3>
+            <div class="bg-stone-800 p-4 rounded-xl my-4 text-left text-sm text-stone-300 space-y-2 border border-stone-700">
+                <p id="modal-summary-type" class="font-bold text-white"></p>
+                <p id="modal-summary-item"></p>
+                <p id="modal-summary-time"></p>
+            </div>
+            <p class="text-stone-400 text-sm mb-6 sm:mb-8">
+                ※こちらは【Coming Soon】サービス体験シミュレーションです。正式リリースまで今しばらくお待ちください！
+            </p>
+            <button onclick="closeModal()" class="w-full bg-red-600 text-white font-bold py-3 rounded-full hover:bg-red-700 transition">
+                閉じる
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 今日の日付を初期表示に設定
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('pickupDate');
+            if (dateInput) {
+                dateInput.value = today;
+                dateInput.min = today;
+            }
+        });
+
+        // モバイルメニューの開閉
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            iconOpen.classList.toggle('hidden', isOpen);
+            iconClose.classList.toggle('hidden', !isOpen);
+        });
+
+        // メニュー内のリンクをタップしたら自動で閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+            });
+        });
+
+        // 注文タイプ切り替えの制御
+        function toggleOrderType() {
+            const orderTypes = document.getElementsByName('orderType');
+            let selectedType = 'hole';
+            for (const radio of orderTypes) {
+                if (radio.checked) {
+                    selectedType = radio.value;
+                    break;
+                }
+            }
+            const cutOptionContainer = document.getElementById('cut-option-container');
+            if (selectedType === 'slice') {
+                cutOptionContainer.style.opacity = '0.4';
+                cutOptionContainer.style.pointerEvents = 'none';
+            } else {
+                cutOptionContainer.style.opacity = '1';
+                cutOptionContainer.style.pointerEvents = 'auto';
+            }
+        }
+
+        // 予約ボタンクリックハンドラー
+        function handleReserve(e) {
+            e.preventDefault();
+            const orderType = document.querySelector('input[name="orderType"]:checked').value === 'hole' ? 'ホールピザ (50cm)' : 'スライスピザ';
+            const pizzaSelect = document.getElementById('pizzaMenu');
+            const pizzaText = pizzaSelect.options[pizzaSelect.selectedIndex].text;
+            const cutSelect = document.getElementById('cutNumber');
+            const cutText = cutSelect.options[cutSelect.selectedIndex].text;
+            const pickupDate = document.getElementById('pickupDate').value;
+            const pickupTime = document.getElementById('pickupTime').value;
+
+            document.getElementById('modal-summary-type').textContent = `種類: ${orderType}`;
+            document.getElementById('modal-summary-item').textContent = `メニュー: ${pizzaText}` + (orderType.includes('ホール') ? ` (${cutText})` : '');
+            document.getElementById('modal-summary-time').textContent = `受取希望: ${pickupDate} ${pickupTime}`;
+
+            const modal = document.getElementById('demo-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('demo-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // スクロールアニメーション
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 60) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
