@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>マグダレンカ | 山形市の隠れ家個室ダイニング</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+  :root{
+    --ink:#1c1712;      /* 炭のような焦げ茶黒 */
+    --paper:#f6efe2;    /* 障子紙のようなクリーム */
+    --ember:#e2891a;    /* 揚げたてのから揚げ色 */
+    --lantern:#c1432b;  /* 提灯の朱色 */
+    --moss:#3d4a35;     /* 器の焼締め緑 */
+    --gold:#c9a227;
+  }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  .font-display{ font-family:'Shippori Antique B1', 'Noto Sans JP', sans-serif; }
+
+  .hero-bg{
+    background:
+      linear-gradient(180deg, rgba(20,15,10,.55) 0%, rgba(20,15,10,.30) 40%, rgba(20,15,10,.9) 100%),
+      url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1800');
+    background-size:cover;
+    background-position:center;
+  }
+  @media (min-width:1024px){
+    .hero-bg{
+      background:
+        linear-gradient(90deg, rgba(20,15,10,.92) 0%, rgba(20,15,10,.55) 45%, rgba(20,15,10,.25) 100%),
+        url('images/kakuteru.png');
+      background-position:center;
+    }
+  }
+
+  .underline-brush{
+    background-image:linear-gradient(120deg, rgba(226,137,26,.35) 0%, rgba(226,137,26,.35) 100%);
+    background-repeat:no-repeat;
+    background-size:100% 0.5em;
+    background-position:0 88%;
+  }
+
+  .lantern-btn{
+    background:var(--lantern);
+    box-shadow:0 4px 0 #8f2e1c, 0 4px 18px rgba(193,67,43,.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .lantern-btn:active{
+    box-shadow:0 1px 0 #8f2e1c;
+    transform:translateY(3px);
+  }
+
+  .line-btn{
+    background:#06C755;
+    box-shadow:0 4px 0 #05a346;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .line-btn:active{
+    box-shadow:0 1px 0 #05a346;
+    transform:translateY(3px);
+  }
+  .line-btn:hover{ filter:brightness(1.05); }
+
+  .ticket-edge{ position:relative; }
+  .ticket-edge::before, .ticket-edge::after{
+    content:"";
+    position:absolute;
+    width:22px; height:22px;
+    background:var(--paper);
+    border-radius:50%;
+    top:50%; transform:translateY(-50%);
+  }
+  .ticket-edge::before{ left:-11px; }
+  .ticket-edge::after{ right:-11px; }
+
+  .menu-divider{ border-top:1px dashed rgba(28,23,18,.25); }
+
+  .map-container iframe{ width:100%; height:100%; filter:grayscale(35%) contrast(1.05); }
+
+  @media (prefers-reduced-motion: reduce){ .floating{ animation:none !important; } }
+  .floating{ animation:floating 3.4s ease-in-out infinite; }
+  @keyframes floating{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
+  }
+
+  /* タップ領域を44px以上確保 */
+  a, button{ min-height:44px; }
+</style>
+</head>
+<body class="antialiased">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero-bg min-h-[100svh] flex flex-col lg:flex-row items-center justify-center lg:justify-start text-center lg:text-left text-white px-5 lg:px-20 relative">
+    <div class="absolute top-5 left-4 right-4 lg:left-20 lg:right-auto flex items-center gap-2 flex-wrap justify-center lg:justify-start">
+      <span class="bg-white/95 text-[var(--ink)] font-bold px-3 py-1 rounded-full text-xs tracking-wide">山形市 下条町</span>
+      <span class="bg-[var(--ember)] text-white font-bold px-3 py-1 rounded-full text-xs tracking-wide">駐車場完備</span>
+    </div>
+
+    <div class="max-w-md lg:max-w-xl mx-auto lg:mx-0 z-10 pt-16 lg:pt-0">
+      <p class="text-[var(--gold)] text-sm lg:text-base font-bold mb-3 tracking-wide floating">まるで水族館?! 泡盛揚げが泳ぐ夜の空間</p>
+      <h1 class="font-display text-[2.6rem] lg:text-7xl leading-[1.25] lg:leading-[1.15] font-black mb-5 lg:mb-7 drop-shadow-lg">
+        白鷹産の<br>鮮烈な味。<br>
+        <span class="text-[var(--ember)]">馬刺しのカルパッチョ</span>
+      </h1>
+      <p class="text-lg lg:text-2xl font-bold underline-brush inline-block mb-8 lg:mb-10">今だけ1皿無料クーポン進呈中</p>
+
+      <div class="rounded-2xl border border-white/25 bg-black/35 backdrop-blur-sm px-5 py-4 lg:px-7 lg:py-5 text-sm lg:text-base leading-relaxed inline-block">
+        80種の飲み放題 &amp; 隠れ家個室アクアリウム
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 text-white/60 text-center lg:right-20 lg:left-auto">
+      <p class="text-[10px] tracking-[0.3em] mb-1">SCROLL</p>
+      <i class="fas fa-chevron-down animate-bounce"></i>
+    </div>
+  </header>
+
+ <section class="py-14 lg:py-24 px-4 lg:px-8 bg-[var(--paper)]">
+    <div class="max-w-md lg:max-w-5xl mx-auto">
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-[var(--ember)]/30 lg:grid lg:grid-cols-2 lg:items-stretch">
+        <div class="lg:order-2 relative">
+          <img src="images/basashi.jpg" alt="骨抜きから揚げ" class="w-full aspect-video lg:aspect-auto lg:h-full object-cover">
+        </div>
+        <div class="p-6 lg:p-12 text-center lg:text-left lg:order-1 flex flex-col justify-center">
+          <span class="inline-block bg-[var(--ink)] text-[var(--gold)] px-4 py-1.5 rounded-full text-xs font-bold mb-4 tracking-wide">公式LINE 友だち登録特典</span>
+          <h2 class="font-display text-2xl lg:text-3xl font-black mb-5 leading-snug">
+            【1,200円相当】<br>
+            絶品馬刺しカルパッチョ<br>
+            <span class="text-[var(--lantern)]">無料クーポン</span>をプレゼント
+          </h2>
+
+          <ul class="text-left text-sm font-bold space-y-2.5 mb-7 px-2 lg:px-0 inline-block lg:block">
+            <li class="flex items-start gap-2"><i class="fas fa-check text-[var(--ember)] mt-1"></i><span>登録後すぐにお店で使えます</span></li>
+            <li class="flex items-start gap-2"><i class="fas fa-check text-[var(--ember)] mt-1"></i><span>他のクーポンとの併用不可</span></li>
+            <li class="flex items-start gap-2"><i class="fas fa-check text-[var(--ember)] mt-1"></i><span>本日より配布終了まで有効</span></li>
+          </ul>
+
+          <a href="#" class="line-btn w-full lg:w-auto lg:px-10 text-white font-extrabold py-4 rounded-full text-lg flex items-center justify-center gap-3">
+            <i class="fab fa-line text-2xl"></i>LINEでクーポンを受け取る
+          </a>
+          <p class="mt-3 text-[var(--ink)]/50 text-xs">※クリック後、LINEアプリが開きます</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="py-16 lg:py-28 px-4 lg:px-8 bg-[var(--ink)] text-[var(--paper)]">
+    <div class="max-w-md lg:max-w-6xl mx-auto lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+      <div class="lg:order-1">
+        <span class="text-[var(--ember)] font-bold text-xs lg:text-sm tracking-[0.2em] block mb-3">ABOUT US</span>
+        <h3 class="font-display text-2xl lg:text-4xl font-black mb-6 leading-snug">
+          手作り料理とアクアリウムの<br>隠れ家ダイニング「マグダレンカ」
+        </h3>
+
+        <p class="text-[var(--paper)]/80 text-sm lg:text-base leading-loose mb-6 lg:mb-8">
+          山形駅から車で10分。扉を開ければ、色鮮やかな熱帯魚たちが泳ぐ幻想的な空間が広がります。<br><br>
+          私たちは、地元・白鷹産の馬刺しをはじめとした「素材の味」と、80種類以上のカクテル・クラフトビールといった「選ぶ楽しさ」を大切にしています。
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 lg:gap-5">
+          <div class="bg-white/5 p-4 lg:p-6 rounded-2xl border border-white/10">
+            <i class="fas fa-fish text-[var(--gold)] text-xl lg:text-2xl mb-2"></i>
+            <h4 class="font-bold mb-1 text-sm lg:text-base">癒やしの空間</h4>
+            <p class="text-xs lg:text-sm text-[var(--paper)]/60 leading-relaxed">熱帯魚を眺めながらゆったり過ごせる5つの個室。</p>
+          </div>
+          <div class="bg-white/5 p-4 lg:p-6 rounded-2xl border border-white/10">
+            <i class="fas fa-beer text-[var(--gold)] text-xl lg:text-2xl mb-2"></i>
+            <h4 class="font-bold mb-1 text-sm lg:text-base">80種飲み放題</h4>
+            <p class="text-xs lg:text-sm text-[var(--paper)]/60 leading-relaxed">カクテル、ノンアル、希少なクラフトビールも。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 lg:gap-5 mb-6 lg:mb-0 mt-6 lg:mt-0 lg:order-2">
+        <img src="images/basashi.jpg" class="rounded-2xl shadow-lg h-36 lg:h-72 object-cover w-full mt-6 lg:mt-10" alt="から揚げ">
+        <img src="images/kakuteru.png" class="rounded-2xl shadow-lg h-36 lg:h-72 object-cover w-full" alt="店内">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 口コミ・強み ===== -->
+  <section class="py-16 lg:py-28 px-4 lg:px-8 bg-[var(--paper)]">
+    <div class="max-w-md lg:max-w-5xl mx-auto text-center">
+      <h3 class="font-display text-2xl lg:text-4xl font-black mb-10 lg:mb-14">夜の店選びで、<br class="lg:hidden">こんな経験ありませんか?</h3>
+
+      <div class="grid gap-4 lg:grid-cols-3 lg:gap-6 mb-14 lg:mb-20 text-left">
+        <div class="bg-white p-5 lg:p-6 rounded-2xl shadow-sm border border-[var(--ink)]/5 flex gap-4 items-start">
+          <span class="text-2xl">🤔</span>
+          <p class="font-bold text-[var(--ink)]/70 text-sm leading-relaxed">大人数だといつも同じ居酒屋ばかり…</p>
+        </div>
+        <div class="bg-white p-5 lg:p-6 rounded-2xl shadow-sm border border-[var(--ink)]/5 flex gap-4 items-start">
+          <span class="text-2xl">😬</span>
+          <p class="font-bold text-[var(--ink)]/70 text-sm leading-relaxed">お酒にこだわりたいけど、高いのはちょっと…</p>
+        </div>
+        <div class="bg-white p-5 lg:p-6 rounded-2xl shadow-sm border border-[var(--ink)]/5 flex gap-4 items-start">
+          <span class="text-2xl">🍽️</span>
+          <p class="font-bold text-[var(--ink)]/70 text-sm leading-relaxed">子連れだと周りの目が気になって落ち着けない…</p>
+        </div>
+      </div>
+
+      <div class="bg-[var(--lantern)] text-white p-8 lg:p-14 rounded-[2.5rem] shadow-2xl relative ticket-edge lg:grid lg:grid-cols-[1fr_1.2fr] lg:gap-12 lg:items-center lg:text-left">
+        <div>
+          <h4 class="font-display text-3xl lg:text-5xl font-black mb-4 lg:mb-6">マグダレンカが<br>解決します!</h4>
+          <p class="text-base lg:text-lg mb-7 lg:mb-0 font-medium leading-relaxed">
+            「山形一コスパが良くて寛げる場所」を目指して。<br>個室完備、飲み放題350円〜の魅力を提供します。
+          </p>
+        </div>
+
+        <div class="grid gap-3 lg:grid-cols-1 text-left menu-divider">
+          <div class="bg-white text-[var(--ink)] p-5 lg:p-6 rounded-2xl pt-5 first:border-t-0">
+            <div class="flex text-[var(--gold)] mb-2 gap-0.5 text-sm">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star text-gray-200"></i>
+            </div>
+            <p class="text-sm font-bold mb-1.5">クラフトビールが最高</p>
+            <p class="text-xs leading-relaxed text-[var(--ink)]/60">生ビールで飲めるのが珍しい。料理の量も相談に乗ってくれて、わがままが言えるアットホームな雰囲気に感謝です。</p>
+          </div>
+          <div class="bg-white text-[var(--ink)] p-5 lg:p-6 rounded-2xl pt-5 menu-divider">
+            <div class="flex text-[var(--gold)] mb-2 gap-0.5 text-sm">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-sm font-bold mb-1.5">コスパ良すぎます</p>
+            <p class="text-xs leading-relaxed text-[var(--ink)]/60">4000円で料理7品飲み放題。ノンアルカクテルも種類が豊富で、お酒が飲めない友人も大満足でした。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Coming Soon ===== -->
+  <section class="py-16 lg:py-28 px-4 lg:px-8 bg-white">
+    <div class="max-w-md lg:max-w-5xl mx-auto">
+      <div class="text-center mb-10 lg:mb-16">
+        <span class="inline-block bg-[var(--ink)] text-[var(--gold)] px-5 py-1.5 rounded-full text-xs font-black tracking-widest mb-3">
+          <i class="fas fa-rocket mr-1.5"></i>COMING SOON
+        </span>
+        <h3 class="font-display text-2xl lg:text-4xl font-black text-[var(--ink)] mb-3">「あったらいいな」を形に</h3>
+        <p class="text-[var(--ink)]/60 font-bold text-sm lg:text-base">お客様から寄せられた声にお応えして、新企画を準備中です</p>
+      </div>
+
+      <div class="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8">
+        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-lg border-2 border-[var(--ember)]/25 relative overflow-hidden">
+          <span class="absolute top-4 right-4 bg-[var(--ember)] text-white text-[10px] font-black py-1 px-3 rounded-full">開発中</span>
+          <div class="w-12 h-12 bg-[var(--ember)]/10 text-[var(--ember)] rounded-2xl flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-child"></i>
+          </div>
+          <span class="text-xs font-bold text-[var(--ember)] bg-[var(--ember)]/10 px-3 py-1 rounded-full">子連れファミリー大歓迎</span>
+          <h4 class="text-lg lg:text-xl font-extrabold text-[var(--ink)] mt-3 mb-2 leading-snug">熱帯魚に夢中!「キッズアクアリウムプレート」</h4>
+          <p class="text-xs lg:text-sm text-[var(--ink)]/60 leading-relaxed">個室で気兼ねなく、お子様も大人も楽しめるプレートを企画中です。</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-lg border-2 border-[var(--ember)]/25 relative overflow-hidden">
+          <span class="absolute top-4 right-4 bg-[var(--ember)] text-white text-[10px] font-black py-1 px-3 rounded-full">企画中</span>
+          <div class="w-12 h-12 bg-[var(--lantern)]/10 text-[var(--lantern)] rounded-2xl flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-gift"></i>
+          </div>
+          <span class="text-xs font-bold text-[var(--lantern)] bg-[var(--lantern)]/10 px-3 py-1 rounded-full">記念日・お誕生日</span>
+          <h4 class="text-lg lg:text-xl font-extrabold text-[var(--ink)] mt-3 mb-2 leading-snug">水槽横の特等席で「アクアサプライズ演出」</h4>
+          <p class="text-xs lg:text-sm text-[var(--ink)]/60 leading-relaxed">大切な方のバースデーに、水槽演出とメッセージプレートの事前予約サービスを準備中です。</p>
+        </div>
+      </div>
+
+      <div class="mt-8 lg:mt-12 bg-[var(--paper)] p-5 lg:p-7 rounded-2xl border border-[var(--ink)]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm lg:text-base font-bold text-[var(--ink)] text-center sm:text-left">新サービスのスタート情報はLINEでお知らせ</p>
+        <a href="#" class="line-btn text-white text-sm font-bold py-3 px-6 rounded-full shrink-0 flex items-center gap-2 w-full sm:w-auto justify-center">
+          <i class="fab fa-line text-lg"></i> LINE登録はこちら
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 最終CTA ===== -->
+  <section class="py-20 lg:py-28 px-4 lg:px-8 bg-[var(--gold)] text-center">
+    <div class="max-w-md lg:max-w-3xl mx-auto bg-white p-8 lg:p-16 rounded-[2.5rem] shadow-2xl">
+      <h3 class="font-display text-3xl lg:text-5xl font-black mb-5 lg:mb-7 text-[var(--ink)] leading-snug">
+        週末の夜、<span class="text-[var(--lantern)]">自分へのご褒美に。</span>
+      </h3>
+      <p class="text-base lg:text-lg font-bold mb-8 lg:mb-10 text-[var(--ink)]/60 leading-relaxed">
+        人気のお席はすぐに埋まってしまいます。<br>まずはLINEでクーポンをキープしてください。
+      </p>
+
+      <a href="#" class="line-btn w-full lg:w-auto lg:px-16 text-white font-extrabold py-5 rounded-full text-xl flex items-center justify-center gap-3 mb-8">
+        <i class="fab fa-line text-3xl"></i>今すぐクーポンを受け取る
+      </a>
+
+      <div class="flex flex-col lg:flex-row items-center justify-center lg:gap-8 gap-3 pt-2">
+        <a href="tel:0236472751" class="flex items-center gap-2 text-xl lg:text-2xl font-black text-[var(--ink)]">
+          <i class="fas fa-phone-alt text-[var(--lantern)]"></i>023-647-2751
+        </a>
+        <p class="text-[var(--ink)]/50 font-bold text-xs lg:text-sm">ご予約受付:火〜日 24:00まで</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 店舗情報 ===== -->
+  <section class="py-16 lg:py-28 px-4 lg:px-8 bg-[var(--ink)] text-[var(--paper)]">
+    <div class="max-w-md lg:max-w-6xl mx-auto space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h4 class="text-lg lg:text-xl font-bold border-b-2 border-[var(--ember)] pb-2 mb-5">アクセス情報</h4>
+        <div class="aspect-square lg:aspect-[4/3] bg-white/5 rounded-3xl overflow-hidden map-container mb-4">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.7202830094047!2d140.3221195747806!3d38.26279298390056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb620cf80b5dd%3A0x56033bb6050e3d9f!2z44Oe44Kw44OA44Os44Oz44Kr!5e0!3m2!1sja!2sjp!4v1771214880049!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="マグダレンカ地図"></iframe>
+        </div>
+        <p class="font-bold text-sm lg:text-base">〒990-0823 山形県山形市下条町2-4-16</p>
+        <p class="text-xs lg:text-sm text-[var(--paper)]/60 mt-1">山形駅から車で10分 / 店舗前駐車場あり</p>
+      </div>
+
+      <div>
+        <h4 class="text-lg lg:text-xl font-bold border-b-2 border-[var(--ember)] pb-2 mb-5">店舗詳細</h4>
+        <ul class="text-sm lg:text-base divide-y divide-white/10">
+          <li class="flex justify-between py-3"><span class="text-[var(--paper)]/60">定休日</span><span class="font-bold">月曜日</span></li>
+          <li class="flex justify-between py-3"><span class="text-[var(--paper)]/60">営業時間</span><span class="font-bold">17:00〜22:30</span></li>
+          <li class="flex justify-between py-3"><span class="text-[var(--paper)]/60">席数</span><span class="font-bold">最大80名様まで</span></li>
+          <li class="flex justify-between py-3"><span class="text-[var(--paper)]/60">個室</span><span class="font-bold">あり(5部屋)</span></li>
+          <li class="flex justify-between py-3"><span class="text-[var(--paper)]/60">駐車場</span><span class="font-bold">完備(店舗正面)</span></li>
+        </ul>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 pt-6">
+          <a href="https://magudarenka.jimdosite.com/" target="_blank" rel="noopener noreferrer" class="block text-center py-3.5 bg-white/10 text-white rounded-xl font-bold hover:bg-white/15 transition-colors flex items-center justify-center gap-2">
+            公式サイトはこちら <i class="fas fa-external-link-alt text-xs"></i>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 bg-[var(--ink)] text-white/40 text-center text-xs px-4">
+    <p class="mb-4 space-x-3">
+      <a href="#" class="hover:text-white transition-colors">プライバシーポリシー</a>
+      <span>|</span>
+      <a href="#" class="hover:text-white transition-colors">特定商取引法に基づく表記</a>
+    </p>
+    <p>&copy; 2024 マグダレンカ - 山形市の個室ダイニング. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log('Action: LINE registration simulation triggered');
+      });
+    });
+  </script>
+</body>
+</html>
