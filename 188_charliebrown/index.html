@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>チャーリーブラウン | 山形駅近・至福のグリーンカレーと山形牛</title>
+    <meta name="description" content="山形駅前・大宝ビル2F。日本料理よし邨 料理長監修、究極のココナッツグリーンカレー専門店。個室完備、山形牛ランチ・ディナー。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* clamp() で画面幅に応じて自動スケール = スマホでも崩れない見出し */
+        .fv-title   { font-size: clamp(2.25rem, 9vw, 6rem); }
+        .fv-sub     { font-size: clamp(1.1rem, 4vw, 1.9rem); }
+        .sec-title  { font-size: clamp(1.65rem, 5.5vw, 2.5rem); }
+
+        .gold-badge {
+            background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .cta-button {
+            background: linear-gradient(to bottom, #ff5f6d, #ffc371);
+            box-shadow: 0 10px 20px rgba(255, 95, 109, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cta-button:hover, .cta-button:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 26px rgba(255, 95, 109, 0.5);
+        }
+        .cta-button:active { transform: translateY(0); }
+
+        /* 台形の斜めセクション。スマホでは傾きを浅くして余白の無駄を防ぐ */
+        .skew-bg { transform: skewY(-3deg); margin-top: -40px; padding-top: 80px; }
+        .skew-content { transform: skewY(3deg); }
+        @media (max-width: 640px) {
+            .skew-bg { transform: skewY(-2deg); margin-top: -28px; padding-top: 56px; }
+            .skew-content { transform: skewY(2deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .floating { animation: float 3.2s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+            .floating { animation: none; }
+        }
+
+        /* 画像はAPIに頼らず、常に安定表示するグラデーションプレースホルダー */
+        .photo-slot {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.75);
+            background-size: cover;
+            background-position: center;
+        }
+        .photo-slot .slot-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .slot-curry   { background: linear-gradient(135deg,#0f2417,#1f4d33 45%,#3f7a4f); }
+        .slot-interior{ background: linear-gradient(135deg,#1a1a1a,#3a2f22 55%,#5c4326); }
+        .slot-beef    { background: linear-gradient(135deg,#2a0e0e,#5c1a1a 55%,#8a2a2a); }
+
+        /* Googleマップ埋め込みのレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 66%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.25rem;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 45%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* タップ領域を44px以上に確保 */
+        a, button { min-height: 44px; }
+
+        :focus-visible { outline: 3px solid #ffc371; outline-offset: 2px; }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <div id="app">
+      <header class="relative min-h-[92svh] flex items-center justify-center overflow-hidden bg-black">
+            <div class="absolute inset-0 overflow-hidden opacity-80">
+                <img src="images/curry.jpg" alt="究極のココナッツグリーンカレー" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/50"></div>
+
+            <div class="absolute top-6 left-4 sm:top-10 sm:left-8 z-20 floating">
+                <div class="bg-yellow-400 text-black font-black p-3 sm:p-4 rounded-full text-center shadow-2xl border-4 border-white leading-tight w-24 h-24 sm:w-28 sm:h-28 flex flex-col items-center justify-center">
+                    <span class="text-[0.6rem] sm:text-xs">日本料理よし邨</span>
+                    <span class="text-xs sm:text-sm">料理長絶賛！</span>
+                </div>
+            </div>
+
+            <div class="relative z-10 text-center px-5 max-w-4xl">
+                <h1 class="fv-title font-black text-white leading-[1.05] mb-4 drop-shadow-2xl">
+                    一度食べたら<br>
+                    <span class="text-yellow-400">止まらない。</span>
+                </h1>
+                <p class="fv-sub font-bold text-white mb-8 tracking-tight">
+                    究極のココナッツグリーンカレー
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-9">
+                    <div class="bg-white/15 backdrop-blur-md border border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-white">
+                        <p class="text-[0.65rem] sm:text-xs opacity-80">山形牛ユッケ</p>
+                        <p class="font-bold text-sm sm:text-base">認定取扱店</p>
+                    </div>
+                    <div class="bg-white/15 backdrop-blur-md border border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-white">
+                        <p class="text-[0.65rem] sm:text-xs opacity-80">完全予約制</p>
+                        <p class="font-bold text-sm sm:text-base">特選高級食材</p>
+                    </div>
+                </div>
+
+                <a href="tel:023-633-2637" class="cta-button text-white text-base sm:text-xl font-black py-4 px-8 sm:px-10 rounded-full inline-flex items-center justify-center">
+                    <i class="fas fa-phone-alt mr-3"></i>今すぐ電話で予約
+                </a>
+            </div>
+
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-xs flex flex-col items-center gap-1 z-10">
+                <span>SCROLL</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </header>
+
+        <!-- ============ TRUST SECTION ============ -->
+        <section class="py-10 sm:py-12 bg-gray-900 text-white overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-4 gap-y-8 gap-x-4 text-center">
+                <div>
+                    <p class="text-2xl sm:text-3xl font-black gold-badge">山形牛</p>
+                    <p class="text-[0.65rem] sm:text-xs mt-1 text-gray-300">贅沢使用</p>
+                </div>
+                <div>
+                    <p class="text-2xl sm:text-3xl font-black gold-badge">半個室</p>
+                    <p class="text-[0.65rem] sm:text-xs mt-1 text-gray-300">感染対策完備</p>
+                </div>
+                <div>
+                    <p class="text-2xl sm:text-3xl font-black gold-badge">駅近</p>
+                    <p class="text-[0.65rem] sm:text-xs mt-1 text-gray-300">アクセス抜群</p>
+                </div>
+                <div>
+                    <p class="text-2xl sm:text-3xl font-black gold-badge">創業20年+</p>
+                    <p class="text-[0.65rem] sm:text-xs mt-1 text-gray-300">信頼の実績</p>
+                </div>
+            </div>
+        </section>
+
+            <section class="bg-gray-100 skew-bg pb-24 sm:pb-32">
+            <div class="skew-content max-w-6xl mx-auto px-4">
+                <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+                    <div class="relative">
+                        <div class="rounded-2xl aspect-[4/3] w-full overflow-hidden shadow-md">
+                            <img src="images/yukke.jpg" alt="山形牛ユッケ" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-6 bg-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-[170px] sm:max-w-[200px] z-10">
+                            <p class="text-[0.65rem] font-bold text-gray-400">SIGNATURE</p>
+                            <p class="text-base sm:text-lg font-black text-red-600">山形牛ユッケ</p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-red-600 font-bold tracking-wide text-sm">Our Strength</span>
+                        <h2 class="sec-title font-black mt-2 mb-5 sm:mb-6">黒毛和種「山形牛」を<br>贅沢に、カジュアルに。</h2>
+                        <p class="text-gray-700 leading-relaxed mb-7 sm:mb-8 text-sm sm:text-base">
+                            高級店でしか味わえないクオリティの山形牛を、ダイニングならではの親しみやすさでご提供。ランチのグリーンカレーから夜の贅沢コースまで、あらゆるシーンで「感動の食体験」をお約束します。
+                        </p>
+                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                            <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-yellow-500">
+                                <p class="font-black text-sm sm:text-base">半個室充実</p>
+                                <p class="text-xs text-gray-500 mt-1">少人数から利用可</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-yellow-500">
+                                <p class="font-black text-sm sm:text-base">当日引取OK</p>
+                                <p class="text-xs text-gray-500 mt-1">高級弁当（要予約）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ REVIEWS SECTION ============ -->
+        <section class="py-16 sm:py-20 bg-white">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-center sec-title font-black mb-12 sm:mb-16 italic">"Why Everyone Loves Us"</h2>
+                <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                    <div class="bg-gray-50 p-6 sm:p-8 rounded-3xl">
+                        <div class="flex text-yellow-400 mb-4 text-sm sm:text-base" aria-label="評価5点満点中5点">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="font-bold mb-3 sm:mb-4 text-lg sm:text-xl">「食べたことのない味！とまらない！」</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            すごく店員の態度がよかった！めっちゃごはんが美味しかった！！1回食べたらとまらない！山形駅近くに来たらすごくおすすめ！
+                        </p>
+                        <div class="mt-6 flex items-center">
+                            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 shrink-0"></div>
+                            <p class="text-xs font-bold">20代 女性</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 sm:p-8 rounded-3xl">
+                        <div class="flex text-yellow-400 mb-4 text-sm sm:text-base" aria-label="評価5点満点中4点">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </div>
+                        <p class="font-bold mb-3 sm:mb-4 text-lg sm:text-xl">「ランチセットはとってもお得」</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            カレーはココナッツで柔らかな口当たりから、後味にピリッとした辛味が効いています。本格的な味はとっても満足できます。
+                        </p>
+                        <div class="mt-6 flex items-center">
+                            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3 shrink-0"></div>
+                            <p class="text-xs font-bold">30代 男性</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ COMING SOON SECTION ============ -->
+        <section class="py-16 sm:py-20 bg-gradient-to-b from-gray-900 to-black text-white">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-12 sm:mb-14">
+                    <span class="bg-yellow-400 text-black text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider inline-block mb-3">Coming Soon</span>
+                    <h2 class="sec-title font-black mb-4">これから登場予定の新サービス</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                        「こんなサービスがあったらもっと嬉しい！」というお客様のお声にお応えし、<br class="hidden sm:inline">チャーリーブラウンでは現在新しいおもてなしを準備中です。
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-5 sm:gap-6 max-w-4xl mx-auto">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 p-7 sm:p-8 rounded-3xl flex flex-col justify-between hover:border-yellow-400/50 transition duration-300">
+                        <div>
+                            <div class="w-12 h-12 bg-yellow-400/20 text-yellow-400 rounded-2xl flex items-center justify-center text-2xl mb-5 sm:mb-6">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <span class="text-xs text-yellow-400 font-bold tracking-wide">Special Day</span>
+                            <h3 class="text-lg sm:text-xl font-bold mt-1 mb-3">アニバーサリー・記念日プラン</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                誕生日や大切な記念日のご予約に。特製メッセージプレート、スパークリングワインが付いた特別コースを準備中！
+                            </p>
+                        </div>
+                        <div class="inline-flex items-center text-xs text-yellow-400 font-bold">
+                            <i class="fas fa-clock mr-2"></i>順次スタート予定
+                        </div>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 p-7 sm:p-8 rounded-3xl flex flex-col justify-between hover:border-yellow-400/50 transition duration-300">
+                        <div>
+                            <div class="w-12 h-12 bg-yellow-400/20 text-yellow-400 rounded-2xl flex items-center justify-center text-2xl mb-5 sm:mb-6">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <span class="text-xs text-yellow-400 font-bold tracking-wide">Smart Order</span>
+                            <h3 class="text-lg sm:text-xl font-bold mt-1 mb-3">Webテイクアウト事前予約・決済</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                                スマホから事前予約・事前決済が可能に。店頭での待ち時間ゼロでスムーズにお受け取れます。
+                            </p>
+                        </div>
+                        <div class="inline-flex items-center text-xs text-yellow-400 font-bold">
+                            <i class="fas fa-clock mr-2"></i>システム準備中
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ACCESS MAP SECTION ============ -->
+        <section class="py-16 sm:py-20 bg-gray-50">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-center text-2xl sm:text-3xl font-black mb-8 sm:mb-10">Access Map</h2>
+                <div class="map-container shadow-2xl">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.3685654765345!2d140.3272860747798!3d38.24775718477578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60ec5b16fab%3A0xcc1934b0b9197f9d!2z44OB44Oj44O844Oq44O844OW44Op44Km44Oz!5e0!3m2!1sja!2sjp!4v1771219182113!5m2!1sja!2sjp"
+                        style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="チャーリーブラウン 地図"></iframe>
+                </div>
+                <div class="mt-6 text-center">
+                    <p class="font-bold text-gray-700 text-sm sm:text-base">山形駅前、大宝ビル2F。アクセス抜群の立地です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FOOTER & CTA ============ -->
+        <footer class="bg-gray-900 text-white pt-16 sm:pt-20 pb-10">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="sec-title font-black mb-9 sm:mb-10 leading-tight">山形の夜を、<br>もっと美味しく、もっと楽しく。</h2>
+
+                <a href="tel:023-633-2637" class="cta-button text-white text-xl sm:text-3xl font-black py-6 px-10 sm:py-8 sm:px-16 rounded-full inline-flex items-center justify-center mb-10 sm:mb-12">
+                    <i class="fas fa-phone-alt mr-3 sm:mr-4"></i>023-633-2637
+                </a>
+
+                <div class="grid md:grid-cols-2 gap-8 text-left bg-white text-gray-900 p-6 sm:p-10 rounded-3xl shadow-lg">
+                    <div>
+                        <h4 class="font-black text-lg sm:text-xl mb-4 border-b-2 border-yellow-500 inline-block">Shop Info</h4>
+                        <div class="space-y-3 sm:space-y-4 text-sm font-bold">
+                            <p><i class="fas fa-map-marker-alt text-red-600 mr-2"></i>〒990-0039 山形県香澄町1-5-1 大宝ビル2F</p>
+                            <p><i class="fas fa-clock text-red-600 mr-2"></i>ディナー 18:00〜24:00</p>
+                            <p><i class="fas fa-calendar-times text-red-600 mr-2"></i>定休日：日曜日</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-between gap-6">
+                        <div class="text-sm font-bold leading-relaxed">
+                            <p>・2日前予約でお会当・オードブル対応</p>
+                            <p>・8,000円〜配達可能（要相談）</p>
+                            <p>・スマホQRオーダーシステム導入</p>
+                        </div>
+                        <a href="https://www.instagram.com/charliebrown_yamagata/" target="_blank" rel="noopener" class="inline-flex items-center text-pink-600 font-bold hover:underline">
+                            <i class="fab fa-instagram-square text-2xl sm:text-3xl mr-2"></i>最新情報をチェック
+                        </a>
+                    </div>
+                </div>
+                <p class="mt-10 sm:mt-12 text-gray-500 text-xs tracking-wide">© Charlie Brown Yamagata</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
