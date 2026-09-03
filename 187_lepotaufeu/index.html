@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ル・ポットフー | 酒田フレンチの至宝</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@200;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #C5A059;
+            --color-dark: #1c1c1c;
+            --color-bg: #f8f6f2;
+        }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            scroll-behavior: smooth;
+            background-color: var(--color-bg);
+            color: var(--color-dark);
+            -webkit-text-size-adjust: 100%;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.75) 100%);
+        }
+
+        .decorative-line {
+            width: 1px;
+            height: 70px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+            margin: 0 auto;
+        }
+
+        .gold-button {
+            background: var(--color-gold);
+            transition: all 0.3s;
+        }
+        .gold-button:hover {
+            background: #b38f4d;
+        }
+        .gold-button:active {
+            transform: scale(0.98);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .fv-text-container {
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .photo-slot {
+            background: linear-gradient(135deg, #2b2b2b, #1c1c1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(197,160,89,0.6);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.15em;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { animation: none; opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-paper overflow-x-hidden">
+
+  <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/callpacio.png" alt="地物ヒラメのカルパッチョ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6 fv-text-container max-w-3xl">
+            <div class="mb-5 opacity-0 fade-in" style="animation-delay:0.1s">
+                <p class="text-base sm:text-xl font-light tracking-[0.3em] sm:tracking-[0.4em] mb-2">
+                    酒田フレンチ、その<span class="text-[color:var(--color-gold)] font-bold">源流</span>へ。
+                </p>
+                <div class="w-12 h-[1px] bg-[color:var(--color-gold)] mx-auto"></div>
+            </div>
+
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.12em] sm:tracking-[0.2em] leading-relaxed mb-8 sm:mb-12 opacity-0 fade-in" style="animation-delay:0.4s">
+                庄内浜の至宝、<br>
+                <span class="text-[color:var(--color-gold)]">地物ヒラメ</span>を愉しむ。
+            </h1>
+
+            <div class="opacity-0 fade-in" style="animation-delay:0.7s">
+                <p class="font-cinzel tracking-[0.35em] sm:tracking-[0.5em] text-xs sm:text-base mb-4">LE POT-AU-FEU</p>
+                <div class="decorative-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 導入 -->
+    <section class="py-16 sm:py-24 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-lg sm:text-2xl font-light tracking-[0.1em] sm:tracking-[0.2em] mb-8 sm:mb-12 leading-loose">
+                創業四十五年。<br>
+                伝説の支配人と初代シェフが描いた<br>
+                「フランス風庄内料理」という理想。
+            </h2>
+            <p class="text-stone-600 leading-loose text-sm sm:text-base text-left sm:text-center">
+                鳥海山の伏流水が注ぐ庄内の恵み。<br>
+                厳しい冬を越え、甘みを蓄えた庄内野菜。<br>
+                その素材一つひとつに、金のカトラリーが触れる瞬間、<br>
+                日常は静かに、艶やかな「舞台」へと変わります。
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA 1 -->
+    <section id="cta" class="py-10 sm:py-12 bg-stone-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[color:var(--color-gold)]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div class="max-w-xl mx-auto px-6 text-center relative z-10">
+            <p class="text-[color:var(--color-gold)] font-cinzel tracking-widest text-xs sm:text-sm mb-3">GIFT FOR YOU</p>
+            <h2 class="text-xl sm:text-2xl font-bold mb-5">【Web限定】特別ご招待状</h2>
+            <p class="text-stone-300 text-sm mb-6 leading-relaxed">
+                公式LINEへのご登録で、ディナーご予約時に<br class="hidden sm:block">「地物ヒラメのカルパッチョ」を一名様一皿進呈いたします。
+            </p>
+            <a href="#" class="gold-button text-white font-bold py-4 px-8 rounded-sm shadow-2xl inline-block tracking-widest text-base sm:text-lg w-full sm:w-auto">
+                LINEで招待状を受け取る
+            </a>
+        </div>
+    </section>
+
+   <section class="py-16 sm:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="md:w-1/2 w-full">
+                    <div class="w-full aspect-[4/3] shadow-2xl rounded-sm overflow-hidden">
+                        <img src="images/bisk.jpg" alt="海老の濃厚ビスク" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-[color:var(--color-gold)] font-cinzel text-sm tracking-widest mb-3">TERROIR</h3>
+                    <h4 class="text-2xl sm:text-3xl font-bold mb-5">酒田の海と、土と、水と。</h4>
+                    <p class="text-stone-600 leading-loose mb-6 text-sm sm:text-base">
+                        シェフ自ら毎朝市場へ足を運び、その日最も輝いている魚を選び抜きます。<br>
+                        水揚げ直後の甘みが際立つビスク、じっくりと炊き上げたマトウダイのパイ包み。<br>
+                        そこにあるのは、酒田でしか出逢えないフランス料理の真髄です。
+                    </p>
+                    <div class="border-l-2 border-[color:var(--color-gold)] pl-5 py-2 italic text-stone-500 text-sm sm:text-base">
+                        「いつもの食材がフレンチに変身する感動」<br>
+                        <span class="text-xs">— お客様のクチコミより</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <section class="py-20 sm:py-32 bg-stone-50 relative">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+            <div class="md:w-1/2 w-full">
+                <div class="w-full aspect-[3/4] shadow-2xl border-8 border-white overflow-hidden">
+                    <img src="images/chef.png" alt="佐藤久一のポートレートイメージ" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h3 class="text-[color:var(--color-gold)] font-cinzel text-sm tracking-widest mb-3">THE LEGEND</h3>
+                <h4 class="text-2xl sm:text-3xl font-bold mb-6">佐藤久一が描いた<br>「世界一の舞台」</h4>
+                <p class="text-stone-600 leading-loose text-sm sm:text-base">
+                    「女性と子どものための家庭的なフレンチを」<br>
+                    酒田に伝説の映画館を創った男は、レストランを一つの"舞台装置"として捉えていました。<br>
+                    スペインから輸入した家具、選び抜かれた絵画。<br>
+                    駅前の再開発とともに歩んできたその歴史は、今、ミライニの開放的な空間へと昇華されました。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON セクション -->
+    <section class="py-20 sm:py-28 bg-stone-900 text-white relative border-t border-b border-stone-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <p class="text-[color:var(--color-gold)] font-cinzel tracking-[0.25em] sm:tracking-[0.3em] text-xs sm:text-sm mb-3">FUTURE INITIATIVES</p>
+                <h2 class="text-2xl sm:text-4xl font-bold font-cinzel tracking-[0.15em] sm:tracking-widest mb-4">COMING SOON</h2>
+                <div class="w-12 h-[1px] bg-[color:var(--color-gold)] mx-auto mb-5"></div>
+                <p class="text-stone-400 text-sm md:text-base leading-relaxed">
+                    「食」と「文化」が交差する舞台として。<br>
+                    ル・ポットフーが描く、これからあればいいなと思う新しい体験とサービス。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="bg-stone-950 p-6 sm:p-8 border border-stone-800 rounded-sm relative hover:border-[color:var(--color-gold)]/50 transition duration-500">
+                    <div class="text-[color:var(--color-gold)] text-xl sm:text-2xl mb-4 font-cinzel">Location Services</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4 text-stone-100">映画・TVロケーション<br>撮影の舞台として</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                        映画の街・酒田の歴史を受け継ぎ、こだわりの調度品と美しい光が差し込む上質な空間。映画・ドラマ・CM・番組ロケーションなどのロケ地・撮影スペースとして開放予定です。
+                    </p>
+                    <span class="inline-block text-xs text-[color:var(--color-gold)] border border-[color:var(--color-gold)]/30 px-3 py-1 rounded-sm">空間提供・ロケ地活用</span>
+                </div>
+
+                <div class="bg-stone-950 p-6 sm:p-8 border border-stone-800 rounded-sm relative hover:border-[color:var(--color-gold)]/50 transition duration-500">
+                    <div class="text-[color:var(--color-gold)] text-xl sm:text-2xl mb-4 font-cinzel">Story &amp; Film Project</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4 text-stone-100">創業ヒストリーの<br>書籍化・映像化企画</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                        「世界一の映画館を創った男」佐藤久一の情熱と、酒田フレンチ誕生の軌跡。地域文化を創り上げたドラマティックな物語を、ドキュメンタリー書籍および映像コンテンツ化へ。
+                    </p>
+                    <span class="inline-block text-xs text-[color:var(--color-gold)] border border-[color:var(--color-gold)]/30 px-3 py-1 rounded-sm">出版・ドキュメンタリー化</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス・マップセクション -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10 sm:mb-16">
+                <h3 class="text-[color:var(--color-gold)] font-cinzel text-sm tracking-widest mb-3">ACCESS</h3>
+                <h2 class="text-2xl sm:text-3xl font-bold">酒田駅前「ミライニ」内</h2>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                <div class="lg:w-1/2 w-full shadow-xl map-container aspect-[4/3] sm:aspect-video lg:aspect-auto lg:h-[400px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.1261852910416!2d139.8424419748188!3d38.92109324530752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8e9e8aaeba4aa9%3A0x13d990b75047c144!2z44Or44O744Od44OD44OI44OV44O8!5e0!3m2!1sja!2sjp!4v1771218046809!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="lg:w-1/2 w-full space-y-6 sm:space-y-8 py-2 sm:py-4">
+                    <div>
+                        <h4 class="text-[color:var(--color-gold)] font-bold mb-2">住所</h4>
+                        <p class="text-stone-600 text-sm sm:text-base">〒998-0023 山形県酒田市幸町1-10-20<br>交流拠点施設「ミライニ」内</p>
+                    </div>
+                    <div>
+                        <h4 class="text-[color:var(--color-gold)] font-bold mb-2">営業時間</h4>
+                        <p class="text-stone-600 text-sm sm:text-base">ランチ：11:30 - 15:00<br>ディナー：17:30 - 21:00</p>
+                    </div>
+                    <div>
+                        <h4 class="text-[color:var(--color-gold)] font-bold mb-2">定休日</h4>
+                        <p class="text-stone-600 text-sm sm:text-base">毎週水曜日</p>
+                    </div>
+                    <div>
+                        <h4 class="text-[color:var(--color-gold)] font-bold mb-2">お電話でのご予約</h4>
+                        <a href="tel:0234262218" class="text-xl sm:text-2xl font-bold text-stone-800 hover:text-[color:var(--color-gold)] transition">0234-26-2218</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クロージング CTA -->
+    <section class="py-20 sm:py-32 bg-stone-900 text-white text-center">
+        <div class="max-w-xl mx-auto px-6">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6">酒田の記憶に残る、<br>特別な時間を。</h2>
+            <p class="text-stone-400 mb-10 sm:mb-12 leading-loose text-sm sm:text-base">
+                大切な人との記念日に、ご自分へのご褒美に。<br>
+                創業から変わらぬ「酒田フレンチ」の誇りを添えて、<br>
+                皆様のお越しを心よりお待ち申し上げております。
+            </p>
+            <div class="bg-white/5 p-6 sm:p-10 border border-white/10 rounded-sm">
+                <p class="text-[color:var(--color-gold)] font-bold mb-4 italic">Invitation</p>
+                <a href="#" class="gold-button w-full block py-5 sm:py-6 mb-2 font-bold tracking-[0.15em] sm:tracking-[0.2em] text-lg sm:text-xl">LINEで特典を受け取る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 sm:py-16 bg-stone-950 text-stone-500 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 sm:gap-12">
+            <div class="space-y-3 text-center md:text-left">
+                <p class="font-cinzel text-white text-xl sm:text-2xl tracking-widest">Le Pot-au-Feu</p>
+                <p class="text-xs uppercase tracking-widest">&copy; 2026 Le Pot-au-Feu. All Rights Reserved.</p>
+            </div>
+            <div class="flex gap-6 sm:gap-8 text-sm">
+                <a href="https://www.instagram.com/lepotaufeuofficial/" class="hover:text-[color:var(--color-gold)] transition">Instagram</a>
+                <a href="https://www.hotpepper.jp/strJ000101346/" class="hover:text-[color:var(--color-gold)] transition">Hotpepper</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
