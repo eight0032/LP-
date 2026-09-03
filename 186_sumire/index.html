@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洋食 すみれ | 山形・天童の老舗フレンチ洋食店</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          sumire: {
+            gold: '#b38b4d',
+            dark: '#2D241E',
+            cream: '#f8f4f0'
+          }
+        },
+        fontFamily: {
+          serif: ['"Shippori Mincho"', 'serif'],
+          sans: ['"Noto Sans JP"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Noto Sans JP', sans-serif; background-color: #f8f4f0; }
+  .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+  .brush-border { border-bottom: 2px solid #b38b4d; position: relative; }
+  .brush-border::after { content: ''; position: absolute; bottom: -5px; right: 0; width: 8px; height: 8px; background: #b38b4d; transform: rotate(45deg); }
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1a;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.65)),
+      url("https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1600&q=80");
+  }
+  @media (min-width: 768px) {
+    .hero-section {
+      background-image: linear-gradient(to right, rgba(0,0,0,0.75) 25%, rgba(0,0,0,0.15) 85%),
+        url("images/roast.png");
+    }
+  }
+  .section-pattern { background-image: url("https://www.transparenttextures.com/patterns/pinstripe.png"); }
+  .map-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
+  .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body class="text-sumire-dark antialiased">
+
+  <!-- FVエリア -->
+  <header class="hero-section min-h-[100svh] relative flex items-end md:items-center overflow-hidden">
+    <div class="container mx-auto px-6 sm:px-8 md:px-12 z-10 flex justify-between items-center w-full pb-16 pt-28 md:py-0">
+      <div class="text-white max-w-2xl">
+        <p class="text-base sm:text-lg md:text-2xl mb-3 md:mb-4 font-serif tracking-[0.15em] md:tracking-[0.2em] opacity-90">
+          山形・天童。美食の記憶を塗り替える。
+        </p>
+        <div class="border-l-4 border-sumire-gold pl-4 sm:pl-6 py-2 mb-6 md:mb-8">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-tight">
+            元フレンチシェフの<br>
+            覚悟を込めた、<br>
+            <span class="text-sumire-gold">一皿の洋食。</span>
+          </h1>
+        </div>
+        <p class="text-base sm:text-lg md:text-xl font-light leading-relaxed mb-6 md:mb-8">
+          三十年の伝統技法を、もっと身近に。<br>
+          「山形フレンチ シェ・ボン」の魂を継承した、<br class="hidden sm:block">
+          至福 de デミグラスソース。
+        </p>
+        <a href="tel:0236519533" class="inline-block bg-sumire-gold text-white font-serif font-bold text-base sm:text-lg px-8 py-3.5 rounded-full shadow-lg hover:bg-sumire-dark transition-colors duration-300">
+          ご予約はお電話で
+        </a>
+      </div>
+      <!-- 右側テキストの位置調整: スマホでは非表示 -->
+      <div class="hidden lg:block text-white self-start mt-32">
+        <div class="vertical-text text-3xl font-serif tracking-[0.5em] leading-loose border-r border-white/30 pr-8 h-80 flex items-start">
+          日常に、フレンチの薫りを。
+        </div>
+      </div>
+    </div>
+    <div class="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 text-white text-center">
+      <span class="block text-xs tracking-widest mb-2">SCROLL</span>
+      <div class="w-px h-12 bg-white/50 mx-auto"></div>
+    </div>
+  </header>
+
+<!-- 導入：すみれのこだわり -->
+  <section class="py-16 md:py-24 section-pattern">
+    <div class="container mx-auto px-6 text-center max-w-4xl">
+      <span class="text-sumire-gold font-serif text-base md:text-lg tracking-widest block mb-3 md:mb-4">― 継承と革新 ―</span>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-10 md:mb-12 leading-snug">
+        気取らず、しかし妥協なく。<br>
+        「すみれ」が約束する三つの本物。
+      </h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 text-left">
+        <div>
+          <h3 class="font-serif font-bold text-lg md:text-xl mb-3 brush-border pb-2">秘伝のデミグラス</h3>
+          <p class="text-sm leading-relaxed text-gray-600">三日間かけて牛骨と野菜の旨味を凝縮。フレンチ時代の技法をそのままに、洋食に合う深みを追求しました。</p>
+        </div>
+        <div>
+          <h3 class="font-serif font-bold text-lg md:text-xl mb-3 brush-border pb-2">地元の恵み、山形牛</h3>
+          <p class="text-sm leading-relaxed text-gray-600">ハンバーグには山形牛を贅沢に使用。溢れ出す肉汁と、力強い肉の旨味をダイレクトに感じていただけます。</p>
+        </div>
+        <div class="sm:col-span-2 md:col-span-1">
+          <h3 class="font-serif font-bold text-lg md:text-xl mb-3 brush-border pb-2">至福の口どけ卵</h3>
+          <p class="text-sm leading-relaxed text-gray-600">厳選した地卵を贅沢に使用。絶妙な火入れが生む「とろふわ」の食感は、職人の勘がなせる業です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特設：名物メニュー紹介 -->
+  <section class="py-16 md:py-24 bg-sumire-dark text-white overflow-hidden">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+        <div class="w-full md:w-1/2 relative">
+          <div class="rounded-lg shadow-2xl overflow-hidden bg-gray-800 aspect-video">
+            <img src="images/omurice.png" alt="デミグラスソースがかかったオムライス" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <h3 class="text-sumire-gold font-serif text-lg md:text-xl mb-3 md:mb-4">Signature Dish</h3>
+          <h4 class="text-3xl md:text-4xl font-serif font-bold mb-5 md:mb-6">オムライス・デミソース</h4>
+          <p class="text-base md:text-lg leading-loose mb-6 md:mb-8 text-gray-300 italic">
+            「一口目で違いがわかる。」多くの客様が驚くのは、そのソースの奥行きです。苦味と甘味の黄金比。フレンチ30年のエッセンスがこの一皿に宿っています。
+          </p>
+          <div class="text-xl md:text-2xl font-serif border-l-2 border-sumire-gold pl-5 md:pl-6">
+            ¥880 <span class="text-sm font-sans opacity-60">(税込)</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-16 md:mt-32">
+        <div class="w-full md:w-1/2 relative">
+          <div class="rounded-lg shadow-2xl overflow-hidden bg-gray-800 aspect-video">
+            <img src="images/napolitan.png" alt="チーズが焼けたナポリタン" class="w-full h-full object-cover" loading="lazy">
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <h3 class="text-sumire-gold font-serif text-lg md:text-xl mb-3 md:mb-4">Popular Menu</h3>
+          <h4 class="text-3xl md:text-4xl font-serif font-bold mb-5 md:mb-6">悶絶の焼きチーズ焼き<br>ナポリタン</h4>
+          <p class="text-base md:text-lg leading-loose mb-6 md:mb-8 text-gray-300">
+            グツグツと焼せられた麺、香ばしく焼られたどっさりのチーズ。中から現れるのはモチモチ食感の極太パスタ。懐かしさと高級感が共存する、当店の隠れた主役です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 店主ストーリー -->
+  <section class="py-16 md:py-24 bg-white relative">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+        <div class="w-full md:w-2/5">
+          <div class="w-full max-w-xs mx-auto md:max-w-none aspect-[4/5] rounded-sm bg-gray-100 overflow-hidden shadow-sm">
+            <img src="images/chef.png" alt="店主 小松 秀文" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" loading="lazy">
+          </div>
+          <p class="mt-4 font-serif text-sm tracking-widest text-center">店主：小松 秀文</p>
+        </div>
+        <div class="w-full md:w-3/5">
+          <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-6 md:mb-8 relative inline-block">
+            「ハレの日」の味を、<br>日常のテーブルへ。
+            <span class="absolute -bottom-2 left-0 w-full h-1 bg-sumire-gold/30"></span>
+          </h3>
+          <div class="space-y-5 md:space-y-6 leading-loose text-gray-700 text-sm sm:text-base">
+            <p>山形・天童で「シェ・ボン」として20年、私は本格フレンチを提供してきました。しかし、コロナ禍を経て気づいたのは、「美味しいものはもっと身近にあるべきだ」というシンプルな真理でした。</p>
+            <p>子供の頃、デパートの屋上で食べたあのオムライスの記憶。それをフレンチの技法で再現し、誰もが毎日通える価格で提供したい。その想いで、カジュアルな「洋食 すみれ」へと生まれ変わりました。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="py-16 md:py-24 bg-gradient-to-b from-stone-950 via-sumire-dark to-stone-950 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 section-pattern"></div>
+    <div class="container mx-auto px-6 relative z-10 max-w-5xl">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="inline-block px-4 py-1.5 border border-sumire-gold text-sumire-gold text-xs tracking-widest mb-4 rounded-full font-sans">
+          COMING SOON / コース料理の準備
+        </span>
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-bold mb-5 md:mb-6 leading-tight">
+          特別な日も、いつもの夜も。<br>
+          <span class="text-sumire-gold">「洋食すみれ」のコースディナー始動。</span>
+        </h2>
+        <p class="text-gray-300 font-light max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
+          元フレンチ「シェ・ボン」の技術と情熱を集約。「特別な日にもすみれの料理で祝いたい」という多くの温かい声にお応えし、コース料理を準備いたします。<br>
+          気軽に過ごせるショートコースから、記念日を彩る贅沢なフルコースまで。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-sumire-gold/50 transition duration-300">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="text-xs font-serif text-sumire-gold tracking-widest">Casual Dinner</span>
+              <span class="bg-white/10 text-gray-300 text-xs px-3 py-1 rounded-full border border-white/10">軽め・短時間 / 当日可</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-serif font-bold mb-3">気軽に愉しむ「ショートコース」</h3>
+            <p class="text-xs text-gray-400 mb-6 leading-relaxed">
+              お仕事帰りやカジュアルな晩酌に。テンポよく上質な前菜とスープ、選べるメイン料理を短時間で堪能できるライトなコースです。
+            </p>
+            <ul class="space-y-2.5 text-sm text-gray-300 border-t border-white/10 pt-4 mb-6">
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> 自家製キッシュと季節のアンティパスト</li>
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> 本日の濃厚ポタージュ</li>
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> 選べるメイン（名物オムライス or ハンバーグ）</li>
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> 本日のミニデザート ＆ 珈琲</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-baseline justify-between">
+            <span class="text-xs text-gray-400">予定価格帯（お一人様）</span>
+            <span class="text-lg sm:text-xl font-serif text-sumire-gold font-bold">¥2,800〜 <span class="text-xs font-sans text-gray-400 font-normal">(税込)</span></span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 border border-sumire-gold/50 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-sumire-gold transition duration-300 relative overflow-hidden">
+          <div class="absolute -right-12 -top-12 bg-sumire-gold/10 w-32 h-32 rounded-full blur-2xl"></div>
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="text-xs font-serif text-sumire-gold tracking-widest">Special Anniversary</span>
+              <span class="bg-sumire-gold text-sumire-dark font-bold text-xs px-3 py-1 rounded-full">完全予約制 / 数量限定</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-serif font-bold mb-3">プレミアム「アニバーサリーコース」</h3>
+            <p class="text-xs text-gray-400 mb-6 leading-relaxed">
+              誕生日・結婚記念日・大切なご会食に。30年の伝統技法を凝縮した山形牛ステーキと極上デミグラスを愉しむ贅沢な本格フルコース。
+            </p>
+            <ul class="space-y-2.5 text-sm text-gray-300 border-t border-white/10 pt-4 mb-6">
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> アミューズ・ブーシュ（一口の愉しみ）</li>
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> 旬の地野菜と鮮魚のシェフ特製オードブル</li>
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> 山形牛フィレ肉の極上デミグラスソテー</li>
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> シェフの気まぐれ締めの一皿（ミニオムライス等）</li>
+              <li class="flex items-start gap-2"><span class="text-sumire-gold mt-0.5">◆</span> 記念日メッセージ付 アニバーサリープレート</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-baseline justify-between">
+            <span class="text-xs text-gray-400">予定価格帯（お一人様）</span>
+            <span class="text-lg sm:text-xl font-serif text-sumire-gold font-bold">¥6,500〜 <span class="text-xs font-sans text-gray-400 font-normal">(税込)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 md:mt-12 text-center bg-white/5 border border-white/10 rounded-xl p-5 md:p-6">
+        <p class="text-xs md:text-sm font-serif text-gray-300 leading-relaxed">
+          ※ 詳細な開始時期や事前ご予約受付の開始時期は、店頭およびWebサイトにて順次お知らせいたします。<br>
+          ご家族や大切な方との心温まるひとときに、ぜひ「すみれ」のコース料理をご利用ください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス・マップセクション -->
+  <section class="py-16 md:py-12 pt-16">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <h3 class="text-xl sm:text-2xl font-serif font-bold mb-8 text-center">アクセス</h3>
+      <div class="bg-white p-3 sm:p-4 rounded-xl shadow-lg border border-gray-100">
+        <div class="map-container rounded-lg overflow-hidden">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25031.29275310026!2d140.3569204133945!3d38.35102817993919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc5830d126f51%3A0x9eb161ea76a16847!2z44GZ44G_44KM!5e0!3m2!1sja!2sjp!4v1771217300463!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="mt-6 text-center sm:text-left px-1">
+          <p class="font-bold">洋食 すみれ</p>
+          <p class="text-sm text-gray-600">〒994-0027 山形県天童市桜町12-8 エトワールK 1F</p>
+          <p class="text-sm text-gray-500 mt-2">天童駅より徒歩約5分 / 駐車場完備</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTAエリア -->
+  <section class="py-16 md:py-24 bg-sumire-gold relative overflow-hidden text-white">
+    <div class="absolute inset-0 opacity-10 section-pattern"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h3 class="text-2xl sm:text-3xl md:text-5xl font-serif font-bold mb-6 md:mb-8">お席のご予約・お問い合わせ</h3>
+      <div class="max-w-xl mx-auto bg-white/10 backdrop-blur-md p-6 sm:p-10 rounded-2xl border border-white/20">
+        <p class="text-sm tracking-widest mb-4">RESERVATION</p>
+        <a href="tel:0236519533" class="text-3xl sm:text-4xl md:text-6xl font-serif font-bold hover:text-sumire-dark transition-colors break-all">023-651-9533</a>
+        <p class="mt-6 text-sm opacity-80 italic">営業時間：11:30 - 14:00 / 18:00 - 21:00</p>
+      </div>
+      <div class="mt-10 md:mt-12"><p class="text-base sm:text-lg font-serif">「今なら、自家製キッシュ付きのセットが一番人気です。」</p></div>
+    </div>
+  </section>
+
+<!-- フッター -->
+  <footer class="py-10 md:py-12 bg-sumire-dark text-white/40 text-center text-xs tracking-[0.2em] sm:tracking-[0.3em] px-4">
+    <div class="mb-5 md:mb-6">
+      <p class="mb-4">洋食 すみれ - SUMIRE -</p>
+      <a href="https://www.instagram.com/sumire_tendou/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-sumire-gold hover:border-sumire-gold/50 transition duration-300" aria-label="Instagram">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+    &copy; 2024 YOSHOKU SUMIRE ALL RIGHTS RESERVED.
+  </footer>
+
+</body>
+</html>
