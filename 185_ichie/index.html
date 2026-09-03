@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RISTORANTE ichie</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  :focus-visible { outline: 2px solid #065f46; outline-offset: 2px; }
+</style>
+</head>
+<body class="min-h-screen bg-[#fcfaf7] text-slate-800 font-serif leading-relaxed">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-stone-100 transition-all">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex flex-col">
+        <span class="text-xs tracking-[0.3em] text-stone-400 font-sans">RISTORANTE</span>
+        <span class="font-bold text-2xl text-emerald-900 tracking-tighter">ichie</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://www.instagram.com/ichie_kaminoyama/" target="_blank" rel="noopener noreferrer" class="text-stone-600 hover:text-emerald-700 transition-colors hidden sm:block">
+          <i data-lucide="instagram" style="width:22px;height:22px"></i>
+        </a>
+        <a href="tel:090-4043-6310" class="bg-emerald-800 text-white px-6 py-3 rounded-sm flex items-center gap-2 text-sm font-sans tracking-widest hover:bg-emerald-900 transition-colors shadow-lg">
+          <i data-lucide="phone" style="width:16px;height:16px"></i>
+          RESERVE
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-20 px-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <div class="w-full md:w-1/2 z-10">
+        <div class="inline-block px-3 py-1 border border-emerald-800 text-emerald-800 text-xs font-sans tracking-[0.2em] mb-6">
+          YAMAGATA KAMINOYAMA
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold text-stone-900 leading-[1.3] mb-8">
+          心震える、<br>
+          <span class="text-emerald-800">一期一会のイタリアン</span>
+        </h1>
+        <p class="text-lg text-stone-600 mb-10 font-sans leading-loose">
+          山形県上山市、静かに佇む隠れ家レストラン。<br>
+          野菜本来の甘みと、極上の牛サガリステーキ。<br>
+          一皿に込めた驚きを、驚きの価格で。
+        </p>
+        <div class="flex items-center gap-4 border-l-2 border-amber-400 pl-6 py-2">
+          <div>
+            <p class="text-xs text-stone-400 font-sans tracking-widest">LUNCH COURSE</p>
+            <p class="text-3xl font-bold text-stone-800 font-sans">¥1,200 <span class="text-sm font-normal text-stone-500">(tax in)</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 relative">
+        <div class="aspect-[4/5] rounded-t-[10rem] overflow-hidden shadow-2xl">
+          <img
+            src="images/steak.png"
+            alt="極上牛サガリステーキ"
+            class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+            loading="lazy"
+          >
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-emerald-900 text-white p-8 rounded-sm shadow-xl hidden md:block">
+          <p class="text-xs tracking-[0.2em] mb-2 opacity-70 font-sans">RECOMMENDED</p>
+          <p class="text-xl font-bold mb-1">牛サガリステーキ</p>
+          <p class="text-sm opacity-80 font-sans">旨味が凝縮された当店自慢の逸品</p>
+        </div>
+      </div>
+    </div>
+    <div class="absolute top-40 right-[-5%] text-[6rem] sm:text-[9rem] md:text-[15rem] font-black text-stone-100 -z-10 select-none whitespace-nowrap">
+      ichie
+    </div>
+  </section>
+
+  <!-- INSTAGRAM STRIP -->
+  <section class="bg-stone-900 py-10 px-6">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="text-white font-sans text-sm tracking-widest text-center md:text-left">本日のおすすめメニューはInstagramで更新中</p>
+      <a
+        href="https://www.instagram.com/ichie_kaminoyama/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full md:w-auto flex items-center justify-center gap-3 bg-white text-stone-900 py-4 px-10 font-sans font-bold tracking-widest hover:bg-stone-100 transition-all shadow-xl"
+      >
+        <i data-lucide="instagram" style="width:20px;height:20px"></i>
+        VIEW INSTAGRAM
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-5xl mx-auto space-y-32">
+
+      <div class="flex flex-col md:flex-row items-center gap-16">
+        <div class="w-full md:w-1/2">
+          <img
+            src="images/pasta.png"
+            alt="旬の野菜パスタ"
+            class="rounded-sm shadow-lg w-full aspect-video object-cover"
+            loading="lazy"
+          >
+        </div>
+        <div class="w-full md:w-1/2">
+          <span class="text-emerald-800 font-bold text-sm tracking-widest block mb-4 font-sans">01. VEGETABLE</span>
+          <h2 class="text-3xl font-bold mb-6 text-stone-800">野菜たっぷりのイタリアン。</h2>
+          <p class="text-stone-600 font-sans leading-loose">
+            農家直送の新鮮な野菜を主役に。素材の甘みとアンチョビの旨味が絶妙に絡み合うパスタは、リピーター続出の看板メニューです。
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row-reverse items-center gap-16">
+        <div class="w-full md:w-1/2">
+          <img
+            src="images/lunch.png"
+            alt="1,200円のランチフルコース"
+            class="rounded-sm shadow-lg w-full aspect-video object-cover"
+            loading="lazy"
+          >
+        </div>
+        <div class="w-full md:w-1/2">
+          <span class="text-emerald-800 font-bold text-sm tracking-widest block mb-4 font-sans">02. COST PERFORMANCE</span>
+          <h2 class="text-3xl font-bold mb-6 text-stone-800">日常に贅沢なフルコースを。</h2>
+          <p class="text-stone-600 font-sans leading-loose">
+            サラダ、スープ、パスタ、ドルチェ、コーヒーまで。一皿ずつ丁寧に提供されるフルセットを、1,200円という驚きの価格で。お腹も心も満たされる時間をお約束します。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section class="py-24 px-6 bg-[#f4f0ea] relative border-y border-stone-200">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 bg-emerald-800 text-amber-200 text-xs font-sans font-bold px-4 py-1.5 rounded-full tracking-widest mb-4 uppercase">
+          <i data-lucide="sparkles" style="width:14px;height:14px"></i> Coming Soon
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-6">
+          ichieがもっと身近になる、<br class="hidden sm:inline">新しい取り組み。
+        </h2>
+        <p class="text-stone-600 font-sans leading-relaxed text-sm md:text-base">
+          お客様の「あったらいいな」のお声にお応えして、ichieではよりワクワクしていただける新サービスや体験を準備中です。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white p-8 rounded-sm shadow-md border border-stone-200/80 flex flex-col justify-between hover:shadow-xl transition-shadow relative overflow-hidden group">
+          <div class="absolute -top-3 -right-3 bg-amber-400 text-amber-950 font-sans text-[10px] font-bold px-4 py-2 rotate-12 uppercase tracking-wider">
+            近日スタート
+          </div>
+          <div>
+            <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center mb-6 group-hover:bg-emerald-800 group-hover:text-white transition-colors">
+              <i data-lucide="instagram" style="width:24px;height:24px"></i>
+            </div>
+            <h3 class="text-xl font-bold text-stone-800 mb-3 font-serif">
+              日替わり・季節メニュー<br>リアルタイム速報
+            </h3>
+            <p class="text-stone-600 font-sans text-xs leading-relaxed mb-6">
+              「本日のパスタ」や農家さんから今朝届いた旬野菜の特別ディッシュをInstagramで毎日発信!今しか味わえない一皿を見逃さずチェックできます。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center gap-2 text-xs text-emerald-800 font-sans font-bold">
+            <i data-lucide="bell" style="width:14px;height:14px"></i> インスタフォローで通知をON!
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-sm shadow-md border border-stone-200/80 flex flex-col justify-between hover:shadow-xl transition-shadow relative overflow-hidden group">
+          <div class="absolute -top-3 -right-3 bg-amber-400 text-amber-950 font-sans text-[10px] font-bold px-4 py-2 rotate-12 uppercase tracking-wider">
+            準備中
+          </div>
+          <div>
+            <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center mb-6 group-hover:bg-emerald-800 group-hover:text-white transition-colors">
+              <i data-lucide="message-circle" style="width:24px;height:24px"></i>
+            </div>
+            <h3 class="text-xl font-bold text-stone-800 mb-3 font-serif">
+              LINE公式連携<br>・かんたん席予約
+            </h3>
+            <p class="text-stone-600 font-sans text-xs leading-relaxed mb-6">
+              スマホからチャット感覚で手軽にご予約。LINE友達限定のミニドルチェプレゼントや、雨の日特別サービスなどの限定クーポンも配信予定です。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center gap-2 text-xs text-emerald-800 font-sans font-bold">
+            <i data-lucide="heart" style="width:14px;height:14px"></i> 友達限定の贅沢を準備中
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-emerald-900 text-white p-8 rounded-sm flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl mx-auto">
+        <div class="text-center sm:text-left">
+          <p class="text-amber-300 font-sans text-xs font-bold tracking-widest mb-1">STAY TUNED!</p>
+          <h4 class="text-xl font-bold">新着情報は公式Instagramにて優先アナウンスいたします</h4>
+        </div>
+        <a
+          href="https://www.instagram.com/ichie_kaminoyama/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-amber-400 text-amber-950 hover:bg-amber-300 font-sans font-bold px-8 py-3 rounded-sm text-sm tracking-widest whitespace-nowrap transition-colors flex items-center gap-2"
+        >
+          <i data-lucide="instagram" style="width:18px;height:18px"></i>
+          フォローして最新情報を GET
+        </a>
+      </div>
+    </div>
+  </section>
+
+ <section class="py-24 px-6 bg-stone-50 overflow-hidden relative">
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="flex flex-col items-center text-center">
+        <i data-lucide="quote" class="text-emerald-200 mb-6" style="width:60px;height:60px"></i>
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-stone-800 leading-snug">「うっかり通り過ぎてしまう、<br>そんな小さなお店です」</h2>
+        <div class="text-stone-600 font-sans leading-loose space-y-6 max-w-2xl">
+          <p>
+            扉を開ければ、昭和のBGMが流れるどこか懐かしい空間。<br>
+            開店7年目、私たちは「日常の中の小さな贅沢」を大切にしてきました。
+          </p>
+          <p>
+            常連様も、初めての方も。女将のこだわりが詰まったアットホームな隠れ家で、ゆったりとしたひとときをお過ごしください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-emerald-800 font-bold text-sm tracking-widest mb-2 font-sans">VOICES</p>
+        <h2 class="text-3xl font-bold text-stone-800 italic">Happy Reviews</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="bg-[#fcfaf7] p-8 border border-stone-100 flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 mb-6 gap-0.5">
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+            </div>
+            <p class="text-stone-700 leading-relaxed mb-8 italic text-sm">「これで1200円とは安すぎです。野菜の甘みとアンチョビオイルのコクと、絶妙な味付けで美味しい!」</p>
+          </div>
+          <p class="text-xs text-stone-400 font-sans font-bold tracking-widest">— ランチ利用のお客様</p>
+        </div>
+
+        <div class="bg-[#fcfaf7] p-8 border border-stone-100 flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 mb-6 gap-0.5">
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+            </div>
+            <p class="text-stone-700 leading-relaxed mb-8 italic text-sm">「サラダ、冷製スープ、パスタ、ドルチェ、食後のコーヒー。味もちゃんとしてる。良い店に出会いました。」</p>
+          </div>
+          <p class="text-xs text-stone-400 font-sans font-bold tracking-widest">— 30代 女性</p>
+        </div>
+
+        <div class="bg-[#fcfaf7] p-8 border border-stone-100 flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 mb-6 gap-0.5">
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px" fill="currentColor"></i>
+            </div>
+            <p class="text-stone-700 leading-relaxed mb-8 italic text-sm">「常連さんが多く来られているのも納得。BGMがチェッカーズで昭和を感じるアットホームな雰囲気が最高。」</p>
+          </div>
+          <p class="text-xs text-stone-400 font-sans font-bold tracking-widest">— ご家族連れのお客様</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS -->
+  <section class="py-24 px-6 bg-emerald-950 text-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-16 tracking-widest text-center">ACCESS &amp; INFO</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        <div class="w-full h-[300px] sm:h-[380px] lg:h-[450px] rounded-sm overflow-hidden shadow-2xl border border-white/10">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3137.6160855414832!2d140.26329647477402!3d38.149119090510055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb313f181d191%3A0xc3d084bc7e0d5614!2z44Oq44K544OI44Op44Oz44OGaWNoaWU!5e0!3m2!1sja!2sjp!4v1771216495245!5m2!1sja!2sjp"
+            width="100%"
+            height="100%"
+            style="border:0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="ichie 地図"
+          ></iframe>
+        </div>
+
+        <div class="flex flex-col justify-between gap-12">
+          <div class="space-y-8 font-sans border-l border-emerald-800 pl-8">
+            <div>
+              <p class="text-emerald-500 text-xs font-bold mb-2 tracking-widest flex items-center gap-2"><i data-lucide="map-pin" style="width:14px;height:14px"></i> ADDRESS</p>
+              <p class="text-lg">山形県上山市河崎1丁目2-4</p>
+              <p class="text-sm opacity-60">かみのやま温泉駅から徒歩圏内 / 駐車場あり(店前に数台)</p>
+            </div>
+            <div>
+              <p class="text-emerald-500 text-xs font-bold mb-2 tracking-widest flex items-center gap-2"><i data-lucide="clock" style="width:14px;height:14px"></i> OPEN</p>
+              <p class="text-lg">11:00 〜 14:00</p>
+              <p class="text-sm opacity-60 italic">年中無休(お客様の状況により早開めあり)</p>
+            </div>
+            <div>
+              <p class="text-emerald-500 text-xs font-bold mb-2 tracking-widest flex items-center gap-2"><i data-lucide="phone" style="width:14px;height:14px"></i> RESERVATION</p>
+              <p class="text-3xl font-bold">090-4043-6310</p>
+            </div>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm p-8 border border-white/10 rounded-sm">
+            <h3 class="text-xl font-bold mb-6 text-emerald-400 flex items-center gap-2">
+              <i data-lucide="instagram" style="width:20px;height:20px"></i> 来店特典
+            </h3>
+            <p class="text-sm leading-loose mb-8 opacity-80 font-sans">
+              「Instagramを見た」とお伝えいただいたお客様には、その日の隠れメニューや特別な一皿をご案内することがあります。ぜひフォローして最新情報をチェックしてください。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="tel:090-4043-6310" class="flex-1 text-center bg-emerald-700 text-white py-4 font-bold tracking-widest hover:bg-emerald-600 transition-all shadow-lg rounded-sm">
+                電話で予約
+              </a>
+              <a href="https://www.instagram.com/ichie_kaminoyama/" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white text-emerald-950 py-4 font-bold tracking-widest hover:bg-emerald-50 transition-all rounded-sm">
+                公式インスタ
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-[#0a1510] text-stone-500 text-center text-xs tracking-[0.2em] font-sans">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="mb-4">RISTORANTE ichie</p>
+      <p class="opacity-50">&copy; 2024 リストランテichie. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
