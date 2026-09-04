@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mino's (ミノズ) | 山形・七日町の隠れ家シーガピータダイニング</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@400;900&family=Montserrat:wght@800&display=swap');
+
+        :root {
+            --gold: #d4af37;
+            --accent-red: #e11d48;
+            --bg-dark: #0a0a0c;
+            --bg-accent: #16161a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-dark);
+            color: #efefef;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(20, 20, 25, 0.5) 0%, rgba(10, 10, 12, 1) 100%);
+        }
+
+        .mincho { font-family: 'Shippori Mincho', serif; }
+        .montserrat { font-family: 'Montserrat', sans-serif; }
+
+        .text-gold {
+            background: linear-gradient(to bottom, #fde68a, #d4af37, #b45309);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 背景固定はiOS Safariで描画不具合が出やすいためPCのみ適用 */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.88)),
+                        url('https://r.jina.ai/i/0100f2e0324888248880d5073461756561110034502542565151525624535352');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        @media (min-width: 768px) {
+            .hero-section { background-attachment: fixed; }
+        }
+
+        .slant-divider {
+            clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .cta-gold {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.02); filter: brightness(1.2); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cta-gold { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        .review-card {
+            background: rgba(26, 26, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 30, 35, 0.8);
+            border-color: var(--gold);
+        }
+
+        .coming-card {
+            background: rgba(20, 20, 26, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.3s ease;
+        }
+        .coming-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .map-container iframe {
+            width: 100% !important;
+            height: 320px !important;
+            border-radius: 1.25rem;
+            filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        @media (min-width: 768px) {
+            .map-container iframe { height: 400px !important; border-radius: 1.5rem; }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* focus visibility for accessibility */
+        a:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FVエリア -->
+    <header class="hero-section min-h-[100svh] flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-amber-500/10 blur-[100px] md:blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-0 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-rose-500/10 blur-[100px] md:blur-[120px] rounded-full"></div>
+
+        <div class="z-10 max-w-5xl">
+            <h1 class="text-4xl sm:text-5xl md:text-8xl font-black mb-6 md:mb-8 leading-none text-white tracking-tighter">
+                <span class="text-xs sm:text-sm md:text-xl block mb-3 mincho tracking-[0.35em] md:tracking-[0.5em] font-light text-slate-300">路地裏の秘密基地</span>
+                <span class="text-gold uppercase montserrat italic">Mino's</span><br>
+                <span class="mincho text-2xl sm:text-3xl md:text-5xl mt-4 md:mt-6 block tracking-widest">罪深き、チーズの洪水。</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12 mt-10 md:mt-16">
+                <div class="relative w-full max-w-xs sm:max-w-sm group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-gold to-amber-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative rounded-lg overflow-hidden border border-white/10 shadow-2xl bg-black aspect-square">
+                        <img src="images/pizza.jpg" alt="名物シカゴピザ" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="text-left max-w-xs sm:max-w-sm">
+                    <p class="text-base sm:text-lg md:text-xl leading-loose mincho text-slate-100 border-l-2 border-gold pl-5 md:pl-6">
+                        大人たちが童心に返り、<br>
+                        鉄道模型を眺めながら<br>
+                        美酒と名物に酔いしれる。<br>
+                        ここは、秘密の社交場。
+                    </p>
+                    <div class="mt-8 md:mt-10">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="flex text-gold text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gold font-bold text-sm">Googleクチコミ平均 4.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 md:bottom-10 animate-bounce text-gold opacity-50">
+            <i class="fas fa-chevron-down text-2xl md:text-3xl"></i>
+        </div>
+    </header>
+
+    <!-- 2. CTA 1回目 -->
+    <div class="relative z-20 mt-16 md:mt-24 mb-24 md:mb-40 px-4">
+        <div class="max-w-md mx-auto">
+            <a href="tel:0236245338" class="cta-gold block text-center py-5 rounded-2xl shadow-2xl group transition-all relative overflow-hidden">
+                <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <span class="relative z-10 text-xs block mb-1 opacity-90 font-bold tracking-widest text-white">今すぐ隠れ家の空席を確認</span>
+                <span class="relative z-10 text-xl md:text-2xl font-black text-white italic montserrat break-keep"><i class="fas fa-phone-alt mr-2 text-lg"></i>023-624-5338</span>
+                <span class="relative z-10 block text-[10px] mt-1 opacity-80 text-white font-bold">火曜定休 / 深夜まで営業</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. 自己紹介 -->
+    <section class="py-16 md:py-24 px-4 relative">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-14 md:gap-20 items-center">
+            <div class="w-full md:w-1/2 relative">
+                <div class="hidden md:block absolute -top-16 -left-10 text-[7rem] lg:text-[10rem] font-black text-white/5 select-none montserrat italic">VIBE</div>
+                <div class="relative z-10">
+                    <span class="text-gold font-bold tracking-widest mb-4 block text-sm">AUTHENTIC STORY</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 mincho leading-[1.3] text-white">
+                        山形の夜を、<br><span class="italic">Dramatic</span> に。
+                    </h3>
+                    <div class="space-y-6 md:space-y-8 text-slate-300 text-base md:text-lg leading-loose">
+                        <p>
+                            七日町の路地の奥。一歩足を踏み入れれば、そこはレトロなBGMと鉄道模型が巡りなす「大人のための秘密基地」。
+                        </p>
+                        <p>
+                            ご夫婦で長年培ってきた温かなおもてなしと、最新のタッチパネル注文が生む快適な距離感。名物のシカゴピザを頬張りながら、あなただけの秘密の夜を愉しんでください。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 relative">
+                <div class="relative z-10 grid grid-cols-12 gap-3 md:gap-4">
+                    <div class="col-span-8 md:col-span-7 aspect-[3/4] bg-slate-800 rounded-2xl overflow-hidden border border-white/10 rotate-[-2deg] shadow-2xl">
+                        <img src="images/bar.jpg" class="w-full h-full object-cover" loading="lazy" alt="店内の様子">
+                    </div>
+                    <div class="col-span-8 col-start-5 md:col-span-7 md:col-start-6 -mt-16 md:-mt-32 aspect-square bg-slate-800 rounded-2xl overflow-hidden border-4 border-gold/30 rotate-[3deg] shadow-2xl">
+                        <img src="images/roast.png" class="w-full h-full object-cover" loading="lazy" alt="名物メニュー">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 口コミ -->
+    <section class="py-16 md:py-24 bg-black/40 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-black mb-12 md:mb-16 mincho text-white italic">
+                Voices of <span class="text-gold">Mino's.</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+                <div class="review-card p-8 md:p-10 rounded-2xl shadow-xl">
+                    <div class="flex text-gold mb-5 md:mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="font-bold text-lg md:text-xl mb-5 md:mb-6 text-white mincho leading-tight">「レベちすぎる…！」</p>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                        ピザとロートビーフ、どっちもガチでおいしすぎておかわりしたかったレベル。鉄道が走るBarらしくてめちゃくちゃ落ち着く。
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-white/10 pt-5 md:pt-6">
+                        <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-xs text-white shrink-0">20s</div>
+                        <p class="text-xs text-slate-500">20代 女性 / 常連客</p>
+                    </div>
+                </div>
+
+                <div class="review-card p-8 md:p-10 rounded-2xl shadow-xl md:mt-6">
+                    <div class="flex text-gold mb-5 md:mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="font-bold text-lg md:text-xl mb-5 md:mb-6 text-white mincho leading-tight">「最高の隠れ家感」</p>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                        雰囲気落ち着いていてよき。路地の奥にある感じが隠れ家感あって素敵。シカゴピザとシュラスコが美味しかった。
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-white/10 pt-5 md:pt-6">
+                        <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-xs text-white shrink-0">30s</div>
+                        <p class="text-xs text-slate-500">30代 カップル / デート利用</p>
+                    </div>
+                </div>
+
+                <div class="review-card p-8 md:p-10 rounded-2xl shadow-xl">
+                    <div class="flex text-gold mb-5 md:mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="font-bold text-lg md:text-xl mb-5 md:mb-6 text-white mincho leading-tight">「感動のピザ体験」</p>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                        シカゴピザとビールがたまらん！鉄道模型が走る店内のワクワク感は異常。また行きたいと思います。
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-white/10 pt-5 md:pt-6">
+                        <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-xs text-white shrink-0">40s</div>
+                        <p class="text-xs text-slate-500">40代 男性 / 飲み会利用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 特典/オファー -->
+    <section class="py-16 md:py-24 px-4 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-gold/5 rounded-full blur-[100px] md:blur-[150px]"></div>
+        <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-10 md:p-16 rounded-[2rem] md:rounded-[3rem] border-2 border-gold/20 relative z-10 shadow-2xl">
+            <div class="text-center">
+                <span class="text-gold font-bold tracking-[0.3em] md:tracking-[0.5em] mb-5 md:mb-6 block text-sm">PREMIUM RESERVE</span>
+                <h3 class="text-2xl sm:text-3xl md:text-5xl font-black mb-10 md:mb-12 mincho text-white leading-tight">
+                    特別な夜を、確実に。
+                </h3>
+                <ul class="text-left space-y-6 md:space-y-8 max-w-lg mx-auto">
+                    <li class="flex items-start gap-5 md:gap-6 group">
+                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition duration-300 shrink-0">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="font-bold text-base md:text-lg text-white">シカゴピザのお取り置き可能<br><span class="text-sm text-slate-400 font-normal">一番人気メニューを確実にお楽しみいただけます。</span></p>
+                    </li>
+                    <li class="flex items-start gap-5 md:gap-6 group">
+                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition duration-300 shrink-0">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="font-bold text-base md:text-lg text-white">路地裏ナビゲーション<br><span class="text-sm text-slate-400 font-normal">迷いやすい隠れ家立地。お電話で丁寧にご案内します。</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5. COMING SOON セクション -->
+    <section class="py-16 md:py-24 bg-gradient-to-b from-black/60 to-zinc-950 px-4 relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 border border-gold/40 text-gold text-xs font-bold tracking-widest uppercase mb-4 montserrat">
+                    <i class="fas fa-rocket mr-2"></i>New Initiatives
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mincho text-white italic tracking-tight">
+                    COMING <span class="text-gold">SOON</span>
+                </h2>
+                <p class="text-slate-400 text-sm md:text-base mt-4 max-w-xl mx-auto">
+                    お客様からの「あったらいいな」をカタチに。もっと快適に、もっと身近にMino'sをご利用いただくための準備を進めています。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: ハーフサイズピザ -->
+                <div class="coming-card p-7 md:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-gold/10 rounded-full blur-xl"></div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl mb-6">
+                            <i class="fas fa-pizza-slice"></i>
+                        </div>
+                        <span class="text-xs text-gold font-bold tracking-widest uppercase block mb-2">01. HALF SIZE PIZZA</span>
+                        <h3 class="text-xl font-bold text-white mb-4 mincho">おひとり様・少人数歓迎！<br>ハーフサイズピザ導入</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            「1人だとシカゴピザのボリュームが心配」「色々な味を少しずつ試したい」の声にお応えし、待望のハーフサイズ選択が可能に！ソロ飲みや少人数デートにもぴったりです。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-amber-400/80 font-bold">
+                        <span><i class="far fa-clock mr-1"></i>順次スタート予定</span>
+                        <span class="bg-amber-500/20 px-2.5 py-1 rounded-full text-[10px]">開発中</span>
+                    </div>
+                </div>
+
+                <!-- サービス2: スマホテイクアウト予約 -->
+                <div class="coming-card p-7 md:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-amber-500/10 rounded-full blur-xl"></div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl mb-6">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <span class="text-xs text-gold font-bold tracking-widest uppercase block mb-2">02. MOBILE ORDER</span>
+                        <h3 class="text-xl font-bold text-white mb-4 mincho">事前スマホ決済で、<br>スマートテイクアウト</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            名物メニューをお家でも手軽に。WEBやLINEから事前に受け取り時間を指定・決済できるテイクアウトオーダーシステムを準備中です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-amber-400/80 font-bold">
+                        <span><i class="far fa-clock mr-1"></i>順次スタート予定</span>
+                        <span class="bg-amber-500/20 px-2.5 py-1 rounded-full text-[10px]">準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. アクセス -->
+    <section class="py-16 md:py-24 bg-zinc-950/80 px-4">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-center text-xl md:text-2xl font-black mb-10 md:mb-12 text-gold mincho tracking-widest uppercase italic">ACCESS MAP</h2>
+            <div class="map-container shadow-2xl overflow-hidden">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.1223170225667!2d140.34078337478007!3d38.25346908444331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb6020bcb64db%3A0xc59171670581a76f!2z44Of44OO44K6KE1pbm_igJlzKQ!5e0!3m2!1sja!2sjp!4v1771204337953!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mino's 地図"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. フッター -->
+    <footer class="py-16 md:py-24 px-4 bg-black text-center relative overflow-hidden border-t border-white/5">
+        <div class="absolute inset-0 flex items-center justify-center opacity-[0.05] select-none pointer-events-none">
+            <span class="text-[22vw] md:text-[25vw] font-black montserrat tracking-tighter">HIDEOUT</span>
+        </div>
+
+        <div class="max-w-2xl mx-auto z-10 relative">
+            <p class="text-gold font-bold mb-5 md:mb-6 tracking-widest uppercase text-xs">Welcome to the secret night.</p>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-10 md:mb-12 mincho text-white leading-tight">誰にも教えたくない、<br>山形の隠れ家へ。</h2>
+
+            <a href="tel:0236245338" class="cta-gold block py-6 md:py-8 rounded-3xl text-xl sm:text-2xl md:text-3xl font-black mb-12 md:mb-16 transition-transform text-white italic break-keep">
+                <i class="fas fa-phone-alt mr-4 md:mr-5"></i>予約・空席確認
+            </a>
+
+            <div class="text-left space-y-5 md:space-y-6 text-slate-300 glass-panel p-6 sm:p-8 rounded-3xl border border-white/10">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-10">
+                    <span class="w-24 text-gold font-bold shrink-0">ADDRESS</span>
+                    <span class="text-sm sm:text-base">〒990-0042 山形県山形市七日町4丁目9-25</span>
+                </div>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-10 border-t border-white/5 pt-5 md:pt-6">
+                    <span class="w-24 text-gold font-bold shrink-0">TEL</span>
+                    <a href="tel:0236245338" class="text-lg sm:text-xl font-black underline hover:text-gold transition">023-624-5338</a>
+                </div>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-10 border-t border-white/5 pt-5 md:pt-6">
+                    <span class="w-24 text-gold font-bold shrink-0">BUSINESS</span>
+                    <span class="text-sm sm:text-base">18:00〜1:00 / 不定休</span>
+                </div>
+            </div>
+
+            <div class="mt-12 md:mt-16 flex justify-center gap-8">
+                <a href="https://www.facebook.com/hanakoujisouth/" target="_blank" rel="noopener" class="w-14 h-14 rounded-full border border-white/10 glass-panel flex items-center justify-center hover:bg-gold hover:text-black transition-all text-white text-xl" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+
+            <p class="mt-12 md:mt-16 text-[10px] sm:text-xs text-slate-600 tracking-[0.3em] md:tracking-[0.5em] uppercase montserrat">&copy; Mino's Dining Bar All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
