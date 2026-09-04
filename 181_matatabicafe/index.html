@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>マタタビcafe | 山形市の隠れ家生パスタ・看板猫の店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7f5539;
+            --accent: #d4a373;
+            --bg-light: #fefae0;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fffcf2;
+            color: #252422;
+        }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        .font-maru { font-family: 'Zen Maru Gothic', serif; }
+
+        /* スマホでは縦書きをやめて横書きにする（可読性・レイアウト崩れ対策） */
+        .vertical-text {
+            writing-mode: horizontal-tb;
+        }
+        @media (min-width: 768px) {
+            .vertical-text {
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+            }
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.05) 100%);
+        }
+        @media (min-width: 768px) {
+            .hero-gradient {
+                background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+            }
+        }
+
+        .brush-underline {
+            background: linear-gradient(transparent 70%, #d4a373 70%);
+        }
+
+        .cta-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+        }
+
+        .ornament-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        .ornament-line::before, .ornament-line::after {
+            content: "";
+            height: 1px;
+            background-color: var(--accent);
+            flex-grow: 1;
+        }
+
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        @media (hover: hover) {
+            .img-container:hover img {
+                transform: scale(1.05);
+            }
+        }
+
+        .text-matatabi-brown { color: var(--primary); }
+
+        /* タップ領域を広めに（スマホでの誤タップ防止） */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] md:h-screen w-full overflow-hidden bg-black">
+        <img src="images/pepeloncino.png" alt="自家製生パスタ" class="absolute inset-0 w-full h-full object-cover opacity-80">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <div class="relative z-10 h-full min-h-[100svh] md:min-h-0 flex flex-col justify-end md:justify-center px-5 sm:px-8 md:px-20 pb-28 md:pb-0">
+            <div class="flex flex-col-reverse md:flex-row-reverse items-start gap-4 md:gap-12">
+                <h1 class="vertical-text text-white font-serif text-[2rem] leading-[1.35] tracking-wide md:text-5xl md:leading-[1.6] md:tracking-[0.15em] md:max-h-[80vh]">
+                    <span class="brush-underline">麺</span>を打ちさぶる、<br class="hidden md:block">
+                    <span class="text-amber-400">究極</span>の生パスタ。
+                </h1>
+                <div class="vertical-text text-white text-sm sm:text-base md:text-xl mt-0 md:mt-8 font-light tracking-wide md:tracking-widest opacity-90">
+                    山形市大野目、看板猫が待つ<br class="hidden md:block">
+                    唯一無二の隠れ家。
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute right-4 top-4 sm:right-6 sm:top-6 md:right-20 md:top-20 bg-amber-500 text-white rounded-full w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 flex flex-col items-center justify-center border-4 border-white shadow-xl rotate-12">
+            <span class="text-[10px] sm:text-xs font-bold">クチコミ</span>
+            <span class="text-xl sm:text-2xl md:text-4xl font-black">★4.8</span>
+            <span class="text-[8px] sm:text-[10px] text-center leading-tight px-1">山形市 生パスタ部門</span>
+        </div>
+    </header>
+
+    <!-- 1回目CTA -->
+    <section class="bg-amber-100 py-8 sm:py-10 border-y-4 border-amber-200">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <p class="text-amber-800 font-bold mb-4 text-sm sm:text-base">＼ 週末は予約・確認が確実です ／</p>
+            <a href="tel:0236318556" class="cta-float bg-red-700 hover:bg-red-800 active:bg-red-900 text-white font-bold py-4 px-6 sm:py-5 sm:px-10 rounded-xl inline-flex items-center gap-3 sm:gap-4 text-lg sm:text-xl md:text-3xl shadow-2xl transition-all w-full sm:w-auto justify-center">
+                <span>📞</span>
+                <span>今すぐ空席を確認する</span>
+            </a>
+            <p class="mt-4 text-xs sm:text-sm text-amber-900">電話番号：023-631-8556（定休日：火曜日）</p>
+        </div>
+    </section>
+
+   <section class="py-16 sm:py-24 px-4 bg-paper">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 sm:mb-16">
+            <h2 class="ornament-line text-2xl sm:text-3xl md:text-5xl font-serif font-black text-matatabi-brown mb-4">
+                三つのこだわり
+            </h2>
+            <p class="text-accent font-bold tracking-widest text-xs sm:text-sm" style="color: var(--accent);">WHY MATATABI CAFE?</p>
+        </div>
+
+        <div class="space-y-12 sm:space-y-16">
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-sm relative border border-gray-100 flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
+                <div class="bg-[color:var(--primary)] text-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center font-serif text-xl sm:text-2xl rounded-xl shrink-0 shadow-md">壱</div>
+                <div>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-4 sm:mb-6 border-b-2 border-[color:var(--accent)] pb-2">「乾麺」では到達できない<br>究極の弾力と一体感。</h3>
+                    <p class="leading-loose text-base sm:text-lg text-gray-700">
+                        当店のパスタは全て自家製の生パスタ。もちもちとした麺ごたえは、厳選した小麦の配合と熟成が生み出します。ソースとの絡み具合は、一口食べればその違いに驚くはずです。
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-sm relative border border-gray-100 flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
+                <div class="bg-[color:var(--primary)] text-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center font-serif text-xl sm:text-2xl rounded-xl shrink-0 shadow-md">弐</div>
+                <div>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-4 sm:mb-6 border-b-2 border-[color:var(--accent)] pb-2">身体が喜ぶ、<br>スパイシーな決意。</h3>
+                    <p class="leading-loose text-base sm:text-lg text-gray-700">
+                        イチオシの「玄米ドライカレー」。プチプチとした玄米の食感と、じっくり煮込んだミートの深いコク。スパイスの香りが鼻を抜け、食べ終えた後の満足感は格別です。
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-sm relative border border-gray-100 flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
+                <div class="bg-[color:var(--primary)] text-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center font-serif text-xl sm:text-2xl rounded-xl shrink-0 shadow-md">参</div>
+                <div>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-4 sm:mb-6 border-b-2 border-[color:var(--accent)] pb-2">日常を忘れる、<br>猫と絹の隠れ家。</h3>
+                    <p class="leading-loose text-base sm:text-lg text-gray-700">
+                        ドアにしがみつく看板猫の「美人さん」。レトロな小物や緑玉に囲まれた店内は、まるで時間が止まったような静やかさ。日常の疲れをリセットできる、あなただけの場所です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Coming Soon セクション -->
+    <section class="py-16 sm:py-20 bg-amber-900 text-amber-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4a373_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="inline-block bg-amber-500 text-stone-900 text-xs font-black px-4 py-1.5 rounded-full tracking-widest uppercase mb-3 shadow-lg">
+                    Coming Soon
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-amber-100">
+                    広がる、マタタビの時間。
+                </h2>
+                <p class="text-amber-300/80 mt-3 text-sm md:text-base">より身近に、もっと便利に。準備中の新しいサービスをご紹介します。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                <!-- 1. デリバリーサービス連携 -->
+                <div class="bg-amber-950/60 border border-amber-700/50 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-amber-500 transition-all shadow-xl">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-amber-800/80 text-amber-300 flex items-center justify-center text-2xl mb-5 sm:mb-6 shadow-inner">
+                            🛵
+                        </div>
+                        <span class="text-xs text-amber-400 font-bold tracking-wider uppercase block mb-1">Service 01</span>
+                        <h3 class="text-lg sm:text-xl font-bold font-serif mb-3 text-amber-100">フードデリバリー導入<br><span class="text-sm font-sans font-normal text-amber-300">（Uber Eats / 出前館 順次対応予定）</span></h3>
+                        <p class="text-amber-200/80 text-sm leading-relaxed mb-6">
+                            大好評のテイクアウトに加え、ウーバーイーツなどの宅配サービスを開始予定！ご自宅やオフィスでも、できたての生パスタやスパイシーなカレーをお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-800/60 flex items-center justify-between text-xs text-amber-400 font-bold">
+                        <span>中食の選択肢がさらに拡大！</span>
+                        <span class="bg-amber-800 px-2.5 py-1 rounded-md text-[10px] text-amber-200">順次スタート</span>
+                    </div>
+                </div>
+
+                <!-- 2. 公式オンラインショップ -->
+                <div class="bg-amber-950/60 border border-amber-700/50 rounded-2xl p-6 sm:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-amber-500 transition-all shadow-xl">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-amber-800/80 text-amber-300 flex items-center justify-center text-2xl mb-5 sm:mb-6 shadow-inner">
+                            📦
+                        </div>
+                        <span class="text-xs text-amber-400 font-bold tracking-wider uppercase block mb-1">Service 02</span>
+                        <h3 class="text-lg sm:text-xl font-bold font-serif mb-3 text-amber-100">自家製パスタ・ソース<br><span class="text-sm font-sans font-normal text-amber-300">全国配送オンラインショップ</span></h3>
+                        <p class="text-amber-200/80 text-sm leading-relaxed mb-6">
+                            「マタタビcafeの味をギフトや自宅で楽しみたい」という声にお応えし、冷凍生パスタ・自家製ソースセットやオリジナルブレンド珈琲豆の通販を準備中です。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-amber-800/60 flex items-center justify-between text-xs text-amber-400 font-bold">
+                        <span>全国どこでもお届け</span>
+                        <span class="bg-amber-800 px-2.5 py-1 rounded-md text-[10px] text-amber-200">準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-16 sm:py-24 bg-gray-900 text-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-center text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-10 sm:mb-16 underline decoration-amber-500">お客様の感動の声</h2>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                <div class="bg-gray-800 p-6 sm:p-8 border-l-4 border-amber-500 italic">
+                    <p class="text-amber-400 font-bold mb-4 text-sm sm:text-base">「私の知る限り、生パスタで最高のお店」</p>
+                    <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                        もちもちかつ歯応えのある麺は乾麺には決して出せない特徴。ソースのクオリティは全て高く、パスタと食材の一体感はとても高い。（★5・30代女性）
+                    </p>
+                </div>
+                <div class="bg-gray-800 p-6 sm:p-8 border-l-4 border-amber-500 italic">
+                    <p class="text-amber-400 font-bold mb-4 text-sm sm:text-base">「ナポリン辛め、すんごく旨かった‼️」</p>
+                    <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                        ドアにしがみついてる猫ちゃん、何を探してるのかな？落ち着く時間、美味しいパスタ最高だね。また伺います。（★4・40代男性）
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス（Googleマップ統合） -->
+    <section class="py-16 sm:py-24 px-4 bg-amber-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-matatabi-brown">Access &amp; Info</h2>
+                <p class="text-sm sm:text-base font-bold" style="color: var(--accent);">店舗のご案内</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
+                <div class="lg:w-1/3 p-6 sm:p-10 bg-white">
+                    <div class="space-y-6 sm:space-y-8">
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold tracking-widest mb-2" style="color: var(--accent);">ADDRESS</p>
+                            <p class="text-base sm:text-lg font-bold text-matatabi-brown">〒990-0073<br>山形県山形市大野目2丁目5-38</p>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold tracking-widest mb-2" style="color: var(--accent);">TEL</p>
+                            <a href="tel:0236318556" class="text-xl sm:text-2xl font-bold text-matatabi-brown block">023-631-8556</a>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold tracking-widest mb-2" style="color: var(--accent);">PARKING</p>
+                            <p class="text-sm leading-relaxed text-matatabi-brown font-bold">
+                                店前駐車場は奥行きがタイトです。コンパクトカーでのご来店、または隣の敷地の宅用スペースをご利用ください。
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold tracking-widest mb-2" style="color: var(--accent);">CLOSED</p>
+                            <p class="font-bold text-matatabi-brown">毎週火曜日</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-2/3 h-[280px] sm:h-[350px] lg:h-[450px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.0914079299255!2d140.35596367478144!3d38.2773738830517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc9a49918fcf5%3A0x17e70c67bcd15baa!2z44Oe44K_44K_44OTY2FmZQ!5e0!3m2!1sja!2sjp!4v1771206560209!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="py-20 sm:py-32 relative overflow-hidden bg-black text-white text-center">
+        <img src="images/neko.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40">
+        <div class="relative z-10 px-4">
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-serif font-black mb-6 sm:mb-8 leading-tight">
+                猫とパスタの、<br>幸せな隠れ家へ。
+            </h2>
+            <p class="text-base sm:text-xl md:text-2xl mb-8 sm:mb-12 opacity-80">
+                ドアを開ければ、そこは日常を忘れる「マタタビの時間」
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                <a href="tel:0236318556" class="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white font-bold py-5 px-8 sm:py-6 sm:px-16 rounded-full text-lg sm:text-2xl shadow-2xl transition-all">
+                    📞 空席を確認・予約
+                </a>
+                <a href="https://m.facebook.com/matatabicafe2007" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 active:bg-white/30 text-white font-bold py-5 px-8 sm:py-6 sm:px-16 rounded-full text-lg sm:text-2xl border border-white/30 backdrop-blur-md transition-all">
+                    猫ちゃんの日常を見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-950 py-10 text-center text-gray-500 text-xs px-4">
+        <p>© 2024 マタタビcafe All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
