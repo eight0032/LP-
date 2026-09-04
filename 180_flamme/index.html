@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMME STORE | 山形市・石窯ピザと厳選ワインの店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --flamme-red: #b01c1c;
+            --flamme-gold: #c5a059;
+            --flamme-dark: #1a1a1a;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        .font-heading { font-family: 'Noto Serif JP', serif; }
+        .font-accent { font-family: 'Playfair Display', serif; }
+
+        .bg-flamme-red { background-color: var(--flamme-red); }
+        .text-flamme-red { color: var(--flamme-red); }
+        .border-flamme-gold { border-color: var(--flamme-gold); }
+
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png');
+            background-color: #fdfaf5;
+        }
+
+        .shining-button {
+            background: linear-gradient(135deg, #d42a2a, var(--flamme-red));
+            box-shadow: 0 4px 15px rgba(176, 28, 28, 0.4);
+            transition: all 0.3s ease;
+        }
+        .shining-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(176, 28, 28, 0.6);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+        }
+
+        /* モバイル用固定CTAの高さ分、本文最下部に余白を確保 */
+        @media (max-width: 767px) {
+            body { padding-bottom: 76px; }
+        }
+    </style>
+</head>
+<body class="bg-paper text-stone-800 antialiased">
+
+    <!-- TOP ANNOUNCEMENT -->
+    <div class="bg-black text-white py-2 text-center text-xs tracking-widest font-bold px-4">
+        山形市創業アワード 飲食業部門 最優秀賞受賞店
+    </div>
+
+    <!-- FV AREA -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-stone-900">
+            <img id="img-fv" src="images/pizza.png" alt="石窯で焼く本格ピザ" class="w-full h-full object-cover opacity-60">
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4">
+            <div class="inline-block border border-white/40 px-6 py-2 mb-6 backdrop-blur-sm">
+                <span class="tracking-[0.3em] text-sm md:text-base">PIZZA & WINE STORE</span>
+            </div>
+            <h1 class="font-heading text-4xl md:text-6xl mb-4 leading-tight">
+                <span class="text-xl md:text-3xl block mb-2 font-light">極限まで、もちもち。</span>
+                石窯ピッツァの<br><span class="text-flamme-red">新境地。</span>
+            </h1>
+            <p class="text-base md:text-xl font-medium mb-10 text-stone-200">地元山形の小麦と、職人の情熱が宿る一枚</p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div class="bg-white/10 backdrop-blur-md p-6 rounded-sm border border-white/20">
+                    <p class="text-xs font-bold text-yellow-500 mb-1">【WEB限定オファー】</p>
+                    <p class="text-lg">LINE登録でテイクアウト<span class="text-2xl font-bold text-yellow-500">5%OFF</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center">
+            <span class="text-[10px] tracking-widest uppercase mb-2">Scroll</span>
+            <div class="w-px h-12 bg-gradient-to-b from-white to-transparent"></div>
+        </div>
+    </header>
+
+    <!-- FLOATING CTA (Mobile Optimized) -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/90 backdrop-blur-md border-t border-stone-200 p-3 flex gap-2">
+        <a href="tel:0236665445" class="flex-1 bg-flamme-red text-white py-4 rounded-full font-bold text-center text-sm shadow-lg">
+            電話で予約・注文
+        </a>
+        <a href="https://www.instagram.com/_flamme_store_/" class="flex-1 bg-black text-white py-4 rounded-full font-bold text-center text-sm shadow-lg">
+            Instagram
+        </a>
+    </div>
+
+    <!-- STICKY HEADER FOR DESKTOP -->
+    <nav class="hidden md:block sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-heading text-2xl tracking-tighter">FLAMME STORE</div>
+            <div class="flex gap-8 items-center font-bold text-sm">
+                <a href="#concept" class="hover:text-flamme-red transition">こだわり</a>
+                <a href="#menu" class="hover:text-flamme-red transition">メニュー</a>
+                <a href="#access" class="hover:text-flamme-red transition">アクセス</a>
+                <a href="tel:0236665445" class="bg-flamme-red text-white px-6 py-2 rounded-full shining-button">
+                    予約・注文 023-666-5445
+                </a>
+            </div>
+        </div>
+    </nav>
+
+  <!-- SECTION 1: THE THREE STRENGTHS -->
+   <section id="concept" class="py-20 md:py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 md:mb-20">
+                <span class="font-accent text-flamme-red text-2xl italic">Our Strength</span>
+                <h2 class="font-heading text-3xl md:text-4xl mt-2">フラムストアが選ばれる理由</h2>
+                <div class="w-12 h-1 bg-flamme-red mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+                <div class="text-center group">
+                    <div class="relative inline-block mb-3 md:mb-4">
+                        <span class="bg-flamme-red text-white w-10 h-10 inline-flex items-center justify-center font-heading text-xl rounded-full">01</span>
+                    </div>
+                    <h3 class="font-heading text-xl md:text-2xl mb-3 md:mb-4">地元生小麦の黄金比</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm">山形県産小麦を独自ブレンド。噛むほどに旨みが広がり、耳まで美味しい「究極のもちもち食感」を実現しました。</p>
+                </div>
+                <div class="text-center group">
+                    <div class="relative inline-block mb-3 md:mb-4">
+                        <span class="bg-flamme-red text-white w-10 h-10 inline-flex items-center justify-center font-heading text-xl rounded-full">02</span>
+                    </div>
+                    <h3 class="font-heading text-xl md:text-2xl mb-3 md:mb-4">500℃の石窯で一気に</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm">本格的な石窯を使用し、高温で短時間焼き上げることで水分を閉じ込めます。外はサクッ、中はモチッとしたコントラストが自慢です。</p>
+                </div>
+                <div class="text-center group">
+                    <div class="relative inline-block mb-3 md:mb-4">
+                        <span class="bg-flamme-red text-white w-10 h-10 inline-flex items-center justify-center font-heading text-xl rounded-full">03</span>
+                    </div>
+                    <h3 class="font-heading text-xl md:text-2xl mb-3 md:mb-4">お家でイタリアン体験</h3>
+                    <p class="text-stone-600 leading-relaxed text-sm">ピザのテイクアウトはもちろん、店内では厳選ワインや生ハム、チーズも販売。帰宅した瞬間、そこがレストランに変わります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ICHIOSHI (MARGHERITA) -->
+    <section id="menu" class="py-20 md:py-24 bg-stone-900 text-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+            <div class="w-full md:w-1/2 relative max-w-md md:max-w-none mx-auto">
+                <div class="hidden md:block absolute -top-10 -left-10 w-40 h-40 border-l-2 border-t-2 border-flamme-gold z-0"></div>
+                <div class="relative z-10 aspect-square rounded-lg shadow-2xl overflow-hidden bg-stone-800">
+                    <img id="img-margherita" src="images/marugelita.png" alt="極上マルゲリータ" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-flamme-red p-6 md:p-8 rounded-full z-20 text-center animate-pulse">
+                    <p class="text-xs font-bold">看板商品</p>
+                    <p class="text-xl md:text-2xl font-heading">マルゲリータ</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="text-flamme-gold tracking-widest font-bold">SIGNATURE DISH</span>
+                <h2 class="font-heading text-3xl md:text-6xl mt-4 mb-8 leading-tight italic">まずはこれを食べてほしい。</h2>
+                <p class="text-stone-400 text-base md:text-lg leading-relaxed mb-8">
+                    シンプルだからこそ誤魔化せない。フレッシュなトマトソース、イタリア直輸入のモッツァレラチーズ、誇り自家栽培のような香り高いバジル。フラムの「すべて」がこの一枚に詰まっています。
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 text-lg md:text-xl">
+                        <span class="w-12 h-px bg-flamme-gold shrink-0"></span>
+                        <span>モチモチ生地の確信</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-lg md:text-xl">
+                        <span class="w-12 h-px bg-flamme-gold shrink-0"></span>
+                        <span>絶妙な塩加減とオリーブオイル</span>
+                    </div>
+                </div>
+                <div class="mt-12">
+                    <a href="tel:0236665445" class="shining-button inline-block px-10 py-5 rounded-full text-lg md:text-xl font-bold text-white">
+                        今すぐ電話で予約
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: COMING SOON -->
+    <section class="py-16 md:py-20 bg-stone-950 text-white border-t border-b border-stone-800 relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-flamme-red/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 max-w-5xl relative z-10">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-flamme-gold/20 text-flamme-gold text-xs font-bold tracking-widest rounded-full uppercase mb-3 border border-flamme-gold/30">
+                    Coming Soon
+                </span>
+                <h2 class="font-heading text-2xl md:text-4xl">ワイン選びにもう迷わない。<br><span class="text-flamme-gold">「極上ペアリングセット」</span>準備中!</h2>
+                <p class="text-stone-400 text-sm md:text-base mt-4 max-w-2xl mx-auto">
+                    「ピザと一緒に飲むワイン、どれを選べばいいか分からない…」そんな声にお応えして、ソムリエ厳選ワインと相性抜群のサイドメニューがセットになったスペシャルメニューを開発中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-stone-900/80 border border-stone-800 p-6 md:p-8 rounded-2xl relative flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 bg-stone-800 text-stone-300 text-[10px] px-3 py-1 rounded-full font-bold">
+                        開発中プラン 01
+                    </div>
+                    <div>
+                        <div class="text-flamme-gold font-accent text-lg italic mb-1">Classic Red</div>
+                        <h3 class="font-heading text-xl md:text-2xl mb-3">王道マルゲリータ & 熟成キャンティセット</h3>
+                        <p class="text-stone-400 text-xs leading-relaxed mb-6">
+                            フレッシュなトマトソースの酸味と、キャンティのフルーティな渋みが完璧に調和。自家熟生ハムサラダもセットになった至福のトリオ。
+                        </p>
+                    </div>
+                    <div class="bg-stone-950 p-4 rounded-xl border border-stone-800/60">
+                        <div class="text-xs font-bold text-stone-300 mb-2">セット内容(例)</div>
+                        <ul class="text-xs text-stone-400 space-y-1">
+                            <li>・ 焼きたてマルゲリータ (1枚)</li>
+                            <li>・ 厳選赤ワイン (ボトル750ml)</li>
+                            <li>・ 自家熟生ハムとフレッシュルッコラのサラダ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-stone-900/80 border border-stone-800 p-6 md:p-8 rounded-2xl relative flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 bg-stone-800 text-stone-300 text-[10px] px-3 py-1 rounded-full font-bold">
+                        開発中プラン 02
+                    </div>
+                    <div>
+                        <div class="text-flamme-gold font-accent text-lg italic mb-1">Rich White</div>
+                        <h3 class="font-heading text-xl md:text-2xl mb-3">4種チーズ & 濃厚白ワイン・蜂蜜セット</h3>
+                        <p class="text-stone-400 text-xs leading-relaxed mb-6">
+                            ゴルゴンゾーラのコクと蜂蜜の甘みに、樽香の効いた白ワインがベストマッチ。大人のためのプレミアムな夜を演出します。
+                        </p>
+                    </div>
+                    <div class="bg-stone-950 p-4 rounded-xl border border-stone-800/60">
+                        <div class="text-xs font-bold text-stone-300 mb-2">セット内容(例)</div>
+                        <ul class="text-xs text-stone-400 space-y-1">
+                            <li>・ クアトロフォルマッジ+有機蜂蜜</li>
+                            <li>・ シャルドネ(辛口・コクあり)</li>
+                            <li>・ 熟成チーズ盛り合わせ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notice Footer -->
+            <div class="mt-10 text-center bg-stone-900/40 p-6 rounded-2xl border border-stone-800/40">
+                <p class="text-xs text-stone-400">
+                    ペアリング解説カード付き!なぜこのワインが合うのかが一目でわかるミニカードを添えてお届けします。<br class="hidden md:inline">
+                    最新の提供開始時期は <a href="https://www.instagram.com/_flamme_store_/" target="_blank" class="text-flamme-gold underline font-bold hover:text-white transition">公式Instagram</a> にて発信いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: REVIEWS (SOCIAL PROOF) -->
+    <section class="py-20 md:py-24 bg-paper">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="font-heading text-2xl md:text-3xl">お客様からの嬉しいお声</h2>
+                <p class="text-stone-500 mt-2 text-sm md:text-base">連日多くのお客様にご来店いただいております</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 shadow-sm border-b-4 border-flamme-red">
+                    <div class="flex text-yellow-500 mb-4 text-sm">★★★★★</div>
+                    <p class="font-bold text-lg mb-4">「生地だけで絶対美味しい!」</p>
+                    <p class="text-stone-600 text-sm leading-relaxed italic">
+                        「モチモチほうれん草の乗ったこのピザ、生地だけで絶対美味しい!と確信が持てるこの味、このもちもち。あっという間にぺろりと食べられました!」
+                    </p>
+                </div>
+                <div class="bg-white p-6 md:p-8 shadow-sm border-b-4 border-flamme-red">
+                    <div class="flex text-yellow-500 mb-4 text-sm">★★★★★</div>
+                    <p class="font-bold text-lg mb-4">「素材の味を大切にした優しい味わい」</p>
+                    <p class="text-stone-600 text-sm leading-relaxed italic">
+                        「ピザもパスタもサラダも、どれも素材の味を大切にした優しい味わいで、たいへん美味しかったです。盛り付けも見ても楽しめました。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: OWNER PROFILE -->
+    <section class="py-20 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-stone-50 p-8 md:p-16 rounded-3xl">
+                <div class="w-full md:w-2/5 max-w-sm">
+                    <div class="relative bg-stone-200 rounded-2xl overflow-hidden aspect-[4/5]">
+                        <img id="img-owner" src="images/chef.png" alt="職人 近藤隆幸" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 md:p-6 shadow-xl">
+                            <p class="font-heading text-lg md:text-xl">近藤 隆幸</p>
+                            <p class="text-xs text-flamme-red font-bold">Pizza Artist / Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-3/5">
+                    <span class="text-flamme-red font-bold tracking-widest uppercase text-xs">Passion of Maker</span>
+                    <h2 class="font-heading text-2xl md:text-3xl mt-2 mb-6">山形に「本物」の火を灯し続ける。</h2>
+                    <p class="text-stone-600 leading-relaxed mb-6">
+                        東京での修行を経て地元山形へ。七日町の1号店「フラム」に続き、より「日常」に本格イタリアンを届けるべくオープンしたのがフラムストアです。<br><br>
+                        2021-2022年の創業アワード最優秀賞受賞は、私たちが貫いてきた「品質」への評価だと自負しています。コロナ禍でも変わらず、皆様の笑顔のために一枚一枚、石窯の前に立ち続けます。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded border border-stone-200">
+                            <p class="text-[10px] text-stone-400 font-bold uppercase">Awards</p>
+                            <p class="text-xs font-bold mt-1">山形市創業アワード<br>最優秀賞受賞</p>
+                        </div>
+                        <div class="bg-white p-4 rounded border border-stone-200">
+                            <p class="text-[10px] text-stone-400 font-bold uppercase">Skill</p>
+                            <p class="text-xs font-bold mt-1">本格石窯ピッツァ<br>熟練の焼き技術</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS & INFO -->
+    <section id="access" class="py-20 md:py-24 bg-paper">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12">
+                <div>
+                    <h2 class="font-heading text-2xl md:text-3xl mb-8">店舗情報</h2>
+                    <div class="space-y-6 text-sm md:text-base">
+                        <div class="flex gap-4 border-b border-stone-200 pb-4">
+                            <span class="font-bold w-20 shrink-0">店名</span>
+                            <span>フラムストア(FLAMME STORE)</span>
+                        </div>
+                        <div class="flex gap-4 border-b border-stone-200 pb-4">
+                            <span class="font-bold w-20 shrink-0">住所</span>
+                            <span>〒990-0885 山形県山形市鳩北2-12-60</span>
+                        </div>
+                        <div class="flex gap-4 border-b border-stone-200 pb-4">
+                            <span class="font-bold w-20 shrink-0">電話番号</span>
+                            <span class="font-bold text-flamme-red">023-666-5445</span>
+                        </div>
+                        <div class="flex gap-4 border-b border-stone-200 pb-4">
+                            <span class="font-bold w-20 shrink-0">定休日</span>
+                            <span>月曜日</span>
+                        </div>
+                        <div class="flex gap-4 border-b border-stone-200 pb-4">
+                            <span class="font-bold w-20 shrink-0">駐車場</span>
+                            <span>8台(混雑時は近隣駐車場をご案内します)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-xl map-container bg-stone-200 min-h-[300px] md:min-h-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.7528867116976!2d140.3184603747819!3d38.28522078259469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc9d821aa5acd%3A0x4524d72974132468!2z44OV44Op44Og44K544OI44Ki!5e0!3m2!1sja!2sjp!4v1770958997678!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-20 md:py-24 bg-stone-900 text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img id="img-cta" src="images/pizza.png" alt="ピザ生地" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 container mx-auto px-4">
+            <h2 class="font-heading text-3xl md:text-6xl mb-6 leading-tight">
+                「もう一度食べたい」が、<br>ここにある。
+            </h2>
+            <p class="text-white/80 text-base md:text-xl mb-12">お電話でのご予約、心よりお待ちしております。</p>
+
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="tel:0236665445" class="bg-white text-flamme-red px-10 md:px-12 py-5 md:py-6 rounded-full text-xl md:text-2xl font-black shadow-2xl hover:scale-105 transition">
+                    023-666-5445
+                </a>
+                <a href="https://www.instagram.com/_flamme_store_/" target="_blank" class="bg-black text-white px-10 md:px-12 py-5 md:py-6 rounded-full text-xl md:text-2xl font-black shadow-2xl hover:scale-105 transition">
+                    Instagram
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-white/60">※ランチセットは大変混み合います。事前予約をおすすめします。</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-stone-950 text-stone-500 text-center">
+        <div class="font-heading text-2xl text-white mb-4 tracking-tighter">FLAMME STORE</div>
+        <div class="flex justify-center gap-6 mb-8 text-sm uppercase tracking-widest">
+            <a href="https://www.flamme.site/" class="hover:text-white transition">Official HP</a>
+            <a href="https://www.instagram.com/_flamme_store_/" class="hover:text-white transition">Instagram</a>
+        </div>
+        <p class="text-[10px] opacity-30">&copy; FLAMME STORE.</p>
+    </footer>
+
+</body>
+</html>
