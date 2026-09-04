@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>酒田居酒屋 パリ食堂 | 伝説のエコーライス継承店</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@400;700;800&display=swap');
+
+        :root {
+            --brand-red: #a12d2d;
+            --brand-red-dark: #7c2222;
+            --brand-gold: #d4a017;
+            --bg-cream: #f9f6f0;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: #2d2424;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .mincho {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .marker-font {
+            font-family: 'Kiwi Maru', serif;
+        }
+
+        .bg-brand { background-color: var(--brand-red); }
+        .text-brand { color: var(--brand-red); }
+        .border-brand { border-color: var(--brand-red); }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 50;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        @media (min-width: 768px) {
+            .map-container iframe { height: 400px; }
+        }
+
+        /* 画面幅に応じて横スクロールが出ないように保険をかける */
+        img { max-width: 100%; height: auto; display: block; }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--brand-gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- フローティングCTA(スマホのみ) -->
+    <div class="floating-cta md:hidden">
+        <a href="tel:023-625-7781" aria-label="電話で予約する" class="bg-yellow-500 text-black font-bold w-14 h-14 rounded-full shadow-2xl flex items-center justify-center animate-pulse">
+            <i class="fas fa-phone-alt text-xl"></i>
+        </a>
+    </div>
+
+    <!-- FVエリア -->
+    <section class="relative min-h-[92vh] flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/ecorice.jpg" alt="伝説のエコーライス" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/55"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-5 max-w-4xl">
+            <div class="inline-block bg-white text-brand px-5 py-2 rounded-full mb-5 text-sm font-bold tracking-widest shadow-lg marker-font">
+                創業1918年。山形の誇り、酒田。
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-black mb-6 leading-tight drop-shadow-2xl">
+                <span class="block text-2xl sm:text-3xl md:text-4xl mb-3 opacity-90 font-bold">最初、甘い。あとで、辛い。</span>
+                伝説の<span class="text-yellow-500">エコーライス</span>
+            </h1>
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <span class="bg-brand/80 px-4 py-2 text-xs sm:text-sm border border-white/30 backdrop-blur rounded-full">酒田居酒屋 パリ食堂</span>
+                <span class="bg-brand/80 px-4 py-2 text-xs sm:text-sm border border-white/30 backdrop-blur rounded-full">山形市旅籠町</span>
+            </div>
+            <p class="text-lg sm:text-xl md:text-2xl font-medium max-w-xl mx-auto leading-relaxed marker-font">
+                「キッチンエコー」の魂を継承。<br class="md:hidden">一口食べれば、昭和の記憶が蘇る。
+            </p>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+            <p class="text-[10px] sm:text-xs uppercase tracking-[0.4em] mb-2 opacity-70">Scroll Down</p>
+            <div class="w-px h-12 bg-white/50 mx-auto animate-bounce"></div>
+        </div>
+    </section>
+
+    <!-- CTAエリア(1回目) -->
+    <section class="py-10 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white border-4 border-brand p-1 rounded-3xl shadow-xl overflow-hidden">
+                <div class="bg-brand py-3 px-4 text-center text-white">
+                    <h2 class="text-lg sm:text-xl font-bold">【公式SNS限定】今だけ!ドリンク1杯無料クーポン</h2>
+                </div>
+                <div class="p-6 sm:p-8 text-center flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="text-center md:text-left">
+                        <p class="text-brand font-black text-lg sm:text-xl mb-1">初回来店時、画面をご提示ください!</p>
+                        <p class="text-gray-500 text-sm">最新のランチ情報はTwitter(X)で毎日配信中</p>
+                    </div>
+                    <a href="https://twitter.com/itjavve6irbx0f6?s=21" target="_blank" rel="noopener" class="w-full md:w-auto bg-blue-400 hover:bg-blue-500 active:bg-blue-500 text-white text-base sm:text-lg font-black py-4 px-8 rounded-full shadow-lg transition duration-300 flex items-center justify-center gap-3">
+                        <i class="fab fa-twitter"></i> 今すぐTwitterでGET!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 継承ストーリー -->
+    <section class="py-20 md:py-24 px-4 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 text-[8rem] sm:text-[12rem] md:text-[15rem] font-black text-gray-50 leading-none select-none">1918</div>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="order-2 md:order-1 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl font-black mb-5 mincho">山形・伝説の継承者。</h2>
+                    <h3 class="text-lg sm:text-xl font-bold mb-5 marker-font text-brand">「キッチンエコー」の女将と息子が守る、100年のバトン。</h3>
+                    <p class="text-gray-700 leading-loose mb-6">
+                        戦後の混乱期、女性店主として異例のスタートを切った「キッチンエコー」。
+                        不慮の火災により一度は失われたその場所を、現在は「パリ食堂」として、三代目・四代目が再び灯しています。
+                    </p>
+                    <div class="bg-gray-50 p-5 sm:p-6 border-l-4 border-brand rounded-r-xl italic text-gray-600 text-sm text-left">
+                        「チヤコママの人懐っこい笑顔と、受け継いだこの味。山形の皆さんの記憶の片隅にある"あの味"を、今日も丁寧に作っています。」
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative">
+                        <img src="images/omurice.png" alt="老舗の雰囲気" class="rounded-3xl shadow-2xl grayscale border-4 sm:border-8 border-white">
+                        <div class="absolute -bottom-5 -left-3 sm:-bottom-6 sm:-left-6 bg-yellow-500 text-black font-bold p-4 sm:p-6 shadow-xl rounded-2xl rotate-3">
+                            <p class="text-xl sm:text-2xl">創業100年目</p>
+                            <p class="text-xs sm:text-sm">耐震工事PJ進行中</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-12 md:mb-16 mincho">
+                パリ食堂が、山形で愛される<br class="md:hidden"><span class="text-brand">3つの理由</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-brand mb-6">
+                            <i class="fas fa-utensils text-xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3">伝説の味「エコーライス」</h3>
+                        <p class="text-sm text-gray-600 leading-loose">
+                            マイルドな甘味の直後に訪れる、心地よい辛味の波。揚げたてのカツ。この絶妙なバランスこそが伝説。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-brand mb-6">
+                            <i class="fas fa-home text-xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3">25席の広々とした座敷</h3>
+                        <p class="text-sm text-gray-600 leading-loose">
+                            山形では珍しい、洋食屋さんの座敷個室。お子様連れでも、大人数の宴会でも、気兼ねなくお過ごしいただけます。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-brand mb-6">
+                            <i class="fas fa-yen-sign text-xl"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3">驚きのボリュームと価格</h3>
+                        <p class="text-sm text-gray-600 leading-loose">
+                            「本当にこの値段?」と驚かれるボリューム。ランチはいずれも1,000円前後と、地元の人が毎日通える良心的な設定。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 px-4 bg-amber-50/60 border-y border-amber-200/60">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 md:mb-14">
+                <span class="inline-block bg-yellow-500 text-black font-black text-xs sm:text-sm px-4 py-1.5 rounded-full mb-3 shadow-sm">
+                    <i class="fas fa-rocket mr-1"></i> Under Development
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mincho text-gray-900 tracking-wide">
+                    COMING SOON
+                </h2>
+                <p class="text-gray-600 mt-3 marker-font text-base sm:text-lg">
+                    「こんなサービスあったらいいな」を形に。現在準備中の新企画です!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border-2 border-dashed border-yellow-400 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">新サイズ登場</span>
+                            <i class="fas fa-utensils text-2xl text-yellow-500"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 mincho text-gray-800">
+                            エコーライス「小盛り・ハーフ」対応
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            「少しだけ食べたい」「他の洋食メニューと一緒に楽しみたい」というお声にお応えし、少量サイズやお得なセット展開を準備中です!
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center text-xs text-brand font-bold">
+                        <i class="fas fa-clock mr-1"></i> 近日スタート予定
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border-2 border-dashed border-yellow-400 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">夜の部限定</span>
+                            <i class="fas fa-wine-glass-alt text-2xl text-yellow-500"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 mincho text-gray-800">
+                            夜限定「一口エコーライス付き晩酌セット」
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            お酒を愉しんだ後の「最高のシメ」に。洋風居酒屋だからこそ味わえる、一口サイズの締めエコーライスセットをご提供します。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center text-xs text-brand font-bold">
+                        <i class="fas fa-clock mr-1"></i> 近日スタート予定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 地図・アクセス -->
+    <section class="py-20 md:py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-black text-center mb-10 md:mb-12 mincho">アクセス</h2>
+            <div class="map-container shadow-2xl rounded-2xl overflow-hidden">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.0788531082644!2d140.33590177478015!3d38.25447718438462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb602d00c13d7%3A0xf63646333b17f618!2z5rSL6aKo5bGF6YWS5bGLIOODkeODqumjn-Wggg!5e0!3m2!1sja!2sjp!4v1771208170921!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="パリ食堂 地図"></iframe>
+            </div>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-gray-700">
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <p class="font-bold text-brand mb-2"><i class="fas fa-map-marker-alt mr-2"></i>所在地</p>
+                    <p>〒990-0047 山形県山形市旅籠町2丁目1-40</p>
+                    <p class="text-sm mt-2 text-gray-500">※山形銀行仮本店の西側。歴史ある白い提灯が目印です。</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                    <p class="font-bold text-brand mb-2"><i class="fas fa-clock mr-2"></i>営業時間・定休日</p>
+                    <p>ランチ・ディナー営業中</p>
+                    <p>定休日:日曜日</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最後のCTA -->
+    <section class="py-20 md:py-24 px-4 bg-brand text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-10 md:mb-12 leading-tight">
+                山形の伝説を、<br>体感する準備はできましたか?
+            </h2>
+
+            <div class="bg-black/20 backdrop-blur-md rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-10 md:p-16 border border-white/20">
+                <p class="text-lg sm:text-xl mb-6 md:mb-8 opacity-80">本日のランチメニューはTwitter(X)で今すぐ確認!</p>
+                <a href="https://twitter.com/itjavve6irbx0f6?s=21" target="_blank" rel="noopener" class="block w-full bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-400 text-black text-lg sm:text-2xl font-black py-6 sm:py-8 rounded-full shadow-2xl transition duration-300">
+                    <i class="fab fa-twitter mr-3"></i> Twitterで最新情報をチェック
+                </a>
+
+                <div class="mt-10 md:mt-12 flex flex-col items-center gap-3">
+                    <p class="text-lg sm:text-xl font-bold">お電話でのご予約・お問い合わせ</p>
+                    <a href="tel:023-625-7781" class="text-3xl sm:text-4xl md:text-5xl font-black hover:text-yellow-500 transition break-all">023-625-7781</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 md:py-12 text-center bg-gray-900 text-white/40 text-xs sm:text-sm px-4">
+        <p>&copy; 酒田居酒屋 パリ食堂 | 山形の伝統を未来へ繋ぐ。</p>
+    </footer>
+
+</body>
+</html>
