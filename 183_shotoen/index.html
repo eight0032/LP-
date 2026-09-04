@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>薪火とお野菜 SHOTOEN | 山形の食体験を贈る</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #3d2b1f; /* 深い薪の色 */
+            --color-accent: #8b5e3c;  /* 温かみのある木の色 */
+            --color-bg: #f8f5f2;      /* 洗練されたベージュ */
+        }
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .bg-hero {
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/store.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        /* iOSやAndroidではfixed背景が重く・崩れやすいのでスクロール指定に切り替え */
+        @media (max-width: 768px) {
+            .bg-hero {
+                background-attachment: scroll;
+            }
+        }
+        .cta-btn {
+            background-color: var(--color-accent);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            letter-spacing: 0.1em;
+        }
+        .cta-btn:hover {
+            background-color: #5d3d25;
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+        }
+        .deco-line {
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--color-accent), transparent);
+            margin: 0 auto;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 8px;
+            filter: grayscale(0.3) contrast(1.1);
+        }
+        @media (min-width: 768px) {
+            .map-container iframe {
+                height: 350px;
+            }
+        }
+        /* テキストの折り返しで単語が不自然に割れないように */
+        h1, h2, h3, h4 {
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. FVエリア -->
+   <header class="relative min-h-screen flex items-center justify-center bg-hero overflow-hidden text-white py-24 md:py-0">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="container mx-auto px-5 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
+
+        <div class="w-full md:w-1/2 text-left">
+            <p class="serif text-base sm:text-xl md:text-2xl mb-5 md:mb-6 tracking-[0.2em] md:tracking-[0.3em] opacity-90 border-l-2 border-white pl-4 italic">
+                eat local. feel the earth.
+            </p>
+            <h1 class="serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 md:mb-8 leading-[1.4] drop-shadow-lg">
+                薪の香ばしさと<br>
+                <span class="text-amber-200 text-4xl sm:text-5xl md:text-7xl lg:text-8xl">炎</span>が醸す、<br>
+                山形の記憶。
+            </h1>
+        </div>
+
+        <div class="w-full md:w-5/12">
+            <div class="glass-panel p-6 sm:p-8 md:p-10 rounded-sm text-primary shadow-2xl relative border border-white/20">
+                <p class="serif text-base md:text-lg font-bold text-amber-900 mb-2">山形の旬を味わう</p>
+                <h2 class="serif text-xl md:text-2xl font-bold mb-6 text-gray-900">美食家を唸らせる<br>「米沢豚薪火グリル」</h2>
+
+                <div class="mb-6 md:mb-8 overflow-hidden rounded shadow-inner">
+                    <img src="images/gril.jpg" alt="米沢牛薪火グリル" class="w-full h-52 sm:h-64 object-cover hover:scale-105 transition duration-700">
+                </div>
+
+                <ul class="space-y-3 md:space-y-4 text-gray-700 mb-6 md:mb-8 text-sm">
+                    <li class="flex items-start"><span class="w-2 h-2 mt-2 bg-amber-800 rounded-full mr-3 flex-shrink-0"></span>厳選された山形牛・米沢豚</li>
+                    <li class="flex items-start"><span class="w-2 h-2 mt-2 bg-amber-800 rounded-full mr-3 flex-shrink-0"></span>地野菜の旨みを引き出す薪火調理</li>
+                    <li class="flex items-start"><span class="w-2 h-2 mt-2 bg-amber-800 rounded-full mr-3 flex-shrink-0"></span>幻想的な庭園を望むプライベート空間</li>
+                </ul>
+
+                <a href="https://shotoen.jp/" target="_blank" rel="noopener noreferrer" class="cta-btn block text-center w-full text-white py-4 md:py-5 rounded-full font-bold text-base md:text-lg shadow-xl">
+                    空席確認・予約をする
+                </a>
+                <p class="text-[10px] mt-4 text-center text-gray-400">※完全予約制となっております</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+       <!-- 4. 自己紹介 -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-6 relative">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <img src="images/chef.png" alt="シェフ" class="rounded-sm shadow-2xl w-full">
+                    <div class="hidden md:block absolute -right-12 -bottom-12 p-8 bg-amber-900 text-white serif vertical-text h-64 text-xl tracking-[0.2em]">
+                        山形の風土を、一皿に。
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-relaxed">
+                        40年の歴史を継ぎ、<br>
+                        未来へ薪をくべる。
+                    </h2>
+                    <p class="text-gray-600 mb-8 md:mb-10 leading-loose text-sm md:text-base">
+                        山形の名門、パレスグランデール別館「松澤園」として誕生し、40年。2022年、私たちは「サステナビリティ」を掲げる薪火レストランとして生まれ変わりました。東北芸術工科大学とのコラボレーションにより、空間から食体験までを再定義しています。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 border-t border-gray-100 pt-8 md:pt-10">
+                        <div>
+                            <p class="serif font-bold text-lg mb-2 text-amber-900">松田 蓮 <span class="text-xs font-normal opacity-60">Chef</span></p>
+                            <p class="text-xs text-gray-500">和食を軸に、山形の旬野菜と対話する料理人。野菜の端材まで使い切るピュレ作りなど、食材への深い敬意を込める。</p>
+                        </div>
+                        <div>
+                            <p class="serif font-bold text-lg mb-2 text-amber-900">石渡 <span class="text-xs font-normal opacity-60">Manager/Sommelier</span></p>
+                            <p class="text-xs text-gray-500">東京・関西の星付きレストランで研鑽を積んだソムリエ。薪火の香りと調和するナチュールワインを提案。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩み・解決 -->
+    <section class="py-16 md:py-24 bg-[color:var(--color-primary)] text-white">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-14 md:mb-20">
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-black mb-6 tracking-wide md:tracking-widest leading-relaxed">美食家たちが、最後に辿り着く場所。</h2>
+                <div class="w-20 h-1 bg-amber-700 mx-auto"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 mb-14 md:mb-20">
+                <!-- 特別感 -->
+                <div class="border border-white/10 p-8 md:p-10 hover:border-amber-700 transition bg-white/5 relative">
+                    <p class="text-amber-400 mb-5 md:mb-6 font-bold tracking-wide serif text-base md:text-lg italic">「記憶に残る特別な時間を」</p>
+                    <p class="text-sm text-white/80 leading-loose">
+                        ただ空腹を満たすだけの食事ではなく。幻想的な庭園の静寂、薪が爆ぜる音、そして炎のゆらぎ。大切な人と五感のすべてで語らう、一生ものの非日常体験を求めている。
+                    </p>
+                </div>
+                <!-- 和の美食 -->
+                <div class="border border-white/10 p-8 md:p-10 hover:border-amber-700 transition bg-white/5 relative">
+                    <p class="text-amber-400 mb-5 md:mb-6 font-bold tracking-wide serif text-base md:text-lg italic">「身体に馴染む、滋味深い和の美食」</p>
+                    <p class="text-sm text-white/80 leading-loose">
+                        スパイスの微かな刺激と薪火の煙が、素材本来の生命力を呼び覚まします。和食の繊細さをベースにしながら、一口ごとに心が解けていくような、滋味深く優しい一皿を求めている。
+                    </p>
+                </div>
+                <!-- サステナブル -->
+                <div class="border border-white/10 p-8 md:p-10 hover:border-amber-700 transition bg-white/5 relative sm:col-span-2 lg:col-span-1">
+                    <p class="text-amber-400 mb-5 md:mb-6 font-bold tracking-wide serif text-base md:text-lg italic">「未来を想う、誠実な選択」</p>
+                    <p class="text-sm text-white/80 leading-loose">
+                        山形の風土を守る生産者との対話、食材を無駄なく使い切る調理法。環境への配慮も含めた「物語」を味わうことで、自分自身の選択に誇りを持てる。そんな誠実な食卓を選びたい。
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white/5 p-6 sm:p-8 md:p-16 rounded shadow-inner border border-white/5">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                    <div class="w-full md:w-1/3">
+                        <img src="images/beef.png" alt="庭園" class="rounded shadow-xl grayscale-[0.2] w-full">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="serif text-xl sm:text-2xl md:text-3xl font-bold mb-5 md:mb-6 text-amber-200 tracking-wide">SHOTOEN Solution</h3>
+                        <p class="text-base md:text-lg mb-6 md:mb-8 leading-loose text-white/90 serif">
+                            「eat local. feel the earth.」をコンセプトに、山形の旬と向き合う。<br>
+                            私たちは山形の旬と向き合い、完全予約制という形で食材の命を余すことなく使い切り、美しい庭園とともに「ここでしかできない体験」を提供します。
+                        </p>
+                        <div class="flex flex-wrap gap-3 md:gap-4 text-white/90">
+                            <span class="px-4 md:px-5 py-2 bg-amber-100/20 rounded-full text-xs border border-white/20">完全予約制</span>
+                            <span class="px-4 md:px-5 py-2 bg-amber-100/20 rounded-full text-xs border border-white/20">山形牛・米沢牛薪火グリル</span>
+                            <span class="px-4 md:px-5 py-2 bg-amber-100/20 rounded-full text-xs border border-white/20">庭園の一軒家レストラン</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 特典セクション -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <h2 class="serif text-2xl sm:text-3xl font-bold mb-12 md:mb-16 underline decoration-amber-800 underline-offset-8">SHOTOEN をより深く知る</h2>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
+                <div class="bg-gray-50 p-8 md:p-10 rounded-lg hover:bg-amber-50 transition duration-500 relative overflow-hidden text-left border border-gray-100">
+                    <h4 class="serif text-lg md:text-xl font-bold mb-4">薪火の香りと料理のこだわり</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">シェフが厳選したスパイス使いと、食材本来の味を引き出す薪火の技術について。私たちの料理の哲学をご紹介します。</p>
+                </div>
+                <div class="bg-gray-50 p-8 md:p-10 rounded-lg hover:bg-amber-50 transition duration-500 relative overflow-hidden text-left border border-gray-100">
+                    <h4 class="serif text-lg md:text-xl font-bold mb-4">庭園と空間のしつらえ</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">40年の歴史を持つ庭園と、五感で静寂を楽しむための空間づくり。日常を忘れる体験がここにあります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5 Coming Soon セクション -->
+    <section class="py-16 md:py-24 bg-[#f8f5f2] border-t border-b border-amber-900/10">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <div class="mb-12 md:mb-16">
+                <span class="inline-block px-4 py-1.5 bg-amber-900 text-amber-100 text-xs font-bold tracking-widest mb-4 rounded-full">Coming Soon</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold mb-4">これから始まる、新しいおもてなし</h2>
+                <p class="text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    SHOTOENでは、お客様と山形の風土・生産者様をより深く繋ぎ、食体験を何倍にも深める新しい取り組みを準備しております。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto text-left">
+                <!-- サービス1: メッセージカード -->
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-amber-900/10 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-800 text-xs font-bold tracking-widest mb-2 uppercase">Service 01</div>
+                        <h3 class="serif text-lg sm:text-xl font-bold mb-4 text-gray-900">一皿の物語を届ける<br>「生産者メッセージカード」</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-6">
+                            お料理とともに、シェフがその食材を選んだ理由や、生産者様が込めた想い・山形で育まれた風土の背景をつづった「物語カード」を各テーブルへ配布。一皿一皿の背景を味わう、より奥深い食体験をお届けします。
+                        </p>
+                    </div>
+                    <div>
+                        <span class="inline-block text-[11px] font-bold text-amber-900 bg-amber-50 px-3 py-1 rounded">順次準備中</span>
+                    </div>
+                </div>
+
+                <!-- サービス2: 薪火便/お取り寄せ -->
+                <div class="bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-amber-900/10 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-800 text-xs font-bold tracking-widest mb-2 uppercase">Service 02</div>
+                        <h3 class="serif text-lg sm:text-xl font-bold mb-4 text-gray-900">ご自宅に山形の記憶を<br>「SHOTOEN 薪火定期便」</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-6">
+                            自家農園スモークオイルや薪火燻製、契約農家から届く旬の地野菜を詰めたオリジナルギフトボックス。大切な方への贈り物やご自宅での贅沢なひとときに、山形の物語をお届けします。
+                        </p>
+                    </div>
+                    <div>
+                        <span class="inline-block text-[11px] font-bold text-amber-900 bg-amber-50 px-3 py-1 rounded">順次準備中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CTA & フッター -->
+   <footer class="bg-[color:var(--color-primary)] text-white pt-16 md:pt-24 pb-10 md:pb-12 border-t border-white/5">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="serif text-3xl sm:text-4xl md:text-5xl font-black mb-8 md:mb-10 leading-tight">山形の旬を、<br class="md:hidden">今すぐ五感で受け取る。</h2>
+                <div class="max-w-md mx-auto space-y-4">
+                    <a href="https://shotoen.jp/" target="_blank" rel="noopener noreferrer" class="cta-btn block text-center w-full text-white py-5 md:py-6 rounded-full font-bold text-lg md:text-xl shadow-2xl">
+                        ご予約・お問い合わせ
+                    </a>
+                    <p class="text-xs opacity-50 tracking-widest">Visit Our Garden</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 md:gap-16 mb-16 md:mb-20 items-start">
+                <div class="map-container shadow-2xl border border-white/10 p-2 bg-white/5 rounded-xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.001906747536!2d140.3282245747789!3d38.2330630856308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5d24e6656b3%3A0x298c8c9852477e64!2z6Jaq54Gr44Go44GK6YeO6I-cIFNIT1RPRU4!5e0!3m2!1sja!2sjp!4v1771209905008!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="space-y-10 md:space-y-12">
+                    <div class="grid sm:grid-cols-2 gap-8 text-sm font-light leading-loose text-white/80">
+                        <div>
+                            <h5 class="serif font-bold text-xl mb-5 md:mb-6 text-white">Information</h5>
+                            <p class="mb-2"><span class="font-bold text-white">店名：</span>薪火とお野菜 SHOTOEN</p>
+                            <p class="mb-2"><span class="font-bold text-white">住所：</span>〒990-2432 山形県山形市萩野新田1丁目17−40 パレスグランデール庭園内</p>
+                            <p class="mb-2"><span class="font-bold text-white">電話：</span>023-622-4743</p>
+                            <p class="mb-2 font-bold italic text-white">※完全予約制</p>
+                        </div>
+                        <div>
+                            <h5 class="serif font-bold text-xl mb-5 md:mb-6 text-white">Service</h5>
+                            <p class="mb-2 font-bold text-white">定休日：水曜日</p>
+                            <p class="mb-4">山形牛・米沢豚の薪火料理、旬の地野菜をメインとした創作和食コース。</p>
+                            <div class="flex gap-4 items-center flex-wrap">
+                                <a href="https://shotoen.jp/" class="underline hover:text-white transition">Official Site</a>
+                                <span class="text-white/30">/</span>
+                                <a href="https://www.instagram.com/shotoen.yamagata/" class="underline hover:text-white transition">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-10 md:pt-12 border-t border-white/5 text-center text-xs opacity-40">
+                <p>&copy; 薪火とお野菜 SHOTOEN All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
