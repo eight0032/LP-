@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>欧風食堂 カプリス | 大使公邸の記憶、山形の地で。</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#a9843f;
+    --gold-soft:#c7a663;
+    --ink:#221c15;
+    --bg:#faf7f1;
+    --stone:#726a5c;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif-jp{font-family:'Shippori Mincho', serif;}
+  .serif-en{font-family:'Cormorant Garamond', serif;}
+  .text-gold{color:var(--gold);}
+  .bg-gold{background-color:var(--gold);}
+
+  /* 縦書き（PC以上で装飾として使用、スマホでは自動的に横書きへ切替） */
+  .tategaki{
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+  }
+  @media (max-width:767px){
+    .tategaki{
+      writing-mode:horizontal-tb;
+      text-orientation:mixed;
+    }
+  }
+
+  .fade-in{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 1s ease-out, transform 1s ease-out;
+  }
+  .fade-in.visible{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .fade-in{opacity:1 !important; transform:none !important; transition:none !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  .rule{
+    width:1px;
+    height:48px;
+    background:var(--gold-soft);
+    margin:0 auto 2rem;
+  }
+
+  .map-frame{
+    position:relative;
+    padding-bottom:75%;
+    height:0;
+    overflow:hidden;
+    filter:grayscale(0.25) contrast(1.05);
+  }
+  @media (min-width:768px){
+    .map-frame{padding-bottom:50%;}
+  }
+  .map-frame iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- ===== HERO ===== -->
+  <header class="relative min-h-[100svh] flex items-center justify-center">
+    <div class="absolute inset-0 bg-cover bg-center"
+         style="background-image:url('images/beef.png');"
+         aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-black/50" aria-hidden="true"></div>
+
+    <div class="relative z-10 text-white text-center px-6 flex flex-col items-center max-w-xl">
+      <span class="inline-block border border-white/40 px-5 py-1 text-[10px] sm:text-xs tracking-[0.3em] font-light mb-10">
+        EST. 2022 / TENDO, YAMAGATA
+      </span>
+
+      <h1 class="serif-jp font-bold leading-relaxed text-[7vw] sm:text-3xl md:text-4xl tracking-widest">
+        静寂の中に、<br>公邸の記憶を宿す。
+      </h1>
+
+      <p class="text-[11px] sm:text-sm tracking-[0.35em] font-light mt-8 opacity-80">
+        EUROPEAN DINING CAPRICE
+      </p>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-[9px] tracking-[0.3em] flex flex-col items-center">
+      <span class="mb-3">SCROLL</span>
+      <div class="w-px h-10 bg-gradient-to-b from-white/70 to-transparent"></div>
+    </div>
+  </header>
+
+  <!-- ===== INTRO ===== -->
+  <section class="py-20 sm:py-28 md:py-36 px-6">
+    <div class="max-w-lg mx-auto text-center">
+      <div class="rule fade-in"></div>
+
+      <p class="serif-jp text-xl sm:text-2xl md:text-3xl leading-loose tracking-wide font-bold mb-14 fade-in">
+        世界を巡った一皿が、<br>
+        山形の老野森で<br>
+        静かに花開く。
+      </p>
+
+      <img src="images/fish.png"
+           alt="公邸の味を思わせる、丁寧に仕立てられた一皿"
+           loading="lazy"
+           class="w-full aspect-video object-cover shadow-xl rounded-sm mb-10 fade-in">
+
+      <p class="text-stone-500 text-sm leading-loose tracking-wide fade-in">
+        元クロアチア日本大使公邸料理人。<br>
+        磨き抜かれた「公邸の味」を、<br>
+        日常の贅沢として味わえる。<br><br>
+        それが、カプリスの存在理由です。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CONCEPT ===== -->
+  <section class="py-20 sm:py-28 md:py-36 px-6 bg-[#1c1712] text-stone-300">
+    <div class="max-w-lg mx-auto text-center">
+      <div class="rule fade-in"></div>
+
+      <h2 class="text-gold serif-jp text-xl sm:text-2xl md:text-3xl mb-10 tracking-wide leading-relaxed fade-in">
+        数日間、<br>ディナグラスと対話する。
+      </h2>
+
+      <div class="text-sm leading-loose text-stone-400 tracking-wide fade-in mb-14">
+        <p class="mb-6">
+          カプリスのビーフシチューは、一朝一夕には完成しません。<br>
+          数日間かけて丹念に煮込まれるフォンドボー。
+        </p>
+        <p>
+          VIPをもてなしてきた「公邸の技術」で、<br>
+          食材の声を聴き、そのポテンシャルを<br>
+          余すことなく引き出しています。
+        </p>
+      </div>
+
+      <img src="images/chef.png"
+           alt="仕込みに向き合うシェフの手元"
+           loading="lazy"
+           class="w-full aspect-video object-cover rounded-sm shadow-xl fade-in">
+    </div>
+  </section>
+
+  <!-- ===== 3 POINTS ===== -->
+ <section class="py-20 sm:py-28 md:py-36 px-6 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="rule fade-in"></div>
+      <h2 class="serif-jp text-xl sm:text-2xl md:text-3xl mb-16 tracking-wide fade-in">
+        五感を満たす、三つのこだわり。
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8">
+        <div class="fade-in flex flex-col items-center">
+          <h3 class="serif-jp text-lg mb-3 tracking-wide font-bold">至高の肉質</h3>
+          <p class="text-xs text-stone-500 leading-relaxed max-w-[220px]">
+            山形牛の中でも、シチューに最も適した部位を厳選。脂の甘みと赤身の深みが調和します。
+          </p>
+        </div>
+
+        <div class="fade-in flex flex-col items-center">
+          <h3 class="serif-jp text-lg mb-3 tracking-wide font-bold">静謐な空間</h3>
+          <p class="text-xs text-stone-500 leading-relaxed max-w-[220px]">
+            隠れ家のような立地。料理に没頭できる、落ち着いた時間を提供します。
+          </p>
+        </div>
+
+        <div class="fade-in flex flex-col items-center">
+          <h3 class="serif-jp text-lg mb-3 tracking-wide font-bold">名脇役たち</h3>
+          <p class="text-xs text-stone-500 leading-relaxed max-w-[220px]">
+            毎朝焼き上げるクロワッサンと、香り立つ冷製スープ。すべてが主役の質。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMING SOON ===== -->
+  <section class="py-16 sm:py-24 px-6 bg-stone-50 border-y border-stone-200/60">
+    <div class="max-w-xl mx-auto text-center">
+      <div class="rule fade-in"></div>
+      <p class="text-gold text-[10px] tracking-[0.3em] mb-3 fade-in">COMING SOON</p>
+      <h2 class="serif-jp text-xl sm:text-2xl mb-10 tracking-wide fade-in">これからの、カプリス。</h2>
+      <p class="text-xs sm:text-sm text-stone-500 leading-loose tracking-wide mb-10 fade-in">
+        より多くのお客様に「公邸の記憶」をお届けするために。<br>
+        カプリスでは、新たな取り組みの準備を進めております。
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 fade-in">
+        <div class="bg-white p-7 border border-stone-200/80 rounded-sm text-left">
+          <span class="text-gold text-xs tracking-widest font-mono block mb-3">01 / TAKE OUT</span>
+          <h3 class="serif-jp text-base font-bold mb-3 tracking-wide">お持ち帰り対応</h3>
+          <p class="text-xs text-stone-500 leading-relaxed">
+            混雑時やご自宅・オフィスでも気兼ねなく楽しめるよう、専用容器によるテイクアウトを開始予定です。
+          </p>
+        </div>
+        <div class="bg-white p-7 border border-stone-200/80 rounded-sm text-left">
+          <span class="text-gold text-xs tracking-widest font-mono block mb-3">02 / GIFT &amp; ONLINE</span>
+          <h3 class="serif-jp text-base font-bold mb-3 tracking-wide">全国真空パック配送</h3>
+          <p class="text-xs text-stone-500 leading-relaxed">
+            「公邸の味」をそのまま急速冷凍。大切な方へのご贈答や、遠方のお客様へのオンラインストアを準備中です。
+          </p>
+        </div>
+      </div>
+
+      <p class="text-[10px] text-stone-400 tracking-wide mt-10 fade-in">
+        ※開始時期や詳細はFacebookにて随時お知らせいたします。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CTA / MENU ===== -->
+  <section id="cta" class="py-20 sm:py-28 px-6 bg-stone-100">
+    <div class="max-w-md mx-auto text-center">
+      <div class="bg-white p-8 sm:p-14 shadow-sm border border-stone-200 fade-in">
+        <div class="rule mb-8"></div>
+        <h2 class="serif-jp text-xl sm:text-2xl mb-10 tracking-wide">特別な一皿を、その手に。</h2>
+
+        <p class="text-stone-400 text-[10px] tracking-[0.3em] mb-3">MAIN COURSE</p>
+        <p class="text-lg sm:text-xl serif-jp mb-3 font-bold tracking-wide">山形牛ビーフシチュー コース</p>
+        <div class="w-10 h-px bg-stone-200 mx-auto mb-5"></div>
+        <p class="text-gold text-3xl sm:text-4xl serif-en mb-10">
+          &yen;2,200 <span class="text-xs text-stone-400 font-sans tracking-normal">tax in</span>
+        </p>
+
+        <a href="tel:0236748155"
+           class="block w-full bg-gold text-white px-8 py-4 tracking-[0.2em] text-sm sm:text-base font-bold hover:bg-stone-800 transition-colors duration-300 shadow-md rounded-sm">
+          ご予約のお電話はこちら
+        </a>
+
+        <div class="mt-8 text-[10px] text-stone-400 leading-loose tracking-wide">
+          <p>※お一人様での運営のため、事前予約をお勧めしております。</p>
+          <p>※当日の空き状況はFacebookにて発信中です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== ACCESS ===== -->
+  <section class="py-20 sm:py-24 px-6 bg-white">
+    <div class="max-w-lg mx-auto text-center">
+      <div class="rule fade-in"></div>
+      <h2 class="serif-jp text-xl sm:text-2xl mb-10 tracking-wide fade-in">アクセス</h2>
+
+      <div class="mb-10 fade-in text-sm leading-loose tracking-wide">
+        <p>〒994-0013</p>
+        <p class="mb-1">山形県天童市老野森3丁目2-28</p>
+        <p class="mb-3">TEL: <a href="tel:0236748155" class="hover:underline">023-674-8155</a></p>
+        <p class="text-xs text-stone-400 italic">※建物右側の奥まった場所に入り口がございます。</p>
+      </div>
+
+      <div class="mb-10 fade-in">
+        <div class="map-frame shadow-lg">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3128.4351676630426!2d140.36961927478632!3d38.362053378115945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc5078d65028f%3A0xbc24d1dc58f0c44a!2z5qyn6aKo6aOf5aCCIOOCq-ODl-ODquOCuQ!5e0!3m2!1sja!2sjp!4v1771202828436!5m2!1sja!2sjp"
+                  allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="カプリス 地図"></iframe>
+        </div>
+      </div>
+
+      <a href="https://www.facebook.com/CAPRICE8810/" target="_blank" rel="noopener"
+         class="fade-in inline-block text-stone-400 hover:text-gold transition-colors text-[10px] tracking-[0.3em] border-b border-stone-200 pb-1">
+        VIEW FACEBOOK →
+      </a>
+    </div>
+  </section>
+
+  <footer class="py-12 bg-white text-center border-t border-stone-100">
+    <div class="w-8 h-px bg-stone-200 mx-auto mb-6"></div>
+    <p class="text-[9px] text-stone-300 tracking-[0.3em]">&copy; EUROPEAN DINING CAPRICE. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>
