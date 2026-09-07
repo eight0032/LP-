@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Dining Bar Choice | 山形駅近・至福の隠れ家ダイニングバー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --gold: #c5a059;
+            --gold-light: #e0c58e;
+            --bg-dark: #0a0a0c;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-dark);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+
+        /* テクスチャ背景 */
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #c5a059 0%, #f1d392 50%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gold-button {
+            background: linear-gradient(135deg, #c5a059 0%, #f1d392 50%, #c5a059 100%);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        /* 縦ライン装飾 */
+        .v-line {
+            width: 1px;
+            height: 70px;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .v-line { height: 100px; }
+        }
+
+        /* 特典セクションの装飾 */
+        .coupon-border {
+            border: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 280px;
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+            border-radius: 4px;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .map-container iframe { height: 350px; }
+        }
+
+        /* スマホでの余白・タップ領域最適化 */
+        @media (max-width: 767px) {
+            .hero-title { letter-spacing: 0.05em; }
+            a, button { -webkit-tap-highlight-color: transparent; }
+        }
+
+        /* フォーカス時のアクセシビリティ */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="antialiased bg-texture">
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 z-10"></div>
+            <!-- 生成画像: バーカウンターのカクテル -->
+            <img src="https://r.jina.ai/i/053074529285404499426f4327a36014"
+                 class="w-full h-full object-cover scale-105" alt="Choice Main Visual">
+        </div>
+
+        <div class="relative z-20 text-center px-6">
+            <p class="font-serif text-base sm:text-lg md:text-xl tracking-[0.25em] sm:tracking-[0.3em] mb-5 sm:mb-6 opacity-90">山形、香澄町。夜を彩る選択。</p>
+            <div class="mb-6 sm:mb-8">
+                <h1 class="hero-title font-serif text-4xl sm:text-6xl md:text-8xl font-bold leading-tight tracking-wider mb-3 sm:mb-4">
+                    <span class="block">心解ける、</span>
+                    <span class="gold-gradient">至福の一杯。</span>
+                </h1>
+            </div>
+            <p class="text-xs sm:text-sm md:text-base tracking-widest uppercase mb-8 sm:mb-10 opacity-70">Dining Bar Choice - Yamagata</p>
+            <div class="v-line"></div>
+        </div>
+    </section>
+
+    <!-- 2. Sticky Navigation -->
+    <div class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-4 py-3 sm:py-4 flex justify-between items-center">
+            <div class="font-serif font-bold text-lg sm:text-xl tracking-tighter">Dining Bar <span class="text-[var(--gold)]">Choice</span></div>
+            <a href="https://www.hotpepper.jp/strJ001280975/" target="_blank" rel="noopener" class="gold-button text-black text-xs sm:text-sm font-bold py-2 px-4 sm:px-6 rounded-sm hover:brightness-110 active:brightness-95 transition-all tracking-tighter whitespace-nowrap">
+                RESERVATION
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. Concept -->
+    <section class="py-16 sm:py-24 relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-12 leading-relaxed tracking-wide sm:tracking-widest">
+                    駅近の喧騒を忘れ、<br>本格カクテルと肉料理に酔いしれる。
+                </h2>
+                <div class="space-y-5 sm:space-y-6 text-slate-400 leading-loose tracking-wide font-light text-sm sm:text-base">
+                    <p>山形駅から徒歩圏内の隠れ家「Choice」。</p>
+                    <p>オープン以来愛される理由は、<br class="hidden sm:block">バーテンダーが腕を込めるカクテルと、<br class="hidden sm:block">看板メニューのステーキ。そして温かな時間。</p>
+                    <p>「美味しい」も「楽しい」も諦めない、<br class="hidden sm:block">大人のためのアットホームな空間へようこそ。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Gallery -->
+    <section class="py-10 sm:py-12 bg-black/40">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-3 sm:gap-4 max-w-6xl mx-auto">
+                <!-- 生成画像: シグネチャーカクテル -->
+                <div class="md:w-2/3 aspect-video bg-slate-800 rounded-sm overflow-hidden relative group">
+                    <img src="images/bar.jpg" alt="Signature Cocktail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <p class="font-serif text-[var(--gold)] tracking-widest text-lg sm:text-xl border-b border-[var(--gold)] pb-1">Cocktail Culture</p>
+                    </div>
+                </div>
+                <!-- 生成画像: 看板ステーキ -->
+                <div class="md:w-1/3 aspect-video md:aspect-auto flex flex-col gap-4">
+                    <div class="h-full bg-slate-800 border border-white/5 overflow-hidden group">
+                        <img src="images/steak.png" alt="Premium Steak" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Reviews -->
+    <section class="py-16 sm:py-24">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <p class="text-[var(--gold)] tracking-[0.4em] sm:tracking-[0.5em] text-xs mb-3 sm:mb-4 uppercase">Customer Voice</p>
+                <h2 class="font-serif text-2xl sm:text-3xl">愛され続ける、理由があります。</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12 max-w-6xl mx-auto">
+                <div class="relative pt-8">
+                    <i class="fas fa-quote-left absolute top-0 left-0 text-3xl text-[var(--gold)] opacity-20"></i>
+                    <p class="text-sm leading-loose mb-6 relative z-10">「二次会、三次会で行くのに最適です！ 食事美味しいし、雰囲気いいし、安い完璧です！」</p>
+                    <div class="flex items-center">
+                        <div class="text-[var(--gold)] text-[10px] flex space-x-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-4 text-[10px] opacity-40">20代 男性</span>
+                    </div>
+                </div>
+                <div class="relative pt-8">
+                    <i class="fas fa-quote-left absolute top-0 left-0 text-3xl text-[var(--gold)] opacity-20"></i>
+                    <p class="text-sm leading-loose mb-6 relative z-10">「ここで何度も素敵な夜を過ごしました。居心地の良い小さなお店で、スタッフはとてもフレンドリーです。」</p>
+                    <div class="flex items-center">
+                        <div class="text-[var(--gold)] text-[10px] flex space-x-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-4 text-[10px] opacity-40">30代 女性</span>
+                    </div>
+                </div>
+                <div class="relative pt-8 sm:col-span-2 md:col-span-1">
+                    <i class="fas fa-quote-left absolute top-0 left-0 text-3xl text-[var(--gold)] opacity-20"></i>
+                    <p class="text-sm leading-loose mb-6 relative z-10">「居心地がよい。カラオケが大盛り上がりの時の雰囲気も最高です！」</p>
+                    <div class="flex items-center">
+                        <div class="text-[var(--gold)] text-[10px] flex space-x-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-4 text-[10px] opacity-40">40代 男性</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Solution -->
+    <section class="py-16 sm:py-24 bg-zinc-950 border-y border-white/5">
+        <div class="container mx-auto px-5 sm:px-4">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 sm:gap-16">
+                <div class="md:w-1/2">
+                    <h2 class="font-serif text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 leading-relaxed tracking-wide sm:tracking-wider">今夜のお店選び、<br>迷っていませんか？</h2>
+                    <ul class="space-y-5 sm:space-y-6 text-sm opacity-70 font-light">
+                        <li class="flex items-start"><span class="w-1 h-1 bg-[var(--gold)] rounded-full mr-4 mt-2 flex-shrink-0"></span>2軒目が見つからず、駅前を歩き回ってしまう。</li>
+                        <li class="flex items-start"><span class="w-1 h-1 bg-[var(--gold)] rounded-full mr-4 mt-2 flex-shrink-0"></span>本格的なバーは少し敷居が高く、入りにくい。</li>
+                        <li class="flex items-start"><span class="w-1 h-1 bg-[var(--gold)] rounded-full mr-4 mt-2 flex-shrink-0"></span>盛り上がれる場所と、美味しい料理を両立したい。</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 w-full bg-black border border-[var(--gold)] p-6 sm:p-8 md:p-12 relative shadow-2xl">
+                    <div class="absolute -top-4 -left-4 bg-[var(--gold)] text-black font-bold px-4 py-1 text-[10px] tracking-widest uppercase">Solution</div>
+                    <h3 class="font-serif text-xl sm:text-2xl mb-5 sm:mb-6 gold-gradient">Choiceが解決します。</h3>
+                    <p class="text-sm leading-loose opacity-80 mb-6 font-light">
+                        アットホームな接客と、本格的なコストパフォーマンス。一軒目としても、締めの場所としても。Choiceはいつだって、あなたの「ちょうどいい」場所です。
+                    </p>
+                    <div class="space-y-3">
+                        <p class="text-[10px] font-bold border-b border-white/10 pb-2 flex justify-between uppercase tracking-widest"><span>Free Flow Course</span> <span class="text-[var(--gold)] font-serif text-sm">¥3,000〜</span></p>
+                        <p class="text-[10px] font-bold border-b border-white/10 pb-2 flex justify-between uppercase tracking-widest"><span>Signature Steak</span> <span class="text-[var(--gold)] font-serif text-sm">¥1,280〜</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Offer -->
+    <section class="py-16 sm:py-24 text-center">
+        <div class="container mx-auto px-5 sm:px-4 max-w-2xl">
+            <p class="text-[var(--gold)] tracking-[0.3em] sm:tracking-[0.4em] text-xs mb-5 sm:mb-6 uppercase">Online Limited</p>
+            <div class="coupon-border p-8 sm:p-10 md:p-16 bg-black/40">
+                <h2 class="font-serif text-xl sm:text-2xl mb-4">WEB限定クーポン</h2>
+                <div class="h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent my-6 sm:my-8 opacity-50"></div>
+                <p class="text-[10px] opacity-60 mb-2 uppercase tracking-widest">Present this screen on arrival</p>
+                <div class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[var(--gold)] mb-6 sm:mb-8 tracking-tight sm:tracking-tighter">
+                    おつまみ1品サービス
+                </div>
+                <p class="text-[10px] opacity-40">※お一人様2,000円以上のご利用に限ります。他クーポン併用不可。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7.5. Coming Soon -->
+    <section class="py-14 sm:py-20 bg-zinc-950/80 border-t border-white/5 relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-4 max-w-4xl text-center relative z-10">
+            <span class="inline-block px-4 py-1 border border-[var(--gold)] text-[var(--gold)] text-[10px] tracking-[0.3em] uppercase mb-4">Coming Soon</span>
+            <h2 class="font-serif text-xl sm:text-2xl md:text-3xl mb-5 sm:mb-6 tracking-wide sm:tracking-widest gold-gradient">代行待ちの時間も、心地よく。<br>「あがり」の締めセット準備中。</h2>
+            <p class="text-xs sm:text-sm text-slate-400 leading-loose max-w-2xl mx-auto mb-8 sm:mb-10 font-light">
+                二次会・三次会の最後に「運転代行が来るまでのちょっとした時間」を、もっと快適に過ごしていただけるよう、Choiceならではの新しいおもてなしを企画・開発中です。
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-5 sm:gap-6 text-left max-w-3xl mx-auto">
+                <div class="bg-black/60 border border-white/10 p-5 sm:p-6 rounded-sm">
+                    <div class="text-[var(--gold)] text-xs font-bold mb-2 tracking-wider flex items-center">
+                        <i class="fas fa-mug-hot mr-2"></i> ほっと一息「あがり」ドリンク
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        楽しかった夜の最後に。温かい特製甘酒スープやお茶、体に優しい締めの一杯をご用意。
+                    </p>
+                </div>
+                <div class="bg-black/60 border border-white/10 p-5 sm:p-6 rounded-sm">
+                    <div class="text-[var(--gold)] text-xs font-bold mb-2 tracking-wider flex items-center">
+                        <i class="fas fa-utensils mr-2"></i> 胃をいたわるプチ締めメニュー
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        重すぎず、代行を待つ15〜20分でサッと楽しめるミニおお茶漬けや出汁メニューを考案中。
+                    </p>
+                </div>
+            </div>
+            <p class="text-[10px] opacity-40 mt-8 tracking-widest">※近日スタート予定！ 楽しみにお待ちください。</p>
+        </div>
+    </section>
+
+    <!-- 8. Shop & Map -->
+    <section class="py-16 sm:py-24 relative">
+        <div class="container mx-auto px-5 sm:px-4 max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-10 sm:gap-12">
+                <!-- Info Left -->
+                <div class="space-y-8 sm:space-y-10">
+                    <div>
+                        <h2 class="font-serif text-3xl sm:text-4xl mb-4">Choice</h2>
+                        <p class="text-[var(--gold)] tracking-widest text-xs uppercase mb-6 sm:mb-8 italic">Dining Bar Selection</p>
+                        <div class="space-y-4 text-sm font-light opacity-80 leading-relaxed">
+                            <p><i class="fas fa-map-marker-alt text-[var(--gold)] mr-3"></i> 〒990-0039 山形県山形市香澄町１丁目１１−１４ 唐津ビル ２F</p>
+                            <p><i class="fas fa-phone text-[var(--gold)] mr-3"></i> 050-5841-6303</p>
+                            <p><i class="fas fa-clock text-[var(--gold)] mr-3"></i> 18:00 - 4:00 / 定休日: 火曜日</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://www.hotpepper.jp/strJ001280975/" target="_blank" rel="noopener" class="gold-button flex-1 text-black font-bold py-4 px-6 text-center text-sm tracking-widest active:brightness-95">HOTPEPPER</a>
+                        <a href="https://www.instagram.com/choice_6/" target="_blank" rel="noopener" class="border border-white/20 flex-1 py-4 px-6 text-center text-sm tracking-widest hover:bg-white/5 active:bg-white/10 transition-colors">INSTAGRAM</a>
+                    </div>
+                </div>
+
+                <!-- Map Right -->
+                <div class="map-container overflow-hidden border border-white/10 shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.2967018597396!2d140.32835007477985!3d38.249424184678766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60f730cda35%3A0x8b962f411149dfee!2zRGluaW5nIEJhciBDaG9pY2Uo44OA44Kk44OL44Oz44Kw44OQ44O8IOODgeODp-OCpOOCuSk!5e0!3m2!1sja!2sjp!4v1771203648870!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <footer class="mt-16 sm:mt-24 text-center border-t border-white/5 pt-10 sm:pt-12">
+                <p class="text-[9px] tracking-[0.3em] sm:tracking-[0.4em] opacity-30 uppercase">
+                    &copy; Dining Bar Choice. All images are original AI-generated assets.
+                </p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- モバイル用固定予約ボタン -->
+    <a href="https://www.hotpepper.jp/strJ001280975/" target="_blank" rel="noopener"
+       class="md:hidden fixed bottom-0 left-0 right-0 z-50 gold-button text-black text-center font-bold py-4 tracking-widest text-sm shadow-[0_-4px_15px_rgba(0,0,0,0.3)]">
+        今すぐ予約する
+    </a>
+    <div class="md:hidden h-16"></div>
+
+</body>
+</html>
