@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>カフェレストラン JuRI | 山形市・十文字の生パスタと猫やしの空間</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c29a5b;
+            --primary-dark: #a8813e;
+            --bg-dark: #1a1a1a;
+            --text-main: #2e2b28;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-main);
+            background-color: #fff;
+            overscroll-behavior-y: none;
+        }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+
+        /* FIRST VIEW */
+        .fv-container {
+            position: relative;
+            height: 100svh;
+            min-height: 480px;
+            max-height: 820px;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .fv-container { height: 88vh; max-height: 760px; }
+        }
+        .fv-image {
+            background-image: url('images/pizza.jpg');
+            background-size: cover;
+            background-position: center 65%;
+            height: 100%;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .fv-image { background-position: center 55%; }
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 36px;
+            height: 2px;
+            background: var(--primary);
+            margin: 12px auto 0;
+        }
+        .section-title.align-left::after { margin: 12px 0 0; }
+        .cta-gold {
+            background: linear-gradient(135deg, #d9b46f 0%, var(--primary) 55%, var(--primary-dark) 100%);
+            box-shadow: 0 4px 16px rgba(194, 154, 91, 0.35);
+        }
+        .cta-gold:active { transform: scale(0.98); }
+        .bg-subtle { background-color: #f8f5ef; }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 100%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+
+    <!-- FIRST VIEW -->
+    <section class="fv-container">
+        <div class="fv-image"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30 md:bg-gradient-to-r md:from-black/70 md:via-black/25 md:to-black/10"></div>
+
+        <div class="absolute top-8 left-6 md:top-10 md:left-12 text-white z-10">
+            <p class="text-[11px] md:text-xs tracking-[0.25em] font-light mb-2">YAMAGATA / JUMONJI</p>
+            <div class="h-px w-8 bg-white/60"></div>
+        </div>
+
+        <!-- Mobile: vertical Japanese headline -->
+        <div class="absolute inset-0 flex items-center justify-end pr-8 sm:pr-10 md:hidden">
+            <h1 class="vertical-text text-white font-serif text-[26px] sm:text-3xl font-bold tracking-widest leading-relaxed drop-shadow-lg">
+                <span>心がほどける、</span><br>
+                <span>もっちり生パスタ。</span><br>
+                <span class="text-[var(--primary)] text-xl sm:text-2xl">ローマ風ピッツァの誘惑</span>
+            </h1>
+        </div>
+
+        <!-- Desktop: horizontal headline, left-aligned with breathing room -->
+        <div class="hidden md:flex absolute inset-0 items-center">
+            <div class="max-w-2xl pl-12 lg:pl-24 pr-8">
+                <h1 class="font-serif text-white font-bold leading-tight drop-shadow-lg text-4xl lg:text-5xl">
+                    心がほどける、もっちり生パスタ。<br>
+                    <span class="text-[var(--primary)] text-3xl lg:text-4xl">ローマ風ピッツァの誘惑</span>
+                </h1>
+                <p class="mt-6 text-white/90 text-base lg:text-lg leading-relaxed max-w-md">
+                    猫が佇むアメリカンスタイルな店内で、本格イタリアンをカジュアルに愉しむ。
+                </p>
+                <a href="https://instagram.com/rinnagi1205" target="_blank" rel="noopener"
+                   class="cta-gold inline-block mt-8 px-8 py-3.5 text-white font-bold rounded text-sm tracking-widest">
+                    公式Instagramをフォローする
+                </a>
+            </div>
+        </div>
+
+        <div class="md:hidden absolute bottom-16 left-1/2 -translate-x-1/2 text-white text-center w-full px-6">
+            <p class="text-[13px] font-light leading-relaxed backdrop-blur-sm bg-black/25 py-2.5 px-4 rounded inline-block">
+                猫が佇むアメリカンスタイルな店内で、<br>
+                本格イタリアンをカジュアルに愉しむ。
+            </p>
+        </div>
+    </section>
+
+    <!-- LEAD SECTION -->
+    <section class="px-6 md:px-12 py-12 md:py-20 bg-white">
+        <div class="mx-auto max-w-6xl md:grid md:grid-cols-2 md:gap-16 md:items-center text-center md:text-left">
+            <h2 class="font-serif text-[22px] md:text-3xl lg:text-4xl leading-snug mb-5 md:mb-0">
+                「いつか寄るぜ」が<br>
+                <span class="text-[var(--primary)]">「最高のご褒美」</span>になる日。
+            </h2>
+            <p class="text-sm md:text-base leading-loose md:leading-loose text-gray-600 md:max-w-md">
+                国道13号沿い、猫の看板が目印。<br>
+                澄み渡る贅沢な旨味、山形牛の贅沢。<br>
+                カフェレストラン JuRIは、<br>
+                日常を少しだけ特別にする場所です。
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA 1 -->
+    <section class="px-6 md:px-12 py-8 md:py-10 bg-subtle text-center">
+        <div class="mx-auto max-w-4xl md:flex md:items-center md:justify-between md:text-left">
+            <div class="mb-5 md:mb-0">
+                <p class="text-[var(--primary-dark)] font-bold text-xs mb-1 tracking-widest">OFFICIAL INSTAGRAM</p>
+                <h3 class="text-base md:text-lg font-bold leading-relaxed">限定メニューや猫たちの日常を公開中</h3>
+                <p class="text-[10px] mt-2 text-gray-400 hidden md:block">※最新の営業状況はこちらをご確認ください</p>
+            </div>
+            <a href="https://instagram.com/rinnagi1205" target="_blank" rel="noopener"
+               class="cta-gold block md:inline-block w-full md:w-auto py-4 md:py-3.5 md:px-10 text-white font-bold rounded text-base tracking-widest transition-transform shrink-0">
+                公式Instagramをフォローする
+            </a>
+        </div>
+        <p class="text-[10px] mt-3 text-gray-400 md:hidden">※最新の営業状況はこちらをご確認ください</p>
+    </section>
+
+    <!-- 3 POINTS -->
+    <section class="py-14 md:py-20 px-6 md:px-12 bg-white">
+        <div class="mx-auto max-w-6xl">
+            <div class="text-center mb-10 md:mb-14">
+                <h2 class="section-title font-serif text-xl md:text-3xl inline-block">JuRIが選ばれる3つの理由</h2>
+            </div>
+
+            <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-10">
+                <div>
+                    <div class="relative mb-4">
+                        <img src="images/pasta.png"
+                             alt="究極のもっちり生パスタ" loading="lazy"
+                             class="w-full h-44 md:h-56 object-cover rounded-lg shadow-md">
+                        <span class="absolute -top-3 -left-3 bg-[var(--primary)] text-white w-9 h-9 rounded-full flex items-center justify-center font-serif text-lg shadow-lg">1</span>
+                    </div>
+                    <h4 class="font-bold text-base md:text-lg mb-2">究極の「もっちり」生パスタ</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">全てのメニューに生パスタを使用。アルデンテにこだわった弾力ごたえと、濃厚なソースが奏でるハーモニーは一度食べたら忘れられません。</p>
+                </div>
+
+                <div>
+                    <div class="relative mb-4">
+                        <img src="images/pizza.png"
+                             alt="パリッと香ばしいローマ風ピッツァ" loading="lazy"
+                             class="w-full h-44 md:h-56 object-cover rounded-lg shadow-md">
+                        <span class="absolute -top-3 -left-3 bg-[var(--primary)] text-white w-9 h-9 rounded-full flex items-center justify-center font-serif text-lg shadow-lg">2</span>
+                    </div>
+                    <h4 class="font-bold text-base md:text-lg mb-2">パリッと香ばしいローマ風ピッツァ</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">薄生地でサクッと軽い食感のローマ風ピッツァ。海老チリ味やチーズたっぷりの逸品は、おつまみやシェアにも最適です。</p>
+                </div>
+
+                <div>
+                    <div class="relative mb-4">
+                        <img src="images/cat.jpg"
+                             alt="猫とアメリカンな癒やし空間" loading="lazy"
+                             class="w-full h-44 md:h-56 object-cover rounded-lg shadow-md">
+                        <span class="absolute -top-3 -left-3 bg-[var(--primary)] text-white w-9 h-9 rounded-full flex items-center justify-center font-serif text-lg shadow-lg">3</span>
+                    </div>
+                    <h4 class="font-bold text-base md:text-lg mb-2">猫とアメリカンな癒やし空間</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">店内の至る所に猫モチーフが。付かず離れずの心地よいサービスで、お一人様でもご家族でも、ゆったりとした時間を過ごせます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICES -->
+    <section class="py-12 md:py-20 px-6 md:px-12 bg-subtle">
+        <div class="mx-auto max-w-5xl">
+            <h2 class="text-center font-serif text-lg md:text-2xl mb-8 md:mb-12">お客様からの嬉しいお声</h2>
+            <div class="space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
+                <div class="bg-white p-5 md:p-7 rounded-lg shadow-sm border-l-4 border-[var(--primary)]">
+                    <div class="flex text-amber-500 mb-2 text-sm">★★★★★</div>
+                    <p class="text-sm md:text-base leading-relaxed text-gray-700">ランチ1250円でビュッフェサラダ、メイン、ドリンク、デザート付き！生パスタが最高に美味しくて、秘伝豆のポテサラがお気に入りです。</p>
+                </div>
+                <div class="bg-white p-5 md:p-7 rounded-lg shadow-sm border-l-4 border-[var(--primary)]">
+                    <div class="flex text-amber-500 mb-2 text-sm">★★★★★</div>
+                    <p class="text-sm md:text-base leading-relaxed text-gray-700">猫充できました。パスタももちろん美味しいですが、サラダが大きめの器でたっぷり野菜が摂れるのも嬉しいポイントです！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="py-14 md:py-20 px-6 md:px-12 bg-[var(--bg-dark)] text-white">
+        <div class="mx-auto max-w-5xl md:grid md:grid-cols-[auto,1fr] md:gap-14 md:items-center">
+            <div class="text-center md:text-left mb-6 md:mb-0">
+                <p class="text-[var(--primary)] text-xs mb-2 tracking-widest">FOUNDER STORY</p>
+                <h2 class="font-serif text-xl md:text-2xl mb-6 md:mb-0">為せば成る。</h2>
+            </div>
+            <div class="flex flex-col md:flex-row md:items-center md:gap-10">
+                <div class="flex justify-center mb-6 md:mb-0 shrink-0">
+                    <div class="w-28 h-28 md:w-36 md:h-36 bg-gray-800 rounded-full border-2 border-[var(--primary)] overflow-hidden">
+                        <img src="images/chef.png"
+                             alt="店主" loading="lazy" class="w-full h-full object-cover grayscale opacity-80">
+                    </div>
+                </div>
+                <p class="text-center md:text-left text-xs md:text-sm leading-loose text-gray-400 px-2 md:px-0 max-w-xs md:max-w-sm mx-auto md:mx-0">
+                    創業者「ジュリママ」こと中村ユコ。<br>
+                    猫を愛し、母として、そして経営者として<br>
+                    「美味しい料理と癒やしの提供」に情熱を注ぐ。<br>
+                    その想いが一皿一皿に宿っています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section class="py-14 md:py-20 px-6 md:px-12 bg-subtle border-y border-amber-200/50">
+        <div class="mx-auto max-w-5xl">
+            <div class="text-center mb-7 md:mb-12">
+                <span class="inline-block px-3 py-1 bg-[var(--primary)] text-white text-xs font-bold rounded-full mb-3">COMING SOON</span>
+                <h2 class="font-serif text-xl md:text-3xl font-bold leading-snug">
+                    JuRIがあなたの街へ！<br>
+                    <span class="text-[var(--primary-dark)]">「あったらいいな」を叶える新展開</span>
+                </h2>
+            </div>
+
+            <div class="bg-white p-5 md:p-8 rounded-lg shadow-sm border border-amber-100 md:grid md:grid-cols-2 md:gap-10">
+                <div class="p-4 md:p-5 bg-amber-50/70 rounded border-l-4 border-[var(--primary)] mb-6 md:mb-0">
+                    <p class="text-xs md:text-sm text-amber-900 font-bold mb-1">【店舗一時休業・キッチンカー準備中！】</p>
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+                        現在、実店舗は一時休業中ですが、JuRIの味を皆様にお届けするため<span class="font-bold">キッチンカーでの移動営業</span>が本格始動！<span class="font-bold">薗王ジュピア</span>をはじめとする人気エリアで、焼き立てのローマ風ピッツァやもっちり生パスタをお楽しみいただけます。
+                    </p>
+                </div>
+
+                <div class="space-y-5">
+                    <h3 class="font-serif font-bold text-sm md:text-base border-b border-gray-100 pb-2">準備中のワクワク新サービス</h3>
+
+                    <div class="flex gap-3 items-start">
+                        <div class="w-9 h-9 rounded-full bg-[var(--primary)]/10 text-[var(--primary-dark)] flex items-center justify-center font-bold shrink-0 text-sm">01</div>
+                        <div>
+                            <h4 class="font-bold text-sm md:text-base">キッチンカー移動販売：薗王ジュピア出店</h4>
+                            <p class="text-xs md:text-sm text-gray-500 mt-1">大自然の中で食べるアツアツの本格ピッツァ！イベントや観光ついでにお気軽にお立ち寄りください。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 items-start">
+                        <div class="w-9 h-9 rounded-full bg-[var(--primary)]/10 text-[var(--primary-dark)] flex items-center justify-center font-bold shrink-0 text-sm">02</div>
+                        <div>
+                            <h4 class="font-bold text-sm md:text-base">テイクアウト・スマホ事前予約</h4>
+                            <p class="text-xs md:text-sm text-gray-500 mt-1">「並ばずに焼き立てを持ち帰りたい」「おうちでゆっくり味わいたい」を叶える事前オーダーシステムを準備中。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-6 md:pt-10">
+                <p class="text-xs md:text-sm text-gray-500 mb-3">出店場所や営業スケジュールは公式Instagramで随時更新中！</p>
+                <a href="https://instagram.com/rinnagi1205" target="_blank" rel="noopener"
+                   class="cta-gold inline-block w-full md:w-auto md:px-16 py-3.5 text-white font-bold rounded text-sm tracking-widest shadow-md">
+                    最新の出店情報をInstagramで見る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP INFORMATION -->
+    <section class="px-6 md:px-12 py-12 md:py-20 bg-white">
+        <div class="mx-auto max-w-6xl">
+            <h3 class="font-serif text-center text-lg md:text-2xl mb-8 md:mb-12">Information</h3>
+
+            <div class="md:grid md:grid-cols-2 md:gap-16 md:items-start">
+                <div class="space-y-8 md:space-y-10">
+                    <dl class="text-sm md:text-base space-y-6 border-l-2 border-[var(--primary)] pl-5">
+                        <div>
+                            <dt class="font-bold text-[var(--primary-dark)] text-xs tracking-widest">ADDRESS</dt>
+                            <dd class="mt-1">〒990-2211 山形県山形市十文字1591</dd>
+                        </div>
+                        <div>
+                            <dt class="font-bold text-[var(--primary-dark)] text-xs tracking-widest">ACCESS / MAP</dt>
+                            <dd class="mt-1">国道13号沿い（南進からのみ入庫可）<br>山形口から徒歩17分 / 駐車場完備</dd>
+                        </div>
+                        <div>
+                            <dt class="font-bold text-[var(--primary-dark)] text-xs tracking-widest">OPEN / CLOSE</dt>
+                            <dd class="mt-1">定休日：日曜日・月曜日<br><span class="text-[10px] text-gray-400 italic">※モンテディオ山形のホームゲーム開催日はランチ休業の場合があります</span></dd>
+                        </div>
+                        <div>
+                            <dt class="font-bold text-[var(--primary-dark)] text-xs tracking-widest">RESERVATION</dt>
+                            <dd class="text-2xl md:text-3xl font-bold mt-1 tracking-tighter">
+                                <a href="tel:0236864406" class="hover:text-[var(--primary)] transition-colors">023-686-4406</a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="map-container shadow-inner mt-8 md:mt-0">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3130.771663612914!2d140.3611589747832!3d38.30795778126997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc8c13f8a7f07%3A0xfc7023d4079dad46!2z44Kr44OV44Kn44Os44K544OI44Op44OzIEp1Ukk!5e0!3m2!1sja!2sjp!4v1771202164167!5m2!1sja!2sjp"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="カフェレストラン JuRI 地図"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STICKY CTA -->
+    <div class="sticky bottom-0 left-0 right-0 p-4 md:p-5 bg-white/95 backdrop-blur-md border-t border-gray-100 z-50" style="padding-bottom: max(1rem, env(safe-area-inset-bottom));">
+        <div class="mx-auto max-w-6xl md:flex md:items-center md:justify-end">
+            <a href="https://instagram.com/rinnagi1205" target="_blank" rel="noopener"
+               class="cta-gold block md:inline-block w-full md:w-auto md:px-14 py-3.5 text-white text-center font-bold rounded shadow-xl tracking-widest text-sm">
+                Instagramで最新情報をチェック
+            </a>
+        </div>
+    </div>
+
+    <footer class="py-10 bg-gray-50 text-center text-[10px] text-gray-400 tracking-[0.15em]">
+        &copy; CAFE RESTAURANT JuRI. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>
