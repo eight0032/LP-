@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Restaurant TAKANO | 寒河江の一軒家フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #b08d49;
+            --dark-brown: #1a1510;
+            --off-white: #fcfbf7;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--off-white); }
+        h1, h2, h3, .serif { font-family: 'Noto Serif JP', serif; }
+        .text-gold { color: var(--primary-gold); }
+        .bg-gold { background-color: var(--primary-gold); }
+        .bg-custom-dark { background-color: var(--dark-brown); }
+
+        .fade-in { animation: fadeIn 1.6s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .luxury-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--primary-gold), transparent);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            filter: grayscale(20%) contrast(110%);
+            border: 0;
+        }
+        @media (min-width: 768px) {
+            .map-container iframe { height: 420px; }
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1.0); }
+            100% { transform: scale(1.08); }
+        }
+        .hero-bg { animation: slowZoom 22s ease-in-out infinite alternate; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .hero-bg { animation: none; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--primary-gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="text-gray-900 leading-relaxed overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 scale-105 hero-bg">
+            <img src="images/soup.png"
+                 alt="濃厚かぼちゃのポタージュ"
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/60"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <div class="fade-in">
+                <p class="text-[9px] sm:text-xs tracking-[0.4em] sm:tracking-[0.6em] mb-6 sm:mb-10 font-light text-gold/80">Restaurant TAKANO Presents</p>
+                <h1 class="text-xl sm:text-3xl md:text-4xl font-extralight mb-8 sm:mb-12 leading-[1.9] sm:leading-[2] serif tracking-[0.12em] sm:tracking-[0.2em]">
+                    一皿に、フランス二つ星の<br>
+                    記憶を込めて。
+                </h1>
+                <div class="flex flex-col items-center">
+                    <div class="luxury-line mb-8 sm:mb-10"></div>
+                    <p class="text-xs sm:text-lg font-light tracking-[0.15em] sm:tracking-[0.3em] mb-10 sm:mb-12 serif italic text-white/90">
+                        The Masterpiece: 濃厚かぼちゃのポタージュ
+                    </p>
+                    <a href="#booking" class="group relative px-8 sm:px-10 py-3 border border-white/40 hover:border-white transition-all duration-500 overflow-hidden">
+                        <span class="relative z-10 tracking-[0.3em] sm:tracking-[0.4em] text-[10px] uppercase font-light">ご予約はこちら</span>
+                        <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CTA Section -->
+    <section class="bg-custom-dark py-10 sm:py-12 px-4 border-b border-gold/10">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-white">
+            <div class="text-center md:text-left">
+                <h2 class="text-base sm:text-lg font-light tracking-[0.25em] serif">ご予約・お問い合わせ</h2>
+                <p class="text-gray-500 text-[9px] sm:text-[10px] mt-2 uppercase tracking-[0.3em] sm:tracking-[0.4em]">Official Booking &amp; Information</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <a href="tel:0237860804" class="text-lg sm:text-2xl font-light text-gold hover:text-white transition-colors duration-300 serif">
+                    <i class="fas fa-phone-alt mr-2 sm:mr-3 text-sm opacity-50"></i>0237-86-0804
+                </a>
+                <a href="https://www.instagram.com/restaurant.takano/" target="_blank" rel="noopener" class="px-5 sm:px-6 py-2 border border-white/10 hover:border-white transition-all duration-300 text-[10px] sm:text-[11px] tracking-widest uppercase">
+                    Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Concept Section -->
+    <section class="py-20 sm:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20">
+                <div class="w-full md:w-1/2 relative">
+                    <img src="images/soup.png"
+                         alt="素材のこだわり"
+                         class="w-full h-auto grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700 shadow-xl rounded-sm">
+                </div>
+                <div class="w-full md:w-1/2 space-y-6 sm:space-y-10">
+                    <h2 class="text-xl sm:text-2xl md:text-4xl serif font-light leading-relaxed text-gray-800 tracking-wide">
+                        寒河江の土が育んだ<br>
+                        甘美な黄金。
+                    </h2>
+                    <p class="text-gray-500 leading-loose text-sm font-light">
+                        Restaurant TAKANOの代名詞ともいえる「かぼちゃのポタージュ」。<br>
+                        地元・寒河江の農家が手塩にかけて育てた完熟かぼちゃのみを使用。<br>
+                        ミシュラン二つ星レストランで培った伝統的な技法により、素材本来の甘みを極限まで凝縮させました。
+                    </p>
+                    <div class="pt-2 sm:pt-4">
+                        <div class="inline-block border-b border-gold/40 pb-2">
+                            <span class="text-gold tracking-[0.25em] sm:tracking-[0.4em] text-[10px] font-medium uppercase">The Secret of Taste</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Story -->
+    <section class="py-20 sm:py-32 bg-custom-dark text-white">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center">
+            <p class="text-gold tracking-[0.35em] sm:tracking-[0.5em] text-[10px] font-medium uppercase mb-10 sm:mb-12">Our Philosophy</p>
+            <h2 class="text-xl sm:text-2xl md:text-4xl serif font-light mb-12 sm:mb-16 tracking-wide sm:tracking-widest leading-relaxed">フランスの技術、寒河江の心。</h2>
+            <div class="flex justify-center mb-12 sm:mb-16">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-gold/30 p-1">
+                    <img src="images/chef.png"
+                         alt="高野シェフ"
+                         class="w-full h-full object-cover rounded-full grayscale opacity-80">
+                </div>
+            </div>
+            <div class="space-y-6 sm:space-y-8 max-w-2xl mx-auto">
+                <p class="text-gray-400 font-light leading-loose italic text-sm">
+                    「ミシュランの星は、過去の栄光。今の私にあるのは、目の前のお客様を笑顔にする一皿だけです。」
+                </p>
+                <p class="text-xs sm:text-sm font-light text-gray-400 leading-loose tracking-wide">
+                    1990年、フランス二つ星のキャリアを背負いこの地へ。30年以上、地元食材と対話し、一軒家というプライベートな空間で「本物」を提供し続けてきました。
+                </p>
+            </div>
+        </div>
+    </section>
+
+   <!-- 5. Experience -->
+<section class="py-20 sm:py-32 bg-[#f8f7f4]">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <div class="text-center mb-14 sm:mb-24">
+            <h2 class="text-xl sm:text-3xl serif font-light mb-3 sm:mb-4 tracking-wide sm:tracking-widest">至福へのエスコート</h2>
+            <p class="text-gray-400 text-[9px] sm:text-[10px] tracking-[0.35em] sm:tracking-[0.5em] uppercase">Special Experience</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12 md:gap-16">
+            <div class="group">
+                <h3 class="text-base sm:text-lg serif mb-3 sm:mb-5 tracking-wide">寛やかな個室空間</h3>
+                <p class="text-xs text-gray-500 font-light leading-relaxed">
+                    一軒家ならではの落ち着いたリビング。お子様連れでも安心してお過ごしいただける個室をご用意しております。
+                </p>
+            </div>
+            <div class="group">
+                <h3 class="text-base sm:text-lg serif mb-3 sm:mb-5 tracking-wide">心躍るデザートワゴン</h3>
+                <p class="text-xs text-gray-500 font-light leading-relaxed">
+                    コースの最後を飾るのは、目の前で選ぶ宝石のようなスイーツ。数種類のケーキやブリュレから、お好きなだけ。
+                </p>
+            </div>
+            <div class="group sm:col-span-2 md:col-span-1 sm:max-w-sm sm:mx-auto md:max-w-none">
+                <h3 class="text-base sm:text-lg serif mb-3 sm:mb-5 tracking-wide">美食を深めるペアリング</h3>
+                <p class="text-xs text-gray-500 font-light leading-relaxed">
+                    ランチでも愉しめる4種のペアリングセット。料理に寄り添い、香りを引き立てる最高の一杯をご提案します。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 5.5. Coming Soon Section -->
+    <section class="py-20 sm:py-32 bg-custom-dark text-white relative overflow-hidden border-t border-gold/10">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#b08d49_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-14 sm:mb-20">
+                <span class="text-gold tracking-[0.4em] sm:tracking-[0.6em] text-[10px] uppercase font-light">Coming Soon</span>
+                <h2 class="text-xl sm:text-2xl md:text-4xl serif font-light mt-4 tracking-wide sm:tracking-widest leading-relaxed">
+                    寒河江の果実とパティシエの技が結実。<br>
+                    至福のフルームタルト、誕生へ。
+                </h2>
+                <div class="luxury-line mx-auto mt-8"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="overflow-hidden rounded-sm shadow-2xl border border-white/10 group">
+                        <img src="images/taruto.jpg"
+                             alt="特製フルームタルト"
+                             class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 space-y-6 sm:space-y-8">
+                    <p class="text-gold tracking-[0.2em] sm:tracking-[0.3em] text-xs font-light uppercase">New Project / Takeout &amp; Specialty</p>
+                    <h3 class="text-lg sm:text-xl md:text-2xl serif font-light tracking-wide">
+                        あればいいなを形に。<br>レストランの味をご自宅へ。
+                    </h3>
+                    <p class="text-gray-400 font-light leading-loose text-sm">
+                        Restaurant TAKANO宝属パティシエの確かな技術と、寒河江が誇る四季折々の芳かな果物(さくらんぼ、ぶどう、桃、りんごなど)が出逢いました。<br>
+                        店内で愉しむコースの余韻をご自宅でも、大切な方への贈り物としてもお愉しみいただける「特製フルームタルト」のテイクアウト販売を新たに開始いたします。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-white/10">
+                        <div>
+                            <h4 class="text-gold text-xs tracking-widest uppercase mb-2 serif font-medium">厳選された旬の果実</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">寒河江の契約農家から朝摘みで直送される、最高品質の果物をふんだんに使用。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-gold text-xs tracking-widest uppercase mb-2 serif font-medium">テイクアウト・ギフト</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">ご自宅用はもちろん、記念日や特別な日の手土産としても喜ばれる特製BOX。</p>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <span class="inline-block px-6 sm:px-8 py-3 border border-gold/40 text-gold text-[10px] tracking-[0.3em] sm:tracking-[0.4em] uppercase font-light">
+                            Release Coming Soon
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Voices -->
+    <section class="py-24 sm:py-40 bg-white">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6 text-center">
+            <i class="fas fa-quote-left text-gold/20 text-3xl sm:text-4xl mb-10 sm:mb-12"></i>
+            <div class="space-y-12 sm:space-y-16">
+                <div>
+                    <p class="text-sm sm:text-base serif font-light leading-relaxed italic text-gray-700">
+                        「心が贅沢になって帰ってきました。丁寧なおもてなしと、一皿ごとの驚き。また必ず伺います。」
+                    </p>
+                    <p class="text-[9px] text-gold mt-5 sm:mt-6 tracking-[0.3em] sm:tracking-[0.4em] uppercase font-medium">— Guest Voice / Dinner</p>
+                </div>
+                <div class="w-8 h-px bg-gold/20 mx-auto"></div>
+                <div>
+                    <p class="text-base sm:text-lg serif font-light leading-loose italic text-gray-700">
+                        「食材の良さが、見た目の美しさに負けていない。<br>本格的なのにアットホームな、最高のリラックスです。」
+                    </p>
+                    <p class="text-[9px] text-gold mt-5 sm:mt-6 tracking-[0.3em] sm:tracking-[0.4em] uppercase font-medium">— Guest Voice / Lunch</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Info & Booking -->
+    <section id="booking" class="bg-custom-dark text-white py-20 sm:py-32 px-5 sm:px-6 relative">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-2xl sm:text-3xl serif font-light mb-8 sm:mb-12 tracking-wide sm:tracking-widest">Access &amp; Info</h2>
+                    <div class="space-y-8 sm:space-y-10 font-light text-gray-400">
+                        <div class="flex items-start gap-4 sm:gap-5">
+                            <i class="fas fa-map-marker-alt text-gold/60 mt-1"></i>
+                            <div>
+                                <p class="text-white text-sm font-normal mb-1">Restaurant TAKANO</p>
+                                <p class="text-xs leading-relaxed">〒991-0049 山形県寒河江市本楯3丁目130-1<br><span class="opacity-50 text-[10px]">寒河江駅より徒歩圏内・駐車場完備</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 sm:gap-5">
+                            <i class="fas fa-clock text-gold/60 mt-1"></i>
+                            <div>
+                                <p class="text-white text-sm font-normal mb-1">Business Hours</p>
+                                <p class="text-xs leading-relaxed">ランチ・ディナー共に完全予約制<br>定休日:毎週木曜日</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 sm:gap-5">
+                            <i class="fas fa-phone-alt text-gold/60 mt-1"></i>
+                            <div>
+                                <p class="text-white text-sm font-normal mb-1">Contact</p>
+                                <p class="text-xl sm:text-2xl text-gold font-light serif tracking-wide mt-1">0237-86-0804</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 sm:mt-12 map-container grayscale-[0.6] opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 rounded-sm overflow-hidden border border-white/5">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3128.2673891380864!2d140.2878972747866!3d38.36593537788947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc6a8684e1fc7%3A0x9d0fdec58d74e234!2z44CyIkOAAA!5e0!3m2!1sja!2sjp!4v1770960359402!5m2!1sja!2sjp"
+                                loading="lazy" allowfullscreen title="Restaurant TAKANO 地図"></iframe>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 bg-white/[0.03] backdrop-blur-sm p-8 sm:p-12 border border-white/5 rounded-sm self-stretch flex flex-col justify-center text-center">
+                    <h3 class="text-lg sm:text-2xl serif font-light mb-8 sm:mb-10 tracking-[0.15em] sm:tracking-[0.2em]">Reservation</h3>
+                    <p class="text-xs text-gray-400 mb-10 sm:mb-12 leading-loose font-light">
+                        Restaurant TAKANOでは、最高のお料理を<br>最適な状態でお愉しみいただくため、<br>完全予約制とさせていただいております。
+                    </p>
+                    <a href="tel:0237860804" class="inline-block px-8 sm:px-12 py-4 bg-transparent border border-gold text-gold text-[11px] tracking-[0.3em] sm:tracking-[0.5em] hover:bg-gold hover:text-white transition-all duration-500 font-light uppercase mb-10 sm:mb-12">
+                        Call to Reserve
+                    </a>
+                    <div class="flex justify-center gap-8">
+                        <a href="https://www.instagram.com/restaurant.takano/" target="_blank" rel="noopener" class="text-gray-600 hover:text-white transition-colors duration-300" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="https://restauranttakano.gorp.jp/" target="_blank" rel="noopener" class="text-gray-600 hover:text-white transition-colors duration-300" aria-label="公式サイト"><i class="fas fa-globe text-xl"></i></a>
+                    </div>
+                    <p class="text-[9px] text-gray-700 mt-12 sm:mt-16 tracking-[0.2em] sm:tracking-[0.3em] uppercase">Est. 1990 Sagaae</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-10 sm:py-12 text-center border-t border-white/5">
+        <p class="text-[9px] text-gray-700 tracking-[0.3em] sm:tracking-[0.4em] uppercase">
+            &copy; Restaurant TAKANO.
+        </p>
+    </footer>
+
+</body>
+</html>
