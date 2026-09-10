@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>やまや園ピザリア | 山形・果樹園の中にある隠れ家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d4628;
+            --accent: #c4a457;
+            --bg-cream: #f9f7f2;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: #333;
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        .text-primary { color: var(--primary); }
+        .bg-primary { background-color: var(--primary); }
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+
+        /* 装飾的な背景 */
+        .bg-pattern {
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+        }
+
+        /* フェードインアニメーション */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up { opacity: 1; transform: none; transition: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        /* スタイリッシュな見出しライン */
+        .heading-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .heading-line::before, .heading-line::after {
+            content: "";
+            height: 1px;
+            width: 32px;
+            background-color: var(--accent);
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .heading-line::before, .heading-line::after { width: 50px; }
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* フォーカスの可視化 */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* タップ領域の確保 */
+        .tap-target { min-height: 44px; }
+
+        /* 横スクロール防止用の安全マージン */
+        .safe-px { padding-left: max(1.25rem, env(safe-area-inset-left)); padding-right: max(1.25rem, env(safe-area-inset-right)); }
+    </style>
+</head>
+<body>
+
+    <!-- ファーストビュー -->
+    <header class="relative min-h-screen overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- AI生成画像: 石窯ピザのメイン -->
+            <img src="images/pizza2.png" alt="石窯ピザのメイン画像" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/45"></div>
+        </div>
+
+        <div class="relative z-10 min-h-screen flex flex-col items-center justify-center text-white safe-px py-24 text-center">
+            <div class="mb-5 tracking-[0.25em] text-xs sm:text-sm border-b border-white/50 pb-2">Yamaya-en Pizzaria</div>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-7xl leading-snug sm:leading-tight mb-6 sm:mb-8 drop-shadow-lg">
+                山形の自然を<br><span class="text-accent">「石窯」</span>で焼き上げる。
+            </h1>
+            <p class="text-base sm:text-xl md:text-2xl font-light mb-9 sm:mb-12 tracking-wide sm:tracking-widest">自園直送、旬の野菜が躍るプレミアム・ピッツァ</p>
+            <a href="#booking" class="tap-target inline-flex items-center justify-center bg-accent text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold active:scale-95 hover:scale-105 transition shadow-2xl">
+                来店予約をする
+            </a>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+            <p class="text-[9px] sm:text-[10px] tracking-widest uppercase mb-2 text-center">Scroll</p>
+            <div class="w-px h-8 sm:h-10 bg-white mx-auto"></div>
+        </div>
+    </header>
+
+    <!-- 特典フローティングバナー -->
+    <div class="fixed bottom-4 right-4 z-50 md:hidden">
+        <a href="#gift" class="tap-target bg-red-600 text-white w-16 h-16 rounded-full shadow-xl flex items-center justify-center animate-pulse">
+            <span class="text-xs font-bold leading-tight text-center">限定<br>特典</span>
+        </a>
+    </div>
+
+    <!-- コンセプトセクション -->
+    <section class="py-16 sm:py-24 safe-px max-w-6xl mx-auto text-center">
+        <div class="fade-up">
+            <span class="text-accent tracking-widest text-xs sm:text-sm mb-4 block">CONCEPT</span>
+            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-primary mb-10 sm:mb-12 heading-line">五感で味わう、菜園の贅沢</h2>
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center text-left">
+                <div class="relative max-w-sm mx-auto md:max-w-none">
+                    <!-- AI生成画像: マルゲリータ -->
+                    <img src="images/pizza.png" alt="自慢のマルゲリータ" class="rounded-sm shadow-2xl relative z-10 object-cover aspect-square w-full">
+                    <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-full h-full border border-accent z-0"></div>
+                </div>
+                <div>
+                    <h3 class="font-serif text-xl sm:text-2xl mb-5 sm:mb-6 text-primary">サクランボ狩りを抜けた先に広がる、非日常のイタリアン。</h3>
+                    <p class="leading-loose text-gray-600 mb-7 sm:mb-8 text-sm sm:text-base">
+                        山形市中野目。果樹園の農道を奥へと進むと現れる、隠れ家のような石窯ピザ屋「やまや園ピザリア」。<br>
+                        ここでは、私たちが丹精込めて育てた旬の野菜が主役です。石窯の高温で一気に焼き上げることで、素材本来の甘みと旨味を閉じ込めます。
+                    </p>
+                    <div class="flex gap-3 sm:gap-4">
+                        <div class="text-center flex-1">
+                            <span class="block text-2xl sm:text-3xl font-serif text-accent mb-1">400℃</span>
+                            <span class="text-[10px] text-gray-400">石窯の温度</span>
+                        </div>
+                        <div class="w-px h-12 bg-gray-200"></div>
+                        <div class="text-center flex-1">
+                            <span class="block text-2xl sm:text-3xl font-serif text-accent mb-1">100%</span>
+                            <span class="text-[10px] text-gray-400">自園直送野菜</span>
+                        </div>
+                        <div class="w-px h-12 bg-gray-200"></div>
+                        <div class="text-center flex-1">
+                            <span class="block text-2xl sm:text-3xl font-serif text-accent mb-1">4.5</span>
+                            <span class="text-[10px] text-gray-400">Google評価</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 動画・シズルセクション -->
+    <section class="bg-primary py-16 sm:py-24 safe-px overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+            <div class="md:w-1/2 fade-up">
+                <span class="text-accent tracking-widest text-xs sm:text-sm mb-4 block">EXPERIENCE</span>
+                <h2 class="font-serif text-2xl sm:text-3xl text-white mb-6 sm:mb-8">目の前で削られる<br>パルミジャーノの誘惑</h2>
+                <p class="text-white/80 leading-loose text-sm sm:text-base">
+                    スパゲッティの仕上げには、グレーターで削りたてのパルミジャーノ・レッジャーノを。芳醇な香りがテーブルいっぱいに広がります。味はもちろん、ライブ感あふれる演出も私たちの自慢です。
+                </p>
+            </div>
+            <div class="md:w-1/2 relative fade-up w-full">
+                <!-- AI生成画像: チーズたっぷりパスタ -->
+                <img src="images/pasta.png" alt="削りたてチーズのパスタ" class="rounded-lg shadow-2xl object-cover w-full h-72 sm:h-96 md:h-[400px]">
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ・社会的な証明 -->
+    <section class="py-16 sm:py-24 safe-px bg-white">
+        <div class="max-w-4xl mx-auto text-center fade-up">
+            <h2 class="font-serif text-2xl sm:text-3xl text-primary mb-12 sm:mb-16 heading-line">お客様の声</h2>
+            <div class="space-y-10 sm:space-y-12 text-left">
+                <div class="border-b border-gray-100 pb-8">
+                    <div class="flex text-accent mb-3 sm:mb-4" aria-label="評価5つ星">★★★★★</div>
+                    <p class="text-base sm:text-lg font-serif mb-4 leading-relaxed italic">「マルゲリータはチーズたっぷりうまうま。パスタはフレッシュきのこで風味豊かなんだこれ衝撃、最高すぎる！」</p>
+                    <p class="text-sm text-gray-400">ー 30代 女性 / ランチ利用</p>
+                </div>
+                <div class="pb-8">
+                    <div class="flex text-accent mb-3 sm:mb-4" aria-label="評価5つ星">★★★★★</div>
+                    <p class="text-base sm:text-lg font-serif mb-4 leading-relaxed italic">「石窯で焼くピザはやはり美味しい。店内が素朴で、知の窓を眺めながらゆったりとした時間を過ごせました。」</p>
+                    <p class="text-sm text-gray-400">ー 50代 ご夫婦 / 土日利用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON セクション -->
+    <section class="py-16 sm:py-24 safe-px bg-primary/5 border-y border-accent/20">
+        <div class="max-w-5xl mx-auto text-center fade-up">
+            <span class="bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest inline-block mb-4">Coming Soon</span>
+            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-primary mb-5 sm:mb-6 heading-line">これからのやまや園ピザリア</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-12 sm:mb-16 leading-relaxed text-sm sm:text-base">
+                天候や季節柄の移ろいにより繊細な果樹園の恵みを、より多くの方に届けるための新しい取り組みを展開予定です。
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 text-left">
+                <!-- 1. 加工品販売 -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-md border-t-4 border-accent relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="text-accent text-sm font-serif font-bold mb-2">PROJECT 01</div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-primary mb-4">自家製ジュース ・ プレミアム果樹園ジャム</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            さくらんぼ等の果実は長雨や猛暑など天候の影響を受けやすく、品質維持が非常に繊細です。丹精込めて育てた果実を余すことなく最高の状態でお届けするため、濃厚な自家製ジュースや果肉たっぷりの特製ジャムを開発中。店頭およびオンラインショップでの販売を予定しています。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-400">
+                        <span>提供予定：順次開発・EC展開</span>
+                        <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">準備中</span>
+                    </div>
+                </div>
+
+                <!-- 2. 収穫体験×ランチ -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-md border-t-4 border-primary relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="text-primary text-sm font-serif font-bold mb-2">PROJECT 02</div>
+                        <h3 class="font-serif text-xl sm:text-2xl text-primary mb-4">果樹園の収穫体験 × 石窯ピザランチイベント</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            サクランボをはじめとする旬の果樹園で自ら手摘み収穫を体験した後、農園を眺めながら焼きたての石窯ピザランチを楽しむ特別企画。ご家族・ご友人、お子さんと一緒に果樹園の自然を五感で堪能していただける体験型イベントです。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-400">
+                        <span>提供予定：季節限定イベント開催</span>
+                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-bold">企画中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典セクション -->
+    <section id="gift" class="py-16 sm:py-24 safe-px bg-pattern bg-primary/5">
+        <div class="max-w-4xl mx-auto relative">
+            <div class="absolute -top-6 -right-3 sm:-top-10 sm:-right-10 w-28 h-28 sm:w-40 sm:h-40 bg-accent rounded-full flex items-center justify-center text-white font-serif rotate-12 shadow-xl z-20">
+                <div class="text-center">
+                    <span class="text-xs sm:text-sm block">WEB限定</span>
+                    <span class="text-lg sm:text-2xl font-bold">無料</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 sm:p-10 md:p-16 rounded-sm shadow-2xl border border-accent/20 flex flex-col md:flex-row gap-8 md:gap-12 items-center relative z-10">
+                <div class="md:w-2/5 w-full max-w-xs mx-auto md:max-w-none">
+                    <!-- AI生成画像: デザートパフェ -->
+                    <img src="images/dessert.png" alt="特典のミニパフェ" class="rounded-lg object-cover aspect-square w-full">
+                </div>
+                <div class="md:w-3/5">
+                    <span class="bg-red-600 text-white px-3 py-1 text-xs font-bold mb-4 inline-block">CAMPAIGN</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl text-primary mb-5 sm:mb-6">ランチを彩る<br><span class="text-accent underline decoration-1 underline-offset-8">特製ミニパフェ</span>の贈りもの</h2>
+                    <p class="text-gray-600 leading-loose mb-7 sm:mb-8 text-sm sm:text-base">
+                        今、WEBからご予約いただいた方限定で、食後の至福「贅沢ミニパフェ」を無料でプレゼントいたします。フリードリンクと一緒にお楽しみください。
+                    </p>
+                    <a href="#booking" class="tap-target inline-flex items-center justify-center w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-sm font-bold active:scale-95 hover:bg-black transition">
+                        この特典を利用して予約する
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約フォーム -->
+    <section id="booking" class="py-16 sm:py-24 safe-px bg-primary text-white">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-10 sm:mb-12 fade-up">
+                <h2 class="font-serif text-3xl sm:text-4xl mb-3 sm:mb-4 tracking-widest">Reservation</h2>
+                <p class="text-accent tracking-widest text-xs sm:text-sm">ご予約・お問い合わせ</p>
+            </div>
+ 
+            <form id="resForm" class="space-y-6 fade-up" novalidate>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label for="resName" class="block text-xs tracking-widest mb-2 opacity-70">Name / お名前</label>
+                        <input id="resName" type="text" required autocomplete="name" class="w-full bg-transparent border-b border-white/30 py-3 text-base focus:outline-none focus:border-accent transition">
+                    </div>
+                    <div>
+                        <label for="resEmail" class="block text-xs tracking-widest mb-2 opacity-70">Email / メールアドレス</label>
+                        <input id="resEmail" type="email" required autocomplete="email" inputmode="email" class="w-full bg-transparent border-b border-white/30 py-3 text-base focus:outline-none focus:border-accent transition">
+                    </div>
+                </div>
+                <div>
+                    <label for="resMessage" class="block text-xs tracking-widest mb-2 opacity-70">Message / ご希望日時・人数など</label>
+                    <textarea id="resMessage" rows="4" class="w-full bg-transparent border-b border-white/30 py-3 text-base focus:outline-none focus:border-accent transition" placeholder="例：今週土曜日 12:00から 3名で予約希望。ワンちゃん同伴。"></textarea>
+                </div>
+                <div class="text-center pt-6 sm:pt-8">
+                    <button type="submit" class="tap-target w-full sm:w-auto bg-accent text-white px-10 sm:px-16 py-4 sm:py-5 rounded-sm font-bold text-base sm:text-lg active:scale-95 hover:scale-105 transition shadow-2xl">
+                        内容を確認して送信する
+                    </button>
+                </div>
+            </form>
+            <div id="success" class="hidden text-center p-10 sm:p-12 bg-white/10 rounded" role="status">
+                <p class="text-2xl font-serif mb-4 text-accent">Grazie!</p>
+                <p>お問い合わせを承りました。<br>担当者より折り返しご連絡いたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス・店舗情報 -->
+    <footer class="py-16 sm:py-24 safe-px bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
+            <div class="fade-up">
+                <h2 class="font-serif text-xl sm:text-2xl text-primary mb-6 sm:mb-8 underline decoration-accent underline-offset-8 tracking-widest">Shop Info</h2>
+                <div class="space-y-5 sm:space-y-6 text-sm">
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                        <span class="sm:w-24 font-bold shrink-0">店名</span>
+                        <span>やまや園ピザリア</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                        <span class="sm:w-24 font-bold shrink-0">住所</span>
+                        <span>〒990-2175 山形県山形市中野目２１６２−８</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                        <span class="sm:w-24 font-bold shrink-0">電話番号</span>
+                        <a href="tel:0236631234" class="text-lg font-bold underline decoration-accent">023-663-1234</a>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                        <span class="sm:w-24 font-bold shrink-0">営業時間</span>
+                        <span>ランチ 11:00～15:30 / ディナー 18:00～22:00</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                        <span class="sm:w-24 font-bold shrink-0">定休日</span>
+                        <span class="text-red-600 font-bold">毎週火曜日</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row pb-4 gap-1 sm:gap-0">
+                        <span class="sm:w-24 font-bold text-primary shrink-0">備考</span>
+                        <span class="text-gray-500">ペット同伴可（テラス席）／駐車場あり／BBQ対応可</span>
+                    </div>
+                </div>
+            </div>
+            <div class="fade-up">
+                <!-- Google Map 埋め込み -->
+                <div class="map-container w-full h-64 sm:h-80 shadow-inner rounded-lg overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.4293819308773!2d140.30660627478497!3d38.33904277945794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc666ddc01a5b%3A0x6fcc179ab7f5ff8f!2z44KE44G-44KE5ZyS44OU44K244Oq44Ki!5e0!3m2!1sja!2sjp!4v1770951044271!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="やまや園ピザリア 地図"></iframe>
+                </div>
+                <div class="mt-6 text-center">
+                    <a href="https://maps.app.goo.gl/Bms8hWfL9mE5pWpG9" target="_blank" rel="noopener" class="tap-target inline-flex items-center text-accent border-b border-accent text-sm hover:opacity-70 transition">大きな地図で見る</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-16 sm:mt-24 text-[10px] tracking-[0.2em] text-gray-400">
+            &copy; Yamaya-en Pizzaria. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // フォーム処理
+        document.getElementById('resForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            this.style.display = 'none';
+            document.getElementById('success').classList.remove('hidden');
+        });
+
+        // スクロールアニメーション
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // スムーススクロール（ヘッダー等の固定要素がないため単純に実行）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
