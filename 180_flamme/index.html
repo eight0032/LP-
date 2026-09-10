@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Flamme（フラム）| 山形七日町で味わう本格ナポリピッツァ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+        :root {
+            --brand-red: #b91c1c;
+            --brand-green: #14532d;
+            --brand-gold: #c5a059;
+            --bg-cream: #fdfaf3;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-cream);
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .font-serif-jp { font-family: 'Noto Serif JP', serif; }
+        .font-en-serif { font-family: 'Playfair Display', serif; }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--brand-red);
+        }
+
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+        }
+
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        /* タップ時にホバーと同じ動きになりすぎないよう、タッチ端末では控えめに */
+        @media (hover: none) {
+            .btn-hover:active {
+                transform: translateY(-1px);
+            }
+        }
+
+        /* 地図のレスポンシブ対応（4:3 → スマホでは正方形に近い比率へ） */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        @media (max-width: 640px) {
+            .map-container {
+                padding-bottom: 100%;
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* スマホでは装飾テキストが窮屈になるため縮小 */
+        .bg-deco-text {
+            font-size: 12vw;
+        }
+        @media (min-width: 768px) {
+            .bg-deco-text {
+                font-size: 9vw;
+            }
+        }
+
+        /* 小さい画面向けの余白調整 */
+        @media (max-width: 480px) {
+            .hero-heading {
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-900 texture-bg overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 opacity-60">
+            <!-- Image of Neapolitan Pizza in Wood-fired Oven -->
+            <img src="images/pizza.png" alt="薪窯で焼かれるピッツァ" class="w-full h-full object-cover scale-110">
+        </div>
+
+        <div class="absolute top-0 left-0 w-full h-1.5 md:h-2 flex">
+            <div class="flex-1 bg-green-800"></div>
+            <div class="flex-1 bg-white"></div>
+            <div class="flex-1 bg-red-700"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 sm:px-6 max-w-4xl">
+            <div class="mb-5 sm:mb-6 inline-block px-3 sm:px-4 py-1 border border-white/40 tracking-[0.2em] sm:tracking-[0.3em] text-[11px] sm:text-sm uppercase font-light">
+                Authentic Napoletana
+            </div>
+            <h1 class="hero-heading text-[2.2rem] leading-[1.25] sm:text-5xl md:text-7xl font-serif-jp font-black mb-5 sm:mb-6 drop-shadow-lg">
+                山形の食材が、<br>
+                <span class="text-red-500">ナポリの炎</span>と出会う。
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl mb-8 sm:mb-12 font-light tracking-wider sm:tracking-widest px-2">
+                薪窯で一気に焼き上げる、究極の「モチっちゅわ」体験。
+            </p>
+
+            <div class="flex flex-col items-center gap-4">
+                <div class="bg-white/90 text-gray-900 px-6 py-3 sm:px-8 sm:py-4 rounded-sm shadow-2xl max-w-[90vw]">
+                    <p class="text-[10px] sm:text-xs font-bold tracking-tighter text-red-700 mb-1 uppercase">Yamagata City Entrepreneur Award</p>
+                    <p class="text-sm sm:text-lg font-black leading-snug">山形市創業アワード2021 最優秀賞受賞</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky CTA -->
+    <section class="bg-red-800 py-4 sm:py-10 px-4 text-center sticky top-0 z-50 shadow-lg">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
+            <p class="text-white font-bold text-sm sm:text-lg">まずは、本場が認めた味をチェック</p>
+            <a href="https://flamme.site/" target="_blank" rel="noopener" class="bg-white text-red-800 font-black py-2.5 px-8 sm:py-3 sm:px-12 rounded-full btn-hover text-sm sm:text-base whitespace-nowrap">
+                公式メニューを見る
+            </a>
+        </div>
+    </section>
+
+    <!-- Sizzle Section -->
+    <section class="py-16 sm:py-24 px-5 sm:px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif-jp font-bold mb-6 sm:mb-8 leading-snug">
+                    <span class="text-red-700">400℃の薪窯</span>が、<br>
+                    生地の生命力を引き出す。
+                </h2>
+                <p class="text-gray-700 leading-loose mb-6 sm:mb-8 text-[15px] sm:text-base">
+                    ナポリから取り寄せた本物の薪窯。一瞬で水分を閉じ込め、表面は香ばしく、中はもちっとするほど瑞々しい。山形市七日町にいながら、ナポリの路地裏にある名店のような雰囲気と香りをお届けします。
+                </p>
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div class="bg-white p-4 shadow-sm border-t-4 border-green-700">
+                        <span class="block font-bold text-sm text-green-800 mb-2 font-en-serif">NAPOLI OVEN</span>
+                        <p class="text-xs">本場仕様の薪窯使用</p>
+                    </div>
+                    <div class="bg-white p-4 shadow-sm border-t-4 border-red-700">
+                        <span class="block font-bold text-sm text-red-800 mb-2 font-en-serif">YAMAGATA MATERIAL</span>
+                        <p class="text-xs">厳選された地元食材</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 relative px-2 sm:px-0">
+                <div class="rounded-2xl overflow-hidden shadow-2xl md:rotate-2">
+                    <!-- Image of inside of Wood-fired Oven -->
+                    <img src="images/pizza2.png" alt="炎の薪窯" class="w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-5 sm:p-8">
+                        <p class="text-white text-xs sm:text-sm font-bold"><i class="fas fa-play-circle mr-2"></i> 薪窯のライブ感を見る（イメージ）</p>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-left-6 sm:right-auto bg-white p-3 sm:p-4 shadow-xl rounded-lg">
+                    <p class="text-red-700 font-black text-xl sm:text-2xl">400℃</p>
+                    <p class="text-[9px] sm:text-[10px] text-gray-500 tracking-tighter uppercase">Extreme heat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owner Intro Section -->
+    <section class="bg-zinc-900 py-16 sm:py-24 text-white overflow-hidden relative">
+        <div class="absolute right-0 top-0 opacity-10 pointer-events-none hidden sm:block">
+            <span class="text-[120px] md:text-[200px] font-black font-en-serif italic">Chef</span>
+        </div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-4 relative flex flex-col md:flex-row gap-10 md:gap-16">
+            <div class="md:w-1/2">
+                <div class="relative max-w-sm mx-auto md:max-w-none">
+                    <div class="aspect-[3/4] bg-zinc-800 rounded-sm overflow-hidden grayscale hover:grayscale-0 transition duration-700">
+                        <!-- Image of Chef cooking -->
+                        <img src="images/chef.png" alt="オーナー 近藤隆幸氏" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 sm:-bottom-4 sm:-right-4 bg-red-700 px-5 py-3 sm:px-6 sm:py-4 shadow-xl">
+                        <p class="text-[11px] sm:text-xs tracking-widest mb-1">Founder / Sommelier</p>
+                        <p class="text-xl sm:text-2xl font-serif-jp">近藤 隆幸</p>
+                        <!-- Instagram Link on Name Tag -->
+                        <a href="https://www.instagram.com/_flamme_store_/" target="_blank" rel="noopener" class="text-white/80 hover:text-white mt-2 block transition-colors">
+                            <i class="fab fa-instagram mr-1"></i> <span class="text-xs">Follow me</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex flex-col justify-center mt-6 md:mt-0">
+                <h3 class="text-red-500 font-en-serif italic text-xl sm:text-2xl mb-2">Our Pride</h3>
+                <h2 class="text-3xl sm:text-4xl font-serif-jp font-bold mb-6 sm:mb-8">山形の日常を、<br>もっとドラマチックに。</h2>
+                <p class="text-zinc-400 leading-loose mb-6 text-[15px] sm:text-base">
+                    「山形にはこんなに美味しい食材がある」。<br>
+                    東京での修行時代、常に頭にあったのは故郷のことでした。イタリア料理の技法と、ソムリエとしての感性。それらを一枚のピッツァに凝縮し、山形市創業アワード最優秀賞という名誉をいただきました。
+                </p>
+                <div class="border-l-2 border-red-700 pl-5 sm:pl-6 py-2 bg-white/5">
+                    <p class="text-sm italic text-zinc-300">
+                        「家に帰って温め直しても美味しい」と言っていただけること。それが私の誇りです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Feature Section -->
+    <section class="py-16 sm:py-24 px-5 sm:px-4 bg-white text-center">
+        <div class="max-w-5xl mx-auto mb-12 sm:mb-16">
+            <h2 class="section-title text-3xl sm:text-4xl font-serif-jp">今、この瞬間にしか出会えない一枚</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center text-left">
+            <div class="bg-amber-100/60 p-2 rounded-3xl shadow-xl max-w-md mx-auto md:max-w-none w-full">
+                <div class="bg-white rounded-[1.4rem] p-4 overflow-hidden">
+                    <!-- Image of Margherita Pizza -->
+                    <img src="images/pizza.jpg" alt="特選ピッツァ" class="w-full h-auto rounded-xl shadow-inner">
+                </div>
+            </div>
+            <div class="px-1 sm:px-4">
+                <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full mb-4">Recommended</span>
+                <h3 class="text-2xl sm:text-3xl font-serif-jp font-bold mb-5 sm:mb-6">サルシッチャと夏野菜の<br>ピリ辛ピッツァ</h3>
+                <p class="text-gray-600 leading-relaxed mb-6 sm:mb-8 text-[15px] sm:text-base">
+                    口コミで話題の「ンドゥイヤ」を使用。辛さの中に深い旨味とコクが広がる、夏の人気No.1メニューです。山形の新鮮な夏野菜とのハーモニーをお楽しみください。
+                </p>
+
+                <div class="bg-gray-50 p-5 sm:p-6 rounded-2xl border border-gray-100 relative">
+                    <div class="absolute -top-3 left-6 bg-red-700 text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-widest">Keyword</div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl">🌶️</div>
+                        <div>
+                            <p class="font-bold text-sm mb-1 italic">ンドゥイヤ（'Nduja）とは？</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                南イタリア・カラブリア州の名産。豚肉と唐辛子を発酵させたペースト状のサラミ。中毒性のある旨味がチーズに最高にマッチします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-16 sm:py-24 px-5 sm:px-4 bg-stone-900 text-white relative overflow-hidden">
+        <!-- Background decorative text -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
+            <span class="bg-deco-text font-black font-en-serif uppercase tracking-widest text-white whitespace-nowrap">COMING SOON</span>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="inline-block px-4 py-1 border border-red-500/60 text-red-400 text-xs font-bold tracking-widest uppercase mb-4 rounded-full">
+                    Future Projects
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif-jp font-bold mb-4">COMING SOON</h2>
+                <p class="text-stone-400 text-sm md:text-base max-w-2xl mx-auto">
+                    山形七日町から、全国の皆様へ。フラムの本格ナポリピッツァをお届けする新たなプロジェクトが始動しています。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- Card 1: Frozen Pizza -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-red-600/50 transition duration-300 shadow-xl">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-red-950/60 border border-red-800/40 flex items-center justify-center text-2xl mb-5 sm:mb-6 text-red-400">
+                            🍕
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-red-500 block mb-2">Online Store</span>
+                        <h3 class="text-lg sm:text-xl font-bold font-serif-jp mb-3 sm:mb-4">急速冷凍ピザ 全国通販</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-5 sm:mb-6">
+                            薪窯で一気に焼き上げた「モチっちゅわ」の生地と香ばしさをそのまま特殊冷凍。ご家庭のトースターで本格ナポリピッツァをお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-500">
+                        <span>準備中 / 近日オープン予定</span>
+                        <span class="px-2 py-0.5 rounded bg-stone-700 text-stone-300 font-bold">ECサイト</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Pop-up / Event -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-red-600/50 transition duration-300 shadow-xl">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-green-950/60 border border-green-800/40 flex items-center justify-center text-2xl mb-5 sm:mb-6 text-green-400">
+                            🚚
+                        </div>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-green-500 block mb-2">Popup & Event</span>
+                        <h3 class="text-lg sm:text-xl font-bold font-serif-jp mb-3 sm:mb-4">全国催事・ポップアップ出店</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-5 sm:mb-6">
+                            全国各地の百貨店催事や限定ポップアップストアへ期間限定出店。山形発の情熱の味覚を、あなたの街へ直接お届けします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-500">
+                        <span>出店リクエスト受付中</span>
+                        <span class="px-2 py-0.5 rounded bg-stone-700 text-stone-300 font-bold">全国出張</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access & Contact Section -->
+    <section class="bg-stone-900 text-white py-16 sm:py-24 px-5 sm:px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
+            <h2 class="text-3xl sm:text-4xl font-serif-jp mb-4">記憶に残る、美味しい夜を。</h2>
+            <p class="text-stone-500 tracking-[0.2em] font-light italic text-sm">Flamme Napoletana & Wine</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 mb-12 sm:mb-16">
+            <div class="space-y-6 sm:space-y-8">
+                <div class="flex items-center gap-5 sm:gap-6 pb-5 sm:pb-6 border-b border-white/10">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-stone-500 uppercase tracking-widest">Address</p>
+                        <p class="text-sm">〒990-0042 山形県山形市七日町1丁目4-27</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-5 sm:gap-6 pb-5 sm:pb-6 border-b border-white/10">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-stone-500 uppercase tracking-widest">Reservation</p>
+                        <a href="tel:0236650066" class="text-2xl sm:text-3xl font-bold hover:text-red-500 transition">023-665-0066</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-5 sm:gap-6">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="text-left text-sm">
+                        <p class="text-xs text-stone-500 uppercase tracking-widest mb-1 text-red-500">Shop Information</p>
+                        <p>定休日：月曜日 / 山形駅から徒歩圏内</p>
+                        <p class="text-[10px] mt-1 text-stone-600">※1F・2F貸切パーティ、お子様連れ歓迎 / PayPay利用可</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Map Embed -->
+            <div class="rounded-lg overflow-hidden shadow-2xl border-4 border-stone-800">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.1079851367826!2d140.3352286269531!3d38.253801499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb75e17c23db9%3A0x37c7db782b486a57!2z44OV44Op44Og!5e0!3m2!1sja!2sjp!4v1771205734848!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="https://flamme.site/" target="_blank" rel="noopener" class="inline-block bg-white text-stone-900 px-10 py-4 sm:px-16 sm:py-5 rounded-sm font-black text-base sm:text-xl btn-hover mb-8 sm:mb-10 w-[92%] sm:w-auto max-w-sm sm:max-w-none">
+                Webから今すぐ予約する
+            </a>
+            <div class="flex flex-col items-center gap-3 sm:gap-4">
+                <a href="https://www.instagram.com/_flamme_store_/" target="_blank" rel="noopener" class="text-3xl sm:text-4xl hover:text-red-500 transition-all duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <p class="text-[10px] text-stone-600 tracking-widest uppercase italic font-bold">Follow us on Instagram</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 sm:py-12 bg-black text-stone-600 text-center text-[11px] sm:text-xs tracking-[0.2em] px-4">
+        <div class="flex justify-center gap-4 mb-4">
+            <div class="w-1 bg-green-900 h-1"></div>
+            <div class="w-1 bg-stone-100 h-1"></div>
+            <div class="w-1 bg-red-900 h-1"></div>
+        </div>
+        &copy; FLAMME STORE YAMAGATA.
+    </footer>
+
+</body>
+</html>
