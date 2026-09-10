@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ガトーフレーズ 山形南原店 | モチモチ生パスタと本格ケーキ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+        :root {
+            --color-deep-red: #8e1d1d;
+            --color-accent-gold: #c5a059;
+            --color-bg-paper: #f9f6f1;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg-paper);
+            color: #2d2626;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        .text-vertical {
+            writing-mode: vertical-rl;
+        }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(135deg, #d14d42 0%, #8e1d1d 100%);
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 30px -10px rgba(142, 29, 29, 0.4);
+        }
+        .cta-button:focus-visible {
+            outline: 3px solid var(--color-accent-gold);
+            outline-offset: 3px;
+        }
+
+        .decorated-title::before, .decorated-title::after {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 1px;
+            background-color: var(--color-accent-gold);
+            vertical-align: middle;
+            margin: 0 15px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        @media (min-width: 768px) {
+            .map-container iframe { height: 420px; }
+        }
+
+      /* 画像コンテナのスタイル */
+.photo-placeholder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* はみ出た部分を隠す */
+}
+
+/* 実際の画像を綺麗に収める設定 */
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 比率を保ったまま枠いっぱいに収める */
+}
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden texture-bg" id="top">
+
+   <!-- 1. FVエリア -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-stone-200">
+        <div class="absolute inset-0">
+            <div class="photo-placeholder w-full h-full">
+                <!-- 実際の画像に差し替える場合は src の中身を変更してください -->
+                <img src="images/taruto.jpg" alt="ガトー・フレーズ ナンバラの料理" class="w-full h-full object-cover">
+            </div>
+            <!-- 暗めのグラデーションオーバーレイ（テキストを読みやすくするため） -->
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/40 md:via-black/20 to-black/30 md:to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-0 flex flex-col md:flex-row items-center md:items-center justify-between gap-10">
+            <div class="text-white max-w-2xl text-center md:text-left">
+                <div class="inline-block border-l-4 border-yellow-500 pl-4 mb-5 md:mb-6">
+                    <p class="text-sm md:text-xl font-bold tracking-widest text-yellow-500">GÂTEAU FRAISE NANBARA</p>
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.25] mb-6 md:mb-8">
+                    その一皿で、<br>
+                    <span class="text-yellow-400 font-serif">日常</span>が<span class="text-white">華</span>やぐ。
+                </h1>
+                <p class="text-base sm:text-lg md:text-2xl font-light leading-relaxed mb-8 md:mb-10 opacity-90">
+                    ソースが絡みつく究極の「モチモチ生パスタ」と、<br class="hidden sm:block">
+                    心まで満たす「アメリカンサイズ」の贅沢ケーキ。
+                </p>
+                <a href="tel:080-6015-7578" class="cta-button inline-flex md:hidden text-white font-black text-lg px-8 py-4 rounded-full shadow-2xl items-center gap-3">
+                    <i class="fa-solid fa-phone"></i>
+                    今すぐ予約・問い合わせ
+                </a>
+            </div>
+
+            <!-- 右側の縦書きバッジ（PC限定） -->
+            <div class="hidden lg:flex flex-col items-center flex-shrink-0">
+                <div class="text-vertical bg-red-800 text-white py-10 px-4 text-2xl font-black tracking-widest border-2 border-yellow-500">
+                    至福のひとときを
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-center animate-bounce">
+            <p class="text-[10px] md:text-xs tracking-tighter mb-2">SCROLL</p>
+            <div class="w-px h-10 md:h-12 bg-white mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- 2. CTA 1 -->
+    <section class="bg-red-900 py-10 md:py-12 relative z-20 shadow-2xl">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left">
+            <div class="text-white">
+                <h2 class="text-xl md:text-2xl font-bold italic mb-2 font-serif">口コミでも絶賛の嵐</h2>
+                <p class="text-base md:text-lg opacity-80">生パスタとケーキを心ゆくまで楽しめる贅沢時間を。</p>
+            </div>
+            <a href="tel:080-6015-7578" class="cta-button w-full md:w-auto text-white font-black text-lg md:text-xl px-8 md:px-12 py-5 md:py-6 rounded-lg shadow-2xl flex items-center justify-center gap-3 md:gap-4">
+                <i class="fa-solid fa-phone text-xl md:text-2xl"></i>
+                今すぐ予約・問い合わせ
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. こだわりセクション -->
+    <section class="py-16 md:py-24 px-6 relative overflow-hidden bg-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 leading-snug font-serif text-red-900">
+                    なぜ、一度食べると<br>忘れられなくなるのか。
+                </h2>
+                <p class="text-base md:text-lg text-stone-600 leading-loose mb-6 md:mb-8">
+                    ソースがしっかり絡み、弾けるような弾力の「生麺」。
+                    私たちが提供するのは、一口目から最後まで麺が続く体験です。
+                    パスタの茹で加減から、ケーキのクリーム一層の厚みまでこだわり、お客様が「また来たい」と思える満足感を追求しています。
+                </p>
+                <div class="grid grid-cols-2 gap-3 md:gap-4">
+                    <div class="bg-stone-50 p-5 md:p-6 rounded-xl shadow-sm border-t-4 border-red-800">
+                        <p class="text-2xl md:text-3xl font-black text-red-800 mb-1 italic">Mochi-Mochi</p>
+                        <p class="text-xs font-bold">自慢の生パスタ麺</p>
+                    </div>
+                    <div class="bg-stone-50 p-5 md:p-6 rounded-xl shadow-sm border-t-4 border-yellow-500">
+                        <p class="text-2xl md:text-3xl font-black text-yellow-600 mb-1 italic">Satisfying</p>
+                        <p class="text-xs font-bold">特大アメリカンスタイル</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 relative">
+                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl md:rotate-3 md:hover:rotate-0 transition-transform duration-500">
+                    <div class="photo-placeholder w-full h-full">
+                        <!-- 実際の画像に差し替える場合は src の中身を変更してください -->
+                        <img src="images/pasta.jpg" alt="こだわりの生パスタ" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8 text-white">
+                        <p class="text-xs md:text-sm font-bold uppercase tracking-widest opacity-70 mb-1 md:mb-2 italic">Speciality</p>
+                        <h3 class="text-xl md:text-2xl font-bold font-serif">ソースが絡む至福の生麺</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- 4. 自己紹介・ブランドストーリー -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+            <div class="md:col-span-5 flex justify-center md:justify-start">
+                <div class="w-48 h-48 md:w-full md:aspect-square rounded-full border-8 border-stone-800 overflow-hidden shadow-2xl">
+                    <div class="photo-placeholder w-full h-full">
+                        <!-- 実際の画像に差し替える場合は src の中身を変更してください -->
+                        <img src="images/fruit.jpg" alt="店主・スタッフのポートレート" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-7 text-center md:text-left">
+                <p class="text-yellow-500 font-serif italic text-lg md:text-xl mb-3 md:mb-4">Owner Chef Message</p>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black mb-6 md:mb-8 font-serif leading-tight">「笑顔で、大丈夫ですよ」</h2>
+                <p class="text-base md:text-xl leading-[2] md:leading-[2.2] font-light text-stone-300">
+                    お客様が「どうかしましたか？」と聞かれる前に、私たちが笑顔でお声がけする。<br>
+                    ガトーフレーズが大切にしているのは、そんな温かな空気感です。<br>
+                    山形南原で、忙しい日常を忘れる「おいしい時間」をお届けします。
+                </p>
+                <div class="mt-6 md:mt-8 flex items-center justify-center md:justify-start gap-4">
+                    <div class="h-px w-12 bg-yellow-500"></div>
+                    <span class="font-serif text-xl md:text-2xl">店主・スタッフ一同</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- 5. 特典・おすすめメニュー -->
+    <section class="py-16 md:py-24 px-6 bg-red-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4 font-serif text-red-900">Recommended Menus</h2>
+                <p class="text-stone-500 italic text-sm md:text-base">私たちが自信を持ってお届けする、三つの看板。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8">
+                        <div class="text-red-800 font-serif text-sm tracking-widest uppercase mb-2">Menu 01</div>
+                        <h4 class="font-bold text-lg md:text-xl mb-2 font-serif">きのこのペペロンチーノ</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">ランパスでも大人気！ニンニクが効いた上品でパンチのある味わい。</p>
+                    </div>
+                </div>
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-xl">
+                    <div class="p-6 md:p-8">
+                        <div class="text-red-800 font-serif text-sm tracking-widest uppercase mb-2">Menu 02</div>
+                        <h4 class="font-bold text-lg md:text-xl mb-2 font-serif">キャラメルバナナタルト</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">1ピースの満足感が違う。素材の味を活かした濃厚な甘さ。</p>
+                    </div>
+                </div>
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-xl sm:col-span-2 md:col-span-1">
+                    <div class="p-6 md:p-8">
+                        <div class="text-red-800 font-serif text-sm tracking-widest uppercase mb-2">Menu 03</div>
+                        <h4 class="font-bold text-lg md:text-xl mb-2 font-serif">彩りサラダバー</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">箸休めに最適。新鮮な野菜をお好きなだけお楽しみください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5 Coming Soon セクション -->
+    <section class="py-16 md:py-24 px-6 bg-stone-900 text-white relative border-t-2 border-yellow-600/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="bg-yellow-500/20 text-yellow-400 font-bold px-5 md:px-6 py-2 rounded-full text-xs md:text-sm tracking-widest border border-yellow-500/40 inline-block mb-4">
+                    New Plans &amp; Services
+                </span>
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-4 font-serif text-yellow-400">Coming Soon</h2>
+                <p class="text-stone-300 text-base md:text-lg max-w-2xl mx-auto font-light">
+                    「こんなサービスがあったらいいな」のお声に応えて。<br>ガトーフレーズから間もなくお届けする、特別な新メニュー・サービスをご案内します。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- サービス1: 記念日セット -->
+                <div class="bg-stone-800/90 rounded-3xl p-6 md:p-8 border border-stone-700/80 shadow-2xl relative overflow-hidden flex flex-col justify-between group hover:border-yellow-500/60 transition-all duration-300">
+                    <div class="absolute -top-3 -right-3 bg-red-800 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full shadow-md tracking-wider">
+                        準備中
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-2xl md:text-3xl mb-5 md:mb-6 border border-yellow-500/30">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold font-serif mb-3 text-white">アニバーサリー<br>記念日セット</h3>
+                        <p class="text-yellow-400/90 text-sm font-semibold mb-4">選べる生パスタ ＋ 特製チョコメッセージプレート付アソートケーキ</p>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            誕生日・記念日・ご家族のお祝いに。「HAPPY BIRTHDAY」や「いつもありがとう」など、心を込めたメッセージを添えたケーキプレートと自慢の生パスタで、思い出に残る特別なひとときを演出します。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/60 flex justify-between items-center text-xs text-stone-400">
+                        <span><i class="fa-regular fa-clock mr-1"></i> 事前予約限定プラン</span>
+                        <span class="text-yellow-500 font-bold">近日発表</span>
+                    </div>
+                </div>
+
+                <!-- サービス2: 季節の特別コース -->
+                <div class="bg-stone-800/90 rounded-3xl p-6 md:p-8 border border-stone-700/80 shadow-2xl relative overflow-hidden flex flex-col justify-between group hover:border-yellow-500/60 transition-all duration-300">
+                    <div class="absolute -top-3 -right-3 bg-red-800 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full shadow-md tracking-wider">
+                        企画中
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-2xl md:text-3xl mb-5 md:mb-6 border border-yellow-500/30">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold font-serif mb-3 text-white">季節限定プレミアム<br>デザートペアリングコース</h3>
+                        <p class="text-yellow-400/90 text-sm font-semibold mb-4">旬の地元食材パスタ × 季節果実の特選スイーツ</p>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            山形県産の旬の野菜や果物をふんだんに使用した「期間限定パスタ」と「限定タルト」の特別コラボレーション。ここでしか味わえない季節感あふれるワンランク上のマリアージュをお届け。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/60 flex justify-between items-center text-xs text-stone-400">
+                        <span><i class="fa-solid fa-star mr-1"></i> 数量限定コース</span>
+                        <span class="text-yellow-500 font-bold">近日公開</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- お知らせ登録アナウンス -->
+            <div class="mt-10 md:mt-12 bg-gradient-to-r from-red-950/80 via-stone-800 to-red-950/80 p-6 md:p-8 rounded-2xl border border-yellow-500/30 text-center max-w-3xl mx-auto shadow-xl">
+                <p class="text-yellow-400 font-serif text-base md:text-lg font-bold mb-2">新サービス開始のご案内は公式Instagramにて</p>
+                <p class="text-stone-300 text-sm mb-6">記念日プランやテイクアウト予約の最新情報は、公式インスタグラムで優先的にお知らせいたします。</p>
+                <a href="https://www.instagram.com/gatfre.y/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 md:px-8 py-3 rounded-full font-bold shadow-lg hover:opacity-90 transition-opacity">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                    公式Instagramをフォローして最新情報をGET
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. アクセス・マップセクション -->
+    <section class="py-16 md:py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 font-serif decorated-title">Access</h2>
+                <p class="text-stone-500 text-sm md:text-base">山形市南原町、大きな看板が目印です。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.7433082778116!2d140.3412875747792!3d38.239063385281725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5e5f4dc869d%3A0xbccdac7d6e82d3c4!2z44Ks44OI44O844OV44Os44O844K6IOWxseW9ouWNl-WOn-W6lw!5e0!3m2!1sja!2sjp!4v1770956738433!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ガトーフレーズ 山形南原店 地図"></iframe>
+                </div>
+                <div class="space-y-6 md:space-y-8">
+                    <div class="bg-stone-50 p-6 md:p-8 rounded-3xl border-l-8 border-red-800 shadow-sm">
+                        <h3 class="text-lg md:text-xl font-bold mb-4 font-serif">ガトーフレーズ 山形南原店</h3>
+                        <div class="space-y-4">
+                            <p class="flex items-start gap-4">
+                                <i class="fa-solid fa-location-dot text-red-800 mt-1"></i>
+                                <span class="text-sm md:text-base">〒990-2413 山形県山形市南原町１丁目２−２３</span>
+                            </p>
+                            <p class="flex items-start gap-4">
+                                <i class="fa-solid fa-phone text-red-800 mt-1"></i>
+                                <span class="text-sm md:text-base">080-6015-7578</span>
+                            </p>
+                            <p class="flex items-start gap-4 text-stone-500 text-sm">
+                                <i class="fa-solid fa-car text-red-800 mt-1"></i>
+                                <span>駐車場完備（混雑時はお近くのスタッフへお尋ねください）</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="tel:080-6015-7578" class="flex-1 bg-red-900 text-white text-center py-5 md:py-6 rounded-2xl font-black shadow-lg hover:bg-red-800 transition-colors">
+                            <i class="fa-solid fa-phone mr-2"></i> お電話はこちら
+                        </a>
+                        <a href="https://www.instagram.com/gatfre.y/" target="_blank" rel="noopener" class="w-16 md:w-20 bg-stone-100 flex items-center justify-center rounded-2xl text-xl md:text-2xl text-pink-600 shadow-md hover:bg-white transition-all" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-stone-900 text-white py-12 md:py-16 px-6 text-center">
+        <div class="max-w-xl mx-auto">
+            <h2 class="font-serif text-2xl md:text-3xl font-bold mb-6 tracking-widest">Gâteau Fraise</h2>
+            <p class="text-stone-500 text-sm mb-10 md:mb-12">美味しいパスタと大きなケーキで、<br>あなたの日常を少しだけ特別にします。</p>
+            <div class="h-px w-24 bg-red-800 mx-auto mb-10 md:mb-12"></div>
+            <p class="text-xs text-stone-600 italic">© Gâteau Fraise Yamagata Nanbara. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
