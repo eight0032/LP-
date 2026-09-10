@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ダイニング ヘリアン | 山形大学そばの隠れ家洋食ダイニング</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #b8894a;
+            --accent-light: #f4ecd8;
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fff;
+            color: var(--primary);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        .serif-en { font-family: 'Playfair Display', serif; }
+        .mincho { font-family: 'Shippori Mincho', serif; }
+
+        .bg-dark { background-color: var(--primary); }
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+        .bg-accent-light { background-color: var(--accent-light); }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 100%);
+        }
+
+        .section-title-bar::after {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 2px;
+            background-color: var(--accent);
+            margin: 0.9rem auto 0;
+        }
+        .section-title-bar.align-left::after { margin: 0.9rem 0 0; }
+
+        img { background-color: #e5e5e5; }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .map-container { padding-bottom: 100%; height: auto; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating-cta { animation: none !important; }
+        }
+        .floating-cta { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        a, button { min-height: 44px; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/beef.jpg"
+                 alt="ダイニングヘリアン 店内"
+                 class="w-full h-full object-cover"
+                 loading="eager">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6 py-24">
+            <div class="mb-5">
+                <span class="serif-en italic text-base sm:text-xl tracking-widest border-b border-accent pb-1">Dining Helian</span>
+            </div>
+            <h1 class="mincho text-3xl sm:text-5xl md:text-7xl font-bold mb-6 leading-snug sm:leading-tight tracking-tight">
+                外はレトロ、中はおしゃれ。<br>
+                <span class="text-accent">五感で愉しむ</span>街の洋食ダイニング
+            </h1>
+            <p class="text-sm sm:text-lg md:text-2xl mb-10 font-light tracking-wide max-w-3xl mx-auto opacity-90 leading-relaxed">
+                東京プリンスホテル出身のシェフが、<br class="sm:hidden">
+                地元山形で見つけた、ワインと美食の終着点。
+            </p>
+            <div class="flex flex-col items-center gap-6">
+                <a href="#reservation"
+                   class="floating-cta bg-accent hover:bg-yellow-700 active:scale-95 text-white font-bold py-4 px-10 sm:py-5 sm:px-12 rounded-full text-base sm:text-xl shadow-2xl transition-all duration-300 inline-flex items-center justify-center">
+                    空席確認・予約する
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CTA 1回目 -->
+    <section class="py-12 sm:py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-block border-2 border-accent p-1 w-full max-w-md sm:max-w-none sm:w-auto">
+                <div class="border border-accent py-6 px-6 sm:py-8 sm:px-24">
+                    <p class="mincho text-base sm:text-xl mb-3 sm:mb-4 text-gray-600">お電話でのご予約・お問い合わせ</p>
+                    <a href="tel:023-622-9095"
+                       class="serif-en text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 hover:text-accent transition break-all">
+                        023-622-9095
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特典・イチオシ -->
+    <section class="py-16 sm:py-24 bg-dark text-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent rounded-full opacity-20 blur-3xl"></div>
+                    <div class="relative z-10 border-4 sm:border-8 border-gray-800 p-2">
+                        <img src="images/salada.jpg"
+                             alt="生ハムとローストポークのサラダ仕立て"
+                             class="w-full shadow-2xl"
+                             loading="lazy">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <span class="serif-en italic text-accent text-lg sm:text-xl mb-4 block">Signature Dish</span>
+                    <h2 class="mincho text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 leading-snug">
+                        生ハムとローストポークの<br>サラダ仕立て
+                    </h2>
+                    <p class="text-gray-400 text-base sm:text-lg mb-8 leading-relaxed">
+                        ホテルの本格フレンチで培った技術を凝縮。自家熟成ローストポークのしっとりとした質感と、生ハムの旨味がワインを誘う、当店不動のNo.1メニューです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- ストーリー -->
+<section class="py-16 sm:py-24 bg-gray-50">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <div class="text-center mb-12 sm:mb-16">
+            <h2 class="mincho text-2xl sm:text-3xl md:text-5xl font-bold mb-3 leading-snug">本格的だけど、肩ひじ張らない。</h2>
+            <p class="text-accent italic serif-en text-sm sm:text-base">Owner's Story</p>
+        </div>
+        <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+            <div class="w-full md:w-1/2">
+                <p class="text-base sm:text-lg leading-loose mb-6">
+                    東京プリンスホテルでの修業時代、私が学んだのは「料理は人を笑顔にするためのもの」ということでした。地元・山形に戻り、2004年にヘリアンをオープン。隠し味に味噌や醤油を使い、何度でも通いたくなる「日常の洋食」を目指しました。
+                </p>
+                <div class="p-5 sm:p-6 bg-white shadow-xl border-r-4 border-accent italic">
+                    <p class="text-sm sm:text-base">「一皿一皿に魂を込めたい。だからシェフは私一人だけです。」</p>
+                    <p class="text-right mt-4 font-bold text-sm sm:text-base">— 松田 昌夫</p>
+                </div>
+            </div>
+            <!-- 画像を1枚に変更（グリッドを解除し、縦横比を綺麗に保つクラスに調整） -->
+            <div class="w-full md:w-1/2">
+                <img src="images/chef.png"
+                     alt="オーナーシェフ 松田昌夫の調理風景"
+                     class="rounded shadow-lg w-full h-auto object-cover"
+                     loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ギャラリー/店内 -->
+    <section class="relative py-16 sm:py-32 bg-dark">
+        <div class="container mx-auto px-6 relative z-10 text-center text-white">
+            <h2 class="mincho text-2xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 leading-snug">
+                レトロな外観の先に広がる、<br>洗練された「非日常」。
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                <img src="images/beef.jpg"
+                     alt="ヘリアン外観" class="aspect-square w-full object-cover rounded shadow-2xl" loading="lazy">
+                <img src="images/salada.jpg"
+                     alt="店内の様子" class="aspect-square w-full object-cover rounded shadow-2xl sm:mt-4" loading="lazy">
+                <img src="images/wine.png"
+                     alt="ワインと前菜" class="aspect-square w-full object-cover rounded shadow-2xl" loading="lazy">
+                <img src="images/omurice.png"
+                     alt="魚介の煮込み料理" class="aspect-square w-full object-cover rounded shadow-2xl sm:mt-4" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- 新機能：COMING SOON -->
+    <section class="py-16 sm:py-24 bg-stone-100 overflow-hidden relative">
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="inline-block bg-accent text-white text-xs font-bold tracking-widest px-4 py-1.5 rounded-full mb-3 shadow-sm">
+                    NEW SERVICE PREVIEW
+                </span>
+                <h2 class="serif-en text-3xl sm:text-5xl md:text-6xl font-extrabold text-stone-900 tracking-tight">
+                    COMING SOON
+                </h2>
+                <p class="mincho text-lg sm:text-2xl md:text-3xl font-bold text-stone-800 mt-3 leading-snug">
+                    ヘリアンの本格ランチを、待ち時間ゼロで。
+                </p>
+                <div class="w-12 h-0.5 bg-accent mx-auto mt-4"></div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl border border-stone-200">
+                <div class="grid sm:grid-cols-3 gap-6 sm:gap-8 mb-10 text-center">
+                    <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-100 flex flex-col items-center">
+                        <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl mb-4">
+                            📱
+                        </div>
+                        <h3 class="font-bold text-base sm:text-lg text-stone-900 mb-2">スマホで事前予約</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">お昼休みに入る前にWeb・お電話でサクッと注文完了。</p>
+                    </div>
+                    <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-100 flex flex-col items-center">
+                        <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl mb-4">
+                            ⏱️
+                        </div>
+                        <h3 class="font-bold text-base sm:text-lg text-stone-900 mb-2">待ち時間ナシでお渡し</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">指定のお時間にご来店でスムーズにお受け取り。貴重なお昼時間を無駄にしません。</p>
+                    </div>
+                    <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-100 flex flex-col items-center">
+                        <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl mb-4">
+                            🍱
+                        </div>
+                        <h3 class="font-bold text-base sm:text-lg text-stone-900 mb-2">できたて買い泊ランチ</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">シェフ手作りのホテルクオリティの味をオフィスやご自宅で楽しみいただけます。</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200/60 rounded-2xl p-5 sm:p-6 text-center">
+                    <p class="mincho text-base sm:text-lg text-amber-900 font-bold mb-1">
+                        💡「こんなお弁当が食べたい！」ご意見募集中
+                    </p>
+                    <p class="text-xs sm:text-sm text-amber-800 leading-relaxed">
+                        山形大学の学生さん・教職員の皆様、近隣オフィスにお勤めの皆様のお声を反映したメニューを開発中です。<br class="hidden md:block">
+                        サービス開始時期や限定メニューのお知らせは公式Facebookにて順次発表いたします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス & 最終CTA -->
+    <section id="reservation" class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="mincho text-2xl sm:text-4xl font-bold">Access &amp; Reservations</h2>
+                <p class="text-accent italic serif-en text-sm sm:text-base">アクセスとご予約</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-0 bg-gray-50 rounded-3xl overflow-hidden shadow-2xl border-t-8 border-accent">
+                <!-- Google Map 埋め込み -->
+                <div class="w-full">
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.3450710646116!2d140.3486120747797!3d38.24830218474396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5ff7057505d%3A0xc2e7ab6ff548caf7!2z44OA44Kk44OL44Oz44KwIOODmOODquOCouODsw!5e0!3m2!1sja!2sjp!4v1770955785659!5m2!1sja!2sjp"
+                            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="ダイニングヘリアン 地図">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- 予約情報詳細 -->
+                <div class="p-6 sm:p-8 md:p-12">
+                    <div class="mb-8">
+                        <p class="text-gray-500 mb-2 tracking-wide text-xs sm:text-sm">ご予約はお電話にて承ります</p>
+                        <a href="tel:023-622-9095"
+                           class="serif-en text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 block hover:text-accent transition break-all">
+                            023-622-9095
+                        </a>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-gray-700 border-t border-gray-200 pt-8">
+                        <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                            <span class="font-bold shrink-0">店名</span>
+                            <span class="text-right">ダイニング ヘリアン</span>
+                        </div>
+                        <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                            <span class="font-bold shrink-0">住所</span>
+                            <span class="text-right">〒990-0021 山形県山形市小白川町1-5-31</span>
+                        </div>
+                        <div class="flex justify-between gap-4 border-b border-gray-100 pb-2">
+                            <span class="font-bold shrink-0">定休日</span>
+                            <span class="text-right">月曜日</span>
+                        </div>
+                        <div class="mt-6 p-4 bg-accent-light rounded-lg text-xs leading-relaxed italic">
+                            シェフ一人のため、お待たせする場合もございます。時間に余裕を持ってお越しください。
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-center lg:justify-start">
+                        <a href="https://www.facebook.com/profile.php/?id=100050820708298" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 active:scale-95 transition shadow-md text-sm sm:text-base">
+                            <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            最新情報をチェック
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-dark text-gray-500 text-center text-xs sm:text-sm px-6">
+        <p>&copy; 2024 Dining Helian. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
