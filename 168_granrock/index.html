@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>カフェレストラン グランロック | 山形市で30年愛される手作りの味</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #bc6c25;
+            --secondary: #dda15e;
+            --bg-cream: #fefae0;
+            --dark: #283618;
+            --accent: #e63946;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+
+        .hero-title-shadow {
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+        }
+        .floating-cta {
+            filter: drop-shadow(0 10px 15px rgba(188, 108, 37, 0.4));
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .floating-cta { animation: none; }
+            .animate-bounce { animation: none; }
+        }
+        .bg-paper {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+        .step-number {
+            font-family: 'Arial', sans-serif;
+            -webkit-text-stroke: 1px var(--primary);
+            color: transparent;
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1;
+            opacity: 0.2;
+        }
+        @media (min-width: 768px) {
+            .step-number { font-size: 4rem; }
+        }
+        /* マップのレスポンシブ対応用 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* タップ操作をしやすくするため、リンク・ボタンの最小タップ領域を確保 */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* スマホの横スクロール暴発防止 */
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body class="bg-paper">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden" id="hero-section">
+        <div class="absolute inset-0 z-0" id="hero-image-container">
+            <img src="images/omurice2.png"
+                 alt="メインビジュアル"
+                 class="w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/1600x900/bc6c25/ffffff?text=Granrock+Omurice'">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4 sm:px-6 mt-[-5vh]">
+            <div class="inline-block bg-white text-orange-800 px-5 sm:px-6 py-1 rounded-full font-bold mb-6 text-xs sm:text-sm md:text-base tracking-tighter shadow-lg">
+                山形市芳野で愛されて30年。
+            </div>
+            <h1 class="hero-title-shadow font-serif font-bold leading-tight mb-6 sm:mb-8">
+                <span class="block text-xl sm:text-2xl md:text-4xl mb-2">ひと口で、心がほどける。</span>
+                <span class="block text-4xl sm:text-5xl md:text-8xl text-yellow-400">「手作り」</span>
+                <span class="block text-3xl sm:text-4xl md:text-7xl">の魔法。</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl font-bold mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto">
+                自家農園の無農薬野菜と、半泣鶏卵の新鮮たまご。<br class="hidden md:block">
+                名物「ロック風オムライス」が運ぶ、至福のひととき。
+            </p>
+            <a href="#cta-section" class="floating-cta inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full text-lg sm:text-xl md:text-2xl font-black shadow-2xl transition-all">
+                本日のメニューをチェック
+            </a>
+            <p class="mt-4 text-xs sm:text-sm opacity-80">※年中無休・駐車場24台完備</p>
+        </div>
+
+        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white text-center opacity-50">
+            <p class="text-xs tracking-widest mb-2">SCROLL</p>
+            <div class="w-[1px] h-12 sm:h-16 bg-white mx-auto animate-bounce"></div>
+        </div>
+    </header>
+
+    <!-- 2. 選ばれる理由 -->
+    <section class="py-16 md:py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-orange-600 font-black tracking-widest text-sm">REASON</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mt-2">グランロックが選ばれる理由</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+                <div class="relative">
+                    <div class="step-number">01</div>
+                    <div class="pt-6 md:pt-10">
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 border-b-2 border-orange-200 pb-2">「全てが手作り」の安心感</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">ソースのベースから、スイーツに添えるホイップクリーム一滴まで。既製品を一切使わない店主のこだわりが、唯一無二の深い味わいを生み出します。</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="step-number">02</div>
+                    <div class="pt-6 md:pt-10">
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 border-b-2 border-orange-200 pb-2">自家農園の無農薬野菜</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">グランロックファームで大切に育てた旬の野菜を使用。無農薬だからこそ味わえる野菜本来の「甘み」と「力強さ」をプレートに凝縮しました。</p>
+                    </div>
+                </div>
+                <div class="relative sm:col-span-2 md:col-span-1">
+                    <div class="step-number">03</div>
+                    <div class="pt-6 md:pt-10">
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 border-b-2 border-orange-200 pb-2">癒しの空間デザイン</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">昼は木漏れ日が差し込む開放的なカフェ、夜はキャンドルが灯る幻想的なレストラン。忙しい日常を忘れさせる「癒しの時間」を提供します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. シズル感 -->
+    <section class="py-16 md:py-20 bg-stone-100 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10 md:gap-12">
+            <div class="w-full md:w-1/2 relative" id="sizzle-image-container">
+                <div class="absolute -top-4 -left-4 w-20 h-20 md:w-24 md:h-24 bg-orange-200 rounded-full z-0 opacity-50"></div>
+                <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-8 border-white">
+                    <img src="images/omurice.png"
+                         alt="オムライス料理イメージ"
+                         class="w-full object-cover aspect-video md:aspect-square"
+                         onerror="this.src='https://placehold.co/800x800/dda15e/283618?text=Delicious+Omurice'">
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 md:w-32 md:h-32 bg-yellow-200 rounded-full z-0 opacity-50"></div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-5 md:mb-6 text-orange-900 leading-tight">一口で虜になる、<br>職人の手仕事。</h3>
+                <p class="mb-6 leading-relaxed text-sm sm:text-base">地元・山形の「半泣鶏卵」の卵を贅沢に使用したオムライスは、スプーンを入れた瞬間に広がるトロトロの食感が自慢。自家製トマトソースとのハーモニーを、ぜひ堪能ください。</p>
+                <div class="bg-white p-4 rounded-xl shadow-sm inline-block">
+                    <p class="text-orange-600 font-bold text-xs sm:text-sm">📺 地元山形メディアでも多数紹介！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ストーリー -->
+    <section class="py-16 md:py-20 px-4">
+        <div class="max-w-4xl mx-auto bg-white rounded-[2rem] md:rounded-[3rem] p-6 sm:p-10 md:p-16 shadow-xl relative">
+            <div class="text-center mb-8 md:mb-10">
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold">「無理しないで、<br class="md:hidden">食べれるだけ食べて下さいね」</h2>
+                <div class="w-16 sm:w-20 h-1 bg-orange-600 mx-auto mt-4"></div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
+                <div class="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 flex-shrink-0 bg-stone-100 rounded-full overflow-hidden shadow-inner flex items-center justify-center border-4 border-stone-50" id="founder-image-container">
+                    <img src="images/chef.png"
+                         alt="創業者 有路 貴美"
+                         class="w-full h-full object-cover"
+                         onerror="this.src='https://placehold.co/600x600/bc6c25/ffffff?text=Owner+Chef'">
+                </div>
+                <div class="space-y-4 text-center md:text-left">
+                    <p class="font-bold text-base sm:text-lg">創業者：有路 貴美</p>
+                    <p class="text-gray-600 text-sm md:text-base leading-loose">
+                        「お腹いっぱいになって、心も体も元気になってほしい。」そんな想いから、1994年にグランロックを創業しました。地産地消にこだわり、30年以上変わらぬ味を守り継いでいます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. COMING SOON（今後の取り組み・新サービス） -->
+    <section class="py-16 md:py-20 bg-amber-50/60 px-4 border-y border-amber-100/60">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-2">COMING SOON</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mt-1 text-stone-900">
+                    「あったらいいな」を、かたちに。<br>
+                    グランロックの新しい挑戦
+                </h2>
+                <p class="text-stone-600 text-sm md:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+                    自家農園「グランロックファーム」や30年培った手作りの技術を生かして、お客様の笑顔がもっと増えるサービスを準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- 1. 農園収穫体験 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all border border-stone-100 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl tracking-wider">PREPARATION</div>
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            🌱
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 text-stone-800">親子で楽しむ<br>「農園収穫体験イベント」</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            自家農園で育った旬の無農薬野菜を自分の手で収穫！採れたて野菜を使った特別ランチや食育ワークショップの開催を予定しています。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-stone-100 text-xs font-bold text-orange-600 flex items-center">
+                        <span>✨ イベント開催準備中</span>
+                    </div>
+                </div>
+
+                <!-- 2. お子様メニュー新設 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all border border-stone-100 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl tracking-wider">DEVELOPMENT</div>
+                    <div>
+                        <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            🐥
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 text-stone-800">食育とワクワクを届ける<br>「新・お子様プレート」</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            「安心・安全な手作りの美味しさを子どもたちにも」。見た目も楽しく身体にも優しい、グランロック特製キッズメニューを試作中です。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-stone-100 text-xs font-bold text-orange-600 flex items-center">
+                        <span>✨ 新メニュー開発中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. アクセス・マップセクション -->
+    <section class="py-16 md:py-20 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-orange-600 font-black tracking-widest text-sm">ACCESS</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mt-2">お店へのアクセス</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 md:gap-10">
+                <!-- 地図 -->
+                <div class="lg:w-2/3 shadow-2xl rounded-3xl overflow-hidden border-4 sm:border-8 border-stone-50">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.8910391435165!2d140.35368327478164!3d38.28201858278113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc9af36efcec7%3A0x66f7cd18bb94ff1b!2z44Kr44OV44Kn44Os44K544OI44Op44OzIOOCsOODqeODs-ODreODg-OCrw!5e0!3m2!1sja!2sjp!4v1770948545872!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="グランロック地図"></iframe>
+                    </div>
+                </div>
+                <!-- 店舗情報 -->
+                <div class="lg:w-1/3 space-y-6 md:space-y-8">
+                    <div class="bg-stone-50 p-6 sm:p-8 rounded-3xl border border-stone-100">
+                        <h3 class="text-lg sm:text-xl font-bold text-orange-800 mb-4 flex items-center">
+                            <span class="mr-2">📍</span> 所在地
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed mb-2">〒990-0811<br>山形県山形市芳野27</p>
+                        <p class="text-sm text-gray-500">※山形駅から車で約10分</p>
+                    </div>
+
+                    <div class="bg-stone-50 p-6 sm:p-8 rounded-3xl border border-stone-100">
+                        <h3 class="text-lg sm:text-xl font-bold text-orange-800 mb-4 flex items-center">
+                            <span class="mr-2">🚗</span> 駐車場
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">敷地内に<span class="font-bold text-orange-600">24台</span>の大型駐車場を完備しております。お車でも安心してお越しください。</p>
+                    </div>
+
+                    <div class="bg-stone-50 p-6 sm:p-8 rounded-3xl border border-stone-100">
+                        <h3 class="text-lg sm:text-xl font-bold text-orange-800 mb-4 flex items-center">
+                            <span class="mr-2">📞</span> お問い合わせ
+                        </h3>
+                        <p class="text-xl sm:text-2xl font-black text-gray-800">
+                            <a href="tel:023-631-4169" class="hover:text-orange-600 transition-colors">023-631-4169</a>
+                        </p>
+                        <p class="text-sm text-gray-500 mt-2">受付：10:30 〜 21:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. フッター・最終CTA -->
+    <footer id="cta-section" class="relative py-16 md:py-24 px-4 bg-orange-800 text-white text-center overflow-hidden">
+        <div class="absolute inset-0 opacity-20" id="footer-image-container">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80"
+                 alt="店内雰囲気"
+                 class="w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/1600x900/283618/ffffff?text=Granrock+Atmosphere'">
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl md:text-6xl font-serif font-bold mb-8 md:mb-12 leading-tight">
+                今日のご褒美に、<br>
+                最上の「手作り」を。
+            </h2>
+
+            <div class="bg-white text-orange-900 rounded-3xl p-6 sm:p-8 mb-10 md:mb-12 shadow-2xl text-left">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8 border-b border-orange-100 pb-8">
+                    <div class="text-center md:text-left">
+                        <p class="text-sm font-bold opacity-70">Cafe Restaurant</p>
+                        <p class="text-xl sm:text-2xl font-black">グランロック</p>
+                    </div>
+                    <div class="text-center md:text-right text-sm">
+                        <p>📍 山形県山形市芳野27</p>
+                        <p>📞 023-631-4169</p>
+                    </div>
+                </div>
+
+                <a href="https://granrock.com/" target="_blank" rel="noopener noreferrer" class="block w-full bg-orange-600 hover:bg-orange-700 text-white py-5 sm:py-6 rounded-2xl text-xl sm:text-2xl font-black shadow-lg transition-transform hover:-translate-y-1 text-center">
+                    公式サイトで詳細を見る
+                </a>
+            </div>
+
+            <p class="mt-10 md:mt-16 text-[10px] opacity-40 italic">&copy; Cafe Restaurant Granrock. Since 1994.</p>
+        </div>
+    </footer>
+
+    <script>
+        console.log("Cafe Restaurant Granrock LP loaded successfully.");
+    </script>
+</body>
+</html>
