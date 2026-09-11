@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ルイ・フィリップ | 山形・河北町の本格フレンチ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&family=EB+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stone:#1E2A22;      /* 深いオリーブ石壁のような濃色 */
+    --stone-light:#2C3B30;
+    --cream:#F8F4EA;      /* メニューカードのような紙色 */
+    --cream-2:#F0EADA;
+    --wine:#6E2430;       /* 赤ワイン */
+    --brass:#A6803A;      /* 真鍮ゴールド */
+    --ink:#25231F;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP','Shippori Mincho',serif;
+    background:var(--cream);
+    color:var(--ink);
+  }
+  .font-display{font-family:'Shippori Mincho', serif;}
+  .font-signature{font-family:'EB Garamond', serif; font-style:italic;}
+  .text-brass{color:var(--brass);}
+  .bg-stone{background-color:var(--stone);}
+  .bg-stone-light{background-color:var(--stone-light);}
+  .bg-wine{background-color:var(--wine);}
+  .border-brass{border-color:var(--brass);}
+  .rule{height:1px;background:linear-gradient(to right, transparent, var(--brass), transparent);}
+  .rule-solid{height:1px;background:var(--brass); opacity:.55;}
+
+  @media (prefers-reduced-motion: no-preference){
+    .hero-fade{opacity:0; transform:translateY(14px); animation:heroIn .9s ease-out forwards;}
+    .hero-fade.d1{animation-delay:.1s}
+    .hero-fade.d2{animation-delay:.3s}
+    .hero-fade.d3{animation-delay:.5s}
+    .hero-fade.d4{animation-delay:.7s}
+    @keyframes heroIn{to{opacity:1; transform:translateY(0);}}
+
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease;}
+    .reveal.is-visible{opacity:1; transform:translateY(0);}
+  }
+
+  .leader-dots{
+    flex:1;
+    border-bottom:1px dotted rgba(166,128,58,.6);
+    margin:0 .75rem;
+    transform:translateY(-4px);
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+
+  #mobile-menu{transition:max-height .35s ease, opacity .3s ease;}
+</style>
+</head>
+<body class="antialiased">
+
+  <!-- ナビゲーション -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-stone/95 backdrop-blur text-cream">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+      <a href="#top" class="font-signature text-xl sm:text-2xl tracking-wide text-cream">Louis Philippe</a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#story" class="hover:text-brass transition-colors">私たちについて</a>
+        <a href="#menu" class="hover:text-brass transition-colors">コース</a>
+        <a href="#news" class="hover:text-brass transition-colors">お知らせ</a>
+        <a href="#access" class="hover:text-brass transition-colors">アクセス</a>
+        <a href="tel:0237733535" class="border border-brass text-brass px-4 py-2 rounded-sm hover:bg-brass hover:text-stone transition-colors">0237-73-3535</a>
+      </nav>
+
+      <button id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 -mr-2" aria-label="メニューを開く">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden opacity-0">
+      <nav class="flex flex-col px-5 pb-5 gap-4 text-base border-t border-white/10 pt-4">
+        <a href="#story" class="menu-link">私たちについて</a>
+        <a href="#menu" class="menu-link">コース</a>
+        <a href="#news" class="menu-link">お知らせ</a>
+        <a href="#access" class="menu-link">アクセス</a>
+        <a href="tel:0237733535" class="menu-link text-brass">0237-73-3535 に電話する</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <header id="top" class="relative min-h-[100svh] flex items-end sm:items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="images/store.jpg"
+           alt="石造りの西洋館のような外観のレストラン"
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-stone via-stone/60 to-stone/20"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 pb-16 sm:pb-0 w-full text-cream">
+      <p class="hero-fade d1 font-signature text-2xl sm:text-3xl text-brass mb-3">Since 1987, Kahoku</p>
+      <h1 class="hero-fade d2 font-display font-800 text-[2.1rem] leading-[1.25] sm:text-6xl sm:leading-[1.15] max-w-xl">
+        山形・河北町に佇む、<br>お城のようなフレンチ。
+      </h1>
+      <div class="hero-fade d3 rule my-6 max-w-[220px]"></div>
+      <p class="hero-fade d3 text-base sm:text-lg leading-relaxed max-w-md text-cream/90">
+        「高いのは外見だけでした」——創業1987年。<br class="hidden sm:block">
+        気取らず、日常に寄り添う本格フレンチです。
+      </p>
+      <div class="hero-fade d4 flex flex-col sm:flex-row gap-3 sm:gap-4 mt-9">
+        <a href="#menu" class="text-center bg-brass text-stone font-bold py-3.5 px-8 rounded-sm hover:bg-cream transition-colors">
+          コースを見る
+        </a>
+        <a href="tel:0237733535" class="text-center border border-cream/40 py-3.5 px-8 rounded-sm hover:bg-cream/10 transition-colors">
+          電話で予約する
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ストーリー -->
+  <section id="story" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+        <div class="order-2 md:order-1">
+          <p class="font-signature text-brass text-xl mb-3">Our Story</p>
+          <h2 class="font-display font-800 text-2xl sm:text-4xl leading-snug mb-6">
+            五感を覚醒させる、一皿のストーリー。
+          </h2>
+          <p class="text-[15px] sm:text-base leading-[1.9] text-ink/80 mb-6">
+            野菜サラダには刻んだシソと小ネギ。湯気を立てて運ばれる、店内で焼き上げた温々のバゲット。そして、赤ワインの効いた秀逸なソースをちぎったパンで拭う瞬間——。
+          </p>
+          <p class="text-[15px] sm:text-base leading-[1.9] text-ink/80">
+            「美味しいものを、気取らずに。」それがルイ・フィリップが創業から大切にしている想いです。
+          </p>
+
+          <dl class="grid grid-cols-2 gap-6 mt-10 max-w-sm">
+            <div class="border-l-2 border-brass pl-4">
+              <dt class="text-xs tracking-wide text-ink/50">ランチコース</dt>
+              <dd class="font-display font-800 text-2xl mt-1">1,300円〜</dd>
+            </div>
+            <div class="border-l-2 border-brass pl-4">
+              <dt class="text-xs tracking-wide text-ink/50">創業</dt>
+              <dd class="font-display font-800 text-2xl mt-1">1987年</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="order-1 md:order-2">
+          <img src="images/soup.png"
+               alt="かぼちゃのポタージュスープ"
+               class="w-full rounded-sm shadow-xl">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8"><div class="rule-solid"></div></div>
+
+<!-- コース -->
+  <section id="menu" class="py-20 sm:py-28 bg-stone text-white">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8">
+      <div class="mb-14 text-center">
+        <p class="font-signature text-white text-xl mb-2">Course Flow</p>
+        <h2 class="font-display font-800 text-2xl sm:text-4xl text-white">至福の時間を彩る、コースの流れ</h2>
+      </div>
+
+      <ol class="space-y-0">
+        <li class="reveal flex items-baseline py-5 border-b border-white/10">
+          <span class="font-signature text-white text-lg w-8 shrink-0">01</span>
+          <span class="font-display text-lg sm:text-xl shrink-0 text-white">サラダ</span>
+          <span class="leader-dots"></span>
+          <span class="text-sm text-white text-right hidden sm:inline">シソと小ネギの特製サラダ</span>
+        </li>
+        <li class="reveal flex items-baseline py-5 border-b border-white/10">
+          <span class="font-signature text-white text-lg w-8 shrink-0">02</span>
+          <span class="font-display text-lg sm:text-xl shrink-0 text-white">スープ</span>
+          <span class="leader-dots"></span>
+          <span class="text-sm text-white text-right hidden sm:inline">かぼちゃ／季節のビシソワーズ</span>
+        </li>
+        <li class="reveal flex items-baseline py-5 border-b border-white/10">
+          <span class="font-signature text-white text-lg w-8 shrink-0">03</span>
+          <span class="font-display text-lg sm:text-xl shrink-0 text-white">パン</span>
+          <span class="leader-dots"></span>
+          <span class="text-sm text-white text-right hidden sm:inline">店内焼き上げ、外カリ中もっちり</span>
+        </li>
+        <li class="reveal flex items-baseline py-6 border-b border-brass/40 -mx-4 px-4 bg-brass/10 rounded-sm">
+          <span class="font-signature text-white text-lg w-8 shrink-0">04</span>
+          <span class="font-display font-800 text-lg sm:text-xl shrink-0 text-white">メインディッシュ</span>
+          <span class="leader-dots"></span>
+          <span class="text-sm text-white text-right hidden sm:inline">ハンバーグ／ヒレカツ 全5種</span>
+        </li>
+        <li class="reveal flex items-baseline py-5">
+          <span class="font-signature text-white text-lg w-8 shrink-0">05</span>
+          <span class="font-display text-lg sm:text-xl shrink-0 text-white">デザート・コーヒー</span>
+          <span class="leader-dots"></span>
+          <span class="text-sm text-white text-right hidden sm:inline">香り高い深煎りの一杯</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 口コミ -->
+  <section class="py-20 sm:py-24">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8">
+      <div class="grid sm:grid-cols-2 gap-10 sm:gap-14">
+        <figure class="reveal">
+          <div class="text-brass text-lg mb-4 tracking-widest">★★★★★</div>
+          <blockquote class="font-display text-lg sm:text-xl leading-relaxed mb-4">
+            「お城みたいな建物ですごく高そう……て、思うじゃないですか？ランチ1,300円で食べられるんですよ。」
+          </blockquote>
+          <figcaption class="text-sm text-ink/50">— 気になっていた河北町のお客様より</figcaption>
+        </figure>
+        <figure class="reveal">
+          <div class="text-brass text-lg mb-4 tracking-widest">★★★★★</div>
+          <blockquote class="font-display text-lg sm:text-xl leading-relaxed mb-4">
+            「バゲットは表面カリカリ中もっちり、これだけで十分旨い。お皿のソースを拭うまでがコースでした。」
+          </blockquote>
+          <figcaption class="text-sm text-ink/50">— 至福の時間を振り返るお客様より</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8"><div class="rule-solid"></div></div>
+
+  <!-- お知らせ / Coming Soon -->
+  <section id="news" class="py-20 sm:py-28 bg-cream-2">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+      <div class="mb-14 text-center max-w-xl mx-auto">
+        <p class="font-signature text-brass text-xl mb-2">Coming Soon</p>
+        <h2 class="font-display font-800 text-2xl sm:text-4xl mb-4">特別な日を、もっと華やかに。</h2>
+        <p class="text-sm sm:text-base text-ink/70 leading-relaxed">
+          記念日限定プランを近日スタート予定です。詳細は準備が整い次第、店頭またはお電話にてご案内いたします。
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 border border-brass/30 divide-y sm:divide-y-0 sm:divide-x divide-brass/30 rounded-sm overflow-hidden bg-cream">
+        <div class="reveal p-8 sm:p-10">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs tracking-wide text-brass font-bold uppercase">Takeout</span>
+            <span class="text-xs text-ink/40">近日予約受付開始</span>
+          </div>
+          <h3 class="font-display font-800 text-xl mb-3">アニバーサリー用<br>特製プレミアムオードブル</h3>
+          <p class="text-sm leading-relaxed text-ink/70">
+            お誕生日や結婚記念日のおうちパーティーに。テイクアウトオードブルを、特製メッセージカードや乾杯用スパークリング（ノンアルコール対応可）とセットでお届けします。
+          </p>
+        </div>
+        <div class="reveal p-8 sm:p-10">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs tracking-wide text-brass font-bold uppercase">In-Store</span>
+            <span class="text-xs text-ink/40">企画進行中</span>
+          </div>
+          <h3 class="font-display font-800 text-xl mb-3">記念日サプライズ<br>特製デザートプレート</h3>
+          <p class="text-sm leading-relaxed text-ink/70">
+            ハレの日の店内ご会食時に。お好きなメッセージを添えたシェフ特製アニバーサリープレートや、記念写真のプレゼント・お花の手配など、思い出に残る演出をご用意いたします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section id="access" class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="grid md:grid-cols-2 border border-brass/25 rounded-sm overflow-hidden">
+        <div class="p-8 sm:p-12">
+          <p class="font-signature text-brass text-xl mb-2">Access &amp; Info</p>
+          <h2 class="font-display font-800 text-2xl sm:text-3xl mb-8">アクセス・店舗情報</h2>
+
+          <dl class="space-y-6">
+            <div class="flex gap-4">
+              <dt class="text-brass shrink-0 pt-0.5">📍</dt>
+              <div>
+                <dt class="text-xs tracking-wide text-ink/45 mb-1">住所</dt>
+                <dd class="text-[15px] leading-relaxed">〒999-3512 山形県西村山郡河北町谷地中央4丁目8−13</dd>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <dt class="text-brass shrink-0 pt-0.5">📞</dt>
+              <div>
+                <dt class="text-xs tracking-wide text-ink/45 mb-1">電話番号</dt>
+                <dd><a href="tel:0237733535" class="text-xl font-display font-800 hover:text-brass transition-colors">0237-73-3535</a></dd>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <dt class="text-brass shrink-0 pt-0.5">🗓</dt>
+              <div>
+                <dt class="text-xs tracking-wide text-ink/45 mb-1">定休日</dt>
+                <dd class="text-[15px]">毎週火曜日</dd>
+              </div>
+            </div>
+          </dl>
+        </div>
+
+        <div class="min-h-[320px] sm:min-h-[420px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3126.0911103795356!2d140.30600987478948!3d38.416259274951706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc31e584b39d9%3A0x9f1213370c5332b3!2z44Or44Kk44O744OV44Kj44Oq44OD44OX!5e0!3m2!1sja!2sjp!4v1770946842976!5m2!1sja!2sjp"
+            class="w-full h-full min-h-[320px] sm:min-h-[420px]"
+            style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="ルイ・フィリップ 地図"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 予約CTA -->
+  <footer class="relative py-24 sm:py-32 bg-stone text-cream text-center overflow-hidden">
+    <div class="absolute inset-0 opacity-25">
+      <img src="images/store2.jpg"
+           alt="レストラン店内" class="w-full h-full object-cover">
+    </div>
+    <div class="relative z-10 max-w-2xl mx-auto px-5 sm:px-8">
+      <p class="font-signature text-brass text-2xl sm:text-3xl mb-4">Reservation</p>
+      <h2 class="font-display font-800 text-2xl sm:text-4xl mb-10 leading-snug">
+        美味しい時間、お席をご用意します。
+      </h2>
+      <a href="tel:0237733535"
+         class="inline-block bg-brass text-stone font-display font-800 text-xl sm:text-2xl py-5 px-12 rounded-sm hover:bg-cream transition-colors">
+        0237-73-3535
+      </a>
+      <p class="text-xs text-cream/50 mt-6">※シェフとマダムで営むため、繋がりにくい場合がございます</p>
+    </div>
+  </footer>
+
+  <script>
+    // モバイルメニュー
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    let open = false;
+
+    function setMenu(state){
+      open = state;
+      btn.setAttribute('aria-expanded', String(open));
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+      if(open){
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+      } else {
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+      }
+    }
+    btn.addEventListener('click', () => setMenu(!open));
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+    document.querySelectorAll('.menu-link').forEach(a=>{
+      a.classList.add('py-1');
+    });
+
+    // スクロールで控えめに要素を出す
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
