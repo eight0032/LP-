@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Cafeごはん カシェルポポ | 公式ランディングページ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;700&family=Alex+Brush&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a6741;
+            --secondary: #a89060;
+            --bg-base: #f9f6f0;
+            --text-main: #2d2d2d;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+        .font-cursive { font-family: 'Alex Brush', cursive; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .img-stack {
+            position: relative;
+        }
+        .img-stack::before {
+            content: "";
+            position: absolute;
+            top: 14px;
+            left: -14px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--secondary);
+            z-index: -1;
+        }
+        @media (min-width: 768px) {
+            .img-stack::before {
+                top: 20px;
+                left: -20px;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        .section-line {
+            width: 1px;
+            height: 70px;
+            background-color: var(--secondary);
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .section-line { height: 100px; }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Mobile nav */
+        #mobileNav {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        #mobileNav.open {
+            max-height: 400px;
+        }
+
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-[#f9f6f0]">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/85 backdrop-blur-md shadow-sm">
+        <div class="px-4 sm:px-6 py-3 md:py-4 flex justify-between items-center">
+            <div class="font-serif font-bold tracking-tight text-[#4a6741] leading-tight">
+                <span class="text-base sm:text-lg md:text-xl">Cafeごはん</span>
+                <span class="text-[11px] sm:text-xs md:text-sm block md:inline md:ml-2 text-[#a89060] font-sans font-normal">カシェルポポ</span>
+            </div>
+
+            <nav class="hidden md:flex gap-8 text-xs font-bold tracking-widest uppercase">
+                <a href="#about" class="hover:text-[#a89060] transition">About</a>
+                <a href="#menu" class="hover:text-[#a89060] transition">Menu</a>
+                <a href="#comingsoon" class="hover:text-[#a89060] transition">Coming Soon</a>
+                <a href="#voice" class="hover:text-[#a89060] transition">Voice</a>
+                <a href="#cta" class="hover:text-[#a89060] transition">Access</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="tel:0236241460" class="bg-[#4a6741] text-white px-4 sm:px-6 py-2 rounded-full text-[11px] sm:text-xs font-bold tracking-widest hover:bg-[#3d5535] transition whitespace-nowrap">
+                    RESERVE
+                </a>
+                <!-- Hamburger (mobile only) -->
+                <button id="navToggle" aria-label="メニューを開く" aria-expanded="false" class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-[5px]">
+                    <span class="block w-6 h-[2px] bg-[#2d2d2d] transition"></span>
+                    <span class="block w-6 h-[2px] bg-[#2d2d2d] transition"></span>
+                    <span class="block w-6 h-[2px] bg-[#2d2d2d] transition"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile nav panel -->
+        <nav id="mobileNav" class="md:hidden bg-white border-t border-gray-100">
+            <div class="flex flex-col text-sm font-bold tracking-widest uppercase px-6">
+                <a href="#about" class="py-3 border-b border-gray-100">About</a>
+                <a href="#menu" class="py-3 border-b border-gray-100">Menu</a>
+                <a href="#comingsoon" class="py-3 border-b border-gray-100">Coming Soon</a>
+                <a href="#voice" class="py-3 border-b border-gray-100">Voice</a>
+                <a href="#cta" class="py-3">Access</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 md:pt-20 md:pb-0">
+        <div class="container mx-auto px-5 sm:px-6 flex flex-col md:flex-row items-center gap-10 md:gap-12">
+            <div class="w-full md:w-5/12 z-10 order-2 md:order-1">
+                <span class="font-cursive text-2xl sm:text-3xl md:text-4xl text-[#a89060] mb-2 block">Delicious time</span>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-serif font-bold leading-snug mb-6 md:mb-8">
+                    山形の土が育む、<br>
+                    <span class="text-[#4a6741]">滋味豊かな</span><br>
+                    一皿を。
+                </h1>
+                <p class="text-sm md:text-base text-gray-600 mb-8 leading-loose tracking-widest">
+                    自家菜園で育てた新鮮な野菜と、<br>
+                    元パティシエのシェフが綴りなす繊細な味。<br>
+                    古民家の穏やかな空気の中で。
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-[1px] bg-[#a89060]"></div>
+                    <span class="text-xs font-bold tracking-[0.2em] text-[#a89060]">SCROLL DOWN</span>
+                </div>
+            </div>
+            <div class="w-full md:w-7/12 relative order-1 md:order-2">
+                <div class="img-stack">
+                    <img src="images/cake.jpg" alt="カシェルポポの料理" class="w-full h-[42vh] sm:h-[50vh] md:h-[80vh] object-cover rounded-sm">
+                </div>
+                <div class="absolute left-2 sm:-left-4 md:-left-12 top-6 sm:top-10 bg-white/90 p-3 sm:p-6 md:p-8 backdrop-blur shadow-sm">
+                    <p class="vertical-text font-serif text-sm sm:text-lg md:text-xl tracking-[0.2em] sm:tracking-[0.3em] leading-relaxed">
+                        自家栽培野菜を惜しむ<br>
+                        大人の隠れ家
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-line my-8 md:my-12"></div>
+
+    <!-- 2. コンセプトセクション -->
+    <section id="about" class="py-16 md:py-24 bg-white scroll-mt-20">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <span class="font-cursive text-2xl md:text-3xl text-[#a89060]">Concept</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold my-5 md:my-6 tracking-wide md:tracking-widest">「カシェル」は、おいしいの合図。</h2>
+                <p class="text-sm md:text-base leading-[2.1] md:leading-[2.5] text-gray-600 tracking-wide md:tracking-widest">
+                    山形弁で「おいしい」を意味する「カシェル」。<br>
+                    家族経営ならではの温かいおもてなしと、<br>
+                    パティシエとしてのこだわりが詰まったスイーツ。<br>
+                    ここ五十鈴の地で、皆様の心に「カシェル」な瞬間を届けます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 背景イメージセクション -->
+    <section class="relative h-[45vh] md:h-[60vh] w-full bg-fixed bg-center bg-cover flex items-center justify-center" style="background-image: url('images/yasai.jpg');">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="relative z-10 text-center text-white reveal px-4">
+            <h2 class="text-2xl md:text-3xl font-serif mb-3 md:mb-4 tracking-widest uppercase">From Soil to Plate</h2>
+            <p class="font-cursive text-xl md:text-2xl">土から、一皿の幸せへ</p>
+        </div>
+    </section>
+
+    <!-- 4. メインメニュー -->
+    <section id="menu" class="py-20 md:py-32 overflow-hidden scroll-mt-20">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <div class="w-full md:w-1/2 reveal">
+                    <div class="relative max-w-sm mx-auto md:max-w-none">
+                        <img src="images/omuhayashi.jpg" alt="きのこのオムレツハヤシライス" class="rounded-sm shadow-2xl w-full">
+                        <div class="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-8 w-32 h-32 sm:w-48 sm:h-48 bg-[#a89060] rounded-full flex items-center justify-center text-white text-center p-3 sm:p-4">
+                            <p class="font-serif text-xs sm:text-sm tracking-widest italic">元パティシエが贈る<br>究極の調和</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 reveal">
+                    <span class="text-[#a89060] font-bold text-xs tracking-widest uppercase">Signature Dish</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mt-4 mb-6 md:mb-8 tracking-tight">きのこのオムレツ<br>ハヤシライス</h2>
+                    <p class="text-gray-600 leading-loose tracking-wide md:tracking-widest mb-8">
+                        自家菜園で採れた数種類のきのこを贅沢に使用。<br>
+                        ふんわりと焼き上げたオムレツに、<br>
+                        数日間かけて煮込んだ深いコクのハヤシソースをたっぷり。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex justify-between border-b border-gray-200 pb-2">
+                            <span class="font-serif text-sm">きのこのオムレツハヤシライス（単品）</span>
+                            <span class="font-bold whitespace-nowrap ml-3">¥1,200</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-200 pb-2">
+                            <span class="font-serif text-sm text-[#4a6741]">【おすすめ】カシェルランチセット</span>
+                            <span class="font-bold whitespace-nowrap ml-3">¥1,850</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400">※セットには自家菜スープ、サラダ、本日のケーキが含まれます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 自己紹介 / ストーリー -->
+    <section class="py-20 md:py-32 bg-[#efede8]">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+                <div class="w-full md:w-1/2 reveal">
+                    <img src="images/cookie.jpg" alt="カシェルポポのアトリエ" class="rounded-sm border-[10px] sm:border-[20px] border-white shadow-xl mx-auto max-w-sm md:max-w-none w-full">
+                </div>
+                <div class="w-full md:w-1/2 reveal">
+                    <p class="font-cursive text-2xl md:text-3xl text-[#a89060] mb-2">Our Story</p>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold mb-6 md:mb-8 tracking-wide md:tracking-widest">姉妹で紡ぐ、<br>山形の「おいしい」の形。</h2>
+                    <p class="text-sm leading-[2] md:leading-[2.2] text-gray-700 tracking-wide md:tracking-widest mb-6 md:mb-8">
+                        元パティシエのシェフ・猪倉崇由が創り出す料理は、スイーツのような繊細さと、自家菜園の力強さを併せ持っています。姉の田畑千佳と共に、2015年、この古民家を改装してカシェルポポをオープンしました。
+                        <br><br>
+                        店舗の奥には「お菓子のアトリエ」を併設。お食事だけでなく、テイクアウトのスイーツも地域の皆様に愛されています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. お客様の声 -->
+    <section id="voice" class="py-20 md:py-32 bg-white scroll-mt-20">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-14 md:mb-20">
+                <span class="font-cursive text-2xl md:text-3xl text-[#a89060]">Voices</span>
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold tracking-wide md:tracking-widest mt-3 md:mt-4">カシェルポポに寄せられた想い</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 max-w-5xl mx-auto">
+                <div class="reveal border-l border-[#a89060] pl-6 sm:pl-8 py-4">
+                    <div class="flex text-[#a89060] mb-4">★★★★★</div>
+                    <p class="text-sm leading-relaxed tracking-wide md:tracking-widest text-gray-600 mb-6 italic">
+                        「ランチで伺いました。はじめに出てきた冷製のポタージュが絶品で、素材の香りが一つ一つはっきりしていて、久しぶりに本当に美味しいパスタを頂きました。」
+                    </p>
+                    <span class="text-xs font-bold text-[#4a6741]">A様（山形市在住）</span>
+                </div>
+                <div class="reveal border-l border-[#a89060] pl-6 sm:pl-8 py-4">
+                    <div class="flex text-[#a89060] mb-4">★★★★★</div>
+                    <p class="text-sm leading-relaxed tracking-wide md:tracking-widest text-gray-600 mb-6 italic">
+                        「ピザ！すごくおいしいです！他とは全然違うチーズに野菜の甘さが乗っかって何とも言えない絶妙な味。今日も珍しくこれは美味しいと大絶賛でした。」
+                    </p>
+                    <span class="text-xs font-bold text-[#4a6741]">K様（ご夫婦で来店）</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.5. 新サービス予告 (Coming Soon) -->
+    <section id="comingsoon" class="py-16 md:py-24 bg-[#f2ece1] scroll-mt-20">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 reveal">
+                <span class="font-cursive text-3xl md:text-4xl text-[#a89060] block mb-2">Coming Soon</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide md:tracking-widest text-[#4a6741] mb-5 md:mb-6">
+                    「あったらいいな」をカタチに。<br>親子で楽しむ新しいカフェ時間。
+                </h2>
+                <p class="text-sm md:text-base text-gray-600 leading-relaxed tracking-wide md:tracking-widest">
+                    「小さなお子様と一緒に、もっと安心してゆっくり美味しいランチを過ごしてほしい」<br>
+                    そんなお客様の声に応えて、カシェルポポではご家族に優しい新サービスを準備中です。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto reveal">
+                <!-- 特長1: お子様プレート -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 bg-[#a89060] text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider">
+                        NEW MENU
+                    </div>
+                    <div>
+                        <div class="text-3xl mb-4">🎨</div>
+                        <h3 class="text-lg sm:text-xl font-serif font-bold mb-3 text-[#2d2d2d]">特製キッズプレート新設</h3>
+                        <p class="text-xs leading-loose text-gray-600 tracking-wide mb-6">
+                            元パティシエシェフが手がける、見た目も可愛く栄養満点のお子様ランチ。自家菜園のやさしい野菜スープや無添加ハンバーグなど、お子様の体に嬉しい仕上がりです。
+                        </p>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#4a6741] border-t border-gray-100 pt-3 inline-block">アレルギー配慮・薄味調整対応予定</span>
+                </div>
+
+                <!-- 特長2: 評判の焼き菓子セット -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 bg-[#4a6741] text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider">
+                        SPECIAL SET
+                    </div>
+                    <div>
+                        <div class="text-3xl mb-4">🍰</div>
+                        <h3 class="text-lg sm:text-xl font-serif font-bold mb-3 text-[#2d2d2d]">ファミリー・ママカフェセット</h3>
+                        <p class="text-xs leading-loose text-gray-600 tracking-wide mb-6">
+                            評判の自家製焼き菓子（フィナンシェやクッキー等）とお好きなドリンク、お子様メニューがひとつに！ご家族みんなで笑顔になれるお得な贅沢セット。
+                        </p>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#4a6741] border-t border-gray-100 pt-3 inline-block">テイクアウト用アソートパックも同時展開</span>
+                </div>
+
+                <!-- 特長3: 子連れ安心空間 -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-sm relative overflow-hidden flex flex-col justify-between sm:col-span-2 md:col-span-1">
+                    <div class="absolute top-0 right-0 bg-[#a89060] text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider">
+                        SERVICE
+                    </div>
+                    <div>
+                        <div class="text-3xl mb-4">👶</div>
+                        <h3 class="text-lg sm:text-xl font-serif font-bold mb-3 text-[#2d2d2d]">子連れ安心のおもてなし</h3>
+                        <p class="text-xs leading-loose text-gray-600 tracking-wide mb-6">
+                            ベビーカーのまま入店可能な広々スペースを確保。キッズチェア完備や、離乳食の温めサービスなど、周りを気にせずゆったりお食事いただけるようサポートします。
+                        </p>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#4a6741] border-t border-gray-100 pt-3 inline-block">小上がり席のご予約優先受付予定</span>
+                </div>
+            </div>
+
+            <!-- 通知・予告バナー -->
+            <div class="mt-10 md:mt-12 bg-white/80 backdrop-blur max-w-2xl mx-auto p-5 sm:p-6 rounded-sm text-center border border-[#a89060]/30 reveal">
+                <p class="text-xs font-serif tracking-wide md:tracking-widest text-gray-700 leading-relaxed">
+                    🌟 <span class="font-bold">提供開始予定：</span>近日公式Instagram及びお電話にて告知開始いたします。<br class="hidden sm:inline">
+                    ご家族のお食事やママ友会にもぜひご利用ください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Instagram -->
+    <section class="py-16 md:py-24 bg-[#4a6741] text-white">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-serif mb-6 md:mb-8 tracking-[0.15em] md:tracking-[0.2em]">日常を彩るお菓子のアトリエ</h2>
+            <p class="text-sm opacity-80 mb-10 md:mb-12 tracking-wide md:tracking-widest">公式Instagramでは、今日のおすすめメニューや新作スイーツを発信中。</p>
+            <div class="flex justify-center gap-3 sm:gap-4 mb-10 md:mb-12 overflow-x-auto pb-4 -mx-5 px-5 sm:mx-0 sm:px-0">
+                <div class="min-w-[110px] w-28 h-28 sm:min-w-[150px] sm:w-32 sm:h-32 bg-white/10 rounded-sm overflow-hidden shrink-0"><img src="images/cookie.jpg" class="w-full h-full object-cover" alt=""></div>
+                <div class="min-w-[110px] w-28 h-28 sm:min-w-[150px] sm:w-32 sm:h-32 bg-white/10 rounded-sm overflow-hidden shrink-0"><img src="images/dessert.png" class="w-full h-full object-cover" alt=""></div>
+                <div class="min-w-[110px] w-28 h-28 sm:min-w-[150px] sm:w-32 sm:h-32 bg-white/10 rounded-sm overflow-hidden shrink-0"><img src="images/taruto.jpg" class="w-full h-full object-cover" alt=""></div>
+            </div>
+            <a href="https://www.instagram.com/kasherupopo/" target="_blank" rel="noopener" class="inline-block border border-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full text-xs font-bold tracking-[0.2em] sm:tracking-[0.3em] hover:bg-white hover:text-[#4a6741] transition">
+                FOLLOW ON INSTAGRAM
+            </a>
+            <p class="mt-6 text-xs opacity-60">フォロー画面提示で「ミニ焼き菓子」プレゼント</p>
+        </div>
+    </section>
+
+    <!-- 8. 店舗情報・アクセスマップ -->
+    <section id="cta" class="py-20 md:py-32 bg-white scroll-mt-20">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-2xl md:text-3xl font-serif mb-6 md:mb-8 tracking-wide md:tracking-widest">店舗情報</h2>
+                        <div class="space-y-5 md:space-y-6 text-sm tracking-wide md:tracking-widest">
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                                <span class="sm:w-24 text-gray-400 shrink-0">店名</span>
+                                <span>Cafeごはん カシェルポポ</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                                <span class="sm:w-24 text-gray-400 shrink-0">住所</span>
+                                <span>〒990-0061 山形県山形市五十鈴3丁目1-14</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                                <span class="sm:w-24 text-gray-400 shrink-0">電話番号</span>
+                                <span class="font-bold">023-624-1460</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                                <span class="sm:w-24 text-gray-400 shrink-0">営業時間</span>
+                                <span>11:30 - 14:00 / 17:30 - 21:00</span>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b border-gray-100 pb-4 gap-1 sm:gap-0">
+                                <span class="sm:w-24 text-gray-400 shrink-0">定休日</span>
+                                <span>月曜日（祝日の場合は翌日）</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 md:mt-12 bg-[#f9f6f0] p-6 sm:p-8 rounded-sm">
+                            <p class="font-serif text-base sm:text-lg mb-4 text-center">ご予約について</p>
+                            <p class="text-xs text-gray-500 mb-6 text-center leading-relaxed">
+                                週末やランチタイムは大変混み合います。<br>
+                                お電話でのご予約を推奨しております。
+                            </p>
+                            <a href="tel:0236241460" class="block w-full bg-[#4a6741] text-white py-4 rounded-sm text-center font-bold tracking-[0.15em] sm:tracking-[0.2em] shadow-md hover:bg-[#3d5535] transition">
+                                📞 023-624-1460
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-2xl md:text-3xl font-serif mb-6 md:mb-8 tracking-wide md:tracking-widest">アクセス</h2>
+                        <div class="rounded-sm overflow-hidden shadow-lg border border-gray-100">
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.137443209403!2d140.35160617478135!3d38.27630668311375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc9bb731dcda1%3A0x81b52bab78711ff8!2zQ2FmZeOBlOOBr-OCkyDjgqvjgrfjgqfjg6vjg53jg50!5e0!3m2!1sja!2sjp!4v1770946135852!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="カシェルポポ 地図"></iframe>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-[10px] text-gray-400 tracking-wide md:tracking-widest">※山形駅より車で約10分。駐車場完備。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 md:py-12 bg-[#efede8] text-center border-t border-gray-200">
+        <p class="text-xs tracking-wide md:tracking-widest text-gray-500 px-4">&copy; 2024 Cafeごはん カシェルポポ. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll + close mobile nav on link click
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    closeMobileNav();
+                }
+            });
+        });
+
+        // Mobile hamburger nav
+        const navToggle = document.getElementById('navToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
