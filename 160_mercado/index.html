@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ワインバー・キッチン食堂メルカド | 山形・七日町</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-wine: #4a0e0e;
+            --color-gold: #b0915a;
+            --color-bg: #f8f5f2;
+            --color-text: #1a1a1a;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        .text-wine { color: var(--color-wine); }
+        .bg-wine { background-color: var(--color-wine); }
+        .text-gold { color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+
+        /* 縦書き設定：スマホでは崩れやすいため md 以上でのみ使用 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        .btn-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .btn-hover:hover {
+            background-color: var(--color-gold);
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-fade {
+            background: linear-gradient(to bottom, transparent, rgba(74, 14, 14, 0.03));
+        }
+
+        /* フォーカス時のアウトライン（アクセシビリティ） */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--color-gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; animation: none !important; }
+        }
+    </style>
+</head>
+<body class="texture-bg">
+
+    <!-- FIRST VIEW -->
+    <section class="relative flex flex-col md:flex-row md:min-h-screen items-stretch overflow-hidden">
+        <div class="order-2 md:order-1 w-full md:w-5/12 bg-white flex items-center justify-center px-6 py-14 md:p-20">
+            <div class="w-full max-w-sm md:max-w-none">
+                <!-- モバイル：横書き / md以上：縦書き -->
+                <div class="font-serif text-3xl sm:text-4xl md:text-6xl font-bold leading-tight md:leading-tight tracking-wide md:tracking-widest text-wine md:py-8 md:vertical-text">
+                    その一杯は、<br class="md:hidden">物語を綴る。
+                </div>
+                <div class="mt-8 md:mt-12 space-y-3 md:space-y-4">
+                    <p class="text-xs md:text-sm tracking-[0.2em] font-medium text-gold uppercase">Wine &amp; Kitchen Mercado</p>
+                    <h2 class="text-lg sm:text-xl md:text-2xl font-serif leading-relaxed">
+                        山形・七日町の路地裏に潜む<br>
+                        編集者が創った情報の交差点。
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="order-1 md:order-2 w-full md:w-7/12 relative h-[42vh] md:h-auto md:min-h-[50vh]">
+            <div class="absolute inset-0 bg-black/20 z-10"></div>
+            <img src="images/wine.png"
+                 alt="店内のワインイメージ" class="w-full h-full object-cover">
+            <div class="absolute bottom-4 right-4 md:bottom-12 md:right-12 z-20 bg-wine text-white px-5 py-4 md:p-10 font-serif">
+                <p class="text-[10px] md:text-xs tracking-widest mb-1 md:mb-2">Since 2014</p>
+                <p class="text-lg md:text-2xl">食堂メルカド</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STICKY CTA -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 py-3 md:py-4 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+            <p class="font-serif font-bold text-wine hidden md:block text-lg">食堂メルカド</p>
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center">
+                <p class="text-[10px] md:text-xs text-stone-500 font-medium">公式SNSフォローでグラスワイン1杯贈呈</p>
+                <a href="http://instagram.com/marchiyo" target="_blank" class="bg-wine text-white text-xs md:text-sm font-bold py-2 px-6 rounded-sm btn-hover whitespace-nowrap">
+                    Instagramを開く
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONCEPT -->
+    <section class="py-16 md:py-40 px-6 section-fade">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="hidden md:block absolute -top-10 -left-10 w-40 h-40 bg-gold/10 -z-10 rounded-full"></div>
+                    <div class="rounded-lg overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] md:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]">
+                        <img src="images/kakuteru.png" alt="赤ワインと料理" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-6 md:space-y-8">
+                    <h3 class="text-xs font-bold text-gold tracking-widest uppercase">Philosophy</h3>
+                    <h2 class="text-2xl md:text-4xl font-serif leading-snug md:leading-tight">独創的な一皿、<br>情緒ある一杯。</h2>
+                    <p class="text-stone-600 leading-loose text-sm md:text-base">
+                        スペイン料理をベースに、店主が編集者時代に世界で出逢ったエッセンスを凝縮。TV取材も訪れる「牛ホホの赤ワイン煮」は、独創的な酸味のソースが特徴です。
+                        <br><br>
+                        ヨーロッパ各地から届くナチュラルワイン、そして希少な「ジョージアワイン」。店主・鶴岡が、今宵のあなたに最も相応しい一本を選び出します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY (OWNER) -->
+    <section class="py-16 md:py-24 bg-wine text-white relative overflow-hidden">
+        <div class="hidden md:block absolute right-0 top-0 opacity-10 vertical-text font-serif text-[10rem] font-bold select-none leading-none">
+            MERCADO
+        </div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold">The Owner</span>
+                <h2 class="text-2xl md:text-3xl font-serif mt-2">鶴岡 正弥</h2>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <img src="images/chef.png"
+                     class="w-48 h-60 md:w-64 md:h-80 object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" alt="鶴岡正弥">
+                <div class="space-y-5 md:space-y-6 text-center md:text-left">
+                    <p class="text-lg md:text-xl font-serif leading-relaxed text-gold">世界を舞台にした男が、<br>山形でグラスを磨く理由。</p>
+                    <p class="text-sm opacity-80 leading-loose font-light">
+                        1966年、山形生まれ。東京で長年編集者として世界を旅し、各国の食文化とトレンドを舞台に刻んできた鶴岡正弥。約10年前、彼はその情熱を「一軒の店」へと昇華させました。
+                        <br><br>
+                        「情報の交差点」としてのメルカド。ここは単なる飲食店ではなく、文化が交差し、心が安らぐ「大人のためのサロン」です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICES -->
+    <section class="py-16 md:py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="text-xl md:text-3xl font-serif">心を満たす、至福の刻。</h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto mt-6"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 border-t-4 border-gold shadow-sm">
+                    <div class="flex gap-1 text-gold mb-4 text-xs">★★★★★</div>
+                    <p class="text-sm text-stone-600 italic">「前菜の盛り合わせはポテトグラタンが特に美味しく、一皿で世界の料理を楽しめるようだった。サービスも心地よく、楽しい時間を過ごせました。」</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 border-t-4 border-gold shadow-sm">
+                    <div class="flex gap-1 text-gold mb-4 text-xs">★★★★★</div>
+                    <p class="text-sm text-stone-600 italic">「どのお料理も独創的で、最高においしく、マスターのあたたかい接客に感動しました。遠いけど、いつか必ず伺いたい店です。」</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 border-t-4 border-gold shadow-sm">
+                    <div class="flex gap-1 text-gold mb-4 text-xs">★★★★</div>
+                    <p class="text-sm text-stone-600 italic">「本物のジョージアワインがいただけます！ 美味しかった♪」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SECTION -->
+    <section class="py-16 md:py-24 px-6 bg-stone-900 text-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold inline-block border-b border-gold pb-1 mb-3">New Project</span>
+                <h2 class="text-2xl md:text-5xl font-serif tracking-widest text-gold">COMING SOON</h2>
+                <p class="text-stone-400 text-sm md:text-base mt-4 font-light">インスタグラムで始まる、メルカドの新しい愉しみ。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <div class="bg-stone-800/80 border border-stone-700/60 p-6 md:p-8 rounded-sm hover:border-gold/60 transition-all duration-300">
+                    <div class="text-gold text-xs font-bold tracking-widest mb-3">01 / LIMITED NOTICE</div>
+                    <h3 class="font-serif text-lg md:text-xl mb-4 text-stone-100">旬食材・新酒の<br>「即時先行アナウンス」</h3>
+                    <p class="text-xs text-stone-400 leading-relaxed font-light">
+                        ヨーロッパ直輸入の初物ナチュラルワインや、季節限定の希少食材（山形・地中海の旬食材）の入荷情報を、一般公開前にInstagramストーリーズで優先配信します。
+                    </p>
+                </div>
+
+                <div class="bg-stone-800/80 border border-stone-700/60 p-6 md:p-8 rounded-sm hover:border-gold/60 transition-all duration-300">
+                    <div class="text-gold text-xs font-bold tracking-widest mb-3">02 / SPECIAL EVENT</div>
+                    <h3 class="font-serif text-lg md:text-xl mb-4 text-stone-100">フォロワー限定<br>「季節のワイン夜会・試食会」</h3>
+                    <p class="text-xs text-stone-400 leading-relaxed font-light">
+                        ジョージアワイン新酒の解禁会や、裏メニューを特別に愉しむ「小規模ペアリングサロン」の優先予約枠をインスタフォロワーの皆様へ優先案内いたします。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-16 text-center bg-stone-800/40 p-6 md:p-8 border border-stone-800 max-w-2xl mx-auto rounded-sm">
+                <p class="text-sm text-stone-300 mb-6 font-serif">最新情報を見逃さないために、今すぐInstagramをフォロー。</p>
+                <a href="http://instagram.com/marchiyo" target="_blank" class="btn-hover inline-block bg-gold text-stone-950 font-bold py-4 px-10 rounded-sm text-sm tracking-wider uppercase">
+                    @marchiyo をフォローする
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO & MAP -->
+    <section class="py-16 md:py-24 bg-stone-100 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+                <div class="space-y-6 md:space-y-8">
+                    <h3 class="font-serif text-xl md:text-2xl text-wine italic">Information</h3>
+                    <div class="space-y-3 md:space-y-4 text-sm">
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-3">
+                            <span class="w-24 text-stone-400 font-bold uppercase tracking-tighter shrink-0">Address</span>
+                            <span>〒990-0042 山形市七日町2-7-36 熊谷ビル2階</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-3">
+                            <span class="w-24 text-stone-400 font-bold uppercase tracking-tighter shrink-0">Tel</span>
+                            <span><a href="tel:080-4463-2780" class="hover:text-wine underline decoration-stone-300">080-4463-2780</a></span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-3">
+                            <span class="w-24 text-stone-400 font-bold uppercase tracking-tighter shrink-0">Hours</span>
+                            <span>18:00 - 22:00</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-200 py-3">
+                            <span class="w-24 text-stone-400 font-bold uppercase tracking-tighter shrink-0">Holiday</span>
+                            <span>月曜日</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-64 sm:h-80 md:h-auto bg-stone-300 rounded overflow-hidden shadow-inner">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.1656808064845!2d140.3379742747801!3d38.252463284501815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb6023296aaab%3A0xee4b045aa99637c8!2z44Ov44Kk44Oz44OQ44O877yG44Kt44OD44OB44Oz6aOf5aCC44Oh44Or44Kr44OJ!5e0!3m2!1sja!2sjp!4v1770873676876!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white py-14 md:py-20 px-6 text-center">
+        <div class="max-w-2xl mx-auto space-y-8 md:space-y-12">
+            <h2 class="text-wine font-serif text-2xl sm:text-3xl md:text-4xl leading-snug">
+                日常に、少しだけの<br>
+                「非日常」を添えて。
+            </h2>
+            <div class="space-y-4">
+                <a href="tel:080-4463-2780" class="btn-hover inline-block w-full md:w-auto bg-wine text-white font-bold py-5 md:py-6 px-10 md:px-16 rounded-sm text-lg md:text-xl shadow-lg">
+                    今すぐお電話で予約
+                </a>
+                <p class="text-[10px] text-stone-400 font-medium tracking-widest uppercase">Reservation Required</p>
+            </div>
+            <div class="pt-10 md:pt-12 flex flex-wrap justify-center gap-4 sm:gap-8 border-t border-stone-100">
+                <a href="http://instagram.com/marchiyo" target="_blank" class="text-stone-400 hover:text-wine transition-colors underline text-xs">Instagram</a>
+                <span class="text-stone-200">/</span>
+                <span class="text-stone-400 text-xs tracking-widest">Wine &amp; Kitchen Mercado</span>
+            </div>
+            <p class="text-[10px] text-stone-300 mt-6 md:mt-8 tracking-widest uppercase">&copy; Mercado All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
