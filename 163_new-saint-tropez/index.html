@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニューサントロペ | 山形市のリゾート空間カフェ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+        :root {
+            --sea-blue: #00838f;
+            --sand-beige: #f4f1ea;
+            --coral-orange: #ff7043;
+            --deep-ocean: #004d40;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: var(--sand-beige);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        .font-brand { font-family: 'Montserrat', sans-serif; }
+
+        .bg-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/sandpaper.png');
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            letter-spacing: 0.2em;
+        }
+
+        .cta-button {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 131, 143, 0.3);
+        }
+
+        .img-frame {
+            position: relative;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: rotate(-1deg);
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+       .image-placeholder {
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: shine 1.5s linear infinite;
+}
+        @keyframes shine {
+            to { background-position-x: -200%; }
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border-radius: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .map-container iframe {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                letter-spacing: 0.05em;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating, .image-placeholder, .animate-pulse {
+                animation: none !important;
+            }
+            .cta-button, .cta-button:hover {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--coral-orange);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-texture">
+
+  <!-- 1. FVエリア -->
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-white py-16 md:py-20">
+    <!-- 1. 全体背景画像 -->
+    <div class="absolute inset-0 z-0 bg-cover bg-center opacity-60" id="fv-bg" style="background-image: url('images/pasta.png');">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white"></div>
+    </div>
+
+    <div class="z-10 container mx-auto flex items-center justify-center gap-6 md:gap-16 flex-col md:flex-row-reverse px-6">
+        <div class="vertical-text font-serif text-xl md:text-3xl leading-tight tracking-widest text-slate-800 h-auto md:h-80">
+            山形の日常に、<br><span class="text-[var(--sea-blue)]">一瞬のリゾートを。</span>
+        </div>
+
+        <div class="text-center md:text-left w-full max-w-md md:max-w-none">
+            <!-- 2. メイン料理写真（額縁フレーム・浮遊効果つき） -->
+            <div id="fv-dish" class="img-frame w-56 sm:w-64 md:w-80 lg:w-96 mx-auto md:mx-0 mb-8 md:mb-10 floating aspect-square rounded-lg overflow-hidden">
+                <img src="images/kaki.png" alt="ニューサントロペのおすすめ料理" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-4">
+                <p class="font-brand font-bold tracking-[0.3em] text-[var(--sea-blue)] mb-2 uppercase text-xs sm:text-sm md:text-base">New Saint Tropez</p>
+                <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-slate-700 leading-snug">
+                    カフェ・ブラッスリー<br class="md:hidden"> ニューサントロペ
+                </h1>
+
+                <div class="pt-6 pb-4">
+                    <div class="inline-block bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full text-xs sm:text-sm md:text-base font-bold shadow-lg animate-pulse whitespace-nowrap">
+                        <i class="fa-solid fa-gift mr-2"></i>お食事の方、コーヒーゼリー無料中
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- 2. Sticky Nav -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md py-3 md:py-4 border-b border-slate-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-3">
+            <div class="hidden md:block">
+                <span class="text-[var(--sea-blue)] font-bold text-lg font-brand">NEW SAINT TROPEZ</span>
+            </div>
+            <div class="flex gap-3 sm:gap-4 w-full md:w-auto">
+                <a href="tel:0236310105" class="flex-1 md:flex-none bg-slate-800 text-white px-4 sm:px-6 py-3 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center">
+                    <i class="fa-solid fa-phone mr-2"></i> 電話で予約
+                </a>
+                <a href="https://instagram.com/new.saint.tropez" target="_blank" rel="noopener" class="flex-1 md:flex-none bg-[var(--sea-blue)] text-white px-4 sm:px-6 py-3 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center cta-button">
+                    <i class="fa-brands fa-instagram mr-2 text-base sm:text-lg"></i> 特典を受け取る
+                </a>
+            </div>
+        </div>
+    </nav>
+
+  <!-- 3. Concept -->
+<section class="py-16 md:py-24 px-6 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div class="relative">
+            <!-- ここを img タグに変更（id="concept-img" も残しています） -->
+            <img id="concept-img" src="images/store.jpg" alt="80'sビーチハウス風のカフェ店内" class="w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative object-cover">
+            
+            <div class="mt-6 md:mt-0 md:absolute md:-bottom-6 md:-right-6 bg-white p-5 md:p-6 shadow-xl rounded-xl border border-slate-50">
+                <p class="font-serif text-base md:text-lg leading-relaxed italic">「ここが山形であることを<br>一瞬、忘れてしまう。」</p>
+            </div>
+        </div>
+        <div class="space-y-6 md:space-y-8">
+            <span class="text-[var(--sea-blue)] font-bold tracking-widest">コンセプト</span>
+            <h2 class="text-3xl md:text-4xl font-serif leading-tight">80'sビーチハウスの<br>風が抜ける、開放感。</h2>
+            <p class="text-slate-600 leading-loose">
+                ドアを開ければ、そこは西海岸を彷彿とさせるビーチハウス。
+                お洒落な家具とBGM、そして心地よい接客があなたを包みます。
+                日常の喧騒を忘れ、特別な「憩いの時間」をお楽しみください。
+            </p>
+        </div>
+    </div>
+</section>
+
+  <!-- 4. Main Menu -->
+<section class="py-16 md:py-24 bg-white relative">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h3 class="font-serif text-2xl md:text-3xl mb-4">イチオシの一皿</h3>
+            <div class="h-1 w-20 bg-[var(--sea-blue)] mx-auto"></div>
+        </div>
+
+        <div class="bg-[var(--sand-beige)] p-6 sm:p-8 md:p-16 rounded-[32px] md:rounded-[40px] flex flex-col md:flex-row gap-8 md:gap-12 items-center shadow-sm">
+            <div class="w-full md:w-1/2" id="curry-img-container">
+                <!-- ここを img タグに変更しました -->
+                <img src="images/curry.png" alt="彩り野菜のカレー" class="w-full aspect-video rounded-2xl shadow-2xl rotate-2 object-cover">
+            </div>
+            <div class="w-full md:w-1/2 space-y-4 md:space-y-6">
+                <h4 class="text-xl md:text-2xl font-bold flex items-center gap-2">
+                    <span class="text-2xl md:text-3xl text-[var(--sea-blue)]">01.</span> 彩り野菜のカレー
+                </h4>
+                <p class="text-slate-600 leading-relaxed">
+                    地元の新鮮な野菜をたっぷりと使い、スパイスの芳醇な香りと素材の旨みが溶け込んだ自慢の一皿。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- 5. Commitment -->
+<section class="py-16 md:py-24 px-6 bg-texture">
+    <div class="max-w-4xl mx-auto text-center">
+        <div class="mb-10 md:mb-12">
+            <!-- ここを img タグに変更しました -->
+            <img src="images/chef.png" alt="New Saint Tropez Owner" class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-6 border-4 border-white shadow-lg object-cover">
+            
+            <h2 class="text-xl md:text-2xl font-serif mb-2 text-slate-800">心地よさへのこだわり</h2>
+            <p class="text-[var(--sea-blue)] font-bold text-sm md:text-base">New Saint Tropez Owner</p>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-8 md:gap-12 text-sm">
+            <div class="space-y-4">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                    <i class="fa-solid fa-restroom text-2xl text-[var(--sea-blue)]"></i>
+                </div>
+                <h5 class="font-bold text-base">清潔な空間</h5>
+                <p class="text-slate-500 italic">綺麗なトイレと清潔な店内をお約束します。</p>
+            </div>
+            <div class="space-y-4">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                    <i class="fa-solid fa-utensils text-2xl text-[var(--sea-blue)]"></i>
+                </div>
+                <h5 class="font-bold text-base">和洋の融合</h5>
+                <p class="text-slate-500 italic">郷土食と洋食のコラボなどユニークな体験を。</p>
+            </div>
+            <div class="space-y-4">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                    <i class="fa-solid fa-users text-2xl text-[var(--sea-blue)]"></i>
+                </div>
+                <h5 class="font-bold text-base">多目的な空間</h5>
+                <p class="text-slate-500 italic">女子会や特別な日をプロデュースします。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 5.5 Coming Soon / New Services Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-[var(--deep-ocean)] to-[var(--sea-blue)] text-white relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-orange-500 text-white font-bold px-4 py-1 rounded-full text-xs tracking-widest mb-4 shadow-md">
+                    Coming Soon
+                </span>
+                <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl mb-4">こんな「あったらいいな」を準備中</h2>
+                <p class="text-cyan-100 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                    広々とした店内空間と開放的なリゾート感を生かして、食だけでなく「体験」と「集い」をお届けする新しい取り組みを企画しています。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1: Live & Concert -->
+                <div class="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/20 flex flex-col justify-between hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-orange-500/20 text-orange-400 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-orange-400/30">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <span class="text-xs font-bold text-orange-300 tracking-wider block mb-2">Live & Concert</span>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 text-white">アコースティック・ミニライブ</h3>
+                        <p class="text-slate-200 text-sm leading-relaxed mb-6">
+                            心地よい音楽に包まれながらお酒やカフェを楽しむ贅沢な夜。地元アーティストによるアコースティックギターやジャズ演奏、ミニコンサートの企画を進行中です。
+                        </p>
+                    </div>
+                    <div class="text-xs font-bold text-cyan-200 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-dot text-orange-400 animate-pulse text-[10px]"></i> 順次スタート予定
+                    </div>
+                </div>
+
+                <!-- Service 2: Private Rental Space -->
+                <div class="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/20 flex flex-col justify-between hover:bg-white/15 transition-all">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-400/20 text-emerald-300 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-emerald-300/30">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-300 tracking-wider block mb-2">Rental & Event Space</span>
+                        <h3 class="text-lg sm:text-xl font-bold mb-3 text-white">店舗まるごとプライベート貸切</h3>
+                        <p class="text-slate-200 text-sm leading-relaxed mb-6">
+                            結婚式の二次会、企業パーティー、展示会や個展、撮影スタジオ利用など。広いスペースだからこそ実現できる特別なプライベートプランをご提案します。
+                        </p>
+                    </div>
+                    <div class="text-xs font-bold text-cyan-200 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-dot text-orange-400 animate-pulse text-[10px]"></i> 事前ご相談受付中
+                    </div>
+                </div>
+            </div>
+
+            <!-- リクエスト・お問い合わせへの誘導メッセージ -->
+            <div class="mt-12 md:mt-16 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 text-center max-w-3xl mx-auto backdrop-blur-sm">
+                <h4 class="text-base sm:text-lg font-bold mb-2">「こんなイベント・企画をやってほしい！」の声をお寄せください</h4>
+                <p class="text-slate-300 text-sm mb-6">
+                    ニューサントロペでは、地域のみなさまと一緒にワクワクする空間を作っていきたいと考えています。イベント開催やスペース利用についてもお気軽にご相談ください。
+                </p>
+                <a href="https://instagram.com/new.saint.tropez" target="_blank" rel="noopener" class="inline-flex items-center bg-white text-[var(--deep-ocean)] font-bold px-6 sm:px-8 py-3 rounded-full text-sm hover:bg-orange-500 hover:text-white transition-all shadow-lg">
+                    <i class="fa-brands fa-instagram mr-2 text-lg"></i> 公式Instagramでご要望・最新情報をチェック
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Access -->
+    <section class="py-16 md:py-24 relative bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h3 class="font-serif text-2xl md:text-3xl mb-4 text-slate-800">アクセス</h3>
+                <div class="h-1 w-20 bg-[var(--sea-blue)] mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="bg-[var(--sand-beige)] p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="mb-6 md:mb-8 border-b border-slate-200 pb-6">
+                            <h4 class="font-bold text-lg mb-3 flex items-center text-slate-800">
+                                <i class="fa-solid fa-location-dot mr-2 text-[var(--sea-blue)]"></i> 所在地
+                            </h4>
+                            <p class="text-slate-600">〒990-0043 山形県山形市本町2丁目4-28</p>
+                            <p class="text-sm text-slate-500 mt-2 font-bold"><i class="fa-solid fa-square-p mr-1"></i>駐車場完備</p>
+                        </div>
+                        <div class="mb-6 md:mb-8 border-b border-slate-200 pb-6">
+                            <h4 class="font-bold text-lg mb-3 flex items-center text-slate-800">
+                                <i class="fa-solid fa-clock mr-2 text-[var(--sea-blue)]"></i> 営業時間
+                            </h4>
+                            <p class="text-slate-600 text-sm">ランチ・ティータイム営業中（詳細はSNSをご覧ください）</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-3 flex items-center text-slate-800">
+                                <i class="fa-solid fa-phone mr-2 text-[var(--sea-blue)]"></i> ご予約・お問い合わせ
+                            </h4>
+                            <a href="tel:0236310105" class="text-2xl sm:text-3xl font-brand font-bold text-[var(--sea-blue)] hover:opacity-80 transition-opacity">023-631-0105</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container shadow-2xl border-4 sm:border-8 border-white overflow-hidden rounded-3xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.2051548929458!2d140.33691327478007!3d38.25154768455513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb798248519ed%3A0xb82b3306960422eb!2z44Kr44OV44Kn77yG44OW44Op44OD44K544Oq44O8IOODi-ODpeODvOODu-OCteODs-ODiOODreODmg!5e0!3m2!1sja!2sjp!4v1770943755555!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 md:py-12 text-center text-slate-400 text-xs bg-[var(--sand-beige)] border-t border-slate-200">
+        <p class="tracking-widest">&copy; 2024 Cafe &amp; Brasserie New Saint Tropez.</p>
+    </footer>
+
+    <script>
+        const apiKey = "";
+
+        // API未設定時・エラー時のフォールバック画像一覧
+        const fallbackImages = {
+            'fv-bg': 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80',
+            'fv-dish': 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?auto=format&fit=crop&w=800&q=80',
+            'concept-img': 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+            'curry-img-container': 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80',
+            'owner-img': 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=400&q=80'
+        };
+
+        function applyImage(el, imageUrl, isBackground) {
+            if (isBackground) {
+                el.style.backgroundImage = `url(${imageUrl})`;
+                el.style.backgroundSize = 'cover';
+                el.style.backgroundPosition = 'center';
+                el.innerHTML = '';
+                el.classList.remove('image-placeholder');
+            } else {
+                const img = new Image();
+                img.src = imageUrl;
+                img.className = 'w-full h-full object-cover opacity-0 transition-opacity duration-1000';
+                img.onload = () => {
+                    img.classList.add('opacity-100');
+                    el.classList.remove('image-placeholder');
+                };
+                el.innerHTML = '';
+                el.appendChild(img);
+            }
+        }
+
+        async function generateImage(prompt, elementId, isBackground = false) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+
+            const fallbackUrl = fallbackImages[elementId] || 'https://placehold.co/800x600/00838f/ffffff?text=New+Saint+Tropez';
+
+            // APIキーが指定されていない場合は即座にフォールバック画像を表示
+            if (!apiKey) {
+                applyImage(el, fallbackUrl, isBackground);
+                return;
+            }
+
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+            const payload = {
+                instances: { prompt: prompt },
+                parameters: { sampleCount: 1 }
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                if (result && result.predictions && result.predictions[0]) {
+                    const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                    applyImage(el, imageUrl, isBackground);
+                } else {
+                    throw new Error("Invalid response format");
+                }
+            } catch (e) {
+                console.warn(`Image generation unavailable for ${elementId}. Using fallback image.`, e.message);
+                applyImage(el, fallbackUrl, isBackground);
+            }
+        }
+
+        window.onload = () => {
+            // 各セクションの画像を生成（未設定時はフォールバック表示）
+          
+        };
+    </script>
+</body>
+</html>
