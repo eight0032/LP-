@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>シャンティ リストランテバル | 山形駅の極上イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,600&display=swap');
+
+        :root {
+            --primary-gold: #c5a059;
+            --bg-dark: #121212;
+            --accent-red: #b91c1c;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-dark);
+            color: #e5e5e5;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .italic-serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Hero Background */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('images/roast.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gold-border {
+            border-color: var(--primary-gold);
+        }
+
+        .text-gold {
+            color: var(--primary-gold);
+        }
+
+        .bg-gold {
+            background-color: var(--primary-gold);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #c5a059 0%, #a38241 100%);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .cta-button:active,
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            filter: brightness(1.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-gold);
+            margin: 1.5rem auto 0;
+        }
+
+        /* Only skew on larger screens: clip-paths crop content unpredictably on narrow viewports */
+        @media (min-width: 768px) {
+            .skew-section {
+                clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+            }
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 aspect box keeps the map usable on any width */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+            border: 0;
+        }
+
+        /* Keep tap targets comfortable on touch screens */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (max-width: 480px) {
+            .hero-bg h1 {
+                letter-spacing: -0.01em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FV AREA -->
+    <header class="hero-bg min-h-screen relative flex flex-col justify-center items-center text-center px-5 sm:px-6 overflow-hidden py-24">
+        <div class="absolute top-6 left-6 sm:top-10 sm:left-10 hidden sm:block">
+            <p class="italic-serif text-gold text-xl sm:text-2xl">Shanti</p>
+        </div>
+
+        <div class="z-10 w-full max-w-3xl">
+            <p class="text-gold tracking-[0.2em] sm:tracking-[0.3em] font-bold mb-4 sm:mb-6 text-xs sm:text-base uppercase">Yamagata Station 5min Walk</p>
+            <h1 class="serif text-3xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 leading-[1.4] sm:leading-[1.3] text-white">
+                官能的な<span class="text-gold">香り</span>と、<br>
+                山形の<span class="border-b-4 border-gold">宴</span>に酔いしれる。
+            </h1>
+            <p class="text-base sm:text-xl mb-8 sm:mb-12 tracking-widest font-light opacity-80">シャンティ リストランテバル</p>
+
+            <div class="inline-block relative">
+                <div class="absolute -inset-1 bg-gold rounded-full blur opacity-30"></div>
+                <a href="#cta" class="relative block bg-gold text-black font-bold py-4 px-8 sm:py-5 sm:px-12 rounded-full text-base sm:text-xl cta-button tracking-widest">
+                    RESERVE NOW
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Icon -->
+        <div class="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 opacity-50">
+            <div class="w-[1px] h-12 sm:h-16 bg-gradient-to-b from-transparent to-gold mx-auto"></div>
+            <p class="text-[9px] sm:text-[10px] tracking-widest mt-2 uppercase">Scroll</p>
+        </div>
+    </header>
+
+    <!-- HIGHLIGHT SECTION (イチオシ商品) -->
+    <section class="py-16 sm:py-24 bg-zinc-950 relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-6 flex flex-col md:flex-row items-center gap-10 sm:gap-12">
+            <div class="w-full md:w-1/2 relative">
+                <div class="absolute -top-4 -left-4 w-16 h-16 sm:w-24 sm:h-24 border-t-2 border-l-2 gold-border opacity-50"></div>
+                <!-- AI Generated Image: Octopus Ajillo -->
+                <img src="images/tako.jpg" alt="タコのアヒージョ" class="rounded-sm shadow-2xl w-full aspect-video object-cover">
+                <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-6 bg-gold text-black p-4 sm:p-6 font-bold shadow-xl max-w-[75%]">
+                    <p class="text-[9px] sm:text-[10px] tracking-tighter mb-1 uppercase">Recommended</p>
+                    <p class="text-base sm:text-xl serif">タコのアヒージョ</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 mt-6 md:mt-0">
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 leading-relaxed">
+                    溢れ出すオイルの旨み、<br>
+                    <span class="text-gold">極上のプリプリ感。</span>
+                </h2>
+                <p class="text-gray-400 mb-6 sm:mb-8 leading-loose font-light text-sm sm:text-base">
+                    厳選されたタコと、ニンニクの香りが溶け出した最高級オリーブオイル。ひと口食べれば、ワインとの完璧なマリアージュに驚くはずです。バゲットを浸して、最後の一滴までお楽しみください。
+                </p>
+                <div class="flex items-center gap-4 text-xs sm:text-sm tracking-widest uppercase text-gold">
+                    <span class="w-10 sm:w-12 h-[1px] bg-gold"></span>
+                    <span>Best Seller Item</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SECTION (ペアリング提案サービス) -->
+    <section class="py-16 sm:py-20 bg-black relative border-t border-white/5 overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-6 max-w-4xl">
+            <div class="glass-card p-6 sm:p-10 md:p-14 rounded-xl border border-gold/30 relative">
+                <!-- Badge -->
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-black font-bold px-4 sm:px-6 py-1 rounded-full text-[10px] sm:text-xs tracking-widest uppercase shadow-lg whitespace-nowrap">
+                    Coming Soon
+                </div>
+
+                <div class="text-center mb-6 sm:mb-8 mt-4 sm:mt-2">
+                    <p class="italic-serif text-gold text-base sm:text-lg mb-2">New Digital Experience</p>
+                    <h2 class="serif text-xl sm:text-2xl md:text-4xl text-white font-bold leading-snug">
+                        もうワイン選びに迷わない。<br class="hidden sm:inline">
+                        <span class="text-gold">スマート・ペアリングナビ</span> 順次導入予定
+                    </h2>
+                </div>
+
+                <p class="text-gray-300 text-sm md:text-base font-light text-center leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
+                    「この料理に本当に合うワインはどれ？」そんな疑問をスマホひとつでスマートに解決。
+                    注文した料理やその日の気分をタップするだけで、シャンティが厳選したワインリストから最高のペアリングをご提案する直感的なデジタルサービスを準備中です。
+                </p>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                    <div class="bg-zinc-900/80 p-5 sm:p-6 rounded-lg border border-white/5 text-center">
+                        <div class="w-12 h-12 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <h3 class="serif text-white font-bold text-base mb-2">直感マリアージュ</h3>
+                        <p class="text-xs text-gray-400 font-light">アヒージョや生パスタにぴったりな一杯を瞬時に特定。</p>
+                    </div>
+
+                    <div class="bg-zinc-900/80 p-5 sm:p-6 rounded-lg border border-white/5 text-center">
+                        <div class="w-12 h-12 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3 class="serif text-white font-bold text-base mb-2">気分・好みで診断</h3>
+                        <p class="text-xs text-gray-400 font-light">重たさ・すっきり・フルーティなど好みに合わせてカスタマイズ。</p>
+                    </div>
+
+                    <div class="bg-zinc-900/80 p-5 sm:p-6 rounded-lg border border-white/5 text-center">
+                        <div class="w-12 h-12 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="serif text-white font-bold text-base mb-2">座席からスマホで</h3>
+                        <p class="text-xs text-gray-400 font-light">QRコードを読み取るだけ。初心者の方でも気軽に愉しめます。</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <span class="inline-block text-[10px] sm:text-[11px] text-gray-500 tracking-widest uppercase border-b border-gray-700 pb-1">
+                        ※ 店内モバイルオーダー連動型サービスとして順次リリース予定
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO / CTA BOX -->
+    <section id="cta" class="py-12 bg-zinc-900 border-y border-white/5">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-0 border gold-border overflow-hidden rounded-lg md:rounded-none">
+                <div class="p-8 sm:p-10 flex flex-col justify-center">
+                    <h3 class="serif text-xl sm:text-2xl mb-3 sm:mb-4">平日限定 3時間飲み放題</h3>
+                    <p class="text-sm text-gray-400 mb-6 font-light">ゆっくりと語り合いたい夜に、贅沢な時間を。最大80名様まで、個室・貸切対応可能です。</p>
+                    <div class="flex gap-4">
+                        <a href="tel:023-665-5151" class="w-full sm:w-auto text-center bg-white text-black px-6 py-3 font-bold text-sm tracking-widest hover:bg-gold transition-colors uppercase rounded sm:rounded-none">Call: 023-665-5151</a>
+                    </div>
+                </div>
+                <div class="bg-gold p-8 sm:p-10 flex flex-col justify-center items-center text-center">
+                    <p class="text-black/60 text-xs font-bold tracking-widest mb-2 uppercase">Official Reservation</p>
+                    <p class="text-black text-xl sm:text-2xl serif font-bold mb-6">公式サイトからのご予約</p>
+                    <a href="https://shanti-0801.gorp.jp/" target="_blank" rel="noopener" class="w-full sm:w-auto border-2 border-black text-black px-8 sm:px-10 py-4 font-bold hover:bg-black hover:text-white transition-all rounded sm:rounded-none">予約サイトへ <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERIOR & ATMOSPHERE -->
+    <section class="py-16 sm:py-24 bg-white text-black">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row gap-8 sm:gap-12 items-center">
+                <div class="md:w-1/2">
+                    <p class="text-gold text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase mb-4">Atmosphere</p>
+                    <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6">最大80名様まで。</h2>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base">「広々とした店内には輝〜く50人程度は入れるくらいのスペースでお店の清潔感もバッチリ」と好評をいただく空間。山形駅近くでの大規模な二次会や貸切パーティーに最適です。</p>
+                </div>
+                <div class="md:w-1/2">
+                    <!-- AI Generated Image: Spacious Restaurant Interior -->
+                    <img src="images/store.png" alt="広々とした店内" class="rounded-lg shadow-xl w-full aspect-video object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICES (CUSTOMER REVIEWS) -->
+    <section class="py-16 sm:py-24 bg-zinc-950 skew-section">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="serif text-3xl sm:text-4xl mb-2 text-white">Guest Voices</h2>
+                <p class="text-gold text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase">信頼の証</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <div class="p-6 sm:p-10 border border-white/5 bg-zinc-900/50">
+                    <div class="flex gap-1 text-[10px] text-gold mb-5 sm:mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm font-light leading-loose mb-6 sm:mb-8 italic text-gray-300">「店員さん達の接客の素晴らしさは男女共に気持ちが良く、お陰様で山形の夜長を楽しませてくれました。お店の清潔感もバッチリです。」</p>
+                    <p class="text-xs font-bold text-gold tracking-widest uppercase">— R6.5.27 訪店のお客様</p>
+                </div>
+
+                <div class="p-6 sm:p-10 border border-white/5 bg-zinc-900/50">
+                    <div class="flex gap-1 text-[10px] text-gold mb-5 sm:mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm font-light leading-loose mb-6 sm:mb-8 italic text-gray-300">「ワインが美味くて得した気分。食べた物も全てが美味しかった。楽しい事にまた行こうと思う位良いお店でした。」</p>
+                    <p class="text-xs font-bold text-gold tracking-widest uppercase">— 2時間飲み放題利用のお客様</p>
+                </div>
+
+                <div class="p-6 sm:p-10 border border-white/5 bg-zinc-900/50 sm:col-span-2 lg:col-span-1">
+                    <div class="flex gap-1 text-[10px] text-gold mb-5 sm:mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm font-light leading-loose mb-6 sm:mb-8 italic text-gray-300">「山形産の野菜のセットが濃味噌ベースのディップで美味しさを引き出していました。生パスタも店主こだわりが感じられる一品。」</p>
+                    <p class="text-xs font-bold text-gold tracking-widest uppercase">— 誕生日利用のお客様</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS & MAP -->
+    <section class="py-16 sm:py-24 bg-zinc-900">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <div class="map-container shadow-2xl border border-white/10">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.3208003927516!2d140.32811407477988!3d38.24886518471127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60f10c69215%3A0x1587504133af0476!2z44K344Oj44Oz44OG44KjIOODquOCueODiOODqeODs-ODhuODkOODqw!5e0!3m2!1sja!2sjp!4v1770942965364!5m2!1sja!2sjp" loading="lazy" allowfullscreen></iframe>
+                </div>
+                <div>
+                    <h2 class="serif text-2xl sm:text-3xl mb-5 sm:mb-6 text-white">Access</h2>
+                    <div class="space-y-5 sm:space-y-6 text-gray-400">
+                        <div>
+                            <p class="text-gold text-xs font-bold tracking-widest mb-1 uppercase">Address</p>
+                            <p class="text-sm sm:text-base">〒990-0039 山形県山形市香澄町1丁目11-22</p>
+                        </div>
+                        <div>
+                            <p class="text-gold text-xs font-bold tracking-widest mb-1 uppercase">Contact</p>
+                            <a href="tel:023-665-5151" class="text-xl sm:text-2xl text-white block hover:text-gold transition-colors">023-665-5151</a>
+                        </div>
+                        <div>
+                            <p class="text-gold text-xs font-bold tracking-widest mb-1 uppercase">Closed</p>
+                            <p class="text-sm sm:text-base">不定休</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="py-20 sm:py-32 bg-black text-center relative overflow-hidden">
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <p class="italic-serif text-gold text-lg sm:text-xl mb-5 sm:mb-6">Experience the best night in Yamagata</p>
+            <h2 class="serif text-3xl sm:text-4xl md:text-6xl mb-8 sm:mb-12 text-white leading-snug">シャンティで、<br>格別なひとときを。</h2>
+            <div class="flex flex-col items-center space-y-6 sm:space-y-8">
+                <a href="tel:023-665-5151" class="text-2xl sm:text-3xl md:text-5xl font-light hover:text-gold transition-colors tracking-tighter text-white break-keep">
+                    <i class="fas fa-phone-alt text-sm align-middle mr-3 sm:mr-4 text-gold"></i>023-665-5151
+                </a>
+                <p class="text-[11px] sm:text-xs text-gray-500 tracking-[0.15em] sm:tracking-[0.2em] uppercase">不定休 | 山形駅徒歩5分</p>
+            </div>
+        </div>
+        <!-- Background Decor -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800 to-transparent"></div>
+        </div>
+    </section>
+
+    <footer class="py-8 sm:py-10 bg-zinc-950 border-t border-white/5 text-center px-4">
+        <p class="text-[10px] text-gray-600 tracking-widest uppercase">&copy; Shanti Ristorante Bar | All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
