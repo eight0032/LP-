@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日昭詩の料理レストラン 菜五味 | 山形県寒河江市の本格創作フレンチ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold {
+            color: #d4af37;
+        }
+        .bg-gold {
+            background-color: #d4af37;
+        }
+        .bg-dark-premium {
+            background-color: #1a1a1a;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+        }
+        .gradient-overlay-premium {
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: #d4af37;
+            margin: 1rem auto;
+        }
+        /* マップのレスポンシブ対応 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* 固定CTAバーの高さ分、本文最下部にスペースを確保(スマホのみ) */
+        .fixed-cta-spacer {
+            height: 88px;
+        }
+        @media (min-width: 768px) {
+            .fixed-cta-spacer {
+                height: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0">
+            <img id="img-fv" src="images/fish.png" alt="極上のフレンチ料理" class="w-full h-full object-cover opacity-70" onerror="this.src='https://placehold.co/1600x900/1a1a1a/d4af37?text=Restaurant+Nagomi'">
+            <div class="absolute inset-0 gradient-overlay-premium"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-6xl px-5 sm:px-6 py-24 md:py-0 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10">
+            <div class="text-white md:w-2/3 text-center md:text-left">
+                <p class="text-gold font-bold tracking-[0.2em] sm:tracking-[0.3em] mb-3 sm:mb-4 text-xs sm:text-sm md:text-base animate-pulse">山形・寒河江に佇む至高の隠れ家</p>
+                <h1 class="text-4xl sm:text-5xl md:text-8xl font-black leading-tight md:leading-none mb-4 md:mb-6 serif">
+                    <span class="block text-2xl sm:text-3xl md:text-5xl mb-2 font-normal">旬を愉しむ、</span>
+                    極上の<span class="text-gold">「詩」</span>を。
+                </h1>
+                <p class="text-base sm:text-xl md:text-2xl font-light mb-8 border-l-4 border-gold pl-4 sm:pl-6 text-left inline-block md:block">
+                    大手ホテル総料理長が贈る、<br>本格フレンチとイタリアンの融合。
+                </p>
+            </div>
+            <div class="md:w-1/3 flex flex-row md:flex-col items-center justify-center gap-4 md:gap-0">
+                <div class="hidden sm:block vertical-text text-white text-lg md:text-xl font-bold tracking-[0.5em] border-r border-white/30 pr-4 py-4 md:py-8">
+                    春マスのムニエル
+                </div>
+                <div class="bg-gold text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold shadow-2xl animate-bounce text-sm md:text-base whitespace-nowrap">
+                    ランチコース ¥1,980〜
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 信頼のエンブレムセクション -->
+    <section class="py-6 md:py-8 bg-dark-premium border-y border-gold/30">
+        <div class="container mx-auto px-4 flex flex-wrap justify-center items-center gap-x-6 gap-y-6 md:gap-x-16">
+            <div class="flex items-center gap-3 text-gold">
+                <i class="fas fa-medal text-2xl md:text-3xl"></i>
+                <span class="text-xs sm:text-sm font-bold leading-tight">大手ホテル<br>元総料理長</span>
+            </div>
+            <div class="flex items-center gap-3 text-gold md:border-x border-white/10 md:px-8">
+                <i class="fas fa-award text-2xl md:text-3xl"></i>
+                <span class="text-xs sm:text-sm font-bold leading-tight">エスコフィエ<br>弟子協会 会員</span>
+            </div>
+            <div class="flex items-center gap-3 text-gold">
+                <i class="fas fa-star text-2xl md:text-3xl"></i>
+                <span class="text-xs sm:text-sm font-bold leading-tight">地元山形産<br>厳選食材使用</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 固定CTA -->
+    <div class="fixed bottom-0 left-0 w-full z-[100] md:static">
+        <div class="bg-black/90 backdrop-blur-md p-3 md:p-6 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4">
+            <p class="text-white text-xs md:text-base font-bold hidden md:block">〓 旬の「春マス」は今だけ。お早めにご予約ください 〓</p>
+            <div class="flex gap-2 w-full md:w-auto">
+                <a href="tel:0237-85-4260" class="flex-1 md:flex-none bg-gold hover:bg-yellow-600 text-white font-black py-3 md:py-4 px-4 md:px-8 rounded-lg shadow-lg flex items-center justify-center gap-2 text-base sm:text-lg md:text-xl shimmer">
+                    <i class="fas fa-phone-alt"></i> 0237-85-4260
+                </a>
+                <a href="https://restaurantnagomi.com/" class="flex-1 md:flex-none bg-white text-black font-bold py-3 md:py-4 px-4 md:px-8 rounded-lg hover:bg-stone-200 flex items-center justify-center text-sm sm:text-base">
+                    公式サイト
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 商品訴求 -->
+    <section class="py-14 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-gold font-bold tracking-widest text-sm md:text-base">ICHIOSHI MENU</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 serif section-title">今、この瞬間にしか出逢えない逸品</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-0 shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden">
+                <div class="relative h-64 sm:h-80 md:h-auto overflow-hidden">
+                    <img id="img-product" src="images/munieru.png" alt="春マスのムニエル" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/1a1a1a/d4af37?text=Saumon+Meuniere'">
+                    <div class="absolute top-4 left-4 bg-black/70 text-white p-3 md:p-4 backdrop-blur-sm">
+                        <p class="text-xs tracking-tighter">RECOMMENDED</p>
+                        <p class="text-lg md:text-xl font-bold">春マスのムニエル</p>
+                    </div>
+                </div>
+                <div class="bg-dark-premium text-white p-6 sm:p-8 md:p-12 flex flex-col justify-center">
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gold">皮目はパリッと、身はしっとり。<br>山形の春を皿に描く。</h3>
+                    <p class="text-stone-400 text-sm md:text-base leading-relaxed md:leading-loose mb-6 md:mb-8">
+                        地元で獲れた新鮮なサクラマスを贅沢に使用。大手ホテル総料理長として培った絶妙な火入れで、素材本来の甘みを引き出します。アミューズからフィナーレまで、まさに「詩」のように流れるコースの白眉です。
+                    </p>
+                    <div class="border-t border-white/10 pt-6 md:pt-8">
+                        <p class="text-xs md:text-sm text-stone-500 mb-2 italic">※ホリデーランチBコース(¥3,000)にてお選びいただけます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 自己紹介 -->
+    <section class="py-16 md:py-24 bg-stone-100 relative overflow-hidden">
+        <div class="absolute top-0 right-0 opacity-5 pointer-events-none">
+            <i class="fas fa-utensils text-[10rem] md:text-[20rem]"></i>
+        </div>
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="md:w-1/2 relative w-full max-w-sm md:max-w-none">
+                    <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 border-t-2 border-l-2 border-gold hidden md:block"></div>
+                    <div class="relative overflow-hidden shadow-2xl rounded-sm">
+                        <img id="img-chef" src="images/chef.png" alt="オーナーシェフ" class="relative z-10 w-full grayscale hover:grayscale-0 transition duration-700" onerror="this.src='https://placehold.co/600x800/1a1a1a/d4af37?text=Chef+Hiroshi'">
+                    </div>
+                    <p class="absolute bottom-4 right-4 z-20 bg-gold text-white px-3 md:px-4 py-2 text-xs md:text-sm font-bold">Chef Hiroshi</p>
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 serif leading-snug md:leading-tight">
+                        500人の賓を持て成した確かな腕を、<br>たった数卓の「菜五味」に注ぐ。
+                    </h2>
+                    <div class="space-y-5 md:space-y-6 text-stone-600 text-sm md:text-base leading-relaxed">
+                        <p>「お客様とシェフの味を繋ぎ、その時間を詩のように楽しんでほしい」。店名に込めたのは、料理への揺るぎない哲学です。</p>
+                        <p>大手ホテルで総料理長を務め、数多のVIPをもてなしてきた経験。現在は、自ら土を耕し野菜を育て、寒河江の風土とフレンチ・イタリアンのエッセンスを融合させた独自のスタイルを追求しています。</p>
+                        <p class="font-bold text-stone-900 border-b border-gold inline-block pb-1">エスコフィエ弟子協会会員 / 料理講演家</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- COMING SOON セクション -->
+    <section class="py-14 md:py-20 bg-stone-900 text-white relative overflow-hidden border-y border-gold/30">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="container mx-auto px-4 relative z-10 max-w-5xl">
+            <div class="text-center mb-10 md:mb-12">
+                <span class="inline-block bg-gold/20 text-gold font-bold px-4 py-1 rounded-full text-xs tracking-widest border border-gold/40 mb-3 animate-pulse">NEW PROJECT</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black serif text-gold tracking-wide">COMING SOON</h2>
+                <p class="text-stone-300 mt-3 text-base md:text-lg font-light">〜 菜五味が贈る、新しい寛ぎな時間の提案 〜</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+                <!-- サービス提案1: 記念日・自家謡グランデセール -->
+                <div class="bg-white/5 border border-gold/30 rounded-2xl p-6 md:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-gold transition duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-gold font-bold tracking-widest border-b border-gold/40 pb-1">SPECIAL DESSERT</span>
+                            <i class="fas fa-birthday-cake text-xl md:text-2xl text-gold/80 group-hover:scale-110 transition"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 serif text-white">アニバーサリー・グランデセール</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            特別な日を彩る演出として、シェフ特謡の特別スイーツプレート、アニバーサリーケーキを展開予定。旬のフルーツとフランス菓子の技法を注ぎ込んだ、心に残る甘美なフィナーレをお届けします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-stone-400">
+                        <span><i class="fas fa-gift text-gold mr-1"></i> メッセージプレート対応</span>
+                        <span class="text-gold font-semibold">準備中</span>
+                    </div>
+                </div>
+
+                <!-- サービス提案2: アフタヌーンティー、カフェタイム -->
+                <div class="bg-white/5 border border-gold/30 rounded-2xl p-6 md:p-8 backdrop-blur-sm flex flex-col justify-between hover:border-gold transition duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-gold font-bold tracking-widest border-b border-gold/40 pb-1">CAFE & AFTERNOON TEA</span>
+                            <i class="fas fa-mug-hot text-xl md:text-2xl text-gold/80 group-hover:scale-110 transition"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 serif text-white">山形風土のアフタヌーンティー</h3>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">
+                            「ランチやディナーだけでなく、午後の優雅なカフェ時間を楽しみたい」というお声にお応えし、特謡サロン・ドゥ・テを開始予定。地元生フルーツのスイーツと厳選紅茶で過ごす至福のティータイム。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-stone-400">
+                        <span><i class="fas fa-clock text-gold mr-1"></i> カフェタイム営業(14:00〜)</span>
+                        <span class="text-gold font-semibold">順次スタート予定</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- お知らせ登録・アナウンス -->
+            <div class="mt-10 md:mt-12 text-center bg-black/40 border border-white/10 rounded-xl p-5 md:p-6">
+                <p class="text-stone-300 text-sm">
+                    <i class="fas fa-sparkles text-gold mr-2"></i>スイーツメニューおよびカフェ営業の開始日時は、決定次第公式サイト・お電話にてご案内いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-14 md:py-20 bg-dark-premium text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10 md:mb-16 serif section-title">訪れた人が語る、菜五味の「感動」</h2>
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:border-gold transition">
+                    <div class="flex text-gold mb-4 text-lg md:text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h4 class="font-bold mb-3 md:mb-4 text-lg md:text-xl">「肉嫌いの妻が完食した奇跡」</h4>
+                    <p class="text-stone-400 text-sm leading-relaxed md:leading-loose">妻は肉が苦手ですが、こちらのステーキは凄く美味しい!と完食。アニバーサリーにピッタリの満足度でした。</p>
+                </div>
+                <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:border-gold transition">
+                    <div class="flex text-gold mb-4 text-lg md:text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h4 class="font-bold mb-3 md:mb-4 text-lg md:text-xl">「目でも舌でも楽しむ買淾」</h4>
+                    <p class="text-stone-400 text-sm leading-relaxed md:leading-loose">盛り付けが宝石のように美しく、ボリュームも満点。男性でもお腹いっぱいになれる本格派です。</p>
+                </div>
+                <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 hover:border-gold transition">
+                    <div class="flex text-gold mb-4 text-lg md:text-xl"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h4 class="font-bold mb-3 md:mb-4 text-lg md:text-xl">「毎週通っても飽きない」</h4>
+                    <p class="text-stone-400 text-sm leading-relaxed md:leading-loose">毎回オードブルやデザートの構成が異なり、シェフの引き出しの多さに驚かされます。毎週の楽しみです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス(Google Map 埋め込み) -->
+    <section class="py-14 md:py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold serif section-title">ACCESS</h2>
+                <p class="text-gold font-bold text-sm md:text-base">大通りから一本入った住宅街の隠れ家</p>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-8 items-start">
+                <div class="md:col-span-2 space-y-6 md:space-y-8">
+                    <div class="bg-stone-50 p-6 md:p-8 rounded-2xl border-l-4 border-gold shadow-sm">
+                        <dl class="space-y-5 md:space-y-6">
+                            <div>
+                                <dt class="text-gold font-bold text-xs md:text-sm mb-1 uppercase tracking-widest">Address</dt>
+                                <dd class="text-base md:text-lg">〒991-0013<br>山形県寒河江市高田2丁目4−8</dd>
+                            </div>
+                            <div>
+                                <dt class="text-gold font-bold text-xs md:text-sm mb-1 uppercase tracking-widest">Phone</dt>
+                                <dd class="text-xl md:text-2xl font-bold"><a href="tel:0237-85-4260" class="hover:text-gold transition">0237-85-4260</a></dd>
+                            </div>
+                            <div>
+                                <dt class="text-gold font-bold text-xs md:text-sm mb-1 uppercase tracking-widest">Closed</dt>
+                                <dd class="text-base md:text-lg">水曜日</dd>
+                            </div>
+                            <div>
+                                <dt class="text-gold font-bold text-xs md:text-sm mb-1 uppercase tracking-widest">Parking</dt>
+                                <dd class="text-base md:text-lg">店舗前に7〜8台完備</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="p-4 border border-stone-200 rounded-xl text-xs md:text-sm text-stone-500 italic">
+                        <i class="fas fa-info-circle mr-2"></i>曲がる道もわかりやすく、店舗前に広い駐車場がございます。お車での来店もご安心ください。
+                    </div>
+                </div>
+
+                <div class="md:col-span-3">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3128.201570394869!2d140.2845031747866!3d38.36745817780051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc6a99c9e3703%3A0x533a84ce4b175c8e!2z5pel5ZGC6Kmp44Gu5paZ55CG44Os44K544OI44Op44Oz6I-c5LqU5ZGz!5e0!3m2!1sja!2sjp!4v1770945401228!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-dark-premium text-stone-500 py-10 md:py-12 border-t border-white/5">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6 md:mb-8 text-gold serif text-lg md:text-xl">
+                日昭詩の料理レストラン 菜五味
+            </div>
+            <p class="text-xs tracking-widest">&copy; 2024 RESTAURANT NAGOMI. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- スマホ固定CTAバーの分の余白 -->
+    <div class="fixed-cta-spacer"></div>
+
+</body>
+</html>
