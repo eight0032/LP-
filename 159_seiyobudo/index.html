@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧風レストラン 西洋葡萄 | 創業43年、山形の地で育まれた至高のビーフシチュー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-deep': '#3d0d0d',
+                        'brand-accent': '#5c1c1c',
+                        'gold-bright': '#e2c08d',
+                        'gold-matte': '#c5a059',
+                        'bg-washi': '#f4f1ea',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-deep: #3d0d0d;
+            --brand-accent: #5c1c1c;
+            --gold-bright: #e2c08d;
+            --gold-matte: #c5a059;
+            --bg-washi: #f4f1ea;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-washi);
+            color: #222;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Shippori Mincho', 'Noto Serif JP', serif; }
+
+        /* 縦書きクラス（タブレット以上でのみ有効化） */
+        .vertical-text {
+            writing-mode: horizontal-tb;
+        }
+        @media (min-width: 768px) {
+            .vertical-text {
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+            }
+        }
+
+        /* 背景テクスチャ */
+        .washi-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        .hero-zoom {
+            animation: zoom-animation 20s infinite alternate;
+        }
+        @keyframes zoom-animation {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom { animation: none; }
+        }
+
+        .section-number {
+            font-size: clamp(2.75rem, 8vw, 5rem);
+            color: rgba(92, 28, 28, 0.05);
+            position: absolute;
+            top: -1.25rem;
+            left: 0.5rem;
+            z-index: 0;
+            font-weight: 900;
+            line-height: 1;
+        }
+        @media (min-width: 768px) {
+            .section-number { top: -2rem; left: 1rem; }
+        }
+
+        /* ローディングイメージゲーター */
+        .img-loading {
+            background: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-loading::after {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: skeleton-loading 1.5s infinite;
+        }
+        @keyframes skeleton-loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body class="washi-pattern">
+
+    <!-- 1. FVエリア -->
+    <section class="relative h-screen flex items-end md:items-center justify-center md:justify-end overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img id="img-hero" src="images/beef.jpg" alt="極上の米沢牛ビーフシチュー" class="w-full h-full object-cover hero-zoom" onerror="this.src='https://placehold.co/1600x900/3d0d0d/e2c08d?text=Seiyobudo+Beef+Stew'">
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/70 via-black/30 md:via-transparent to-transparent md:to-black/20"></div>
+        </div>
+
+        <div class="relative z-10 flex w-full md:h-full items-end md:items-center justify-center md:justify-start md:mr-24 pb-16 md:pb-0 px-6 md:px-0">
+            <div class="vertical-text text-white serif tracking-[0.15em] md:tracking-[0.2em] text-center md:text-left">
+                <h1 class="text-3xl sm:text-4xl md:text-3xl font-bold leading-tight">
+                    <span class="text-gold-bright">米沢牛</span>が、<br>
+                    時の流れに<br>
+                    溶け込んでゆく。
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl mt-6 md:mt-8 font-light">創業一九八二、欧風レストラン 西洋葡萄</p>
+            </div>
+        </div>
+
+        <div class="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 z-10 text-white animate-bounce text-center">
+            <p class="text-xs tracking-widest uppercase mb-2">Scroll</p>
+            <div class="w-px h-8 md:h-12 bg-white/50 mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- 導入メッセージ -->
+    <section class="py-16 md:py-24 relative">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center relative">
+                <span class="serif text-gold-matte text-lg md:text-xl block mb-4">The Masterpiece</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 serif leading-relaxed text-brand-deep">
+                    五日間、たっぷりすらに<br>
+                    素材の「声」を聞く。
+                </h2>
+                <div class="w-px h-16 bg-gold-matte mx-auto mb-8"></div>
+                <p class="text-base md:text-lg leading-loose mb-12 serif text-left md:text-center">
+                    一九八二年の創業以来、守り続けているのは「ごまかしのない味」。<br>
+                    東京銀座で学んだ伝統のドミグラスソースに、<br>
+                    地元山形の芳醇な赤ワインと、厳選された米沢牛を合わせる。<br>
+                    じっくりと火を通し、休ませ、また火を入れる。<br>
+                    その繰り返しだけが、雑味のない「極み」を生み出します。
+                </p>
+                <div class="relative inline-block">
+                    <img id="img-wine" src="images/wine.png" alt="赤ワインとソースのこだわり" class="w-56 h-56 md:w-72 md:h-72 object-cover mx-auto rounded-full border-4 border-white shadow-2xl" onerror="this.src='https://placehold.co/400x400/3d0d0d/e2c08d?text=Wine+%26+Sauce'">
+                    <div class="absolute -bottom-4 -right-2 md:-right-4 bg-gold-matte text-white p-3 md:p-4 rounded-full serif text-xs md:text-sm text-center leading-tight">
+                        伝統の<br>ソース
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 第一CTA (Reservation) -->
+    <section id="cta" class="py-14 md:py-16 bg-brand-deep washi-pattern">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto border border-gold-matte/50 p-6 sm:p-8 md:p-12 relative bg-white/95 shadow-2xl">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-deep px-6 text-gold-bright serif">Reservation</div>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-8 serif text-black">特別な一皿のために、お席を。</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 mb-10">
+                    <div>
+                        <p class="text-sm text-gray-600 mb-1">お電話でのご予約</p>
+                        <a href="tel:0238-40-3581" class="text-3xl sm:text-4xl font-bold serif hover:text-brand-accent transition text-black">0238-40-3581</a>
+                    </div>
+                    <div class="hidden md:block w-px h-12 bg-gold-matte/30"></div>
+                    <a href="http://seiyobudo.jp/" target="_blank" rel="noopener" class="w-full md:w-auto text-center bg-brand-deep hover:bg-brand-accent text-gold-bright px-8 md:px-12 py-4 rounded-sm font-bold transition-all duration-300 shadow-lg border border-gold-matte/20">
+                        WEB予約・空席確認
+                    </a>
+                </div>
+                <p class="text-xs text-gray-600 italic">※毎週火曜日定休 | 山形県南陽市竈田1833-1</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介: シェフの物語 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="hidden md:block absolute -top-10 -left-10 w-64 h-64 bg-bg-washi -z-10"></div>
+                    <img id="img-chef" src="images/chef.png" alt="西洋菊亭 シェフ" class="rounded-sm shadow-2xl transition duration-700 w-full h-[340px] sm:h-[420px] md:h-[500px] object-cover" onerror="this.src='https://placehold.co/800x1000/3d0d0d/e2c08d?text=Chef+Portrait'">
+                    <div class="absolute bottom-4 right-4 bg-white p-3 md:p-4 shadow-lg border-l-4 border-brand-accent">
+                        <p class="serif text-brand-deep font-bold text-sm md:text-base">Chef. 料理人人生五十五年</p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 relative">
+                    <span class="section-number serif">04</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-brand-deep serif relative z-10">南陽の土が育てた技術、<br>東京で磨いた矜持。</h2>
+                    <div class="space-y-6 text-gray-700 leading-loose relative z-10 serif">
+                        <p>一九四九年、山形県南陽市に生まれました。若き日に東京「タカセ」「東京會舘」の厨房で浴びた熱気。フランス料理の王道を歩み、ソースの一滴まで妥協しない精神を刻み込みました。</p>
+                        <p class="font-bold text-brand-accent text-lg">「故郷の素晴らしい食材に、確かな技術を掛け合わせたい」</p>
+                        <p>一九八二年に西洋葡萄を開いて四十三年。私は今も、サラダ一皿、スープ一杯に当時の感動を込めています。それは、お客様の「美味しい」という言葉が、私の唯一の報酬だからです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+
+    <!-- 5.5. Coming Soon: 未来の取り組み・新サービス -->
+    <section class="py-16 md:py-24 bg-white relative overflow-hidden border-y border-gold-matte/20">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="serif text-gold-matte text-sm tracking-[0.3em] uppercase block mb-2">New Projects & Expansion</span>
+                <h2 class="text-3xl md:text-5xl font-bold serif text-brand-deep mb-4">Coming Soon</h2>
+                <p class="text-gray-600 serif max-w-2xl mx-auto text-sm md:text-base">43年の伝統と技を、店舗の壁を越えて。より多くのお客様へ届けるための「新サービス」をただいま準備しております。</p>
+                <div class="w-16 h-1 bg-gold-matte mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- 1. 移動式キッチンカー -->
+                <div class="bg-bg-washi p-6 md:p-8 rounded-sm border border-gold-matte/30 shadow-md flex flex-col justify-between hover:shadow-xl transition">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-deep text-gold-bright flex items-center justify-center font-bold text-xl rounded-full mb-6 serif">01</div>
+                        <span class="inline-block bg-gold-matte/20 text-brand-deep text-xs px-3 py-1 font-bold rounded-full mb-3">野外イベント・マルシェ</span>
+                        <h3 class="text-lg md:text-xl font-bold serif text-brand-deep mb-4">移動式 欧風キッチンカー</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed serif mb-6">
+                            ワインマルシェやクラシックカーイベント、野外フェスなどへ出店予定。青空の下で味わう特選米沢牛ビーフシチューや極上デミグラスバーガーなど、イベント限定メニューをお届けします。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-300/60 text-xs text-brand-accent font-bold serif">
+                        ※2026年 順次出店予定
+                    </div>
+                </div>
+
+                <!-- 2. 出張プライベートシェフ -->
+                <div class="bg-bg-washi p-6 md:p-8 rounded-sm border border-gold-matte/30 shadow-md flex flex-col justify-between hover:shadow-xl transition">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-deep text-gold-bright flex items-center justify-center font-bold text-xl rounded-full mb-6 serif">02</div>
+                        <span class="inline-block bg-gold-matte/20 text-brand-deep text-xs px-3 py-1 font-bold rounded-full mb-3">ご自宅・企業パーティー</span>
+                        <h3 class="text-lg md:text-xl font-bold serif text-brand-deep mb-4">プレミアム出張ケータリング</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed serif mb-6">
+                            ご自宅での記念日や特別なご会食へ、シェフ自らが赴く出張レストランサービス。店舗の料理と雰囲気気をそのまま特別な空間でお愉しみいただけます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-300/60 text-xs text-brand-accent font-bold serif">
+                        ※要事前相談・限定受付予定
+                    </div>
+                </div>
+            </div>
+
+            <!-- コラボ・出店問い合わせ窓口 -->
+            <div class="mt-10 md:mt-12 bg-brand-deep/5 p-6 md:p-8 rounded-sm border border-brand-deep/20 text-center">
+                <p class="serif text-brand-deep font-bold mb-2">【イベント主催者様・企業様へ】</p>
+                <p class="text-sm text-gray-700 serif">野外イベントへの出店依頼やコラボレーション企画に関するお問い合わせは、お電話（0238-40-3581）にて承っております。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 特典 (Limited Offer) -->
+    <section class="py-16 md:py-24 bg-brand-deep relative">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <div class="border-2 border-gold-matte p-6 sm:p-10 md:p-16 relative bg-white/95 shadow-2xl">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand-deep px-4 md:px-6 text-gold-bright text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase whitespace-nowrap">Limited Offer</div>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 serif text-black">心尽くしの一杯、<br>添えさせていただきます。</h2>
+                <p class="text-base md:text-lg mb-10 leading-loose text-gray-800 serif">
+                    本ページをご覧になり、ご予約を頂いたお客様へ。<br>
+                    食後のひとときをより豊かに彩る<br>
+                    <span class="text-brand-accent font-bold underline underline-offset-8">「自家製ジンジャーエール」または「珈琲」</span>を<br>
+                    無料でお愉しみいただけます。
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="tel:0238-40-3581" class="bg-brand-deep text-gold-bright px-8 md:px-10 py-4 md:py-5 font-bold hover:bg-brand-accent transition text-lg md:text-xl shadow-xl border border-gold-matte/20">電話で「LP特典」と伝える</a>
+                    <a href="http://seiyobudo.jp/" target="_blank" rel="noopener" class="bg-gold-matte text-[#3d0d0d] px-8 md:px-10 py-4 md:py-5 font-bold hover:bg-gold-bright transition text-lg md:text-xl shadow-xl">WEB予約を利用する</a>
+                </div>
+                <p class="mt-8 text-xs text-gray-500 italic">※ご予約時、または入店時にスタッフへ本画面をご提示ください。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. フッター -->
+    <footer class="py-14 md:py-20 bg-[#1a0505] text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row justify-between gap-10 md:gap-12">
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-2xl md:text-3xl font-bold serif mb-6">欧風レストラン 西洋葡萄</h3>
+                    <div class="space-y-4 text-gray-400 serif">
+                        <p class="flex items-start">
+                            <span class="text-gold-matte mr-4 shrink-0">住所</span>
+                            <span>〒999-2243 山形県南陽市鍋田1833-1</span>
+                        </p>
+                        <p class="flex items-start">
+                            <span class="text-gold-matte mr-4 shrink-0">電話</span>
+                            <a href="tel:0238-40-3581" class="hover:text-white transition">0238-40-3581</a>
+                        </p>
+                        <p class="flex items-start">
+                            <span class="text-gold-matte mr-4 shrink-0">休日</span>
+                            <span>毎週火曜日</span>
+                        </p>
+                        <p class="flex items-start text-xs pt-2">
+                            <a href="https://www.instagram.com/seiyobudo1982/" target="_blank" rel="noopener" class="bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">Official Instagram</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 h-64 md:h-80 rounded-sm overflow-hidden border border-gold-matte/20">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.751554323153!2d140.15371677476728!3d38.02957109744373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8aff542e45e651%3A0x21e06a0ee26adba7!2z5qyn6aKo44Os44K544OI44Op44OzIOilv-a0i-iRoeiQhA!5e0!3m2!1sja!2sjp!4v1770872004371!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="mt-14 md:mt-20 pt-8 border-t border-white/5 text-center text-xs text-gray-600">
+                <p>&copy; 1982-2026 Seiyobudo. Crafted with pride in Yamagata.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
