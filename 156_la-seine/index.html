@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>レストラン ラ・セーヌ | 山形グランドホテル</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Montserrat:wght@700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --gold-light: #e6c88f;
+            --gold-main: #c5a059;
+            --gold-dark: #8e6d2f;
+            --deep-black: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--deep-black);
+            overflow-x: hidden;
+            background-color: #fdfcf8;
+        }
+
+        .serif {
+            font-family: 'Shippori Mincho', serif;
+        }
+
+        .eng {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .bg-gold-grad {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-main) 50%, var(--gold-dark) 100%);
+        }
+
+        .text-gold-grad {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-main) 50%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-overlay {
+            background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.65) 100%);
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold-main);
+            margin: 1.5rem auto 0;
+        }
+
+        .float-text {
+            position: absolute;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(197, 160, 89, 0.06);
+            z-index: 0;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        @media (min-width: 768px) {
+            .float-text { font-size: 8rem; }
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(20%) contrast(90%);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: inline-flex;
+            animation: marquee 22s linear infinite;
+        }
+        @media (min-width: 768px) {
+            .animate-marquee { animation-duration: 30s; }
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 15s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-marquee, .animate-pulse-slow {
+                animation: none;
+            }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--gold-main);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FVエリア -->
+    <section class="relative h-[100svh] w-full overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0">
+            <!-- AI生成画像: フリカッセ -->
+            <img src="images/ticken.jpg" alt="チキンと茸のフリカッセ" class="w-full h-full object-cover animate-pulse-slow">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 sm:px-4 w-full max-w-3xl">
+            <span class="eng tracking-[0.35em] sm:tracking-[0.5em] text-xs sm:text-base mb-4 sm:mb-6 block opacity-90">YAMAGATA GRAND HOTEL</span>
+            <div class="mb-3 sm:mb-2">
+                <span class="serif text-base sm:text-2xl border-b border-white pb-1">五感で愉しむ、山形の四季</span>
+            </div>
+            <h1 class="serif text-3xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 leading-snug sm:leading-tight drop-shadow-xl">
+                <span class="text-xl sm:text-3xl block mb-1 sm:mb-2 opacity-90">芳醇なる、</span>
+                チキンと茸の<br>
+                <span class="text-gold-grad">フリカッセ</span>
+            </h1>
+            <div class="flex flex-col items-center gap-4">
+                <p class="text-sm sm:text-xl font-light tracking-wide sm:tracking-widest mb-2 sm:mb-6">ランチバイキング、その極みがここに。</p>
+                <a href="#cta" class="bg-gold-grad px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:scale-105 transition-transform shadow-2xl flex items-center gap-2 w-full sm:w-auto justify-center">
+                    ご予約・詳細はこちら <i class="fas fa-chevron-right text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- アナウンス帯 -->
+    <div class="bg-black text-white py-2.5 sm:py-3 overflow-hidden whitespace-nowrap border-y border-gold-main/30">
+        <div class="flex animate-marquee gap-8 sm:gap-12 font-bold text-xs sm:text-sm tracking-wide sm:tracking-widest">
+            <span>LIMITED TIME: SEASONAL BUFFET SPECIAL</span>
+            <span>ランチバイキング &yen;1,650〜</span>
+            <span>山形グランドホテル 1F ラ・セーヌ</span>
+            <span>予約優先制: 023-641-2611</span>
+            <span>LIMITED TIME: SEASONAL BUFFET SPECIAL</span>
+            <span>ランチバイキング &yen;1,650〜</span>
+            <span>山形グランドホテル 1F ラ・セーヌ</span>
+            <span>予約優先制: 023-641-2611</span>
+        </div>
+    </div>
+
+   <!-- コンセプト & 画像 -->
+<section class="relative py-16 sm:py-24 overflow-hidden">
+    <div class="float-text eng top-10 sm:top-20 -left-10 sm:-left-20">CUISINE</div>
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+            <span class="text-gold-grad eng font-bold tracking-widest mb-3 sm:mb-4 text-sm sm:text-base">CONCEPT</span>
+            <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 section-title leading-relaxed">ホテルランチの贅と、<br>心躍るバイキングの楽しさ。</h2>
+
+            <div class="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group">
+                <!-- AI生成画像: ホテルレストラン内装 -->
+                <img src="images/lunch.jpg" alt="ラ・セーヌ 店内" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- お客様の声 -->
+    <section class="py-16 sm:py-24 bg-[#f8f5f0]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="text-gold-grad eng font-bold tracking-widest mb-3 sm:mb-4 block text-sm sm:text-base">SOLUTIONS</span>
+                <h2 class="serif text-2xl sm:text-3xl font-bold">多くのお客様に選ばれる理由</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-7 sm:p-10 rounded-2xl card-shadow border-b-8 border-gold-grad relative overflow-hidden">
+                    <div class="flex text-yellow-400 mb-5 sm:mb-6 text-sm sm:text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h3 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4">「圧倒的な高コスパ」</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">「1,650円で和洋中揃った品数に満足。味も及第点以上で、特にミニパフェやデザートまで充実しているのが嬉しい。」</p>
+                </div>
+                <div class="bg-white p-7 sm:p-10 rounded-2xl card-shadow border-b-8 border-gold-grad relative overflow-hidden">
+                    <div class="flex text-yellow-400 mb-5 sm:mb-6 text-sm sm:text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h3 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4">「準備がとにかく早い」</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">「バイキングであちがち『料理がない』ストレスが皆無。スピーディーな補充と丁寧な卓の回収で楽しく食事ができました。」</p>
+                </div>
+                <div class="bg-white p-7 sm:p-10 rounded-2xl card-shadow border-b-8 border-gold-grad relative overflow-hidden">
+                    <div class="flex text-yellow-400 mb-5 sm:mb-6 text-sm sm:text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h3 class="font-bold text-lg sm:text-xl mb-3 sm:mb-4">「至福のコーヒータイム」</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">「食後のコーヒーが格別。心地よい空間で、制限時間いっぱいまでゆっくりとくつろぐことができました。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- イチオシ詳細 -->
+    <section class="py-16 sm:py-24 bg-white relative">
+        <div class="float-text eng bottom-10 sm:bottom-20 right-10 sm:right-20">SIGNATURE</div>
+        <div class="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-10 sm:gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-t-4 border-l-4 border-gold-grad"></div>
+                    <!-- AI生成画像: フリカッセアップ -->
+                    <img src="images/ticken.jpg" alt="フリカッセ詳細" class="rounded-lg shadow-2xl relative z-10 w-full">
+                    <div class="absolute -bottom-6 -right-6 sm:-bottom-8 sm:-right-8 w-32 h-32 sm:w-48 sm:h-48 bg-gold-grad opacity-10 rounded-full blur-3xl"></div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-gold-grad font-bold eng tracking-[0.3em] mb-2 block text-sm sm:text-base">RECOMMENDED</span>
+                    <h2 class="serif text-2xl sm:text-3xl font-bold mb-5 sm:mb-6">チキンと茸の<br>フリカッセ</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
+                        シェフが厳選した柔らかな鶏肉と、香りの強い旬の茸をクリーミーなソースで煮込んだ逸品。白ワインの微かな酸味がアクセントとなり、バイキングの中でも一際贅沢な存在感を放ちます。
+                    </p>
+                    <ul class="space-y-3 sm:space-y-4 mb-8">
+                        <li class="flex items-center gap-3 font-bold text-sm sm:text-base"><i class="fas fa-check text-gold-grad"></i> 芳醇なバターとクリームの香り</li>
+                        <li class="flex items-center gap-3 font-bold text-sm sm:text-base"><i class="fas fa-check text-gold-grad"></i> 茸の旨味を最大限に引き出したソース</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section class="py-16 sm:py-24 bg-black text-white relative overflow-hidden">
+        <div class="float-text eng top-10 left-6 sm:left-10 text-white/5">FUTURE</div>
+        <div class="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="text-gold-grad eng font-bold tracking-[0.3em] text-xs sm:text-sm block mb-2">FUTURE SERVICES</span>
+                <h2 class="serif text-3xl sm:text-5xl font-bold tracking-wider mb-4">COMING SOON</h2>
+                <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                    お客様からの温かいご要望にお応えし、ラ・セーヌでは更なる特別なお食事体験をご提供できるよう、新たなサービスの準備を進めております。
+                </p>
+                <div class="w-16 h-[2px] bg-gold-main mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- 1. ディナー営業の復活 -->
+                <div class="bg-zinc-900/90 border border-gold-main/30 rounded-2xl p-6 sm:p-8 relative hover:border-gold-main transition-all duration-300 shadow-xl">
+                    <div class="absolute -top-3 left-6 bg-gold-grad text-black text-[10px] font-bold px-3 py-1 rounded-full eng tracking-wider">PREPARING</div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gold-main/10 border border-gold-main/30 flex items-center justify-center text-gold-main text-xl sm:text-2xl mb-5 sm:mb-6">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3 class="serif text-lg sm:text-xl font-bold mb-3 text-white">ディナー営業の復活</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-5 sm:mb-6">
+                        多くのご要望をいただいていたディナータイムの営業再開を準備中。夜ならではの落ち着いた雰囲気の中で、シェフ厳選の特別コースとナイトブッフェをお愉しみいただけます。
+                    </p>
+                    <div class="pt-4 border-t border-zinc-800 text-gold-main text-xs eng tracking-widest font-bold flex items-center gap-2">
+                        <i class="fas fa-clock text-[10px]"></i> 順次スタート予定
+                    </div>
+                </div>
+
+                <!-- 2. 記念日・アニバーサリー対応 -->
+                <div class="bg-zinc-900/90 border border-gold-main/30 rounded-2xl p-6 sm:p-8 relative hover:border-gold-main transition-all duration-300 shadow-xl">
+                    <div class="absolute -top-3 left-6 bg-gold-grad text-black text-[10px] font-bold px-3 py-1 rounded-full eng tracking-wider">PREPARING</div>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gold-main/10 border border-gold-main/30 flex items-center justify-center text-gold-main text-xl sm:text-2xl mb-5 sm:mb-6">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3 class="serif text-lg sm:text-xl font-bold mb-3 text-white">アニバーサリー演出</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-5 sm:mb-6">
+                        誕生日や結婚記念日、ご長寿のお祝いなど、特別な日を華やかに彩る演出をご用意。特注メッセージプレートやホールケーキ、乾杯用スパークリングのご案内を強化いたします。
+                    </p>
+                    <div class="pt-4 border-t border-zinc-800 text-gold-main text-xs eng tracking-widest font-bold flex items-center gap-2">
+                        <i class="fas fa-clock text-[10px]"></i> 近日予約受付開始
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- アクセス & 予約 -->
+    <section id="cta" class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-start">
+                <!-- 左側: マップ -->
+                <div class="w-full h-72 sm:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-gray-100 map-container order-2 md:order-1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50140.513242274246!2d140.28176630752685!3d38.23816386463616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb604239af7cd%3A0x1b9d32f9c63b2b16!2z44Op44O744K744O844OM!5e0!3m2!1sja!2sjp!4v1770864462895!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="山形グランドホテル 地図"></iframe>
+                </div>
+
+                <!-- 右側: 予約・店舗情報 -->
+                <div class="bg-white p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl shadow-2xl border border-gold-main/20 order-1 md:order-2">
+                    <h2 class="serif text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">ご予約・アクセス</h2>
+                    <p class="text-gray-500 mb-6 sm:mb-8 leading-relaxed text-sm">山形グランドホテル1階。大規模な会場で、皆様のお越しを心よりお待ちしております。</p>
+
+                    <div class="space-y-4 sm:space-y-6 mb-8 sm:mb-10">
+                        <a href="tel:0236412611" class="block bg-black text-white px-6 sm:px-8 py-5 sm:py-6 rounded-2xl text-center hover:bg-gray-800 transition-all shadow-lg">
+                            <span class="text-xs eng opacity-60 block mb-1">CALL NOW</span>
+                            <span class="text-xl sm:text-2xl font-bold tracking-widest"><i class="fas fa-phone-alt text-gold-main mr-2"></i> 023-641-2611</span>
+                        </a>
+                        <a href="https://www.yamagatagrandhotel.co.jp/restaurant/la-seine.html" target="_blank" rel="noopener" class="block border-2 border-gold-main text-gold-main px-6 sm:px-8 py-4 rounded-2xl text-center font-bold hover:bg-gold-main hover:text-white transition-all">
+                            公式サイトで詳細を確認
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-y-5 sm:gap-y-6 text-sm">
+                        <div>
+                            <p class="font-bold text-gray-800"><i class="fas fa-map-marker-alt text-gold-main mr-1"></i> 住所</p>
+                            <p class="text-gray-500">山形県山形市本町1-7-46</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800"><i class="fas fa-calendar-alt text-gold-main mr-1"></i> 定休日</p>
+                            <p class="text-gray-500">月曜日・金曜日</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800"><i class="fas fa-clock text-gold-main mr-1"></i> 駐車場</p>
+                            <p class="text-gray-500">ホテル駐車場完備</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800"><i class="fas fa-users text-gold-main mr-1"></i> 規模</p>
+                            <p class="text-gray-500">大規模会場・個室相談</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-black text-white py-10 sm:py-12">
+        <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8 opacity-70 text-center md:text-left">
+            <div>
+                <p class="serif text-lg sm:text-xl font-bold tracking-widest mb-1">LA SEINE</p>
+                <p class="text-xs">Yamagata Grand Hotel Restaurant</p>
+            </div>
+            <p class="text-[10px]">&copy; Yamagata Grand Hotel Restaurant La Seine. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
