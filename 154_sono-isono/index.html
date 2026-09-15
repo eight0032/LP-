@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sono Isono | 山形の食材を主役にした創作イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C5A059;
+            --stone-dark: #1c1917;
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #fdfbf7; }
+        h1, h2, h3, .serif { font-family: 'Shippori Mincho', serif; }
+        .font-eng { font-family: 'Cormorant Garamond', serif; }
+
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.65) 100%);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .scroll-line::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 100%;
+            background: var(--gold);
+            position: absolute;
+            top: -100%;
+            animation: scroll-anim 2s infinite;
+        }
+        @keyframes scroll-anim {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        /* Decorative background text: scales down on small screens so it never overflows or overwhelms content */
+        .bg-decor-text {
+            position: absolute;
+            font-size: 4.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(0,0,0,0.03);
+            z-index: 0;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        @media (min-width: 768px) {
+            .bg-decor-text { font-size: 8rem; }
+        }
+        @media (min-width: 1024px) {
+            .bg-decor-text { font-size: 12rem; }
+        }
+
+        /* Respect users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { opacity: 1; transform: none; transition: none; }
+            .scroll-line::after { animation: none; }
+        }
+
+        /* Prevent horizontal scroll caused by decorative elements bleeding off-screen on narrow viewports */
+        html, body { overflow-x: hidden; }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- FV AREA -->
+    <header class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/pasta2.png" alt="山形の新鮮な食材を使ったメインディッシュ" class="w-full h-full object-cover scale-110">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <span class="font-eng italic text-gold text-lg md:text-2xl mb-3 md:mb-4 block tracking-[0.3em]">Benvenuto</span>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 leading-[1.4] md:leading-[1.3] tracking-wide md:tracking-wider">
+                山形の呼吸を、<br><span class="text-gold">一皿に込めて。</span>
+            </h1>
+            <p class="text-sm sm:text-base md:text-xl font-light tracking-[0.15em] md:tracking-[0.2em] mb-10 md:mb-12 px-2">
+                世界を旅したシェフが辿り着いた、<br class="md:hidden">「まちのイタリアン」
+            </p>
+
+            <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                <span class="text-[9px] md:text-[10px] tracking-[0.4em] mb-3 md:mb-4 uppercase">Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+
+        <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:block text-white vertical-text tracking-[0.5em] text-sm opacity-70">
+            SOUP / PASTA / WINE / CONVIVIALITY
+        </div>
+    </header>
+
+    <!-- FLOATING CTA -->
+    <div class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col gap-3">
+        <a href="tel:023-676-7026" class="bg-gold text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl flex items-center justify-center hover:bg-stone-800 active:bg-stone-800 transition-colors duration-500" aria-label="電話で予約する">
+            <i class="fas fa-phone-alt text-lg md:text-xl"></i>
+        </a>
+        <a href="https://instagram.com/sono_isono" target="_blank" rel="noopener" class="bg-stone-900 text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl flex items-center justify-center hover:bg-stone-700 active:bg-stone-700 transition-colors duration-500" aria-label="Instagramを見る">
+            <i class="fab fa-instagram text-xl md:text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- INTRODUCTION -->
+    <section class="py-20 md:py-32 px-4 relative overflow-hidden bg-[#fdfbf7]">
+        <div class="bg-decor-text -top-6 -left-10 md:-top-10 md:-left-20 italic">Gastronomia</div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 leading-relaxed">
+                    背伸びしなくていい。<br>
+                    けれど、忘れられない味がある。
+                </h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto mb-8 md:mb-12"></div>
+                <p class="text-stone-600 leading-[1.9] md:leading-[2.2] tracking-wide md:tracking-widest text-base md:text-lg">
+                    京都で技を磨き、シンガポールで世界を駈かせたシェフ、鴫野将大。<br>
+                    彼が自身の名前を冠したこの店で主役にするのは、<br>
+                    山形の贅かな土壌が育んだ、力強い食材たちです。<br><br>
+                    格式よりも「おいしい」という笑顔。<br>
+                    記念日はもちろん、日常のちょっとしたご褒美に。<br>
+                    五感で楽しむイタリアンが、ここにあります。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU HIGHLIGHT -->
+    <section class="py-16 md:py-24 bg-stone-50 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- Specialty 1: Pasta -->
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-20 md:mb-32 fade-in">
+                <div class="w-full md:w-3/5 relative">
+                    <div class="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-28 h-28 md:w-40 md:h-40 bg-gold/10 rounded-full z-0"></div>
+                    <img src="images/pasta.png" alt="自家製手打ちパスタ" class="relative z-10 w-full rounded-sm shadow-2xl">
+                    <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-white p-5 md:p-8 shadow-xl z-20 hidden sm:block">
+                        <p class="font-eng italic text-gold text-xl md:text-2xl">Signature</p>
+                        <p class="font-bold tracking-widest mt-1 text-sm md:text-base">自家製手打ちパスタ</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5">
+                    <span class="text-gold font-bold tracking-widest text-xs uppercase block mb-3 md:mb-4">Pasta Specialità</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">15種類から選ぶ、<br>旬の悦び。</h3>
+                    <p class="text-stone-600 leading-loose mb-6 md:mb-8">
+                        山形牛やサクラマスなど、地元の旬を織り込んだモチモチの食感。その日の気分で、その日の最高の食材を。
+                    </p>
+                    <p class="text-xl md:text-2xl serif font-bold">Lunch Course <span class="text-sm font-normal ml-2">&yen;2,500〜</span></p>
+                </div>
+            </div>
+
+            <!-- Specialty 2: Focaccia -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12 fade-in">
+                <div class="w-full md:w-3/5 relative text-right">
+                    <div class="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 w-28 h-28 md:w-40 md:h-40 bg-stone-200 rounded-full z-0"></div>
+                    <img src="images/bread.jpg" alt="焼きたてのフォカッチャ" class="relative z-10 w-full rounded-sm shadow-2xl">
+                    <div class="absolute -top-4 -left-4 md:-top-6 md:-left-6 bg-stone-900 text-white p-5 md:p-8 shadow-xl z-20 hidden sm:block text-left">
+                        <p class="font-eng italic text-gold text-xl md:text-2xl">Special Gift</p>
+                        <p class="font-bold tracking-widest mt-1 text-sm md:text-base">こだわりのフォカッチャ</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5">
+                    <span class="text-gold font-bold tracking-widest text-xs uppercase block mb-3 md:mb-4">Homemade Bread</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">主役を凌ぐ、<br>名脇役の存在感。</h3>
+                    <p class="text-stone-600 leading-loose mb-6 md:mb-8">
+                        これを目当てに来店される方も多い、自家製フォカッチャ。外はパリッと、中は驚くほどモチモチ。
+                    </p>
+                    <div class="bg-stone-100 p-5 md:p-6 rounded-sm border-l-4 border-gold">
+                        <p class="text-sm font-bold text-gold mb-1">【この画面をご提示ください】</p>
+                        <p class="text-sm">ご予約時または来店時に「LPを見た」とお伝えで、フォカッチャを1ピースサービスいたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- COMING SOON SECTION -->
+    <section class="py-20 md:py-28 bg-[#171514] text-white relative overflow-hidden border-y border-gold/20">
+        <div class="bg-decor-text -top-8 right-0 md:-top-12 italic opacity-5">Pairing Experience</div>
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <span class="font-eng italic text-gold text-lg md:text-2xl block mb-2 tracking-widest">New Project</span>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-wide md:tracking-wider">Coming Soon</h2>
+                <div class="w-12 h-[1px] bg-gold mx-auto my-5 md:my-6"></div>
+                <p class="text-stone-400 text-sm md:text-base tracking-wide md:tracking-widest px-2">季節を味わう小皿料理と、一皿ごとに寄り添うワインの饗宴</p>
+            </div>
+
+            <div class="bg-stone-900/80 border border-gold/30 p-6 md:p-12 rounded-sm shadow-2xl backdrop-blur-sm max-w-4xl mx-auto fade-in">
+                <div class="w-full space-y-5">
+                    <div class="inline-block bg-gold text-stone-900 text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-xs mb-2">
+                        準備中 / 近日始動
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gold leading-snug">
+                        「山形の四季を少しずつ」<br>旬の小皿×厳選ワイン ペアリングセット
+                    </h3>
+                    <p class="text-stone-300 text-sm leading-relaxed tracking-wide">
+                        山形が誇る旬の素材を一口サイズの小皿料理（デリ・アミューズ）にギュッと凝縮。シェフが自らセレクトした自然派ワインや山形生ワインと、最高のマリアージュをご提案します。
+                    </p>
+
+                    <div class="border-t border-stone-800 pt-4 space-y-3">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-sun text-gold mt-1 text-xs"></i>
+                            <div>
+                                <p class="text-xs font-bold text-stone-200">【Lunch】ご褒美昼飲みペアリング</p>
+                                <p class="text-xs text-stone-400">休日の贅沢な時間や、少し特別な日の和やかなランチタイムに。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-moon text-gold mt-1 text-xs"></i>
+                            <div>
+                                <p class="text-xs font-bold text-stone-200">【Dinner】夜のスターター、ディープな飲み比べ</p>
+                                <p class="text-xs text-stone-400">コース前の食前酒代わりに、またはワイン愛好家同士の小宴に。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 text-right">
+                        <span class="text-xs text-gold/80 italic font-eng">※提供開始時期はInstagramにて順次公開いたします</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEF STORY -->
+    <section class="py-20 md:py-32 bg-stone-900 text-white relative overflow-hidden">
+        <div class="bg-decor-text -bottom-6 right-0 md:-bottom-10 italic opacity-5">Heritage</div>
+        <div class="max-w-6xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+            <div class="w-full lg:w-1/2 fade-in">
+                <div class="relative max-w-sm mx-auto lg:max-w-none">
+                    <img src="images/chef.png" alt="オーナーシェフ 鴫野将大" class="rounded-sm grayscale hover:grayscale-0 transition-all duration-1000 cursor-pointer shadow-2xl w-full">
+                    <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-gold/30 -z-10"></div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 fade-in">
+                <p class="font-eng text-gold italic text-lg md:text-xl mb-3 md:mb-4">Chef's Philosophy</p>
+                <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight">「アジアのベスト50」を経て、<br>山形の七日町から。</h2>
+                <div class="space-y-5 md:space-y-6 text-stone-300 leading-loose tracking-wide md:tracking-widest text-sm md:text-base">
+                    <p>シンガポールの名店で料理長を務め、世界を舞台に料理を振る舞ってきました。</p>
+                    <p>しかし、いつも心にあったのは、地元・山形の食材が持つ「生命力」です。</p>
+                    <p>名前を冠した「ソノイソノ（私は鴫野です）」という店名は、私の覚悟。素材の良さをストレートに、しかし繊密な技術で昇華させる。格式高いコース料理を、もっと身近に、もっと楽しく。</p>
+                    <p>人が集い、ワインの香りに笑い声が重なる。そんな「街のハブ」のような場所でありたいと願っています。</p>
+                </div>
+                <div class="mt-10 md:mt-12 flex items-center gap-4">
+                   
+                    <div>
+                        <p class="font-bold text-white">鴫野 将大</p>
+                        <p class="text-xs text-stone-500">Owner Chef</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY & REVIEWS -->
+    <section class="py-20 md:py-32 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14 md:mb-20 fade-in">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Customer's Voice</h2>
+                <div class="w-8 h-[1px] bg-gold mx-auto mb-3 md:mb-4"></div>
+                <p class="text-stone-400 font-eng italic">Satisfaction</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24 fade-in">
+                <div class="bg-[#fdfbf7] p-6 md:p-8 border border-stone-100 relative">
+                    <i class="fas fa-quote-left text-gold/20 text-3xl md:text-4xl absolute top-4 left-4"></i>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6 relative z-10 italic pt-8">
+                        「前菜の盛り合わせは一つひとつの味付けが丁寧で、どれを食べても楽しめました。お酒にも合います。自分へのご褒美として通いたいお店です。」
+                    </p>
+                    <p class="font-bold text-xs text-stone-400">— 山形市 / 30代 女性</p>
+                </div>
+                <div class="bg-[#fdfbf7] p-6 md:p-8 border border-stone-100 relative">
+                    <i class="fas fa-quote-left text-gold/20 text-3xl md:text-4xl absolute top-4 left-4"></i>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6 relative z-10 italic pt-8">
+                        「お店の方がとても丁寧な接客をしていただきご気持ちよくお食事できました。ぶどうジュースも驚くほど美味しかったです。」
+                    </p>
+                    <p class="font-bold text-xs text-stone-400">— 天童市 / 40代 男性</p>
+                </div>
+                <div class="bg-[#fdfbf7] p-6 md:p-8 border border-stone-100 relative sm:col-span-2 lg:col-span-1">
+                    <i class="fas fa-quote-left text-gold/20 text-3xl md:text-4xl absolute top-4 left-4"></i>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6 relative z-10 italic pt-8">
+                        「2000円のランチは満足度抜群。コンクリートと木目調の天井が高い雰囲気も非常に良く、おすすめです。」
+                    </p>
+                    <p class="font-bold text-xs text-stone-400">— 仙台市 / 30代 カップル</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP INFO & ACCESS -->
+    <section class="py-20 md:py-32 bg-stone-50">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col lg:flex-row gap-12 md:gap-16 items-start">
+            <div class="w-full lg:w-1/2 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-12">Shop Information</h2>
+                <div class="space-y-6 md:space-y-8">
+                    <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-5 md:pb-6">
+                        <span class="w-32 font-bold text-stone-400 text-sm uppercase tracking-widest mb-1 sm:mb-0">Address</span>
+                        <div class="flex-1">
+                            <p>〒990-0042 山形県山形市七日町2丁目1-19</p>
+                            <p class="text-xs text-stone-400 mt-2 italic">※近隣の立体駐車場をご利用ください</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-5 md:pb-6">
+                        <span class="w-32 font-bold text-stone-400 text-sm uppercase tracking-widest mb-1 sm:mb-0">Opening Hours</span>
+                        <div class="flex-1">
+                            <p>ランチ・ディナー営業</p>
+                            <p class="text-stone-500">定休日：月曜日</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row border-b border-stone-200 pb-5 md:pb-6">
+                        <span class="w-32 font-bold text-stone-400 text-sm uppercase tracking-widest mb-1 sm:mb-0">Contact</span>
+                        <div class="flex-1">
+                            <p class="text-xl md:text-2xl serif font-bold text-gold">023-676-7026</p>
+                            <p class="text-xs text-stone-400 mt-1 uppercase tracking-tighter">Phone reservation only</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 md:mt-12 p-6 md:p-8 bg-white shadow-sm border border-stone-100 rounded-sm">
+                    <p class="text-xs font-bold text-gold mb-3 uppercase tracking-widest">Note for Guests</p>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4">
+                        当店は1Fと2Fにフロアがございます。1Fはベビーカーでの入店も可能です（入口に数段の段差がございますのでお手伝いいたします）。
+                    </p>
+                    <p class="text-sm text-stone-600 leading-relaxed">
+                        デリプレートのお惣菜選びは2Fとなります。お足元の不自由な方はスタッフがお手伝いしますので、お気軽にお申し付けください。
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 h-[320px] md:h-[500px] bg-stone-200 rounded-sm overflow-hidden shadow-2xl fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.169819673537!2d140.33745407478003!3d38.25236728450755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb723522ed1cd%3A0x9bd5cd888edd8d75!2z44K944OO44Kk44K944OO!5e0!3m2!1sja!2sjp!4v1770861545161!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="sono Isono 地図"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <footer class="py-20 md:py-32 bg-stone-900 text-white text-center relative overflow-hidden">
+        <div class="bg-decor-text top-0 left-0 italic opacity-5">Reservation</div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 fade-in">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 md:mb-8 leading-snug">山形の新しい味覚を、<br>ご用意してお待ちしております。</h2>
+            <div class="w-16 h-[1px] bg-gold mx-auto mb-10 md:mb-12"></div>
+
+            <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-8 mb-12 md:mb-16">
+                <a href="tel:023-676-7026" class="flex-1 bg-gold text-white py-6 md:py-8 px-8 md:px-10 rounded-sm hover:bg-white hover:text-stone-900 active:bg-white active:text-stone-900 transition-all duration-500 group shadow-xl">
+                    <span class="block text-xs uppercase tracking-[0.4em] mb-2 opacity-70">Book a table</span>
+                    <span class="block text-xl md:text-2xl font-bold">023-676-7026</span>
+                </a>
+                <a href="https://instagram.com/sono_isono" target="_blank" rel="noopener" class="flex-1 bg-white text-stone-900 py-6 md:py-8 px-8 md:px-10 rounded-sm hover:bg-gold hover:text-white active:bg-gold active:text-white transition-all duration-500 group shadow-xl">
+                    <span class="block text-xs uppercase tracking-[0.4em] mb-2 opacity-50">Social Media</span>
+                    <span class="block text-xl md:text-2xl font-bold flex items-center justify-center gap-3">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </span>
+                </a>
+            </div>
+
+            <p class="text-stone-500 text-xs tracking-widest uppercase">&copy; 2024 sono Isono / Yamagata-City Seven-Town</p>
+        </div>
+    </footer>
+
+    <script>
+        // スクロールアニメーション
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
