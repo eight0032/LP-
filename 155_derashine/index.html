@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>レストラン デラシネ | 1週間煮込んだ至高のカレーとハンバーグ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            overflow-x: hidden;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        h1, h2, h3, .serif { font-family: 'Shippori Mincho', serif; }
+
+        .bg-charcoal { background-color: #1a1512; }
+        .text-gold { color: #c5a059; }
+        .bg-gold { background-color: #c5a059; }
+        .border-gold { border-color: #c5a059; }
+
+        /* 縦書きクラス(スマホでは非表示) */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 和紙の質感オーバーレイ */
+        .washi-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/p6-dark.png');
+        }
+
+        .gradient-overlay-v {
+            background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .zoom-animation {
+            animation: zoom 20s infinite alternate;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .zoom-animation { animation: none; }
+        }
+
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.12); }
+        }
+
+        /* 画像生成中のローディング表示用 */
+        .img-placeholder {
+            background: #2d2a28;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c5a059;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* 地図のグレースケール加工 */
+        .map-mono {
+            filter: grayscale(100%) contrast(1.2) invert(90%);
+        }
+
+        /* タップ領域を確保 */
+        a, button { touch-action: manipulation; }
+    </style>
+</head>
+<body class="bg-[#f4f1ea] text-stone-900 leading-relaxed">
+
+   <!-- FVエリア -->
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+    <div class="absolute inset-0" id="fv-image-container">
+        <!-- 生成画像を設定（object-coverで画面全体に綺麗にフィットさせます） -->
+        <img src="images/hanbagu.png" alt="RESTAURANT DERASHINE メインビジュアル" class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute inset-0 gradient-overlay-v"></div>
+
+    <div class="absolute right-6 lg:right-20 top-1/2 -translate-y-1/2 z-20 hidden md:block">
+        <h2 class="vertical-text text-white text-3xl lg:text-5xl font-black tracking-widest leading-relaxed">
+            山形、南陽市にて<br>
+            <span class="text-gold">四十四年</span>の研鑽。
+        </h2>
+    </div>
+
+    <div class="relative z-10 text-center px-5 sm:px-6 max-w-5xl w-full py-24">
+        <div class="inline-block border-y border-gold py-2 px-4 sm:px-6 mb-5 sm:mb-6">
+            <span class="text-gold font-bold tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-lg">RESTAURANT DERASHINE</span>
+        </div>
+        <h1 class="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 sm:mb-8 leading-tight">
+            一週間、<br>
+            <span class="text-gold underline decoration-1 underline-offset-8">だだ煮込む。</span>
+        </h1>
+        <p class="text-stone-300 text-base sm:text-lg md:text-2xl font-medium tracking-wide sm:tracking-widest serif">
+            人間国宝的シェフ・東海林幸雄が贈る<br>
+            時間を味わうための洋食。
+        </p>
+    </div>
+
+    <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+    </div>
+</section>
+
+<!-- 追従CTA -->
+<section class="bg-gold py-3 sm:py-4 sticky top-0 z-50 shadow-2xl washi-texture">
+    <div class="container mx-auto px-4 flex items-center justify-between gap-3">
+        <div class="hidden md:block">
+            <p class="text-stone-900 font-black text-lg lg:text-xl serif">山形県No.1の評価を得た、伝説のカレー</p>
+        </div>
+        <div class="flex items-center gap-3 sm:gap-4 w-full md:w-auto justify-between md:justify-end">
+            <span class="text-stone-800 text-xs sm:text-sm font-bold hidden sm:inline">ご予約はお電話で</span>
+            <a href="tel:0236324936" class="flex-1 md:flex-none text-center bg-charcoal text-white px-6 sm:px-10 py-3.5 sm:py-3 rounded-sm font-bold text-lg sm:text-xl hover:bg-stone-800 transition-all tracking-tighter">
+                <span class="text-gold">TEL.</span>023-632-4936
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 静止画セクション -->
+<section class="py-16 sm:py-20 md:py-24 bg-charcoal washi-texture text-white overflow-hidden relative">
+    <div class="container mx-auto px-4 sm:px-6 max-w-4xl relative z-10">
+        <div class="text-center mb-10 sm:mb-12">
+            <span class="text-gold font-bold tracking-widest block mb-3 sm:mb-4 italic text-sm sm:text-base">CRAFTSMANSHIP</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 sm:mb-6 italic">「静止」と「熟成」の168時間</h2>
+            <div class="w-16 sm:w-20 h-1 bg-gold mx-auto"></div>
+        </div>
+
+        <div class="relative">
+            <div class="aspect-video bg-stone-900 rounded-sm shadow-2xl overflow-hidden border border-white/10" id="image-container">
+                <img src="images/curry.jpg" alt="168時間熟成の煮込みカレー" class="w-full h-full object-cover" />
+            </div>
+            <p class="text-center mt-5 sm:mt-6 text-stone-400 text-xs sm:text-sm tracking-widest">煮込み、寝かせ、また煮込む。その一瞬一瞬を記録しました。</p>
+        </div>
+    </div>
+</section>
+
+ <!-- ストーリー -->
+<section class="py-16 sm:py-20 md:py-24 bg-white relative">
+    <div class="container mx-auto px-5 sm:px-6 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+            <div class="w-full md:w-1/2 relative" id="chef-image-container">
+                <div class="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-28 h-28 sm:w-40 sm:h-40 bg-gold/10 -z-10"></div>
+                
+                <!-- 画像タグへの置き換え部分 -->
+                <img src="images/chef.png" alt="シェフ Yukio Saibayashi 近影" class="w-full h-[320px] sm:h-[420px] md:h-[500px] object-cover rounded shadow-md" />
+                
+                <div class="absolute bottom-0 right-0 bg-charcoal text-white p-4 sm:p-6 translate-x-2 translate-y-2 sm:translate-x-4 sm:translate-y-4">
+                    <p class="serif text-base sm:text-xl font-bold tracking-tighter italic">Yukio Saibayashi</p>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="mb-6 sm:mb-8">
+                    <span class="text-gold font-bold text-base sm:text-lg mb-2 block">THE MASTER</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">人間国宝的シェフの矜持</h2>
+                </div>
+                <div class="space-y-5 sm:space-y-6 text-stone-700 text-base sm:text-lg leading-relaxed serif">
+                    <p>山形市南陽市で四十四年。東海林幸雄が作り続けてきたのは、料理ではなく「時間」そのものでした。</p>
+                    <p>看板メニューのステーキ、そして代名詞であるカレー。一週間かけて煮込まれたその一皿は、雑味が消え、素材の旨味だけが究極の調和を見せる奇跡の逸品。</p>
+                    <p class="font-bold border-l-4 border-gold pl-5 sm:pl-6 py-2">「箱で食べる洋食。それが、デラシネが辿り着いた日本庭園を望む洋食の形です。」</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+
+  <!-- COMING SOON -->
+<section class="py-16 sm:py-20 md:py-24 bg-stone-950 text-white relative border-t border-b border-gold/20 washi-texture">
+    <div class="container mx-auto px-5 sm:px-6 max-w-6xl">
+        <div class="text-center mb-12 sm:mb-16">
+            <span class="text-gold font-bold tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm block mb-3">NEW SERVICE</span>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black italic mb-4">COMING SOON</h2>
+            <p class="text-stone-300 text-base sm:text-lg md:text-xl serif">「デラシネ」の極上の味をご自宅やオフィスでも。テイクアウト・お弁当サービス準備中</p>
+            <div class="w-16 h-1 bg-gold mx-auto mt-5 sm:mt-6"></div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            <!-- 1: 贅沢洋食弁当 -->
+            <div class="bg-stone-900/90 border border-gold/30 p-6 sm:p-8 rounded-sm flex flex-col justify-between hover:border-gold transition-all duration-300 shadow-xl">
+                <div>
+                    <span class="text-gold text-xs font-bold tracking-widest block mb-2">BENTO BOX</span>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-white">特選洋食重・お弁当</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6 sm:mb-8">
+                        1週間煮込んだ濃厚カツカレー弁当や、手ごねハンバーグ、ホロホロヒレカツ重。冷めても変わらぬ究極の旨味を詰めてお届け。
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/10 text-center">
+                    <span class="inline-block text-xs font-bold text-gold border border-gold/40 px-4 py-1.5 rounded-full bg-gold/5">近日提供開始</span>
+                </div>
+            </div>
+
+            <!-- 2: 単品テイクアウト -->
+            <div class="bg-stone-900/90 border border-gold/30 p-6 sm:p-8 rounded-sm flex flex-col justify-between hover:border-gold transition-all duration-300 shadow-xl">
+                <div>
+                    <span class="text-gold text-xs font-bold tracking-widest block mb-2">TAKE OUT</span>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 text-white">逸品 単品お持ち帰り</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6 sm:mb-8">
+                        熟成カレールー(真空パック)や、職人が焼き上げるヒレカツ・ハンバーグのお持ち帰り。ご家庭の食卓をレストランへ。
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/10 text-center">
+                    <span class="inline-block text-xs font-bold text-gold border border-gold/40 px-4 py-1.5 rounded-full bg-gold/5">準備中</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- 店舗情報 & アクセス -->
+<section class="relative py-16 sm:py-20 md:py-24 bg-black overflow-hidden">
+    <!-- 背景画像コンテナ -->
+    <div class="absolute inset-0 opacity-40" id="footer-bg-container">
+        <img src="images/store.png" alt="店舗外観・内観" class="w-full h-full object-cover object-center" />
+    </div>
+    
+    <div class="container mx-auto px-5 sm:px-6 relative z-10">
+        <div class="max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/20 p-6 sm:p-8 md:p-12 text-white shadow-2xl">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4">至福のひとときを、<br>ご予約ください。</h2>
+                <p class="text-gold tracking-[0.15em] sm:tracking-[0.2em] text-sm sm:text-base">ACCESS & INFORMATION</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start mb-10 sm:mb-12">
+                <!-- 左カラム: 情報 -->
+                <div class="space-y-6 serif text-base sm:text-lg order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6">
+                        <div class="border-b border-white/10 pb-4">
+                            <span class="text-stone-400 text-xs sm:text-sm block mb-1">店名</span>
+                            <span class="font-bold text-sm sm:text-base">レストラン デラシネ</span>
+                        </div>
+                        <div class="border-b border-white/10 pb-4">
+                            <span class="text-stone-400 text-xs sm:text-sm block mb-1">電話番号</span>
+                            <a href="tel:0236324936" class="font-bold text-lg sm:text-2xl text-gold leading-none inline-block">023-632-4936</a>
+                        </div>
+                    </div>
+                    <div class="border-b border-white/10 pb-4">
+                        <span class="text-stone-400 text-xs sm:text-sm block mb-1">住所</span>
+                        <span class="font-bold text-sm sm:text-base">〒990-2445 山形県山形市南陽市1-1-12</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 sm:gap-6">
+                        <div class="border-b border-white/10 pb-4">
+                            <span class="text-stone-400 text-xs sm:text-sm block mb-1">営業時間</span>
+                            <span class="font-bold text-sm sm:text-base">11:00〜21:00</span>
+                        </div>
+                        <div class="border-b border-white/10 pb-4">
+                            <span class="text-stone-400 text-xs sm:text-sm block mb-1">定休日</span>
+                            <span class="font-bold text-sm sm:text-base">月曜日・火曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 sm:mt-8 p-5 sm:p-6 bg-gold/10 border border-gold/30 rounded-sm">
+                        <p class="text-gold font-bold mb-2 flex items-center text-sm sm:text-base">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12z" />
+                            </svg>
+                            ウェブ限定予約特典
+                        </p>
+                        <p class="text-stone-300 text-sm leading-relaxed italic">「ホームページを見た」で、食後のこだわりコーヒーを一杯サービス。</p>
+                        <a href="tel:0236324936" class="mt-5 sm:mt-6 w-full bg-gold text-charcoal py-4 block text-center font-black text-lg sm:text-xl hover:bg-white transition-all shadow-xl rounded-sm">
+                            今すぐ電話で予約
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 右カラム: 地図 -->
+                <div class="order-1 lg:order-2">
+                    <div class="p-2 bg-white/10 border border-white/20 shadow-inner rounded-sm overflow-hidden">
+                        <div class="aspect-video w-full">
+                            <iframe class="w-full h-full map-mono" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.8996963009304!2d140.31928087477905!3d38.235434785492735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5d7576f3d5d%3A0x7011aa9715bacea6!2z44Os44K544OI44Op44OzIOODh-ODqeOCt-ODjQ!5e0!3m2!1sja!2sjp!4v1770862777826!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <p class="text-stone-400 text-xs mt-3 text-right">山形駅から車で約10分。駐車場完備。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="py-10 sm:py-12 bg-charcoal washi-texture text-stone-500 text-center text-xs sm:text-sm border-t border-white/5">
+        <p class="tracking-widest">RESTAURANT DERASHINE / SINCE 1982</p>
+        <p class="mt-4 opacity-50">&copy; 2024 レストラン デラシネ. All Rights Reserved.</p>
+    </footer>
+
+  
+</body>
+</html>
