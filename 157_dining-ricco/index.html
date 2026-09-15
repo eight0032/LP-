@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>こんなかんじ de Dining Ricco | 山形駅前の多国籍ダイニング</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --primary: #8c2727;
+            --accent: #d97706;
+            --bg-light: #fdfaf5;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-light);
+            color: #2d2d2d;
+            /* leave room so the fixed mobile CTA never covers content */
+            padding-bottom: 84px;
+        }
+
+        @media (min-width: 768px) {
+            body { padding-bottom: 0; }
+        }
+
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+
+        .text-primary { color: var(--primary); }
+        .text-gold {
+            background: linear-gradient(135deg, #af8e5a 0%, #6d532a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-grad { background: linear-gradient(135deg, #cfb07e 0%, #af8e5a 100%); }
+
+        .section-title { position: relative; padding-bottom: 1rem; }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        @media (min-width: 768px) {
+            .vertical-text {
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+            }
+        }
+
+        .btn-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        /* keep touch devices from getting stuck in a hover state */
+        @media (hover: none) {
+            .btn-hover:active { transform: translateY(-1px); }
+        }
+
+        .bg-pattern {
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+        }
+
+        /* Google Map responsive wrapper */
+        .map-container {
+            position: relative;
+            padding-bottom: 66%;
+            height: 0;
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .map-container { padding-bottom: 56.25%; }
+        }
+        .map-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* prevent long words / phone numbers from breaking mobile layout */
+        .no-break { white-space: nowrap; }
+
+        /* respect users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-pulse { animation: none; }
+            .btn-hover, .btn-hover:hover { transition: none; transform: none; }
+        }
+
+        /* visible keyboard focus for accessibility */
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="antialiased bg-pattern">
+
+    <!-- FV AREA -->
+    <header class="relative bg-white pt-14 pb-16 md:pt-24 md:pb-32 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 gold-grad"></div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
+                <div class="w-full md:w-1/2 text-center md:text-left z-10">
+                    <p class="text-sm md:text-lg font-bold text-amber-800 mb-4 tracking-tight">
+                        山形駅前徒歩3分・女子会◎、贅沢な隠れ家
+                    </p>
+                    <div class="relative inline-block md:flex items-start">
+                        <h1 class="text-3xl sm:text-4xl md:text-6xl font-serif font-bold leading-tight mb-4 md:mb-6">
+                            思わず声が出る<br>
+                            <span class="text-primary">圧倒的なボリューム。</span>
+                        </h1>
+                        <p class="md:vertical-text md:ml-6 text-base md:text-xl font-serif text-gray-500 mt-2">
+                            五感で楽しむ、Riccoの創作ダイニング
+                        </p>
+                    </div>
+                    <p class="text-gray-600 mt-4 md:mt-6 leading-relaxed text-sm sm:text-base">
+                        良心的な価格で楽しむ3時間飲み放題と、<br class="hidden sm:inline">
+                        「誰かの記念日?」と驚かれる名物ハニートースト。<br class="hidden sm:inline">
+                        笑顔あふれるスタッフが、あなたの大切な夜を彩ります。
+                    </p>
+                </div>
+
+                <div class="w-full md:w-1/2 relative">
+                    <div id="fv-image-container" class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 sm:border-8 border-white aspect-[4/3]">
+                        <img src="images/toast.jpg" alt="名物ハニートースト" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/8c2727/ffffff?text=Ricco+Honey+Toast'">
+                    </div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 gold-grad rounded-full mix-blend-multiply opacity-20 animate-pulse"></div>
+                    <div class="absolute -bottom-6 -left-4 md:-bottom-10 md:-left-10 bg-white p-4 md:p-6 shadow-xl rounded-lg z-20">
+                        <p class="text-primary font-bold text-lg md:text-xl italic">Best Seller</p>
+                        <p class="text-xs text-gray-400 font-bold">名物 ハニートースト</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FIXED CTA (mobile only) -->
+    <div class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-gray-200 z-[100] py-3 px-4 shadow-2xl md:hidden" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));">
+        <a href="tel:0236420429" class="gold-grad text-white w-full py-4 rounded-full font-bold text-center flex items-center justify-center gap-2 shadow-lg">
+            <i class="fas fa-phone-alt"></i> 今すぐ席を予約する
+        </a>
+    </div>
+
+    <!-- BENEFIT AREA -->
+    <section class="py-16 md:py-20 bg-stone-100">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold section-title inline-block">Riccoが愛される理由</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8">
+                <div class="relative">
+                    <div class="bg-white p-7 md:p-8 rounded-b-lg shadow-md border-t-4 border-primary h-full">
+                        <span class="absolute -top-4 left-8 gold-grad text-white px-4 py-1 text-sm font-bold rounded">01</span>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 pt-2">多国籍な創作料理</h3>
+                        <p class="text-gray-600 text-sm leading-loose">厚切りブルーチーズソースのバケットなど、シェフの遊び心が光るオリジナルメニューが豊富。驚きの「美味しい」がここにあります。</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white p-7 md:p-8 rounded-b-lg shadow-md border-t-4 border-primary h-full">
+                        <span class="absolute -top-4 left-8 gold-grad text-white px-4 py-1 text-sm font-bold rounded">02</span>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 pt-2">L.O.なし!3時間飲み放題</h3>
+                        <p class="text-gray-600 text-sm leading-loose">「ゆっくり話したい」を叶える贅沢な3時間。女子会や部活の保護者会、二次会など、時間を気にせず盛り上がれます。</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white p-7 md:p-8 rounded-b-lg shadow-md border-t-4 border-primary h-full">
+                        <span class="absolute -top-4 left-8 gold-grad text-white px-4 py-1 text-sm font-bold rounded">03</span>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 pt-2">心温まるホスピタリティ</h3>
+                        <p class="text-gray-600 text-sm leading-loose">アレルギー対応からサプライズ演出まで。スタッフの笑顔と丁寧な対応が、Riccoのリピーターが多い一番の理由です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERIOR & FOOD -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div id="interior-image" class="rounded-2xl overflow-hidden shadow-lg aspect-video">
+                    <img src="images/roast.png" alt="店舗の雰囲気" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x450/2d2d2d/ffffff?text=Interior'">
+                </div>
+                <div id="food-image" class="rounded-2xl overflow-hidden shadow-lg aspect-video">
+                    <img src="images/kakuteru.png" alt="自慢の創作料理" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x450/8c2727/ffffff?text=Special+Dishes'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER VOICES -->
+    <section class="py-16 md:py-24 px-5 sm:px-6 bg-stone-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-center text-2xl sm:text-3xl font-serif font-bold mb-12 md:mb-16">お客様の「満足」の声</h2>
+
+            <div class="space-y-8 md:space-y-12">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm italic border border-stone-100">
+                    <div class="text-yellow-500 mb-2">★★★★★</div>
+                    <p>「頼いたものはどれも美味しかったのでびっくりです。厚切りバケットのブルーチーズソースは、濃厚な香りが口内を満たす幸福感。生ハムの映えもたまらないです。ゆっくりランチにも訪れたいお店です。」</p>
+                    <p class="text-right text-xs font-bold mt-4 text-gray-400">ー 30代 女性 / 忘年会利用</p>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm italic border border-stone-100">
+                    <div class="text-yellow-500 mb-2">★★★★☆</div>
+                    <p>「女子会としては料理の量的にもちょうどいいです。スイーツもボリュームでテンション上がります!スタッフさんが笑顔で対応してくれるので、お客として話も弾みお酒も進みます♪」</p>
+                    <p class="text-right text-xs font-bold mt-4 text-gray-400">ー 20代 女性 / 女子会利用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIAL OFFER BOX -->
+    <section class="py-16 md:py-20">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6">
+            <div class="bg-white border-4 border-double border-[#af8e5a] p-8 sm:p-10 md:p-16 text-center shadow-2xl relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-white px-4 sm:px-6 font-serif text-base sm:text-xl font-bold text-gold italic whitespace-nowrap">Special Present</div>
+
+                <h3 class="text-xl sm:text-2xl md:text-4xl font-serif font-bold mb-6 md:mb-8 mt-2">大切な記念日をRiccoで。<br><span class="text-primary">サプライズ演出もお任せください。</span></h3>
+
+                <p class="text-gray-600 mb-8 md:mb-10 leading-relaxed text-sm sm:text-base">
+                    お誕生日や記念日でのご利用の際は、<br class="hidden md:block">
+                    名物ハニートーストをベースにした特別なデザートプレートもご相談可能です。<br>
+                    主役の方の笑顔のために、私たちが全力でサポートします。
+                </p>
+
+                <div class="space-y-4">
+                    <p class="font-bold text-gray-500 underline decoration-[#af8e5a] underline-offset-8 mb-6 md:mb-8">週末のご予約はお早めに</p>
+                    <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
+                        <a href="tel:0236420429" class="gold-grad text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-bold shadow-xl btn-hover inline-flex items-center justify-center gap-3">
+                            <i class="fas fa-phone-alt"></i> <span class="no-break">023-642-0429</span>
+                        </a>
+                        <a href="https://www.instagram.com/ricco_konnakanjide/" target="_blank" rel="noopener" class="border-2 border-[#af8e5a] text-gold px-8 sm:px-12 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-bold btn-hover inline-flex items-center justify-center gap-3">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON -->
+    <section class="py-16 md:py-20 bg-amber-50/60 border-y border-amber-100">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-10 md:mb-12">
+                <span class="text-xs font-bold tracking-widest text-amber-800 uppercase bg-amber-200/70 px-4 py-1.5 rounded-full inline-block mb-3">
+                    New Project
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-800 section-title inline-block">Coming Soon</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base mt-4 leading-relaxed">
+                    「もっと気軽に、もっと色んな味を楽しみたい!」<br class="hidden sm:inline">
+                    お客様のあったらいいなのお声から、Riccoの新しいおもてなしを現在準備中です。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <!-- 1: 一人飲みペアリングセット -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100/80 relative flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 bg-red-800 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        準備中
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full gold-grad flex items-center justify-center text-white text-xl mb-4 shadow-sm">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">サクッと一人飲み!<br>ソロ・チーズフォンデュ×ペアリング</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-6">
+                            お仕事帰りや一人飲みにちょうどいい食べ切りサイズの濃厚チーズフォンデュと、相性抜群のワイン・カクテル1杯を合わせたおひとり様限定セット。
+                        </p>
+                    </div>
+                    <div class="bg-stone-50 border border-stone-100 rounded-xl p-2.5 text-center">
+                        <span class="text-xs text-amber-900 font-bold"><i class="fas fa-sparkles mr-1 text-amber-600"></i> カウンター席限定で開始予定</span>
+                    </div>
+                </div>
+
+                <!-- 2: 前菜・チーズ盛り合わせ -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100/80 relative flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 bg-red-800 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        準備中
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-full gold-grad flex items-center justify-center text-white text-xl mb-4 shadow-sm">
+                            <i class="fas fa-cheese"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">シェフ厳選!<br>欲張り前菜×チーズ5種盛り</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-6">
+                            「少しずつ色んな料理をつまみたい」を形に。人気のブルーチーズバケットや生ハム、季節の創作一品をちいさく贅沢に盛り合わせました。
+                        </p>
+                    </div>
+                    <div class="bg-stone-50 border border-stone-100 rounded-xl p-2.5 text-center">
+                        <span class="text-xs text-amber-900 font-bold"><i class="fas fa-glass-cheers mr-1 text-amber-600"></i> 1〜2人前のおつまみに最適</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP INFO -->
+    <section class="py-16 md:py-20 bg-stone-900 text-stone-300">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-serif font-bold text-white mb-6">こんなかんじ de Dining Ricco</h2>
+                    <dl class="space-y-4 text-sm">
+                        <div class="flex flex-col sm:flex-row border-b border-stone-700 pb-3">
+                            <dt class="sm:w-24 font-bold text-stone-500 mb-1 sm:mb-0">所在地</dt>
+                            <dd>〒990-0039 山形県山形市香澄町1-15-31</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-700 pb-3">
+                            <dt class="sm:w-24 font-bold text-stone-500 mb-1 sm:mb-0">ご予約</dt>
+                            <dd class="text-white font-bold">
+                                <a href="tel:0236420429" class="hover:text-amber-300 transition-colors">023-642-0429</a>
+                            </dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-700 pb-3">
+                            <dt class="sm:w-24 font-bold text-stone-500 mb-1 sm:mb-0">アクセス</dt>
+                            <dd>山形駅より徒歩3分(飲食店なし・近隣コインPあり)</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row border-b border-stone-700 pb-3">
+                            <dt class="sm:w-24 font-bold text-stone-500 mb-1 sm:mb-0">WEB</dt>
+                            <dd><a href="https://www.dining-ricco.com/" class="hover:text-white transition-colors underline">公式サイトはこちら</a></dd>
+                        </div>
+                    </dl>
+                </div>
+                <!-- Google Map Embedded -->
+                <div class="rounded-xl overflow-hidden shadow-2xl map-container border-4 border-stone-800">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.297003632116!2d140.32674957477983!3d38.24941718467916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60fa92bb45f%3A0x8f1b8d05be4571e6!2z44GT44KT44Gq44GL44KT44GYIGRlIERpbmluZyBSaWNjbw!5e0!3m2!1sja!2sjp!4v1770869817660!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="こんなかんじ de Dining Ricco 地図"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-10 text-center border-t border-stone-800">
+        <p class="text-stone-600 text-xs">&copy; 2024 こんなかんじ de Dining Ricco. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
