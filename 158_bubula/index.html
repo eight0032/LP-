@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Bubula.(ブブラ)| 山形牛フレンチと大正浪漫の蔵レストラン</title>
+    <meta name="description" content="山形駅徒歩5分。蔵を改装した空間で楽しむ山形牛フレンチコース。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        :root {
+            --color-deep-red: #4a1313;
+            --color-gold: #bfa57d;
+            --color-sand: #f4f1ea;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: var(--color-sand);
+            color: #3a3530;
+            overflow-x: hidden;
+        }
+
+        .serif-mincho { font-family: 'Shippori Mincho', serif; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .washi-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(20,10,10,0.15) 0%, rgba(10,5,5,0.65) 100%);
+        }
+
+        .btn-elegant {
+            background-color: var(--color-deep-red);
+            color: white;
+            transition: background-color 0.35s ease, transform 0.25s ease;
+            letter-spacing: 0.08em;
+        }
+        .btn-elegant:hover { background-color: #61201f; }
+        .btn-elegant:active { transform: scale(0.98); }
+
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--color-gold);
+            margin: 1rem auto;
+        }
+
+        .img-reveal { position: relative; overflow: hidden; border-radius: 2px; }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        /* Prevent iOS zoom-on-focus & keep tap targets comfortable */
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        :focus-visible {
+            outline: 2px solid var(--color-gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- HEADER NAV -->
+    <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200 py-3 px-4 flex justify-between items-center md:px-10">
+        <span class="serif-mincho font-bold text-lg md:text-xl tracking-tight text-stone-800">Bubula.</span>
+        <a href="https://www.hotpepper.jp/strJ004026430/" target="_blank" rel="noopener"
+           class="btn-elegant px-5 py-2.5 text-xs md:text-sm rounded-sm font-bold whitespace-nowrap">
+            WEB予約
+        </a>
+    </div>
+
+    <!-- HERO -->
+    <header class="relative h-[85vh] min-h-[520px] md:h-screen w-full overflow-hidden">
+        <img src="images/beef.png"
+             alt="山形牛フレンチ料理"
+             class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <div class="absolute inset-x-0 top-[42%] -translate-y-1/2 z-20 text-white text-center px-6">
+            <h1 class="text-[1.65rem] leading-[1.7] sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.15em] md:tracking-[0.2em] serif-mincho drop-shadow-lg">
+                蔵に宿る、山形牛の真髄。
+            </h1>
+            <div class="w-14 h-[1px] bg-gold mx-auto mt-6 md:mt-8 opacity-70"></div>
+        </div>
+
+        <div class="absolute bottom-[14%] left-0 right-0 px-6 sm:left-[8%] sm:right-auto z-20 text-white text-center sm:text-left">
+            <p class="text-sm sm:text-lg md:text-xl mb-3 tracking-[0.1em] sm:tracking-[0.2em] font-light">
+                山形駅 徒歩5分 ｜ 伝統の「蔵の萬」内
+            </p>
+            <div class="w-12 h-[1px] bg-white mb-4 mx-auto sm:mx-0"></div>
+            <p class="serif-mincho text-xs sm:text-sm md:text-base opacity-85 leading-relaxed">
+                大正浪漫の香り、モダンなフレンチのひととき。<br>
+                五感で愉しむ、山形の恵み。
+            </p>
+        </div>
+
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 hidden sm:flex">
+            <span class="text-white text-[10px] tracking-widest uppercase vertical-text">Scroll</span>
+            <div class="w-[1px] h-10 bg-white/50"></div>
+        </div>
+    </header>
+
+    <!-- INTRODUCTION -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-gold tracking-[0.25em] text-xs uppercase mb-4 block">Introduction</span>
+            <h2 class="text-xl sm:text-2xl md:text-3xl serif-mincho mb-10 sm:mb-12 leading-[2]">
+                歴史の重みを継ぐ、<br>静謐な蔵のなかで。
+            </h2>
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center text-left">
+                <div class="w-full md:w-1/2 img-reveal">
+                    <img src="images/roast.png"
+                         alt="蔵を改装した店内"
+                         class="w-full aspect-[4/5] object-cover rounded-sm">
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col gap-6">
+                    <p class="leading-loose text-stone-600 text-sm sm:text-base">
+                        山形牛を中心とした、クラシカルながらも革新的な洋食。地元の旬野菜をふんだんに取り入れ、素材本来の力を一皿に凝縮しました。
+                        <br><br>
+                        紅の蔵の風情を残したリノベーション空間は、高い天井と大きな窓が解放感を演出し、大切なひとときを優雅に彩ります。
+                    </p>
+                    <div class="aspect-video bg-stone-900 relative overflow-hidden rounded-sm shadow-lg">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed?listType=user_uploads&list=napo-king"
+                                title="Bubula. 店内紹介動画" frameborder="0" loading="lazy" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE DISH -->
+    <section class="bg-[#2a2a2a] text-white py-16 sm:py-24 relative overflow-hidden">
+        <div class="absolute right-[-4%] top-0 text-[9rem] text-white/5 serif-mincho pointer-events-none vertical-text hidden lg:block select-none">山形牛</div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                <div class="w-full lg:w-3/5 img-reveal order-2 lg:order-1">
+                    <img src="images/french.png"
+                         alt="山形フレンチコースの一皿"
+                         class="w-full aspect-video object-cover rounded-sm shadow-2xl">
+                </div>
+                <div class="w-full lg:w-2/5 order-1 lg:order-2">
+                    <span class="text-gold tracking-[0.2em] text-xs mb-4 block">Signature Menu</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl serif-mincho mb-6 sm:mb-8 leading-tight">山形フレンチコース</h2>
+                    <div class="w-12 h-[1px] bg-gold mb-6 sm:mb-8"></div>
+                    <p class="text-stone-300 leading-loose mb-8 sm:mb-10 text-sm sm:text-base">
+                        厳選された山形牛の、口の中でとろけるような繊細な脂の甘み。地元農家から届く彩り野菜やハーブ。それらをフレンチの技法で一皿のアートへ。
+                        <br><br>
+                        日常を忘れ、味覚の旅へと誘います。
+                    </p>
+                    <div class="text-xl sm:text-2xl serif-mincho text-gold">¥4,000 <span class="text-sm text-white/60 font-sans">（税込）〜</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON / NEW SERVICES -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6 bg-stone-100/80 border-y border-stone-200/80">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="inline-block bg-[#4a1313] text-[#bfa57d] text-[10px] sm:text-[11px] tracking-[0.25em] font-bold px-4 sm:px-5 py-1.5 rounded-full uppercase mb-4 shadow-sm">
+                    Coming Soon
+                </span>
+                <h2 class="text-xl sm:text-2xl md:text-3xl serif-mincho section-title">Bubula. の味をご自宅でも</h2>
+                <p class="text-stone-600 text-sm sm:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+                    お店の感動をご家庭の食卓へ。Bubula. では、より多くのお客様に本格フレンチ洋食をお愉しみいただくため、新たなサービスを展開準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-sm p-6 sm:p-8 shadow-sm border border-stone-200/80 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 sm:mb-6 gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-[#4a1313]/10 flex items-center justify-center text-[#4a1313]">
+                                    <i class="fas fa-utensils text-lg"></i>
+                                </div>
+                                <span class="text-xs font-bold tracking-widest text-[#bfa57d] uppercase">Service 01</span>
+                            </div>
+                            <span class="text-[11px] bg-amber-50 text-amber-800 px-3 py-1 rounded border border-amber-200 font-medium whitespace-nowrap">準備中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif-mincho mb-3 sm:mb-4 text-stone-800">特選洋食テイクアウト & 贅沢お弁当</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            自慢の「山形牛ハンバーグ」をはじめ、シェフ特選の洋食メニューをお持ち帰りいただけます。普段のランチや会議用のお弁当、特別なご家庭での記念日のお食事に彩を添えます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex justify-between items-center text-xs text-stone-500 gap-2">
+                        <span><i class="far fa-clock mr-1.5"></i>店頭お渡し予定</span>
+                        <span class="text-[#4a1313] font-bold whitespace-nowrap">順次スタート予定</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-sm p-6 sm:p-8 shadow-sm border border-stone-200/80 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex items-center justify-between mb-5 sm:mb-6 gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-[#4a1313]/10 flex items-center justify-center text-[#4a1313]">
+                                    <i class="fas fa-box-open text-lg"></i>
+                                </div>
+                                <span class="text-xs font-bold tracking-widest text-[#bfa57d] uppercase">Service 02</span>
+                            </div>
+                            <span class="text-[11px] bg-amber-50 text-amber-800 px-3 py-1 rounded border border-amber-200 font-medium whitespace-nowrap">準備中</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold serif-mincho mb-3 sm:mb-4 text-stone-800">公式ECストア（冷凍・レトルト全国配送）</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                            秘伝のデミグラスソースで味わうハンバーグを真空急速冷凍・レトルト加工。お店の味そのままに全国どこへでも配送いたします。大切な方へのご贈答・ギフトにもおすすめです。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-100 flex justify-between items-center text-xs text-stone-500 gap-2">
+                        <span><i class="fas fa-truck-fast mr-1.5 text-stone-400"></i>全国お取り寄せ対応</span>
+                        <span class="text-[#4a1313] font-bold whitespace-nowrap">公式ECサイト開設予定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICES -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6 bg-stone-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-gold tracking-[0.2em] text-xs mb-4 block">Customer Voices</span>
+                <h2 class="text-xl sm:text-2xl md:text-3xl serif-mincho section-title">お客様の記憶</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-10">
+                <div class="bg-white p-7 sm:p-10 border border-stone-200 relative">
+                    <i class="fas fa-quote-left absolute top-5 left-5 sm:top-6 sm:left-6 text-stone-100 text-4xl sm:text-5xl"></i>
+                    <p class="relative z-10 leading-loose text-stone-600 mb-6 italic text-sm sm:text-base">
+                        「蔵を改装した素敵な空間でのワークショップとランチ。カレーもアップルパイも最高でした。山形に来た際は、また必ず利用したいです。」
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-[1px] bg-gold"></div>
+                        <span class="text-xs tracking-widest font-bold">5.0 | 体験・ランチ利用</span>
+                    </div>
+                </div>
+                <div class="bg-white p-7 sm:p-10 border border-stone-200 relative">
+                    <i class="fas fa-quote-left absolute top-5 left-5 sm:top-6 sm:left-6 text-stone-100 text-4xl sm:text-5xl"></i>
+                    <p class="relative z-10 leading-loose text-stone-600 mb-6 italic text-sm sm:text-base">
+                        「海老とホタテのアメリケーヌソースが濃厚。彩り鮮かな野菜からも素材の旨味が感じられました。笑顔の接客も終始気持ちよかったです。」
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-[1px] bg-gold"></div>
+                        <span class="text-xs tracking-widest font-bold">5.0 | ディナー利用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO & ACCESS -->
+    <section class="py-16 sm:py-24 px-5 sm:px-6 bg-[#1a1a1a] text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                <div>
+                    <h2 class="serif-mincho text-2xl sm:text-3xl mb-8 sm:mb-12">Bubula. <span class="text-sm font-sans opacity-50 ml-3">ブブラ</span></h2>
+                    <dl class="space-y-5 sm:space-y-6 text-sm sm:text-base border-t border-white/10 pt-6 sm:pt-8">
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
+                            <dt class="sm:w-32 shrink-0 opacity-50">Address</dt>
+                            <dd>〒990-0031 山形県山形市十日町2丁目1-8（紅の蔵内）</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
+                            <dt class="sm:w-32 shrink-0 opacity-50">Access</dt>
+                            <dd>山形駅 徒歩5分 / 無料駐車場あり</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
+                            <dt class="sm:w-32 shrink-0 opacity-50">Hours</dt>
+                            <dd>ランチ・カフェ 11:00〜17:30 / ディナー 予約制</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
+                            <dt class="sm:w-32 shrink-0 opacity-50">Closed</dt>
+                            <dd>毎週水曜日</dd>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
+                            <dt class="sm:w-32 shrink-0 opacity-50">Tel</dt>
+                            <dd class="text-lg sm:text-xl serif-mincho">
+                                <a href="tel:0236795103" class="hover:text-gold transition">023-679-5103</a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="flex flex-col gap-5 sm:gap-6">
+                    <div class="aspect-video bg-stone-800 rounded-sm overflow-hidden border border-white/5 shadow-inner">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.413811897522!2d140.33307907477962!3d38.246707584836855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb603a4944593%3A0xe05952d39b403537!2sBubula.!5e0!3m2!1sja!2sjp!4v1770870727319!5m2!1sja!2sjp"
+                                width="100%" height="100%" style="border:0;" title="Bubula. 地図" allowfullscreen
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <a href="https://www.hotpepper.jp/strJ004026430/" target="_blank" rel="noopener"
+                       class="btn-elegant w-full py-4 sm:py-6 text-center font-bold text-base sm:text-lg shadow-lg rounded-sm">
+                        席を予約する
+                    </a>
+                    <div class="flex justify-center gap-8 mt-2">
+                        <a href="https://www.instagram.com/bubula.yamagata/" aria-label="Instagram" class="text-white/50 hover:text-gold transition text-xl p-2"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@napo-king" aria-label="YouTube" class="text-white/50 hover:text-gold transition text-xl p-2"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-black text-center border-t border-white/5">
+        <p class="text-[10px] tracking-[0.2em] text-white/30 uppercase px-4">&copy; 2024 Bubula. Yamagata. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
