@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>marki garni | 山形・香澄町のワインバー</title>
+<meta name="description" content="山形駅より徒歩数分。16時オープンのシャルキュトリー&ワインバー「marki garni」。まあ、気軽に。そう言ってもらえる場所です。">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          amber: {
+            50: '#fbf3e7', 100: '#f5e2c4', 400: '#c99a4a',
+            600: '#a9762b', 700: '#8c5f22'
+          },
+        },
+        fontFamily: {
+          serif: ['"Shippori Mincho"', 'serif'],
+          sans: ['"Noto Sans JP"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Shippori Mincho', serif; background:#fcf9f2; }
+  .font-sans { font-family: 'Noto Sans JP', sans-serif; }
+
+  @keyframes ken-burns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+  }
+  .animate-ken-burns {
+    animation: ken-burns 22s ease-out infinite alternate;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-ken-burns { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  .nav-solid { background: rgba(255,255,255,0.94); backdrop-filter: blur(8px); box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+
+  /* 縦書き風の余白調整（日本語見出し） */
+  .heading-tight { line-height: 1.35; }
+</style>
+</head>
+<body class="text-stone-800 selection:bg-amber-100">
+
+  <!-- ナビゲーション -->
+  <nav id="nav" class="fixed top-0 w-full z-50 transition-all duration-500 py-4 sm:py-6">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 flex justify-between items-center">
+      <div id="nav-logo" class="text-lg sm:text-2xl font-bold tracking-widest uppercase transition-colors duration-300 text-white">
+        marki garni
+      </div>
+      <div class="flex items-center gap-3 sm:gap-6">
+        <a href="tel:0236739583" id="nav-phone" class="hidden md:flex items-center gap-2 font-sans font-bold transition-colors duration-300 text-white">
+          <i data-lucide="phone" class="w-[18px] h-[18px] text-amber-400"></i> 023-673-9583
+        </a>
+        <a href="https://hitosara.com/0006104150/" class="bg-amber-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold font-sans hover:bg-amber-700 transition-all shadow-lg hover:shadow-amber-200/50 whitespace-nowrap">
+          ご予約はこちら
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ヒーローセクション -->
+  <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-black/45 z-10"></div>
+      <img
+        src="images/pasta.png"
+        alt="marki garni 店内のライティング"
+        class="w-full h-full object-cover animate-ken-burns"
+      >
+    </div>
+
+    <div class="relative z-20 text-center text-white px-5 max-w-4xl py-24">
+      <div class="mb-6 flex justify-center">
+        <span class="inline-block border border-white/40 px-4 py-1 text-xs sm:text-sm tracking-[0.2em] font-sans">Yamagata Kasumicho</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 sm:mb-8 heading-tight drop-shadow-xl">
+        「まあ、気軽に」<br>
+        <span class="text-xl sm:text-3xl md:text-5xl font-normal opacity-90 block mt-3 sm:mt-4">そう言ってもらえる場所です</span>
+      </h1>
+      <p class="text-sm sm:text-lg md:text-xl font-light tracking-widest opacity-90 mb-10 sm:mb-12 font-sans">
+        16:00 OPEN &nbsp;|&nbsp; HAPPY HOUR &nbsp;|&nbsp; CHARCUTERIE &amp; WINE
+      </p>
+      <div class="animate-bounce">
+        <div class="w-px h-16 sm:h-20 bg-white/60 mx-auto"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 看板メニュー -->
+  <section class="py-16 sm:py-24 bg-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-amber-50 rounded-full -mr-24 sm:-mr-32 -mt-24 sm:-mt-32 opacity-60"></div>
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 grid md:grid-cols-2 gap-10 sm:gap-16 items-center relative">
+      <div class="relative group">
+        <div class="hidden sm:block absolute -inset-4 border border-amber-200 rounded-2xl transition-transform group-hover:scale-[1.02]"></div>
+        <div class="aspect-[4/5] bg-stone-100 rounded-xl overflow-hidden shadow-2xl relative">
+          <img
+            src="images/syalukyutori.png"
+            alt="シャルキュトリー盛り合わせ"
+            class="w-full h-full object-cover"
+          >
+          <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-white/95 backdrop-blur py-3 px-5 sm:py-4 sm:px-6 rounded shadow-lg">
+            <span class="text-[10px] sm:text-xs text-amber-600 font-sans font-bold block mb-1">RECOMMENDED</span>
+            <span class="text-lg sm:text-xl font-bold">至福のシャルキュトリー</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6 sm:space-y-8">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">
+          ワインの時間を彩る、<br>
+          シェフ渾身の自家製肉料理。
+        </h2>
+        <div class="w-16 h-1 bg-amber-600"></div>
+        <p class="text-stone-600 leading-relaxed text-base sm:text-lg font-sans">
+          マーキガルニに訪れたら、まずは「シャルキュトリーの盛り合わせ」を。自家製ハム、パテ、ソーセージなど、ワインとの相性を計算し尽くした逸品です。素材の旨味を最大限に引き出した大人の味をお愉しみください。
+        </p>
+        <div class="grid grid-cols-2 gap-4 sm:gap-6 pt-2 sm:pt-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 sm:p-3 bg-amber-50 rounded-full text-amber-600 shrink-0"><i data-lucide="wine" class="w-5 h-5 sm:w-6 sm:h-6"></i></div>
+            <span class="font-bold font-sans text-sm sm:text-base">厳選ワイン多数</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 sm:p-3 bg-stone-50 rounded-full text-stone-600 shrink-0"><i data-lucide="utensils" class="w-5 h-5 sm:w-6 sm:h-6"></i></div>
+            <span class="font-bold font-sans text-sm sm:text-base">こだわり洋食</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- コンセプトストーリー -->
+  <section class="py-16 sm:py-24 bg-[#1a1816] text-white relative">
+    <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center">
+      <i data-lucide="quote" class="mx-auto mb-8 sm:mb-10 text-amber-500/40 w-10 h-10 sm:w-[60px] sm:h-[60px]"></i>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 sm:mb-12 tracking-wide sm:tracking-widest leading-loose">
+        「まあ、気軽に」<br>
+        立ち寄ってください。
+      </h2>
+      <div class="space-y-5 sm:space-y-6 text-stone-300 font-sans leading-loose text-base sm:text-lg font-light">
+        <p>山形駅前の喧騒を少し抜けた場所、美装ビルの南側。</p>
+        <p>16時のオープンとともに、私たちの「おもてなし」が始まります。</p>
+        <p>お一人様でグラスを傾ける夕暮れも、<br>女子会で笑い声が弾む賑やかな夜も。</p>
+        <p>美味しい料理と、心地よい距離感の接客で、<br>明日への活力をチャージしてほしい。</p>
+        <p class="pt-6 sm:pt-8 text-white font-serif text-lg sm:text-xl">「マーキガルニ」は、そんなあなたのための場所です。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section class="py-16 sm:py-24 bg-amber-50/60 relative overflow-hidden border-y border-amber-200/50">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6">
+      <div class="text-center mb-12 sm:mb-16">
+        <span class="inline-flex items-center gap-2 bg-amber-600 text-white font-sans text-xs font-bold px-4 py-1.5 rounded-full tracking-widest uppercase shadow-sm">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Future Plans
+        </span>
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 tracking-wide sm:tracking-wider">COMING SOON</h3>
+        <p class="mt-4 text-stone-600 font-sans max-w-2xl mx-auto text-sm sm:text-base">
+          「こんなマーキガルニがあったら嬉しい！」にお応えして。<br class="hidden sm:inline">
+          皆様の期待をもとに、新しい試みを準備・検討中です。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <!-- Plan 1 -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-amber-100 flex flex-col justify-between relative overflow-hidden group hover:shadow-xl transition-all">
+          <div class="absolute top-0 right-0 bg-amber-600 text-white font-sans text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-wider">
+            検討中 No.1
+          </div>
+          <div>
+            <div class="w-11 h-11 sm:w-12 sm:h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-700 mb-5 sm:mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="sun" class="w-6 h-6"></i>
+            </div>
+            <h4 class="text-lg sm:text-xl font-bold mb-3 text-stone-900">気軽に入れる「昼のマーキガルニ」ランチ営業</h4>
+            <p class="text-stone-600 font-sans text-sm leading-relaxed mb-6">
+              「昼からマーキガルニの味を楽しみたい」「サクッと美味しい洋食ランチが食べたい」という声にお応えして。名物洋食ワンプレートや、昼飲みハッピーアワーを構想中。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between font-sans text-xs text-amber-700 font-bold gap-2">
+            <span>昼の洋食&amp;昼飲み</span>
+            <span class="text-right">乞うご期待！</span>
+          </div>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-amber-100 flex flex-col justify-between relative overflow-hidden group hover:shadow-xl transition-all">
+          <div class="absolute top-0 right-0 bg-amber-600 text-white font-sans text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-wider">
+            準備中
+          </div>
+          <div>
+            <div class="w-11 h-11 sm:w-12 sm:h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-700 mb-5 sm:mb-6 group-hover:scale-110 transition-transform">
+              <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+            </div>
+            <h4 class="text-lg sm:text-xl font-bold mb-3 text-stone-900">自宅で名店の味「おうちバルテイクアウト」</h4>
+            <p class="text-stone-600 font-sans text-sm leading-relaxed mb-6">
+              シェフ特製のシャルキュトリー盛り合わせやオードブルを詰め合わせたお持ち帰り用BOX。ホームパーティーやご自宅でのワインタイム、手土産に最適です。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between font-sans text-xs text-amber-700 font-bold gap-2">
+            <span>テイクアウトBOX</span>
+            <span class="text-right">順次スタート予定</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-5 sm:px-6">
+      <div class="text-center mb-10 sm:mb-12">
+        <span class="text-amber-600 font-sans font-bold tracking-widest text-sm">Access</span>
+        <h3 class="text-2xl sm:text-3xl font-bold mt-2">お店の場所</h3>
+        <p class="mt-4 text-stone-500 font-sans text-sm sm:text-base">山形駅より徒歩数分。香澄町の美装ビル南側です。</p>
+      </div>
+      <div class="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-stone-200">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.362202614252!2d140.32793497477965!3d38.24790478476718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60ed80a10bb%3A0x39f2f48b1630e7e4!2z44Oe44O844Kt44Ks44Or44OLKG1hcmtpIGdhcm5pKQ!5e0!3m2!1sja!2sjp!4v1770857920869!5m2!1sja!2sjp"
+          width="100%"
+          height="350"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Google Maps"
+          class="sm:h-[450px]"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- レビュー -->
+  <section class="py-16 sm:py-24 bg-stone-50">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6">
+      <div class="grid md:grid-cols-3 gap-8 sm:gap-8">
+        <div class="md:col-span-1">
+          <h3 class="text-3xl sm:text-4xl font-bold leading-tight mb-5 sm:mb-6">
+            いつも賑わう、<br><span class="text-amber-600">喜びの声。</span>
+          </h3>
+          <p class="text-stone-500 font-sans leading-relaxed text-sm sm:text-base">
+            オープンから多くのお客様にご支持いただいています。皆様の「美味しかった」が私たちの原動力です。
+          </p>
+        </div>
+        <div class="md:col-span-2 grid sm:grid-cols-2 gap-5 sm:gap-6">
+          <div class="p-6 sm:p-8 bg-white rounded-2xl border border-stone-100 relative group hover:bg-amber-50 transition-colors shadow-sm">
+            <div class="flex gap-1 mb-4">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+            </div>
+            <p class="text-stone-700 leading-relaxed font-sans text-sm italic">"料理、ワイン、接客全てにおいて最高なお店です。1人でも入りやすく、素敵な常連様との楽しい時間を過ごせました。"</p>
+          </div>
+          <div class="p-6 sm:p-8 bg-white rounded-2xl border border-stone-100 relative group hover:bg-amber-50 transition-colors shadow-sm">
+            <div class="flex gap-1 mb-4">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+            </div>
+            <p class="text-stone-700 leading-relaxed font-sans text-sm italic">"飲み放題付きコースのコスパが抜群！ワインも赤白各4種類、スパークリングもあります。女子会にもオススメです。"</p>
+          </div>
+          <div class="p-6 sm:p-8 bg-white rounded-2xl border border-stone-100 relative group hover:bg-amber-50 transition-colors shadow-sm sm:col-span-2">
+            <div class="flex gap-1 mb-4">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+            </div>
+            <p class="text-stone-700 leading-relaxed font-sans text-sm italic">"16時OPENなのが嬉しい。スタッフさんの接客も良い感じで、有意義な時間を過ごしました。料理はどれも旨い！"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最終CTA -->
+  <section class="py-24 sm:py-32 relative flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-stone-900/90 z-10"></div>
+    <img
+      src="images/paring.png"
+      alt="ワイングラスとカウンター"
+      class="absolute inset-0 w-full h-full object-cover z-0"
+    >
+    <div class="relative z-20 max-w-2xl mx-auto text-center px-5 sm:px-6">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 tracking-wide sm:tracking-wider heading-tight">
+        今夜、香澄町で<br>お待ちしております。
+      </h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://hitosara.com/0006104150/" class="bg-amber-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-bold shadow-2xl hover:bg-amber-700 hover:-translate-y-1 transition duration-300 w-full sm:w-auto">
+          ネット予約する
+        </a>
+        <a href="https://www.instagram.com/marki.garni/" class="flex items-center gap-2 text-white px-8 sm:px-10 py-4 sm:py-5 font-bold hover:opacity-70 transition w-full sm:w-auto justify-center font-sans">
+          <i data-lucide="instagram" class="w-6 h-6"></i> Instagram
+        </a>
+      </div>
+      <p class="mt-10 sm:mt-12 text-stone-400 font-sans text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+        <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i> 023-673-9583</span>
+        <span class="hidden sm:inline">|</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 16:00 - 24:00</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="bg-stone-900 py-12 sm:py-16 text-stone-500 font-sans text-sm">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-10 sm:mb-12">
+        <div>
+          <h4 class="text-white font-bold mb-4 tracking-widest uppercase">marki garni</h4>
+          <p class="leading-loose">
+            「まあ気軽に」を合言葉に、<br>
+            山形の夜を粋に彩る大人の社交場。
+          </p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4 tracking-widest uppercase">Access</h4>
+          <p class="flex items-start gap-2 mb-2">
+            <i data-lucide="map-pin" class="w-4 h-4 mt-1 shrink-0"></i>
+            <span>〒990-0039 山形県山形市香澄町2丁目1-2 美装ビル 南側</span>
+          </p>
+          <p>山形駅より徒歩数分</p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4 tracking-widest uppercase">Info</h4>
+          <p class="mb-2">TEL: 023-673-9583</p>
+          <p>営業時間: 16:00 〜 (ハッピーアワーあり)</p>
+          <p>定休日: 不定休</p>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/10 text-center">
+        <p>&copy; <span id="year"></span> marki garni. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const nav = document.getElementById('nav');
+    const navLogo = document.getElementById('nav-logo');
+    const navPhone = document.getElementById('nav-phone');
+
+    function handleScroll() {
+      if (window.scrollY > 50) {
+        nav.classList.add('nav-solid', 'py-3', 'sm:py-3');
+        nav.classList.remove('py-4', 'sm:py-6');
+        navLogo.classList.remove('text-white');
+        navLogo.classList.add('text-stone-900');
+        navPhone.classList.remove('text-white');
+        navPhone.classList.add('text-stone-800');
+      } else {
+        nav.classList.remove('nav-solid', 'py-3', 'sm:py-3');
+        nav.classList.add('py-4', 'sm:py-6');
+        navLogo.classList.add('text-white');
+        navLogo.classList.remove('text-stone-900');
+        navPhone.classList.add('text-white');
+        navPhone.classList.remove('text-stone-800');
+      }
+    }
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  </script>
+</body>
+</html>
