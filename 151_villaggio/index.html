@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヴィラッジオ | 山形の旬を味わう、至高のカルボナーラ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdfcf9;
+            overflow-x: hidden;
+        }
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .text-gold {
+            color: #b39359;
+        }
+        .bg-gold {
+            background-color: #b39359;
+        }
+        .border-gold {
+            border-color: #b39359;
+        }
+        .bg-dark-stone {
+            background-color: #1c1c1c;
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.85) 100%);
+        }
+        .texture-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .animate-bounce {
+                animation: none;
+            }
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        @media (min-width: 768px) {
+            .vertical-text {
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+            }
+        }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #b39359;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="texture-bg">
+
+    <!-- FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/pasta.jpg" alt="ヴィラッジオのカルボナーラ" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl px-6 sm:px-8 flex flex-col md:flex-row justify-between items-center md:items-start h-full pt-28 pb-16 md:pt-36 md:pb-20 gap-10">
+            <div class="text-white text-center md:text-left">
+                <p class="text-gold tracking-[0.25em] font-bold mb-5 text-xs sm:text-sm reveal">山形市八日町・静寂を味わう隠れ家</p>
+                <h1 class="serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-6 md:mb-8 reveal">
+                    旬を、<br>
+                    <span class="text-gold">記憶</span>に刻む。
+                </h1>
+                <p class="text-stone-300 max-w-md mx-auto md:mx-0 text-sm md:text-lg font-light leading-relaxed reveal">
+                    地元農家が土から育てた生命力あふれる素材。<br class="hidden sm:inline">
+                    本場の技を日本人の感性で磨き上げた、<br class="hidden sm:inline">
+                    ヴィラッジオでしか出逢えないカルボナーラ。
+                </p>
+            </div>
+
+            <div class="hidden md:block vertical-text text-white serif text-xl lg:text-2xl tracking-[0.7em] font-light reveal">
+                本物を知る大人のための、特別な一皿。
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white text-[10px] sm:text-xs tracking-widest flex flex-col items-center">
+            <span class="mb-2">SCROLL</span>
+            <div class="w-px h-12 sm:h-16 bg-gold animate-bounce"></div>
+        </div>
+    </header>
+
+    <!-- 1回目 CTA -->
+    <section id="cta" class="py-10 sm:py-12 bg-dark-stone text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div class="text-center md:text-left">
+                <h2 class="serif text-lg sm:text-xl md:text-2xl mb-2 tracking-widest text-gold">ご予約・お問い合わせ</h2>
+                <p class="text-stone-500 text-xs">※お席に限りがあるため、事前予約をお勧めしております。</p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 w-full sm:w-auto">
+                <a href="tel:0236655329" class="text-2xl sm:text-3xl md:text-4xl font-light hover:text-gold transition">023-665-5329</a>
+                <a href="http://www.villaggio-29.com/" target="_blank" rel="noopener" class="w-full sm:w-auto text-center bg-gold hover:bg-white hover:text-dark-stone text-white px-8 py-4 text-sm font-bold tracking-widest transition duration-500">
+                    Official Website
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンセプト -->
+    <section class="py-20 sm:py-28 md:py-32 relative">
+        <div class="absolute top-16 left-6 text-stone-100 text-8xl lg:text-[10rem] font-bold serif pointer-events-none select-none hidden lg:block">
+            AUTHENTIC
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <span class="text-gold font-bold tracking-[0.4em] text-xs block mb-4">Concept</span>
+                    <h2 class="serif text-3xl sm:text-4xl md:text-5xl mb-8 md:mb-10 leading-snug">
+                        山形の「旬」から<br>そのままの<span class="text-gold">濃厚</span>を。
+                    </h2>
+                    <p class="text-stone-600 leading-loose text-sm md:text-base mb-8">
+                        私たちが何より大切にしているのは「素材との対話」です。スタッフ自らが地元の山や畑に入り、収穫したばかりの野菜。漁師から直送される、海の香りを纏った旬の魚。それら最高の素材を、日本人の繊細な舌に馴染むよう、一点一点丁寧に、そして大胆に仕上げます。
+                    </p>
+                    <div class="border-l-4 border-gold pl-6 py-2 italic text-stone-500">
+                        「お洒落だけど、どこか懐かしくて、心から美味しい。」<br>
+                        その一言のために、私たちは手間を惜しみません。
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative reveal">
+                    <img src="images/chef.png" alt="シェフのこだわり" class="w-full h-auto shadow-2xl rounded-sm">
+                    <div class="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 w-28 h-28 md:w-40 md:h-40 bg-gold opacity-10 -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- こだわりのカルボナーラ -->
+    <section class="bg-stone-100 py-20 sm:py-28 md:py-32 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-14 md:mb-20 reveal">
+                <h2 class="serif text-3xl sm:text-4xl md:text-6xl mb-4">至高の一皿、<span class="text-gold italic">Carbonara</span></h2>
+                <p class="text-stone-400 tracking-widest text-xs">The Signature Dish</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+                <div class="lg:w-2/3 relative group overflow-hidden reveal aspect-[4/3] lg:aspect-auto">
+                    <img src="images/pasta.jpg" alt="ヴィラッジオのパスタ" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                </div>
+                <div class="lg:w-1/3 flex flex-col justify-center bg-white p-8 sm:p-10 md:p-16 shadow-xl reveal">
+                    <h3 class="serif text-2xl sm:text-3xl mb-6 md:mb-8 border-b border-stone-100 pb-6">濃厚と調和の、<br>その先へ。</h3>
+                    <ul class="space-y-6 md:space-y-8 text-sm">
+                        <li class="flex gap-4">
+                            <span class="text-gold font-bold text-xl serif shrink-0">01.</span>
+                            <div>
+                                <h4 class="font-bold mb-2">奥羽農家の「宝玉卵」</h4>
+                                <p class="text-stone-500 leading-relaxed">黄身のコクが際立つ新鮮な卵を厳選。余分なものを一切加えない、濃厚な旨みを追求しました。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-gold font-bold text-xl serif shrink-0">02.</span>
+                            <div>
+                                <h4 class="font-bold mb-2">日本人のための塩加減</h4>
+                                <p class="text-stone-500 leading-relaxed">本場のチーズの深みはそのままに、最後の一口まで美味しく召し上がれるよう独自のバランスで調律。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-gold font-bold text-xl serif shrink-0">03.</span>
+                            <div>
+                                <h4 class="font-bold mb-2">盛り付けの美学</h4>
+                                <p class="text-stone-600 leading-relaxed italic">「目でも楽しむ」。彩り鮮やかな地場野菜を添え、五感すべてを満足させます。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon セクション(新設サービス) -->
+    <section class="py-20 sm:py-24 md:py-28 bg-stone-900 text-white relative overflow-hidden border-t border-b border-stone-800">
+        <div class="absolute -right-10 bottom-0 text-stone-800/30 text-8xl lg:text-[12rem] font-bold serif pointer-events-none select-none hidden lg:block">
+            NEXT
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 reveal">
+                <span class="inline-block px-4 py-1 border border-gold/50 text-gold text-xs font-bold tracking-[0.25em] mb-4 rounded-full">Coming Soon</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-light mb-6 tracking-wide">
+                    大切な日を彩る、<br><span class="text-gold italic font-normal">新しいおもてなし</span>
+                </h2>
+                <p class="text-stone-400 text-sm md:text-base leading-relaxed">
+                    ヴィラッジオでは、皆様の特別なひとときをより濃やかに記憶へ刻むため、<br class="hidden sm:inline">近日のスタートに向けて新たなアニバーサリーサービスを準備しております。
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- 01. メッセージプレート & サプライズ -->
+                <div class="bg-stone-800/60 p-7 sm:p-8 rounded-sm border border-stone-700/50 flex flex-col justify-between reveal hover:border-gold/50 transition duration-500">
+                    <div>
+                        <div class="text-gold text-xs font-bold tracking-widest mb-3">Service 01</div>
+                        <h3 class="serif text-xl font-bold mb-4 text-stone-100">メッセージプレート &<br>サプライズ演出</h3>
+                        <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-6">
+                            シェフ特製ドルチェプレートに、感謝やお祝いのメッセージを添えて。大切な方へのサプライズ演出や花束の手配など、感動の一瞬をトータルでサポートいたします。
+                        </p>
+                    </div>
+                    <div class="text-xs text-gold/80 italic pt-4 border-t border-stone-700/50">
+                        ※お誕生日・プロポーズ・記念日に
+                    </div>
+                </div>
+
+                <!-- 02. 記念日フルコース -->
+                <div class="bg-stone-800/60 p-7 sm:p-8 rounded-sm border border-stone-700/50 flex flex-col justify-between reveal hover:border-gold/50 transition duration-500">
+                    <div>
+                        <div class="text-gold text-xs font-bold tracking-widest mb-3">Service 02</div>
+                        <h3 class="serif text-xl font-bold mb-4 text-stone-100">完全予約制<br>アニバーサリー特別コース</h3>
+                        <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-6">
+                            山形の旬素材を極めた特別メニューを中心に構成する特別なディナーコース。ソムリエ厳選ペアリングワインとともに、優雅な夜をお届けします。
+                        </p>
+                    </div>
+                    <div class="text-xs text-gold/80 italic pt-4 border-t border-stone-700/50">
+                        ※全7品・ペアリングご相談可能
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 md:mt-12 text-center reveal">
+                <p class="text-stone-500 text-xs tracking-widest">
+                    ※サービス開始時期や予約方法につきましては、公式SNSおよびWebサイトにて順次ご案内いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミ -->
+    <section class="py-20 sm:py-28 md:py-32 bg-white text-stone-800">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="serif text-3xl md:text-4xl text-center mb-14 md:mb-20 reveal italic underline decoration-gold underline-offset-8">Guest Voices</h2>
+            <div class="space-y-12 md:space-y-16">
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 reveal">
+                    <div class="md:w-1/3 text-gold text-4xl md:text-5xl serif opacity-20 font-black italic">01.</div>
+                    <div class="md:w-2/3 border-b border-stone-100 pb-10 w-full">
+                        <p class="serif text-lg sm:text-xl md:text-2xl leading-relaxed mb-6 italic text-stone-700">「仕事仲間と大切に利用しました。マスター、奥様のホスピタリティ溢れる接客。前菜からデザートまで、目でも舌でも楽しめました。」</p>
+                        <div class="flex justify-between items-center text-xs tracking-widest text-stone-400">
+                            <span>山形市在住 / 会社経営</span>
+                            <div class="flex gap-1 text-gold text-[10px]">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row-reverse items-start md:items-center gap-6 md:gap-10 reveal">
+                    <div class="md:w-1/3 text-gold text-4xl md:text-5xl serif opacity-20 font-black italic md:text-right">02.</div>
+                    <div class="md:w-2/3 border-b border-stone-100 pb-10 w-full">
+                        <p class="serif text-lg sm:text-xl md:text-2xl leading-relaxed mb-6 italic text-stone-700">「パスタランチの濃厚さが絶妙。海鮮の出汁が効いていて絶品でした。お洒落な雰囲気で、また他のパスタも食べに伺いたいです。」</p>
+                        <div class="flex justify-between items-center text-xs tracking-widest text-stone-400">
+                            <span>仙台市よりご来店 / 20代女性</span>
+                            <div class="flex gap-1 text-gold text-[10px]">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 空間 -->
+    <section class="py-16 sm:py-20 bg-dark-stone text-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-6">日常の中に、小さな<span class="text-gold">特別</span>を。</h2>
+                <p class="text-stone-400 leading-loose text-sm italic font-light">
+                    シックで落ち着いた店内は、大切な人との語らいや、自分へのご褒美に。<br>
+                    お一人様でも、特別な日のパーティーでも、最高のホスピタリティでお迎えします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- インフォメーション -->
+    <section class="py-20 sm:py-28 md:py-32 bg-stone-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+                <div class="md:w-1/2 reveal">
+                    <h3 class="serif text-2xl mb-8 flex items-center text-stone-800">
+                        <span class="w-8 h-px bg-gold mr-4"></span>Shop Information
+                    </h3>
+                    <div class="space-y-5 text-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-baseline border-b border-stone-200 pb-4 gap-1">
+                            <span class="sm:w-32 shrink-0 font-bold text-stone-400 tracking-widest text-xs">Address</span>
+                            <span class="text-stone-700 font-medium">〒990-0037 山形県山形市八日町1丁目2−2</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-baseline border-b border-stone-200 pb-4 gap-1">
+                            <span class="sm:w-32 shrink-0 font-bold text-stone-400 tracking-widest text-xs">Phone</span>
+                            <a href="tel:0236655329" class="text-stone-700 font-medium hover:text-gold">023-665-5329</a>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-baseline border-b border-stone-200 pb-4 gap-1">
+                            <span class="sm:w-32 shrink-0 font-bold text-stone-400 tracking-widest text-xs">Holiday</span>
+                            <span class="text-stone-700 font-medium tracking-widest">日曜日</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-baseline border-b border-stone-200 pb-4 gap-1">
+                            <span class="sm:w-32 shrink-0 font-bold text-stone-400 tracking-widest text-xs">SNS / Site</span>
+                            <div class="space-y-2">
+                                <a href="http://www.villaggio-29.com/" target="_blank" rel="noopener" class="block text-gold hover:underline">Official Site</a>
+                                <a href="https://www.instagram.com/villaggio29/" target="_blank" rel="noopener" class="block text-gold hover:underline">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 h-72 sm:h-80 md:h-96 shadow-2xl reveal relative z-10 map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.5506310905403!2d140.32550097477954!3d38.24353358502162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60ae60af6f7%3A0x80afe2e301037d9e!2z44O044Kj44Op44OD44K444Kq!5e0!3m2!1sja!2sjp!4v1770858596356!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ヴィラッジオ地図"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <footer class="bg-dark-stone text-white py-20 sm:py-28 md:py-32 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none hidden md:block">
+            <div class="text-8xl lg:text-[16rem] font-bold serif vertical-text absolute -right-10 -top-10 lg:-right-20 lg:-top-20">VILLAGGIO</div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6">
+            <p class="text-gold tracking-[0.4em] font-bold mb-6 text-xs">Reservation</p>
+            <h2 class="serif text-3xl sm:text-4xl md:text-6xl mb-10 md:mb-12 font-light">至福のひとときを、<br class="md:hidden">ここから。</h2>
+
+            <a href="tel:0236655329" class="inline-block border border-gold text-gold px-8 sm:px-12 py-5 sm:py-6 rounded-sm text-lg sm:text-xl md:text-3xl font-light hover:bg-gold hover:text-white transition duration-500 mb-8 serif">
+                023-665-5329
+            </a>
+
+            <p class="text-stone-500 text-xs tracking-[0.15em] mt-16 md:mt-20 font-light">
+                &copy; Villaggio all rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal, { passive: true });
+        window.addEventListener("load", reveal);
+    </script>
+</body>
+</html>
