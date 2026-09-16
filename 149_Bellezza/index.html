@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ラ・ベレッツァ | 山形・松見町の隠れ家一軒家イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;500;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+
+        :root {
+            --color-gold: #b38e44;
+            --color-dark: #1a1a1a;
+            --color-bg: #fdfcf9;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        html { overflow-x: hidden; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-dark);
+            background-color: var(--color-bg);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .mincho { font-family: 'Shippori Mincho', serif; }
+        .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .overlap-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+        }
+
+        .gold-line {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+            margin: 0 auto;
+        }
+
+        .cta-premium {
+            background: linear-gradient(135deg, #b38e44 0%, #d4af37 50%, #b38e44 100%);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-premium::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-premium:hover::before { left: 100%; }
+
+        .cta-premium:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(179, 142, 68, 0.3);
+        }
+
+        .cta-premium:active { transform: scale(0.99); }
+
+        .deco-circle {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(179, 142, 68, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        /* Responsive Iframe Container */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Hero: mobile-first. Below md, the image is a normal block (no overlay text on top of it). */
+        .hero-image-wrap {
+            position: relative;
+            width: 100%;
+            height: 55vh;
+            min-height: 320px;
+        }
+        @media (min-width: 768px) {
+            .hero-image-wrap {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 75%;
+                height: 100%;
+                min-height: 0;
+            }
+        }
+
+        /* Keep the vertical eyebrow readable but compact on small screens */
+        @media (max-width: 640px) {
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                letter-spacing: 0.3em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cta-premium, .cta-premium::before { transition: none; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <div class="mincho font-bold text-lg sm:text-xl tracking-tighter">La Bellezza</div>
+            <a href="#register" class="bg-[#1a1a1a] text-white text-[9px] sm:text-[10px] tracking-widest px-4 sm:px-6 py-2 rounded-full hover:bg-[var(--color-gold)] active:bg-[var(--color-gold)] transition-colors duration-300 whitespace-nowrap">RESERVE / MAIL MAG</a>
+        </div>
+    </nav>
+
+    <!-- 1. FVエリア -->
+    <section class="relative min-h-screen md:h-screen flex flex-col md:flex-row md:items-center overflow-hidden pt-16 md:pt-0">
+        <div class="hero-image-wrap order-1 md:order-2" data-aos="fade-left" data-aos-duration="1500">
+            <img src="images/pasta.png" alt="海老のトマトクリームパスタ" class="w-full h-full object-cover" loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#fdfcf9] via-transparent to-transparent md:bg-gradient-to-r md:from-[#fdfcf9] md:via-transparent md:to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full order-2 md:order-1 py-10 md:py-0">
+            <div class="flex items-start">
+                <div class="vertical-text mincho text-[var(--color-gold)] tracking-[0.3em] sm:tracking-[0.5em] text-xs sm:text-sm md:text-base mb-4 md:mb-0 md:mr-12 md:pt-12" data-aos="fade-up" data-aos-delay="300">
+                    山形・松見町の隠れ家
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000" class="max-w-md">
+                    <p class="serif-italic text-[var(--color-gold)] text-xl sm:text-2xl mb-3 sm:mb-4">Authentic Italian Cuisine</p>
+                    <h1 class="mincho text-2xl sm:text-3xl md:text-5xl leading-tight mb-6 sm:mb-8">
+                        記憶に残る、<br>
+                        <span class="relative inline-block">
+                            一皿の魔法。
+                            <span class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 bg-[var(--color-gold)]/30"></span>
+                        </span>
+                    </h1>
+                    <p class="text-gray-600 text-base sm:text-lg leading-loose mb-8 sm:mb-10">
+                        白を基調とした静謐な空間で、<br>
+                        エビの旨みが溶け出す元祖の味を。
+                    </p>
+                    <a href="#register" class="cta-premium inline-block text-white px-8 sm:px-10 py-4 sm:py-5 rounded-sm font-bold tracking-widest text-sm w-full sm:w-auto text-center">
+                        限定特典を受け取る <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ストーリー -->
+    <section class="py-16 sm:py-24 relative">
+        <div class="deco-circle top-0 left-0"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="gold-line mb-8 sm:mb-10" data-aos="zoom-in"></div>
+            <h2 class="mincho text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-12 leading-relaxed" data-aos="fade-up">
+                「一口目から、物語は始まっている」
+            </h2>
+            <p class="text-gray-500 leading-loose max-w-2xl mx-auto text-sm sm:text-base" data-aos="fade-up" data-aos-delay="200">
+                山形で愛され続けてきた「ラ・ベレッツァ」。<br>
+                私たちが大切にしているのは、過度な装飾ではなく素材本来の繊細な旨み。<br>
+                もっちりとした薄で加減のパスタに、エビのコクが溶け出す至高のソース。<br>
+                それは、一度食べたら忘れられない、優しくも深い感動体験です。
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. 特徴 -->
+    <section class="py-16 sm:py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Feature 1 -->
+            <div class="overlap-grid mb-16 md:mb-32">
+                <div class="col-span-12 md:col-span-7" data-aos="fade-up">
+                    <div class="relative group overflow-hidden shadow-2xl">
+                        <img src="images/pasta.png" alt="元祖 海老のトマトクリーム" class="w-full h-64 sm:h-80 md:h-auto object-cover hover:scale-105 transition-transform duration-1000" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-span-12 md:col-start-8 md:col-span-5 pt-6 md:pt-0 md:-ml-20 z-10" data-aos="fade-up" data-aos-delay="150">
+                    <div class="bg-white p-6 sm:p-10 shadow-xl border-t-4 border-[var(--color-gold)]">
+                        <span class="text-[var(--color-gold)] serif-italic text-2xl sm:text-3xl block mb-3 sm:mb-4">01. Signature</span>
+                        <h3 class="mincho text-xl sm:text-2xl font-bold mb-4 sm:mb-6">元祖 海老のトマトクリーム</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            エビの旨みを極限まで凝縮したコクのあるソース。しつこさはなく、最後の一口まで軽やかな味わい。多くのリピーターを魅了する、当店の看板メニューです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="overlap-grid">
+                <div class="col-span-12 md:col-span-7 md:order-2" data-aos="fade-up">
+                    <div class="relative group overflow-hidden shadow-2xl">
+                        <img src="images/store.png" alt="落ち着いた店内" class="w-full h-64 sm:h-80 md:h-auto object-cover hover:scale-105 transition-transform duration-1000" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:order-1 pt-6 md:pt-0 md:-mr-20 z-10" data-aos="fade-up" data-aos-delay="150">
+                    <div class="bg-white p-6 sm:p-10 shadow-xl border-t-4 border-[var(--color-gold)] md:text-right">
+                        <span class="text-[var(--color-gold)] serif-italic text-2xl sm:text-3xl block mb-3 sm:mb-4">02. Space</span>
+                        <h3 class="mincho text-xl sm:text-2xl font-bold mb-4 sm:mb-6">心ほどける、流木の空間</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            白を基調とした洗練された店内に、印象的な流木のオブジェ。住宅街の喧騒を忘れさせる開放的な空間は、大切な人との記念日や、自分へのご褒美ランチに最適です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3.5. Coming Soon (新サービス開発中) -->
+    <section class="py-14 sm:py-20 bg-[#f8f6f0] border-y border-[var(--color-gold)]/10 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+                <span class="serif-italic text-[var(--color-gold)] text-xl sm:text-2xl block mb-2">New Projects</span>
+                <h2 class="mincho text-2xl sm:text-3xl md:text-4xl">Coming Soon</h2>
+                <p class="text-[10px] sm:text-xs tracking-[0.2em] text-gray-400 uppercase mt-2">新サービス準備中</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 max-w-4xl mx-auto gap-6 sm:gap-8">
+                <!-- Service 1: テイクアウト・オードブル -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-md border border-gray-100 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="text-[var(--color-gold)] text-2xl mb-4"><i class="fas fa-wine-glass-alt"></i></div>
+                        <span class="text-[10px] tracking-widest text-[var(--color-gold)] uppercase font-bold">Takeout &amp; Deli</span>
+                        <h3 class="mincho text-lg sm:text-xl font-bold my-3">前菜・オードブルのテイクアウト</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            ご自宅でのパーティや特別な日の食卓を彩る、シェフ特選前菜盛り合わせ。お店の味をそのままご家庭でお楽しみいただけます。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-400 gap-2">
+                        <span>提供開始予定: 順次ご案内</span>
+                        <span class="px-2 py-1 bg-[var(--color-gold)]/10 text-[var(--color-gold)] rounded font-bold whitespace-nowrap">PREPARING</span>
+                    </div>
+                </div>
+
+                <!-- Service 2: 海老のトマトクリーム パスタソース通販 -->
+                <div class="bg-white p-6 sm:p-8 rounded-sm shadow-md border border-gray-100 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="text-[var(--color-gold)] text-2xl mb-4"><i class="fas fa-box-open"></i></div>
+                        <span class="text-[10px] tracking-widest text-[var(--color-gold)] uppercase font-bold">Online Store</span>
+                        <h3 class="mincho text-lg sm:text-xl font-bold my-3">「海老のトマトクリーム」パウチ通販</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            当店の看板メニューを特製真空パウチでお届け。全国のご家庭でラ・ベレッツァ伝統の味をお召し上がりいただけます。
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-400 gap-2">
+                        <span>提供開始予定: 順次ご案内</span>
+                        <span class="px-2 py-1 bg-[var(--color-gold)]/10 text-[var(--color-gold)] rounded font-bold whitespace-nowrap">PREPARING</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 sm:mt-12 text-center text-xs text-gray-500 px-4" data-aos="fade-up">
+                ※ 新サービスの開始・事前予約受付は、<a href="#register" class="text-[var(--color-gold)] underline font-bold hover:text-[#1a1a1a]">メールマガジン会員様</a>へ優先的にお知らせいたします。
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. メルマガ登録 -->
+    <section id="register" class="py-16 sm:py-24 bg-[#1a1a1a] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="images/kakuteru.png" alt="Texture" class="w-full h-full object-cover" loading="lazy">
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <span class="text-[var(--color-gold)] tracking-[0.3em] text-xs mb-4 block">MAIL MAGAZINE</span>
+            <h2 class="mincho text-2xl sm:text-3xl md:text-5xl mb-8 sm:mb-12 leading-tight">特別なご案内を、<br>あなたの元へ。</h2>
+
+            <div class="bg-white/5 backdrop-blur-md p-6 sm:p-8 md:p-12 border border-white/10 rounded-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10 sm:mb-12 text-sm">
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full border border-[var(--color-gold)] flex items-center justify-center mb-4 text-[var(--color-gold)]"><i class="fas fa-percent"></i></div>
+                        <p>限定割引のご案内</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full border border-[var(--color-gold)] flex items-center justify-center mb-4 text-[var(--color-gold)]"><i class="fas fa-ticket-alt"></i></div>
+                        <p>セット無料チケット</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full border border-[var(--color-gold)] flex items-center justify-center mb-4 text-[var(--color-gold)]"><i class="fas fa-birthday-cake"></i></div>
+                        <p>誕生日コースの贈呈</p>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;" class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" inputmode="email" autocomplete="email" placeholder="メールアドレスを入力" class="flex-grow bg-white/10 border border-white/20 p-4 rounded-sm focus:outline-none focus:border-[var(--color-gold)] transition-colors text-white text-base">
+                    <button onclick="handleSubmit()" class="cta-premium text-white px-8 sm:px-12 py-4 font-bold tracking-widest whitespace-nowrap">
+                        無料で登録する
+                    </button>
+                </form>
+                <p class="text-[10px] text-gray-500 mt-6 tracking-widest uppercase">Special Gift for your first registration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. インフォメーション -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div data-aos="fade-up">
+                    <h2 class="mincho text-2xl sm:text-3xl mb-6 sm:mb-8">Access</h2>
+                    <div class="space-y-5 sm:space-y-6 text-gray-600 text-sm">
+                        <dl class="flex items-start gap-3 border-b border-gray-100 pb-4">
+                            <dt class="w-20 shrink-0 font-bold">店名</dt>
+                            <dd>ラ・ベレッツァ 山形</dd>
+                        </dl>
+                        <dl class="flex items-start gap-3 border-b border-gray-100 pb-4">
+                            <dt class="w-20 shrink-0 font-bold">住所</dt>
+                            <dd class="break-words">〒990-2431 山形県山形市松見町10-7</dd>
+                        </dl>
+                        <dl class="flex items-start gap-3 border-b border-gray-100 pb-4">
+                            <dt class="w-20 shrink-0 font-bold">電話</dt>
+                            <dd><a href="tel:0236746829" class="hover:text-[var(--color-gold)]">023-674-6829</a></dd>
+                        </dl>
+                        <dl class="flex items-start gap-3 border-b border-gray-100 pb-4">
+                            <dt class="w-20 shrink-0 font-bold">定休日</dt>
+                            <dd>火曜日</dd>
+                        </dl>
+                    </div>
+                    <div class="mt-8 sm:mt-10 flex gap-6">
+                        <a href="https://www.facebook.com/Bellezza10.7/" target="_blank" rel="noopener" aria-label="Facebook" class="text-2xl text-gray-400 hover:text-[var(--color-gold)] transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="https://tabelog.com/yamagata/A0601/A060101/6009694/" target="_blank" rel="noopener" aria-label="食べログ" class="text-2xl text-gray-400 hover:text-[var(--color-gold)] transition-colors font-bold italic">T</a>
+                    </div>
+                </div>
+                <div class="h-72 sm:h-96 bg-gray-100 rounded-sm overflow-hidden shadow-inner" data-aos="fade-up" data-aos-delay="200">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.154145837968!2d140.33577857477863!3d38.22953028583627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5c7219c8d07%3A0xe1606713fe63b1f5!2z44Op44O744OZ44Os44OD44OE44KhIOWxseW9oiDjgqTjgr_jg6rjgqLjg7Mg44OR44K544K_!5e0!3m2!1sja!2sjp!4v1770857164617!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-gray-50 text-center border-t border-gray-100 px-4">
+        <p class="text-[10px] tracking-widest text-gray-400 uppercase">&copy; La Bellezza Yamagata All Rights Reserved.</p>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[100] p-4">
+        <div class="bg-white p-8 sm:p-10 rounded-sm max-w-md w-full text-center">
+            <div class="text-[var(--color-gold)] text-4xl mb-6"><i class="fas fa-envelope-open-text"></i></div>
+            <h3 class="mincho text-xl sm:text-2xl mb-4">ご登録ありがとうございます</h3>
+            <p class="text-sm text-gray-500 leading-relaxed mb-8">
+                ご登録いただいたメールアドレスへ、<br>
+                特別な特典案内をお送りいたしました。
+            </p>
+            <button onclick="closeModal()" class="w-full bg-[#1a1a1a] text-white py-4 text-xs tracking-widest font-bold">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-quad',
+            disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        });
+
+        function handleSubmit() {
+            document.getElementById('success-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
