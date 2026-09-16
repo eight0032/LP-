@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>イタリアンフレンチ レコルト | 山形の旬を収穫する独創的な一皿</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600;900&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #c4a484;
+            --deep-red: #5e0000;
+            --bg-cream: #f9f6f2;
+            --text-main: #2d2d2d;
+        }
+        body {
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+        /* 和紙のような質感のテクスチャ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* 生成されたメインビジュアル画像 */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.35)), url('images/beef.png') center/cover;
+            min-height: 100svh;
+        }
+
+        .gold-border {
+            border-color: var(--primary-gold);
+        }
+
+        .cta-button {
+            background-color: var(--deep-red);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            letter-spacing: 0.1em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(94,0,0,0.2);
+            filter: brightness(1.2);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1.5rem;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 1px;
+            background-color: var(--primary-gold);
+        }
+
+        .image-overlap {
+            position: relative;
+            z-index: 10;
+        }
+        .image-overlap::before {
+            content: "";
+            position: absolute;
+            top: -16px; right: -16px; bottom: 16px; left: 16px;
+            border: 1px solid var(--primary-gold);
+            z-index: -1;
+        }
+        @media (min-width: 768px) {
+            .image-overlap::before {
+                top: -20px; right: -20px; bottom: 20px; left: 20px;
+            }
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* スマホは縦長寄り */
+            height: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                padding-bottom: 56.25%; /* 16:9 (PC) */
+            }
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade {
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-fade { animation: none; }
+            .cta-button, .transition-all, .transition-colors { transition: none !important; }
+        }
+
+        /* タップ領域をスマホでも押しやすく */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FVエリア -->
+    <header class="hero-bg relative flex items-center justify-center px-6 text-white overflow-hidden text-center">
+        <div class="max-w-4xl z-20 animate-fade py-24">
+            <p class="text-base sm:text-lg md:text-2xl mb-4 font-light tracking-[0.3em]">Récolte</p>
+            <div class="h-px w-12 bg-white inline-block mb-8"></div>
+
+            <h1 class="text-3xl sm:text-4xl md:text-7xl font-black leading-tight tracking-wider mb-8">
+                山形・鶴岡<br>
+                <span class="md:text-6xl">実りの一皿を</span>
+            </h1>
+
+            <p class="text-sm md:text-lg leading-loose mb-12 opacity-90 font-light px-2">
+                山形牛ヒレ肉、地生の旬。<br class="md:hidden">
+                古典を現代の感性で描き出す、<br>
+                アートのような独創のフルコース。
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+                <p class="text-xs tracking-widest border border-white/50 bg-black/20 backdrop-blur-sm inline-block px-6 py-3">
+                    ディナー完全予約制 3,000円より
+                </p>
+                <a href="tel:09013911860" class="cta-button text-white px-8 py-3 rounded-sm text-sm font-bold shadow-lg w-full md:w-auto">
+                    お電話でのお問い合わせ
+                </a>
+            </div>
+        </div>
+
+        <!-- 装飾的なライン -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-50">
+            <span class="text-[10px] tracking-[0.5em] mb-2 uppercase">Scroll</span>
+            <div class="w-px h-12 bg-gradient-to-b from-white to-transparent"></div>
+        </div>
+    </header>
+
+    <!-- 2. Lead: 料理の哲学 -->
+    <section class="py-16 md:py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-10 md:mb-12 section-title">驚きと美味が交差する瞬間</h2>
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center text-left">
+                <div class="image-overlap">
+                    <img src="images/roast.png" alt="独創的な一皿" class="w-full h-auto shadow-2xl" loading="lazy">
+                </div>
+                <div class="space-y-5 md:space-y-6">
+                    <p class="text-sm text-[#8b0000] font-bold tracking-[0.2em]">CONCEPT</p>
+                    <h3 class="text-lg sm:text-xl font-bold">「思いもよらない」を、<br>最高のマリアージュで。</h3>
+                    <p class="text-gray-600 text-sm leading-loose">
+                        マグロとさくらんぼ、ローストビーフに西洋ワサビのアイス。<br>
+                        庄内地方を中心とした地元の旬を、古典的な技法と現代のビジュアルで再現。<br>
+                        遊び心とオリジナリティが、一皿をアートへと昇華させます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CTA -->
+    <section class="py-14 md:py-16 bg-[#2d2d2d] text-white text-center px-4">
+        <p class="text-sm tracking-[0.3em] mb-4 opacity-70">RESERVATION</p>
+        <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-8">至福のひとときをご用意いたします</h2>
+        <a href="tel:09013911860" class="cta-button text-white px-8 py-4 md:px-10 md:py-5 rounded-sm text-base md:text-lg font-bold inline-flex items-center">
+            <span class="mr-4">予約・お問い合わせ</span>
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+    </section>
+
+    <!-- 4. Chef Story -->
+    <section class="py-16 md:py-24 px-6 overflow-hidden">
+        <div class="max-w-5xl mx-auto relative">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2">
+                    <img src="images/chef.png" alt="シェフの情熱" class="w-full h-[320px] sm:h-[400px] md:h-[500px] object-cover shadow-xl" loading="lazy">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-xs border-b gold-border pb-1 tracking-widest text-[#c4a484]">OWNER CHEF</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mt-4 mb-6 md:mb-8">雫波 英城</h2>
+                    <div class="space-y-5 md:space-y-6 text-sm text-gray-700 leading-loose">
+                        <p>
+                            34歳、情熱ひとつで掴み出した料理人の道。脱サラして庄内へUターンし、名店「ロアジス」での5年間の修行。
+                        </p>
+                        <p>
+                            フランス語で「収穫・実り」を意味する「レコルト」。その名の通り、山形や北陸の豊かな食材を丁寧に集め、皆様に最高の形でお届けしたい。
+                        </p>
+                        <p>
+                            カフェのように温かく、しかし料理はどこまでも妥協なく。肩肘張らずに愉しめる、本物の味をご堪能ください。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Review -->
+    <section class="py-16 md:py-24 bg-white px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="mb-12 md:mb-16">
+                <h2 class="text-xl md:text-2xl font-bold mb-2">Guest Voices</h2>
+                <div class="h-px w-12 bg-[#c4a484] mx-auto"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="p-6 md:p-8 border border-gray-100 italic text-sm text-gray-600 leading-relaxed">
+                    「地生食材を使った独創的な料理。思いもよらない組み合わせや手法は美味しくもあり驚かされる。」
+                </div>
+                <div class="p-6 md:p-8 border border-gray-100 italic text-sm text-gray-600 leading-relaxed">
+                    「フルーツの使いかたが非常に巧み。あまり他では味わえません。」
+                </div>
+                <div class="p-6 md:p-8 border border-gray-100 italic text-sm text-gray-600 leading-relaxed sm:col-span-2 md:col-span-1">
+                    「丁寧な料理とレベルの高い味に満足。パスタの美味しいお店です。」
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5. Coming Soon: 今後提供予定の新サービス -->
+    <section class="py-16 md:py-24 px-6 bg-[#f9f6f2] border-t border-gray-200">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="mb-12 md:mb-16">
+                <p class="text-xs text-[#c4a484] tracking-[0.3em] uppercase font-bold mb-2">FUTURE SERVICES</p>
+                <h2 class="text-2xl md:text-3xl font-bold section-title">COMING SOON</h2>
+                <p class="text-sm text-gray-600 mt-6 max-w-xl mx-auto leading-loose">
+                    レコルトでは、皆様の日常により添う新たな「実り」をお届けするため、<br class="hidden md:inline">以下の新しいサービス・企画を準備しております。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 text-left">
+                <!-- 1. 平日夕方のカフェ営業 -->
+                <div class="bg-white p-6 md:p-8 shadow-sm border border-gray-100 rounded-sm relative overflow-hidden group hover:border-[#c4a484] transition-all">
+                    <span class="absolute top-4 right-4 text-[10px] tracking-widest text-[#5e0000] bg-[#f4ece4] px-3 py-1 font-bold">PREPARING</span>
+                    <div class="text-[#c4a484] text-xs font-bold tracking-widest mb-2">01. CAFE &amp; DOLCE</div>
+                    <h3 class="text-base md:text-lg font-bold mb-4 text-[#2d2d2d] pr-20">平日夕方のカフェ・アシェットデセール</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        ランチとディナーの間のひとときに。季節のフルーツを贅沢に使った盛り合わせデセールと、ソムリエ厳選ペアリングドリンクを愉しむ限定カフェタイム。
+                    </p>
+                </div>
+
+                <!-- 2. おうちでレコルト（テイクアウト・ギフト） -->
+                <div class="bg-white p-6 md:p-8 shadow-sm border border-gray-100 rounded-sm relative overflow-hidden group hover:border-[#c4a484] transition-all">
+                    <span class="absolute top-4 right-4 text-[10px] tracking-widest text-[#5e0000] bg-[#f4ece4] px-3 py-1 font-bold">PREPARING</span>
+                    <div class="text-[#c4a484] text-xs font-bold tracking-widest mb-2">02. TAKEOUT &amp; GIFT</div>
+                    <h3 class="text-base md:text-lg font-bold mb-4 text-[#2d2d2d] pr-20">「おうちでレコルト」本格デリ・テイクアウト</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        評判のパスタソースや山形食材のビストロデリをご家庭で。記念日用オードブルやギフトボックスの全国発送も準備中です。
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-500 mt-10 md:mt-12">※開始時期や詳細は公式Instagramおよびホームページにて順次発表いたします。</p>
+        </div>
+    </section>
+
+    <!-- 6. Map Section -->
+    <section class="py-16 md:py-24 px-6 bg-white border-t border-gray-100">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-xl md:text-2xl font-bold mb-10 md:mb-12 section-title">ACCESS</h2>
+            <div class="map-container shadow-lg mb-8">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.1371068576186!2d139.80675387480804!3d38.737615856118026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8c1a809ce7c5d9%3A0xe2f4ba005a2fd71b!2z44Kk44K_44Oq44Ki44Oz44OV44Os44Oz44OB44Os44Kz44Or44OI!5e0!3m2!1sja!2sjp!4v1770859944582!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="text-sm text-gray-600 font-bold">〒997-0047 山形県鶴岡市大塚町21-2</p>
+            <p class="text-xs text-gray-400 mt-2">※住宅街に位置するため、お車でお越しの際は道にご注意ください。</p>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="py-16 md:py-20 bg-[#2d2d2d] text-white px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 border-b border-white/10 pb-10 md:pb-12 mb-10 md:mb-12">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-serif italic tracking-tighter">Récolte</h2>
+                <div class="flex gap-6 text-sm opacity-60">
+                    <a href="https://www.instagram.com/italianfrench_recolte/" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="http://italianfrenchrecolte.jp/" class="hover:text-white transition-colors">Official HP</a>
+                </div>
+            </div>
+            <div class="text-sm space-y-3 opacity-80 font-light">
+                <p>電話：090-1391-1860</p>
+                <p>定休日：火曜日</p>
+                <p>ランチ：11:30〜14:30 / ディナー：18:00〜21:00</p>
+            </div>
+        </div>
+        <div class="text-center text-[10px] tracking-widest opacity-30 uppercase">
+            &copy; Italian French Récolte. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
