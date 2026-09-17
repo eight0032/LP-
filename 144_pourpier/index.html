@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ナチュラルワインと気まぐれキッチン プルピエ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --wine-deep: #5c1a21;
+            --wine-darker: #3b1216;
+            --wine-light: #fdfcf8;
+            --accent-gold: #b39359;
+            --ink: #2d2d2d;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--wine-light);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-serif-jp { font-family: 'Shippori Mincho', serif; }
+        .font-serif-en { font-family: 'Playfair Display', serif; }
+
+        .text-wine-deep { color: var(--wine-deep); }
+        .text-accent-gold { color: var(--accent-gold); }
+        .bg-accent-gold { background-color: var(--accent-gold); }
+        .border-accent-gold { border-color: var(--accent-gold); }
+
+        /* fluid type: scales smoothly from mobile to desktop, no awkward jumps */
+        .fluid-hero-jp { font-size: clamp(1.5rem, 5.2vw, 2.5rem); }
+        .fluid-h1 { font-size: clamp(1.6rem, 6vw, 3.5rem); }
+        .fluid-h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+        .fluid-cta-h2 { font-size: clamp(1.9rem, 6.5vw, 3.2rem); }
+        .fluid-phone { font-size: clamp(1.6rem, 7vw, 2.5rem); }
+        .fluid-coming { font-size: clamp(2rem, 8vw, 3.5rem); }
+
+        .underline-hand {
+            background: linear-gradient(transparent 70%, rgba(179, 147, 89, 0.35) 70%);
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(#dcdcdc 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+
+        .fade-in {
+            animation: fadeIn 1.1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .blur-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Responsive Google Map: keeps a sane aspect ratio at every width */
+        .map-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .map-container { aspect-ratio: auto; height: 100%; min-height: 420px; }
+        }
+        .map-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Prevent any accidental horizontal scroll on small screens */
+        html, body { max-width: 100%; overflow-x: hidden; }
+
+        a, button { touch-action: manipulation; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, #fv-bg { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body class="leading-relaxed bg-pattern">
+
+    <!-- FV AREA -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <div id="fv-bg" class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('images/kakuteru.png');">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/65"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl px-6 sm:px-8 fade-in text-center py-24">
+            <div class="text-white text-lg sm:text-2xl md:text-3xl font-serif-jp tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed mb-6 sm:mb-8">
+                山形の<span class="text-accent-gold underline underline-offset-8">「ひょう」</span>が繋ぐ、旬とワインの物語。
+            </div>
+
+            <div class="text-white">
+                <p class="font-serif-en italic text-base sm:text-xl mb-3 sm:mb-4 tracking-widest">Pourpier</p>
+                <h1 class="fluid-h1 font-serif-jp font-bold mb-8 sm:mb-10 leading-snug sm:leading-relaxed">
+                    一期一会の食体験を、<br>その日、その瞬間の気まぐれで。
+                </h1>
+                <div class="inline-block border border-white px-8 py-4 sm:px-10 sm:py-5 hover:bg-white hover:text-black active:bg-white active:text-black transition-all duration-500 group">
+                    <a href="#cta" class="flex items-center space-x-4">
+                        <span class="tracking-widest text-sm sm:text-base">席を予約する</span>
+                        <span class="group-hover:translate-x-2 transition-transform">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white text-xs tracking-widest animate-bounce">
+            SCROLL
+        </div>
+    </header>
+
+    <!-- INTRODUCTION -->
+    <section class="py-16 md:py-24 relative overflow-hidden">
+        <div class="blur-circle bg-red-900 w-72 h-72 sm:w-96 sm:h-96 -top-20 -left-20"></div>
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="aspect-[4/5] rounded-sm shadow-2xl overflow-hidden">
+                        <img src="images/wine.jpg" alt="ナチュラルワインを注ぐ様子" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-5 -right-5 sm:-bottom-6 sm:-right-6 bg-[#b39359] text-white p-5 sm:p-6 max-w-[70%] sm:max-w-none">
+                        <p class="font-serif-jp text-xs sm:text-sm tracking-widest leading-relaxed">
+                            「ワインが好きになった」<br>その理由が、ここにあります。
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 mt-6 md:mt-0">
+                    <h3 class="text-wine-deep font-serif-en italic text-xl sm:text-2xl mb-3 sm:mb-4">Quality &amp; Passion</h3>
+                    <h2 class="fluid-h2 font-serif-jp font-bold mb-6 sm:mb-8 leading-relaxed">
+                        山形駅、徒歩15分。<br>ガラス越しに灯る、美食の社交場。
+                    </h2>
+                    <p class="text-gray-600 mb-5 sm:mb-6 leading-loose text-[15px] sm:text-base">
+                        「プルピエ」とは、山形ではおなじみの野草「ひょう」のフランス語。地元の食文化への敬意と、世界のナチュラルワインを融合させた開放的なダイニングバーです。
+                    </p>
+                    <p class="text-gray-600 leading-loose text-[15px] sm:text-base">
+                        カウンター越しに見えるシェフの繊細な手仕事。グラスを回す音。そのすべてが、一期一会の夜を彩ります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU HIGHLIGHT -->
+    <section class="py-16 md:py-24 bg-[#1a1a1a] text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="fluid-h2 font-serif-jp font-bold mb-4">至福のひと皿、前菜盛り合わせ</h2>
+                <div class="w-16 sm:w-20 h-px bg-accent-gold mx-auto"></div>
+                <p class="mt-5 sm:mt-6 text-gray-400 text-sm sm:text-base">「まずは、これから。」お客様のほとんどが注文される、プルピエの代名詞的な一皿です。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-0 border border-white/10">
+                <div class="aspect-[4/3] md:aspect-auto overflow-hidden">
+                    <img src="images/zensai.png" alt="前菜の盛り合わせ" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 sm:p-10 md:p-16 flex flex-col justify-center bg-[#222]">
+                    <h3 class="text-lg sm:text-xl font-serif-jp mb-5 sm:mb-6 text-accent-gold tracking-wider">日替わりの気まぐれが、皿の上に詰まった一皿</h3>
+                    <p class="text-gray-300 mb-7 sm:mb-8 leading-loose text-[15px] sm:text-base">
+                        山形の旬の食材を中心に、シェフ武田恵がその日のインスピレーションで仕上げる創作前菜。ボリュームはもちろん、ワインとのペアリングを第一に考えた味の構成は、何度訪れても新しい発見があります。
+                    </p>
+                    <div class="grid grid-cols-2 gap-5 sm:gap-6 text-sm">
+                        <div>
+                            <p class="text-accent-gold mb-1">Point 01</p>
+                            <p>山形の旬食材</p>
+                        </div>
+                        <div>
+                            <p class="text-accent-gold mb-1">Point 02</p>
+                            <p>丁寧なポーション分け</p>
+                        </div>
+                        <div>
+                            <p class="text-accent-gold mb-1">Point 03</p>
+                            <p>ワインが進む味付け</p>
+                        </div>
+                        <div>
+                            <p class="text-accent-gold mb-1">Point 04</p>
+                            <p>一期一会の構成</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-16 md:py-24 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-center fluid-h2 font-serif-jp font-bold mb-12 md:mb-16">心地よさに、酔いしれる。</h2>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12">
+                <div class="flex gap-4 sm:gap-6 items-start">
+                    <span class="text-4xl sm:text-5xl font-serif-en text-accent-gold opacity-30 leading-none">&ldquo;</span>
+                    <div>
+                        <p class="text-base sm:text-lg font-serif-jp mb-4 italic underline-hand">「山形に行ったら必ず訪問するお店です。ボトル価格も良心的でホスピタリティが素晴らしい。」</p>
+                        <p class="text-sm text-gray-500">— 国内外のワイン愛好家様</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 sm:gap-6 items-start">
+                    <span class="text-4xl sm:text-5xl font-serif-en text-accent-gold opacity-30 leading-none">&ldquo;</span>
+                    <div>
+                        <p class="text-base sm:text-lg font-serif-jp mb-4 italic underline-hand">「店員さんの粋な計らいが心地いい。おまかせで頼めば料理に合うワインを提供してくれます。」</p>
+                        <p class="text-sm text-gray-500">— ワインを好きになった女性のお客様</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER STORY -->
+    <section class="py-16 md:py-24 bg-white border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+            <div class="w-full md:w-1/2">
+                <div class="aspect-[4/3] shadow-xl overflow-hidden">
+                    <img src="images/chef.png" alt="厨房に立つシェフたち" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="text-accent-gold font-serif-en tracking-[0.3em] sm:tracking-[0.4em] mb-3 sm:mb-4 block text-sm">HISTORY</span>
+                <h2 class="fluid-h2 font-serif-jp font-bold mb-5 sm:mb-6">令和のはじまり、<br>二人の信頼から生まれた場所。</h2>
+                <p class="text-gray-600 mb-5 sm:mb-6 leading-loose text-[15px] sm:text-base">
+                    店主・佐藤洋一朗の洗練されたサービスと、地元山形出身のシェフ・武田恵の創造力。かつて共に働いた二人が、令和の幕開けと共に作り上げたのが「プルピエ」です。
+                </p>
+                <p class="text-gray-600 leading-loose text-[15px] sm:text-base">
+                    大切にしているのは、人との縁。農家さんから届く旬の野菜、醸造家の情熱が詰まったワイン。それらをお客様へ「最高の状態」で届ける。それが私たちの使命です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SECTION -->
+    <section class="py-16 md:py-24 bg-[#3b1216] text-white relative overflow-hidden">
+        <div class="blur-circle bg-amber-600 w-64 h-64 sm:w-80 sm:h-80 top-10 right-10"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-accent-gold/20 border border-accent-gold text-accent-gold text-xs px-4 py-1.5 rounded-full font-serif-en tracking-widest mb-4">NEW PROJECT</span>
+                <h2 class="fluid-coming font-serif-en font-bold text-accent-gold mb-4 tracking-wider">COMING SOON</h2>
+                <p class="text-lg sm:text-xl md:text-2xl font-serif-jp tracking-wide mb-3">プルピエの発信が、もっとわかりやすく快適に。</p>
+                <p class="text-gray-300 text-sm max-w-2xl mx-auto leading-relaxed">
+                    「今日どんなメニューがあるの？」「どんなワインが届いたの？」<br class="hidden sm:inline">皆様のお声にお応えし、SNSやWEBでの情報発信をリニューアル準備中です。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="bg-[#2a0c0f]/80 border border-white/10 p-6 sm:p-8 rounded-lg flex flex-col justify-between hover:border-accent-gold/50 transition-all duration-300">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-accent-gold/20 text-accent-gold flex items-center justify-center font-bold text-lg mb-5 sm:mb-6">01</div>
+                        <h3 class="font-serif-jp text-lg font-bold mb-3 text-amber-100">SNS「ハイライト」ガイド</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-5 sm:mb-6">
+                            Instagramプロフィール上に最新コース、気まぐれメニュー、自然派ワインの情報を「固定・ハイライト化」。初めての方でも迷わず情報に辿り着けます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-accent-gold">
+                        <span>SNSナビゲーション</span>
+                        <span>準備中</span>
+                    </div>
+                </div>
+
+                <div class="bg-[#2a0c0f]/80 border border-white/10 p-6 sm:p-8 rounded-lg flex flex-col justify-between hover:border-accent-gold/50 transition-all duration-300">
+                    <div>
+                        <div class="w-12 h-12 rounded-full bg-accent-gold/20 text-accent-gold flex items-center justify-center font-bold text-lg mb-5 sm:mb-6">02</div>
+                        <h3 class="font-serif-jp text-lg font-bold mb-3 text-amber-100">デジタルメニュー×ワイン検索</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-5 sm:mb-6">
+                            「重め・軽め」「オレンジワイン」など、今の気分に合わせたおすすめワインや、シェフ厳選の本日のおすすめ料理をスマホで閲覧できる機能。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-accent-gold">
+                        <span>WEBスマートメニュー</span>
+                        <span>順次公開</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA & ACCESS -->
+    <section class="py-20 md:py-32 relative overflow-hidden" id="cta">
+        <div class="absolute inset-0 z-0 bg-cover bg-center grayscale opacity-20" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1920&q=80');"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 text-center">
+            <h2 class="fluid-cta-h2 font-serif-jp font-bold mb-8 md:mb-10 tracking-wide sm:tracking-widest leading-snug">
+                山形の夜を、<br>もっと自由に、もっと美味しく。
+            </h2>
+
+            <div class="bg-white shadow-2xl relative text-left">
+                <div class="flex flex-col lg:flex-row">
+                    <!-- Reservation Info -->
+                    <div class="lg:w-1/2 p-6 sm:p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-accent-gold/20">
+                        <div class="border border-accent-gold p-6 sm:p-8 h-full flex flex-col justify-center text-center lg:text-left">
+                            <p class="text-lg sm:text-xl font-serif-jp mb-6 sm:mb-8">ご予約はお電話にて承っております</p>
+                            <a href="tel:0236640742" class="fluid-phone font-serif-en font-bold text-wine-deep hover:text-accent-gold transition-colors block">
+                                023-664-0742
+                            </a>
+                            <div class="mt-8 sm:mt-12 text-left text-sm text-gray-600 space-y-4 pt-6 sm:pt-8 border-t border-gray-100">
+                                <div>
+                                    <p class="font-bold text-black mb-1 tracking-widest uppercase text-xs">Address</p>
+                                    <p>〒990-0045 山形県山形市桜町2-42</p>
+                                    <p class="text-xs">（山形駅より徒歩15分 / 近隣にコインPあり）</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-black mb-1 tracking-widest uppercase text-xs">Opening Hours</p>
+                                    <p>定休日：月曜日</p>
+                                </div>
+                                <div class="pt-2">
+                                    <a href="https://www.facebook.com/%E3%83%97%E3%83%AB%E3%83%94%E3%82%A8-Pourpier-585650848582023/" class="text-accent-gold hover:underline inline-flex items-center" target="_blank" rel="noopener noreferrer">
+                                        Facebook Page <span class="ml-2">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Google Map -->
+                    <div class="lg:w-1/2">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.180313386643!2d140.32984627478!3d38.25212388452158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb749175e9acd%3A0x6d87e0e7d066e2c5!2z44OK44OB44Ol44Op44Or44Ov44Kk44Oz44Go5rCX44G-44GQ44KM44Kt44OD44OB44OzIOODl-ODq-ODlOOCqA!5e0!3m2!1sja!2sjp!4v1770783760064!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="プルピエ 地図"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 sm:py-12 bg-[#111] text-white/40 text-center text-xs tracking-widest px-6">
+        <p class="font-serif-en mb-2">Natural Wine &amp; Whimsical Kitchen POURPIER</p>
+        <p>&copy; 2024 POURPIER. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
