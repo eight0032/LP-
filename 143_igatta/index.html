@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊・食・旬 Igatta | 山形駅近の至高の創作イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #b39359;
+            --color-dark: #1a1a1a;
+            --color-stone: #f8f5f0;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-stone);
+            color: var(--color-dark);
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'Noto Serif JP', serif; }
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .bg-dark { background-color: var(--color-dark); }
+
+        /* 縦書きクラス */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* 和風テクスチャの再現 */
+        .washi-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        .hero-zoom {
+            animation: zoom 20s infinite alternate;
+        }
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .border-gold { border-color: var(--color-gold); }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #b39359 0%, #8c6e3d 100%);
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(179, 147, 89, 0.4);
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* スマホでの縦書き見出しの高さ調整 */
+        @media (max-width: 767px) {
+            .vertical-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="washi-bg">
+
+    <!-- FIRST VIEW -->
+    <header class="relative h-[100dvh] w-full overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="images/pasta2.png"
+                 id="fv-image"
+                 alt="鍋で食べるウニクリームパスタ"
+                 class="w-full h-full object-cover hero-zoom">
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <div class="relative z-10 h-full flex flex-col justify-between px-5 py-10 sm:px-6 sm:py-12 md:px-20 md:flex-row md:items-center">
+            <div class="text-white h-fit self-start">
+                <h1 class="vertical-text text-xl sm:text-2xl md:text-4xl font-serif font-bold tracking-[0.15em] md:tracking-[0.2em] leading-relaxed max-h-[60vh]">
+                    箸で食す、山形の旬とイタリアの感性。
+                </h1>
+            </div>
+
+            <div class="text-white text-left md:text-right self-end mt-6 md:mt-0">
+                <p class="text-base sm:text-lg md:text-2xl font-serif mb-3 md:mb-4 tracking-widest">山形駅西口 徒歩五分</p>
+                <div class="w-16 h-px md:w-px md:h-24 bg-gold mb-3 md:mb-4 md:ml-auto"></div>
+                <p class="text-xs sm:text-sm md:text-base tracking-widest opacity-80 uppercase">Creative Italian Restaurant Igatta</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- LEAD SECTION -->
+    <section class="py-16 md:py-24 px-5 sm:px-6 text-center">
+        <div class="max-w-2xl mx-auto">
+            <span class="text-gold font-serif text-lg md:text-xl block mb-5 md:mb-6 italic">Concept</span>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-8 md:mb-10 leading-loose">
+                肩肘張らずに、<br>
+                最高の一皿を。
+            </h2>
+            <p class="text-gray-600 leading-loose mb-10 md:mb-12 text-sm sm:text-base">
+                山形の豊かな土壌が育んだ食材と、<br class="hidden md:block">
+                本場イタリアの技法が響き合う創作料理。<br>
+                私たちは「お箸で食べる」というスタイルにこだわり、<br class="hidden md:block">
+                和の安らぎと洋の華やかさを一つに結びました。
+            </p>
+            <div class="flex justify-center">
+                <div class="w-12 h-px bg-gold"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE: THE SIGNATURE DISH -->
+    <section class="py-8 md:py-12 px-5 sm:px-6 md:px-0">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-stretch bg-white shadow-sm">
+            <div class="w-full md:w-1/2 overflow-hidden">
+                <img src="images/pasta.png"
+                     alt="至高のウニクリームパスタ"
+                     class="w-full h-64 sm:h-80 md:h-full object-cover hover:scale-105 transition duration-700">
+            </div>
+            <div class="w-full md:w-1/2 p-8 sm:p-10 md:p-16 flex flex-col justify-center bg-dark text-white">
+                <h3 class="text-gold font-serif text-sm mb-3 md:mb-4 tracking-tighter">Signature Dish</h3>
+                <h4 class="text-2xl sm:text-3xl font-serif font-bold mb-5 md:mb-6">濃厚、かつ繊細。<br>ウニのクリームパスタ</h4>
+                <p class="text-stone-400 mb-7 md:mb-8 leading-relaxed text-sm sm:text-base">
+                    多くのリピーターを惹きつけてやまない、Igatta不動の人気メニュー。厳選されたウニを贅沢に使用し、特製のクリームソースがパスタに絡みつく、官能的な味わいをご堪能ください。
+                </p>
+                <a href="https://igatta-igatta.com/" class="inline-block border border-gold text-gold px-8 py-3 text-sm hover:bg-gold hover:text-white transition text-center">
+                    VIEW DETAILS
+                </a>
+            </div>
+        </div>
+    </section>
+
+   <!-- THREE POINTS -->
+    <section class="py-16 md:py-24 bg-stone-200/50">
+        <div class="max-w-5xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold tracking-widest">Igattaのこだわり</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
+                <div class="group">
+                    <div class="mb-4">
+                        <span class="inline-block text-xs font-semibold tracking-widest text-gold mb-1">DRINK</span>
+                        <h5 class="text-lg font-serif font-bold mb-3 text-gold">山形県産ワインの共演</h5>
+                    </div>
+                    <p class="text-sm text-gray-600">県内生の希少なワインを多数取り揃え。料理とのペアリングが至福の時間を創り出します。</p>
+                </div>
+                <div class="group">
+                    <div class="mb-4">
+                        <span class="inline-block text-xs font-semibold tracking-widest text-gold mb-1">SPACE</span>
+                        <h5 class="text-lg font-serif font-bold mb-3 text-gold">五十席の寛ぎ空間</h5>
+                    </div>
+                    <p class="text-sm text-gray-600">個室、掘りごたつ、カウンター。シーンに合わせた上質な空間で、ゆったりとお過ごしいただけます。</p>
+                </div>
+                <div class="group sm:col-span-2 md:col-span-1">
+                    <div class="mb-4">
+                        <span class="inline-block text-xs font-semibold tracking-widest text-gold mb-1">STYLE</span>
+                        <h5 class="text-lg font-serif font-bold mb-3 text-gold">箸で食すイタリアン</h5>
+                    </div>
+                    <p class="text-sm text-gray-600">マナーに縛られず、料理そのものを心から楽しむ。それがIgattaが提案する「粋」な食事です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMING SOON SECTION -->
+    <section class="py-16 md:py-24 bg-dark text-white relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block border border-gold text-gold px-4 py-1 text-xs tracking-[0.3em] font-serif mb-4 rounded-full">NEW SERVICES</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-widest text-white mb-4">Coming Soon</h2>
+                <p class="text-stone-400 font-serif text-sm md:text-base max-w-xl mx-auto">
+                    素敵なワインのラインナップをもっと自由に、もっと美味しく。<br>Igattaが準備中の新しい体験にご期待ください。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1 -->
+                <div class="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-sm hover:border-gold/50 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="text-gold text-xs font-serif tracking-widest mb-2">SERVICE 01</div>
+                        <h3 class="text-xl font-serif font-bold mb-4 text-white">WEBワインペアリング診断</h3>
+                        <p class="text-sm text-stone-300 leading-relaxed mb-6">
+                            「今日食べたい料理」や「お好みの味覚」を選ぶだけで、Igatta厳選の山形県産ワインやイタリアワインから最高のペアリングをご提案するオンラインツール。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-gold font-serif">
+                        <span>提供開始予定:2026年秋</span>
+                        <span class="px-2 py-0.5 bg-gold/20 rounded">開発中</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white/5 border border-gold/40 p-6 sm:p-8 rounded-sm hover:border-gold transition duration-300 flex flex-col justify-between relative shadow-lg">
+                    <div class="absolute -top-3 right-6 bg-gold text-dark text-[10px] font-bold px-3 py-1 tracking-wider uppercase">
+                        Recommended
+                    </div>
+                    <div>
+                        <div class="text-gold text-xs font-serif tracking-widest mb-2">SERVICE 02</div>
+                        <h3 class="text-xl font-serif font-bold mb-4 text-white">シェフ厳選 旬のペアリングコース</h3>
+                        <p class="text-sm text-stone-300 leading-relaxed mb-6">
+                            前菜から名物のウニクリームパスタ、メインのお肉料理まで、一皿ひと皿にソムリエ厳選の一杯を添えた特別ディナーコース。選び方に悩まず至福の一時を。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-gold font-serif">
+                        <span>事前予約限定コース</span>
+                        <span class="px-2 py-0.5 bg-gold/20 rounded">近日ご案内</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESS & MAP SECTION -->
+    <section class="py-16 md:py-24 bg-white px-5 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-gold font-serif block mb-4 italic">Access</span>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold">店舗所在地</h2>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-10 md:gap-12 items-start">
+                <div class="w-full lg:w-1/2">
+                    <div class="map-container shadow-xl border border-stone-200">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.433680158479!2d140.3209602747795!3d38.24624668486368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60ce5f7ecf1%3A0x6534b5fb3e67d7df!2z5LyK772l6aOf772l5pesIElnYXR0YQ!5e0!3m2!1sja!2sjp!4v1770782942140!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 font-serif">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 text-dark border-b border-gold pb-4 inline-block">伊・食・旬 Igatta</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-gold font-bold text-sm uppercase tracking-widest">Address</p>
+                            <p class="text-base sm:text-lg">〒990-0829 山形県山形市五日町10-25</p>
+                        </div>
+                        <div>
+                            <p class="text-gold font-bold text-sm uppercase tracking-widest">Access</p>
+                            <p class="text-base sm:text-lg">山形駅西口より徒歩5分(駐車場完備)</p>
+                        </div>
+                        <div>
+                            <p class="text-gold font-bold text-sm uppercase tracking-widest">Opening Hours</p>
+                            <p class="text-base sm:text-lg">ランチ:11:30〜14:00<br>ディナー:17:30〜20:30</p>
+                        </div>
+                        <div>
+                            <p class="text-gold font-bold text-sm uppercase tracking-widest">Closed</p>
+                            <p class="text-base sm:text-lg">毎週月曜日</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-16 md:py-24 px-5 sm:px-6 bg-dark text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-gold font-serif block mb-4 italic">Customer Voice</span>
+            <h2 class="text-2xl md:text-3xl font-serif font-bold mb-12 md:mb-16">選ばれ続ける理由</h2>
+            <div class="space-y-10 md:space-y-12 text-left">
+                <div class="border-l border-gold pl-6 sm:pl-8">
+                    <p class="text-lg sm:text-xl font-serif italic mb-4">「お料理はタイミングを見計らって一人ずつお膳で提供され、内容も申し分なし。コスパも最高です。」</p>
+                    <span class="text-sm text-stone-500">— 結婚記念日でご利用のお客様</span>
+                </div>
+                <div class="border-l border-gold pl-6 sm:pl-8">
+                    <p class="text-lg sm:text-xl font-serif italic mb-4">「パスタもピザもおいしく、山形県内生のワイン、アンチョビのポテト、最高でした。」</p>
+                    <span class="text-sm text-stone-500">— 夕食でご利用のお客様</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="relative py-20 md:py-32 px-5 sm:px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/dessert.png" alt="店内の灯り" class="w-full h-full object-cover opacity-10">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-bold mb-6 md:mb-8 leading-tight">
+                特別なひとときを、<br>山形駅西口の隠れ家で。
+            </h2>
+            <div class="bg-white p-6 sm:p-8 md:p-12 shadow-2xl border border-stone-200">
+                <p class="text-gold font-bold mb-5 md:mb-6 tracking-widest text-sm sm:text-base">【限定特典】デザートサービス</p>
+                <p class="mb-8 md:mb-10 text-gray-600 italic text-sm sm:text-base">ネット予約時に「LPを見た」とお伝えいただいたお客様に、<br class="hidden md:block">食後の特製デザートをプレゼントいたします。</p>
+
+                <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                    <a href="https://igatta-igatta.com/" class="cta-btn text-white px-10 sm:px-12 py-4 sm:py-5 rounded-sm font-bold text-base sm:text-lg tracking-widest w-full md:w-auto">
+                        公式サイトで空席確認
+                    </a>
+                </div>
+                <div class="mt-8 md:mt-10 pt-8 md:pt-10 border-t border-stone-100">
+                    <p class="text-sm text-gray-400 mb-2 font-sans">お電話でのご予約・お問い合わせ</p>
+                    <a href="tel:0236465376" class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-dark hover:text-gold transition">023-646-5376</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-stone-500 py-10 md:py-12 px-5 sm:px-6 border-t border-white/5">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
+            <div class="text-center md:text-left">
+                <p class="text-white font-serif font-bold text-lg sm:text-xl mb-2">伊・食・旬 Igatta</p>
+                <p class="text-xs tracking-widest uppercase">Creative Italian Restaurant</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-5 sm:gap-8 text-xs tracking-widest">
+                <a href="https://igatta-igatta.com/" class="hover:text-white transition">OFFICIAL SITE</a>
+                <a href="#" class="hover:text-white transition">INSTAGRAM</a>
+                <a href="#" class="hover:text-white transition">PRIVACY POLICY</a>
+            </div>
+        </div>
+        <div class="mt-10 md:mt-12 text-center text-[10px] opacity-30">
+            &copy; 2024 伊・食・旬 Igatta.
+        </div>
+    </footer>
+
+</body>
+</html>
