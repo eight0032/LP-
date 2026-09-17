@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>アルケッチャーノ コンチェルト | 山形の「真の旨み」を奏でる、新しいイタリア料理</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+  :root{
+    --ink:#1C1B17;
+    --paper:#FAF6EC;
+    --paper-soft:#F2ECDD;
+    --pine:#1F3A30;
+    --pine-deep:#152A22;
+    --gold:#B8892B;
+    --gold-soft:#D9B872;
+    --wine:#6B2A3A;
+    --line: rgba(28,27,23,0.14);
+    --line-on-dark: rgba(250,246,236,0.18);
+  }
+  :root:not([data-theme="light"]) {
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#17140F;
+      --paper-soft:#1E1A14;
+      --ink:#F2EEE3;
+      --line: rgba(242,238,227,0.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17140F;
+    --paper-soft:#1E1A14;
+    --ink:#F2EEE3;
+    --line: rgba(242,238,227,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .serif{ font-family:'Shippori Mincho', serif; }
+  .display-en{ font-family:'EB Garamond', serif; }
+
+  .hairline{ border-color:var(--line); }
+  .hairline-dark{ border-color:var(--line-on-dark); }
+
+  .vert-jp{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing:0.35em;
+  }
+
+  .grain{
+    background-image: radial-gradient(rgba(250,246,236,0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .grain-dark{
+    background-image: radial-gradient(rgba(28,27,23,0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .btn-primary{
+    background:var(--gold);
+    color:var(--pine-deep);
+  }
+  .btn-primary:hover{ background:var(--gold-soft); }
+
+  .num{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    color:var(--gold);
+  }
+
+  .fade-up{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .fade-up.in{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .fade-up{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  .tap{ min-height:44px; }
+
+  ::selection{ background:var(--gold); color:var(--pine-deep); }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="relative min-h-[100svh] flex flex-col text-[#FAF6EC] overflow-hidden">
+  <!-- 背景画像 -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="images/pasta.jpg" 
+      alt="レストランの雰囲気" 
+      class="w-full h-full object-cover scale-105 transform animate-fade-in"
+    />
+  </div>
+
+  <!-- 背景色とグラデーションのオーバーレイ（文字の視認性と雰囲気の調整） -->
+  <div class="absolute inset-0 bg-[color:var(--pine)]/75 z-0"></div>
+  <div class="absolute inset-0 grain z-0"></div>
+  <div class="absolute inset-0 opacity-40 z-0" style="background:radial-gradient(ellipse at 20% 15%, rgba(184,137,43,0.25), transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(107,42,58,0.35), transparent 55%);"></div>
+
+  <!-- vertical label, desktop only -->
+  <div class="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-10">
+    <p class="vert-jp text-xs text-[#D9B872]/80">山形県 山形市 双葉町</p>
+  </div>
+
+  <div class="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-10 md:pl-28 md:pr-16 max-w-4xl">
+    <p class="text-[11px] sm:text-xs tracking-[0.25em] text-[#D9B872] mb-6">
+      山形・双葉町 &nbsp;/&nbsp; 監修 奥田政行
+    </p>
+    <h1 class="serif font-bold leading-[1.5] mb-8" style="font-size:clamp(1.9rem, 6vw, 3.6rem);">
+      素材が「歌い出す」<br>
+      その一瞬の旨みを、逃さない。
+    </h1>
+    <p class="text-sm sm:text-base font-light leading-loose text-[#EDE6D3]/85 mb-10 max-w-md">
+      地産地消のその先へ。山形の大地が育んだ食材を、<br class="hidden sm:block">
+      イタリアの技法とオリーブオイルで解き放つ、五感の体験。
+    </p>
+    <a href="#booking" class="tap inline-flex items-center gap-3 self-start btn-primary font-bold py-4 px-9 text-sm tracking-widest transition duration-300">
+      特別な席を予約する
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
+  <div class="relative z-10 pb-8 flex justify-center">
+    <div class="flex flex-col items-center gap-3 opacity-60">
+      <span class="text-[10px] tracking-[0.4em]">SCROLL</span>
+      <div class="w-px h-10 bg-[#FAF6EC]"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CONCEPT ============ -->
+<section class="py-20 sm:py-28 px-6 sm:px-10">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-14 md:gap-20 items-center">
+    <!-- 左側：テキストコンテンツ -->
+    <div class="fade-up">
+      <span class="num text-3xl">01</span>
+      <h2 class="serif font-bold leading-[1.6] mt-4 mb-8" style="font-size:clamp(1.4rem, 3.4vw, 2.1rem);">
+        砂糖は使わない。<br>
+        トウモロコシの「命」を、そのまま飲む。
+      </h2>
+      <p class="text-[15px] leading-loose text-[color:var(--ink)]/75 max-w-md">
+        当店の代名詞、コーンスープ。一口飲めば、その圧倒的な甘さに驚くはずです。
+        それは足し算ではなく、旬の食材が本来持つ力を、余計なものを削ぎ落として引き出したから。
+        イタリアンの技法は、山形の恵みを一番おいしい形に翻訳するための言葉にすぎません。
+      </p>
+    </div>
+
+    <!-- 右側：画像 ＋ こどものこだわりポイント -->
+    <div class="fade-up flex flex-col gap-8">
+      <!-- 画像エリア -->
+      <div class="overflow-hidden rounded-sm shadow-md aspect-[4/3] relative border border-[color:var(--gold)]/30">
+        <img 
+          src="images/soup.png" 
+          alt="コーンスープのイメージ" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- 下部のこだわりポイント -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t hairline">
+        <div>
+          <p class="text-xs tracking-[0.2em] text-[color:var(--gold)] mb-2">鮮度への拘り</p>
+          <p class="text-xs leading-relaxed text-[color:var(--ink)]/70">朝採れの野菜は、収穫からその日のうちに皿の上へ。</p>
+        </div>
+        <div>
+          <p class="text-xs tracking-[0.2em] text-[color:var(--gold)] mb-2">引き算の美学</p>
+          <p class="text-xs leading-relaxed text-[color:var(--ink)]/70">加えるのではなく、削ぐ。素材の輪郭だけを丁寧に残す調理。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE: OIL SUSHI ============ -->
+<section class="py-20 sm:py-28 px-6 sm:px-10 bg-[color:var(--pine-deep)] text-[#FAF6EC] relative">
+  <div class="absolute inset-0 grain-dark opacity-70"></div>
+  <div class="relative max-w-3xl mx-auto">
+    <div class="fade-up mb-14 text-center">
+      <p class="text-xs tracking-[0.3em] text-[#D9B872] mb-4">SIGNATURE DISH</p>
+      <h2 class="serif font-bold leading-relaxed" style="font-size:clamp(1.5rem, 4vw, 2.3rem);">
+        鉱物のように澄んだ、魔法の寿司。
+      </h2>
+      <p class="text-sm text-[#EDE6D3]/60 mt-4">「オイル寿司」— 和の技法にイタリアのオイルの美意識を重ねて。</p>
+    </div>
+
+    <div class="fade-up divide-y hairline-dark border-y hairline-dark">
+      <div class="py-7 flex items-start gap-6">
+        <span class="num text-3xl w-10 shrink-0">01</span>
+        <div>
+          <h3 class="serif text-lg font-bold mb-1">庄内浜の白身魚 × プレミアムオリーブオイル</h3>
+          <p class="text-sm text-[#EDE6D3]/60 leading-relaxed">上質な塩と極上オイルだけで仕立てる、素材本来の透明な旨み。</p>
+        </div>
+      </div>
+      <div class="py-7 flex items-start gap-6">
+        <span class="num text-3xl w-10 shrink-0">02</span>
+        <div>
+          <h3 class="serif text-lg font-bold mb-1">三陸の帆立 × 世界のソルトコレクション</h3>
+          <p class="text-sm text-[#EDE6D3]/60 leading-relaxed">世界各地から集めた塩を使い分け、帆立の甘さを立体的に描く。</p>
+        </div>
+      </div>
+      <div class="py-7 flex items-start gap-6">
+        <span class="num text-3xl w-10 shrink-0">03</span>
+        <div>
+          <h3 class="serif text-lg font-bold mb-1">山形の至宝 × 斬新なイタリアンの技法</h3>
+          <p class="text-sm text-[#EDE6D3]/60 leading-relaxed">郷土の食材を、これまでにない発想と技法で握り直す一貫。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEF ============ -->
+<section class="py-20 sm:py-28 px-6 sm:px-10">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 md:gap-16 items-start">
+    <div class="fade-up shrink-0 mx-auto md:mx-0">
+      <!-- 画像を表示するためのコンテナ（円形・ゴールドの枠線） -->
+      <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border border-[color:var(--gold)] overflow-hidden flex items-center justify-center">
+        <img 
+          src="images/chef.png" 
+          alt="奥田 政行シェフのポートレート" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+    <div class="fade-up">
+      <h2 class="serif text-xl sm:text-2xl font-bold mb-6 leading-relaxed">「地元の食材で、世界を驚かせたい」</h2>
+      <p class="text-[15px] leading-loose text-[color:var(--ink)]/75 mb-5">
+        21歳の時、父が遺した多額の借金。私の料理人人生は、そこから始まりました。
+        絶望の中で私を救ってくれたのは、山形の豊かな大地が生み出す「食材」と、それを育む「生産者」の方々でした。
+      </p>
+      <p class="text-[15px] leading-loose text-[color:var(--ink)]/75 mb-8">
+        「恩返しをしたい」という一心で磨き上げた、独自の調理理論。食材の声を聴き、その一瞬の輝きを皿に写し取る。
+        それがアルケッチャーノの流儀です。
+      </p>
+      <p class="display-en italic text-xl text-[color:var(--gold)]">Masayuki Okuda</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMING SOON ============ -->
+<section class="py-20 sm:py-28 px-6 sm:px-10 bg-[color:var(--pine)] text-[#FAF6EC] relative overflow-hidden">
+  <div class="absolute inset-0 grain"></div>
+  <div class="relative max-w-5xl mx-auto">
+    <div class="fade-up text-center mb-16 max-w-2xl mx-auto">
+      <p class="text-xs tracking-[0.3em] text-[#D9B872] mb-4">COMING SOON</p>
+      <h2 class="serif font-bold leading-relaxed mb-5" style="font-size:clamp(1.5rem, 4vw, 2.2rem);">
+        やまぎん県民ホール直結だから叶う、新しいおもてなし。
+      </h2>
+      <p class="text-sm text-[#EDE6D3]/65 leading-relaxed">
+        観劇やコンサートを楽しまれる皆様の声から生まれた、近日開始予定の新サービスをご紹介します。
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up border hairline-dark p-8 sm:p-9">
+        <div class="flex items-center gap-3 mb-5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span class="text-[11px] tracking-[0.2em] text-[#D9B872]">SERVICE 01 ・ 開発中</span>
+        </div>
+        <h3 class="serif text-xl font-bold mb-3">開演前の「プレシアター・ライトコース」</h3>
+        <p class="text-sm text-[#EDE6D3]/65 leading-relaxed mb-6">
+          「公演前の限られた時間でも、妥協のない食事を楽しみたい」— そんなご要望にお応えする一皿。
+          開演時間に遅れることなく、スピーディーかつ華やかにお召し上がりいただけます。
+        </p>
+        <ul class="space-y-3 text-xs text-[#EDE6D3]/70 border-t hairline-dark pt-5">
+          <li class="flex gap-2 items-start"><svg class="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg>30〜40分で完食できるスマートなポーション</li>
+          <li class="flex gap-2 items-start"><svg class="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg>人気の特選スープとオイル寿司を凝縮</li>
+        </ul>
+      </div>
+
+      <div class="fade-up border hairline-dark p-8 sm:p-9">
+        <div class="flex items-center gap-3 mb-5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" stroke-width="1.6"><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 000-4V8z"/></svg>
+          <span class="text-[11px] tracking-[0.2em] text-[#D9B872]">SERVICE 02 ・ 開発中</span>
+        </div>
+        <h3 class="serif text-xl font-bold mb-3">公演チケット半券「鑑賞後サービス」</h3>
+        <p class="text-sm text-[#EDE6D3]/65 leading-relaxed mb-6">
+          当日のやまぎん県民ホール公演チケット（または半券）をご提示いただくことで、
+          余韻に浸るひとときを彩る特別な特典をご用意いたします。
+        </p>
+        <ul class="space-y-3 text-xs text-[#EDE6D3]/70 border-t hairline-dark pt-5">
+          <li class="flex gap-2 items-start"><svg class="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg>お食事代の優待割引、またはワンドリンク進呈</li>
+          <li class="flex gap-2 items-start"><svg class="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg>季節のミニデザートや食後のカフェサービス</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="fade-up text-center text-xs text-[#EDE6D3]/45 mt-12 italic">
+      ※ 提供開始日およびサービス詳細は、確定次第、公式Instagramおよび公式サイトにてお知らせいたします。
+    </p>
+  </div>
+</section>
+
+<!-- ============ BOOKING / ACCESS ============ -->
+<section id="booking" class="py-20 sm:py-28 px-6 sm:px-10">
+  <div class="max-w-5xl mx-auto">
+    <div class="fade-up text-center mb-14">
+      <h2 class="display-en italic text-3xl sm:text-4xl text-[color:var(--gold)] mb-3">Reserve Your Moment</h2>
+      <p class="text-sm text-[color:var(--ink)]/55 tracking-widest">お席には限りがございます。大切なひとときのために。</p>
+    </div>
+
+    <div class="fade-up grid gap-5 max-w-xl mx-auto mb-24">
+      <a href="https://alcheconcert.theshop.jp/" class="tap group block bg-[color:var(--pine-deep)] text-[#FAF6EC] p-7 sm:p-8 transition duration-300 hover:bg-[color:var(--wine)]">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] text-[#D9B872] mb-2 block tracking-wider">ONLINE BOOKING</span>
+            <h3 class="text-xl sm:text-2xl font-bold">24時間オンライン予約</h3>
+            <p class="text-xs text-[#EDE6D3]/55 mt-2">即時予約確定・空席確認はこちらから</p>
+          </div>
+          <svg class="shrink-0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+
+      <a href="tel:0236167040" class="tap group block border p-7 sm:p-8 hairline transition duration-300 hover:border-[color:var(--gold)]">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] text-[color:var(--ink)]/45 mb-2 block tracking-wider">PHONE CONTACT</span>
+            <h3 class="text-xl sm:text-2xl font-bold">023-616-7040</h3>
+            <p class="text-xs text-[color:var(--ink)]/50 mt-2">団体様・お苦手な食材のご相談など</p>
+          </div>
+          <svg class="shrink-0 text-[color:var(--ink)]/30 group-hover:text-[color:var(--gold)] transition" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="fade-up max-w-4xl mx-auto border-t hairline pt-16 grid md:grid-cols-2 gap-12 items-start">
+      <div>
+        <h3 class="serif text-2xl font-bold mb-8 flex items-center gap-3">
+          <span class="w-8 h-px bg-[color:var(--gold)]"></span>
+          Access Information
+        </h3>
+        <div class="space-y-7 text-sm">
+          <div>
+            <p class="font-bold mb-1.5">所在地</p>
+            <p class="text-[color:var(--ink)]/65 leading-loose">
+              〒990-0828 山形県山形市双葉町1-2-38<br>
+              やまぎん県民ホール（山形県総合文化芸術館）1F
+            </p>
+          </div>
+          <div>
+            <p class="font-bold mb-1.5">営業時間</p>
+            <p class="text-[color:var(--ink)]/65 leading-loose">
+              ランチ 11:30–14:00<br>
+              ディナー 17:00–20:00
+            </p>
+            <p class="text-xs text-[color:var(--wine)] font-bold mt-1.5">定休日：火曜</p>
+          </div>
+          <div>
+            <p class="font-bold mb-1.5">最寄り駅</p>
+            <p class="text-[color:var(--ink)]/65 leading-loose">JR山形駅 西口より徒歩1分（ペデストリアンデッキ直結）</p>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/alchecciano_concert/" class="tap inline-flex items-center gap-2 mt-9 text-[color:var(--gold)] font-bold text-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          最新情報をInstagramでチェック
+        </a>
+      </div>
+
+      <!-- 右側：Googleマップ埋め込みエリア -->
+      <div class="border hairline p-3 sm:p-4 flex flex-col gap-4 bg-white/50">
+        <div class="w-full h-[280px] sm:h-[320px] overflow-hidden rounded-sm">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.3244178562695!2d140.3228555759058!3d38.24878127186977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb79e94164ecb%3A0x53b952a994d09559!2z44Ki44Or44Kx44OD44OB44Kh44O844OOIOOCs-ODs-ODgeOCp-ODq-ODiA!5e0!3m2!1sja!2sjp!4v1789609549207!5m2!1sja!2sjp" 
+            class="w-full h-full" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+        <div class="flex items-center justify-between px-2 pb-1">
+          <div>
+            <p class="font-bold text-sm mb-0.5">やまぎん県民ホール 1F</p>
+            <p class="text-xs text-[color:var(--ink)]/55">山形県山形市双葉町1-2-38</p>
+          </div>
+          <a href="https://maps.google.com/?q=山形県山形市双葉町1-2-38" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-bold text-[color:var(--gold)] hover:underline shrink-0">
+            拡大地図
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 text-center bg-[color:var(--pine-deep)]">
+  <p class="text-[10px] tracking-[0.4em] text-[#EDE6D3]/40 uppercase">© Al-che-cciano Concerto — All Rights Reserved</p>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
