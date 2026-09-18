@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン・チョウジ（CHOJI）| 山形駅徒歩5分の本格イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&family=Kalam:wght@700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .accent-font {
+            font-family: 'Kalam', cursive;
+        }
+        .skew-bg {
+            position: relative;
+        }
+        .skew-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        /* 背景画像 */
+        .bg-pizza {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/pizza.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .floating-ingredient {
+            position: absolute;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .cta-btn {
+            background: linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%);
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* スマホでの文字サイズ・余白の微調整 */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.1rem;
+                line-height: 1.3;
+            }
+            .pizza-watermark {
+                font-size: 5rem !important;
+                top: -2rem !important;
+                left: -0.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fdfbf7] text-stone-800 overflow-x-hidden">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-[90vh] flex items-center justify-center bg-pizza text-white py-12 px-4">
+        <div class="container mx-auto px-4 text-center z-10 relative">
+            <div class="inline-block bg-red-600 text-white px-4 py-1 mb-4 transform -rotate-2 font-bold tracking-tighter text-sm sm:text-base">
+                YAMAGATA CITY - SINCE 19XX
+            </div>
+            <h2 class="serif text-xl sm:text-2xl md:text-3xl mb-1 italic accent-font text-yellow-400">Delicious!</h2>
+            <h1 class="hero-title text-4xl md:text-6xl font-black leading-tight mb-4 drop-shadow-lg text-white">
+                山形駅徒歩5分、心が躍る<br>
+                <span class="bg-yellow-400 text-stone-900 px-2 inline-block transform rotate-1">本格ピザ。</span>
+            </h1>
+            <p class="text-base md:text-lg mb-8 max-w-2xl mx-auto font-medium bg-black/30 backdrop-blur-sm p-3 rounded-lg inline-block">
+                仕入れで変わる旬の味。落ち着いた大人の隠れ家レストラン。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#contact" class="cta-btn text-white font-black py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105 hover:rotate-1 w-full sm:w-auto">
+                    お席を予約する <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+        <!-- 装飾アイコン (SVG) -->
+        <div class="floating-ingredient top-20 left-10 w-20 hidden md:block transform -rotate-12 opacity-30">
+            <svg viewBox="0 0 512 512" fill="white"><path d="M256 32c-123.7 0-224 100.3-224 224s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 400c-97.1 0-176-78.9-176-176S158.9 80 256 80s176 78.9 176 176-78.9 176-176 176z"/></svg>
+        </div>
+    </header>
+
+    <!-- 2. CTA (1回目) -->
+    <section class="py-10 bg-stone-900 text-white relative z-20 shadow-2xl">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16 text-center md:text-left">
+                <div>
+                    <p class="text-yellow-400 font-bold mb-1">週末・ランチは混み合います</p>
+                    <p class="text-xl sm:text-2xl font-black text-white">ご予約はお電話がスムーズです</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="tel:023-646-4023" class="flex items-center gap-3 text-xl sm:text-2xl font-black bg-white text-stone-900 px-6 sm:px-8 py-4 rounded-xl hover:bg-yellow-400 transition transform hover:-translate-y-1">
+                        <i class="fa-solid fa-phone text-red-600"></i> 023-646-4023
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ピザの魅力 -->
+    <section class="py-16 md:py-24 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center">
+                <div class="w-full lg:w-3/5 mb-16 lg:mb-0 relative">
+                    <span class="pizza-watermark absolute -top-20 -left-10 text-[8rem] sm:text-[12rem] font-black text-stone-100 serif -z-10 select-none">PIZZA</span>
+                    <div class="relative group">
+                        <img src="images/pizza.png" alt="こだわりピザ" class="rounded-3xl shadow-2xl w-full object-cover h-[300px] sm:h-[400px] md:h-[500px] transform transition group-hover:scale-[1.02]">
+                        <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-yellow-400 text-stone-900 p-5 sm:p-8 rounded-full shadow-xl transform rotate-12">
+                            <p class="font-black leading-tight text-center text-sm sm:text-base">生地から<br><span class="text-lg sm:text-2xl">手作り！</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/5 lg:pl-12">
+                    <div class="bg-red-600 text-white inline-block px-3 py-1 mb-4 font-bold">MUST EAT</div>
+                    <h2 class="text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-black mb-8 leading-tight">
+                        外はカリッ、中はモチッ。<br><span class="text-red-600">本場の焼き気</span>を山形で。
+                    </h2>
+                    <p class="text-lg text-stone-600 leading-relaxed mb-8">
+                        レストラン・チョウジのピザは、その日の仕入れ状況によってメニューが変わります。旬度抜群の食材を、熟練の技術で一気に焼き上げる。シンプルだからこそ誤魔化しのきかない、本格イタリアンの真髄をご堪能ください。
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-stone-900 text-yellow-400 rounded-full flex items-center justify-center font-black text-xl">01</div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-stone-800">こだわり抜いた小麦粉</h4>
+                                <p class="text-stone-500">独自の配合でブレンドし、低温でじっくり発酵させた自家培生地。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-stone-900 text-yellow-400 rounded-full flex items-center justify-center font-black text-xl">02</div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1 text-stone-800">山形の豊かな恵み</h4>
+                                <p class="text-stone-500">地元の新鮮な野菜や、厳選されたチーズを惜しみなく使用。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. クチコミ -->
+    <section class="py-16 md:py-24 skew-bg bg-stone-900 text-white">
+        <div class="container mx-auto px-4 relative z-10 text-white">
+            <div class="text-center mb-16">
+                <span class="accent-font text-yellow-400 text-2xl">Reviews</span>
+                <h2 class="text-3xl sm:text-4xl font-black mt-2 text-white">お客様の「美味しい」の声</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white text-stone-800 p-8 rounded-3xl transform hover:-rotate-2 transition shadow-xl">
+                    <div class="flex gap-1 text-yellow-500 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-4">「米まで美味しい！」</p>
+                    <p class="text-sm leading-relaxed text-stone-500 italic">「ハンバーグのデミソースもサラダも最高。たまたま入ったけど、山形に来たら絶対寄りたいお店です。」</p>
+                </div>
+                <div class="bg-white text-stone-800 p-8 rounded-3xl transform rotate-2 transition shadow-xl md:translate-y-8">
+                    <div class="flex gap-1 text-yellow-500 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-4">「家族で大満足」</p>
+                    <p class="text-sm leading-relaxed text-stone-500 italic">「ピザもパスタも絶品。予約必須ですが、それだけの価値があります。レディースデーのアイスも嬉しい！」</p>
+                </div>
+                <div class="bg-white text-stone-800 p-8 rounded-3xl transform -rotate-1 transition shadow-xl">
+                    <div class="flex gap-1 text-yellow-500 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-4">「上品なハンバーグ」</p>
+                    <p class="text-sm leading-relaxed text-stone-500 italic">「粗挽きすぎない、口当たりの良い上品な味。落ち着いた空間でゆったり食事が楽しめます。」</p>
+                </div>
+                <div class="bg-white text-stone-800 p-8 rounded-3xl transform rotate-3 transition shadow-xl md:translate-y-8">
+                    <div class="flex gap-1 text-yellow-500 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="font-bold mb-4">「お一人様でも安心」</p>
+                    <p class="text-sm leading-relaxed text-stone-500 italic">「ホテルの提携クーポンで利用。敷居が高そうに見えましたが、快く迎えてくれてリーズナブルでした。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩みと解決 -->
+    <section class="py-20 md:py-32 bg-[#fdfbf7]">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="flex flex-wrap items-center gap-12">
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl sm:text-4xl font-black mb-8 leading-tight text-stone-800">山形駅周辺で、間違いのない<br><span class="text-red-600 underline">「イタリアン」</span>を。</h2>
+                    <p class="text-stone-600 mb-10">出張での一人ご飯から、大切な家族とのランチ、大人数のパーティーまで。レストラン・チョウジが選ばれる理由があります。</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                            <i class="fa-solid fa-location-dot text-2xl text-red-600 mt-1"></i>
+                            <div>
+                                <h5 class="font-bold">駅徒歩5分</h5>
+                                <p class="text-xs text-stone-500">出張や観光の合間に</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                            <i class="fa-solid fa-car text-2xl text-red-600 mt-1"></i>
+                            <div>
+                                <h5 class="font-bold">駐車場10台</h5>
+                                <p class="text-xs text-stone-500">お車でのご来店も安心</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                            <i class="fa-solid fa-users text-2xl text-red-600 mt-1"></i>
+                            <div>
+                                <h5 class="font-bold">最大35名様</h5>
+                                <p class="text-xs text-stone-500">宴会・パーティーにも対応</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                            <i class="fa-solid fa-chair text-2xl text-red-600 mt-1"></i>
+                            <div>
+                                <h5 class="font-bold">多彩な席種</h5>
+                                <p class="text-xs text-stone-500">カウンター・ボックス・座敷</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[40%]">
+                    <div class="relative">
+                        <img src="images/pasta.png" alt="イタリアン料理" class="rounded-3xl shadow-2xl w-full">
+                        <div class="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 w-24 h-24 sm:w-32 sm:h-32 bg-yellow-400 rounded-full flex items-center justify-center transform -rotate-12 border-4 border-white">
+                            <p class="text-stone-900 font-black text-center text-xs sm:text-sm leading-tight">お子様連れ<br>大歓迎！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 特典 -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-red-600 -skew-y-2 origin-top-left -z-10"></div>
+        <div class="container mx-auto px-4 text-center text-white">
+            <div class="inline-block relative">
+                <span class="accent-font text-yellow-400 text-2xl sm:text-3xl block mb-2">Special Offer</span>
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-6 text-white">毎週木曜日はレディースデー！</h2>
+                <div class="bg-white text-red-600 inline-block px-6 sm:px-10 py-4 rounded-full text-lg sm:text-2xl font-black shadow-2xl transform hover:scale-105 transition">
+                    アイスクリームを無料プレゼント
+                </div>
+                <p class="mt-6 font-medium text-red-100">お食事をご注文の女性のお客様全員が対象です。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. COMING SOON (新サービス構想) -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white relative border-t border-stone-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block bg-yellow-400 text-stone-900 font-black px-4 py-1 rounded-full text-sm tracking-widest uppercase mb-3 transform -rotate-1">
+                    Coming Soon
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-4">
+                    あったらイイな！CHOJIの新しい試み
+                </h2>
+                <p class="text-stone-400 text-base md:text-lg">
+                    徒歩1分にある「やまぎん県民ホール」をご利用の皆様へ。<br class="hidden sm:inline">
+                    もっと便利に、もっと楽しく過ごしていただけるよう、新しいサービスを準備中です！
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- 企画1 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group hover:border-yellow-400/50 transition duration-300">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-yellow-400/10 rounded-full blur-xl group-hover:bg-yellow-400/20 transition"></div>
+                    <div>
+                        <div class="w-14 h-14 bg-yellow-400/20 text-yellow-400 rounded-2xl flex items-center justify-center text-2xl font-black mb-6">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <span class="text-xs font-bold text-yellow-400 tracking-wider uppercase block mb-1">Concept 01</span>
+                        <h3 class="text-xl font-black text-white mb-3">開演前のアフタヌーン<br>「カフェ＆テイクアウト」</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            開演までのちょっとした待ち時間に。公演チケットのご提示でドリンク割引サービスや、手軽に片手で楽しめる特製フォカッチャサンドなどのテイクアウトメニューを企画中！
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-400">
+                        <span>対象：ホールご来場者様</span>
+                        <span class="bg-stone-700 px-2.5 py-1 rounded-full text-stone-300">準備中</span>
+                    </div>
+                </div>
+
+                <!-- 企画2 -->
+                <div class="bg-stone-800/80 border border-stone-700/60 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group hover:border-yellow-400/50 transition duration-300">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-red-500/10 rounded-full blur-xl group-hover:bg-red-500/20 transition"></div>
+                    <div>
+                        <div class="w-14 h-14 bg-red-500/20 text-red-400 rounded-2xl flex items-center justify-center text-2xl font-black mb-6">
+                            <i class="fa-solid fa-wine-glass"></i>
+                        </div>
+                        <span class="text-xs font-bold text-red-400 tracking-wider uppercase block mb-1">Concept 02</span>
+                        <h3 class="text-xl font-black text-white mb-3">終演後の余韻を楽しむ<br>「ナイトディナー＆ワイン」</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                            コンサートや舞台の余韻に浸りながら感想を語り合える特別夜間営業。チケットの半券のご提示で「乗車スパークリングワイン」または「プチドルチェ」をプレゼント！
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-stone-700/50 flex items-center justify-between text-xs text-stone-400">
+                        <span>対象：公演チケットをお持ちの方</span>
+                        <span class="bg-stone-700 px-2.5 py-1 rounded-full text-stone-300">準備中</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ご意見募集のバナー -->
+            <div class="mt-12 bg-gradient-to-r from-red-900/40 to-stone-800 border border-red-500/30 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+                <div>
+                    <h4 class="font-bold text-lg text-white mb-1 flex items-center justify-center sm:justify-start gap-2">
+                        <i class="fa-solid fa-comment-dots text-yellow-400"></i> 「こんなサービスが欲しい！」の声をお聞かせください
+                    </h4>
+                    <p class="text-stone-400 text-sm">皆様のご要望に合わせてサービスをアップデートしてまいります。</p>
+                </div>
+                <a href="https://choji-ristorante.com/contact/" target="_blank" class="flex-shrink-0 bg-yellow-400 text-stone-900 hover:bg-yellow-300 px-6 py-3 rounded-xl font-black text-sm transition">
+                    ご意見・ご要望を送る <i class="fa-solid fa-chevron-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 最終CTA -->
+    <section id="contact" class="py-16 md:py-24 bg-stone-50 text-stone-800">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl overflow-hidden flex flex-wrap">
+                <!-- 左側：情報 -->
+                <div class="w-full lg:w-1/2 p-8 sm:p-12 md:p-16">
+                    <h2 class="text-2xl md:text-3xl font-black mb-8 text-stone-800">ご来店をお待ちしております</h2>
+
+                    <div class="space-y-8 mb-12 text-lg text-stone-800">
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-stone-400 font-bold uppercase">Phone</p>
+                                <p class="font-black text-2xl text-stone-800">023-646-4023</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-stone-400 font-bold uppercase">Address</p>
+                                <p class="font-bold text-stone-700">山形県山形市双葉町1丁目8-8</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-stone-400 font-bold uppercase">Holiday</p>
+                                <p class="font-bold text-stone-700">毎週水曜日 定休</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <a href="https://choji-ristorante.com/contact/" target="_blank" class="cta-btn text-white text-center py-5 rounded-2xl font-black text-lg sm:text-xl hover:opacity-90 transition">
+                            WEBからお問い合わせ <i class="fa-solid fa-envelope ml-2"></i>
+                        </a>
+                       
+                    </div>
+                </div>
+                <!-- 右側：Googleマップ -->
+                <div class="w-full lg:w-1/2 min-h-[300px] sm:min-h-[400px]">
+                    <div class="map-container h-full">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.4000734088722!2d140.32099687477972!3d38.24702628481832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60d00c4eb71%3A0x9a2465d255a1b577!2z44Os44K544OI44Op44Oz772l44OB44On44Km44K4!5e0!3m2!1sja!2sjp!4v1770777704998!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-950 py-12 text-center text-stone-500">
+        <div class="container mx-auto px-4">
+            <h3 class="serif text-white text-2xl mb-4 italic">Ristorante CHOJI</h3>
+            <p class="text-sm mb-8">本格イタリアンを、もっと身近に。もっと楽しく。</p>
+            <div class="w-12 h-1 bg-red-600 mx-auto mb-8"></div>
+            <p class="text-xs uppercase tracking-widest text-stone-500">&copy; Restaurant CHOJI. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
