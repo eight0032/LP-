@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>IL BLU(イルブル)遠達館 | 山形の旬を味わう本格イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS.js for scroll animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;400;700&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --color-brass: #b39152;
+            --color-deep-stone: #1c1c1a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f9f8f4;
+            color: #333;
+            line-height: 1.8;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.06em;
+        }
+
+        .en-serif {
+            font-family: 'Cormorant Garamond', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .bg-brass { background-color: var(--color-brass); }
+        .text-brass { color: var(--color-brass); }
+        .border-brass { border-color: var(--color-brass); }
+
+        .hero-zoom {
+            animation: zoom-out 20s ease-out forwards;
+        }
+
+        @keyframes zoom-out {
+            from { transform: scale(1.1); }
+            to { transform: scale(1); }
+        }
+
+        /* セクションの余白はスマホでは狭く、画面が大きくなるほど広げる */
+        .section-gap {
+            padding: 64px 0;
+        }
+        @media (min-width: 768px) {
+            .section-gap { padding: 96px 0; }
+        }
+        @media (min-width: 1024px) {
+            .section-gap { padding: 120px 0; }
+        }
+
+        .btn-luxury {
+            position: relative;
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            color: #fff;
+            background: var(--color-deep-stone);
+            transition: all 0.4s;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid var(--color-deep-stone);
+        }
+        @media (min-width: 768px) {
+            .btn-luxury { padding: 1rem 3rem; }
+        }
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--color-brass);
+            transition: all 0.4s;
+            z-index: -1;
+        }
+        .btn-luxury:hover::before,
+        .btn-luxury:focus-visible::before { left: 0; }
+        .btn-luxury:focus-visible {
+            outline: 2px solid var(--color-brass);
+            outline-offset: 2px;
+        }
+
+        .magazine-card img {
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .magazine-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .loading-shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* モバイルメニュー */
+        #mobile-menu {
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 320px;
+            opacity: 1;
+        }
+
+        /* 小さい画面ではヒーローの縦書き部分を少しコンパクトに */
+        @media (max-width: 400px) {
+            .hero-vertical-copy {
+                font-size: 1.05rem;
+                height: 10rem;
+            }
+        }
+
+        /* reduced motion 配慮 */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-zoom { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 2px solid var(--color-brass);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 px-5 md:px-8 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white">
+        <div class="text-lg md:text-xl font-bold tracking-[0.25em] md:tracking-[0.3em] serif">IL BLU</div>
+
+        <!-- PC用ナビ -->
+        <nav class="hidden md:flex gap-8 text-xs tracking-widest uppercase">
+            <a href="#about" class="hover:text-brass transition-colors">About</a>
+            <a href="#menu" class="hover:text-brass transition-colors">Menu</a>
+            <a href="#coming-soon" class="hover:text-brass transition-colors">Coming Soon</a>
+            <a href="#access" class="hover:text-brass transition-colors">Access</a>
+        </nav>
+
+        <!-- スマホ用ハンバーガーボタン -->
+        <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px]" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="block w-6 h-[1.5px] bg-white transition-transform"></span>
+            <span class="block w-6 h-[1.5px] bg-white transition-opacity"></span>
+            <span class="block w-6 h-[1.5px] bg-white transition-transform"></span>
+        </button>
+    </header>
+
+    <!-- スマホ用ドロップダウンメニュー -->
+    <nav id="mobile-menu" class="fixed top-[60px] left-0 w-full z-40 bg-stone-900/97 text-white md:hidden">
+        <ul class="flex flex-col text-sm tracking-widest uppercase divide-y divide-white/10">
+            <li><a href="#about" class="block px-6 py-4">About</a></li>
+            <li><a href="#menu" class="block px-6 py-4">Menu</a></li>
+            <li><a href="#coming-soon" class="block px-6 py-4">Coming Soon</a></li>
+            <li><a href="#access" class="block px-6 py-4">Access</a></li>
+        </ul>
+    </nav>
+
+  <!-- FV -->
+    <section class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div id="hero-img-container" class="w-full h-full loading-shimmer">
+                <img 
+                    src="images/fish.png" 
+                    alt="Ristorante IL BLU Yamagata メインビジュアル" 
+                    class="w-full h-full object-cover"
+                >
+            </div>
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center text-white mt-[-5vh] px-4">
+            <div class="mb-4 md:mb-6" data-aos="fade-up" data-aos-duration="1500">
+                <span class="en-serif text-xs md:text-sm block mb-2 text-center">Ristorante IL BLU Yamagata</span>
+                <div class="flex items-center gap-4 md:gap-8">
+                    <div class="h-[1px] w-8 md:w-12 bg-white/50"></div>
+                    <p class="serif vertical-text hero-vertical-copy text-lg md:text-2xl leading-relaxed h-40 md:h-56 flex items-center">
+                        山形の旬を、<br>一皿に綴る。
+                    </p>
+                    <div class="h-[1px] w-8 md:w-12 bg-white/50"></div>
+                </div>
+            </div>
+
+            <h1 class="serif text-lg sm:text-xl md:text-2xl font-light text-center leading-relaxed mb-8 md:mb-12" data-aos="fade-up" data-aos-delay="500">
+                極上の駅と、<br>静寂が包む贅沢なひととき。
+            </h1>
+
+            <div data-aos="fade-up" data-aos-delay="800">
+                <a href="#cta" class="btn-luxury rounded-full serif text-xs md:text-sm tracking-widest">
+                    ご予約・詳細はこちら
+                </a>
+            </div>
+        </div>
+    </section>
+
+  <!-- Concept Section -->
+    <section id="about" class="section-gap bg-white">
+        <div class="max-w-6xl mx-auto px-5 md:px-6">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <div id="about-img-container" class="z-10 relative rounded-sm shadow-2xl aspect-video overflow-hidden">
+                        <img 
+                            src="images/italian.png" 
+                            alt="IL BLU コンセプトイメージ" 
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <div class="hidden sm:block absolute -top-10 -left-10 w-64 h-64 bg-[#f0ede4] -z-0"></div>
+                </div>
+                <div data-aos="fade-left">
+                    <span class="en-serif text-brass text-xs md:text-sm block mb-3 md:mb-4">Our Concept</span>
+                    <h2 class="serif text-2xl md:text-4xl mb-6 md:mb-8 leading-snug">
+                        図書館の静寂と、<br>山形の贅かな恵みが溶け合う場所。
+                    </h2>
+                    <p class="text-stone-600 mb-6 md:mb-8 leading-loose font-light text-sm md:text-base">
+                        山形県立図書館「遊学館」の中に佇む IL BLU(イルブル)。<br>
+                        私たちは、ただのレストランではありません。<br>
+                        地元農家から届く新鮮な野菜、豊富な食材、<br>
+                        そして職人が毎朝焼き上げる香り高いパン。<br>
+                        それら全ての物語を、一つのコースに仕立ててお届けします。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 border-t border-stone-100 pt-6 md:pt-8">
+                        <div>
+                            <p class="font-bold mb-1 serif text-sm md:text-base">旬の厳選食材</p>
+                            <p class="text-xs text-stone-400">Seasonal Ingredients</p>
+                        </div>
+                        <div>
+                            <p class="font-bold mb-1 serif text-sm md:text-base">安らぎの空間</p>
+                            <p class="text-xs text-stone-400">Healing Space</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Menu Section -->
+    <section id="menu" class="section-gap bg-[#f4f2ed]">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 md:mb-20" data-aos="fade-up">
+                <span class="en-serif text-brass text-xs md:text-sm block mb-3 md:mb-4">Signature Dishes</span>
+                <h2 class="serif text-3xl md:text-4xl mb-4">至極の逸品</h2>
+                <div class="h-[1px] w-20 bg-brass mx-auto"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                <div class="magazine-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div id="menu-1-container" class="overflow-hidden mb-5 md:mb-6 aspect-[4/5] bg-stone-200">
+                        <img 
+                            src="images/tai.png" 
+                            alt="熟成 鴨のカルパッチョ" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                    </div>
+                    <span class="text-xs tracking-widest text-brass mb-2 block font-bold">Recommended</span>
+                    <h3 class="serif text-xl md:text-2xl mb-3 md:mb-4">熟成 鴨のカルパッチョ</h3>
+                    <p class="text-sm text-stone-500 font-light mb-4">
+                        蔵内酵から届く旬鴨を最適に熟成。季節のハーブと、隠し味のひと口ライスが香りなすIL BLUの象徴的な一皿。
+                    </p>
+                </div>
+
+                <div class="magazine-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div id="menu-2-container" class="overflow-hidden mb-5 md:mb-6 aspect-[4/5] bg-stone-200">
+                        <img 
+                            src="images/pasta.jpg" 
+                            alt="季節の自家製パスタ" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                    </div>
+                    <span class="text-xs tracking-widest text-stone-400 mb-2 block font-bold">Course Menu</span>
+                    <h3 class="serif text-xl md:text-2xl mb-3 md:mb-4">季節の自家製パスタ</h3>
+                    <p class="text-sm text-stone-500 font-light mb-4">
+                        蒜オイルの香りが食欲をそそるラグーや、爽やかなレモンクリーム。その日、その瞬間のベストなパスタを。
+                    </p>
+                </div>
+
+                <div class="magazine-card group sm:col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="300">
+                    <div id="menu-3-container" class="overflow-hidden mb-5 md:mb-6 aspect-[4/5] bg-stone-200">
+                        <img 
+                            src="images/bread.jpg" 
+                            alt="お土産パン" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        >
+                    </div>
+                    <span class="text-xs tracking-widest text-stone-400 mb-2 block font-bold">Souvenir</span>
+                    <h3 class="serif text-xl md:text-2xl mb-3 md:mb-4">お土産パン</h3>
+                    <p class="text-sm text-stone-500 font-light mb-4">
+                        「これを目当てに来る」というお客様も。焼き上がった瞬間から完売が始まる、IL BLU自慢のモチモチパン。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-gap bg-white overflow-hidden">
+        <div class="max-w-5xl mx-auto px-5 md:px-6">
+            <div class="relative border-l border-stone-100 pl-6 sm:pl-12 md:pl-20 py-6 md:py-10" data-aos="fade-right">
+                <div class="mb-10 md:mb-16">
+                    <p class="serif text-lg md:text-2xl leading-relaxed mb-4 md:mb-6 italic">
+                        「駅は少し蒸かせて味が出て食べ頃。パスタは蒜オイルの味と香りがとても良く、季節毎に通いたくなるお店です。」
+                    </p>
+                    <span class="text-sm font-bold tracking-widest text-brass">— 平日ランチご利用 T様</span>
+                </div>
+                <div data-aos="fade-right" data-aos-delay="200">
+                    <p class="serif text-lg md:text-2xl leading-relaxed mb-4 md:mb-6 italic">
+                        「図書館ついでだから、本を片手に一人でパスタを堪能できる貴重なお店。野菜の鮮度が抜群で、素材への愛を感じます。」
+                    </p>
+                    <span class="text-sm font-bold tracking-widest text-brass">— 週末一人ランチご利用 S様</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Coming Soon Section -->
+    <section id="coming-soon" class="section-gap bg-[#f9f8f4] border-t border-stone-200/60">
+        <div class="max-w-7xl mx-auto px-5 md:px-6">
+            <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                <span class="en-serif text-brass text-xs md:text-sm block mb-3">Coming Soon</span>
+                <h2 class="serif text-2xl md:text-4xl mb-4">あったらいいな、をカタチに。</h2>
+                <p class="text-stone-500 font-light text-sm max-w-2xl mx-auto leading-relaxed">
+                    IL BLUの味をより身近に、そして日常のさまざまなシーンでお楽しみいただけるよう、<br class="hidden sm:inline">
+                    新しいサービスや仕掛けを準備・検討しています。
+                </p>
+                <div class="h-[1px] w-20 bg-brass mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Service 1: 自家製パン販売コーナー -->
+                <div class="bg-white p-6 md:p-8 rounded-sm shadow-sm hover:shadow-md transition-all border border-stone-100 flex flex-col justify-between group">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-brass/10 text-brass text-[10px] font-bold tracking-widest uppercase mb-3 rounded">Bakery Corner</span>
+                        <h3 class="serif text-lg md:text-xl mb-3 text-stone-900 group-hover:text-brass transition-colors">自家製パンの特設販売</h3>
+                        <p class="text-xs text-stone-500 font-light leading-relaxed">
+                            ご好評をいただいている焼き立てモチモチパンを、店頭で気軽にお買い求めいただけるテイクアウトコーナー。朝食や毎日の食卓に特別な彩りを。
+                        </p>
+                    </div>
+                    <div class="mt-5 md:mt-6 pt-4 border-t border-stone-100 text-[11px] text-brass font-bold serif flex items-center justify-between">
+                        <span>店頭販売コーナー設置計画</span>
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Service 2: 前菜テイクアウト -->
+                <div class="bg-white p-6 md:p-8 rounded-sm shadow-sm hover:shadow-md transition-all border border-stone-100 flex flex-col justify-between group">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-brass/10 text-brass text-[10px] font-bold tracking-widest uppercase mb-3 rounded">Takeout Deli</span>
+                        <h3 class="serif text-lg md:text-xl mb-3 text-stone-900 group-hover:text-brass transition-colors">本格前菜メニューのテイクアウト</h3>
+                        <p class="text-xs text-stone-500 font-light leading-relaxed">
+                            蔵内酵直送の鹿カルパッチョや旬野菜のデリをご自宅で。おうちディナーやホームパーティー、特別な日のワインのお供に最適です。
+                        </p>
+                    </div>
+                    <div class="mt-5 md:mt-6 pt-4 border-t border-stone-100 text-[11px] text-brass font-bold serif flex items-center justify-between">
+                        <span>テイクアウトメニュー拡充</span>
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="bg-stone-900 py-16 md:py-24 text-center text-white relative">
+        <div id="cta-bg-container" class="absolute inset-0 opacity-20 pointer-events-none"></div>
+        <div class="relative z-10 px-5 md:px-6">
+            <h2 class="serif text-2xl md:text-4xl mb-6 md:mb-8">最新情報と特別なメニュー案内</h2>
+            <p class="max-w-2xl mx-auto mb-8 md:mb-12 text-stone-400 font-light text-sm md:text-base">
+                季節ごとの新作料理や、お土産パンの焙き上がり時間など、<br class="hidden sm:inline">
+                IL BLUの今をLINEでお届けします。
+            </p>
+            <form class="flex flex-col md:flex-row gap-4 justify-center items-center max-w-md md:max-w-none mx-auto" onsubmit="return false;">
+                <label for="cta-name" class="sr-only">お名前</label>
+                <input id="cta-name" type="text" placeholder="お名前" class="w-full md:w-64 bg-transparent border border-stone-700 px-6 py-4 outline-none focus:border-brass transition-colors">
+                <button type="submit" class="w-full md:w-auto bg-brass text-white px-8 md:px-10 py-4 font-bold serif tracking-widest hover:bg-[#967941] transition-all">
+                    LINE公式アカウントを登錄
+                </button>
+            </form>
+            <p class="mt-6 md:mt-8 text-xs text-stone-500">お支払いは 現金 または PayPay のみとなります。</p>
+        </div>
+    </section>
+
+    <!-- Access -->
+    <section id="access" class="section-gap bg-stone-50">
+        <div class="max-w-6xl mx-auto px-5 md:px-6 grid md:grid-cols-2 gap-10 md:gap-16">
+            <div data-aos="fade-up">
+                <h2 class="serif text-2xl md:text-3xl mb-8 md:mb-10">Access</h2>
+                <div class="space-y-6 md:space-y-8 text-stone-600 font-light">
+                    <div>
+                        <p class="text-xs text-brass font-bold mb-2 uppercase tracking-widest">Address</p>
+                        <p class="text-base md:text-lg serif text-stone-900">〒990-0041 山形県山形市緑町1丁目2-36(遠達館内)</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6 md:gap-8">
+                        <div>
+                            <p class="text-xs text-brass font-bold mb-2 uppercase tracking-widest">Phone</p>
+                            <p class="text-base md:text-lg serif text-stone-900">
+                                <a href="tel:0236317808" class="hover:text-brass transition-colors">023-631-7808</a>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-brass font-bold mb-2 uppercase tracking-widest">Regular Holiday</p>
+                            <p class="text-base md:text-lg serif text-stone-900">月曜日・第3日曜日</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xs text-brass font-bold mb-2 uppercase tracking-widest">Social</p>
+                        <div class="flex gap-5 text-xl md:text-2xl mt-4">
+                            <a href="https://www.instagram.com/ilbluilblu/" class="hover:text-brass transition-colors" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UCXdtmj1C7nXKLx2spgerZfw" class="hover:text-brass transition-colors" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.ilblu-yamagata.com/" class="hover:text-brass transition-colors" aria-label="公式サイト"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-64 md:h-96 bg-stone-200 grayscale contrast-125 overflow-hidden rounded-sm shadow-xl" data-aos="fade-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.048749866446!2d140.3422315747802!3d38.25517538434407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5ccb21677ef%3A0xa4a36b0cc4066a68!2zSUwgQkxV77yI44Kk44Or44OW44Or77yJ6YGK5a2m6aSo!5e0!3m2!1sja!2sjp!4v1770775673833!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="IL BLU 遠達館 地図"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 py-10 md:py-12 text-center border-t border-stone-800">
+        <p class="text-[10px] text-stone-600 uppercase tracking-[0.3em] md:tracking-[0.4em] serif">IL BLU Yamagata &copy; 2024</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        // モバイルメニューの開閉
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', isOpen);
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+       
+
+        function loadImage(containerId, data) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const img = new Image();
+            const className = "w-full h-full object-cover" + (containerId === 'hero-img-container' ? ' hero-zoom' : '');
+
+            img.className = className;
+            img.alt = data.alt;
+            img.loading = containerId === 'hero-img-container' ? 'eager' : 'lazy';
+
+            img.onload = function() {
+                container.innerHTML = '';
+                container.classList.remove('loading-shimmer');
+                container.appendChild(img);
+            };
+
+            img.onerror = function() {
+                container.classList.remove('loading-shimmer');
+                container.innerHTML = `<img src="https://placehold.co/800x600/1c1c1a/b39152?text=${data.fallbackText}" alt="${data.alt}" class="${className}">`;
+            };
+
+            img.src = data.url;
+        }
+
+        window.onload = function() {
+            AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic', disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches });
+
+            Object.keys(images).forEach(id => {
+                loadImage(id, images[id]);
+            });
+        };
+    </script>
+</body>
+</html>
