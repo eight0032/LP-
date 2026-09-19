@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>いるくおーれ | 山形・若宮の家族イタリアン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --wine:#6b2737;
+    --wine-deep:#4a1c28;
+    --olive:#44573a;
+    --olive-deep:#31402a;
+    --wheat:#c99a3c;
+    --cream:#efe9da;
+    --card:#ffffff;
+    --ink:#241f19;
+    --ink-soft:#5a5347;
+    --border:#ddd4c0;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --cream:#1c1815;
+      --card:#26211c;
+      --ink:#efe9da;
+      --ink-soft:#c9c0af;
+      --border:#3a332a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#1c1815;
+    --card:#26211c;
+    --ink:#efe9da;
+    --ink-soft:#c9c0af;
+    --border:#3a332a;
+  }
+  body{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+  }
+  .mincho{font-family:'Shippori Mincho', serif;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 1.25rem;}
+  @media (min-width:768px){ .wrap{padding:0 2rem;} }
+
+  .btn-call{
+    background:var(--wine);
+    color:#fff;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-call:hover{transform:translateY(-1px); box-shadow:0 8px 20px rgba(107,39,55,.35);}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+  }
+
+  .divider-line{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+
+  .menu-card{ position:relative; }
+  .menu-card .top-bar{ height:6px; width:100%; }
+
+  .fade-up{
+    opacity:0;
+    transform:translateY(14px);
+    animation:fadeUp .8s ease forwards;
+  }
+  @keyframes fadeUp{ to{ opacity:1; transform:translateY(0);} }
+  @media (prefers-reduced-motion: reduce){
+    .fade-up{ animation:none; opacity:1; transform:none; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--wheat);
+    outline-offset:2px;
+  }
+
+  .map-container{ position:relative; padding-bottom:78%; height:0; overflow:hidden; }
+  .map-container iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(.15) contrast(1.02); }
+
+  #mobile-menu{ transition:max-height .3s ease; overflow:hidden; }
+
+  .safe-bottom{ padding-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50" style="background:color-mix(in srgb, var(--cream) 92%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);">
+  <div class="wrap flex items-center justify-between h-16">
+    <a href="#top" class="mincho font-bold text-lg md:text-xl" style="color:var(--wine);">いるくおーれ</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium" style="color:var(--ink-soft);">
+      <a href="#menu" class="hover:opacity-70 transition">メニュー</a>
+      <a href="#coming-soon" class="hover:opacity-70 transition">新サービス</a>
+      <a href="#about" class="hover:opacity-70 transition">こだわり</a>
+      <a href="#access" class="hover:opacity-70 transition">アクセス</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:0236453256" class="hidden sm:inline-flex btn-call px-4 py-2 rounded-full text-sm font-bold items-center gap-2">
+        <i class="fas fa-phone-alt text-xs"></i> 023-645-3256
+      </a>
+      <button id="menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full" style="border:1px solid var(--border);" aria-label="メニューを開く" aria-expanded="false">
+        <i class="fas fa-bars" style="color:var(--ink);"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden max-h-0" style="border-top:1px solid var(--border);">
+    <div class="wrap py-4 flex flex-col gap-4 text-sm font-medium" style="color:var(--ink-soft);">
+      <a href="#menu" class="menu-link">メニュー</a>
+      <a href="#coming-soon" class="menu-link">新サービス</a>
+      <a href="#about" class="menu-link">こだわり</a>
+      <a href="#access" class="menu-link">アクセス</a>
+      <a href="tel:0236453256" class="btn-call px-4 py-3 rounded-full text-center font-bold">電話予約：023-645-3256</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <!-- 背景画像 -->
+  <div class="absolute inset-0 z-0">
+    <img src="images/omurice.jpg" alt="お店の雰囲気" class="w-full h-full object-cover">
+    <!-- グラデーションオーバーレイ（文字を見やすくするための黒・ワインレッド系の重ね合わせ） -->
+    <div class="absolute inset-0" style="background:linear-gradient(150deg, rgba(60, 10, 20, 0.85), rgba(100, 20, 40, 0.75) 65%);"></div>
+  </div>
+
+  <!-- decorative line-art: rising steam curling into a wheat stalk -->
+  <svg class="absolute right-[-6%] top-1/2 -translate-y-1/2 w-[70%] max-w-[560px] opacity-25 md:opacity-40 z-10 pointer-events-none" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M60 480C40 420 90 400 70 350C50 300 100 280 85 230" stroke="#f2e6c9" stroke-width="3" stroke-linecap="round"/>
+    <path d="M120 480C100 400 150 380 130 320C110 260 160 240 150 190" stroke="#f2e6c9" stroke-width="3" stroke-linecap="round"/>
+    <path d="M150 190C150 190 120 150 150 110C180 70 160 30 190 10" stroke="#e9c96a" stroke-width="4" stroke-linecap="round"/>
+    <path d="M150 110C150 110 190 100 200 60" stroke="#e9c96a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M150 110C150 110 120 95 105 55" stroke="#e9c96a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M170 150C170 150 210 140 222 100" stroke="#e9c96a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M170 150C170 150 135 140 118 108" stroke="#e9c96a" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+
+  <div class="wrap relative z-20 py-24">
+    <div class="max-w-xl fade-up">
+      <p class="mincho text-lg md:text-xl mb-4" style="color:#e9c96a;">山形・若宮の住宅街に佇む、真心の場所</p>
+      <h2 class="mincho text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.3] mb-8 text-white">
+        心まで満たされる、<br>至福のイタリアンランチ。
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-4 py-1.5 rounded-full text-sm font-bold text-white" style="background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3);">ランチ 1,250円〜</span>
+        <span class="px-4 py-1.5 rounded-full text-sm font-bold text-white" style="background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3);">駐車場完備</span>
+        <span class="px-4 py-1.5 rounded-full text-sm font-bold text-white" style="background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3);">お座敷OK</span>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="tel:0236453256" class="btn-call px-6 py-3.5 rounded-full font-bold inline-flex items-center gap-2">
+          <i class="fas fa-phone-alt"></i> 電話で予約する
+        </a>
+        <a href="#menu" class="px-6 py-3.5 rounded-full font-bold inline-flex items-center gap-2 text-white" style="border:1px solid rgba(255,255,255,.4);">
+          メニューを見る <i class="fas fa-arrow-down text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<section class="py-10 md:py-14" style="background:var(--card); border-bottom:1px solid var(--border);">
+  <div class="wrap flex flex-col md:flex-row items-center gap-6 md:gap-12">
+    <div class="text-center shrink-0">
+      <p class="text-xs mb-1" style="color:var(--ink-soft);">Google クチコミ</p>
+      <div class="flex items-center gap-2 justify-center">
+        <span class="text-3xl font-bold" style="color:var(--wine);">4.5</span>
+        <div style="color:var(--wheat);">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 text-sm text-center md:text-left" style="color:var(--ink-soft);">
+      「牛タンを窯で焼くとは衝撃！」「コスパが凄くてびっくり」「前菜が丁寧に作られていて信頼できる」— そんな声をいただいています。
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="py-20 md:py-28">
+  <div class="wrap">
+    <div class="text-center mb-14">
+      <p class="text-sm font-bold tracking-wide mb-2" style="color:var(--wine);">OUR MENU</p>
+      <h3 class="mincho text-3xl md:text-4xl font-bold">旬を味わう、自慢の料理</h3>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <!-- Pasta -->
+      <div class="menu-card rounded-2xl overflow-hidden card shadow-sm hover:shadow-lg transition">
+        <div class="top-bar h-2" style="background:var(--wheat);"></div>
+        <div class="p-6 md:p-8">
+          <span class="inline-block text-xs font-bold px-2.5 py-1 rounded mb-3" style="background:#c99a3c22; color:var(--wheat);">一番人気</span>
+          <h4 class="font-bold text-lg mb-2">ベーコンときのこのクリームパスタ</h4>
+          <p class="text-sm mb-6" style="color:var(--ink-soft);">濃厚なクリームソースに山形県産きのこの香りが広がる、リピート率No.1の人気メニュー。</p>
+          
+        </div>
+      </div>
+
+      <!-- Course -->
+      <div class="menu-card rounded-2xl overflow-hidden card shadow-sm hover:shadow-lg transition">
+        <div class="top-bar h-2" style="background:var(--wine);"></div>
+        <div class="p-6 md:p-8">
+          <span class="inline-block text-xs font-bold px-2.5 py-1 rounded mb-3" style="background:#6b273722; color:var(--wine);">大満足</span>
+          <h4 class="font-bold text-lg mb-2">肉・魚のダブルメインランチ</h4>
+          <p class="text-sm mb-6" style="color:var(--ink-soft);">前菜、魚料理、肉料理（ハンバーグ等）が一度に楽しめる、いるくおーれ真骨頂のコース。</p>
+          
+        </div>
+      </div>
+
+      <!-- Takeout -->
+      <div class="menu-card rounded-2xl overflow-hidden card shadow-sm hover:shadow-lg transition">
+        <div class="top-bar h-2" style="background:var(--olive);"></div>
+        <div class="p-6 md:p-8">
+          <span class="inline-block text-xs font-bold px-2.5 py-1 rounded mb-3" style="background:#44573a22; color:var(--olive);">お持ち帰り</span>
+          <h4 class="font-bold text-lg mb-2">手作りピザ・パスタ弁当</h4>
+          <p class="text-sm mb-6" style="color:var(--ink-soft);">ご自宅でも本格イタリアンを。パーティーや日常の彩りに。お電話で事前注文いただけます。</p>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section id="coming-soon" class="py-20 md:py-28 relative overflow-hidden" style="background:var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="absolute -right-6 -bottom-10 text-[8rem] md:text-[11rem] font-extrabold select-none pointer-events-none mincho" style="color:var(--border); opacity:.5;">NEW</div>
+  <div class="wrap relative z-10">
+    <div class="text-center mb-14">
+      <span class="inline-block text-white px-4 py-1 rounded-full text-xs font-bold tracking-wide mb-3" style="background:var(--wine);">
+        <i class="fas fa-sparkles mr-1"></i> COMING SOON
+      </span>
+      <h3 class="mincho text-3xl md:text-4xl font-bold mb-4">もっと魅力的におもてなし。<br class="md:hidden">準備中の新サービス</h3>
+      <p class="max-w-2xl mx-auto text-sm md:text-base" style="color:var(--ink-soft);">「こんなサービスがあったらいいな」のお声にお応えして、現在新たな企画を準備しております。順次スタート予定です。</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="p-6 rounded-2xl card hover:shadow-md transition">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl" style="background:#c99a3c22; color:var(--wheat);">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded" style="background:#c99a3c22; color:var(--wheat);">企画進行中</span>
+        </div>
+        <h4 class="font-bold text-lg mb-2">月替わり 季節のシェフ特別コース</h4>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">山形の豊かな四季（春の山菜、夏のさくらんぼ・夏野菜、秋のきのこ・フルーツ等）を味わい尽くす月替わり限定コース。</p>
+        <span class="text-xs font-bold flex items-center gap-1" style="color:var(--wheat);"><i class="far fa-clock"></i> 近日スタート予定</span>
+      </div>
+
+      <div class="p-6 rounded-2xl card hover:shadow-md transition">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl" style="background:#44573a22; color:var(--olive);">
+            <i class="fas fa-box-open"></i>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded" style="background:#44573a22; color:var(--olive);">開発中</span>
+        </div>
+        <h4 class="font-bold text-lg mb-2">おうちで本格ミールキット</h4>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">「いるくおーれ」自家製パスタソースと生パスタをご自宅にお届け。温めて和えるだけでプロの味が再現できます。</p>
+        <span class="text-xs font-bold flex items-center gap-1" style="color:var(--olive);"><i class="far fa-clock"></i> 準備リリース予定</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-20 md:py-28 text-white" style="background:linear-gradient(160deg, var(--olive-deep), var(--olive));">
+  <div class="wrap">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- テキストエリア -->
+      <div>
+        <h3 class="mincho text-3xl font-bold mb-8">どんな時も、真心を込めて。</h3>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style="background:rgba(255,255,255,.14);"><i class="fas fa-baby text-xl"></i></div>
+            <div>
+              <h5 class="font-bold mb-1">お子様連れ・ご家族で</h5>
+              <p class="text-sm opacity-85">小上がり席を完備。お子様と一緒にお席でゆっくりお召し上がりいただけます。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style="background:rgba(255,255,255,.14);"><i class="fas fa-birthday-cake text-xl"></i></div>
+            <div>
+              <h5 class="font-bold mb-1">お祝い・デザートプレート</h5>
+              <p class="text-sm opacity-85">デザートも10種類から選択可能。特別な日のメッセージプレートも承ります。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style="background:rgba(255,255,255,.14);"><i class="fas fa-leaf text-xl"></i></div>
+            <div>
+              <h5 class="font-bold mb-1">地元・山形の食材</h5>
+              <p class="text-sm opacity-85">県産の野菜やきのこを積極的に使い、季節の恵みをそのまま食卓へお届けします。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 画像エリア -->
+      <div class="grid grid-cols-2 gap-4">
+        <!-- 画像 1 (店内・お座敷など) -->
+        <div class="rounded-xl aspect-square overflow-hidden shadow-lg" style="border:1px solid rgba(255,255,255,.2);">
+          <img src="images/pasta.png" alt="店内の様子・お座敷席" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+        </div>
+        <!-- 画像 2 (デザートプレート・食材など) -->
+        <div class="rounded-xl aspect-square overflow-hidden mt-8 shadow-lg" style="border:1px solid rgba(255,255,255,.2);">
+          <img src="images/dessert.png" alt="特製デザートプレート" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access" class="py-20 md:py-28">
+  <div class="wrap">
+    <div class="text-center mb-12">
+      <p class="text-sm font-bold tracking-wide mb-2" style="color:var(--wine);">ACCESS</p>
+      <h3 class="mincho text-3xl font-bold">アクセス</h3>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div class="p-7 md:p-8 rounded-2xl card h-full">
+        <h4 class="mincho text-2xl font-bold mb-6 pb-4" style="color:var(--wine); border-bottom:1px solid var(--border);">いるくおーれ</h4>
+        <dl class="space-y-6">
+          <div>
+            <dt class="flex items-center gap-2 font-bold mb-1" style="color:var(--ink-soft);"><i class="fas fa-map-marker-alt" style="color:var(--wine);"></i> 住所</dt>
+            <dd class="pl-6 text-sm leading-relaxed">
+              〒990-2453 山形県山形市若宮3丁目3-4<br>
+              <span class="italic" style="color:var(--ink-soft);">※イオンモール山形南店のすぐ隣</span>
+            </dd>
+          </div>
+          <div>
+            <dt class="flex items-center gap-2 font-bold mb-1" style="color:var(--ink-soft);"><i class="fas fa-phone-alt" style="color:var(--wine);"></i> 電話番号</dt>
+            <dd class="pl-6 text-xl font-bold">
+              <a href="tel:0236453256" class="hover:opacity-70 transition" style="color:var(--wine);">023-645-3256</a>
+            </dd>
+          </div>
+          <div>
+            <dt class="flex items-center gap-2 font-bold mb-1" style="color:var(--ink-soft);"><i class="fas fa-car" style="color:var(--wine);"></i> 駐車場</dt>
+            <dd class="pl-6 text-sm">店舗正面、および斜め向かいに専用駐車場あり。</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-md card">
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.3833524747633!2d140.30684287477837!3d38.224210886145734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb43033ba3dbb%3A0x4e3d7e1eada0923f!2z44GE44KL772l44GP44GJ44O844KM!5e0!3m2!1sja!2sjp!4v1770773262874!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="いるくおーれ 地図"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-14 text-center pb-28 md:pb-14 text-white" style="background:var(--ink);">
+  <div class="wrap">
+    <h2 class="mincho text-2xl md:text-3xl font-bold mb-4">いるくおーれ</h2>
+    <p class="text-sm opacity-60 mb-8 max-w-md mx-auto">山形市若宮で「真心」をお届けするイタリアンレストラン。皆様のご来店を心よりお待ちしております。</p>
+    <div class="flex justify-center gap-4 mb-8">
+      <a href="https://www.instagram.com/ir_cuore/" class="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-70 transition" style="border:1px solid rgba(255,255,255,.2);" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      
+    </div>
+    <p class="text-xs opacity-40">&copy; Ir Cuore All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- MOBILE FLOATING CTA -->
+<div class="md:hidden fixed bottom-0 w-full grid grid-cols-2 z-50 safe-bottom" style="box-shadow:0 -4px 14px rgba(0,0,0,.12);">
+  <a href="tel:0236453256" class="btn-call py-4 text-center font-bold flex items-center justify-center gap-2">
+    <i class="fas fa-phone"></i> 電話予約
+  </a>
+  
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let open = false;
+  toggleBtn.addEventListener('click', () => {
+    open = !open;
+    toggleBtn.setAttribute('aria-expanded', String(open));
+    mobileMenu.style.maxHeight = open ? mobileMenu.scrollHeight + 'px' : '0px';
+    toggleBtn.innerHTML = open ? '<i class="fas fa-times" style="color:var(--ink);"></i>' : '<i class="fas fa-bars" style="color:var(--ink);"></i>';
+  });
+  document.querySelectorAll('#mobile-menu .menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      open = false;
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.style.maxHeight = '0px';
+      toggleBtn.innerHTML = '<i class="fas fa-bars" style="color:var(--ink);"></i>';
+    });
+  });
+</script>
+</body>
+</html>
