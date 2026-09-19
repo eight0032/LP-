@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>gura レストラン | 石蔵で味わう、山形まるごとイタリアン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#2d362e;
+    --accent:#b3936b;
+    --bg-light:#fdfcf9;
+    --text-main:#1a1a1a;
+  }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    color:var(--text-main);
+    background-color:var(--bg-light);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  .serif{ font-family:'Shippori Mincho', serif; }
+
+  /* 縦書き（デスクトップのみ）*/
+  .vertical-text{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* パララックス風背景（対応端末のみ／モバイルはscrollに自動フォールバック） */
+  .bg-fixed-section{
+    background-size: cover;
+    background-position: center;
+  }
+  @media (min-width: 768px) and (hover: hover){
+    .bg-fixed-section{ background-attachment: fixed; }
+  }
+
+  .fade-in-up{
+    opacity:0;
+    transform:translateY(24px);
+    transition: opacity .9s ease-out, transform .9s ease-out;
+  }
+  .fade-in-up.visible{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .fade-in-up{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  .decorative-line{
+    width:1px;
+    height:80px;
+    background:linear-gradient(to bottom, var(--accent), transparent);
+    margin:0 auto;
+  }
+
+  .img-zoom{ overflow:hidden; }
+  .img-zoom img{ transition: transform 1s ease; }
+  @media (hover:hover){
+    .img-zoom:hover img{ transform:scale(1.06); }
+  }
+
+  .map-container{
+    position:relative;
+    padding-bottom:75%;
+    height:0;
+    overflow:hidden;
+  }
+  @media (min-width:768px){
+    .map-container{ padding-bottom:56.25%; }
+  }
+  .map-container iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+
+  /* 100vh のモバイルアドレスバー対策 */
+  .h-screen-safe{ height:100svh; min-height:480px; }
+
+  /* ハンバーガーメニュー */
+  .menu-line{ transition: transform .3s ease, opacity .3s ease; }
+  #mobile-menu{
+    transition: opacity .35s ease, visibility .35s ease;
+  }
+  #mobile-menu.hidden-menu{ opacity:0; visibility:hidden; pointer-events:none; }
+  #mobile-menu.show-menu{ opacity:1; visibility:visible; pointer-events:auto; }
+
+  /* テキストの折り返し・行長を読みやすく */
+  .prose-jp{ max-width: 34em; }
+
+  ::selection{ background: var(--accent); color:#fff; }
+
+  a, button{ -webkit-touch-callout: none; }
+</style>
+</head>
+<body>
+
+  <!-- ナビゲーション -->
+  <nav id="main-nav" class="fixed top-0 w-full z-[100] px-5 sm:px-8 py-4 flex justify-between items-center transition-all duration-500">
+    <a href="#top" class="text-xl font-bold tracking-tighter serif z-[110]" id="logo-text">gura</a>
+
+    <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase">
+      <a href="#concept" class="hover:text-[#b3936b] transition-colors" id="nav-concept">Concept</a>
+      <a href="#menu" class="hover:text-[#b3936b] transition-colors" id="nav-menu">Menu</a>
+      <a href="#space" class="hover:text-[#b3936b] transition-colors" id="nav-space">Space</a>
+      <a href="#coming-soon" class="hover:text-[#b3936b] transition-colors" id="nav-coming">Coming Soon</a>
+      <a href="#access" class="hover:text-[#b3936b] transition-colors" id="nav-access">Access</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:023-665-5466" class="hidden sm:inline-block bg-[#2d362e] text-white px-5 py-2 text-xs tracking-widest rounded-full hover:bg-[#b3936b] transition-colors">
+        RESERVE
+      </a>
+      <!-- ハンバーガー（モバイル） -->
+      <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" class="md:hidden relative z-[110] w-9 h-9 flex flex-col justify-center items-center gap-[6px]">
+        <span class="menu-line block w-6 h-[1.5px] bg-current"></span>
+        <span class="menu-line block w-6 h-[1.5px] bg-current"></span>
+        <span class="menu-line block w-4 h-[1.5px] bg-current self-end"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- モバイル全画面メニュー -->
+  <div id="mobile-menu" class="hidden-menu fixed inset-0 z-[105] bg-[#2d362e] text-white flex flex-col justify-center items-center gap-8 md:hidden">
+    <a href="#concept" class="mobile-link text-2xl serif tracking-widest">Concept</a>
+    <a href="#menu" class="mobile-link text-2xl serif tracking-widest">Menu</a>
+    <a href="#space" class="mobile-link text-2xl serif tracking-widest">Space</a>
+    <a href="#coming-soon" class="mobile-link text-2xl serif tracking-widest">Coming Soon</a>
+    <a href="#access" class="mobile-link text-2xl serif tracking-widest">Access</a>
+    <a href="tel:023-665-5466" class="mt-6 border border-[#b3936b] text-[#b3936b] px-8 py-3 text-xs tracking-[0.3em] uppercase rounded-full">
+      023-665-5466
+    </a>
+  </div>
+
+  <!-- 1. ファーストビュー -->
+  <header id="top" class="relative h-screen-safe w-full flex items-center justify-center overflow-hidden bg-black">
+    <div class="absolute inset-0 opacity-60">
+      <img src="images/store.jpg" alt="石蔵の外観イメージ" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
+
+    <div class="relative z-10 w-full px-6 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+      <!-- 見出し：モバイルは横書き、md以上で縦書き -->
+      <h1 class="text-white serif text-center md:hidden text-[26px] leading-relaxed tracking-wide">
+        石蔵に灯る、<br>山形の記憶と朝。
+      </h1>
+      <div class="vertical-text text-white serif hidden md:block">
+        <h1 class="text-3xl lg:text-4xl leading-loose tracking-[0.2em]">
+          石蔵に灯る、<br>山形の記憶と朝。
+        </h1>
+      </div>
+
+      <div class="text-white text-center md:text-left fade-in-up">
+        <p class="text-xs sm:text-sm tracking-[0.3em] mb-4 opacity-80 uppercase">Italian Restaurant gura</p>
+        <div class="w-12 h-[1px] bg-[#b3936b] mb-6 mx-auto md:mx-0"></div>
+        <p class="text-base sm:text-lg font-light leading-loose">
+          百年あまりの石蔵が、<br>
+          洗練された一皿と出会う場所。
+        </p>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+      <span class="text-[9px] sm:text-[10px] tracking-[0.5em] text-white uppercase mb-4">Scroll</span>
+      <div class="w-[1px] h-12 sm:h-16 bg-white opacity-30"></div>
+    </div>
+  </header>
+
+  <!-- 2. コンセプト -->
+  <section id="concept" class="py-20 sm:py-28 md:py-32 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="text-center mb-14 md:mb-20 fade-in-up">
+        <span class="text-[#b3936b] text-xs sm:text-sm tracking-[0.4em] uppercase block mb-4">Story</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl serif leading-relaxed">山形を、再編集する。</h2>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+        <div class="w-full md:w-1/2 img-zoom shadow-2xl rounded-sm">
+          <img src="images/salada.jpg" alt="山形生野菜の料理" class="w-full">
+        </div>
+        <div class="w-full md:w-1/2 fade-in-up">
+          <p class="text-gray-600 leading-loose font-light mb-8 prose-jp">
+            山形市役所前に佇む、旧木村邸の石倉庫。<br>
+            その重厚な石の壁に囲まれた空間は、<br>
+            かつてこの街の賑わいを記憶しています。
+          </p>
+          <p class="text-gray-600 leading-loose font-light prose-jp">
+            「gura」は、その歴史を尊びながら、<br>
+            現代の山形が持つ「食」「デザイン」「人」を<br>
+            新しい感性で編集し、届ける拠点です。<br>
+            山形の食材が持つ力強さを、<br>
+            石蔵の静謐な空気とともに。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. シグネチャーメニュー -->
+  <section id="menu" class="relative py-20 sm:py-28 md:py-32 bg-fixed-section text-white overflow-hidden" style="background-color:#1a1a1a; background-image:url('images/pasta.png');">
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-xl fade-in-up">
+        <span class="text-[#b3936b] text-xs sm:text-sm tracking-[0.4em] uppercase block mb-4">Signature</span>
+        <h3 class="text-3xl sm:text-4xl serif mb-6 md:mb-8 leading-snug">旬の香りを、閉じ込める。</h3>
+        <p class="text-base sm:text-lg font-light mb-10 md:mb-12 leading-relaxed prose-jp">
+          蔵形マッシュルームの奥行き、<br>
+          山形生野菜の瑞々しさと色彩。<br>
+          季節の移ろいを五感で味わうパスタセット。
+        </p>
+
+        <div class="bg-white/10 backdrop-blur-sm p-6 sm:p-8 border-l-2 border-[#b3936b] rounded-sm">
+          <h4 class="text-lg sm:text-xl serif mb-2">guraセット</h4>
+          <p class="text-sm text-gray-300 mb-4 tracking-widest">&yen;2,200（Lunch Time）</p>
+          <p class="text-sm font-light leading-relaxed">
+            山形野菜の前菜プレート／自家製フォカッチャ／<br>
+            本日の選べるパスタ／ドルチェ／コーヒー
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. レビュー -->
+  <section class="py-20 sm:py-28 md:py-32 bg-[#fdfcf9]">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-14 md:gap-24 items-start">
+        <div class="fade-in-up">
+          <div class="decorative-line mb-8 md:mb-12 hidden md:block"></div>
+          <div class="serif text-xl sm:text-2xl leading-loose tracking-widest italic text-gray-400">
+            "味覚と雪囲気で<br>記憶に残る食体験でした。"
+          </div>
+        </div>
+        <div class="space-y-12 md:space-y-16">
+          <div class="fade-in-up">
+            <p class="text-[#b3936b] mb-4 text-lg">★★★★★</p>
+            <p class="text-sm text-gray-600 font-light leading-loose">
+              前菜プレートが素晴らしすぎて、これだけでもお腹いっぱいになります。パスタの量も多くて、むしろお腹が満たされすぎたくらいです。フワフワのシフォンケーキまで最後まで楽しめました。
+            </p>
+          </div>
+          <div class="fade-in-up" style="transition-delay:0.15s;">
+            <p class="text-[#b3936b] mb-4 text-lg">★★★★</p>
+            <p class="text-sm text-gray-600 font-light leading-loose">
+              蔵形マッシュルームを三種の調理法で仕上げたパスタは香りとスープの奥行きが抜群。近年食べた中でも印象に残る仕上がり。建物の趣と料理の香りを楽しみたい方に最適です。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 空間 -->
+  <section id="space" class="py-20 sm:py-28 md:py-32 bg-white overflow-hidden">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6 md:gap-8">
+        <div class="fade-in-up">
+          <span class="text-[#b3936b] text-xs sm:text-sm tracking-[0.4em] uppercase block mb-4">Architecture</span>
+          <h2 class="text-2xl sm:text-3xl md:text-5xl serif leading-snug">歴史を纏う、<br class="md:hidden">開放の空間。</h2>
+        </div>
+        <div class="max-w-xs text-xs text-gray-500 tracking-widest leading-loose fade-in-up">
+          市役所前に佇む石蔵をリノベーション。<br>
+          カマボコ型の天井が生み出す圧倒的な開放感。<br>
+          夜は落ち着いた照明が、石の質感を美しく浮かび上がらせます。
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4">
+        <div class="col-span-2 md:col-span-8 img-zoom h-[260px] sm:h-[380px] md:h-[600px] rounded-sm">
+          <img src="images/store2.jpg" alt="店内の開放的な空間" class="w-full h-full object-cover">
+        </div>
+        <div class="col-span-2 md:col-span-4 grid grid-cols-2 md:grid-rows-2 gap-3 sm:gap-4">
+          <div class="img-zoom h-[130px] sm:h-[184px] md:h-auto rounded-sm">
+            <img src="images/wine.png" alt="石蔵の壁の質感" class="w-full h-full object-cover">
+          </div>
+          <div class="img-zoom h-[130px] sm:h-[184px] md:h-auto rounded-sm">
+            <img src="images/pasta.png" alt="テーブルセッティング" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5 Coming Soon -->
+  <section id="coming-soon" class="py-20 sm:py-28 md:py-32 bg-[#f4f2ed]">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="text-center mb-12 md:mb-16 fade-in-up">
+        <span class="text-[#b3936b] text-xs sm:text-sm tracking-[0.4em] uppercase block mb-4">Coming Soon</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl serif mb-6 leading-snug">山形と深まる、<br class="md:hidden">新しい食体験。</h2>
+        <p class="text-gray-600 font-light text-sm md:text-base max-w-2xl mx-auto leading-relaxed prose-jp mx-auto">
+          guraでは今後、お料理を提供するだけでなく、山形の豊かな風土・四季の彩り・生産者の情熱をより深く感じていただくための新しい取り組みを開始予定です。
+        </p>
+        <div class="w-12 h-[1px] bg-[#b3936b] mx-auto mt-6"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 fade-in-up flex flex-col justify-between gap-6">
+          <div>
+            <div class="text-[#b3936b] text-xs tracking-widest uppercase mb-3">Service 01</div>
+            <h3 class="text-lg sm:text-xl serif mb-4">生産者ストーリーカード</h3>
+            <p class="text-gray-600 text-sm font-light leading-relaxed">
+              一皿のお料理とともに、旬の食材を育んだ山形の農家さんのこだわりや秘話を記したオリジナルのストーリーカードをお届けします。
+            </p>
+          </div>
+          <span class="inline-block text-[10px] tracking-widest bg-[#fdfcf9] text-[#b3936b] border border-[#b3936b]/30 px-3 py-1 rounded-full w-fit">順次導入予定</span>
+        </div>
+
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 fade-in-up flex flex-col justify-between gap-6" style="transition-delay:0.1s;">
+          <div>
+            <div class="text-[#b3936b] text-xs tracking-widest uppercase mb-3">Service 02</div>
+            <h3 class="text-lg sm:text-xl serif mb-4">旬の店内ギャラリー・POP</h3>
+            <p class="text-gray-600 text-sm font-light leading-relaxed">
+              石蔵の洗練された空間に、今まさに旬を迎えている山形食材の背景や見どころを伝える洗練されたグラフィック展示を展開します。
+            </p>
+          </div>
+          <span class="inline-block text-[10px] tracking-widest bg-[#fdfcf9] text-[#b3936b] border border-[#b3936b]/30 px-3 py-1 rounded-full w-fit">準備中</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. アクセス -->
+  <section id="access" class="py-20 sm:py-28 md:py-32 bg-[#2d362e] text-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12 md:mb-16 fade-in-up">
+          <span class="text-[#b3936b] text-xs sm:text-sm tracking-[0.4em] uppercase block mb-4">Access</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl serif mb-6">地図・アクセス</h2>
+          <div class="w-12 h-[1px] bg-[#b3936b] mx-auto"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start mb-16 md:mb-20">
+          <div class="fade-in-up">
+            <div class="map-container rounded-2xl overflow-hidden shadow-2xl">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.078033919933!2d140.33570397478013!3d38.25449618438344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb602d106eb2b%3A0xb397266a224175f9!2zZ3VyYeODrOOCueODiOODqeODsw!5e0!3m2!1sja!2sjp!4v1770771854470!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="fade-in-up space-y-10 md:space-y-12">
+            <div>
+              <h4 class="text-[#b3936b] text-xs sm:text-sm tracking-widest mb-4 uppercase">Address</h4>
+              <p class="text-lg sm:text-xl md:text-2xl serif leading-loose">
+                〒990-0047<br>
+                山形県山形市旅篭町2丁目1-41
+              </p>
+              <p class="text-sm opacity-60 mt-4 leading-relaxed font-light">
+                山形市役所前、文翔館から徒歩圏内。<br>
+                観光の合間のランチや、特別なディナーに。
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 sm:gap-8">
+              <div>
+                <h4 class="text-[#b3936b] text-xs sm:text-sm tracking-widest mb-2 uppercase">Closed</h4>
+                <p class="text-base sm:text-lg serif">月曜日</p>
+              </div>
+              <div>
+                <h4 class="text-[#b3936b] text-xs sm:text-sm tracking-widest mb-2 uppercase">Parking</h4>
+                <p class="text-sm opacity-80">店前5台／提携駐車場あり</p>
+              </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10">
+              <p class="text-xs tracking-widest opacity-40 uppercase mb-4">Reservation</p>
+              <a href="tel:023-665-5466" class="text-3xl sm:text-4xl md:text-5xl serif hover:text-[#b3936b] transition-colors break-all">023-665-5466</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="py-12 bg-white text-center">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col items-center gap-6">
+        <div class="serif text-xl font-bold tracking-tighter opacity-80 uppercase">gura</div>
+        <div class="flex gap-6 sm:gap-8 text-[10px] tracking-[0.3em] uppercase opacity-40">
+         
+          <a href="https://www.instagram.com/gura.yamagata/" class="hover:opacity-100">Instagram</a>
+        </div>
+        <p class="text-[10px] opacity-30 tracking-widest uppercase">&copy; 2026 gura Restaurant. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // スクロールでナビ背景を切り替え
+  const nav = document.getElementById('main-nav');
+  const logo = document.getElementById('logo-text');
+  const navLinkIds = ['nav-concept','nav-menu','nav-space','nav-coming','nav-access'];
+
+  function updateNavStyle(){
+    const scrolled = window.scrollY > 40;
+    const menuOpen = document.getElementById('mobile-menu').classList.contains('show-menu');
+    if(scrolled || menuOpen){
+      nav.classList.add('bg-white/95','shadow-md');
+      nav.classList.remove('text-white');
+      logo.classList.remove('text-white');
+      navLinkIds.forEach(id => document.getElementById(id)?.classList.remove('text-white'));
+    } else {
+      nav.classList.remove('bg-white/95','shadow-md');
+    }
+    // ハンバーガーの色（メニューが開いていないとき）
+    const toggle = document.getElementById('menu-toggle');
+    if(!menuOpen){
+      toggle.classList.toggle('text-white', !scrolled);
+      toggle.classList.toggle('text-[#1a1a1a]', scrolled);
+    }
+  }
+  window.addEventListener('scroll', updateNavStyle);
+  updateNavStyle();
+
+  // モバイルメニュー開閉
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuIsOpen = false;
+
+  function setMenu(open){
+    menuIsOpen = open;
+    mobileMenu.classList.toggle('show-menu', open);
+    mobileMenu.classList.toggle('hidden-menu', !open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.classList.add('text-white'); // メニュー展開時は常に白背景内なのでアイコンは白のまま次のupdateNavStyleで調整
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+
+    const lines = menuToggle.querySelectorAll('.menu-line');
+    if(open){
+      lines[0].style.transform = 'translateY(7.5px) rotate(45deg)';
+      lines[1].style.transform = 'translateY(-7.5px) rotate(-45deg)';
+      lines[1].style.opacity = '0';
+      lines[2].style.opacity = '0';
+    } else {
+      lines.forEach(l => { l.style.transform=''; l.style.opacity='1'; });
+    }
+    updateNavStyle();
+  }
+
+  menuToggle.addEventListener('click', () => setMenu(!menuIsOpen));
+  document.querySelectorAll('.mobile-link').forEach(a=>{
+    a.addEventListener('click', () => setMenu(false));
+  });
+
+  // スムーススクロール（メニューを閉じてから移動）
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e){
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
+      if(target){
+        e.preventDefault();
+        setMenu(false);
+        setTimeout(() => target.scrollIntoView({ behavior:'smooth' }), menuIsOpen ? 0 : 0);
+      }
+    });
+  });
+
+  // スクロール表示アニメーション
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
