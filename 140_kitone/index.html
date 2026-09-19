@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>十一屋レストラン kitöne | 創業200年の歴史が紡ぐ、木と音の洋食</title>
+<meta name="description" content="山形・七日町温泉のほとり。創業200年、老舗和菓子店「十一屋」を母体に持つ洋食レストラン kitöne。木の温もりとピアノの調べに包まれる、至福のひととき。">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:   '#2a231c',
+          washi: '#f7f2e8',
+          wood:  '#4b3428',
+          woodDeep: '#241813',
+          gold:  '#a8752f',
+          goldDeep: '#7c561f',
+          water: '#5c7266',
+        },
+        fontFamily: {
+          mincho: ['"Shippori Mincho"', 'serif'],
+          sans:   ['"Noto Sans JP"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  :root { color-scheme: light; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #f7f2e8;
+    color: #2a231c;
+    overflow-x: hidden;
+  }
+  .font-mincho { font-family: 'Shippori Mincho', serif; }
+
+  /* 木目を思わせる、控えめな縦ストライプの地紋 */
+  .bg-woodgrain {
+    background-color: #241813;
+    background-image:
+      repeating-linear-gradient(100deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(100deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 2px, transparent 2px, transparent 90px);
+  }
+  .bg-washi-texture {
+    background-color: #f7f2e8;
+    background-image: radial-gradient(rgba(75,52,40,0.05) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+
+  .deco-line { width: 1px; height: 56px; background: linear-gradient(#a8752f, transparent); margin: 0 auto; }
+
+  .vertical-jp {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.28em;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #a8752f 0%, #7c561f 100%);
+    box-shadow: 0 12px 24px -8px rgba(124, 86, 31, 0.55);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -8px rgba(124, 86, 31, 0.65); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  .delay-1 { animation-delay: .15s; }
+  .delay-2 { animation-delay: .35s; }
+  .delay-3 { animation-delay: .55s; }
+  @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-in-up { animation: none; opacity: 1; transform: none; }
+    .btn-primary, .btn-primary:hover { transition: none; transform: none; }
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #a8752f;
+    outline-offset: 3px;
+  }
+
+  .map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  /* スマホの下部固定バー分の余白（最終セクション用） */
+  .mobile-bar-spacer { padding-bottom: 4.5rem; }
+  @media (min-width: 768px) { .mobile-bar-spacer { padding-bottom: 0; } }
+</style>
+</head>
+<body class="antialiased">
+
+  <!-- ===== ヘッダー：現在地とお店の名前のみ、控えめに ===== -->
+  <header class="fixed top-0 inset-x-0 z-40 flex items-center justify-between px-5 md:px-10 py-4 pointer-events-none">
+    <div class="pointer-events-auto flex items-center gap-2 text-white mix-blend-difference">
+      <span class="font-mincho text-sm tracking-[0.2em]">十一屋 kitöne</span>
+    </div>
+  </header>
+
+<!-- ===== 1. ヒーロー ===== -->
+  <section class="relative min-h-[92vh] flex items-end bg-woodgrain overflow-hidden">
+    <!-- 背景画像 -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="images/kaki.png" 
+        alt="山形・七日町温泉の雰囲気を象徴する背景画像" 
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+      />
+    </div>
+
+    <!-- 装飾：奥行きとテキストの可読性を高める暗めグラデーションオーバーレイ -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-t from-woodDeep via-woodDeep/70 to-woodDeep/30"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gold/10 blur-3xl z-0"></div>
+
+    <div class="relative z-10 w-full px-5 md:px-10 pb-14 md:pb-20">
+      <p class="fade-in-up text-gold/90 text-xs md:text-sm tracking-[0.35em] mb-5">山形・七日町温泉のほとりで</p>
+
+      <div class="flex flex-col md:flex-row md:items-end gap-6 md:gap-14">
+        <h1 class="fade-in-up delay-1 font-mincho text-white text-[clamp(2.1rem,9vw,4.5rem)] leading-[1.25] tracking-wide">
+          木と音に、<br class="md:hidden">包まれて。
+        </h1>
+
+        <!-- 縦書きは横幅に余裕のある画面でのみ表示（スマホでは可読性を優先し非表示） -->
+        <div class="hidden md:block h-32 w-px bg-white/20"></div>
+        <p class="hidden md:block vertical-jp font-mincho text-white/70 text-sm h-32">創業二百年の系譜</p>
+
+        <div class="fade-in-up delay-2 max-w-md">
+          <p class="text-white/80 text-sm md:text-base leading-relaxed">
+            創業二百年の歴史が紡ぐ、至高の洋食レストラン。<br>
+            七日町のせせらぎと、ピアノの調べに<br class="hidden md:block">
+            身を委ねるひととき。
+          </p>
+        </div>
+      </div>
+
+      <a href="#booking" class="fade-in-up delay-3 btn-primary inline-flex items-center justify-center gap-2 text-white px-9 py-4 rounded-sm text-sm md:text-base font-bold tracking-widest mt-10 min-h-[52px]">
+        席を予約する
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 特典バナー ===== -->
+  <section class="relative -mt-10 md:-mt-12 z-20 px-5">
+    <div class="max-w-3xl mx-auto bg-white rounded-sm shadow-xl border-t-4 border-gold text-center px-6 py-10 md:py-12">
+      <p class="text-gold font-bold text-xs tracking-[0.3em] mb-3">WEB予約限定</p>
+      <h2 class="font-mincho text-xl md:text-2xl mb-4">季節のミニスイーツを、食後にひと皿</h2>
+      <p class="text-ink/70 text-sm md:text-base leading-relaxed mb-6">
+        このページからご予約いただいたお客様に、十一屋本店自慢の<br class="hidden md:block">
+        「季節のミニスイーツ」を食後にプレゼントいたします。
+      </p>
+      <span class="inline-block px-5 py-2 border border-dashed border-gold/50 text-goldDeep text-xs md:text-sm font-bold tracking-wide">
+        2023年11月 リニューアル記念特典
+      </span>
+    </div>
+  </section>
+
+  <!-- ===== 2. コンセプト：木・音・水 ===== -->
+  <section class="bg-washi-texture py-24 md:py-32 px-5">
+    <div class="max-w-5xl mx-auto">
+      <div class="deco-line mb-8"></div>
+      <div class="text-center mb-16 md:mb-20">
+        <span class="font-mincho text-gold text-sm">一</span>
+        <h2 class="font-mincho text-2xl md:text-4xl mt-3 leading-snug">五感で味わう、十一屋の心</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-14 md:gap-10">
+        <!-- 木 -->
+        <div class="text-center">
+          <svg class="w-14 h-14 mx-auto mb-6 text-gold" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M24 6 L34 20 H29 L36 30 H30 L34 40 H14 L18 30 H12 L19 20 H14 Z" stroke-linejoin="round"/>
+            <line x1="24" y1="40" x2="24" y2="44"/>
+          </svg>
+          <h3 class="font-mincho text-lg md:text-xl mb-3">「木」の温もり</h3>
+          <p class="text-sm text-ink/60 leading-relaxed">
+            梁の一本一本まで飴色に艶めく店内。<br>
+            天然木の香りに包まれる空間で、時間の流れがゆるやかになります。
+          </p>
+        </div>
+        <!-- 音 -->
+        <div class="text-center">
+          <svg class="w-14 h-14 mx-auto mb-6 text-gold" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M10 30 V18 L30 12 V26" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="34" r="4"/>
+            <circle cx="30" cy="30" r="4"/>
+            <path d="M36 14 Q40 18 36 22" stroke-linecap="round"/>
+          </svg>
+          <h3 class="font-mincho text-lg md:text-xl mb-3">「音」の癒やし</h3>
+          <p class="text-sm text-ink/60 leading-relaxed">
+            店内に響くピアノの調べ。<br>
+            喧騒を忘れさせる、特別な音楽のひとときをお過ごしください。
+          </p>
+        </div>
+        <!-- 水 -->
+        <div class="text-center">
+          <svg class="w-14 h-14 mx-auto mb-6 text-gold" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M24 6 C24 6 14 20 14 28 A10 10 0 0 0 34 28 C34 20 24 6 24 6 Z" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="font-mincho text-lg md:text-xl mb-3">「水」のせせらぎ</h3>
+          <p class="text-sm text-ink/60 leading-relaxed">
+            七日町温泉の清らかな流れが、<br>
+            食事のひとときを優雅に演出します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== 3. シグネチャー料理 ===== -->
+  <section id="menu" class="bg-woodDeep text-white py-24 md:py-32 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-5 md:px-10">
+      <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+        <!-- ビジュアル（画像エリア） -->
+        <div class="w-full md:w-1/2 order-2 md:order-1">
+          <div class="relative aspect-[4/3] bg-white/[0.03] border border-white/10 overflow-hidden group">
+            <!-- コーナー装飾 -->
+            <div class="absolute -top-4 -left-4 w-16 h-16 border-t border-l border-gold/60 z-10 pointer-events-none"></div>
+            <div class="absolute -bottom-4 -right-4 w-16 h-16 border-b border-r border-gold/60 z-10 pointer-events-none"></div>
+            
+            <!-- 料理写真（srcに実際の画像パスを指定してください） -->
+            <img 
+              src="images/omurice.jpg" 
+              alt="ビーフシチューの半熟オムライスセット" 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+
+            <!-- オーバーレイ装飾・ラベル -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            <span class="absolute bottom-4 right-5 text-[10px] tracking-[0.3em] text-white/60 z-10">SIGNATURE DISH</span>
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 order-1 md:order-2">
+          <span class="font-mincho text-gold text-sm">二</span>
+          <h2 class="font-mincho text-2xl md:text-4xl mt-3 mb-6 leading-snug">
+            ビーフシチューの<br>半熟オムライスセット
+          </h2>
+          <p class="text-white/60 leading-loose mb-8 text-sm md:text-base">
+            フランス修行を積んだシェフが振るう、kitöneの真骨頂。老舗十一屋の系譜が息づく、深いコクのビーフシチュー。口の中でとろける卵の質感は、まさに芸術の一皿です。
+          </p>
+          <div class="font-mincho text-3xl mb-8">
+            ¥1,980 <span class="text-sm font-sans font-light text-white/40">(税込)</span>
+          </div>
+          <ul class="space-y-3 border-l border-gold/40 pl-6 text-sm text-white/70">
+            <li>地元・山形県産の新鮮な卵を使用</li>
+            <li>3日間かけて仕込む特製デミグラスソース</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== 4. デザート ===== -->
+  <section class="bg-washi-texture py-24 md:py-32 px-5">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <span class="font-mincho text-gold text-sm">三</span>
+        <h2 class="font-mincho text-2xl md:text-3xl mt-3 mb-6 leading-snug">
+          和菓子店が母体だからこそ、<br>至福の締めくくり。
+        </h2>
+        <p class="text-ink/60 leading-loose mb-8 text-sm md:text-base">
+          1804年の創業以来、山形の地で愛され続けてきた「十一屋」。その伝統技術を活かし、コースの最後にはシェフ特製のデザートを。洋食とスイーツ、二つの老舗の腕が融合する贅沢を、ご堪能ください。
+        </p>
+        <a href="https://www.instagram.com/kitone_juichiya/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-goldDeep border-b border-gold pb-1 hover:opacity-70 transition min-h-[44px]">
+          最新のスイーツをInstagramで見る
+        </a>
+      </div>
+
+      <!-- ギャラリー風 2面画像レイアウト -->
+      <div class="grid grid-cols-2 gap-4">
+        <!-- 左側画像（高さを揃えた配置） -->
+        <div class="aspect-square bg-wood/5 border border-wood/10 relative overflow-hidden group">
+          <img 
+            src="images/pafe.png" 
+            alt="伝統技術を活かした特製デザート 1" 
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- 右側画像（視覚的なアクセントをつけるため mt-8 でオフセット） -->
+        <div class="aspect-square bg-wood/5 border border-wood/10 mt-8 relative overflow-hidden group">
+          <img 
+            src="images/cake.png" 
+            alt="伝統技術を活かした特製デザート 2" 
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. COMING SOON ===== -->
+  <section class="bg-wood text-white py-24 md:py-32 px-5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 md:mb-16">
+        <span class="font-mincho text-gold text-sm">四</span>
+        <h2 class="font-mincho text-2xl md:text-4xl mt-3 mb-5 leading-snug">これから始まる、新しいおもてなし</h2>
+        <p class="text-white/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          お客様の「特別な一日」をより華やかに彩るため。<br class="hidden md:block">
+          kitöneでは現在、新しいサービスの準備を進めております。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+        <div class="bg-woodDeep/60 p-8 border border-gold/20 flex flex-col justify-between">
+          <div>
+            <div class="inline-block px-3 py-1 border border-gold/40 text-gold text-xs font-bold mb-5">準備中</div>
+            <h3 class="font-mincho text-xl mb-3 text-gold">選べる季節のデザート付き<br>記念日コース</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">
+              老舗和菓子店「十一屋」だからこそ実現できる、至高の演出。コースの最後には、旬のフルーツを贅沢に使った特製ワゴン・アソートからお好きなスイーツをお選びいただけます。
+            </p>
+          </div>
+          <div class="border-t border-white/10 pt-4 text-xs text-white/40 flex items-center justify-between">
+            <span>公開スケジュール検討中</span>
+          </div>
+        </div>
+
+        <div class="bg-woodDeep/60 p-8 border border-gold/20 flex flex-col justify-between">
+          <div>
+            <div class="inline-block px-3 py-1 border border-gold/40 text-gold text-xs font-bold mb-5">準備中</div>
+            <h3 class="font-mincho text-xl mb-3 text-gold">生演奏ピアノリクエスト &<br>メッセージプレート</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">
+              大切な方のお誕生日や特別な日に。思い出の一曲をピアニストがその場で生演奏。感謝やお祝いの言葉を添えたシェフ特製デコレーションプレートでお祝いします。
+            </p>
+          </div>
+          <div class="border-t border-white/10 pt-4 text-xs text-white/40 flex items-center justify-between">
+            <span>詳細準備中</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. 実績・お客様の声 ===== -->
+  <section class="bg-washi-texture py-24 md:py-32 px-5">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="font-mincho text-gold text-sm">五</span>
+      <h2 class="font-mincho text-2xl md:text-3xl mt-3 mb-14 md:mb-16 leading-snug">
+        二百余年の時を経て、<br>七日町に再び灯る「木」と「音」
+      </h2>
+
+      <div class="bg-white p-8 md:p-12 text-left text-ink/70 leading-relaxed mb-14 shadow-sm">
+        <p class="mb-6">
+          「昔から七日町といえば十一屋でした。リニューアルしてさらにお洒落になり、水のせせらぎを聞きながら食べるオムライスは格別です。」
+        </p>
+        <p>
+          「ピアノの生演奏があるレストランは山形でも珍しい。大切な友人を連れてきても、間違いなく喜んでもらえます。」
+        </p>
+        <div class="text-xs tracking-[0.2em] text-gold mt-8">お客様の声より</div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+        <div class="text-center">
+          <p class="font-mincho text-3xl mb-1">1804</p>
+          <p class="text-[11px] text-ink/50">創業(文化元年)</p>
+        </div>
+        <div class="text-center">
+          <p class="font-mincho text-3xl mb-1">110+</p>
+          <p class="text-[11px] text-ink/50">七日町での歴史</p>
+        </div>
+        <div class="text-center">
+          <p class="font-mincho text-3xl mb-1">219</p>
+          <p class="text-[11px] text-ink/50">進化し続ける伝統</p>
+        </div>
+        <div class="text-center">
+          <p class="font-mincho text-3xl mb-1">4.5</p>
+          <p class="text-[11px] text-ink/50">お客様満足度</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. 予約・アクセス ===== -->
+  <footer id="booking" class="bg-woodDeep text-white py-20 md:py-24 px-5 md:px-10 mobile-bar-spacer">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14 md:mb-16">
+        <span class="font-mincho text-gold text-sm">六</span>
+        <h2 class="font-mincho text-2xl md:text-4xl mt-3 mb-6">特別な一時を、あなたと。</h2>
+        <div class="deco-line mb-8"></div>
+        <p class="text-white/60 text-sm md:text-base mb-10">混み合う場合がございますので、事前予約をおすすめしております。</p>
+
+        <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+          <a href="tel:0236220011" class="bg-white text-ink px-10 py-4 text-sm md:text-base font-bold flex items-center justify-center gap-3 hover:bg-gold hover:text-white transition duration-300 min-h-[52px]">
+            <span aria-hidden="true">📞</span> 023-622-0011
+          </a>
+          <a href="https://www.juichiya.jp/contact.html" class="btn-primary text-white px-10 py-4 text-sm md:text-base font-bold flex items-center justify-center gap-3 min-h-[52px]">
+            <span aria-hidden="true">✉️</span> WEB予約はこちら
+          </a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 border-t border-white/10 pt-14 md:pt-16">
+        <div class="space-y-5">
+          <h3 class="font-mincho text-lg border-l-2 border-gold pl-4">店舗情報</h3>
+          <div class="space-y-3 text-white/60 text-sm leading-loose">
+            <p>店名：十一屋レストラン kitöne(キトネ)</p>
+            <p>住所：〒990-0042 山形県山形市七日町1丁目4-32</p>
+            <p>電話番号：<span class="text-white font-bold">023-622-0011</span></p>
+            <p>営業時間：11:00 - 17:00<br>
+              <span class="text-white/40 text-xs">※ディナー・イベント利用はご相談ください</span>
+            </p>
+            <p>定休日：水曜日</p>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <h3 class="font-mincho text-lg border-l-2 border-gold pl-4">アクセス</h3>
+          <div class="aspect-video bg-white/5 overflow-hidden map-frame">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.126537898593!2d140.33655707478007!3d38.253371184449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb77731d9e247%3A0xb031fcd92af9e3db!2z5Y2B5LiA5bGL44Kr44OV44Kn44Os44K544OI44Op44OzIGtpdMO2bmU!5e0!3m2!1sja!2sjp!4v1770774351461!5m2!1sja!2sjp" loading="lazy" title="十一屋レストラン kitöne 地図"></iframe>
+          </div>
+          <p class="text-xs text-white/40">※指定駐輪場(七日町商店街各駐輪場)をご利用のお客様にはサービス券を発行しております。</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-16 md:mt-20 pt-8 border-t border-white/5 text-[10px] text-white/30">
+        &copy; 十一屋レストラン kitöne. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== スマホ専用：親指で押しやすい固定予約バー ===== -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-40 flex bg-woodDeep border-t border-gold/20"
+       style="padding-bottom: env(safe-area-inset-bottom);">
+    <a href="tel:0236220011" class="flex-1 flex items-center justify-center gap-2 text-white text-sm font-bold py-4 min-h-[52px] border-r border-white/10">
+      <span aria-hidden="true">📞</span> 電話で予約
+    </a>
+    <a href="https://www.juichiya.jp/contact.html" class="flex-1 flex items-center justify-center gap-2 bg-gold text-white text-sm font-bold py-4 min-h-[52px]">
+      <span aria-hidden="true">✉️</span> WEB予約
+    </a>
+  </div>
+
+</body>
+</html>
