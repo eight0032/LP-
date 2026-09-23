@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RESTAURANT AKIYAMA | 山形の隠れ家レストラン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdfdfc; --ink:#1a1a1a; --gold:#a68b5a; --gold-deep:#8e744a; --panel:#f7f5f0;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body{ font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; }
+  .serif{ font-family:'Noto Serif JP',serif; }
+  .accent-font{ font-family:'Playfair Display',serif; }
+  .tracked{ letter-spacing:.25em; }
+  .tracked-sm{ letter-spacing:.12em; }
+  .gold{ color:var(--gold); }
+  .rule{ width:1px; height:72px; background:var(--gold); margin:0 auto; }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity 1s ease, transform 1s ease; }
+  .reveal.active{ opacity:1; transform:translateY(0); }
+
+  .cta{ background:var(--gold); letter-spacing:.2em; transition:background .3s ease, letter-spacing .3s ease; }
+  .cta:hover{ background:var(--gold-deep); letter-spacing:.24em; }
+
+  /* Photo-less textured panels: quiet gold gradients standing in for imagery */
+  .swatch{ position:relative; background:
+      radial-gradient(120% 140% at 15% 10%, rgba(166,139,90,.28), transparent 55%),
+      radial-gradient(120% 140% at 85% 90%, rgba(26,26,26,.12), transparent 55%),
+      linear-gradient(160deg,#efece3,#e2ddd0);
+    overflow:hidden;
+  }
+  .swatch::after{
+    content:""; position:absolute; inset:0;
+    background-image: repeating-linear-gradient(115deg, rgba(166,139,90,.10) 0 1px, transparent 1px 26px);
+  }
+  .swatch.dark{ background:
+      radial-gradient(120% 140% at 20% 15%, rgba(166,139,90,.22), transparent 55%),
+      linear-gradient(160deg,#232323,#131313);
+  }
+  .swatch.dark::after{ background-image: repeating-linear-gradient(115deg, rgba(166,139,90,.08) 0 1px, transparent 1px 26px); }
+
+  .map-btn{ border:1px solid var(--gold); transition:background .3s ease,color .3s ease; }
+  .map-btn:hover{ background:var(--gold); color:#fff; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Hero -->
+<header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+  <!-- 背景画像 -->
+  <img 
+    src="images/soup.jpg" 
+    alt="Restaurant Akiyama" 
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  />
+  <!-- 暗めのオーバレイ（テキストの視認性を確保） -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- コンテンツ -->
+  <div class="relative z-10 text-center text-white px-6">
+    <span class="accent-font italic text-lg md:text-xl mb-4 block tracked">Authentic &amp; Modern</span>
+    <h1 class="text-3xl sm:text-4xl md:text-6xl mb-8 serif leading-relaxed md:leading-loose tracked-sm">
+      五感を揺さぶる、<br>一皿の芸術。
+    </h1>
+    <div class="rule mb-8 bg-white/60"></div>
+    <p class="text-xs md:text-base font-light tracked uppercase">Restaurant Akiyama</p>
+  </div>
+</header>
+
+  <!-- Introduction -->
+  <section class="py-20 md:py-32 px-6 bg-white text-center reveal">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xl sm:text-2xl md:text-3xl mb-10 serif leading-relaxed">
+        山形の厳選食材を、<br class="hidden sm:block">
+        老舗料亭の技とフレンチの感性で。
+      </h2>
+      <p class="text-gray-500 text-sm md:text-base leading-loose">
+        数多の食通を唸らせる、イチオシの「なめこのスープ」。<br class="hidden sm:block">
+        それは、京都の老舗料亭「霞月」で培った日本料理の繊細さと、<br class="hidden sm:block">
+        フレンチの独創的な技術が溶け合う、当店のシグネチャー。
+      </p>
+    </div>
+  </section>
+
+  <div class="py-12 md:py-16 text-center reveal px-6">
+    <a href="https://restaurant-akiyama.com/" class="cta text-white px-10 sm:px-12 py-4 sm:py-5 inline-block text-xs md:text-sm font-bold shadow-lg">VIEW RESERVATION</a>
+  </div>
+
+<!-- Signature dish -->
+<section class="py-20 md:py-32 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="relative reveal">
+      <!-- 画像のコンテナ -->
+      <div class="swatch aspect-[4/3] shadow-xl overflow-hidden">
+        <img 
+          src="images/soup.jpg" 
+          alt="芳醇な、なめこのスープ" 
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+      <!-- 装飾フレーム -->
+      <div class="absolute -bottom-6 -right-6 w-32 h-32 md:w-48 md:h-48 border-t border-l border-[var(--gold)] hidden md:block pointer-events-none"></div>
+    </div>
+    <div class="reveal">
+      <span class="accent-font italic text-xl md:text-2xl gold mb-4 block">Signature Dish</span>
+      <h3 class="text-2xl md:text-3xl mb-6 serif">芳醇な、なめこのスープ</h3>
+      <p class="text-gray-600 leading-loose text-sm mb-8 max-w-md">
+        良い食材を厳選し、シェフがその味を最大限に引き立てる。一口運べば、素材の力強さと繊細な出汁の香りが広がります。日本料理の「出汁」の概念をフレンチへと昇華させた一皿です。
+      </p>
+      <div class="gold text-sm tracking-widest uppercase">Story of Taste</div>
+    </div>
+  </div>
+</section>
+
+<!-- Chef's story -->
+<section class="py-20 md:py-32 bg-[#1a1a1a] text-white">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+    <div class="md:col-span-7 reveal">
+      <!-- 画像のコンテナ -->
+      <div class="swatch dark aspect-video shadow-xl overflow-hidden rounded-sm">
+        <img 
+          src="images/chef.png" 
+          alt="創業者 秋山 徹" 
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+    <div class="md:col-span-5 reveal">
+      <h3 class="text-xl md:text-2xl mb-8 serif">創造と継承</h3>
+      <p class="text-sm opacity-70 leading-loose mb-6">
+        創業者、秋山 徹。<br>
+        フレンチの研鑽を積んだ彼が求めたのは、和の精神。<br>
+        老舗料亭での2年間の修行を経て、繊細な日本料理の技法をフレンチへと昇華させました。
+      </p>
+      <p class="text-sm opacity-70 leading-loose">
+        奥様と共に営むこの場所は、ただのレストランではなく、<br>
+        一人ひとりのお客様と丁寧に向き合う「おもてなしの舞台」です。
+      </p>
+      <div class="mt-8 accent-font italic text-lg md:text-xl opacity-50">Toru Akiyama</div>
+    </div>
+  </div>
+</section>
+
+ <!-- Space & Access -->
+<section class="py-20 md:py-32 px-6 bg-white">
+  <div class="max-w-4xl mx-auto text-center reveal">
+    <span class="gold text-xs tracking-widest mb-4 block uppercase">The Space</span>
+    <h3 class="text-xl md:text-2xl mb-8 serif">北欧の静寂を纏う一軒家</h3>
+    <p class="text-gray-500 text-sm leading-loose">
+      山形駅からほど近い、隠れ家的な立地。<br>
+      スタイリッシュな北欧家具に囲まれた個室で、<br>
+      背筋が自然と伸びるような、特別な時間をお過ごしください。
+    </p>
+  </div>
+</section>
+
+    <div class="max-w-5xl mx-auto border border-gray-100 p-6 md:p-10 bg-[var(--panel)] shadow-sm reveal">
+      <div class="grid md:grid-cols-3 gap-8 md:gap-12 text-left items-start">
+        <div class="md:col-span-1">
+          <h4 class="serif text-lg md:text-xl mb-6 border-b border-[var(--gold)] pb-2 inline-block">Access</h4>
+          <div class="text-sm space-y-4 text-gray-600">
+            <p><span class="block font-bold text-gray-900">住所</span>〒990-0042 山形県山形市七日町5丁目6−30</p>
+            <p><span class="block font-bold text-gray-900">電話番号</span>023-609-9174</p>
+            <p><span class="block font-bold text-gray-900">交通</span>山形駅より徒歩約8分<br>駐車場完備（※少々狭いためご注意ください）</p>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="swatch h-52 md:h-full min-h-[220px] flex items-center justify-center">
+            <a href="https://maps.app.goo.gl/?q=山形県山形市七日町4丁目8-30" target="_blank" rel="noopener" class="map-btn bg-white/70 backdrop-blur px-6 py-3 text-xs md:text-sm tracked-sm text-[var(--ink)]">
+              Googleマップで開く
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="py-20 md:py-32 bg-[#1a1a1a] text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <span class="accent-font italic text-lg md:text-xl gold mb-3 block tracked">New Experience</span>
+      <h3 class="text-2xl md:text-3xl mb-4 serif tracked-sm">Coming Soon</h3>
+      <p class="text-xs md:text-sm opacity-60 mb-14 tracking-widest">静寂のなかで、料理と丁寧に向き合う新サービス</p>
+
+      <div class="grid sm:grid-cols-2 gap-6 md:gap-8 text-left">
+        <div class="bg-[#242424] p-6 md:p-8 rounded border border-white/10 hover:border-[var(--gold)] transition duration-500">
+          <div class="gold text-xs tracking-widest uppercase mb-3">Service 01</div>
+          <h4 class="text-lg md:text-xl serif mb-4 text-white">お料理の「ストーリーカード」</h4>
+          <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-4">
+            写真撮影の手を少し止め、目の前の一皿の香り・音・色彩に五感を澄ませていただきたい。そんな想いから、各お料理のストーリーや生地、こだわりを丁寧に綴った「解説カード」をお渡しします。
+          </p>
+          <p class="text-xs text-gray-400 leading-relaxed">お食事後は思い出としてお持ち帰りいただけます。ご自宅でも当日の余韻を感じていただく仕掛けです。</p>
+        </div>
+        <div class="bg-[#242424] p-6 md:p-8 rounded border border-white/10 hover:border-[var(--gold)] transition duration-500">
+          <div class="gold text-xs tracking-widest uppercase mb-3">Service 02</div>
+          <h4 class="text-lg md:text-xl serif mb-4 text-white">五感の余韻を紡ぐ「お土産ブレンド」</h4>
+          <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-4">
+            店内で過ごした静謐な時間と風味の記憶をご自宅でも。コースの締めくくりに合わせたシェフ厳選のオリジナルティーバッグをカードと共にセットでお渡しします。
+          </p>
+          <p class="text-xs text-gray-400 leading-relaxed">大切なご家族やご友人との会話のきっかけや、口コミの輪を広げる小さなギフトです。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 md:py-32 bg-[var(--panel)] px-6">
+    <div class="max-w-3xl mx-auto space-y-16">
+      <div class="reveal text-center">
+        <p class="text-lg md:text-xl serif italic leading-relaxed">
+          「皿がとても素敵で、料理との一体感に見惚れてしまいました。<br class="hidden md:block">店主のセンスの良さが伝わります。」
+        </p>
+        <p class="mt-4 text-xs text-gray-400">— Anniversary Guest</p>
+      </div>
+      <div class="reveal text-center">
+        <p class="text-lg md:text-xl serif italic leading-relaxed">
+          「スタッフさんの接客も気取ることなく、<br class="hidden md:block">少食の娘には量を調整してくれるなど、素晴らしい気遣いでした。」
+        </p>
+        <p class="mt-4 text-xs text-gray-400">— Family Guest</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-24 md:py-40 bg-white border-t border-gray-100 text-center px-6">
+    <div class="max-w-xl mx-auto reveal">
+      <h2 class="text-2xl md:text-3xl mb-10 serif tracked-sm">ご予約をお待ちしております</h2>
+      <p class="text-sm text-gray-500 mb-10 leading-loose">
+        完全予約制のため、お早めのご連絡をお願い申し上げます。<br>
+        公式サイトからのご予約で、シェフ厳選のペアリングドリンクを一杯サービスいたします。
+      </p>
+      <a href="https://restaurant-akiyama.com/" class="cta text-white px-14 sm:px-16 py-5 sm:py-6 block text-sm font-bold mb-8">BOOK NOW</a>
+      <div class="text-xs text-gray-400">&copy; Restaurant Akiyama</div>
+    </div>
+  </section>
+
+  <footer class="py-10 bg-white">
+    <div class="rule opacity-30"></div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
