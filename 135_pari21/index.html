@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>パリ21区 | 山形市・肉汁あふれる手ごねハンバーグの洋食店</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#5c3d2e;
+    --accent:#b6925e;
+    --bg-base:#f9f7f2;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    background-color:var(--bg-base);
+    color:#333;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Shippori Mincho',serif;}
+  .text-primary{color:var(--primary);}
+  .text-accent{color:var(--accent);}
+  .bg-primary{background-color:var(--primary);}
+  .border-accent{border-color:var(--accent);}
+  .bg-accent{background-color:var(--accent);}
+  .text-shadow-lg{text-shadow:2px 2px 10px rgba(0,0,0,.5);}
+  .btn-gold{
+    background:linear-gradient(135deg,#b6925e 0%,#8e6d3f 100%);
+    transition:all .3s ease;
+  }
+  .btn-gold:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 10px 20px rgba(182,146,94,.3);}
+  .section-title::after{content:'';display:block;width:40px;height:1px;background:var(--accent);margin:20px auto;}
+  .bg-texture{background-color:#f3efe6;background-image:radial-gradient(rgba(92,61,46,.05) 1px,transparent 1px);background-size:14px 14px;}
+  .photo-frame{
+    aspect-ratio:4/5;
+    background:linear-gradient(135deg,#e7ddc9 0%,#c9ac82 60%,#8e6d3f 100%);
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,.85);
+    font-family:'Shippori Mincho',serif;
+    letter-spacing:.1em;
+    text-align:center;
+    padding:1rem;
+  }
+  .photo-frame.wide{aspect-ratio:16/10;}
+  .photo-frame.square{aspect-ratio:1/1;}
+  .map-container{position:relative;padding-bottom:75%;height:0;overflow:hidden;}
+  @media (min-width:768px){.map-container{padding-bottom:56.25%;}}
+  .map-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+  .safe-top{padding-top:env(safe-area-inset-top,0px);}
+</style>
+</head>
+<body class="bg-texture">
+
+  <!-- FVエリア -->
+<header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-stone-950">
+  <!-- 背景画像エリア -->
+  <div class="absolute inset-0 z-0 photo-frame wide opacity-70" style="aspect-ratio:auto;">
+    <img src="images/hanbagu2.png" alt="Bistro Paris 21-ku 店内雰囲気" class="w-full h-full object-cover">
+  </div>
+  
+  <!-- 暗めのグラデーション（テキスト視認性向上用） -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+  
+  <!-- テキスト・コンテンツ -->
+  <div class="relative z-10 text-center text-white px-6 safe-top">
+    <div class="mb-6 flex flex-col items-center">
+      <span class="block w-px h-12 sm:h-16 bg-accent mb-6"></span>
+      <p class="text-xs sm:text-sm tracking-[0.3em] mb-4 serif">Bistro Paris 21-ku</p>
+    </div>
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 serif leading-tight text-shadow-lg">
+      <span class="block">肉汁と、</span>
+      <span class="block mt-2">幸福が染み渡る。</span>
+    </h1>
+    <p class="text-base sm:text-lg md:text-xl mb-12 font-light tracking-wide sm:tracking-widest px-2">
+      山形・木の実町。大人たちが夜な夜な集う、隠れ家ビストロ。
+    </p>
+    <div class="animate-bounce">
+      <p class="text-xs tracking-widest uppercase mb-2">Scroll</p>
+      <div class="w-px h-10 sm:h-12 bg-white/50 mx-auto"></div>
+    </div>
+  </div>
+</header>
+
+  <!-- 追従予約バー -->
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+      <div class="serif font-bold text-lg sm:text-xl tracking-tighter text-primary">パリ21区</div>
+      <div class="flex items-center gap-3 sm:gap-6">
+        <span class="hidden md:block text-sm font-bold text-primary">Tel. 023-674-7078</span>
+        <a href="tel:023-674-7078" class="btn-gold text-white px-4 sm:px-6 py-2.5 rounded-sm text-xs sm:text-sm font-bold tracking-wider whitespace-nowrap">
+          ご予約はこちら
+        </a>
+      </div>
+    </div>
+  </nav>
+
+ <!-- Introduction: 逸品訴求 -->
+<section class="py-16 sm:py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div class="w-full md:w-1/2 relative">
+        <div class="photo-frame square shadow-2xl relative z-10 rounded-sm overflow-hidden">
+          <img src="images/hanbagu.png" alt="看板メニュー 手ごねハンバーグ" class="w-full h-full object-cover">
+        </div>
+        <div class="hidden sm:block absolute -top-6 -left-6 w-full h-full border border-accent z-0"></div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <span class="text-accent font-bold tracking-[0.2em] text-sm block mb-4 italic">Signature Dish</span>
+        <h2 class="text-3xl sm:text-4xl font-bold serif mb-6 sm:mb-8 leading-tight text-primary">
+          どうやったらこんなにも<br>ふわふわに仕上がるのか。
+        </h2>
+        <p class="text-gray-600 leading-loose mb-6">
+          看板メニューの「ハンバーグガーリックソース」は、肉の旨みを閉じ込める手ごねの技と、仲までじっくりソースが染み渡る独自の調理法が自慢です。ハーブの香りがふわりと抜け、一口ごとに幸福感が広がります。
+        </p>
+        <div class="flex items-center gap-2 text-accent">
+          <span class="text-2xl">★★★★★</span>
+          <span class="text-sm font-bold text-gray-600">クチコミでも高評価を頂いています</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 創業者ストーリー -->
+<section class="py-16 sm:py-24 bg-texture">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <span class="text-accent text-sm tracking-widest block mb-6">Our Story</span>
+    <div class="mb-10 sm:mb-12">
+      <!-- 創業者・店主の丸型画像枠 -->
+      <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto photo-frame square grayscale hover:grayscale-0 transition-all duration-500 border border-accent p-1 overflow-hidden">
+        <img src="images/chef.png" alt="店主 涼美由起子" class="w-full h-full object-cover rounded-full">
+      </div>
+    </div>
+    <h2 class="text-2xl sm:text-3xl serif mb-8 text-primary leading-relaxed">「やまがた」で選ばれた、<br class="md:hidden">本物のビストロ。</h2>
+    <div class="text-left text-gray-700 leading-loose space-y-6 max-w-2xl mx-auto">
+      <p>2015年、山形市「やまがたチャレンジ創業応援事業」にて選定。店主・涼美由起子が追求したのは、気取らないけれど本物、そんなフレンチビストロの形です。</p>
+      <p>移転を経て、より落ち着いた空間となった現在の店舗でも、素材の味を活かした丁寧な調理と、温かみのあるおもてなしの心は変わりません。</p>
+    </div>
+  </div>
+</section>
+ 
+
+  <!-- 解決の提案 -->
+<section class="py-16 sm:py-24 bg-white relative">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+    <div class="order-2 md:order-1">
+      <h3 class="text-accent text-sm font-bold mb-4">Quality Time</h3>
+      <h2 class="text-3xl sm:text-4xl serif mb-8 leading-tight text-primary">都会の喧騒を離れ、<br>心ほどける時間を。</h2>
+      <ul class="space-y-6 mb-10">
+        <li class="flex items-center gap-4">
+          <span class="w-10 h-10 shrink-0 bg-stone-100 flex items-center justify-center text-accent rounded-full font-serif italic">1</span>
+          <p class="font-bold">デートや記念日に最適な、洗練された空間</p>
+        </li>
+        <li class="flex items-center gap-4">
+          <span class="w-10 h-10 shrink-0 bg-stone-100 flex items-center justify-center text-accent rounded-full font-serif italic">2</span>
+          <p class="font-bold">ハーブが香る、こだわり肉料理の数々</p>
+        </li>
+        <li class="flex items-center gap-4">
+          <span class="w-10 h-10 shrink-0 bg-stone-100 flex items-center justify-center text-accent rounded-full font-serif italic">3</span>
+          <p class="font-bold">駅近ながら、静寂に包まれた隠れ家的立地</p>
+        </li>
+      </ul>
+    </div>
+    <!-- 画像ギャラリーエリア（2列配置） -->
+    <div class="order-1 md:order-2 grid grid-cols-2 gap-3 sm:gap-4">
+      <div class="photo-frame rounded-sm shadow-lg mt-8 overflow-hidden aspect-[4/5]">
+        <img src="images/hanbagu2.png" alt="店内・料理イメージ 1" class="w-full h-full object-cover">
+      </div>
+      <div class="photo-frame rounded-sm shadow-lg overflow-hidden aspect-[4/5]">
+        <img src="images/zensai.png" alt="店内・料理イメージ 2" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- 特典 -->
+  <section class="py-16 sm:py-20 bg-primary text-white text-center">
+    <div class="max-w-4xl mx-auto px-6 border border-white/20 py-12 sm:py-16 relative">
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 sm:px-6 text-accent serif tracking-widest text-sm sm:text-base">Web Limited Benefit</div>
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold serif mb-8 leading-tight">
+        「ご予約」いただいたお客様へ<br>
+        食後のコーヒーをサービス。
+      </h2>
+      <p class="text-stone-300 mb-10 text-sm sm:text-base">静かな空間で、お食事の余韻をごゆっくりとお愉しみください。</p>
+      <a href="tel:023-674-7078" class="btn-gold text-white px-8 sm:px-12 py-4 sm:py-5 rounded-sm font-bold shadow-2xl inline-block text-base sm:text-xl">
+        今すぐ電話で予約する
+      </a>
+    </div>
+  </section>
+
+  <!-- Coming Soon エリア -->
+  <section class="py-16 sm:py-24 bg-stone-900 text-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12 sm:mb-16">
+        <span class="text-accent text-sm tracking-[0.3em] font-bold block mb-2">Upcoming Services</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl serif text-white font-bold section-title">Coming Soon</h2>
+        <p class="text-stone-300 mt-4 max-w-xl mx-auto leading-relaxed text-sm sm:text-base">
+          パリ21区の味をご家庭でも。期待の新しいサービスがスタートします。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+        <div class="bg-stone-800/80 border border-stone-700/60 p-6 sm:p-8 rounded-sm hover:border-accent/60 transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-accent/20 text-accent text-xs font-bold px-3 py-1 rounded-full">Service 01</span>
+            <span class="text-xs text-stone-400">順次開始予定</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl serif font-bold text-white mb-4">本格洋食テイクアウト — 自家製ソース</h3>
+          <p class="text-stone-300 text-sm leading-loose mb-6">
+            看板メニューの「手ごねハンバーグ」をはじめとする定番洋食メニューをおうちで手軽に。食後を彩るパティシエ特選のオリジナルデザートもセットでお持ち帰りいただけます。
+          </p>
+          <div class="text-xs text-accent font-bold tracking-wide">
+            ● ご自宅での記念日ディナーやお祝いなおうちランチに
+          </div>
+        </div>
+
+        <div class="bg-stone-800/80 border border-stone-700/60 p-6 sm:p-8 rounded-sm hover:border-accent/60 transition-all duration-300">
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-accent/20 text-accent text-xs font-bold px-3 py-1 rounded-full">Service 02</span>
+            <span class="text-xs text-stone-400">順次開始予定</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl serif font-bold text-white mb-4">真空冷凍ハンバーグ — 特製ソース付</h3>
+          <p class="text-stone-300 text-sm leading-loose mb-6">
+            「ふわふわ食感」と「ハーブ薫るガーリックソース」をご家庭で再現できる冷凍便。全国発送対応で、遠方のご家族や大切な方へのギフトにも最適です。
+          </p>
+          <div class="text-xs text-accent font-bold tracking-wide">
+            ● 全国お取り寄せ・お中元やお歳暮などの贈答用に
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Information / Footer -->
+  <footer class="py-16 sm:py-24 bg-white border-t border-stone-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between gap-10 md:gap-16 mb-12 sm:mb-16">
+        <div class="md:w-1/3">
+          <h2 class="serif text-2xl sm:text-3xl mb-6 sm:mb-8">パリ21区</h2>
+          <p class="text-sm text-gray-500 leading-loose">
+            山形県山形市木の実町1-4 鈴木ビル<br>
+            Tel: 023-674-7078<br>
+            定休日: 日曜日・月曜日<br>
+            <span class="text-accent">※少人数・小規模店のため予約を推奨しております。</span>
+          </p>
+        </div>
+        <div class="md:w-2/3">
+          <div class="map-container rounded-sm overflow-hidden border border-stone-200 shadow-inner">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.2350272253243!2d140.32956587477983!3d38.25085478459558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb604ce6c3b11%3A0x1e14c10e454df0d6!2z44OR44OqMjHljLo!5e0!3m2!1sja!2sjp!4v1770701660484!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="text-center pt-8 border-t border-stone-100">
+        <p class="text-xs text-stone-400 tracking-widest uppercase">&copy; Bistro Paris 21-ku. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
