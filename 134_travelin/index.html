@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kata's Kitchen TRAVELIN' | 山形の極上生パスタ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0a09; --fg:#e7e5e4; --gold:#d4af37;
+    --panel:#1c1917; --panel2:#000000;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    box-sizing:border-box;
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Noto Serif JP',serif;
+    background-color:var(--bg);
+    color:var(--fg);
+    margin:0;
+    overflow-x:hidden;
+  }
+  .text-gold{color:var(--gold);}
+  .bg-gold{background-color:var(--gold);}
+  .border-gold{border-color:var(--gold);}
+  .hero-bg{
+    background:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),
+      url('images/pasta.jpg');
+    background-size:cover;
+    background-position:center;
+  }
+  @supports (background-attachment:fixed){
+    @media (min-width:768px){ .hero-bg{background-attachment:fixed;} }
+  }
+  .section-dark{background-color:var(--panel);}
+  .cta-button{transition:all .3s ease; box-shadow:0 0 20px rgba(212,175,55,.3);}
+  .cta-button:hover{transform:scale(1.05); box-shadow:0 0 30px rgba(212,175,55,.5);}
+  .map-container iframe{width:100%; display:block; border:0;}
+  .taste-btn{transition:all .2s ease;}
+  .fixed-bar{padding-bottom:env(safe-area-inset-bottom,0px);}
+  ::-webkit-scrollbar{width:6px;}
+  ::-webkit-scrollbar-thumb{background:var(--gold); border-radius:3px;}
+</style>
+</head>
+<body class="pb-28 md:pb-0">
+
+  <!-- 1. FVエリア -->
+  <header class="hero-bg min-h-[100svh] flex flex-col items-center justify-center text-center px-5">
+    <div class="mb-4 text-gold font-bold tracking-[0.25em] uppercase text-xs md:text-sm animate-pulse">Yamagata Premium Pasta</div>
+    <h1 class="text-4xl sm:text-5xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight tracking-tighter">
+      その一口で、<br>
+      <span class="text-gold">本能が目覚める。</span>
+    </h1>
+    <p class="text-base sm:text-lg md:text-2xl max-w-3xl mb-10 md:mb-12 leading-relaxed text-stone-300">
+      挽き肉ゴロゴロの衝撃、もちもち生パスタの誠意。<br>
+      Kata's Kitchen TRAVELIN'が贈る、真のボロネーゼ。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 md:gap-6 w-full sm:w-auto px-4 sm:px-0">
+      <a href="tel:023-676-7377" class="cta-button bg-gold text-stone-900 text-lg md:text-xl font-bold py-4 md:py-5 px-8 md:px-12 rounded-full text-center">
+        席を予約する
+      </a>
+      <a href="https://www.instagram.com/travelin.yamagata/" target="_blank" rel="noopener" class="border border-gold text-gold py-4 md:py-5 px-8 md:px-12 rounded-full hover:bg-gold hover:text-stone-900 transition font-bold text-center">
+        MENUを覗く
+      </a>
+    </div>
+  </header>
+
+  <!-- 2. イントロ -->
+  <section class="py-16 md:py-20 bg-stone-900 px-5 text-center border-y border-stone-800">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 md:mb-8 leading-snug">
+      「パスタが食べたい」ではなく<br>
+      <span class="text-gold">「ここの麺が食べたい」</span>と言わせたい。
+    </h2>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 mt-10 md:mt-16 text-left">
+      <div>
+        <p class="text-gold font-bold mb-2 text-sm tracking-widest">REASON 01</p>
+        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">職人の手打ち生麺「モッチリーニ」</h3>
+        <p class="text-stone-400 leading-relaxed text-sm md:text-base">
+          機械任せにはしない。その日の湿度に合わせて調整する手作り生パスタ。噛むほどに押し返すような弾力と、小麦本来の香りが鼻を抜けます。
+        </p>
+      </div>
+      <div>
+        <p class="text-gold font-bold mb-2 text-sm tracking-widest">REASON 02</p>
+        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">肉を喰らう、超濃厚ソース</h3>
+        <p class="text-stone-400 leading-relaxed text-sm md:text-base">
+          「ひき肉ゴロゴロ系」のファンが唸る肉感。じっくり時間をかけて煮込んだソースは、もはやパスタではなく「肉料理」としての風格を纏います。
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 4. オーナーメッセージ -->
+  <section class="py-16 md:py-24 bg-stone-900 px-5 border-t border-stone-800">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div class="w-full md:w-1/2 relative max-w-xs md:max-w-none">
+        <img src="images/chef.png" alt="Master" class="rounded shadow-2xl grayscale hover:grayscale-0 transition duration-700 w-full">
+        <div class="absolute -bottom-5 -right-5 md:-bottom-6 md:-right-6 bg-gold text-stone-900 p-4 md:p-6 font-bold text-base md:text-xl italic shadow-xl">
+          Owner<br>Message
+        </div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-gold">なぜ、夜は完全予約制なのか。</h3>
+        <p class="text-stone-300 leading-relaxed mb-5 md:mb-6 text-sm md:text-base">
+          それは、お客様一人ひとりに「最高の状態」でソースと麺を提供するためです。
+        </p>
+        <p class="text-stone-400 leading-relaxed mb-6 md:mb-8 text-sm">
+          私たちは単にお腹を満たす場所ではありません。手間を惜しまないグリル料理、厳選されたフルーティーワイン、そこでこだわり抜いた生パスタ。そのすべてが調和する瞬間を、落ち着いた空間でじっくり味わっていただきたいのです。
+        </p>
+        <p class="text-xl md:text-2xl font-bold italic" style="font-family:'Playfair Display',serif;">"Travelin' to Gourmet."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. レビュー -->
+  <section class="py-16 md:py-24 px-5 bg-black">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 tracking-tighter text-white">衝撃と、再来。</h2>
+        <p class="text-gold tracking-widest uppercase text-xs md:text-base">Customer Reviews</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div class="bg-stone-900 p-6 md:p-8 border-l-4 border-gold shadow-lg">
+          <p class="text-stone-200 mb-5 md:mb-6 italic leading-relaxed text-sm">「クリームの濃厚さに感動のトリハダが止まらない。間違いなくリピ確定な美味しさです!」</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 md:w-10 md:h-10 bg-stone-800 rounded-full flex items-center justify-center text-xs text-white shrink-0">客</div>
+            <div><p class="font-bold text-xs text-white">山形市 T様</p><p class="text-gold text-xs">★★★★★</p></div>
+          </div>
+        </div>
+        <div class="bg-stone-900 p-6 md:p-8 border-l-4 border-gold shadow-lg">
+          <p class="text-stone-200 mb-5 md:mb-6 italic leading-relaxed text-sm">「パスタの麺がもちもちで感動。ひき肉ゴロゴロ系のボロネーゼ、お肉も柔らかくて最高でした。」</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 md:w-10 md:h-10 bg-stone-800 rounded-full flex items-center justify-center text-xs text-white shrink-0">客</div>
+            <div><p class="font-bold text-xs text-white">上山市 K様</p><p class="text-gold text-xs">★★★★★</p></div>
+          </div>
+        </div>
+        <div class="bg-stone-900 p-6 md:p-8 border-l-4 border-gold shadow-lg">
+          <p class="text-stone-200 mb-5 md:mb-6 italic leading-relaxed text-sm">「汗だくパスタの後にリゾットが出てきて驚愕。最後までペロリといける魔法のパスタ。」</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 md:w-10 md:h-10 bg-stone-800 rounded-full flex items-center justify-center text-xs text-white shrink-0">客</div>
+            <div><p class="font-bold text-xs text-white">山形市 A様</p><p class="text-gold text-xs">★★★★★</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. コンテンツハイライト -->
+  <section class="py-16 md:py-24 px-5 bg-stone-900">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+      <div>
+        <img src="images/pasta.jpg" alt="Special Pasta" class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-5 md:mb-6 object-cover border-2 border-gold p-1 grayscale hover:grayscale-0 transition">
+        <h4 class="font-bold mb-2 text-white text-lg md:text-xl">至高の生パスタ</h4>
+        <p class="text-sm text-stone-200">もちもちの食感は、職人のこだわりから生まれます。</p>
+      </div>
+      <div>
+        <img src="images/wine.png" alt="Wine" class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-5 md:mb-6 object-cover border-2 border-gold p-1 grayscale hover:grayscale-0 transition">
+        <h4 class="font-bold mb-2 text-white text-lg md:text-xl">厳選美酒</h4>
+        <p class="text-sm text-stone-200">フルーティーなワインがパスタの旨味をさらに引き立てる。</p>
+      </div>
+      <div>
+        <img src="images/store.png" alt="Interior" class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-5 md:mb-6 object-cover border-2 border-gold p-1 grayscale hover:grayscale-0 transition">
+        <h4 class="font-bold mb-2 text-white text-lg md:text-xl">上質な空間</h4>
+        <p class="text-sm text-stone-200">デートや記念日に。落ち着いた大人の隠れ家。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. COMING SOON -->
+  <section class="py-16 md:py-24 px-5 bg-black border-t border-stone-800">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="bg-gold/20 text-gold text-xs px-4 py-1.5 rounded-full font-bold uppercase tracking-widest border border-gold/40">Next Experience</span>
+        <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold mt-4 mb-4 text-white italic tracking-wide" style="font-family:'Playfair Display',serif;">COMING SOON</h2>
+        <p class="text-stone-400 text-sm md:text-base max-w-xl mx-auto">
+          Kata's Kitchen TRAVELIN'が贈る、新たな食体験の試み。<br class="hidden sm:block">「こんなサービスがあったら」を形にする新しいプロジェクトを進行中です。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+        <!-- 企画1: パスタ×肉のマッチング診断 -->
+        <div class="bg-stone-900 border border-stone-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+          <div class="absolute top-0 right-0 bg-gold text-stone-900 font-bold text-xs px-4 py-1 rounded-bl-lg uppercase tracking-wider">
+            開発中プロジェクト 01
+          </div>
+          <div>
+            <div class="text-gold font-bold text-sm tracking-widest mb-2 mt-6 md:mt-0">CUSTOM PASTA FINDER</div>
+            <h3 class="text-xl md:text-2xl font-bold text-white mb-4">【診断】あなただけの生パスタ提案</h3>
+            <p class="text-stone-400 text-sm mb-6 leading-relaxed">
+              その日の気分や好みのテイストを選ぶだけで、シェフ渾身の極上パスタと最適な手打ち生麺のペアリングをAIが導き出します。
+            </p>
+
+            <div class="bg-black/60 p-4 md:p-5 rounded-xl border border-stone-800 mb-6">
+              <p class="text-xs text-gold font-bold mb-3">▼ 今日の気分を一つ選んでみてください（体験版）</p>
+              <div class="grid grid-cols-2 gap-2 mb-4" id="taste-selector">
+                <button onclick="selectTaste('rich')" id="btn-rich" class="taste-btn bg-stone-800 active:bg-gold active:text-stone-900 hover:bg-gold hover:text-stone-900 text-stone-300 text-xs font-bold py-3 px-3 rounded-lg border border-stone-700">
+                  🔥 濃厚ゴロゴロ系
+                </button>
+                <button onclick="selectTaste('fresh')" id="btn-fresh" class="taste-btn bg-stone-800 active:bg-gold active:text-stone-900 hover:bg-gold hover:text-stone-900 text-stone-300 text-xs font-bold py-3 px-3 rounded-lg border border-stone-700">
+                  🍋 さっぱりオイル系
+                </button>
+                <button onclick="selectTaste('spicy')" id="btn-spicy" class="taste-btn bg-stone-800 active:bg-gold active:text-stone-900 hover:bg-gold hover:text-stone-900 text-stone-300 text-xs font-bold py-3 px-3 rounded-lg border border-stone-700">
+                  🌶️ ピリ辛スパイシー
+                </button>
+                <button onclick="selectTaste('tomato')" id="btn-tomato" class="taste-btn bg-stone-800 active:bg-gold active:text-stone-900 hover:bg-gold hover:text-stone-900 text-stone-300 text-xs font-bold py-3 px-3 rounded-lg border border-stone-700">
+                  🍅 熟成トマトソース系
+                </button>
+              </div>
+
+              <div id="recommend-result" class="bg-stone-900/80 p-4 rounded-lg border border-gold/30 hidden">
+                <div class="text-xs text-gold font-bold mb-1">【シェフのおすすめペアリング】</div>
+                <div id="result-title" class="font-bold text-white text-base mb-1"></div>
+                <div id="result-desc" class="text-xs text-stone-300 leading-relaxed"></div>
+              </div>
+            </div>
+            <div class="text-xs text-stone-500 italic text-right">※近日店舗アプリ・公式LINEにてリリース予定</div>
+          </div>
+        </div>
+
+        <!-- 企画2: 2種類の麺を一皿で味わう食べ比べプレート -->
+        <div class="bg-stone-900 border border-stone-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+          <div class="absolute top-0 right-0 bg-gold text-stone-900 font-bold text-xs px-4 py-1 rounded-bl-lg uppercase tracking-wider">
+            開発中プロジェクト 02
+          </div>
+          <div>
+            <div class="text-gold font-bold text-sm tracking-widest mb-2 mt-6 md:mt-0">DUAL TASTE PLATE</div>
+            <h3 class="text-xl md:text-2xl font-bold text-white mb-4">【新メニュー】W(ダブル)生パスタ食べ比べプレート</h3>
+            <p class="text-stone-400 text-sm mb-6 leading-relaxed">
+              「どのパスタも捨てがたい」「麺の違いをもっと楽しみたい」そんな声にお応えする、半分量ずつの2種類の麺とソースを一皿で贅沢に楽しむ至高のデュアルプレート。
+            </p>
+
+            <div class="relative rounded-xl overflow-hidden border border-stone-800 mb-6 group">
+              <img src="images/pasta.png" alt="Double Pasta Plate" class="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition duration-500 opacity-80">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-4">
+                <div>
+                  <span class="text-xs text-gold font-bold uppercase">1 Plate, 2 Experiences</span>
+                  <h4 class="text-white font-bold text-sm">手打ちモッチリーニ × 平打ちフェットチーネ</h4>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-xs text-stone-400 bg-black/40 p-3 rounded-lg border border-stone-800 mb-2 gap-2">
+              <span>店舗限定・夜のコースで先行提供予定</span>
+              <span class="text-gold font-bold whitespace-nowrap">Coming Spring</span>
+            </div>
+            <div class="text-xs text-stone-500 italic text-right">※仕込み数量限定でのご用意となります</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. アクセス -->
+  <section class="py-16 md:py-24 bg-black px-5">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10 md:mb-12 text-gold">Access</h2>
+      <div class="map-container rounded-xl overflow-hidden shadow-2xl border border-stone-800">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.1548787015076!2d140.32548047478133!3d38.27590248313733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc9cc53e9aaab%3A0x8b50ba20ba17cfd3!2zS2F0YeKAmXMgS2l0Y2hlbiBUUkFWRUxJTuKAmSjjg4jjg6njg5njg6rjg7Mp!5e0!3m2!1sja!2sjp!4v1770700883888!5m2!1sja!2sjp" height="380" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="mt-6 md:mt-8 text-center text-stone-400 text-sm">
+        <p>〒990-0813 山形県山形市桧町３丁目４−１９</p>
+        <p class="mt-2 text-stone-300">駐車場：店舗前に約5台分完備</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 最終CTA -->
+  <section class="py-16 md:py-24 bg-gold text-stone-900 text-center px-5">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 md:mb-6 italic" style="font-family:'Playfair Display',serif;">Unforgettable Dinner</h2>
+      <p class="text-lg md:text-xl mb-10 md:mb-12 font-bold">山形の夜を、特別なものに。ご予約はお電話にて承ります。</p>
+
+      <div class="bg-stone-900 text-gold p-6 sm:p-10 rounded-xl shadow-2xl">
+        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Kata's Kitchen TRAVELIN'</h3>
+        <p class="text-xs md:text-sm text-stone-400 mb-5 md:mb-6 tracking-widest">山形県山形市桧町３丁目４−１９</p>
+        <p class="text-xs md:text-sm text-stone-400 mb-7 md:mb-8 font-bold text-center leading-relaxed">
+          ランチ / ディナー(夜のみ完全予約制)<br>
+          定休日: 水曜日 | 現金決済のみ
+        </p>
+
+        <a href="tel:023-676-7377" class="inline-block bg-gold text-stone-900 text-xl md:text-2xl font-bold py-4 md:py-5 px-10 md:px-16 rounded-full cta-button mb-7 md:mb-8">
+          📞 023-676-7377
+        </a>
+
+        <div class="border-t border-stone-800 pt-6 md:pt-8">
+          <p class="text-stone-500 text-sm mb-4">最新情報はInstagramで更新中</p>
+          <a href="https://www.instagram.com/travelin.yamagata/" target="_blank" rel="noopener" class="text-gold font-bold hover:underline">
+            Instagram Official →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 固定フッター（スマホ用） -->
+  <div class="fixed-bar fixed bottom-0 left-0 w-full bg-stone-900 border-t border-stone-800 p-3 flex gap-3 md:hidden z-50">
+    <a href="tel:023-676-7377" class="flex-[2] bg-gold text-stone-900 text-center font-bold py-3.5 rounded-lg text-sm">
+      今すぐ電話予約
+    </a>
+    <a href="https://www.instagram.com/travelin.yamagata/" target="_blank" rel="noopener" class="flex-1 border border-stone-700 text-white flex items-center justify-center rounded-lg text-sm">
+      IG
+    </a>
+  </div>
+
+  <script>
+    const recommendations = {
+      rich: {
+        title: "ゴロゴロ肉感ボロネーゼ × 太麺モッチリーニ",
+        desc: "じっくり肉の旨味を凝縮した濃密ソースには、強力な噛みごたえの手打ち太麺が絶品。ワインとの相性も抜群です。"
+      },
+      fresh: {
+        title: "極上ガーリックオイルパスタ × 細切りカペッリーニ風生麺",
+        desc: "オリーブオイルの香りと素材の旨みを引き立てる細麺。するりと喉を通る爽やかさと小麦の風味が広がります。"
+      },
+      spicy: {
+        title: "自家熟スパイスのアラビアータ × 波型生レジネッテ",
+        desc: "ソースがよく絡む波型の生麺が、芳醇な辛味とトマトのコクを逃さず一口ごとにしっかり届けてくれます。"
+      },
+      tomato: {
+        title: "熟成トマトとフレッシュモッツァレラ × 平打ちフェットチーネ",
+        desc: "濃厚なトマトソースととろけるチーズを受け止めるモチモチの平打ち麺。王道にして究極のワンシーン。"
+      }
+    };
+
+    function selectTaste(type) {
+      document.querySelectorAll('.taste-btn').forEach(btn => {
+        btn.classList.remove('bg-gold', 'text-stone-900');
+        btn.classList.add('bg-stone-800', 'text-stone-300');
+      });
+      const activeBtn = document.getElementById('btn-' + type);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-stone-800', 'text-stone-300');
+        activeBtn.classList.add('bg-gold', 'text-stone-900');
+      }
+
+      const resultBox = document.getElementById('recommend-result');
+      const resultTitle = document.getElementById('result-title');
+      const resultDesc = document.getElementById('result-desc');
+
+      if (recommendations[type]) {
+        resultTitle.innerText = recommendations[type].title;
+        resultDesc.innerText = recommendations[type].desc;
+        resultBox.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
