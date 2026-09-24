@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>シェ・ナカガワ | 山形の旬を味わうクラシックフレンチ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap">
+<style>
+  :root{
+    --gold:#b38e44;
+    --ink:#1c1917;
+    color-scheme: light;
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Noto Serif JP', serif;
+    background-color:#fdfcf9;
+    color:#1c1917;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  h1,h2,h3,.font-serif-jp,.vertical-text{font-family:'Shippori Mincho', serif;}
+  .bg-gold{background-color:var(--gold);}
+  .text-gold{color:var(--gold);}
+  .border-gold{border-color:var(--gold);}
+  .vertical-text{writing-mode:vertical-rl; text-orientation:mixed;}
+  .washi-bg{background-image:radial-gradient(circle at 1px 1px, rgba(179,142,68,0.12) 1px, transparent 0); background-size:18px 18px;}
+  .hero-overlay{background:linear-gradient(to right, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 50%, rgba(0,0,0,.55) 100%);}
+  .line-deco::before,.line-deco::after{content:"";display:inline-block;width:32px;height:1px;background:var(--gold);vertical-align:middle;margin:0 12px;}
+  .fade-in{opacity:0;transform:translateY(16px);transition:all .8s ease-out;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  .art-panel{position:relative;overflow:hidden;background:
+    linear-gradient(135deg, #2b2723 0%, #1c1917 100%);}
+  .art-panel::after{content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(179,142,68,.35), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(179,142,68,.18), transparent 50%);}
+  .map-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px;}
+  .map-container iframe{position:absolute;inset:0;width:100%;height:100%;}
+  @media (max-width:767px){
+    .vertical-text{display:none;}
+  }
+</style>
+</head>
+<body class="text-stone-900 overflow-x-hidden">
+
+<!-- FVエリア -->
+  <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <!-- 背景画像を表示する要素 -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="images/soup2.png" 
+        alt="ファーストビュー背景" 
+        class="w-full h-full object-cover"
+      />
+      <!-- 文字を読みやすくするための暗いオーバーレイ（必要に応じて調整してください） -->
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    <div class="relative z-10 w-full h-full flex items-center justify-between px-5 sm:px-10 md:px-20 text-white py-24">
+      <div class="hidden md:block vertical-text text-base tracking-[0.5em] leading-loose h-fit border-l border-white/30 pl-4">
+        山形、あずま蓋の静寂に溶け込む一軒家。
+      </div>
+      <div class="text-center flex-1 flex flex-col items-center justify-center px-2">
+        <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 md:mb-8 leading-[1.5] tracking-widest">
+          一口、<br>
+          <span class="text-gold">心がほどける</span><br>
+          贅沢。
+        </h1>
+        <div class="w-px h-16 md:h-24 bg-gold mb-6 md:mb-8"></div>
+        <p class="text-base sm:text-lg md:text-xl tracking-widest opacity-90">シェ・ナカガワの冷製コーンスープ</p>
+      </div>
+      <div class="hidden md:block vertical-text text-base tracking-[0.5em] leading-loose h-fit border-r border-white/30 pr-4">
+        大切な人と、至福の刻を。
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/80 animate-bounce text-xs tracking-widest text-center z-10">
+      SCROLL <br><i class="fas fa-chevron-down mt-2"></i>
+    </div>
+  </header>
+
+  <!-- 導入メッセージ -->
+  <section class="py-20 md:py-32 washi-bg px-5">
+    <div class="container mx-auto max-w-3xl text-center">
+      <h2 class="text-xl sm:text-2xl md:text-4xl leading-[1.9] tracking-[0.08em] text-stone-800 mb-10 md:mb-12">
+        「この一杯を、忘れられない思い出に。」
+      </h2>
+      <div class="w-12 h-px bg-gold mx-auto mb-10 md:mb-12"></div>
+      <p class="text-base md:text-xl text-stone-700 leading-[2.1] tracking-widest mb-8">
+        太陽を浴びて育った玉蜀黍の、<br>
+        透き通るような甘みだけを、<br>
+        丁寧に、丁寧に引き出しました。
+      </p>
+      <p class="text-stone-500 tracking-widest leading-loose text-sm md:text-base">
+        素材への敬意と、お客様への想いを込めて。<br>
+        シェフ中川が贈る、一期一会のコース料理。
+      </p>
+    </div>
+  </section>
+
+  <!-- 1回目CTA -->
+  <section class="bg-stone-900 text-white py-10 md:py-12">
+    <div class="container mx-auto px-5 text-center">
+      <h2 class="text-lg sm:text-xl md:text-2xl mb-5 md:mb-6 tracking-widest line-deco">完全予約制・一軒家フレンチ</h2>
+      <p class="mb-6 md:mb-8 opacity-70 text-sm md:text-base">お席に限りがございます。旬の味覚を逃さぬよう、お早めのご予約を。</p>
+      <a href="tel:0236327115" class="inline-block border border-gold text-gold px-8 md:px-12 py-3.5 md:py-4 rounded-full text-base md:text-xl hover:bg-gold hover:text-white transition-all duration-500">
+        <i class="fas fa-phone-alt mr-3"></i>023-632-7115
+      </a>
+    </div>
+  </section>
+
+<!-- 料理のシズル -->
+  <section class="py-20 md:py-32 bg-white">
+    <div class="container mx-auto px-5">
+      <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20 mb-20 md:mb-32">
+        <div class="w-full md:flex-1 relative">
+          <div class="absolute -top-3 -left-3 w-full h-full border border-gold/20 z-0"></div>
+          <!-- 画像を表示する要素 (1つ目：メインディッシュ等) -->
+          <div class="relative z-10 w-full aspect-[4/3] art-panel shadow-2xl overflow-hidden">
+            <img 
+              src="images/beef.png" 
+              alt="山形牛のソテー" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div class="w-full md:flex-1 space-y-6 md:space-y-8">
+          <span class="text-gold tracking-[0.35em] text-xs md:text-sm">Cuisine Classique</span>
+          <h2 class="text-2xl md:text-4xl leading-snug">伝統が紡ぐ、<br>山形の新たな物語。</h2>
+          <p class="text-stone-600 leading-[2] tracking-widest text-sm md:text-base">
+            クラシックフレンチの堅実な技法に、山形の郷土料理「だし」の爽やかさを添えて。艶のソテー山形牛和牛。地のものが持つ力強い生命力を、一皿の芸術へと昇華させます。
+          </p>
+          <div class="pt-4 md:pt-6">
+            <div class="h-px w-full bg-stone-100 mb-6 md:mb-8"></div>
+            <ul class="grid grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm tracking-widest text-stone-500">
+              <li>・季節の厳選食材</li>
+              <li>・自家熟成母パン</li>
+              <li>・芳醇なワイン</li>
+              <li>・至福のデセール</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-20">
+        <div class="w-full md:flex-1 relative">
+          <div class="absolute -bottom-3 -right-3 w-full h-full border border-gold/20 z-0"></div>
+          <!-- 画像を表示する要素 (2つ目：スープ等) -->
+          <div class="relative z-10 w-full aspect-[4/3] art-panel shadow-2xl overflow-hidden">
+            <img 
+              src="images/soup.png" 
+              alt="黄金のスープ" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div class="w-full md:flex-1 space-y-6 md:space-y-8 text-left">
+          <span class="text-gold tracking-[0.35em] text-xs md:text-sm">Signature Dish</span>
+          <h2 class="text-2xl md:text-4xl leading-snug">余韻まで愉しい、<br>黄金のスープ。</h2>
+          <p class="text-stone-600 leading-[2] tracking-widest text-sm md:text-base">
+            素材は、とうもろこしと、わずかな塩。そして時間。極限まで煮詰め、贅沢を練り返すことで生まれるシルクのような舌触り。一口飲めば、その濃厚さに驚き、飲み終えればその優しさに包まれます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- おもてなし -->
+  <section class="py-20 md:py-32 washi-bg">
+    <div class="container mx-auto px-5 text-center">
+      <h2 class="text-2xl md:text-3xl mb-14 md:mb-20 line-deco">家族が守る、温かな灯。</h2>
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-white/60 p-8 md:p-12 rounded-lg backdrop-blur-sm border border-white">
+        
+        <!-- 画像を表示する要素 -->
+        <div class="w-48 h-60 md:w-64 md:h-80 art-panel shadow-xl overflow-hidden shrink-0">
+          <img 
+            src="images/chef.png" 
+            alt="シェフと家族の写真" 
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div class="flex-1 text-left space-y-5 md:space-y-6">
+          <h3 class="text-xl md:text-2xl">シェフと家族の想い</h3>
+          <p class="text-stone-600 leading-relaxed tracking-wider text-sm md:text-base">
+            「いらっしゃいませ」という声、お料理の説明をする奥様の微笑み、そして最後は家族全員での見送りまで。私たちは料理だけでなく、この空間で過ごす「時間」そのものをお客様に寄り添って作り上げたいと考えています。
+          </p>
+          <div class="text-gold italic border-t border-gold/20 pt-4 text-sm md:text-base">
+            Chef. Nakagawa &amp; Family
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 口コミエリア -->
+  <section class="py-20 md:py-32 bg-stone-50">
+    <div class="container mx-auto px-5">
+      <h2 class="text-center text-2xl md:text-3xl mb-14 md:mb-20 tracking-widest">お客様より頂いた、喜びの言葉。</h2>
+      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-gold flex flex-col justify-between">
+          <div>
+            <div class="text-gold mb-5 md:mb-6 tracking-widest text-xs">★★★★★</div>
+            <p class="text-stone-700 leading-loose italic mb-6 md:mb-8 text-sm md:text-base">「結婚記念日は、必ずここで決めています。一軒家の家庭的な雰囲気が心地よく、最後のお見送りまで喜あるサービスをくだださいます。」</p>
+          </div>
+          <p class="text-stone-400 text-xs md:text-sm tracking-widest">— 結婚記念日のご利用</p>
+        </div>
+        <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-gold flex flex-col justify-between md:-translate-y-4">
+          <div>
+            <div class="text-gold mb-5 md:mb-6 tracking-widest text-xs">★★★★★</div>
+            <p class="text-stone-700 leading-loose italic mb-6 md:mb-8 text-sm md:text-base">「クラシックフレンチを基本にしながら、郷土料理を付け合わせに使ったり驚きの連続。特にコーンスープは絶品です。」</p>
+          </div>
+          <p class="text-stone-400 text-xs md:text-sm tracking-widest">— 遠方より度々訪</p>
+        </div>
+        <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-gold flex flex-col justify-between">
+          <div>
+            <div class="text-gold mb-5 md:mb-6 tracking-widest text-xs">★★★★</div>
+            <p class="text-stone-700 leading-loose italic mb-6 md:mb-8 text-sm md:text-base">「テイクアウトしたチーズケーキも美味しい味。お店の方の対応もとても温かく、次はフルコースをいただきたいです。」</p>
+          </div>
+          <p class="text-stone-400 text-xs md:text-sm tracking-widest">— テイクアウトのご利用</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- 特典: アニバーサリー -->
+  <section class="py-20 md:py-32 washi-bg">
+    <div class="container mx-auto px-5 max-w-5xl">
+      <div class="border border-gold p-1.5 md:p-2">
+        <div class="border border-gold p-6 md:p-16 flex flex-col md:flex-row items-center gap-10 md:gap-16 bg-white/80">
+          <div class="flex-1 space-y-6 md:space-y-8">
+            <h2 class="text-2xl md:text-3xl tracking-widest">祝祭のひととき を、<br>彩る贈りもの。</h2>
+            <p class="text-stone-600 leading-loose tracking-widest text-sm md:text-base">
+              お誕生日や結婚記念日のご予約時に「記念日です」とお伝えください。シェフよりお祝いのメッセージ演出をプレゼントさせていただきます。
+            </p>
+            <a href="tel:0236327115" class="inline-block bg-stone-900 text-white px-8 md:px-10 py-3.5 md:py-4 tracking-[0.2em] hover:bg-gold transition-colors text-sm md:text-base">
+              電話予約をする
+            </a>
+          </div>
+          
+          <!-- 画像を表示する要素 -->
+          <div class="w-full md:w-72 aspect-[4/5] art-panel shadow-2xl overflow-hidden shrink-0">
+            <img 
+              src="images/cake.png" 
+              alt="アニバーサリーの演出・デザート" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="py-20 md:py-32 bg-stone-100/70 border-y border-stone-200">
+    <div class="container mx-auto px-5 max-w-5xl">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="text-gold tracking-[0.35em] text-xs uppercase block mb-3">Future Plan</span>
+        <h2 class="text-3xl md:text-5xl tracking-widest text-stone-800 mb-4">Coming Soon</h2>
+        <div class="w-12 h-px bg-gold mx-auto mb-6"></div>
+        <p class="text-stone-600 tracking-widest text-sm md:text-base">大切な日の食卓が、さらに輝く新たなご提案。準備が整い次第、随時ご案内いたします。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
+        <div class="bg-white p-7 md:p-8 rounded-sm shadow-sm border border-stone-200/60 flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="inline-block px-3 py-1 bg-stone-900 text-gold text-xs tracking-widest mb-5 md:mb-6">NEW COURSE</div>
+            <h3 class="text-lg md:text-xl text-stone-800 mb-3 md:mb-4 leading-snug">四季のメモリアル<br>特別フルコース</h3>
+            <p class="text-stone-600 text-sm leading-relaxed tracking-wider">春の山菜や夏の実り、秋の肉料理、冬の寒鰤など、山形の旬食材を極限まで引き出した1日2組限定の完全オーダーメイドコース。お二人のストーリーを料理で描きます。</p>
+          </div>
+          <div class="mt-6 md:mt-8 border-t border-stone-100 pt-4 text-xs text-gold tracking-widest italic">近日受付開始予定</div>
+        </div>
+        <div class="bg-white p-7 md:p-8 rounded-sm shadow-sm border border-stone-200/60 flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="inline-block px-3 py-1 bg-stone-900 text-gold text-xs tracking-widest mb-5 md:mb-6">MEMORIAL GIFT</div>
+            <h3 class="text-lg md:text-xl text-stone-800 mb-3 md:mb-4 leading-snug">記念日フォト×<br>手書きメニューブック</h3>
+            <p class="text-stone-600 text-sm leading-relaxed tracking-wider">当日の記念写真と、シェフが心を込めて記した「本日のお祝い」を一つに収めた特製メモリアルカードをご用意。ご自宅に帰られてからも余韻が続く贈りものです。</p>
+          </div>
+          <div class="mt-6 md:mt-8 border-t border-stone-100 pt-4 text-xs text-gold tracking-widest italic">提供準備中</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス・最終CTA -->
+  <section id="reserve" class="py-20 md:py-32 bg-stone-900 text-white">
+    <div class="container mx-auto px-5 text-center">
+      <h2 class="text-2xl md:text-3xl mb-6 md:mb-8 tracking-[0.2em]">ご予約・アクセス</h2>
+      <div class="w-px h-12 md:h-16 bg-gold mx-auto mb-10 md:mb-12"></div>
+
+      <div class="max-w-4xl mx-auto mb-12 md:mb-16">
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.75903556995!2d140.33627797477922!3d38.23869848530297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5e651338ee9%3A0xc0849deeea74a808!2z44K344Kn772l44OK44Kr44Ks44Ov!5e0!3m2!1sja!2sjp!4v1770616283888!5m2!1sja!2sjp" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="max-w-2xl mx-auto border border-white/20 p-6 sm:p-10 md:p-12 rounded-sm bg-black/20">
+        <p class="text-gold tracking-[0.4em] mb-4 text-xs md:text-sm uppercase">Information</p>
+        <a href="tel:0236327115" class="text-3xl sm:text-5xl md:text-6xl hover:text-gold transition-colors block mb-8 md:mb-10">
+          023-632-7115
+        </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left text-xs md:text-sm tracking-widest border-t border-white/10 pt-8 md:pt-10 opacity-70">
+          <div>
+            <p class="mb-2 text-gold">住所</p>
+            <p>〒990-2491<br>山形県山形市あずま町3-19</p>
+          </div>
+          <div>
+            <p class="mb-2 text-gold">営業時間</p>
+            <p>11:30 - 15:00 / 17:30 - 22:30<br>※完全予約制</p>
+          </div>
+        </div>
+        <div class="mt-10 md:mt-12 flex justify-center gap-8 text-2xl md:text-3xl">
+          <a href="https://www.instagram.com/naka_85_/" target="_blank" rel="noopener" class="hover:text-gold transition"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-10 md:py-12 text-center text-stone-600 text-xs tracking-widest">
+    <p>© 2024 Chez Nakagawa. Crafted for Memories.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var supportsIO = 'IntersectionObserver' in window;
+      var sections = document.querySelectorAll('section');
+      if (!supportsIO) {
+        sections.forEach(function (s) { s.classList.add('visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 });
+      sections.forEach(function (section) {
+        section.classList.add('fade-in');
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>
