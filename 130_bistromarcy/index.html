@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ビストロ 摩亜志亜 | 山形市で三十年、五感を捧ぐる至極のオムライス</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#b8935a;
+    --gold-deep:#8f6d3e;
+    --ink:#1c1a16;
+    --cream:#faf6ee;
+    --line: rgba(184,147,90,.28);
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html{ scroll-padding-top: 72px; }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  .serif{ font-family:'Shippori Mincho', serif; }
+  .text-gold{ color:var(--gold); }
+  .bg-ink{ background:var(--ink); }
+  .border-gold{ border-color:var(--gold); }
+
+  header{ top: env(safe-area-inset-top, 0px); }
+
+  /* hero plate illustration, no external images */
+  .plate-wrap{
+    aspect-ratio:1/1;
+    width:min(78vw,360px);
+    position:relative;
+  }
+  .plate{
+    position:absolute; inset:0;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 42%, #f3e6c9 0%, #ecd9ab 42%, #cbb27a 60%, #8f7746 100%);
+    box-shadow: 0 25px 60px -15px rgba(0,0,0,.6), inset 0 0 0 10px rgba(255,255,255,.15);
+  }
+  .plate::after{
+    content:"";
+    position:absolute; inset:14%;
+    border-radius:50%;
+    background: radial-gradient(circle at 45% 38%, #f5c95a 0%, #e0a53a 35%, #c47b2b 62%, #8a4a1e 100%);
+    box-shadow: inset 0 6px 18px rgba(0,0,0,.35), inset 0 -4px 10px rgba(255,255,255,.25);
+  }
+  .plate .sauce{
+    position:absolute; left:8%; right:8%; bottom:6%; height:30%;
+    background: radial-gradient(ellipse at 50% 100%, #6b1f1a 0%, #4a1310 55%, transparent 75%);
+    filter: blur(1px);
+    border-radius:50%;
+  }
+  .plate .herb{
+    position:absolute; width:10px; height:22px; background:#4b6b3a; border-radius:50% 50% 50% 0;
+  }
+
+  .fade-in{ opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease; }
+  .fade-in.visible{ opacity:1; transform:translateY(0); }
+
+  .num{ font-family:'Shippori Mincho', serif; color:var(--gold); }
+
+  ::selection{ background:var(--gold); color:#fff; }
+</style>
+</head>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="fixed inset-x-0 z-50 bg-[#faf6eef2] backdrop-blur-md border-b" style="border-color:var(--line)">
+    <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
+      <span class="serif text-lg tracking-wide">ビストロ <span class="text-gold">摩亜志亜</span></span>
+      <nav class="hidden md:flex gap-8 text-sm tracking-wide text-stone-700">
+        <a href="#special" class="hover:text-gold transition-colors">至極の一皿</a>
+        <a href="#story" class="hover:text-gold transition-colors">物語</a>
+        <a href="#sweets" class="hover:text-gold transition-colors">菓子工房</a>
+        <a href="#access" class="hover:text-gold transition-colors">アクセス</a>
+      </nav>
+      <a href="tel:0236812135" class="bg-ink text-white text-xs px-4 py-2.5 rounded-full tracking-wide">
+        <i class="fas fa-phone-alt mr-1.5 text-[10px]"></i>予約
+      </a>
+    </div>
+  </header>
+
+ <section class="relative bg-ink text-white pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.06]" style="background-image:radial-gradient(var(--gold) 1px, transparent 1px); background-size:22px 22px;"></div>
+    <div class="max-w-5xl mx-auto px-6 relative flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1 fade-in visible">
+        <p class="text-gold serif tracking-[0.35em] text-sm mb-5">BISTRO MARCY · SINCE 1995</p>
+        <h1 class="serif text-3xl sm:text-4xl md:text-5xl leading-[1.4] mb-6">
+          その一皿に、<br>至福を込めて。
+        </h1>
+        <p class="text-stone-300 leading-[1.9] mb-9 max-w-md">
+          山形市で三十年、ホテルニューグランドの血を継ぐ二代目が贈る、正統派洋食と芸術的スイーツの饗宴。
+        </p>
+        <a href="#special" class="inline-block bg-gold text-ink px-9 py-4 rounded-sm font-bold tracking-wide hover:brightness-105 transition">
+          至極のメニューを見る
+        </a>
+      </div>
+
+      <!-- 画像配置エリア -->
+      <div class="flex-1 flex justify-center w-full">
+        <div class="relative w-full max-w-md aspect-[4/3] md:aspect-[1/1] overflow-hidden rounded-lg shadow-2xl border border-gold/20 group">
+          <img 
+            src="images/omurice.png" 
+            alt="ビストロマルシーの看板メニュー" 
+            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+          <!-- 必要に応じて微かなグラデーションやフレームを重ねる場合 -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
+        </div>
+      </div>
+
+  </div>
+  </section>
+
+<!-- Signature -->
+  <section id="special" class="py-20 md:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <div class="order-2 md:order-1">
+        <h2 class="text-gold serif text-sm tracking-[0.35em] mb-4">SIGNATURE DISH</h2>
+        <h3 class="serif text-3xl md:text-4xl leading-snug mb-6">溶け出す、濃厚な歓喜。</h3>
+        <p class="text-stone-600 leading-[1.9] mb-8">
+          当店の代名詞「カマンベールオムライス」。ふわりと焼き上げた卵の上に鎮座する、存在感溢れるチーズ。ナイフを入れた瞬間、中から溢れ出す芳醇な香りとコクが、自家製デミグラスソースと混ざり合い、未体験の深い味わいへと誘います。
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-baseline gap-4 border-b pb-4" style="border-color:var(--line)">
+            <span class="num text-xl">壱</span>
+            <span class="serif text-lg">海老のオムライス（イチオシ）</span>
+          </li>
+          <li class="flex items-baseline gap-4 border-b pb-4" style="border-color:var(--line)">
+            <span class="num text-xl">弐</span>
+            <span class="serif text-lg">カマンベールオムライス</span>
+          </li>
+          <li class="flex items-baseline gap-4">
+            <span class="num text-xl">参</span>
+            <span class="serif text-lg">パティシエ特製ガトーセレクト</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 画像配置エリア（角丸ボックス） -->
+      <div class="order-1 md:order-2 flex justify-center">
+        <div class="relative w-full max-w-sm aspect-[4/3] md:aspect-square overflow-hidden rounded-xl shadow-xl border border-stone-200 group">
+          <img 
+            src="images/omurice2.png" 
+            alt="カマンベールオムライス" 
+            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+      </div>
+
+  </div>
+  </section>
+
+  <!-- Story -->
+  <section id="story" class="py-20 md:py-28 bg-ink text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.05]" style="background-image:radial-gradient(var(--gold) 1px, transparent 1px); background-size:20px 20px;"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative">
+      <h2 class="text-gold serif text-sm tracking-[0.4em] mb-8">HERITAGE &amp; PASSION</h2>
+      <h3 class="serif text-2xl md:text-4xl leading-[1.7] mb-10">
+        ホテルニューグランドの矜持、<br>そして三十年の伝統を継ぐ。
+      </h3>
+      <div class="space-y-7 text-stone-300 leading-[2] text-base md:text-lg text-left md:text-center">
+        <p>創業三十年前、植松勝彦が山形市に灯した一つのビストロ。洋食激戦区であったこの地に、「シェフとパティシエを揃えた正統派」として根を下ろしました。</p>
+        <p>2025年、そのバトンは二代目・一磨へと託されました。横浜「ホテルニューグランド」という日本を代表するクラシックホテルの厨房で磨かれた確かな技術と感性が、マーシーの伝統に新たな息吹を吹き込みます。</p>
+        <p>提供するのは、単なる食事ではありません。「普段着のごちそう」という哲学を守り抜き、お客様の人生の大切なワンシーンを、彩り豊かな一皿で演出すること。それが、私たちの使命です。</p>
+      </div>
+    </div>
+  </section>
+
+<!-- Sweets -->
+  <section id="sweets" class="py-20 md:py-28 bg-[var(--cream)]">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      
+      <!-- 画像配置エリア（2枚のグリッド） -->
+      <div class="grid grid-cols-2 gap-4">
+        <!-- 1枚目の画像（少し下にずらす mt-8 はそのまま維持） -->
+        <div class="aspect-square rounded-sm mt-8 shadow-xl overflow-hidden group border border-stone-200">
+          <img 
+            src="images/gato.jpg" 
+            alt="パティシエ特製ガトー" 
+            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+        
+        <!-- 2枚目の画像 -->
+        <div class="aspect-square rounded-sm shadow-xl overflow-hidden group border border-stone-200">
+          <img 
+            src="images/taruto.jpg" 
+            alt="季節のフルーツタルト" 
+            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-gold serif text-sm tracking-[0.35em] mb-4">PÂTISSERIE MARCY</h2>
+        <h3 class="serif text-3xl md:text-4xl leading-snug mb-6">コースを締めくくる、最後の一片まで芸術。</h3>
+        <p class="text-stone-600 leading-[1.9] mb-8">
+          専属パティシエが一つひとつ丁寧に仕立てるスイーツ。ショーケースに並ぶその姿は、まるで宝石のように繊細です。ランチセットに＋300円で添えられる「至福の時間」を、ぜひ体験してください。
+        </p>
+        <div class="bg-white p-6 border shadow-sm" style="border-color:var(--line)">
+          <p class="text-gold font-bold mb-1 tracking-wide text-sm">TEA TIME SPECIAL</p>
+          <p class="text-stone-500 mb-3 text-sm">スイーツのみのティークアウトも承っております。</p>
+          <div class="flex items-end justify-between">
+            <span class="serif text-xl">デザートセット</span>
+            <span class="text-2xl font-bold">＋￥300 <span class="text-xs font-normal text-stone-400">税込</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-20 md:py-24 bg-ink text-white">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <div class="text-gold mb-6 text-lg">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="serif text-xl md:text-2xl leading-[1.9] mb-6">
+        「家庭のオムライスとは別の食べ物ですね。ホワイトソースがクリーミーで美味しすぎてびっくりしました。」
+      </p>
+      <p class="text-stone-400 tracking-wide text-sm">— お越しいただいたお客様の声</p>
+    </div>
+  </section>
+
+  <!-- Access -->
+  <section id="access" class="py-20 md:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-14">
+      <div>
+        <h2 class="text-gold serif text-sm tracking-[0.35em] mb-8">INFORMATION</h2>
+        <div class="space-y-6">
+          <div class="border-b pb-5 flex justify-between items-end gap-4" style="border-color:var(--line)">
+            <span class="text-stone-400 text-xs tracking-wide">住所</span>
+            <span class="text-right">山形県山形市馬見ケ崎4丁目1-10</span>
+          </div>
+          <div class="border-b pb-5 flex justify-between items-end" style="border-color:var(--line)">
+            <span class="text-stone-400 text-xs tracking-wide">電話</span>
+            <span class="serif text-xl text-gold">023-681-2135</span>
+          </div>
+          <div class="border-b pb-5 flex justify-between items-end gap-4" style="border-color:var(--line)">
+            <span class="text-stone-400 text-xs tracking-wide">営業時間</span>
+            <span class="text-right">ランチ / ティー / ディナー（木曜定休）</span>
+          </div>
+          <div class="flex justify-between items-end">
+            <span class="text-stone-400 text-xs tracking-wide">支払い</span>
+            <span>PayPay可 / クレジット可</span>
+          </div>
+        </div>
+        <a href="tel:0236812135" class="mt-10 block w-full text-center bg-gold text-ink py-4 font-bold tracking-wide rounded-sm hover:brightness-105 transition">
+          今すぐ電話で予約
+        </a>
+      </div>
+      <div class="rounded-sm overflow-hidden shadow-xl min-h-[320px]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.8052893196523!2d140.3325361747818!3d38.28400618266535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc84b847009b5%3A0x57d1f8f10f11b087!2z44OT44K544OI44Ot44Oe44O844K344O8!5e0!3m2!1sja!2sjp!4v1770600614850!5m2!1sja!2sjp"
+          width="100%" height="100%" style="border:0; min-height:320px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="py-20 md:py-24 bg-stone-900 text-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-gold serif text-sm tracking-[0.35em]">COMING SOON</span>
+        <h2 class="serif text-2xl md:text-3xl mt-4">あれば嬉しいをカタチに。これからの新しい試み</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="border border-gold/25 p-7 rounded-sm">
+          <i class="fas fa-birthday-cake text-gold text-2xl mb-4"></i>
+          <h3 class="serif text-lg mb-3">記念日用 芸術的デザートプレート</h3>
+          <p class="text-stone-400 text-sm leading-relaxed mb-5">誕生日や結婚記念日に。メッセージと花火、旬のフルーツと特製ガトーを添えた限定アニバーサリープレート。</p>
+          <span class="text-xs text-gold tracking-wide">企画進行中</span>
+        </div>
+        <div class="border border-gold/25 p-7 rounded-sm">
+          <i class="fas fa-wine-glass-alt text-gold text-2xl mb-4"></i>
+          <h3 class="serif text-lg mb-3">大人の隠れ家 ナイトビストロ</h3>
+          <p class="text-stone-400 text-sm leading-relaxed mb-5">ディナータイムの後に、デザートとワインや自家製カクテルを静かに楽しめる、完全予約制の夜限定バータイム。</p>
+          <span class="text-xs text-gold tracking-wide">検討中</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink py-10 text-center">
+    <p class="serif text-xl mb-4 tracking-wide">ビストロ <span class="text-gold">摩亜志亜</span></p>
+    <p class="text-stone-500 text-xs mb-6">山形県山形市馬見ケ崎4-1-10 ｜ TEL: 023-681-2135</p>
+    <p class="text-stone-600 text-[10px] tracking-wide">© BISTRO MARCY. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold:0.12});
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
