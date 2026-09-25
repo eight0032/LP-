@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>オステリア イル ペッシェ | 山形・宮町の極上魚介イタリアン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --color-primary: #4a5d23;
+            --color-accent: #b22222;
+            --color-bg: #f9f7f2;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            box-sizing: border-box;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --color-bg: #f9f7f2;
+            }
+        }
+
+        html {
+            scroll-padding-top: env(safe-area-inset-top, 0px);
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--color-bg);
+            color: #2c2c2c;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .font-mincho { font-family: 'Shippori Mincho', serif; }
+        .serif-en { font-family: 'Playfair Display', serif; }
+
+        .bg-primary { background-color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .border-primary { border-color: var(--color-primary); }
+
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--color-primary);
+            margin: 20px auto;
+        }
+
+        .luxury-border {
+            border: 1px solid rgba(74, 93, 35, 0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* 縦書きの装飾テキストはスマホでは非表示にして崩れを防ぐ */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @media (max-width: 767px) {
+            .vertical-text { display: none; }
+        }
+
+        /* すべての横スクロールを起こしうる要素をガード */
+        img { max-width: 100%; height: auto; }
+        .no-x-scroll { overflow-x: hidden; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .grayscale { animation: none !important; transition: none !important; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="antialiased no-x-scroll">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0">
+            <img src="images/pasta2.jpg" alt="料理のシズル感" class="w-full h-full object-cover opacity-70">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6 py-24">
+            <div class="mb-6 flex flex-col items-center">
+                <span class="font-mincho text-base sm:text-lg tracking-[0.4em] sm:tracking-[0.5em] mb-4 border-b border-white/30 pb-2">山形・宮町</span>
+                <div class="w-px h-10 sm:h-12 bg-white/50 mb-2"></div>
+            </div>
+
+            <h1 class="font-mincho text-3xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 leading-relaxed tracking-wide sm:tracking-widest fade-in">
+                その一皿に、<br>
+                海の記憶を宿して。
+            </h1>
+
+            <p class="text-base sm:text-xl font-light tracking-[0.15em] sm:tracking-[0.2em] mb-8 sm:mb-12 fade-in italic text-white/90">
+                元鮮魚店の目利きが贈る、本格イタリアン
+            </p>
+
+            <div class="serif-en text-3xl sm:text-4xl md:text-5xl italic opacity-80">Osteria Il Pesche</div>
+        </div>
+    </header>
+
+    <!-- 2. CTA -->
+    <section class="py-10 sm:py-12 px-4 bg-white border-b border-gray-100">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+            <div class="text-center md:text-left">
+                <p class="text-sm tracking-widest text-primary font-bold">RESERVATION</p>
+                <h2 class="text-lg sm:text-xl font-mincho">旬の美味しさを、お席で。</h2>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full md:w-auto">
+                <a href="tel:023-622-7655" class="bg-primary text-white py-4 px-6 sm:px-10 rounded-sm text-center font-bold tracking-widest hover:opacity-90 transition shadow-lg">
+                    <i class="fas fa-phone mr-2"></i>023.622.7655
+                </a>
+                <a href="https://ilpesche.com/70674/?page_id=66" target="_blank" rel="noopener" class="border border-primary text-primary py-4 px-6 sm:px-10 rounded-sm text-center font-bold tracking-widest hover:bg-primary hover:text-white transition">
+                    お問い合わせフォーム
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. イチオシ商品 -->
+    <section class="py-16 sm:py-24 px-4 bg-[#fdfaf6]">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="order-2 md:order-1 relative max-w-md mx-auto md:max-w-none">
+                    <img src="images/pasta.jpg" alt="ヤリイカのパスタ" class="rounded-sm shadow-2xl relative z-10 w-full">
+                    <div class="hidden sm:block absolute -top-4 -left-4 w-full h-full border border-primary/20 z-0"></div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <span class="text-accent font-bold tracking-tighter text-4xl sm:text-5xl serif-en opacity-10">Signature</span>
+                    <h3 class="text-2xl sm:text-3xl font-mincho font-bold mb-6 -mt-4 sm:-mt-6">ヤリイカとクレソンの<br>トマトソース</h3>
+                    <p class="text-gray-600 mb-8 leading-loose">
+                        鮮魚店を営んでいたからこそ知る、最も脂がのった時期のヤリイカ。その繊細な甘みを引き出すのは、自家製の濃厚なトマトソースと、爽やかな苦味のクレソン。<br>
+                        素材の「声」を聞き、一番美味しい瞬間を逃さず調理いたします。
+                    </p>
+                    <div class="border-l-4 border-primary pl-6 py-2 italic text-primary font-bold">
+                        「一口で、素材の鮮度がわかります」
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ストーリー -->
+    <section class="py-16 sm:py-24 px-4 bg-white overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h3 class="section-title font-mincho text-2xl sm:text-3xl">受け継がれる「魚屋」の魂</h3>
+                <p class="text-xs sm:text-sm tracking-[0.3em] text-gray-400 uppercase">Our Identity</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute right-0 top-0 vertical-text font-mincho text-gray-100 text-8xl -z-0 opacity-50 select-none">鮮魚・伝統・革新</div>
+                <div class="relative z-10 grid md:grid-cols-5 gap-8">
+                    <div class="md:col-span-2 max-w-sm mx-auto md:max-w-none w-full">
+                        <img src="images/chef.png" alt="新鮮な魚の目利き" class="grayscale hover:grayscale-0 transition-all duration-700 shadow-xl rounded-sm w-full">
+                    </div>
+                    <div class="md:col-span-3 space-y-6 flex flex-col justify-center">
+                        <p class="font-mincho text-lg sm:text-xl font-bold border-b border-primary/20 pb-4 text-primary">
+                            オーナーシェフ 佐司隆嗣
+                        </p>
+                        <p class="text-gray-600">
+                            1973年、家業の鮮魚店に生まれる。幼少期から「本物の魚」に触れ、その扱いを身体で覚える。24歳でイタリア料理の道へ。
+                        </p>
+                        <p class="text-gray-600">
+                            修業を経て、時代が移り変わる中で「本当に良い魚を、最高の形で届けたい」という想いから、2008年、自身のルーツである魚屋の名を冠した「イル ペッシェ(魚屋)」を開業。
+                        </p>
+                        <p class="text-gray-600">
+                            山形の豊かな地場産品と、鮮魚店仕込みの目利き。その二つが重なり合い、ここでしか味わえない一皿が生まれます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. クチコミ -->
+    <section class="py-16 sm:py-24 px-4 bg-[#f2f0eb]">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="font-mincho text-2xl sm:text-3xl text-center mb-12 sm:mb-16 section-title">お客様の「記憶」</h3>
+            <div class="grid md:grid-cols-3 gap-6 sm:gap-10">
+                <div class="bg-white p-8 sm:p-10 luxury-border">
+                    <div class="flex text-accent mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 font-mincho leading-loose mb-8">
+                        「前菜からパスタ、最後の一皿まで残したくない味付け。素材の味を損なわない、スマートな接客に居心地の良さを感じました。」
+                    </p>
+                    <p class="text-xs tracking-widest text-gray-400 text-right">夜の会食にて</p>
+                </div>
+                <div class="bg-white p-8 sm:p-10 luxury-border">
+                    <div class="flex text-accent mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 font-mincho leading-loose mb-8">
+                        「山椒葉のキッシュが絶品。旬の素材を活かし切っており、元魚屋ならではの魚介の美味しさが際立っています。」
+                    </p>
+                    <p class="text-xs tracking-widest text-gray-400 text-right">ランチ利用の常連様</p>
+                </div>
+                <div class="bg-white p-8 sm:p-10 luxury-border">
+                    <div class="flex text-accent mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 font-mincho leading-loose mb-8">
+                        「誕生日に伺いましたが、コースの充実度に驚き。女子率が高く、落ち着いた雰囲気で最高のお祝いができました。」
+                    </p>
+                    <p class="text-xs tracking-widest text-gray-400 text-right">記念日のご利用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5 Coming Soon -->
+    <section class="py-16 sm:py-24 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-accent font-bold tracking-[0.3em] text-xs uppercase block mb-3">Future Initiatives</span>
+                <h3 class="font-mincho text-2xl sm:text-3xl md:text-4xl">Coming Soon — 新しいおもてなし</h3>
+                <p class="text-sm tracking-[0.2em] text-gray-400 mt-4">お客様の声から生まれた、これからのイル ペッシェ</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="bg-[#f9f7f2] p-6 sm:p-8 border border-primary/10 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-accent font-serif text-2xl mb-4">01</div>
+                        <h4 class="font-mincho text-lg sm:text-xl font-bold mb-4 text-primary">アニバーサリーランチコース</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            「お昼の時間にも大切な人とお祝いをしたい」というご要望にお応えし、メッセージ付き特注ドルチェや乾杯スパークリングが付いた、昼限定の記念日コースを準備中。
+                        </p>
+                    </div>
+                    <span class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 font-bold self-start tracking-wider">近日公開予定</span>
+                </div>
+
+                <div class="bg-[#f9f7f2] p-6 sm:p-8 border border-primary/10 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-accent font-serif text-2xl mb-4">02</div>
+                        <h4 class="font-mincho text-lg sm:text-xl font-bold mb-4 text-primary">おうちで味わう魚屋の定期便</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            元鮮魚店だからこそ厳選できる極上の目利きをそのままに。お店の味をご自宅で簡単に再現できる特注ソースと旬の魚介セットを、ご自宅にお届けするサブスクリプション。
+                        </p>
+                    </div>
+                    <span class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 font-bold self-start tracking-wider">企画進行中</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. アクセス & 情報 -->
+    <section class="py-16 sm:py-24 px-4 bg-primary text-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h3 class="font-mincho text-3xl sm:text-4xl mb-6">ご予約・お問い合わせ</h3>
+                <p class="text-white/70 tracking-widest text-sm sm:text-base">水曜日定休 | お席に限りがございますので、事前予約をお勧めいたします</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 sm:gap-12 mb-12 sm:mb-16">
+                <div class="space-y-8">
+                    <div class="border-b border-white/20 pb-6">
+                        <p class="text-xs text-white/50 mb-2 tracking-wide">Phone</p>
+                        <a href="tel:023-622-7655" class="text-2xl sm:text-3xl font-mincho hover:text-yellow-400 transition">023-622-7655</a>
+                    </div>
+                    <div class="border-b border-white/20 pb-6">
+                        <p class="text-xs text-white/50 mb-2 tracking-wide">Address</p>
+                        <p class="text-base sm:text-lg font-mincho">山形県山形市宮町5丁目8-4</p>
+                        <div class="mt-6 rounded-sm overflow-hidden h-56 sm:h-64 shadow-inner map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.7176869969057!2d140.33427907478074!3d38.26285318389707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc9e74c7ef1c7%3A0x415b51524f4242e!2z44Kq44K544OG44Oq44KiIOOCpOODqyDjg5rjg4Pjgrfjgqc!5e0!3m2!1sja!2sjp!4v1770599537611!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="オステリア イル ペッシェ 地図"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-6 sm:p-8 rounded-sm backdrop-blur-sm border border-white/10 self-start">
+                    <h4 class="font-mincho text-xl mb-6">店舗情報</h4>
+                    <ul class="space-y-4 text-white/80 text-sm">
+                        <li class="flex justify-between gap-4 border-b border-white/10 pb-2"><span>店名</span><span class="text-right">オステリア イル ペッシェ</span></li>
+                        <li class="flex justify-between gap-4 border-b border-white/10 pb-2"><span>定休日</span><span class="text-right">毎週水曜日</span></li>
+                        <li class="flex justify-between gap-4 border-b border-white/10 pb-2"><span>設備</span><span class="text-right">個室、掘りごたつ座敷完備</span></li>
+                        <li class="flex justify-between gap-4 border-b border-white/10 pb-2"><span>特長</span><span class="text-right">テイクアウト・お惣菜販売あり</span></li>
+                    </ul>
+                    <div class="mt-8">
+                        <p class="text-xs text-white/50 mb-4 tracking-wide">Follow us</p>
+                        <div class="flex gap-6">
+                            <a href="https://x.com/ilpesche" target="_blank" rel="noopener" class="text-2xl hover:text-yellow-400 transition" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                            <a href="http://ilpesche.com/70674/" target="_blank" rel="noopener" class="text-2xl hover:text-yellow-400 transition" aria-label="公式サイト"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                    <a href="https://ilpesche.com/70674/?page_id=66" target="_blank" rel="noopener" class="mt-10 block bg-white text-black text-center py-4 font-bold hover:bg-yellow-400 transition shadow-xl">
+                        お問い合わせフォームへ
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center pt-12 sm:pt-16 border-t border-white/10">
+                <p class="serif-en italic opacity-30 text-base sm:text-lg">Osteria Il Pesche</p>
+                <p class="text-[10px] text-white/40 mt-4 tracking-widest">&copy; 2026 Osteria Il Pesche. All Rights Reserved.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
