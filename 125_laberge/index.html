@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>レストラン ラ・ベルジュ | 山形の隠れ家 和風フレンチ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+<style>
+  :root {
+    --gold: #ad8a4a;
+    --gold-dark: #8a6d38;
+    --ink: #1f1c18;
+    --cream: #f7f4ec;
+    --line: rgba(31,28,24,0.08);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: 76px; }
+  html, body { height: 100%; }
+  * { box-sizing: inherit; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    background: #0000; /* placeholder reset, real bg set below */
+  }
+  body { background-color: var(--cream); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { }
+  }
+  .serif { font-family: 'Noto Serif JP', serif; }
+  .text-gold { color: var(--gold); }
+  .bg-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); }
+  .tracking-wide2 { letter-spacing: .35em; }
+  .line-relaxed { line-height: 2; }
+
+  /* photo placeholders — CSS-only, no remote images */
+  .photo {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(120% 140% at 15% 10%, rgba(173,138,74,0.55), transparent 55%),
+      radial-gradient(120% 140% at 85% 90%, rgba(60,48,30,0.9), transparent 60%),
+      linear-gradient(160deg, #2a2620, #14120f 70%);
+  }
+  .photo::after{
+    content: attr(data-label);
+    position:absolute; left:1.25rem; bottom:1.25rem; right:1.25rem;
+    color: rgba(255,255,255,0.75);
+    font-family:'Noto Serif JP',serif;
+    font-size: .8rem;
+    letter-spacing:.15em;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding-top: .6rem;
+  }
+  .photo-hero {
+    background:
+      radial-gradient(140% 120% at 20% 0%, rgba(173,138,74,0.35), transparent 55%),
+      radial-gradient(120% 140% at 80% 100%, rgba(20,18,15,0.9), transparent 60%),
+      linear-gradient(150deg, #3a3226, #100e0b 75%);
+  }
+
+  .section-title { position: relative; display:inline-block; padding-bottom: .9rem; }
+  .section-title::after {
+    content:""; position:absolute; left:0; bottom:0; width:36px; height:2px; background: var(--gold);
+  }
+  .center .section-title::after { left:50%; transform: translateX(-50%); }
+
+  .btn-hover { transition: transform .35s cubic-bezier(.165,.84,.44,1), box-shadow .35s; }
+  .btn-hover:active { transform: translateY(1px); }
+  @media (hover:hover){
+    .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 14px 24px rgba(0,0,0,.18); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease-out, transform .8s ease-out; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold); outline-offset: 3px;
+  }
+
+  .content-wrap { max-width: 1120px; margin-inline:auto; padding-inline: 1.25rem; }
+  @media (min-width:768px){ .content-wrap { padding-inline: 1.5rem; } }
+</style>
+</head>
+<body class="antialiased">
+
+  <!-- FVエリア -->
+  <header class="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden">
+    <!-- 背景画像挿入部分（Unsplashのフリー素材を使用） -->
+    <div class="absolute inset-0">
+      <img 
+        src="images/fish.png" 
+        alt="レストラン ラ・ベルジュ ファーストビュー" 
+        class="w-full h-full object-cover scale-105 animate-fade-in"
+      >
+    </div>
+    <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.7));"></div>
+
+    <div class="relative z-10 content-wrap text-center py-24">
+      <p class="text-xs md:text-sm tracking-[0.5em] mb-8 serif opacity-90">静で綴る、山形の記憶。</p>
+      <p class="text-gold text-xs tracking-[0.35em] mb-3 font-medium">RESTAURANT LA BERGE</p>
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-8 leading-snug md:leading-tight serif drop-shadow">
+        和洋折衷の極み、<br>鯛と海老の邂逅。
+      </h1>
+      <div class="inline-block border border-white/40 px-6 py-3 md:px-8 md:py-4">
+        <p class="text-sm md:text-base tracking-widest serif">完全予約制・山形の隠れ家レストラン</p>
+      </div>
+    </div>
+
+    <a href="#info" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm hover:text-white transition-colors" aria-label="次のセクションへ">
+      <svg class="animate-bounce" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+  </header>
+
+  <!-- 固定予約バー -->
+  <nav class="sticky top-0 z-50 bg-[var(--cream)]/95 backdrop-blur-md border-b border-[var(--line)]">
+    <div class="content-wrap flex items-center justify-between py-3 md:py-4">
+      <div class="leading-tight">
+        <span class="text-[10px] tracking-[0.3em] text-stone-400 block">RESTAURANT</span>
+        <span class="serif font-bold text-lg md:text-xl">ラ・ベルジュ</span>
+      </div>
+      <a href="tel:0236336410" class="bg-gold text-white px-4 py-2.5 md:px-7 md:py-3 rounded-sm font-bold btn-hover text-xs md:text-sm tracking-widest inline-flex items-center gap-2 shrink-0">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        <span class="hidden sm:inline">予約の</span>お電話
+      </a>
+    </div>
+  </nav>
+
+<!-- コンセプト -->
+  <section class="py-16 md:py-24">
+    <div class="content-wrap">
+      <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div class="w-full md:w-5/12 reveal">
+          <h2 class="text-2xl md:text-4xl font-bold leading-relaxed serif mb-6 md:mb-8">
+            山形の旬を、<br>フレンチの技術と<br>和の心で。
+          </h2>
+          <p class="text-stone-600 line-relaxed mb-6 text-[15px] md:text-base">
+            山形駅からわずか三キロ。住宅街の喧噪を抜けた先に現れる、わずか数組のための空間。
+            私たちが大切にしているのは、素材が持つ「声」を聞くこと。山形の豊かな土壌で育まれた野菜、
+            日本海の荒波に揉まれた鮮魚。それらをフレンチの技法で磨き上げ、お箸で召し上がる和のスタイルでご提供いたします。
+          </p>
+          <div class="w-10 h-px bg-gold mb-3"></div>
+          <p class="serif font-bold text-gold text-sm tracking-wide">RESTAURANT LA BERGE</p>
+        </div>
+        <div class="w-full md:w-7/12 reveal">
+          <!-- 画像挿入部分 -->
+          <div class="relative group overflow-hidden aspect-[4/3] rounded-sm shadow-2xl border border-stone-200">
+            <!-- 料理やシェフ、レストランの雰囲気を伝えるイメージ写真（Unsplashのフリー素材） -->
+            <img 
+              src="images/chef.png" 
+              alt="心を込めて料理を仕上げる様子" 
+              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            >
+            <!-- ニュアンスを加えるための微細なオーバーレイ -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-50"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- メインビジュアル：鯛と海老 -->
+  <section class="py-16 md:py-24 bg-[var(--ink)] text-white">
+    <div class="content-wrap">
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-12">
+        <div class="w-full md:w-1/2 reveal">
+          <span class="text-gold tracking-[0.3em] font-medium text-xs mb-4 block">SIGNATURE</span>
+          <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 serif">鯛と海老のカルパッチョ</h2>
+          <p class="text-stone-300 line-relaxed mb-8 text-[15px] md:text-base">
+            当店のシグネチャー。山形の海が育んだ真鯛の繊細な旨みと、海老の濃厚な甘みが、
+            特製ソースによって一つの物語へと昇華されます。彩り豊かな盛り付けは、まるで一幅の絵画のよう。
+          </p>
+          <div class="border border-gold/30 p-6 md:p-8 rounded-sm relative">
+            <div class="absolute -top-3 left-5 bg-[var(--ink)] px-3 text-gold text-xs font-medium tracking-widest">WEB予約特典</div>
+            <p class="serif text-lg mb-2 text-gold">乾杯のスパークリングを添えて</p>
+            <p class="text-stone-400 text-sm">WEBまたは当サイトをご覧の上お電話でご予約の方に、爽やかな乾杯の一杯をプレゼントいたします。</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 reveal">
+          <!-- 画像挿入部分 -->
+          <div class="relative group overflow-hidden aspect-square rounded-sm shadow-2xl border border-gold/20">
+            <!-- 料理・カルパッチョのイメージ写真（Unsplashのフリー素材） -->
+            <img 
+              src="images/karupaccyo.png" 
+              alt="鯛と海老のカルパッチョ" 
+              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            >
+            <!-- ニュアンスを加えるための微細なグラデーションオーバーレイ -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3つの魅力 -->
+  <section class="py-16 md:py-24">
+    <div class="content-wrap">
+      <div class="text-center center mb-14 md:mb-20">
+        <h2 class="text-2xl md:text-4xl font-bold serif section-title">ラ・ベルジュの流儀</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <div class="reveal text-center">
+          <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-5 border border-stone-200">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M6 3v18M6 8h4M6 13h4M14 3c0 4-2 6-2 10 0 3 2 5 2 5s2-2 2-5c0-4-2-6-2-10z"/></svg>
+          </div>
+          <h3 class="serif text-lg md:text-xl font-bold mb-3">お箸で味わう</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">堅苦しいマナーは不要です。日本人に馴染み深いお箸で、最後の一口までゆったりとお愉しみください。</p>
+        </div>
+        <div class="reveal text-center">
+          <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-5 border border-stone-200">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 3c-4 3-6 6-6 10a6 6 0 0012 0c0-4-2-7-6-10z"/></svg>
+          </div>
+          <h3 class="serif text-lg md:text-xl font-bold mb-3">旬の瞬間に触れる</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">四季がはっきりとした山形だからこそ出会える、その時々で最も輝く食材を厳選して仕入れています。</p>
+        </div>
+        <div class="reveal text-center">
+          <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-5 border border-stone-200">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2l2.6 6.4L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.4-.6z"/></svg>
+          </div>
+          <h3 class="serif text-lg md:text-xl font-bold mb-3">隠れ家の静寂</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">住宅街に紛れた「分かりづらさ」こそが醍醐味。大切な方との記念日や、親しい方との会食に最適です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="py-16 md:py-24 bg-white border-y border-[var(--line)]">
+    <div class="content-wrap">
+      <div class="text-center center mb-12 md:mb-16">
+        <span class="text-gold tracking-[0.4em] font-medium text-xs mb-3 block">COMING SOON</span>
+        <h2 class="text-2xl md:text-4xl font-bold serif section-title">新サービス・試みのご案内</h2>
+        <p class="text-stone-500 text-sm mt-4">ラ・ベルジュがこれからお届けする、新しい体験と感動の計画です。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div class="bg-[var(--cream)] p-7 md:p-10 rounded-sm border border-[var(--line)] reveal flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="bg-white text-gold px-3 py-1 text-xs tracking-widest font-medium border border-stone-200">新サービス</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9c2b4" stroke-width="1.5"><path d="M8 2l1 7-1 3v10M16 2l-1 7 1 3v10M8 9h8"/></svg>
+            </div>
+            <h3 class="serif text-xl md:text-2xl font-bold mb-4">山形の地酒 × ワイン<br>ペアリング提案</h3>
+            <p class="text-stone-600 leading-relaxed text-sm mb-6">
+              フランス料理の腕に、山形が誇る銘酒の数々、そして選りすぐりのワインを。お料理の一皿一皿に合わせて、日本酒とワインをクロスオーバーさせる特別なペアリングコースを開発中です。
+            </p>
+          </div>
+          <div class="border-t border-stone-200 pt-4 flex items-center text-xs text-gold font-medium tracking-wider">
+            <svg class="mr-2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            近日公開予定
+          </div>
+        </div>
+
+        <div class="bg-[var(--cream)] p-7 md:p-10 rounded-sm border border-[var(--line)] reveal flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="bg-white text-gold px-3 py-1 text-xs tracking-widest font-medium border border-stone-200">SNS PROJECT</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9c2b4" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </div>
+            <h3 class="serif text-xl md:text-2xl font-bold mb-4">旬の走りと名残り<br>季節メニューのSNS速報</h3>
+            <p class="text-stone-600 leading-relaxed text-sm mb-6">
+              「今、一番美味しい瞬間」を逃さないために。その日仕入れたばかりの旬の食材やシェフが考案する限定の季節メニューを、Instagramなど各種SNSにてライブ感たっぷりに写真と動画でお届けします。
+            </p>
+          </div>
+          <div class="border-t border-stone-200 pt-4 flex items-center text-xs text-gold font-medium tracking-wider">
+            <svg class="mr-2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            随時配信スタート
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- クチコミ -->
+  <section class="py-16 md:py-24 bg-[var(--cream)]">
+    <div class="content-wrap max-w-3xl">
+      <h2 class="text-center text-xl md:text-2xl font-bold serif mb-12 md:mb-16 text-stone-400">お客様の声</h2>
+      <div class="space-y-6 md:space-y-8">
+        <div class="bg-white p-7 md:p-10 shadow-sm reveal border-l-4 border-gold">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="flex text-gold text-xs gap-0.5" aria-label="評価5つ星">★★★★★</div>
+            <span class="text-xs text-stone-400 tracking-widest font-medium">GUEST VOICE</span>
+          </div>
+          <p class="serif text-base md:text-lg leading-relaxed italic">
+            「お料理も見た目も美しく、とても美味しくいただきました。奥様のサービスも細やかで、お食事はお代わり出来ました。仲の良い女子会でもお祝いにも、また伺いたいお店です。」
+          </p>
+        </div>
+        <div class="bg-white p-7 md:p-10 shadow-sm reveal border-l-4 border-stone-300">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="flex text-gold text-xs gap-0.5" aria-label="評価4つ星"><span>★★★★</span><span class="text-stone-200">★</span></div>
+            <span class="text-xs text-stone-400 tracking-widest font-medium">GUEST VOICE</span>
+          </div>
+          <p class="serif text-base md:text-lg leading-relaxed italic">
+            「職場の送別会でした。感じの良い接客に、お箸で食べる美味しい和洋料理。ゆっくりと食事を楽しむことが出来るお店でした。」
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- 店舗情報 -->
+  <section id="info" class="py-16 md:py-24 bg-white border-t border-[var(--line)]">
+    <div class="content-wrap">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+        <div class="reveal">
+          <h2 class="text-xl md:text-2xl font-bold serif mb-6 md:mb-8">店舗情報</h2>
+          <dl class="text-sm divide-y divide-[var(--line)]">
+            <div class="flex py-3 gap-4"><dt class="w-20 shrink-0 font-medium text-stone-400">店名</dt><dd>レストラン ラ・ベルジュ</dd></div>
+            <div class="flex py-3 gap-4"><dt class="w-20 shrink-0 font-medium text-stone-400">住所</dt><dd>〒990-2402 山形県山形市小立4丁目7-27</dd></div>
+            <div class="flex py-3 gap-4"><dt class="w-20 shrink-0 font-medium text-stone-400">電話</dt><dd class="font-bold text-base">023-633-6410</dd></div>
+            <div class="flex py-3 gap-4"><dt class="w-20 shrink-0 font-medium text-stone-400">アクセス</dt><dd>山形駅から約3.3km（住宅街の中の隠れ家です）</dd></div>
+            <div class="flex py-3 gap-4"><dt class="w-20 shrink-0 font-medium text-stone-400">備考</dt><dd>完全予約制 / 和風フレンチ創作料理</dd></div>
+          </dl>
+          <div class="mt-6 p-5 bg-[var(--cream)] border border-[var(--line)] italic text-stone-500 text-xs leading-relaxed">
+            「道は住宅街に紛れて分かりづらいのですが、naviが確実。逆に隠れ家な雰囲気があり女子会やデートにはぴったりだと思います。」（お客様のクチコミより）
+          </div>
+        </div>
+
+        <div class="reveal">
+          <h2 class="text-xl md:text-2xl font-bold serif mb-6 md:mb-8">アクセスマップ</h2>
+          <!-- Googleマップ埋め込み部分 -->
+          <div class="relative w-full aspect-[4/3] rounded-sm shadow-lg overflow-hidden border border-stone-200">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.2699805641364!2d140.34627197477857!3d38.226842085992686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5bc2bf941c7%3A0x5baceb47e8c2f7d3!2z44Os44K544OI44Op44OzIOODqe-9peODmeODq-OCuOODpQ!5e0!3m2!1sja!2sjp!4v1790304974005!5m2!1sja!2sjp" 
+              class="w-full h-full border-0" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+          </div>
+          <!-- 必要に応じて別タブで開くリンクを地図の下に配置する場合 -->
+          <div class="mt-3 text-right">
+            <a href="https://www.google.com/maps/search/?api=1&query=%E5%B1%B1%E5%BD%A2%E7%9C%8C%E5%B1%B1%E5%BD%A2%E5%B8%82%E5%B0%8F%E7%AB%8B4%E4%B8%81%E7%9B%AE7-27"
+               target="_blank" rel="noopener noreferrer"
+               class="text-xs text-stone-500 hover:text-[var(--ink)] underline inline-flex items-center gap-1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+              大きな地図で見る
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最終CTA -->
+  <footer class="bg-[var(--ink)] text-white py-20 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-25 photo"></div>
+    <div class="relative z-10 content-wrap text-center">
+      <p class="text-gold tracking-[0.4em] mb-5 font-medium text-xs md:text-sm">RESERVATIONS</p>
+      <h2 class="text-3xl md:text-6xl font-bold serif mb-10 md:mb-12 tracking-wide">今宵、最高の思い出を。</h2>
+      <p class="text-stone-400 mb-12 md:mb-16 max-w-md mx-auto leading-loose text-sm">
+        大切な人との記念日、家族の慶事、あるいは自分へのご褒美に。<br>
+        山形の四季とラ・ベルジュの技が奏でるハーモニーを、ぜひご堪能ください。
+      </p>
+
+      <div class="inline-flex flex-col items-center">
+        <a href="tel:0236336410" class="bg-gold text-white px-10 py-5 md:px-16 md:py-6 rounded-full text-xl md:text-2xl font-bold btn-hover shadow-2xl mb-5 inline-flex items-center gap-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+          023-633-6410
+        </a>
+        <p class="text-stone-500 text-xs tracking-widest">お電話でのご予約</p>
+      </div>
+
+      <div class="mt-20 md:mt-32 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] tracking-[0.15em] text-stone-600">
+        <p>&copy; 2024 Restaurant La Berge.</p>
+        <div class="flex gap-6">
+          <span class="hover:text-gold transition cursor-pointer">プライバシーポリシー</span>
+          <span class="hover:text-gold transition cursor-pointer">利用規約</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function reveal(){
+      document.querySelectorAll('.reveal').forEach(function(el){
+        var top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 120) el.classList.add('active');
+      });
+    }
+    window.addEventListener('scroll', reveal, { passive: true });
+    window.addEventListener('load', reveal);
+    reveal();
+  </script>
+</body>
+</html>
