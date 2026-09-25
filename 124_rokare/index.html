@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>レストラン ろかーれ | 山形で愛されるデカ盛りの聖地</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --primary-red:#b91c1c;
+    --accent-gold:#d9a441;
+    --soft-bg:#fdfaf6;
+    --ink:#2d2926;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    background:var(--soft-bg);
+    color:var(--ink);
+    background:#0b0b0b;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){ --soft-bg:#fdfaf6; }
+  }
+  .font-heading{font-family:'Noto Serif JP',serif;}
+  .hero-art{
+    background:
+      radial-gradient(circle at 20% 20%, rgba(217,164,65,0.25), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(185,28,28,0.35), transparent 50%),
+      linear-gradient(150deg,#2b1414 0%,#1a0d0d 55%,#100808 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-art::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 40px);
+  }
+  .steam{
+    position:absolute; border-radius:50%; filter:blur(18px);
+    background:rgba(255,200,120,0.18);
+  }
+  .section-title{position:relative; padding-bottom:.9rem; margin-bottom:2rem;}
+  .section-title::after{
+    content:''; position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:52px; height:3px; background:var(--primary-red);
+  }
+  .section-title.left::after{left:0; transform:none;}
+  @keyframes pulse-line{
+    0%{box-shadow:0 0 0 0 rgba(6,199,85,0.45);}
+    70%{box-shadow:0 0 0 14px rgba(6,199,85,0);}
+    100%{box-shadow:0 0 0 0 rgba(6,199,85,0);}
+  }
+  .btn-line{animation:pulse-line 2.4s infinite;}
+  .plate-art{
+    aspect-ratio:1/1; border-radius:1.5rem;
+    background:
+      radial-gradient(circle at 35% 30%, rgba(255,255,255,0.25), transparent 40%),
+      linear-gradient(160deg,#e8b74a 0%,#c9781f 45%,#8a3a12 100%);
+    position:relative; overflow:hidden;
+  }
+  .plate-art::after{
+    content:'';
+    position:absolute; inset:12%;
+    border-radius:50%;
+    background:radial-gradient(circle at 40% 35%, rgba(255,255,255,0.35), rgba(120,40,10,0.4) 70%);
+    box-shadow:inset 0 0 30px rgba(0,0,0,0.35);
+  }
+  .founder-art{
+    border-radius:2.5rem; aspect-ratio:4/5;
+    background:linear-gradient(155deg,#3a2a20 0%,#1c1512 100%);
+    position:relative; overflow:hidden;
+  }
+  .founder-art::after{
+    content:'';
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(60deg, rgba(255,255,255,0.04) 0 3px, transparent 3px 30px);
+  }
+  .scan-wrap{scrollbar-width:thin;}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- 1. FV -->
+<section class="relative min-h-[100svh] flex items-center justify-center text-center text-white bg-cover bg-center bg-no-repeat px-4" style="background-image: url('images/napolitan.png');">
+  <!-- 文字やグラフィックの視認性を高めるための半透明の黒オーバーレイ -->
+  <div class="absolute inset-0 bg-black/50 -z-0"></div>
+
+  <div class="absolute top-0 left-0 right-0 z-10 px-4 pt-[calc(env(safe-area-inset-top,0px)+1.5rem)]">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="text-left">
+        <p class="text-[9px] md:text-[10px] tracking-[0.3em] font-bold opacity-70">CREATED IN 1975</p>
+        <h1 class="text-lg md:text-2xl font-heading">レストラン ろかーれ</h1>
+      </div>
+      <p class="hidden md:block text-xs border border-white/30 px-4 py-1.5 rounded-full bg-black/30 backdrop-blur-sm">山形市飯田西・駅前立地</p>
+    </div>
+  </div>
+
+  <div class="steam w-40 h-40 top-10 left-1/4"></div>
+  <div class="steam w-56 h-56 bottom-0 right-1/4"></div>
+
+  <div class="px-2 max-w-4xl z-20 py-24">
+    <p class="text-[var(--accent-gold)] font-bold tracking-[0.25em] mb-4 text-xs md:text-base">山形で愛され続けて50年</p>
+    <h2 class="text-3xl sm:text-4xl md:text-6xl font-heading font-black mb-7 leading-[1.25]">
+      その一口に、<br>心まで満たされる。<br>
+      <span class="text-white bg-red-700/80 px-3 py-1 inline-block mt-2 text-2xl sm:text-3xl md:text-5xl">至福のデカ盛り体験。</span>
+    </h2>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10">
+      <div class="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-5 py-2.5 rounded-lg border border-white/15 text-sm">
+        <svg class="w-4 h-4 text-[var(--accent-gold)]" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 4L12 3l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z"/></svg>
+        <span class="font-bold">カレーハンバーグドリア</span>
+      </div>
+      <div class="flex items-center gap-2 bg-red-800/80 backdrop-blur-sm px-5 py-2.5 rounded-lg border border-white/15 text-sm">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-3.2c.1-.3.2-.6.2-1a2.9 2.9 0 0 0-2.9-3 3.2 3.2 0 0 0-2.6 1.4L11 5l-.5-.6A3.2 3.2 0 0 0 7.9 3 2.9 2.9 0 0 0 5 6c0 .4.1.7.2 1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM8 11v9a1 1 0 0 0 1 1h2v-10H8zm5 0v10h2a1 1 0 0 0 1-1v-9h-3z"/></svg>
+        <span class="font-bold">初回来店特典付き</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 w-full flex justify-center z-20">
+    <div class="animate-bounce opacity-60">
+      <div class="w-[1px] h-14 bg-gradient-to-b from-white to-transparent mx-auto"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CTA -->
+<section class="bg-white py-16 md:py-20 px-4 shadow-2xl relative z-30">
+  <div class="max-w-4xl mx-auto text-center">
+    <h3 class="text-xl md:text-3xl font-bold mb-8 font-heading">まずは、私たちの「本気」を受け取ってください。</h3>
+    <div class="bg-orange-50/60 p-5 md:p-12 rounded-[2rem] md:rounded-[2.5rem] border border-orange-100 flex flex-col md:flex-row items-center gap-8 md:gap-10">
+      <div class="w-40 sm:w-56 md:w-2/5 relative shrink-0">
+        <!-- 実際の画像を表示するコード -->
+        <img src="images/gatou.jpg" alt="自家製ガトーショコラ" class="shadow-xl w-full aspect-square object-cover rounded-2xl">
+        <div class="absolute -top-3 -right-3 bg-red-600 text-white w-14 h-14 rounded-full flex items-center justify-center font-bold text-xs rotate-12 shadow-lg z-10">無料</div>
+      </div>
+      <div class="w-full md:w-3/5 text-left">
+        <div class="inline-block bg-red-100 text-red-700 text-xs font-black px-3 py-1 rounded-full mb-3">公式LINE限定特典</div>
+        <h4 class="text-xl md:text-2xl font-bold mb-4 leading-tight">食後の「自家製ガトーショコラ」を<br>無料プレゼントいたします。</h4>
+        <p class="text-sm text-gray-600 mb-7 leading-relaxed">デカ盛りを完食した後の、一口の甘み。それは至福の瞬間です。創業以来変わらぬレシピで焼き上げる、店主こだわりのスイーツをぜひお楽しみください。</p>
+        <a href="#" class="btn-line w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 text-lg transition-all shadow-xl">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 5.6 2 10c0 2.8 1.9 5.3 4.7 6.7-.2.8-.8 2.7-.9 3.1 0 0-.1.3.1.4.2.1.4 0 .4 0 .5-.1 3.3-2.2 3.9-2.6.6.1 1.2.1 1.8.1 5.5 0 10-3.6 10-8S17.5 2 12 2z"/></svg>
+          LINEでクーポンを受け取る
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 自己紹介 -->
+<section class="py-20 md:py-28 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div class="w-full lg:w-1/2 relative max-w-sm mx-auto lg:max-w-none">
+        <div class="absolute -top-8 -left-8 w-40 h-40 md:w-64 md:h-64 bg-orange-50 rounded-full -z-10"></div>
+        <!-- 実際の画像を配置する場合のコード -->
+        <img src="images/chef.png" alt="店主・スタッフ一同" class="shadow-2xl relative z-10 w-full aspect-[4/3] lg:aspect-[4/5] object-cover rounded-3xl">
+        <div class="absolute -bottom-6 -right-3 md:-bottom-10 md:-right-6 bg-red-700 p-5 md:p-8 shadow-2xl rounded-2xl md:rounded-3xl z-20 text-white">
+          <p class="text-3xl md:text-5xl font-heading font-black">50 <span class="text-base md:text-lg">TH</span></p>
+          <p class="text-[9px] md:text-[10px] tracking-[0.2em] opacity-70 mt-1">ANNIVERSARY SINCE 1975</p>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <h3 class="text-xs md:text-sm font-bold text-red-700 mb-4 tracking-[0.3em]">HISTORICAL STORY</h3>
+        <h4 class="text-2xl sm:text-3xl md:text-5xl font-heading font-bold mb-7 leading-[1.3]">「ただ、お腹いっぱいになってほしい。」<br>その一心で、半世紀。</h4>
+        <div class="space-y-5 text-gray-600 leading-[1.8] text-sm md:text-lg">
+          <p>山形市飯田西。この場所で50年間、私たちは変わらぬ想いでフライパンを振ってきました。時代は変わっても、「ろかーれに来れば満足できる」という信頼だけは、何があっても裏切りたくない。</p>
+          <p>看板メニューの「カレーハンバーグドリア」は、溢れんばかりのチーズと、肉の旨味が凝縮された肉厚ハンバーグが自慢です。私たちのデカ盛りは、単なる量ではありません。お客様への心からの「感謝」を形にしたものです。</p>
+        </div>
+        <div class="mt-10 flex items-center gap-6">
+          <div class="w-16 h-[1px] bg-red-700"></div>
+          <p class="font-bold text-lg italic font-heading">店主・スタッフ一同</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 選ばれる理由 -->
+<section class="py-20 md:py-28 px-4 bg-stone-900 text-white rounded-[2.5rem] md:rounded-[4rem] mx-3 md:mx-4 my-8">
+  <div class="max-w-5xl mx-auto text-center">
+    <span class="text-[var(--accent-gold)] text-xs md:text-sm font-bold tracking-[0.3em]">WHY CHOOSE US</span>
+    <h2 class="section-title text-2xl sm:text-3xl md:text-5xl font-heading font-bold mt-4">なぜ「ろかーれ」が、選ばれ続けるのか</h2>
+    <div class="grid sm:grid-cols-2 gap-x-12 gap-y-14 mt-14 md:mt-20 text-left">
+      <div class="flex gap-5 md:gap-8">
+        <svg class="w-9 h-9 md:w-11 md:h-11 shrink-0 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.34 2.94c1.31.61 2.32 1.95 2.6 3.53l.9 5.4c.15.94-.1 1.85-.63 2.55-.13.18-.28.33-.43.49l-.24.24 1.35 2.79zm-9.1-.02 1.35-2.79-.24-.24c-.15-.16-.3-.31-.43-.49-.53-.7-.78-1.61-.63-2.55l.9-5.4c.28-1.58 1.29-2.92 2.6-3.53L12.85 2H6.99L5.38 12.7H2.03l2.65 8.63c.24.8 1.03 1.35 1.87 1.35l2.31-.01z"/></svg>
+        <div>
+          <h4 class="text-lg md:text-2xl font-bold mb-3 text-[var(--accent-gold)]">圧倒的な食べ応え</h4>
+          <p class="text-gray-400 leading-relaxed text-sm md:text-base">一般的な洋食店の2倍〜2.5倍のボリューム。期待を裏切らない「デカ盛りの聖地」としての矜持。学生から家族連れまで、全員を満腹にします。</p>
+        </div>
+      </div>
+      <div class="flex gap-5 md:gap-8">
+        <svg class="w-9 h-9 md:w-11 md:h-11 shrink-0 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 3 6.6 3 11c0 5.4 7.4 9.9 8.6 10.6.3.2.6.2.9 0C13.6 20.9 21 16.4 21 11c0-4.4-4-9-9-9zm0 5.5c1.6 0 3 1.4 3 3s-1.4 3-3 3-3-1.4-3-3 1.4-3 3-3z"/></svg>
+        <div>
+          <h4 class="text-lg md:text-2xl font-bold mb-3 text-[var(--accent-gold)]">本格調理の深み</h4>
+          <p class="text-gray-400 leading-relaxed text-sm md:text-base">量だけではありません。ほろほろのタンシチューや、濃厚なホワイトソース。50年磨き続けた「職人の技」が、一口ごとの感動を約束します。</p>
+        </div>
+      </div>
+      <div class="flex gap-5 md:gap-8">
+        <svg class="w-9 h-9 md:w-11 md:h-11 shrink-0 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm.5 9.75L8.6 15l-.6-1 3-1.8V6h1.5v5.5z"/></svg>
+        <div>
+          <h4 class="text-lg md:text-2xl font-bold mb-3 text-[var(--accent-gold)]">昭和が息づく温もり</h4>
+          <p class="text-gray-400 leading-relaxed text-sm md:text-base">木目調の店内と落ち着いた照明。かつての喫茶文化を継承する空間は、都会の喧騒を忘れ、食事に集中できる最高の場所です。</p>
+        </div>
+      </div>
+      <div class="flex gap-5 md:gap-8">
+        <svg class="w-9 h-9 md:w-11 md:h-11 shrink-0 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1 15l-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/></svg>
+        <div>
+          <h4 class="text-lg md:text-2xl font-bold mb-3 text-[var(--accent-gold)]">安心の完食サポート</h4>
+          <p class="text-gray-400 leading-relaxed text-sm md:text-base">「食べきれるか心配」という方もご安心を。宴用のタッパーをご用意しております。ご自宅でも「ろかーれの味」の続きをお楽しみください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 特典フロー -->
+<section class="py-20 md:py-28 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="bg-white rounded-[2rem] md:rounded-[4rem] shadow-xl overflow-hidden border border-gray-100">
+      <div class="bg-red-700 text-white py-10 md:py-14 px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3">無料特典を受け取るまでの流れ</h2>
+        <p class="opacity-80 text-xs md:text-sm">簡単3ステップで、至福のひとときを。</p>
+      </div>
+      <div class="p-6 sm:p-10 md:p-20">
+        <div class="grid sm:grid-cols-3 gap-8 md:gap-12">
+          <div class="text-center">
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-orange-100 text-red-700 rounded-2xl rotate-12 flex items-center justify-center text-2xl md:text-3xl font-black mx-auto mb-6 md:mb-8 shadow-md">1</div>
+            <h4 class="text-lg md:text-xl font-bold mb-3">LINE友だち登録</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">ボタンをクリックして、公式LINEを「友だち追加」してください。</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-orange-100 text-red-700 rounded-2xl -rotate-6 flex items-center justify-center text-2xl md:text-3xl font-black mx-auto mb-6 md:mb-8 shadow-md">2</div>
+            <h4 class="text-lg md:text-xl font-bold mb-3">クーポンを提示</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">ご来店時にお食事をご注文の上、クーポン画面をスタッフへお見せください。</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-orange-100 text-red-700 rounded-2xl rotate-3 flex items-center justify-center text-2xl md:text-3xl font-black mx-auto mb-6 md:mb-8 shadow-md">3</div>
+            <h4 class="text-lg md:text-xl font-bold mb-3">特典を堪能</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">お食事の締めくくりに、特製ガトーショコラをお持ちいたします。</p>
+          </div>
+        </div>
+        <div class="mt-14 md:mt-20 text-center">
+          <a href="#" class="btn-line inline-block bg-[#06C755] text-white font-bold py-5 px-10 md:py-7 md:px-16 rounded-2xl md:rounded-3xl text-lg md:text-2xl shadow-2xl hover:brightness-105 transition-all">
+            LINE登録してクーポンを今すぐもらう
+          </a>
+          <p class="text-[10px] text-gray-400 mt-6 md:mt-8">※本キャンペーンは初回来店の方限定です。在庫状況により内容が変更となる場合がございます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. インフォメーション -->
+<section class="py-20 md:py-28 px-4 bg-[#f1eeea]">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="mb-16 md:mb-24 bg-white rounded-[2rem] md:rounded-[3rem] p-6 sm:p-10 md:p-16 shadow-lg border border-orange-100">
+      <div class="flex items-center gap-3 mb-4 flex-wrap">
+        <span class="bg-amber-500 text-white text-xs font-black px-3 py-1 rounded-full">COMING SOON</span>
+        <p class="text-xs text-gray-400 font-bold">お客様の声から生まれる新サービス</p>
+      </div>
+      <h3 class="text-xl sm:text-2xl md:text-3xl font-heading font-bold mb-5">「あれば良いな」をカタチに。今後の改善予定</h3>
+      <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-8">ろかーれをもっと便利に、もっと楽しくご利用いただくために、お客様からいただいた温かいご要望をもとに準備を進めているサービスです。</p>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-orange-50/50 p-5 md:p-6 rounded-2xl border border-orange-100">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-11 h-11 bg-red-700 text-white rounded-xl flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11v3l19 5-3-8L3 5v3l14 3-14 3z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-base md:text-lg">SNSでのリアルタイム情報発信</h4>
+              <p class="text-xs text-red-600 font-bold">準備中・近日公開</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed">「今日の混雑状況は？」「限定メニューはある？」そんな疑問にお答えするため、各種SNSでの発信を強化します。</p>
+        </div>
+        <div class="bg-orange-50/50 p-5 md:p-6 rounded-2xl border border-orange-100">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-11 h-11 bg-sky-600 text-white rounded-xl flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm0 4H4V8h16v2z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-base md:text-lg">キャッシュレス決済の導入</h4>
+              <p class="text-xs text-sky-600 font-bold">対応準備中</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed">日常使いに便利なキャッシュレス決済への対応を進めており、より快適なお会計を目指しています。</p>
+        </div>
+      </div>
+      <div class="mt-8 text-center bg-stone-900 text-white p-5 md:p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm">「こんなサービスもあったら嬉しい」などのご意見も募集中です。</p>
+        <a href="#" class="bg-red-700 hover:bg-red-800 text-white font-bold text-sm px-6 py-3 rounded-xl shrink-0">LINEで意見を送る</a>
+      </div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+      <div class="w-full lg:w-2/5">
+        <h3 class="text-2xl md:text-3xl font-heading font-bold mb-8 border-l-8 border-red-700 pl-5">アクセス・詳細</h3>
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm shrink-0">
+              <svg class="w-5 h-5 text-red-700" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5 z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 font-bold mb-1">ADDRESS</p>
+              <p class="font-bold">〒990-2331 [レストラン ろかーれ] 山形県山形市飯田西4-3-19</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm shrink-0">
+              <svg class="w-5 h-5 text-red-700" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4.7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .7-.2 1L6.6 10.8z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 font-bold mb-1">PHONE</p>
+              <p class="font-bold text-xl">023-641-3635</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm shrink-0">
+              <svg class="w-5 h-5 text-red-700" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 font-bold mb-1">CLOSED</p>
+              <p class="font-bold">月曜日定休</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-gray-200">
+          <a href="https://www.instagram.com/explore/locations/252544276/rokare/" class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <svg class="w-7 h-7 text-pink-600" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.4.4.6.3 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.2.6.4 1.3.4 2.4.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.4 2.4-.3.6-.6 1.2-1.1 1.7-.5.5-1 .9-1.7 1.1-.6.2-1.3.4-2.4.4-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.4-.4-.6-.3-1.2-.6-1.7-1.1-.5-.5-.9-1-1.1-1.7-.2-.6-.4-1.3-.4-2.4C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.4-2.4.3-.6.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.2 1.3-.4 2.4-.4C8.9 2 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-8.4a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg>
+              <span class="font-bold text-sm md:text-base">Instagramで最新情報をチェック</span>
+            </div>
+            <svg class="w-4 h-4 text-gray-300" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="w-full lg:w-3/5">
+        <div class="w-full h-72 sm:h-96 lg:h-[500px] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white bg-white">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3134.7602131302497!2d140.31959757477793!3d38.21546338665453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb44f40c53acd%3A0x3138d1e200b95a4a!2z44Os44K544OI44Op44OzIOOCjeOBi-ODvOOCjA!5e0!3m2!1sja!2sjp!4v1790313395317!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-white py-14 md:py-16 px-4 border-t border-gray-100 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-lg md:text-xl font-heading font-bold mb-6">レストラン ろかーれ</h2>
+    <p class="text-[10px] text-gray-400 tracking-[0.3em]">© RESTAURANT ROKARE. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
+</body>
+</html>
