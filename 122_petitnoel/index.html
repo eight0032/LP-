@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>プチノエル | 大使館シェフがふるまう本格フレンチを七日町で</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap');
+
+:root{
+  --bg:#faf6ef; --bg-panel:#ffffff; --ink:#2b241c; --ink-soft:#6b6053;
+  --gold:#a9834f; --gold-deep:#7d5f3c; --line:#e7dcc7; --night:#1c1712;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#141110; --bg-panel:#1e1a17; --ink:#f1e9dd; --ink-soft:#b8ab98; --line:#3a3128; }
+}
+:root[data-theme="dark"]{ --bg:#141110; --bg-panel:#1e1a17; --ink:#f1e9dd; --ink-soft:#b8ab98; --line:#3a3128; }
+
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--ink);
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  overflow-x:hidden;
+}
+h1,h2,h3,.serif{font-family:'Noto Serif JP',serif;}
+.en{font-family:'Cormorant Garamond',serif;}
+.gold{color:var(--gold);}
+.gold-bg{background:var(--gold);}
+.panel{background:var(--bg-panel);}
+.rule{border-color:var(--line);}
+.tel-btn{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-deep) 100%);
+  transition:transform .25s ease, filter .25s ease;
+}
+.tel-btn:hover{filter:brightness(1.08); transform:translateY(-2px);}
+.badge-ring{box-shadow:0 6px 20px rgba(122,95,60,.35);}
+.divider-line{height:1px; width:2.5rem; background:var(--gold);}
+.card{background:var(--bg-panel); border:1px solid var(--line);}
+.monogram{
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  background:radial-gradient(circle at 30% 30%, #cdae7c, #7d5f3c);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+@media (max-width:640px){
+  h1{font-size:2.1rem !important; line-height:1.35 !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="relative min-h-[92svh] flex items-center justify-center px-5 py-24 overflow-hidden">
+  <!-- 背景画像 -->
+  <div class="absolute inset-0 z-0">
+    <img src="images/main.png" alt="レストランの雰囲気" class="w-full h-full object-cover">
+    <!-- 暗めのグラデーションオーバーレイ（テキストの視認性を高めるため） -->
+    <div class="absolute inset-0" style="background:radial-gradient(120% 100% at 50% 0%, rgba(42,33,23,0.85) 0%, rgba(15,15,15,0.92) 60%);"></div>
+  </div>
+
+  <div class="absolute inset-0 z-0 opacity-[0.06]" style="background-image:radial-gradient(circle,#fff 1px,transparent 1px); background-size:26px 26px;"></div>
+
+  <div class="relative z-10 text-center max-w-3xl">
+    <div class="flex justify-center items-center gap-3 mb-5">
+      <span class="divider-line"></span>
+      <span class="en gold text-lg italic tracking-widest">Since the 1980s</span>
+      <span class="divider-line"></span>
+    </div>
+
+    <p class="text-white/80 text-xs sm:text-sm tracking-[0.25em] mb-4">
+      山形市七日町・要人を魅了した公邸料理人のレストラン
+    </p>
+
+    <h1 class="text-4xl md:text-6xl font-bold text-white leading-[1.4] mb-8">
+      大使館の味を、<br><span class="gold">日常の贅沢</span>に。
+    </h1>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <span class="text-white text-xs sm:text-sm font-bold px-5 py-2 rounded-full badge-ring border border-white/10" style="background:linear-gradient(135deg,#cdae7c,#7d5f3c);">元日本大使館公邸料理人</span>
+      <span class="text-white text-xs sm:text-sm font-bold px-5 py-2 rounded-full badge-ring border border-white/10" style="background:linear-gradient(135deg,#cdae7c,#7d5f3c);">キャリア40年の熟練技</span>
+    </div>
+
+    <div class="inline-block bg-white/5 backdrop-blur-sm border border-white/15 rounded-2xl px-6 py-5">
+      <p class="gold font-bold text-sm mb-1">【Web限定ご予約特典】</p>
+      <p class="text-white text-lg sm:text-xl font-bold">自家製パテ・ド・カンパーニュを無料贈呈</p>
+    </div>
+  </div>
+
+  <a href="#reserve" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest flex flex-col items-center gap-2 z-10">
+    Scroll<i class="fas fa-chevron-down"></i>
+  </a>
+</section>
+
+<!-- シェフ紹介 -->
+<section class="py-20 px-5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="en gold text-lg italic">Authentic French</span>
+      <h2 class="text-2xl md:text-3xl font-bold mt-3 leading-relaxed">
+        世界を渡り歩いた「公邸料理人」の<br>誇りを、一皿に。
+      </h2>
+    </div>
+
+    <div class="card rounded-2xl p-8 md:p-10 rule">
+      <div class="flex items-center gap-5 mb-7 pb-7 border-b rule">
+        <div class="monogram text-5xl w-16 shrink-0 text-center">日</div>
+        <div>
+          <p class="text-xs tracking-widest opacity-60 mb-1">Owner Chef</p>
+          <p class="text-xl font-bold serif">日下部 潤</p>
+        </div>
+      </div>
+      <div class="space-y-5 leading-loose" style="color:var(--ink-soft);">
+        <p>東京の高級フレンチで研鑽を積み、クウェート、スイス（ジュネーブ）の日本大使館にて公邸料理人を歴任。各国の要人たちを唸らせてきたその腕前は、伝統と革新が融合した本物です。</p>
+        <p>料理人人生40年以上。クラシックなフレンチの技法を大切にしながら、山形の旬の食材を活かし、日本人の好みに寄り添う繊細な味付けを追求しています。</p>
+      </div>
+      <p class="gold font-bold italic serif text-lg mt-7">「最高の一皿を、もっと身近に。」</p>
+    </div>
+  </div>
+</section>
+
+<!-- コンセプト -->
+<section class="py-20 px-5 panel border-y rule">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="en gold text-lg italic">The Concept</span>
+    <h2 class="text-2xl md:text-3xl font-bold mt-3 mb-8">五感で楽しむ、プチノエルの世界</h2>
+    <p class="leading-loose" style="color:var(--ink-soft);">
+      温かい木の質感、キャンドルの灯り、白いテーブルクロス。飾らないけれど品のある空間で、
+      大使館仕込みの一皿とゆったりとした時間をお楽しみください。
+    </p>
+    <div class="flex justify-center gap-2 mt-8">
+      <i class="fas fa-utensils gold"></i>
+      <i class="fas fa-wine-glass-alt gold"></i>
+      <i class="fas fa-candle-holder gold"></i>
+    </div>
+  </div>
+</section>
+
+<!-- 予約CTA -->
+<section id="reserve" class="py-20 px-5">
+  <div class="max-w-2xl mx-auto card rounded-2xl p-8 md:p-12 text-center rule">
+    <i class="fas fa-calendar-check text-3xl gold mb-5"></i>
+    <h2 class="text-xl md:text-2xl font-bold mb-8 serif">特別な一杯、至福の時間を今すぐ予約する</h2>
+
+    <div class="flex flex-col gap-4 items-center">
+      <a href="tel:0236238350" class="tel-btn text-white w-full sm:w-auto px-10 py-5 rounded-full font-bold shadow-xl flex items-center justify-center gap-3 text-xl">
+        <i class="fas fa-phone-alt"></i> 023-623-8350
+      </a>
+      <a href="https://www.instagram.com/petitnoel1224sk/" target="_blank" class="border-2 gold w-full sm:w-auto px-10 py-4 rounded-full font-bold flex items-center justify-center gap-3 text-lg hover:text-white hover:gold-bg transition" style="border-color:var(--gold);">
+        <i class="fab fa-instagram"></i> Instagramで空き確認
+      </a>
+    </div>
+    <p class="mt-7 text-sm" style="color:var(--ink-soft);">
+      <span class="text-red-500 font-bold">※日曜日定休。</span>ランチ・ディナー共に要予約をお勧めします。
+    </p>
+  </div>
+</section>
+
+<!-- 選ばれる理由 -->
+<section class="py-20 px-5 panel border-y rule">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold mb-14 text-center serif">プチノエルが選ばれる理由</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+      <div class="text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:var(--bg);">
+          <i class="fas fa-coins gold text-2xl"></i>
+        </div>
+        <h3 class="font-bold mb-3">驚きのコストパフォーマンス</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">ランチ1,500円〜。一流の技術を、日常使いできる価格設定でご提供しています。</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:var(--bg);">
+          <i class="fas fa-heart gold text-2xl"></i>
+        </div>
+        <h3 class="font-bold mb-3">一人ひとりに寄り添う心</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">お子様連れへの細やかな配慮や、介護が必要な方への「やわらかフレンチ」にも対応。</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:var(--bg);">
+          <i class="fas fa-map-marker-alt gold text-2xl"></i>
+        </div>
+        <h3 class="font-bold mb-3">七日町の好立地</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">街の中心でありながら、一歩入れば落ち着いたアットホームな空間が広がります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section class="py-20 px-5">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="en gold text-lg italic">Customer Reviews</span>
+      <h2 class="text-3xl font-bold mt-2 serif italic">Voice</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card rounded-2xl p-7 rule">
+        <div class="text-amber-400 text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-sm leading-relaxed mb-6">古希祝いで伺いました。嚥下に困る家族のためにランチコースと同じボリュームで「やわらかフレンチ」を特別に用意してくださり、感動しました。</p>
+        <p class="text-xs font-bold tracking-widest opacity-60 pt-4 border-t rule">記念日利用のお客様</p>
+      </div>
+      <div class="card rounded-2xl p-7 rule">
+        <div class="text-amber-400 text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-sm leading-relaxed mb-6">ビーフシチューは奥行きのある味で、お肉の旨味が溢れます。マッシュポテトとの相性も抜群。リーズナブルなのにこの高級感は驚きです。</p>
+        <p class="text-xs font-bold tracking-widest opacity-60 pt-4 border-t rule">ランチ利用のお客様</p>
+      </div>
+      <div class="card rounded-2xl p-7 rule">
+        <div class="text-amber-400 text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-sm leading-relaxed mb-6">子供連れでも、コショウを別にしてくれるなど細かな配慮があり有難かったです。白身魚のムニエルはふわっとしていて新食感でした！</p>
+        <p class="text-xs font-bold tracking-widest opacity-60 pt-4 border-t rule">ご家族連れのお客様</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-20 px-5 panel border-y rule">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="en gold text-lg italic">Coming Soon</span>
+      <h2 class="text-2xl md:text-3xl font-bold mt-2 serif">今後展開予定の特別サービス</h2>
+      <p class="mt-4" style="color:var(--ink-soft);">大使館シェフが叶える、もっと心温まる特別なひとときを準備中。</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
+      <!-- カード1 -->
+      <div class="rounded-2xl p-7 relative flex flex-col justify-between" style="background:var(--bg); border:1px solid var(--line);">
+        <div>
+          <span class="absolute top-4 right-4 gold-bg text-white text-xs px-3 py-1 rounded-full font-bold">準備中</span>
+          <i class="fas fa-award gold text-2xl mb-5"></i>
+          <h3 class="text-lg font-bold mb-3 serif">長寿祝い専用<br>「やわらかフレンチ」コース</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:var(--ink-soft);">ご家族みんなが同じコースを楽しめるよう、味わいを損なわない長寿お祝いコースを正式メニュー化予定です。</p>
+        </div>
+        <p class="text-xs gold font-bold pt-4 border-t rule"># 記念日・家族の絆を深める</p>
+      </div>
+      <!-- カード2 -->
+      <div class="rounded-2xl p-7 relative flex flex-col justify-between" style="background:var(--bg); border:1px solid var(--line);">
+        <div>
+          <span class="absolute top-4 right-4 gold-bg text-white text-xs px-3 py-1 rounded-full font-bold">準備中</span>
+          <i class="fas fa-glass-cheers gold text-2xl mb-5"></i>
+          <h3 class="text-lg font-bold mb-3 serif">アットホームウエディング<br>二次会プラン</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:var(--ink-soft);">七日町の温かみある空間で、親しい方々だけのウエディングパーティー。大使館クオリティのお料理で開始予定です。</p>
+        </div>
+        <p class="text-xs gold font-bold pt-4 border-t rule"># 一生の思い出を彩る</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 -->
+<section class="py-20 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-3 serif">七日町で過ごす、<br>至福のひととき。</h2>
+    <p class="text-lg italic mb-12" style="color:var(--ink-soft);">「美味しい」の先にある、笑顔のために。</p>
+
+    <div class="flex flex-col gap-4 mb-14">
+      <a href="tel:0236238350" class="tel-btn text-white w-full py-5 rounded-2xl font-bold shadow-xl flex items-center justify-center gap-3 text-xl">
+        <i class="fas fa-phone-alt"></i> 023-623-8350
+      </a>
+      <div class="grid grid-cols-2 gap-4">
+        <a href="https://petitnoel.jimdosite.com/" target="_blank" class="border-2 gold py-4 rounded-2xl font-bold hover:text-white hover:gold-bg transition" style="border-color:var(--gold);">公式サイトへ</a>
+        <a href="https://www.instagram.com/petitnoel1224sk/" target="_blank" class="border-2 gold py-4 rounded-2xl font-bold hover:text-white hover:gold-bg transition" style="border-color:var(--gold);">Instagram</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left card rounded-2xl p-7 md:p-10 rule mb-10">
+      <div>
+        <h3 class="font-bold gold mb-5 serif">Shop Information</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex gap-4"><span class="font-bold w-14 shrink-0">店名</span><span>プチノエル</span></li>
+          <li class="flex gap-4"><span class="font-bold w-14 shrink-0">住所</span><span>〒990-0042 山形市七日町2-3-12 昭和ビル 1F</span></li>
+          <li class="flex gap-4"><span class="font-bold w-14 shrink-0">電話</span><span class="font-bold">023-623-8350</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold gold mb-5 serif">Opening Info</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex gap-4"><span class="font-bold w-14 shrink-0">定休日</span><span class="text-red-500 font-bold">日曜日</span></li>
+          <li class="flex gap-4"><span class="font-bold w-14 shrink-0">駐車場</span><span>店前2台完備</span></li>
+          <li class="italic text-xs opacity-60">※ご予約はお電話にて承ります。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Googleマップ埋め込みエリア -->
+    <div class="w-full rounded-2xl overflow-hidden shadow-lg border border-[var(--line)] mb-6" style="border-color:var(--line);">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.182184486485!2d140.33825487478!3d38.252080484524214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb603cfcd0fc7%3A0xea7ab9f09eecc6ba!2z44OX44OB44OO44Ko44Or!5e0!3m2!1sja!2sjp!4v1790387308339!5m2!1sja!2sjp" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+   
+  </div>
+</section>
+
+<footer class="py-14 text-center" style="background:var(--night);">
+  <div class="en gold text-3xl font-bold mb-3 italic">Petit Noël</div>
+  <p class="text-xs text-white/40 uppercase tracking-widest">&copy; Petit Noël. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
