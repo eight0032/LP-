@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Bistro Auger（ビストロ オジェ）| 山形駅前の隠れ家ビストロ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fdfcf9;
+            color: #2d2424;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        img, iframe { max-width: 100%; }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .bg-wine { background-color: #5c0a12; }
+        .text-wine { color: #5c0a12; }
+        .gold-border { border: 2px solid #b48a4d; }
+        .gold-text { color: #b48a4d; }
+        .bg-gold-text\/20 { background-color: rgba(180, 138, 77, 0.2); }
+        .border-gold-text\/30 { border-color: rgba(180, 138, 77, 0.3); }
+        .border-gold-text\/50 { border-color: rgba(180, 138, 77, 0.5); }
+        .btn-main {
+            background: linear-gradient(180deg, #d4af37 0%, #b48a4d 100%);
+            box-shadow: 0 4px 15px rgba(180, 138, 77, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-main:active { transform: scale(0.98); }
+        @media (hover: hover) {
+            .btn-main:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(180, 138, 77, 0.6);
+            }
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: #b48a4d;
+            margin: 15px auto 0;
+        }
+        .badge {
+            background: radial-gradient(circle, #d4af37 0%, #b48a4d 100%);
+        }
+        /* placeholder visual blocks (no external image dependency, always renders) */
+        .visual-block {
+            background: radial-gradient(circle at 30% 20%, #7a1420 0%, #3a0710 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .visual-block.light {
+            background: linear-gradient(135deg, #efe6d8 0%, #d9c9a8 100%);
+        }
+        .avatar-block {
+            background: linear-gradient(135deg, #5c0a12 0%, #b48a4d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+        }
+        /* Map responsive wrapper */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        /* keep header from ever forcing horizontal scroll on very small screens */
+        header { max-width: 100vw; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Sticky CTA -->
+    <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur shadow-sm py-3 px-4 flex justify-between items-center">
+        <div class="serif font-black text-lg sm:text-xl tracking-tighter text-wine">Bistro Auger</div>
+        <a href="#cta" class="bg-wine text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap md:hidden">特典を受け取る</a>
+    </header>
+
+<!-- FV Area -->
+    <section class="relative pt-24 pb-14 sm:pt-28 md:pt-36 md:pb-32 overflow-hidden bg-[#0a0a0a]">
+        
+        <!-- 背景画像とオーバーレイ層 -->
+        <div class="absolute inset-0 z-0">
+            <!-- 置き換え用：背景画像（srcに画像のURLを入れてください） -->
+            <img src="images/taruto.jpg" 
+                 alt="タルトタタンのイメージ" 
+                 class="w-full h-full object-cover object-center opacity-40 scale-105 transform">
+            
+            <!-- 文字の視認性を高めるためのグラデーション・暗幕オーバーレイ -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/60 to-[#0a0a0a]"></div>
+        </div>
+
+        <div class="absolute inset-0 opacity-50 visual-block pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center text-white max-w-4xl">
+            <div class="inline-block border border-gold-text px-3 sm:px-4 py-1 mb-5 sm:mb-6 text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.2em] font-light uppercase">Since 2009 / Yamagata City</div>
+
+            <h1 class="serif text-[1.6rem] leading-snug sm:text-3xl md:text-6xl font-black md:leading-tight mb-6 sm:mb-8">
+                <span class="text-base sm:text-xl md:text-3xl block mb-2 font-normal gold-text">パリの修行で磨き上げた究極の甘美。</span>
+                伝説の「タルトタタン」を<br>今だけ、無料で。
+            </h1>
+
+            <!-- Trust Badges -->
+            <div class="flex justify-center flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-10">
+                <div class="badge w-[4.5rem] h-[4.5rem] sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center text-[9px] sm:text-xs font-bold leading-tight shadow-lg">
+                    <span>山形駅前</span><span class="text-base sm:text-xl">3</span><span>分</span>
+                </div>
+                <div class="badge w-[4.5rem] h-[4.5rem] sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center text-[9px] sm:text-xs font-bold leading-tight shadow-lg">
+                    <span>創業</span><span class="text-base sm:text-xl">15</span><span>周年</span>
+                </div>
+                <div class="badge w-[4.5rem] h-[4.5rem] sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center text-[9px] sm:text-xs font-bold leading-tight shadow-lg">
+                    <span>口コミ</span><span class="text-base sm:text-xl">4.5</span><span>以上</span>
+                </div>
+            </div>
+
+            <div class="max-w-md mx-auto bg-white/10 backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-white/20">
+                <p class="text-xs sm:text-sm font-bold gold-text mb-2 tracking-widest">【1日5組限定】公式LINEご招待</p>
+                <p class="text-lg sm:text-xl font-bold mb-4">フランス仕込みの<br>「タルトタタン」招待券進呈</p>
+                <a href="#cta" class="btn-main w-full block py-4 rounded-xl text-white font-black text-base sm:text-lg">
+                    無料で招待券を受け取る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-14 sm:py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="serif text-xl sm:text-2xl md:text-3xl font-black text-center mb-10 sm:mb-12 section-title leading-relaxed">記念日のレストラン選び、<br>こんな不安はありませんか？</h2>
+            <div class="space-y-4">
+                <div class="flex items-start sm:items-center gap-4 p-4 sm:p-5 bg-gray-50 rounded-xl border-l-4 border-gray-300">
+                    <span class="text-xl sm:text-2xl shrink-0">❓</span>
+                    <p class="font-medium text-sm sm:text-base">「高級フレンチはマナーや服装が気になって、会話に集中できない…」</p>
+                </div>
+                <div class="flex items-start sm:items-center gap-4 p-4 sm:p-5 bg-gray-50 rounded-xl border-l-4 border-gray-300">
+                    <span class="text-xl sm:text-2xl shrink-0">❓</span>
+                    <p class="font-medium text-sm sm:text-base">「せっかくの記念日。チェーン店じゃなく、特別な隠れ家で祝いたい。」</p>
+                </div>
+                <div class="flex items-start sm:items-center gap-4 p-4 sm:p-5 bg-gray-50 rounded-xl border-l-4 border-gray-300">
+                    <span class="text-xl sm:text-2xl shrink-0">❓</span>
+                    <p class="font-medium text-sm sm:text-base">「お酒が好きだから、料理だけでなくワインもしっかり楽しみたい。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Solution Section -->
+    <section class="py-16 sm:py-24 bg-wine text-white overflow-hidden relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="gold-text text-xs sm:text-sm font-bold tracking-widest uppercase mb-2 block">Our Concept</span>
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-black italic">「カジュアルな、一流。」</h2>
+                <p class="mt-5 sm:mt-6 text-gray-300 leading-relaxed max-w-2xl mx-auto text-sm sm:text-base">
+                    ビストロ・オジェなら、ジーンズのままでも構いません。<br>
+                    パリで研鑽を積んだシェフが、あなたの目の前で<br class="hidden sm:block">
+                    最高の一皿を仕上げます。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+                <div class="relative group">
+                    <!-- 背景のゴールドの装飾フレーム -->
+                    <div class="absolute -top-4 -left-4 w-full h-full border border-gold-text rounded-2xl z-0"></div>
+                    
+                    <!-- 画像配置エリア -->
+                    <div class="relative z-10 rounded-2xl shadow-2xl overflow-hidden aspect-video">
+                        <!-- 置き換え用：料理画像（srcに画像のURLを入れてください） -->
+                        <img src="images/beef.jpg" 
+                             alt="牛肉の赤ワイン煮込み" 
+                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <!-- キャプションバッジ -->
+                    <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 bg-black/80 p-3 sm:p-4 rounded-lg backdrop-blur shadow-xl">
+                        <p class="text-[10px] sm:text-xs gold-text font-bold uppercase tracking-widest">Signature</p>
+                        <p class="font-bold text-sm sm:text-base">牛肉の赤ワイン煮込み</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6 sm:space-y-8">
+                    <div class="flex gap-5 sm:gap-6">
+                        <div class="text-3xl sm:text-4xl text-gold-text shrink-0">🇫🇷</div>
+                        <div>
+                            <h4 class="font-black text-lg sm:text-xl mb-1.5 sm:mb-2">本場フランスの技法</h4>
+                            <p class="text-sm text-gray-300">素材の味を極限まで引き出す伝統的な調理法。一口食べれば、その「違い」が分かります。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 sm:gap-6">
+                        <div class="text-3xl sm:text-4xl text-gold-text shrink-0">🍇</div>
+                        <div>
+                            <h4 class="font-black text-lg sm:text-xl mb-1.5 sm:mb-2">ワインとのマリアージュ</h4>
+                            <p class="text-sm text-gray-300">シェフ自ら厳選した、料理を際立たせる銘柄たち。完璧な調和を提案します。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 sm:gap-6">
+                        <div class="text-3xl sm:text-4xl text-gold-text shrink-0">🕯️</div>
+                        <div>
+                            <h4 class="font-black text-lg sm:text-xl mb-1.5 sm:mb-2">大人のための地下空間</h4>
+                            <p class="text-sm text-gray-300">山形駅前の喧騒を離れ、静かに料理と向き合える15席限定の隠れ家です。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Chef Story -->
+    <section class="py-14 sm:py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="flex flex-col md:flex-row items-center gap-10 sm:gap-16">
+                <div class="w-full max-w-xs md:max-w-none md:w-2/5 relative">
+                    <!-- 画像配置エリア -->
+                    <div class="aspect-[3/4] rounded-3xl overflow-hidden relative shadow-2xl">
+                        <!-- 置き換え用：シェフ画像（srcに画像のURLを入れてください） -->
+                        <img src="images/chef.png" 
+                             alt="オーナーシェフのポートレート" 
+                             class="w-full h-full object-cover object-center">
+                    </div>
+                    
+                    <!-- オーナー情報バッジ -->
+                    <div class="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-6 bg-white p-4 sm:p-6 shadow-xl rounded-2xl border border-gray-100">
+                        <p class="text-wine font-black text-lg sm:text-2xl serif">Owner Chef</p>
+                        <p class="text-xs sm:text-sm text-gray-500">2009年、山形にて創業</p>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-3/5 mt-6 md:mt-0">
+                    <h3 class="serif text-2xl sm:text-3xl font-black mb-6 sm:mb-8 leading-snug text-center md:text-left">パリで見た「美食の原風景」を、<br>山形のこの場所で。</h3>
+                    <div class="space-y-5 sm:space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
+                        <p>かつてフランス・パリの街角で出会った、気取らないのに震えるほど美味しい一皿。その感動を日本でも伝えたいという一心で、私は料理を続けてきました。</p>
+                        <p>「ビストロ」は本来、日常の中で最高のご馳走を楽しむ場所。私は、マナーよりも「味わう喜び」を最優先に考えます。</p>
+                        <p>イケオジと言われることもありますが、中身はただの「料理バカ」です。フランス仕込みの技術を、ぜひ気取らずに楽しんでください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer -->
+    <section id="cta" class="py-16 sm:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-black text-wine mb-3 sm:mb-4">特別なご招待</h2>
+                <p class="text-gray-500 text-sm sm:text-base">このページをご覧のあなただけに、最初の「幸せ」を贈ります。</p>
+            </div>
+
+            <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden border-2 gold-border relative">
+                <div class="absolute top-0 right-0 p-3 sm:p-4">
+                    <span class="bg-wine text-white text-[9px] sm:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">Valid Today</span>
+                </div>
+
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-8 sm:p-10 md:p-12 space-y-6">
+                        <div class="space-y-2">
+                            <span class="text-gold-text font-black tracking-widest text-xs sm:text-sm uppercase">Benefit 01</span>
+                            <h3 class="serif text-2xl sm:text-3xl font-black text-wine">名物「タルトタタン」<br>ハーフサイズ招待券</h3>
+                            <p class="text-sm text-gray-600">じっくり飴色に焼いたリンゴの濃密な甘み。食後の幸せをプレゼントいたします。</p>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="text-gold-text font-black tracking-widest text-xs sm:text-sm uppercase">Benefit 02</span>
+                            <h3 class="serif text-lg sm:text-xl font-black">シェフ厳選の食前酒</h3>
+                            <p class="text-sm text-gray-600">お席に着いたらまず一息。最適な一杯をお出しします。</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 bg-wine p-8 sm:p-10 md:p-12 text-white flex flex-col justify-center text-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-30 visual-block"></div>
+                        <div class="relative z-10">
+                            <p class="text-xs sm:text-sm mb-4 gold-text font-bold">＼ 今すぐ10秒で完了 ／</p>
+                            <a href="https://www.instagram.com/bistroauger/" target="_blank" class="btn-main py-4 sm:py-5 rounded-2xl text-white font-black text-lg sm:text-xl mb-6 flex items-center justify-center gap-3">
+                                <span>LINEで招待券をもらう</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </a>
+                            <p class="text-[10px] opacity-80 leading-relaxed">
+                                ※招待券はディナー利用時にご使用いただけます。<br>
+                                ※無断キャンセル等はご遠慮ください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="py-14 sm:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="serif text-center text-2xl sm:text-3xl font-black mb-12 sm:mb-16 section-title">愛され続ける理由</h3>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-3xl relative">
+                    <div class="absolute -top-4 left-6 sm:left-8 text-5xl sm:text-6xl text-gold-text opacity-20 serif">&ldquo;</div>
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-sm leading-relaxed mb-6 font-medium">「牛肉の赤ワイン煮込みは文字通りほろっほろ！身に染み渡るコク深さで、その日一日生きていてよかったなと思いました。」</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full avatar-block shrink-0">🙂</div>
+                        <span class="text-xs font-bold">20代女性 観光客様</span>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-3xl relative">
+                    <div class="absolute -top-4 left-6 sm:left-8 text-5xl sm:text-6xl text-gold-text opacity-20 serif">&ldquo;</div>
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-sm leading-relaxed mb-6 font-medium">「マナーやドレスコードを考えずに美味しい料理を楽しむ。落ち着いたフレンチのお店。駅前にあるだけで最高！」</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full avatar-block shrink-0">🙂</div>
+                        <span class="text-xs font-bold">40代男性 記念日利用様</span>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-3xl relative sm:col-span-2 md:col-span-1">
+                    <div class="absolute -top-4 left-6 sm:left-8 text-5xl sm:text-6xl text-gold-text opacity-20 serif">&ldquo;</div>
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-sm leading-relaxed mb-6 font-medium">「お通しの生ハムバターにはやられました…。お酒を飲む方ならこれだけでグラス一杯なくなってしまう美味しさです。」</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full avatar-block shrink-0">🙂</div>
+                        <span class="text-xs font-bold">30代女性 ワイン好き様</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-14 sm:py-20 bg-[#121212] text-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="bg-gold-text/20 text-gold-text text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest border border-gold-text/30">Coming Soon</span>
+                <h3 class="serif text-2xl sm:text-3xl md:text-4xl font-black mt-4 leading-snug">ビストロ・オジェが企む、<br>新しい楽しさのアイデア</h3>
+                <p class="text-gray-400 text-sm mt-3">お客様の声「こんなサービスがあればもっと嬉しい」をもとに企画中の新しい試みです。</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
+                <div class="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-3xl relative backdrop-blur hover:border-gold-text/50 transition-colors">
+                    <div class="text-3xl mb-4">🍾</div>
+                    <span class="text-[10px] bg-wine text-white px-2.5 py-1 rounded font-bold uppercase tracking-wider">構想中・デザート</span>
+                    <h4 class="font-bold text-lg mt-3 mb-2">選べるデザートワゴン</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        コースの締めくくりに、数種類の自家製デザートからお好きなものをその場で選べる「デザートセレクトサービス」。最後まで飽きない迷う楽しさを。
+                    </p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-3xl relative backdrop-blur hover:border-gold-text/50 transition-colors">
+                    <div class="text-3xl mb-4">🎁</div>
+                    <span class="text-[10px] bg-wine text-white px-2.5 py-1 rounded font-bold uppercase tracking-wider">開発中・ギフト</span>
+                    <h4 class="font-bold text-lg mt-3 mb-2">名物タルトタタンのテイクアウト</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        「この味を家でも楽しみたい、大切な人に贈りたい」という声にお応えし、ホールサイズでの事前予約・テイクアウト販売を準備中です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map & Access Section -->
+    <section class="py-14 sm:py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h3 class="serif text-center text-2xl sm:text-3xl font-black mb-10 sm:mb-12">Access</h3>
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
+                <div class="space-y-6 sm:space-y-8">
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm">
+                        <h4 class="font-bold text-wine mb-4 border-b pb-2">店舗所在地</h4>
+                        <p class="text-sm leading-relaxed text-gray-600 mb-4">
+                            〒990-0039 山形県山形市香澄町1丁目9−11 VIP本田屋 B1F
+                        </p>
+                        <p class="text-sm font-bold text-gray-800">
+                            JR山形駅「東口」より徒歩3分
+                        </p>
+                        <p class="text-xs text-gray-500 mt-2">
+                            ※地下1階への階段、またはエレベーターをご利用ください。
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm">
+                        <h4 class="font-bold text-wine mb-4 border-b pb-2">営業のご案内</h4>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                            <div>
+                                <p class="font-bold text-gray-800">営業時間</p>
+                                <p>17:00 〜 24:00</p>
+                               
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800">定休日</p>
+                                <p>日曜日</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container shadow-2xl border-4 border-white">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.3291852327748!2d140.32751277477985!3d38.24867068472261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60f1c4987ed%3A0x2eec6a9075954916!2zQmlzdHJvIEF1Z2Vy77yI44OT44K544OI44OtIOOCquOCuOOCp--8iQ!5e0!3m2!1sja!2sjp!4v1770353292268!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] text-white py-10 sm:py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="serif text-xl sm:text-2xl font-black mb-8 gold-text tracking-widest uppercase">Bistro Auger</div>
+            <div class="flex justify-center gap-6 sm:gap-8 mb-8 text-xs font-bold tracking-widest uppercase">
+                <a href="https://www.instagram.com/bistroauger/" class="hover:text-gold-text transition-colors">Instagram</a>
+                <a href="https://www.bistro-auger.com/" class="hover:text-gold-text transition-colors">Official Site</a>
+            </div>
+            <p class="text-[10px] text-gray-600">&copy; 2024 Bistro Auger. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

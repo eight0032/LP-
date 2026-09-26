@@ -104,18 +104,33 @@ h1,h2,h3,.serif{font-family:'Noto Serif JP',serif;}
     </div>
 
     <div class="card rounded-2xl p-8 md:p-10 rule">
-      <div class="flex items-center gap-5 mb-7 pb-7 border-b rule">
-        <div class="monogram text-5xl w-16 shrink-0 text-center">日</div>
-        <div>
-          <p class="text-xs tracking-widest opacity-60 mb-1">Owner Chef</p>
-          <p class="text-xl font-bold serif">日下部 潤</p>
+      <!-- 2カラムレイアウト（スマホでは縦積み） -->
+      <div class="md:grid md:grid-cols-12 md:gap-8 items-center">
+        
+        <!-- シェフ画像エリア（左側） -->
+        <div class="md:col-span-5 mb-8 md:mb-0">
+          <div class="relative rounded-2xl overflow-hidden shadow-lg border rule aspect-[4/5]" style="border-color:var(--line);">
+            <!-- シェフの画像（必要に応じて src のURLを変更してください） -->
+            <img src="images/chef.png" alt="オーナーシェフ 日下部 潤" class="w-full h-full object-cover">
+            <!-- 高級感を添えるための下部グラデーションオーバーレイ -->
+            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <p class="text-xs tracking-widest text-[var(--gold)] font-bold">Owner Chef</p>
+              <p class="text-lg font-bold serif">日下部 氏</p>
+            </div>
+          </div>
         </div>
+
+        <!-- テキストエリア（右側） -->
+        <div class="md:col-span-7">
+          <div class="space-y-5 leading-loose" style="color:var(--ink-soft);">
+            <p>東京の高級フレンチで研鑽を積み、クウェート、スイス（ジュネーブ）の日本大使館にて公邸料理人を歴任。各国の要人たちを唸らせてきたその腕前は、伝統と革新が融合した本物です。</p>
+            <p>料理人人生40年以上。クラシックなフレンチの技法を大切にしながら、山形の旬の食材を活かし、日本人の好みに寄り添う繊細な味付けを追求しています。</p>
+          </div>
+          <p class="gold font-bold italic serif text-lg mt-7">「最高の一皿を、もっと身近に。」</p>
+        </div>
+
       </div>
-      <div class="space-y-5 leading-loose" style="color:var(--ink-soft);">
-        <p>東京の高級フレンチで研鑽を積み、クウェート、スイス（ジュネーブ）の日本大使館にて公邸料理人を歴任。各国の要人たちを唸らせてきたその腕前は、伝統と革新が融合した本物です。</p>
-        <p>料理人人生40年以上。クラシックなフレンチの技法を大切にしながら、山形の旬の食材を活かし、日本人の好みに寄り添う繊細な味付けを追求しています。</p>
-      </div>
-      <p class="gold font-bold italic serif text-lg mt-7">「最高の一皿を、もっと身近に。」</p>
     </div>
   </div>
 </section>
