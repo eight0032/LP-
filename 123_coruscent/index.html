@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>コルシェント | 山形・1日2組限定の宝石のようなフレンチ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#af9355; --dark:#1c1c1c; --bg:#f7f6f2;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{font-family:'Shippori Mincho',serif; background:var(--bg); color:var(--dark);}
+  .serif-en{font-family:'Times New Roman',serif; letter-spacing:.08em;}
+  .gold-line::after{content:"";display:block;width:1px;height:70px;background:var(--gold);margin:20px auto;}
+  .fade-in{opacity:0;transform:translateY(16px);transition:all .8s ease-out;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  .plate{background:radial-gradient(circle at 30% 30%, #3a3530, #16130f 70%);}
+  .plate2{background:linear-gradient(135deg,#4a3f2f,#1c1712);}
+  .vertical-text{writing-mode:horizontal-tb;}
+  @media (min-width:768px){ .vertical-text{writing-mode:vertical-rl; text-orientation:mixed;} }
+  nav{ padding-top:calc(1.5rem + env(safe-area-inset-top,0px)); }
+  .reserve-btn{ margin-bottom:calc(1.5rem + env(safe-area-inset-bottom,0px)); }
+  @media (max-width:480px){ .reserve-btn{ transform:scale(.85); } }
+</style>
+</head>
+<body class="selection:bg-[var(--gold)] selection:text-white overflow-x-hidden">
+
+<nav class="fixed top-0 left-0 w-full z-[100] px-5 pb-5 flex justify-between items-center mix-blend-difference text-white">
+  <div class="text-lg md:text-xl font-bold tracking-widest uppercase">Coruscent</div>
+  <div class="hidden md:flex gap-8 text-sm uppercase">
+    <a href="#concept" class="hover:text-[var(--gold)] transition">Concept</a>
+    <a href="#cuisine" class="hover:text-[var(--gold)] transition">Cuisine</a>
+    <a href="#about" class="hover:text-[var(--gold)] transition">About</a>
+    <a href="#access" class="hover:text-[var(--gold)] transition">Access</a>
+  </div>
+</nav>
+
+<section class="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-stone-900">
+  <div class="absolute inset-0 plate opacity-90"></div>
+  <div class="absolute inset-0 bg-black/30"></div>
+  <div class="relative z-10 text-center text-white px-6">
+    <p class="serif-en text-xs md:text-sm tracking-[0.4em] uppercase mb-4 opacity-80">Yamagata Premium French</p>
+    <h1 class="text-3xl sm:text-4xl md:text-6xl font-light leading-relaxed tracking-[0.15em]">
+      その一夜に、<br><span class="pl-6 md:pl-12">山形の呼吸を。</span>
+    </h1>
+    <div class="gold-line"></div>
+    <p class="text-base md:text-xl font-light tracking-[0.2em] mt-6">1日2組、あなただけに開かれる宝石箱</p>
+  </div>
+</section>
+
+<div class="fixed bottom-5 right-5 z-[90] reserve-btn">
+  <a href="tel:0236166315" class="relative flex items-center justify-center w-20 h-20 md:w-28 md:h-28 bg-stone-900 text-white rounded-full shadow-2xl border border-[var(--gold)]/40 active:scale-95 transition">
+    <div class="text-[9px] md:text-xs text-center leading-tight">
+      <span class="block mb-1 text-[var(--gold)] tracking-widest">RESERVE</span>
+      <span class="font-bold">ご予約はこちら</span>
+    </div>
+    <div class="absolute inset-0 border border-[var(--gold)]/20 rounded-full animate-ping"></div>
+  </a>
+</div>
+
+<section id="concept" class="py-20 md:py-32 px-6 fade-in">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+    <!-- 縦書きテキストエリア -->
+    <div class="flex-1 vertical-text md:h-[480px] text-lg md:text-2xl leading-loose tracking-[0.1em] font-light text-center md:text-left">
+      山形市の静かな住宅街。<br>
+      ひっそりと佇むその場所は、<br>
+      知る人ぞ知る「食の宝石」でした。<br><br>
+      お届けするのは、<br>
+      1日わずか2組のお客様のための<br>
+      濃密で静かな時間。<br><br>
+      夫婦二人で紡ぐ、<br>
+      山形と北海道が溶け合う物語。
+    </div>
+    
+    <!-- 画像・カードエリア -->
+    <div class="flex-1 w-full relative">
+      <!-- 画像ラッパー（角丸とシャドウを適用） -->
+      <div class="w-full aspect-[4/5] rounded-sm shadow-2xl overflow-hidden bg-stone-100">
+        <img 
+          src="images/main.png" 
+          alt="山形と北海道の食材を使った料理のイメージ" 
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        >
+      </div>
+      
+      <!-- 浮遊するアクセントカード -->
+      <div class="mt-6 md:mt-0 md:absolute md:-bottom-8 md:-left-8 bg-white p-6 md:p-8 shadow-xl border border-stone-100 text-center">
+        <p class="text-[var(--gold)] serif-en text-xs mb-2">Philosophy</p>
+        <p class="text-sm font-bold">扉を閉じ込める、<br>おまかせの美学。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cuisine" class="py-20 md:py-32 bg-stone-100 fade-in">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 md:mb-24">
+      <p class="serif-en text-[var(--gold)] tracking-widest mb-2 text-sm">MENU</p>
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-light tracking-wide">山形食材のおまかせコース</h2>
+    </div>
+
+    <!-- 1つ目のメニュー（サウスダウン） -->
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-20 md:mb-40">
+      <div>
+        <span class="inline-block px-3 py-1 border border-[var(--gold)] text-[var(--gold)] text-xs mb-5">Signature Dish</span>
+        <h3 class="text-xl sm:text-2xl md:text-4xl mb-6 leading-snug">北海道・足寄より届く<br>希少種「サウスダウン」</h3>
+        <p class="text-stone-600 text-sm md:text-base leading-relaxed mb-6">
+          ラムの柔らかさとマトンの深い旨味。その両方を兼ね備えた1羽半の「ホゲット」を、掃いた骨から取る優しいスープ、脂の甘みが際立つ自家製ブイヨンで仕上げます。
+        </p>
+        <div class="flex gap-3">
+          <div class="flex-1 bg-white p-4 shadow-sm border border-stone-200">
+            <p class="text-[var(--gold)] font-bold text-xs mb-1">素材</p>
+            <p class="text-xs text-stone-500 italic leading-relaxed">吉田綿羊牧場直送。<br>希少なサウスダウン種。</p>
+          </div>
+          <div class="flex-1 bg-white p-4 shadow-sm border border-stone-200">
+            <p class="text-[var(--gold)] font-bold text-xs mb-1">技法</p>
+            <p class="text-xs text-stone-500 italic leading-relaxed">骨のフォンから取る、<br>雑味なき滋味。</p>
+          </div>
+        </div>
+      </div>
+      <!-- 画像エリア1 -->
+      <div class="w-full aspect-[4/5] rounded-sm shadow-xl overflow-hidden order-first md:order-last bg-stone-200">
+        <img 
+          src="images/ramu.jpg" 
+          alt="サウスダウン種の料理イメージ" 
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        >
+      </div>
+    </div>
+
+    <!-- 2つ目のメニュー（デザート） -->
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <!-- 画像エリア2 -->
+      <div class="w-full aspect-[4/5] rounded-sm shadow-xl overflow-hidden bg-stone-200">
+        <img 
+          src="images/dessert.jpg" 
+          alt="パティシエ特製デザートのイメージ" 
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        >
+      </div>
+      <div>
+        <span class="inline-block px-3 py-1 border border-[var(--gold)] text-[var(--gold)] text-xs mb-5">Pâtissier's Dessert</span>
+        <h3 class="text-xl sm:text-2xl md:text-4xl mb-6 leading-snug">パティシエが紡ぐ、<br>至福のフィナーレ。</h3>
+        <p class="text-stone-600 text-sm md:text-base leading-relaxed mb-6">
+          キャラメリゼされたパイの香り、しっとりと溶け出すクリーム。スタートがパティシエだった奥様が手がけるデザートは、まさに芸術品です。
+        </p>
+        <div class="bg-white p-6 border-l-4 border-[var(--gold)] italic text-stone-700 shadow-sm leading-loose text-sm md:text-base">
+          「余韻のレリダンを演出させる、極めて高いレベルのミルフィーユ。」
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 md:py-32 px-6 fade-in">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-center text-[var(--gold)] serif-en text-sm tracking-widest mb-12 md:mb-16 uppercase">Customer Voices</h2>
+    <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+      <div class="text-center md:text-left">
+        <div class="text-[var(--gold)] text-2xl mb-3">"</div>
+        <p class="text-sm leading-loose text-stone-500 mb-4">住宅街にひっそりと佇む宝石。自家蒸留ジンジャーエールのスパイシーさ、羊のスープの優しさ。シェフの人柄が皿の上に滲み出ています。</p>
+        <p class="text-xs tracking-widest font-bold">50代 男性 / ディナー利用</p>
+      </div>
+      <div class="text-center md:text-left">
+        <div class="text-[var(--gold)] text-2xl mb-3">"</div>
+        <p class="text-sm leading-loose text-stone-500 mb-4">1日2組、他のお客様を気にせず過ごせるのが最大の贅沢。特別な記念日に伺いましたが、料理のプレゼンテーションの美しさに感動しました。</p>
+        <p class="text-xs tracking-widest font-bold">30代 女性 / 記念日利用</p>
+      </div>
+      <div class="text-center md:text-left">
+        <div class="text-[var(--gold)] text-2xl mb-3">"</div>
+        <p class="text-sm leading-loose text-stone-500 mb-4">奥様の作るケーキが絶品。テイクアウトでファンになりましたが、今度は絶対にお店でフルコースを。山形にこんな場所があるなんて。</p>
+        <p class="text-xs tracking-widest font-bold">40代 女性 / テイクアウト利用</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="py-20 md:py-32 bg-stone-900 text-white relative fade-in">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+    <!-- 画像エリア -->
+    <div class="relative order-2 md:order-1">
+      <div class="w-full aspect-[4/3] rounded-sm shadow-2xl overflow-hidden bg-stone-800">
+        <img 
+          src="images/chef.png" 
+          alt="オーナーシェフと妻のポートレートまたは厨房の様子" 
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        >
+      </div>
+      <!-- 周囲を囲むゴールドのフレーム装飾 -->
+      <div class="absolute inset-0 border border-[var(--gold)] translate-x-4 translate-y-4 -z-10 pointer-events-none"></div>
+    </div>
+    
+    <!-- テキストエリア -->
+    <div class="order-1 md:order-2">
+      <p class="serif-en text-[var(--gold)] mb-3 tracking-widest uppercase text-sm">Our Story</p>
+      <h2 class="text-2xl md:text-3xl font-light mb-6 md:mb-8 tracking-wider">夫婦で紡ぐ、小さな厨房。</h2>
+      <p class="leading-loose text-stone-400 mb-8 font-light text-sm md:text-base">
+        銀座の Le Sante（ル・サンテ）で修行を重ね、北海道の食材を知り尽くしたシェフ。<br>
+        パティシエとして繊細な腕を振るう妻。<br><br>
+        私たちが山形にこの店を構えたのは、<br>
+        「大切な人と、食材の声を聴くような、静かな時間を過ごしてほしい」<br>
+        という想いからです。<br><br>
+        お皿の上に描く色彩は、その日、その瞬間の旨。<br>
+        夫婦二人きりの小さなおもてなしですが、心ゆくまでお愉しみください。
+      </p>
+      <a href="https://www.instagram.com/coruscent1107/" target="_blank" class="inline-block px-6 py-3 border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-stone-900 transition-all text-sm tracking-widest uppercase">Follow Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section id="access" class="py-20 md:py-32 px-6 fade-in">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="serif-en text-sm tracking-[0.4em] text-[var(--gold)] uppercase mb-2">Information</h2>
+      <h3 class="text-2xl md:text-3xl font-light tracking-widest">アクセス</h3>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <!-- 左側：店舗情報・詳細 -->
+      <div class="space-y-6 text-sm">
+        <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-4">
+          <span class="sm:w-28 text-[var(--gold)] font-bold">店名</span>
+          <span>コルシェント（Coruscent）</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-4">
+          <span class="sm:w-28 text-[var(--gold)] font-bold">住所</span>
+          <span>〒990-2435 山形県山形市青田2丁目3-18</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-4">
+          <span class="sm:w-28 text-[var(--gold)] font-bold">営業時間</span>
+          <span>完全予約制（昼・夜 各1組限定）</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-4">
+          <span class="sm:w-28 text-[var(--gold)] font-bold">定休日</span>
+          <span>日曜日・月曜日</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-4">
+          <span class="sm:w-28 text-[var(--gold)] font-bold">お電話</span>
+          <a href="tel:0236166315" class="underline">023-616-6315</a>
+        </div>
+        <p class="text-stone-400 text-xs leading-loose">
+          ※住宅街に位置するため、ご来店の際は近隣へのご配慮をお願いいたします。<br>
+          ※完全予約制のため、事前にお電話にて空き状況をご確認ください。
+        </p>
+        <a href="https://www.google.com/maps/search/?api=1&query=山形県山形市青田2丁目4-17" target="_blank" class="inline-block px-6 py-3 bg-stone-900 text-white text-xs tracking-widest uppercase hover:bg-[var(--gold)] transition">Googleマップで開く</a>
+      </div>
+      
+      <!-- 右側：Googleマップ埋め込み -->
+      <div class="w-full aspect-square md:aspect-auto md:h-full min-h-[320px] rounded-sm shadow-lg overflow-hidden bg-stone-200">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100297.92346035081!2d140.2016394625!3d38.22591080000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb50cdcb8c6ff%3A0x2f05c1b128b42190!2z44Kz44Or44K344Kn44Oz44OI!5e0!3m2!1sja!2sjp!4v1790384016066!5m2!1sja!2sjp" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin"
+          class="w-full h-full"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 md:py-32 bg-stone-50 border-t border-stone-200 px-6 fade-in">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="serif-en text-[var(--gold)] tracking-widest uppercase mb-2 text-sm">Coming Soon</p>
+      <h2 class="text-2xl md:text-4xl font-light tracking-wide">これからのコルシェント</h2>
+      <p class="text-xs text-stone-500 mt-3 tracking-widest">お客様の「あればいいな」をカタチに。順次展開予定の新しい試みです。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
+      <div class="bg-white p-6 md:p-8 shadow-sm border border-stone-200 rounded-sm relative">
+        <div class="absolute top-0 right-0 bg-[var(--gold)]/10 text-[var(--gold)] text-[10px] px-3 py-1 font-bold tracking-widest uppercase">Soon</div>
+        <span class="text-[var(--gold)] serif-en text-xs block mb-2">Service 01</span>
+        <h3 class="text-lg md:text-xl font-bold mb-3">パティシエ特製<br>焼き菓子の常時販売</h3>
+        <p class="text-stone-600 text-sm leading-relaxed">大好評のデザートを手がける奥様による、サブレやフィナンシェなどの焼き菓子を店頭にて常時販売いたします。</p>
+      </div>
+      <div class="bg-white p-6 md:p-8 shadow-sm border border-stone-200 rounded-sm relative">
+        <div class="absolute top-0 right-0 bg-[var(--gold)]/10 text-[var(--gold)] text-[10px] px-3 py-1 font-bold tracking-widest uppercase">Soon</div>
+        <span class="text-[var(--gold)] serif-en text-xs block mb-2">Service 02</span>
+        <h3 class="text-lg md:text-xl font-bold mb-3">記念日・お祝い用<br>特製ケーキの予約販売</h3>
+        <p class="text-stone-600 text-sm leading-relaxed">クリスマスケーキの販売でご好評いただいた技術を活かし、誕生日や結婚記念日などの特別な日に華を添える予約制ケーキ販売を開始予定です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-12 bg-white text-center border-t border-stone-100">
+  <p class="serif-en text-[10px] tracking-[0.3em] text-stone-400 uppercase">© 2024 Coruscent - Petit Restaurant de Yamagata</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
