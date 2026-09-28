@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>トレンタ 北上店 | 究極のスープスパゲッティ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', sans-serif; -webkit-text-size-adjust: 100%; }
+  .font-serif { font-family: 'Noto Serif JP', serif; }
+  .text-trenta-red { color: #c0392b; }
+  .bg-trenta-red { background-color: #c0392b; }
+  .border-trenta-red { border-color: #c0392b; }
+  .bg-dark-stone { background-color: #1c1917; }
+  .writing-vertical { writing-mode: vertical-rl; text-orientation: mixed; }
+  .shimmer {
+    background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.2) 50%, rgba(255,255,255,0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  @media (prefers-reduced-motion: reduce) { .shimmer { animation: none; } }
+  .map-container iframe { width: 100%; height: 300px; border-radius: 1rem; }
+  @media (min-width: 768px) { .map-container iframe { height: 400px; } }
+</style>
+</head>
+<body class="bg-stone-50 text-stone-900 leading-relaxed overflow-x-hidden">
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-start overflow-hidden bg-dark-stone px-5 md:px-20 py-20">
+  <div class="absolute inset-0">
+    <img src="images/pasta2.png" alt="スープスパゲッティ" class="w-full h-full object-cover opacity-70 object-center">
+    <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/85 via-black/50 to-black/20 md:to-transparent"></div>
+  </div>
+  <div class="relative z-10 text-white max-w-2xl">
+    <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
+      <div class="w-8 md:w-12 h-px bg-yellow-400 shrink-0"></div>
+      <p class="text-xs md:text-base font-serif tracking-widest opacity-90">秋田発。三十年変わらぬ、茹でたての情熱。</p>
+    </div>
+    <h1 class="text-3xl md:text-5xl font-serif font-black leading-tight mb-4">
+      旨味が、溢れ出す。<br><span class="text-yellow-400">至福のスープスパゲッティ</span>
+    </h1>
+    <p class="text-base md:text-xl font-serif text-white/80 tracking-wide">トレンタ北上店が贈る、心温まる一杯。</p>
+  </div>
+
+</section>
+
+<!-- FLOATING CTA -->
+<div class="fixed right-4 md:right-6 z-[100]" style="bottom: calc(1rem + env(safe-area-inset-bottom, 0px));">
+  <a href="https://www.trenta.co.jp/" class="block bg-trenta-red text-white font-bold px-4 py-5 md:p-6 rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95 shimmer text-sm md:text-base">
+    <span class="writing-vertical inline-block">特典をGET</span>
+  </a>
+</div>
+
+<!-- INTRODUCTION -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5 max-w-4xl text-center">
+    <div class="mb-10 md:mb-12">
+      <span class="text-trenta-red font-serif text-3xl md:text-4xl font-black">TRENTA</span>
+      <p class="text-xs tracking-[0.5em] text-stone-400 mt-2">EST. 1998</p>
+    </div>
+    <h2 class="text-2xl md:text-4xl font-serif mb-10 md:mb-12 leading-relaxed">「おいしいスパゲッティを<br>お腹いっぱい食べて幸せを感じてほしい」</h2>
+    <div class="w-16 h-px bg-stone-300 mx-auto mb-10 md:mb-12"></div>
+    <div class="text-stone-600 space-y-6 max-w-2xl mx-auto text-base md:text-lg leading-loose">
+      <p>創業の原点は、秋田に灯った三十坪・三十席の小さな明かり。<br>東京の有名店で学んだ「茹でたて、本物のアルデンテ」を、<br>もっと身近に、もっと贅沢に楽しんでいただくために。</p>
+      <p>トレンタ北上店が提供するのは、<br>一人前ずつ丁寧に茹で上げる、命のパスタです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="bg-dark-stone text-white py-16 md:py-24">
+  <div class="container mx-auto px-5">
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div class="w-full md:w-1/2 relative">
+        <div class="absolute -top-6 -left-2 md:-top-10 md:-left-10 text-stone-800 text-7xl md:text-9xl font-black select-none opacity-20">30</div>
+        <img src="images/pasta.png" alt="こだわりの一皿" class="rounded-lg shadow-2xl relative z-10 w-full">
+      </div>
+      <div class="w-full md:w-1/2 space-y-6 md:space-y-8">
+        <span class="text-yellow-400 font-bold tracking-[0.5em] text-sm">CONCEPT</span>
+        <h3 class="text-2xl md:text-4xl font-serif font-bold leading-tight">地元の厳選食材が溶け込む、<br>濃厚な特製スープ</h3>
+        <p class="text-stone-400 leading-relaxed text-base md:text-lg">地元の厳選食材を使い、手間暇かけて作るオリジナルソース。魚介や野菜の旨味が溶け込んだスープは、心と体を芯から温めます。人気のスープペスカトーレやクリーミーミックスなど、ここでしか味わえない一杯を。</p>
+        <div class="pt-2 md:pt-6">
+          <div class="flex flex-wrap items-center gap-3 md:gap-4 text-sm border-l-2 border-trenta-red pl-4">
+            <span class="bg-stone-800 px-3 py-1 rounded">テイクアウト可</span>
+            <span>電子レンジ対応の専用容器で「お店の味」をご自宅でも。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-16 md:py-24 bg-stone-100">
+  <div class="container mx-auto px-5 max-w-6xl">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="text-trenta-red font-bold tracking-[0.3em] text-sm uppercase">Coming Soon</span>
+      <h2 class="text-2xl md:text-4xl font-serif mt-2">北上店が企む、新しいお楽しみ</h2>
+      <p class="text-stone-500 mt-3 text-sm md:text-base">お客様の「こんなの欲しかった！」をカタチにする新サービス準備中。</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      
+      <!-- 1つ目のカード -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md border-t-4 border-yellow-500 flex flex-col">
+        <div class="p-6 pb-2 relative flex justify-between items-start">
+          <span class="bg-yellow-500 text-black font-bold text-xs px-3 py-1 rounded-full">カップ選べる</span>
+        </div>
+        <div class="p-6 md:p-8 pt-2 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg md:text-xl font-serif font-bold mb-3">スープパスタ選べるミニカップセット</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">「あれもこれも少しずつ食べてみたい！」の声にお応え。カップサイズのスープパスタを2〜3種類自由に選んで楽しめる、心躍る欲張りセットを企画中。</p>
+          </div>
+          <p class="text-xs text-stone-400 mt-6 pt-4 border-t border-stone-100">ヒント：スープストック東京スタイル</p>
+        </div>
+      </div>
+
+      <!-- 2つ目のカード -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md border-t-4 border-trenta-red flex flex-col">
+        <div class="p-6 pb-2 relative flex justify-between items-start">
+          <span class="bg-trenta-red text-white font-bold text-xs px-3 py-1 rounded-full">北上店限定</span>
+        </div>
+        <div class="p-6 md:p-8 pt-2 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg md:text-xl font-serif font-bold mb-3">旬の食材を味わう北上限定ランチ</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">岩手の豊かな大地が育んだ季節の食材をふんだんに使用。その時期にしか出逢えない、北上店オリジナルの贅沢ランチメニューを順次展開予定です。</p>
+          </div>
+          <p class="text-xs text-stone-400 mt-6 pt-4 border-t border-stone-100">季節ごとの特別メニュー</p>
+        </div>
+      </div>
+
+      <!-- 3つ目のカード -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md border-t-4 border-stone-800 flex flex-col">
+        <div class="p-6 pb-2 relative flex justify-between items-start">
+          <span class="bg-stone-800 text-white font-bold text-xs px-3 py-1 rounded-full">店頭＆通販</span>
+        </div>
+        <div class="p-6 md:p-8 pt-2 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg md:text-xl font-serif font-bold mb-3">本格ピザ・オードブル ＆ 名物ドレッシング</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">ご自宅でもトレンタの味を！焼きたてピザやパーティ向けオードブルのテイクアウト拡充に加え、大人気の特製サラダドレッシングの店頭・オンライン販売を開始します。</p>
+          </div>
+          <p class="text-xs text-stone-400 mt-6 pt-4 border-t border-stone-100">おうち時間を豊かに</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5">
+    <h2 class="text-center text-2xl md:text-3xl font-serif mb-10 md:mb-16">お客様の声</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div class="bg-stone-50 p-6 md:p-10 shadow-sm border-t-4 border-trenta-red">
+        <p class="text-stone-400 text-xs mb-4">ランチタイム利用</p>
+        <p class="text-base md:text-lg font-serif mb-6">「パスタがアルデンテで美味かった！接客も丁寧でストレスゼロ。次は夜の飲み放題で来たいです。」</p>
+        <div class="flex items-center gap-2"><div class="text-yellow-500">★★★★</div><span class="text-xs text-stone-500 italic">40代 男性</span></div>
+      </div>
+      <div class="bg-stone-50 p-6 md:p-10 shadow-sm border-t-4 border-trenta-red">
+        <p class="text-stone-400 text-xs mb-4">ご家族での利用</p>
+        <p class="text-base md:text-lg font-serif mb-6">「ファミレスより少し贅沢ですが、それ以上の美味しさ。駐車場も店内も広くて、ゆっくりしたい時に最高。」</p>
+        <div class="flex items-center gap-2"><div class="text-yellow-500">★★★★★</div><span class="text-xs text-stone-500 italic">30代 女性</span></div>
+      </div>
+      <div class="bg-stone-50 p-6 md:p-10 shadow-sm border-t-4 border-trenta-red md:col-span-2 lg:col-span-1">
+        <p class="text-stone-400 text-xs mb-4">お一人様での利用</p>
+        <p class="text-base md:text-lg font-serif mb-6">「麺が絶妙にもちもち。サラダのドレッシングが驚くほど美味しくて、大きいサイズを頼めば良かったです。」</p>
+        <div class="flex items-center gap-2"><div class="text-yellow-500">★★★★★</div><span class="text-xs text-stone-500 italic">20代 女性</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFIT -->
+<section class="py-20 md:py-24 bg-stone-50 overflow-hidden">
+  <div class="container mx-auto px-4 max-w-5xl border-2 border-double border-stone-300 p-6 pt-12 md:p-16 relative bg-white">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 md:px-6 text-center whitespace-nowrap">
+      <span class="text-trenta-red font-bold tracking-[0.2em] md:tracking-[0.3em] text-sm md:text-base">SPECIAL BENEFIT</span>
+    </div>
+    <div class="text-center">
+      <h2 class="text-2xl md:text-5xl font-serif mb-8 leading-snug">お食事をもっと豊かにする<br>アプリ限定の贈り物</h2>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-8 md:mt-12">
+        <div class="bg-stone-50 p-6 rounded-full w-56 h-56 md:w-64 md:h-64 flex flex-col items-center justify-center shadow-inner border border-stone-200">
+          <span class="text-sm text-stone-500">PRESENT 01</span>
+          <p class="text-xl font-bold mt-2 text-stone-800">麺大盛り無料</p>
+          <p class="text-xs text-trenta-red mt-2 underline">初回DL特典</p>
+        </div>
+        <div class="bg-stone-50 p-6 rounded-full w-56 h-56 md:w-64 md:h-64 flex flex-col items-center justify-center shadow-inner border border-stone-200">
+          <span class="text-sm text-stone-500">PRESENT 02</span>
+          <p class="text-xl font-bold mt-2 text-stone-800">季節のデザート</p>
+          <p class="text-xs text-trenta-red mt-2 underline">ランクアップ特典</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="bg-white py-16 md:py-24 border-t border-stone-200">
+  <div class="container mx-auto px-5">
+    <h2 class="text-center text-2xl md:text-3xl font-serif mb-10 md:mb-16">アクセス・店舗情報</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <div class="map-container shadow-2xl rounded-2xl overflow-hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.5946554385137!2d141.10944427484094!3d39.297442223002676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f449f058ac087%3A0x8ca89a2fbc15352c!2z44OI44Os44Oz44K_IOWMl-S4iuW6lw!5e0!3m2!1sja!2sjp!4v1770341634934!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="トレンタ北上店の地図"></iframe>
+      </div>
+      <div class="space-y-6 md:space-y-8 py-2">
+        <div>
+          <h4 class="text-xl md:text-2xl font-serif font-bold text-trenta-red mb-4">トレンタ 北上店</h4>
+          <dl class="space-y-4 text-sm md:text-base">
+            <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-2">
+              <dt class="sm:w-24 shrink-0 font-bold">住所</dt>
+              <dd>〒024-0084 岩手県北上市さくら通り２丁目２−４３</dd>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-2">
+              <dt class="sm:w-24 shrink-0 font-bold">電話番号</dt>
+              <dd><a href="tel:0197634130" class="text-trenta-red underline sm:no-underline sm:text-inherit hover:text-trenta-red">0197-63-4130</a></dd>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:gap-4 border-b border-stone-200 pb-2">
+              <dt class="sm:w-24 shrink-0 font-bold">駐車場</dt>
+              <dd>完備（広々としたスペースがございます）</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="bg-stone-50 p-5 md:p-6 rounded-2xl shadow-sm border-l-4 border-trenta-red">
+          <p class="text-sm font-bold mb-2 italic">店主より</p>
+          <p class="text-stone-600 text-sm leading-relaxed">「さくら通り沿いの落ち着いた空間で、茹でたてのパスタをご用意してお待ちしております。平日のゆったりとしたランチや、週末のご家族での夕食にぜひご利用ください。」</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="bg-dark-stone text-white py-16 md:py-24 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20">
+    <img src="images/pasta3.png" alt="店舗内装" class="w-full h-full object-cover">
+  </div>
+  <div class="relative z-10 container mx-auto px-5 text-center">
+    <h3 class="text-xl md:text-4xl font-serif mb-10 md:mb-12">心まで温まる一杯を、トレンタで。</h3>
+    <div class="max-w-xl mx-auto space-y-5">
+      <a href="https://www.trenta.co.jp/" class="group block bg-white text-stone-900 py-5 md:py-6 px-6 md:px-10 rounded-full font-bold text-base md:text-xl transition-all hover:bg-yellow-400 shadow-2xl">
+        公式アプリを今すぐダウンロード
+        <span class="inline-block transition-transform group-hover:translate-x-2">→</span>
+      </a>
+      <p class="text-stone-400 text-xs md:text-sm">※麺大盛りクーポンはダウンロード後すぐにお使いいただけます</p>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-black py-8 text-center text-[10px] text-stone-500 tracking-widest uppercase" style="padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));">
+  © TRENTA. All Rights Reserved.
+</footer>
+
+</body>
+</html>
