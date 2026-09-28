@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="山形・伊達城の隠れ家フレンチレストラン「ボンシュール」。ホテルクオリティの本格フレンチを、心解ける空間で。">
+<meta name="theme-color" content="#1c1917">
+<title>ボンシュール | 山形市の隠れ家フレンチレストラン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { gold: '#C5A059', washi: '#f9f7f2' },
+      fontFamily: {
+        serif: ['"Noto Serif JP"', 'serif'],
+        sans: ['"Noto Sans JP"', 'sans-serif']
+      }
+    }
+  }
+};
+</script>
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #2D2A26;
+    line-height: 1.8;
+    background-color: #f9f7f2;
+    /* 和紙風テクスチャ（外部画像に依存しないCSSのみ） */
+    background-image:
+      radial-gradient(rgba(120,100,70,.06) 1px, transparent 1px),
+      radial-gradient(rgba(120,100,70,.04) 1px, transparent 1px);
+    background-size: 22px 22px, 37px 37px;
+    background-position: 0 0, 11px 17px;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
+
+  .washi { background-color: #f9f7f2; background-image: inherit; }
+  .bg-gold-grad { background: linear-gradient(135deg, #C5A059 0%, #D4B483 100%); }
+
+  /* フェードイン */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .8s ease-out, transform .8s ease-out; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* CTAボタン */
+  .cta-button { position: relative; z-index: 1; overflow: hidden; transition: transform .4s cubic-bezier(.165,.84,.44,1); }
+  .cta-button::after {
+    content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.2);
+    transform: scaleX(0); transform-origin: right; transition: transform .4s ease; z-index: -1;
+  }
+  @media (hover: hover) {
+    .cta-button:hover::after { transform: scaleX(1); transform-origin: left; }
+    .cta-button:hover { transform: scale(1.03); }
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes grow { from { height: 0; } to { height: 4rem; } }
+  .anim-fade { opacity: 0; animation: fadeIn 1.5s ease-out forwards; }
+  .anim-grow { animation: grow 1.5s ease-out; }
+
+  a:focus-visible { outline: 2px solid #C5A059; outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { opacity: 1; transform: none; transition: none; }
+    .anim-fade, .anim-grow { animation: none; opacity: 1; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FVエリア -->
+<header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0 bg-stone-900">
+    <img src="images/main.png" alt="極上の肉料理" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <div class="relative z-10 text-center text-white px-6 py-16 flex flex-col items-center">
+    <div class="mb-6 anim-fade">
+      <span class="inline-block px-3 py-1 border border-white tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs uppercase">Secret Hideaway Restaurant</span>
+    </div>
+    <h2 class="text-base sm:text-xl md:text-2xl mb-4 font-serif tracking-[0.2em] md:tracking-[0.4em] drop-shadow-lg">山形・伊達城。大人のための隠れ家。</h2>
+    <div class="w-px h-16 bg-gold mb-6 anim-grow"></div>
+    <h1 class="text-[1.9rem] sm:text-4xl md:text-5xl font-black font-serif mb-8 leading-tight drop-shadow-2xl">
+      心解ける、<br>
+      <span class="italic">ホテルクオリティ</span>の<br>
+      本格フレンチ。
+    </h1>
+    <p class="text-sm sm:text-lg md:text-2xl mb-10 font-serif font-light tracking-widest leading-relaxed">
+      ドレッシングの一滴にまで、<br class="md:hidden">熟練の技とおもてなしを。
+    </p>
+    <a href="#reason" aria-label="下へスクロール" class="animate-bounce mt-4 text-gold text-2xl p-3">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </div>
+</header>
+
+<!-- 特徴：3つの選ばれる理由 -->
+<section id="reason" class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 md:mb-20 fade-in">
+      <p class="text-gold font-bold tracking-[0.2em] mb-2 uppercase text-sm">Reason</p>
+      <h3 class="text-2xl md:text-4xl font-serif">ボンシュールが愛される理由</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+      <!-- 理由1 -->
+      <div class="fade-in group text-center bg-stone-50 p-8 rounded-sm border border-stone-100">
+        <span class="text-gold font-bold text-4xl font-serif italic mb-4 block">01</span>
+        <h4 class="text-lg md:text-xl font-bold mb-3 font-serif">名物「パペットステーキ」の衝撃</h4>
+        <p class="text-sm text-stone-600 leading-relaxed">
+          オークラ系ホテルで培った火入れの技術。<br>
+          ボリューム満点の2枚重ねに、驚きと感動をお届けします。
+        </p>
+      </div>
+
+      <!-- 理由2 -->
+      <div class="fade-in group text-center bg-stone-50 p-8 rounded-sm border border-stone-100 md:[transition-delay:.2s]">
+        <span class="text-gold font-bold text-4xl font-serif italic mb-4 block">02</span>
+        <h4 class="text-lg md:text-xl font-bold mb-3 font-serif">ドレッシングの一滴まで残せない</h4>
+        <p class="text-sm text-stone-600 leading-relaxed">
+          「お皿の端々まで丁寧」と評される繊細な盛り付け。<br class="hidden md:block">ソース一滴まで追求する職人のこだわりが宿ります。
+        </p>
+      </div>
+
+      <!-- 理由3 -->
+      <div class="fade-in group text-center bg-stone-50 p-8 rounded-sm border border-stone-100 md:[transition-delay:.4s]">
+        <span class="text-gold font-bold text-4xl font-serif italic mb-4 block">03</span>
+        <h4 class="text-lg md:text-xl font-bold mb-3 font-serif">肩肘張らない、隠れ家の贅沢</h4>
+        <p class="text-sm text-stone-600 leading-relaxed">
+          山形・伊達城の閑静な場所。<br>
+          ホテルクオリティをリーズナブルに。<br>
+          男女問わず愛される温かな空間です。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- メニュー案内（CTA 1） -->
+<section class="bg-stone-900 text-white overflow-hidden">
+  <div class="flex flex-col md:flex-row">
+    <div class="w-full md:w-1/2 h-64 sm:h-80 md:h-[500px]">
+      <img src="images/beef.png" alt="ランチセットのメイン料理" loading="lazy" class="w-full h-full object-cover md:grayscale md:hover:grayscale-0 transition duration-1000">
+    </div>
+    <div class="w-full md:w-1/2 px-6 py-12 sm:p-12 md:p-24 flex flex-col justify-center">
+      <span class="text-gold tracking-widest text-sm mb-3">Recommended Menu</span>
+      <h3 class="text-2xl md:text-3xl font-serif mb-6">人気の「ボンシュールセット」</h3>
+      <p class="text-stone-300 mb-8 leading-relaxed text-sm md:text-base">
+        お好きなメイン料理に、オードブル・サラダ・デザート・珈琲がセットになったフルコースのような満足感。<br>
+        <span class="text-white font-bold block mt-2">平日ランチ 1,200円〜 / セット +500円〜</span>
+      </p>
+      <div class="space-y-3">
+        <a href="tel:05052637862" class="cta-button bg-gold-grad text-white text-center py-4 md:py-5 px-6 md:px-10 rounded-sm font-bold block w-full tracking-widest">
+          <i class="fas fa-phone-alt mr-2"></i>電話で空席を確認する
+        </a>
+        <p class="text-center text-xs text-stone-400">※ご予約はお電話にて承っております</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- オーナーストーリー -->
+<section class="py-16 md:py-24 washi border-y border-stone-200">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="mb-8 inline-block">
+      <img src="images/chef.png" alt="シェフの手元" loading="lazy" class="w-24 h-24 rounded-full border-2 border-gold mx-auto object-cover">
+    </div>
+    <h3 class="text-xl md:text-2xl font-serif mb-8 md:mb-12 leading-relaxed">山形の老舗ホテルで磨かれた感性</h3>
+    <div class="mb-10 md:mb-12">
+      <p class="text-base md:text-lg leading-loose font-serif italic text-stone-700">
+        「ホテルオークラ系」など名門厨房で腕を振るってきた那須シェフ。<br>
+        クラムチャウダーひとつにも「家庭では出せない、本物の味」を閉じ込める。<br>
+        その真髄を、山形の隠れ家でお楽しみください。
+      </p>
+    </div>
+    <div class="inline-block p-1 border border-gold">
+      <div class="border border-gold py-3 px-8 md:px-12">
+        <p class="text-gold font-serif">Owner Chef : Nasu</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- クチコミ -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+      <div class="fade-in">
+        <h4 class="text-3xl md:text-4xl font-serif mb-4 md:mb-8 text-gold opacity-40">Voice.</h4>
+        <blockquote class="text-base md:text-xl font-serif leading-relaxed mb-5">
+          「このお店が大好きです。3ヶ月の間に家族、友人と4回も通ってしまいました。気取らない接客で、一人でも落ち着いて食事ができる雰囲気が魅力です。」
+        </blockquote>
+        <cite class="text-sm font-bold not-italic">— 50代 常連客 様</cite>
+      </div>
+      <div class="fade-in md:[transition-delay:.3s]">
+        <h4 class="text-3xl md:text-4xl font-serif mb-4 md:mb-8 text-gold opacity-40">Voice.</h4>
+        <blockquote class="text-base md:text-xl font-serif leading-relaxed mb-5">
+          「女子会ランチでフルコースを頂きました。スタッフさんも優しく和やかに過ごせました。お料理も全て美味しくて、今度は夫と伺います。」
+        </blockquote>
+        <cite class="text-sm font-bold not-italic">— 市内 女性 様</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+  <div class="max-w-6xl mx-auto px-5 relative z-10">
+    <div class="text-center mb-10 md:mb-16 fade-in">
+      <span class="text-gold font-bold tracking-[0.3em] text-xs uppercase block mb-2">Coming Soon</span>
+      <h3 class="text-2xl md:text-4xl font-serif">これから始まる、新しいおもてなし</h3>
+      <p class="text-stone-300 text-sm mt-4">ボンシュールがさらに進化。お客様の「あればいいな」をカタチにします。</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <!-- サービス1 -->
+      <div class="fade-in bg-stone-800/80 border border-stone-700/60 p-6 md:p-8 rounded-sm relative group hover:border-gold transition duration-500">
+        <div class="absolute top-5 right-5 text-gold text-2xl opacity-40 group-hover:opacity-100 transition">
+          <i class="fas fa-wine-glass-alt"></i>
+        </div>
+        <span class="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-bold mb-4 rounded">新サービス 01</span>
+        <h4 class="text-lg md:text-xl font-serif mb-3">ソムリエ厳選「極上のペアリング提案」</h4>
+        <p class="text-stone-300 text-sm leading-relaxed">
+          パペットステーキや季節のオードブルをさらに引き立てる、ワインや日本酒の極上ペアリングサービスを準備中。料理との最高のマリアージュをご堪能ください。
+        </p>
+      </div>
+
+      <!-- サービス2 -->
+      <div class="fade-in bg-stone-800/80 border border-stone-700/60 p-6 md:p-8 rounded-sm relative group hover:border-gold transition duration-500 md:[transition-delay:.2s]">
+        <div class="absolute top-5 right-5 text-gold text-2xl opacity-40 group-hover:opacity-100 transition">
+          <i class="fas fa-child"></i>
+        </div>
+        <span class="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-bold mb-4 rounded">新メニュー 02</span>
+        <h4 class="text-lg md:text-xl font-serif mb-3">ご家族で楽しむ「キッズフレンチプレート」</h4>
+        <p class="text-stone-300 text-sm leading-relaxed">
+          「子どもにも本物の味を気兼ねなく楽しませたい」という声にお応えし、本格的な味わいはそのままに、お子様が心から喜ぶ特別なおすすめメニューを新設いたします。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 & アクセス -->
+<section class="py-16 md:py-24 bg-stone-100">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row gap-10 md:gap-16">
+    <div class="w-full md:w-1/2">
+      <h3 class="text-xl md:text-2xl font-serif mb-6 md:mb-8 border-l-4 border-gold pl-4">Information</h3>
+      <dl class="space-y-4">
+        <div class="flex border-b border-stone-200 pb-2">
+          <dt class="w-24 sm:w-32 shrink-0 font-bold text-sm">店名</dt>
+          <dd class="text-sm">ボンシュール</dd>
+        </div>
+        <div class="flex border-b border-stone-200 pb-2">
+          <dt class="w-24 sm:w-32 shrink-0 font-bold text-sm">住所</dt>
+          <dd class="text-sm">〒990-2163 山形県山形市伊達城１丁目６−６</dd>
+        </div>
+        <div class="flex border-b border-stone-200 pb-2">
+          <dt class="w-24 sm:w-32 shrink-0 font-bold text-sm">電話番号</dt>
+          <dd class="text-sm"><a href="tel:05052637862" class="underline decoration-gold underline-offset-4">050-5263-7862</a></dd>
+        </div>
+        <div class="flex border-b border-stone-200 pb-2">
+          <dt class="w-24 sm:w-32 shrink-0 font-bold text-sm">定休日</dt>
+          <dd class="text-sm">水曜日</dd>
+        </div>
+        <div class="flex border-b border-stone-200 pb-2">
+          <dt class="w-24 sm:w-32 shrink-0 font-bold text-sm">お支払い</dt>
+          <dd class="text-sm">クレジット / バーコード決済OK</dd>
+        </div>
+      </dl>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a href="https://hitosara.com/0006079927/" target="_blank" rel="noopener" class="text-gold border border-gold px-4 py-3 text-xs font-bold hover:bg-gold hover:text-white transition">Hitosara Official</a>
+       
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 h-[320px] md:h-[450px] bg-stone-300 rounded-sm overflow-hidden shadow-inner">
+      <iframe title="ボンシュールの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3130.6932549739977!2d140.36041007478326!3d38.30977418116409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bc8c734fdf9b5%3A0x3c9e0b9cead7c525!2z44Oc44Oz44K344Ol44O844Or!5e0!3m2!1sja!2sjp!4v1770351782142!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- 最終コンバージョン -->
+<section class="py-16 md:py-24 text-center bg-white">
+  <div class="max-w-2xl mx-auto px-5">
+    <h3 class="text-4xl font-serif mb-4 text-gold">Bonshur</h3>
+    <p class="text-sm tracking-[0.2em] md:tracking-[0.3em] mb-10 md:mb-12">本物のフレンチを、もっと身近に。</p>
+    <a href="tel:05052637862" class="cta-button bg-gold-grad text-white text-xl sm:text-3xl font-bold py-5 md:py-6 px-8 md:px-12 rounded-full inline-flex items-center justify-center gap-3 md:gap-4 shadow-xl mb-6 w-full sm:w-auto">
+      <i class="fas fa-phone-alt"></i> 050-5263-7862
+    </a>
+    <p class="text-xs text-stone-500 italic leading-relaxed">「ふらっとお客様が訪れるのも納得」の人気店。事前のお電話をお勧めします。</p>
+  </div>
+</section>
+
+<footer class="bg-stone-900 py-10 text-center px-4">
+  <p class="text-stone-400 text-xs tracking-widest">&copy; 2024 Bonshur Yamagata. Crafted for Exquisite Dining.</p>
+</footer>
+
+<!-- スマホ用 固定電話ボタン -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-stone-900/95 backdrop-blur border-t border-gold/40 px-4 pt-3" style="padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));">
+  <a href="tel:05052637862" class="bg-gold-grad text-white font-bold text-center py-3 rounded-sm flex items-center justify-center gap-2 tracking-wider">
+    <i class="fas fa-phone-alt"></i> 電話で予約する
+  </a>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
