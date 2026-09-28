@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ラミ・デュ・ヴァン・エフ | 山形市七日町のカジュアルフレンチ</title>
+  <meta name="description" content="山形市七日町のカジュアルフレンチ。最新の調理器具と世界を渡り歩いたシェフの感性で仕上げる、一期一会のフレンチをどうぞ。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { gold: '#af935a', ink: '#1a1a1a', paper: '#f9f7f2' },
+          fontFamily: {
+            serif: ['"Shippori Mincho"', 'serif'],
+            sans: ['"Noto Sans JP"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #f9f7f2; color: #1a1a1a; line-height: 1.8; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+    .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+    .decorative-line { width: 1px; height: 80px; margin: 0 auto; background: linear-gradient(to bottom, #af935a, transparent); }
+    /* スマホでは縦書きを解除 */
+    @media (max-width: 767px) { .vertical-text { writing-mode: horizontal-tb; } }
+    /* 100vhのスマホブラウザ対策 */
+    .hero { min-height: 100vh; min-height: 100svh; }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- FV -->
+  <header class="hero relative overflow-hidden flex items-center">
+    <div class="absolute inset-0">
+      <img src="images/poware.png" alt="真鱈のポワレ" class="w-full h-full object-cover brightness-50">
+    </div>
+    <div class="relative z-10 container mx-auto px-6 py-24">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
+        <div class="vertical-text font-serif text-white">
+          <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold leading-relaxed tracking-widest">
+            五感を満たす、<br>真鱈のポワレ。
+          </h1>
+        </div>
+        <div class="text-white space-y-4 max-w-lg">
+          <p class="text-gold tracking-[0.25em] font-bold text-sm md:text-base">L'ami du Vin F</p>
+          <h2 class="text-lg md:text-2xl font-serif leading-relaxed">山形・七日町で出逢う、<br>一期一会の本格フレンチ</h2>
+          <p class="text-sm md:text-base opacity-90 leading-loose">
+            最新鋭の調理器具と、世界を渡り歩いたシェフの感性。<br>
+            肩肘張らない「カジュアル」の枠を超えた、<br>
+            驚きと感動がここにあります。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 text-white text-center">
+      <p class="text-[10px] tracking-[0.4em] mb-3">SCROLL</p>
+      <div class="decorative-line"></div>
+    </div>
+  </header>
+
+  <!-- CTA 1 -->
+  <div class="relative z-20 -mt-12 container mx-auto px-4">
+    <div class="bg-white shadow-2xl rounded-sm p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 border-b-4 border-gold">
+      <div class="text-center md:text-left">
+        <p class="text-gold text-sm font-bold tracking-widest mb-1 italic">Reservation</p>
+        <h3 class="text-lg md:text-xl font-serif font-bold">至福のひとときをご予約ください</h3>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+        <a href="tel:023-676-8100" class="bg-stone-900 text-white px-8 py-4 text-center font-bold hover:bg-stone-800 transition flex items-center justify-center whitespace-nowrap">
+          <i class="fas fa-phone mr-2"></i> 023-676-8100
+        </a>
+        <a href="https://hitosara.com/0006126412/" target="_blank" rel="noopener" class="bg-gold text-white px-6 py-4 text-center font-bold hover:opacity-90 transition whitespace-nowrap">
+          WEB予約（ヒトサラ）
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Concept -->
+  <section class="py-20 md:py-40">
+    <div class="container mx-auto px-6 text-center">
+      <span class="text-gold font-serif block mb-4 italic">Concept</span>
+      <h2 class="text-2xl md:text-4xl font-serif mb-10 leading-relaxed">
+        「お値段もお手頃で、美味しい。<br class="hidden md:block">そして、心に響くボリューム。」
+      </h2>
+      <div class="max-w-2xl mx-auto text-stone-600 leading-loose text-sm md:text-base text-left sm:text-center">
+        <p class="mb-8">
+          フレンチという芸術を、もっと身近に。<br class="hidden sm:block">
+          店主自らが厳選した旬の素材を、最新のウォーターバスや溶岩石グリラーで丁寧に仕上げる。
+          それは、作り手と食するあなたとの、料理を通した静かな対話です。
+        </p>
+        <div class="decorative-line opacity-30"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 看板料理 -->
+  <section class="pb-20 md:pb-24">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-stretch">
+        <div class="w-full md:w-3/5">
+          <img src="images/poware2.png" alt="料理の一皿" class="w-full h-64 md:h-full object-cover" loading="lazy">
+        </div>
+        <div class="w-full md:w-2/5 bg-white p-6 sm:p-8 md:p-14 flex flex-col justify-center border-t md:border-t-0 md:border-l border-stone-100">
+          <h3 class="text-xl md:text-2xl font-serif mb-6 border-b border-gold pb-4">看板料理：真鱈のポワレ</h3>
+          <p class="text-stone-600 text-sm leading-loose">
+            山形の暗い夏、そして厳しい冬。季節ごとの「最も美味しい状態」で届く真鱈を、皮目はパリッと、身は驚くほどふっくらと。
+            「フランス料理は生きる楽しみ」だと感じていただける、渾身の一皿です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="py-20 md:py-24 bg-stone-100/70 border-y border-stone-200">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16">
+        <span class="text-gold font-serif block mb-2 tracking-[0.3em] text-sm font-bold">COMING SOON</span>
+        <h2 class="text-2xl md:text-4xl font-serif font-bold mb-4">これから始まる、新しいおもてなし</h2>
+        <p class="text-stone-600 text-sm">お客様の声から生まれた、お店をもっと楽しむためのアイデア。準備中の新サービスをご紹介します。</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
+        <div class="bg-white p-6 md:p-8 border border-stone-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-gold text-white text-[10px] tracking-widest px-3 py-1 font-bold">準備中</div>
+          <div>
+            <div class="text-gold text-2xl mb-4"><i class="fas fa-utensils"></i></div>
+            <h3 class="font-serif text-lg md:text-xl font-bold mb-3">おひとり様専用<br>アラカルト盛り合わせ</h3>
+            <p class="text-stone-600 text-xs leading-relaxed">「少しずつ色々な前菜やメインを味わいたい」というお声にお応えし、お一人様でも気兼ねなくご注文いただける贅沢な小皿のペアリングプレートを開発中。</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 text-[11px] text-stone-400"><i class="far fa-clock mr-1"></i> 近日公開予定</div>
+        </div>
+        <div class="bg-white p-6 md:p-8 border border-stone-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-stone-400 text-white text-[10px] tracking-widest px-3 py-1 font-bold">検討中</div>
+          <div>
+            <div class="text-gold text-2xl mb-4"><i class="fas fa-gift"></i></div>
+            <h3 class="font-serif text-lg md:text-xl font-bold mb-3">記念日を彩る<br>特製デザートプレート演出</h3>
+            <p class="text-stone-600 text-xs leading-relaxed">お誕生日や大切な日のサプライズに。メッセージとともに音と光で演出する、思い出に残る特別なデザートコースのオプションサービス。</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 text-[11px] text-stone-400"><i class="far fa-clock mr-1"></i> リニューアル時実装予定</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chef -->
+  <section class="py-20 md:py-24 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 md:gap-12">
+        <div class="w-full md:w-1/2 md:text-right">
+          <span class="text-gold font-serif block mb-2 italic">Chef Story</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 md:mb-8">藤原 仁</h2>
+          <div class="space-y-5 text-stone-700 text-sm leading-loose">
+            <p>山形・横浜・東京・そしてオーストラリアへ。多種多様な食文化に触れ、各国の厨房で腕を磨いた経験が、私の料理の礎となっています。</p>
+            <p>2019年、山形市七日町に「ラミ・デュ・ヴァン・エフ（ワインの友・F）」を開店。特別な日だけでなく、日常の中で「本当に美味しいフレンチ」を愉しめる場所を作りたい。その想いは今も変わりません。</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 relative">
+          <div class="bg-white p-3 md:p-4 shadow-xl">
+            <img src="images/chef.png" alt="キッチンの風景" class="aspect-[4/3] md:aspect-[3/4] object-cover w-full" loading="lazy">
+          </div>
+          <div class="hidden md:block absolute -top-10 -left-10 w-40 h-40 border-l border-t border-gold opacity-30"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- 口コミ -->
+  <section class="py-20 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 max-w-5xl mx-auto items-center">
+        <div class="space-y-12 pl-6 md:pl-0">
+          <div class="relative">
+            <i class="fas fa-quote-left text-4xl text-gold opacity-20 absolute -top-6 -left-6"></i>
+            <p class="font-serif text-base md:text-lg leading-relaxed italic">「フランス料理は久しぶりでしたが、食すことが生きる上でこんなにも楽しみなのだと感じました。一言で言えば、感動です！」</p>
+            <p class="text-right text-xs text-stone-400 mt-4">— 山形の夏に感動されたお客様</p>
+          </div>
+          <div class="relative">
+            <i class="fas fa-quote-left text-4xl text-gold opacity-20 absolute -top-6 -left-6"></i>
+            <p class="font-serif text-base md:text-lg leading-relaxed italic">「一品一品が芸術！そして驚くほどリーズナブル。本当に良い素材を丁寧に扱っているのがわかります。」</p>
+            <p class="text-right text-xs text-stone-400 mt-4">— グルメなお客様より</p>
+          </div>
+        </div>
+        <div class="bg-stone-50 p-8 md:p-10 border border-stone-100 rounded-sm">
+          <h3 class="text-lg md:text-xl font-serif mb-6 text-gold">カジュアルに、贅沢を。</h3>
+          <ul class="space-y-4 text-sm text-stone-600">
+            <li class="flex items-start"><i class="fas fa-check text-gold mr-3 mt-1.5"></i> 普段着でOK、お一人様大歓迎</li>
+            <li class="flex items-start"><i class="fas fa-check text-gold mr-3 mt-1.5"></i> 山形駅から徒歩圏内の好立地</li>
+            <li class="flex items-start"><i class="fas fa-check text-gold mr-3 mt-1.5"></i> 完全禁煙で心地よい空気感</li>
+            <li class="flex items-start"><i class="fas fa-check text-gold mr-3 mt-1.5"></i> 接待や記念日に最適な全23席</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最終CTA -->
+  <section class="py-20 md:py-24 bg-stone-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-40">
+      <img src="images/wine.png" alt="" class="w-full h-full object-cover" loading="lazy">
+    </div>
+    <div class="relative z-10 container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-serif mb-6 md:mb-8 leading-tight">心おきなく、<br>ワインと美食の対話を。</h2>
+      <p class="mb-10 text-stone-300 text-sm md:text-base">ご予約は、お電話またはWEBサイトより承ります。</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 max-w-md sm:max-w-none mx-auto">
+        <a href="tel:023-676-8100" class="border-2 border-gold px-10 py-4 md:py-5 text-lg md:text-xl font-serif font-bold hover:bg-gold transition bg-stone-900/50">
+          <i class="fas fa-phone mr-3"></i>023-676-8100
+        </a>
+        <a href="https://hitosara.com/0006126412/" target="_blank" rel="noopener" class="bg-gold px-10 py-4 md:py-5 text-lg md:text-xl font-serif font-bold hover:opacity-90 transition">
+          WEB予約
+        </a>
+      </div>
+    </div>
+  </section>
+
+ <!-- フッター -->
+  <footer class="py-16 md:py-20 bg-white border-t border-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-10 md:gap-12">
+        <div class="space-y-6 md:w-1/2">
+          <h2 class="text-2xl md:text-3xl font-serif italic tracking-tighter">L'ami du Vin F</h2>
+          <address class="not-italic text-stone-600 text-sm space-y-3">
+            <p class="flex"><i class="fas fa-map-marker-alt text-gold w-6 mt-1.5 shrink-0"></i><span>〒990-0042 山形県山形市七日町2丁目3-9 ライトロードIn七日町 2F</span></p>
+            <p class="flex"><i class="fas fa-phone text-gold w-6 mt-1.5 shrink-0"></i><a href="tel:023-676-8100">023-676-8100</a></p>
+            <p class="flex"><i class="fas fa-clock text-gold w-6 mt-1.5 shrink-0"></i><span>火〜日: ランチ &amp; ディナー（月曜定休）</span></p>
+            <p class="flex"><i class="fas fa-wine-glass-alt text-gold w-6 mt-1.5 shrink-0"></i><span>カジュアルフレンチ / ワインバー / 日本酒</span></p>
+          </address>
+          <div class="flex gap-5">
+            <a href="https://www.instagram.com/lamiduvinf/" target="_blank" rel="noopener" aria-label="Instagram" class="text-stone-400 hover:text-gold transition text-2xl"><i class="fab fa-instagram"></i></a>
+            <a href="https://lamiduvin-f.com/" target="_blank" rel="noopener" aria-label="Official Website" class="text-stone-400 hover:text-gold transition text-2xl"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 h-72 md:h-auto md:min-h-[320px] bg-stone-100 rounded-sm overflow-hidden">
+          <iframe title="店舗の地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.17750242221!2d140.33807137478001!3d38.25218908451779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb73e1c672d0f%3A0x6c4a13c4aee2a5c8!2z44Op44Of44O744OH44Ol44O744O044Kh44Oz44O744Ko44OV!5e0!3m2!1sja!2sjp!4v1770351037375!5m2!1sja!2sjp" class="w-full h-full border-0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <p class="text-center mt-16 text-stone-400 text-[10px] tracking-widest">&copy; L'ami du Vin F All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- スマホ用 固定予約バー -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-50 flex shadow-[0_-2px_10px_rgba(0,0,0,0.15)]" style="padding-bottom: env(safe-area-inset-bottom, 0px); background:#1c1917;">
+    <a href="tel:023-676-8100" class="flex-1 text-white text-center py-3 text-sm font-bold"><i class="fas fa-phone mr-2"></i>電話予約</a>
+    <a href="https://hitosara.com/0006126412/" target="_blank" rel="noopener" class="flex-1 bg-gold text-white text-center py-3 text-sm font-bold">WEB予約</a>
+  </div>
+  <div class="md:hidden h-14"></div>
+
+</body>
+</html>
