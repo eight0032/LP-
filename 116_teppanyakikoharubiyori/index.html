@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>TEPPANYAKI 小春日和 | 岩手県北上市の隠れ家鉄板焼き・ステーキ</title>
+    <meta name="description" content="岩手県北上市常盤台の一軒家鉄板焼き。九州産A4黒毛和牛を目の前で焼き上げる特等席。記念日・お祝いにどうぞ。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { gold: '#c5a059', 'dark-bg': '#121212', 'soft-white': '#fffcf9' },
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #fffcf9; color: #222; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+        .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+        /* 本文中の不自然な折り返しを防ぐ（対応ブラウザのみ） */
+        .keep { word-break: auto-phrase; line-break: strict; }
+        .hero-img { transition: transform 20s linear; }
+        .hero-zoom:hover .hero-img { transform: scale(1.1); }
+        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine::after {
+            content: ""; position: absolute; top: -50%; left: -150%; width: 200%; height: 200%;
+            background: rgba(255,255,255,.2); transform: rotate(45deg); transition: .5s;
+        }
+        .btn-shine:hover::after { left: 150%; }
+        /* iPhoneのホームバー対策 */
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .hero-img, .btn-shine::after { transition: none; }
+            .animate-bounce { animation: none; }
+        }
+    </style>
+</head>
+<body class="font-sans pb-20 md:pb-0">
+
+    <!-- ファーストビュー -->
+    <header class="relative min-h-[100svh] overflow-hidden flex items-center justify-center hero-zoom">
+        <img src="images/steak.png"
+             alt="鉄板焼きの店内" class="hero-img absolute inset-0 w-full h-full object-cover" fetchpriority="high">
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <!-- キャッチコピー（縦書き）：PCのみ表示 -->
+        <div class="absolute right-8 lg:right-20 top-[60%] -translate-y-1/2 z-20 hidden md:block">
+            <h2 class="vertical-text font-serif text-white text-2xl lg:text-3xl font-black tracking-[0.5em] leading-relaxed opacity-90">
+                岩手の恵みを、<br><span class="text-gold">特等席</span>で。
+            </h2>
+        </div>
+
+        <div class="relative z-10 text-center text-white px-5 py-20 w-full">
+            <div class="inline-block border-t border-b border-white/40 py-2 mb-6 tracking-[0.2em] md:tracking-[0.3em] text-xs sm:text-sm md:text-base">
+                北上市 常盤台の隠れ家鉄板焼き
+            </div>
+            <h1 class="font-serif text-6xl sm:text-7xl md:text-8xl font-black mb-6 md:mb-8 drop-shadow-2xl tracking-wide">
+                小春日和
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl mb-10 font-light tracking-widest">幸福なひと皿を、あなたに。</p>
+
+            <a href="#cta" class="btn-shine bg-gold inline-block w-full max-w-xs sm:w-auto px-8 sm:px-12 py-4 sm:py-5 rounded-sm text-lg sm:text-xl font-bold tracking-widest shadow-2xl text-black">
+                <i class="fas fa-calendar-check mr-3"></i>御予約はこちら
+            </a>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- シズル感セクション -->
+    <section class="py-16 md:py-24 bg-white border-b border-stone-100">
+        <div class="container mx-auto px-5 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-16 h-16 md:w-24 md:h-24 border-t-4 border-l-4 border-gold z-0"></div>
+                <div class="relative z-10 rounded-sm shadow-2xl overflow-hidden bg-stone-200 aspect-[4/3]">
+                    <img src="images/steak.jpg"
+                         alt="鉄板の上で焼き上がる黒毛和牛" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <!-- PC：画像に重ねる / スマホ：画像の下に配置 -->
+                <div class="mt-4 md:mt-0 md:absolute md:-bottom-8 md:-right-8 bg-gold p-5 md:p-8 font-serif z-20 shadow-xl text-center md:text-left">
+                    <p class="text-xl md:text-2xl leading-relaxed text-black font-bold">溢れる肉汁、<br class="hidden md:block">弾ける香り。</p>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 keep">
+                <span class="text-gold font-bold tracking-tighter block mb-2 uppercase">Experience</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight">五感を揺さぶる<br>究極のライブ調理。</h2>
+                <p class="text-stone-600 leading-loose mb-6 text-[15px] md:text-base">
+                    鉄板の上で鮮やかに焼き上げられる九州産A4黒毛和牛。<br class="hidden sm:block">
+                    立ち昇る香ばしい香りと、肉が焼ける心地よい音。<br class="hidden sm:block">
+                    料理人の手さばきを目の前で楽しむ特等席が、あなたの日常を少しだけ特別なものに変えます。
+                </p>
+                <div class="flex items-center gap-4 py-4 border-t border-stone-200">
+                    <div class="shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <p class="font-bold text-stone-800">最後の一切れまで、感動の連続を。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴 -->
+    <section class="py-16 md:py-24 bg-stone-100">
+        <div class="container mx-auto px-5">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-4">小春日和が選ばれる理由</h2>
+                <div class="w-20 h-1 bg-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+                <div class="bg-white p-6 md:p-8 rounded-sm shadow-md md:hover:shadow-xl transition-shadow group">
+                    <div class="text-gold text-3xl md:text-4xl mb-4 md:mb-6 group-hover:scale-110 transition"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold mb-3 md:mb-4">地元岩手へのこだわり</h3>
+                    <p class="text-stone-500 text-sm leading-relaxed keep">生産者の顔が見える仕入れ。岩手の旬を活かした、その時期一番のメニューをご提案します。</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-sm shadow-md md:hover:shadow-xl transition-shadow group">
+                    <div class="text-gold text-3xl md:text-4xl mb-4 md:mb-6 group-hover:scale-110 transition"><i class="fas fa-fire"></i></div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold mb-3 md:mb-4">九州産A4黒毛和牛</h3>
+                    <p class="text-stone-500 text-sm leading-relaxed keep">旨みの豊かな赤身肉や、とろけるサーロイン。厳選された最高級の肉質を焼き上げます。</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-sm shadow-md md:hover:shadow-xl transition-shadow group">
+                    <div class="text-gold text-3xl md:text-4xl mb-4 md:mb-6 group-hover:scale-110 transition"><i class="fas fa-wine-glass-alt"></i></div>
+                    <h3 class="font-serif text-lg md:text-xl font-bold mb-3 md:mb-4">一軒家の隠れ家空間</h3>
+                    <p class="text-stone-500 text-sm leading-relaxed keep">閑静な住宅街に佇む一軒家。夫婦のお祝いや大切な記念日に最適な落ち着いた雰囲気です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="py-16 md:py-24 bg-white border-b border-stone-100">
+        <div class="container mx-auto px-5 max-w-5xl">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-gold font-bold tracking-widest text-xs uppercase block mb-2">New Service Project</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-black mb-4">Coming Soon</h2>
+                <p class="text-stone-500 text-sm md:text-base">お客様の声から生まれた、次なるおもてなしの構想。</p>
+                <div class="w-20 h-1 bg-gold mx-auto mt-4"></div>
+            </div>
+
+            <div class="bg-stone-50 rounded-sm border border-stone-200 p-6 pt-14 md:p-12 relative overflow-hidden shadow-sm">
+                <div class="absolute top-4 right-4 md:top-6 md:right-6 bg-gold text-black text-[11px] md:text-xs font-bold px-3 py-1 tracking-widest">
+                    開発中・近日公開
+                </div>
+
+                <div class="max-w-2xl keep">
+                    <span class="text-xs font-bold text-stone-400 block mb-2">ランチメニュー・ナビゲーター</span>
+                    <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-5 md:mb-6 text-stone-800 leading-snug">
+                        「迷わず、一番美味しい一皿に巡り会う」<br>スマートランチガイド
+                    </h3>
+                    <p class="text-stone-600 leading-relaxed mb-8 text-sm md:text-base">
+                        「初めて来たけれどどれを頼むべき？」「今日はとにかくがっつりお肉を楽しみたい！」そんなお客様の気分やシチュエーションに合わせて、その日の最適解をエスコートする新しいご案内システムを準備中です。
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 pt-6 border-t border-stone-200">
+                    <div class="bg-white p-5 md:p-6 rounded-sm border-l-4 border-gold">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-crown text-gold"></i>
+                            <h4 class="font-serif font-bold text-stone-900">初めてなら、これ</h4>
+                        </div>
+                        <p class="text-xs md:text-[13px] text-stone-500 leading-relaxed keep">お店の魅力を余すことなく体験できる、店主イチオシの王道コースや定番ランチの組み合わせをスムーズにナビゲート。</p>
+                    </div>
+                    <div class="bg-white p-5 md:p-6 rounded-sm border-l-4 border-stone-800">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-fire text-stone-800"></i>
+                            <h4 class="font-serif font-bold text-stone-900">がっつりなら、これ</h4>
+                        </div>
+                        <p class="text-xs md:text-[13px] text-stone-500 leading-relaxed keep">お肉のボリュームアップや、ジューシーな肉汁を心ゆくまで堪能できる満足度抜群のボリューム特化メニューをピンポイントで提案。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 口コミ -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-5 text-center mb-10 md:mb-16">
+            <h2 class="font-serif text-4xl md:text-5xl font-black mb-6 leading-tight">
+                お客様の<br><span class="text-gold italic">感動</span>の記録。
+            </h2>
+            <p class="text-stone-500 text-sm md:text-base">毎年、記念日に訪れてくださるお客様の声を集めました。</p>
+        </div>
+
+        <div class="container mx-auto px-5 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 max-w-5xl">
+            <div class="bg-stone-50 p-6 md:p-8 rounded-r-3xl border-l-8 border-gold shadow-sm">
+                <div class="flex flex-wrap items-center gap-2 mb-4">
+                    <span class="text-yellow-400 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </span>
+                    <span class="text-xs font-bold bg-gold text-black px-2 py-1">2025年4月利用</span>
+                </div>
+                <p class="text-base md:text-lg font-serif italic leading-relaxed text-stone-700 keep">「最後の一切れのお肉を頬み込むのがもったいないなんて思ってしまいました。妻の誕生日でしたが、自分も日常から解き放たれました。」</p>
+            </div>
+            <div class="bg-stone-50 p-6 md:p-8 rounded-r-3xl border-l-8 border-gold shadow-sm">
+                <div class="flex items-center mb-4 text-yellow-400 text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star text-stone-200"></i>
+                </div>
+                <p class="text-base md:text-lg font-serif italic leading-relaxed text-stone-700 keep">「目の前でパンも鉄板で焼くのはビックリ！胡麻のドレッシングや、ももすけ（赤かぶ）のスープなど、全てにおいて大満足です。」</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 店主ストーリー -->
+    <section class="py-16 md:py-24 bg-dark-bg text-white">
+        <div class="container mx-auto px-5">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                <div class="w-full md:w-1/2 order-2 md:order-1">
+                    <div class="rounded-sm overflow-hidden border border-white/10 bg-stone-800 aspect-[4/3]">
+                        <img src="images/chef.png"
+                             alt="鉄板焼きを調理する料理人" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 order-1 md:order-2 keep">
+                    <h2 class="font-serif text-2xl sm:text-3xl mb-6 md:mb-8 border-b border-gold pb-4 inline-block tracking-widest text-gold">店主・十良淵健二</h2>
+                    <p class="text-stone-400 leading-loose mb-6 text-[15px] md:text-base">
+                        2018年。北上市の静かな住宅街に、一軒の鉄板焼き屋が産声を上げました。店名は「小春日和」。<br>
+                        「お客様に幸福なひと皿を届けたい」という一途な思いで、毎日カウンターの前に立っています。
+                    </p>
+                    <p class="text-stone-400 leading-loose text-[15px] md:text-base">
+                        岩手の豊かな土壌が育んだ食材。それを最高のタイミングで焼き上げる。派手な演出だけでなく、食材への敬意を込めた一皿をお楽しみください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約 & アクセス -->
+    <section id="cta" class="py-16 md:py-24 bg-white scroll-mt-4">
+        <div class="container mx-auto px-5 max-w-4xl text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">至福のひとときを、<br>ご予約ください。</h2>
+            <p class="text-stone-500 mb-10 md:mb-12 text-sm md:text-base tracking-widest uppercase">Reservation &amp; Access</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mb-12 md:mb-16 text-left">
+                <div class="bg-white border border-gold p-8 md:p-10 flex flex-col items-center justify-center">
+                    <p class="text-sm mb-4 text-stone-500">24時間受付（フォーム）</p>
+                    <a href="https://shop.kitakamikoharubiyori.jp/p/00005" target="_blank" rel="noopener"
+                       class="btn-shine bg-gold text-black px-8 py-4 rounded-sm font-bold w-full text-center hover:opacity-90 transition">
+                        <i class="fas fa-envelope mr-2"></i>WEBから予約
+                    </a>
+                </div>
+                <div class="bg-stone-900 text-white p-8 md:p-10 flex flex-col items-center justify-center">
+                    <p class="text-sm mb-4 text-stone-400">お電話でのご相談</p>
+                    <a href="tel:0197-75-5194" class="text-2xl sm:text-3xl font-bold hover:text-gold transition mb-2">
+                        <i class="fas fa-phone text-gold text-xl mr-2"></i>0197-75-5194
+                    </a>
+                    <p class="text-xs text-stone-500">定休日：日・月曜日 / 営業時間内受付</p>
+                </div>
+            </div>
+
+            <div class="text-left bg-white rounded-sm border border-stone-100 shadow-sm overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-6 md:p-12">
+                        <h3 class="font-serif font-bold text-lg md:text-xl mb-6 flex items-center uppercase tracking-widest text-stone-800">
+                            <span class="w-8 h-px bg-gold mr-4"></span>Location
+                        </h3>
+                        <div class="text-sm space-y-4 text-stone-700">
+                            <div>
+                                <p class="font-bold text-stone-900">TEPPANYAKI 小春日和</p>
+                                <p>〒024-0012 岩手県北上市常盤台１丁目２５−１６</p>
+                            </div>
+                            <div class="bg-stone-50 p-4 rounded text-xs text-stone-500 leading-relaxed">
+                                <i class="fas fa-info-circle mr-2 text-gold"></i>住宅街の中にございます。道に迷われた際はお気軽にお電話ください。
+                            </div>
+                            <div class="pt-4 border-t border-stone-100">
+                                <p class="text-xs text-stone-400 mb-1">定休日</p>
+                                <p class="font-bold">日曜日・月曜日</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-72 sm:h-80 lg:h-auto lg:min-h-[360px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.2923003688743!2d141.11691717484123!3d39.30429732259482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f435840213be1%3A0xa145f53e6ac5a8a!2zVEVQUEFOWUFLSSDlsI_mmKXml6Xlkowo6YmE5p2_54S844GN772l44K544OG44O844KtKQ!5e0!3m2!1sja!2sjp!4v1770343232660!5m2!1sja!2sjp"
+                                width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" title="小春日和の地図"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-stone-50 border-t border-stone-100 text-center">
+        <p class="text-xs text-stone-400 tracking-widest uppercase mb-2">&copy; 2025 TEPPANYAKI KOHARUBIYORI</p>
+        <p class="text-[10px] text-stone-400 px-5 leading-relaxed max-w-xl mx-auto">
+            当サイトで使用されている画像はイメージです。実際のお料理・店内の様子とは細部が異なる場合がございます。
+        </p>
+    </footer>
+
+    <!-- スマホ用 固定予約バー -->
+    <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-t border-stone-200 flex safe-bottom">
+        <a href="tel:0197-75-5194" class="flex-1 py-3 text-center text-sm font-bold text-stone-800 border-r border-stone-200">
+            <i class="fas fa-phone text-gold mr-1"></i>電話する
+        </a>
+        <a href="https://thebase.com/inquiry/koharu2018-base-shop" target="_blank" rel="noopener"
+           class="flex-1 py-3 text-center text-sm font-bold bg-gold text-black">
+            <i class="fas fa-calendar-check mr-1"></i>WEB予約
+        </a>
+    </div>
+
+</body>
+</html>
