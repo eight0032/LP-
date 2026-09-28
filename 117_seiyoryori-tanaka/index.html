@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西洋料理 TANAKA | 山形市・本物の西洋料理を味わう大人の空間</title>
+<meta name="description" content="山形市七日町の西洋料理店。ホテル経験34年のシェフが、記念日を一生の記憶に変えます。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { gold: { DEFAULT: '#b39159', dark: '#8e7141' }, 'deep-black': '#1a1510' },
+      fontFamily: {
+        serif: ['"Noto Serif JP"', 'serif'],
+        sans: ['"Noto Sans JP"', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { color: #332b21; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+  .btn-premium {
+    background: linear-gradient(135deg, #d4af37 0%, #b39159 100%);
+    box-shadow: 0 8px 18px rgba(179,145,89,.3);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(179,145,89,.5); }
+  .text-stroke { -webkit-text-stroke: 1px #b39159; color: transparent; }
+  .hero-visual {
+    background-image: linear-gradient(to right, rgba(0,0,0,.8) 0%, rgba(0,0,0,.45) 100%),
+      url('images/beef.png');
+    background-size: cover; background-position: center;
+  }
+  .map-container { position: relative; width: 100%; height: 320px; }
+  .map-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  @media (min-width: 1024px) { .map-container { height: 100%; min-height: 420px; } }
+</style>
+</head>
+<body class="font-sans bg-white">
+
+<!-- 1. FV -->
+<header class="hero-visual relative flex items-center min-h-[100svh] overflow-hidden">
+  <div class="container mx-auto px-5 md:px-12 py-16 relative z-10">
+    <div class="max-w-3xl">
+      <div class="flex flex-wrap items-center gap-3 mb-5">
+        <span class="bg-gold text-white text-xs px-3 py-1 font-bold">山形・七日町</span>
+        <span class="text-white/80 tracking-widest text-xs sm:text-sm uppercase">Yamagata Nanokamachi</span>
+      </div>
+      <h1 class="font-serif text-white text-[2rem] sm:text-5xl md:text-6xl font-black leading-tight mb-6">
+        <span class="block text-2xl sm:text-4xl font-normal mb-2 text-gold">ごまかしのない本物を。</span>
+        五感を揺さぶる、<br>最高の一皿。
+      </h1>
+      <p class="text-white/90 text-base sm:text-lg md:text-2xl mb-8 font-light leading-relaxed">
+        ホテル経験34年。厚生労働大臣表彰受賞シェフが、<br class="hidden md:block">
+        あなたの「特別な日」を一生の記憶に変える。
+      </p>
+      <a href="#cta" class="btn-premium block sm:inline-block w-full sm:w-auto text-white text-center py-4 sm:py-5 px-10 rounded-full font-bold text-lg sm:text-xl">
+        今すぐ席を予約する
+      </a>
+    </div>
+  </div>
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-1 bg-white p-4 shadow-2xl">
+    <div class="border border-gold p-4 text-center">
+      <p class="text-xs font-bold text-gold uppercase">Experience</p>
+      <p class="text-3xl font-black">34<span class="text-sm">年</span></p>
+    </div>
+    <div class="border border-gold p-4 text-center">
+      <p class="text-xs font-bold text-gold uppercase">Review</p>
+      <p class="text-3xl font-black">4.0<span class="text-sm">★</span></p>
+    </div>
+  </div>
+</header>
+
+<!-- 2. CTA 1回目 -->
+<section id="cta" class="bg-deep-black py-10 border-y-4 border-gold scroll-mt-4">
+  <div class="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+    <div class="text-white text-center md:text-left">
+      <p class="text-gold font-bold mb-1 text-sm sm:text-base">【予約困難】2ヶ月先まで埋まることもございます</p>
+      <h2 class="font-serif text-xl sm:text-2xl md:text-3xl font-bold">至福の「ステーキランチ」を、今すぐ確保。</h2>
+    </div>
+    <a href="tel:0236730933" class="w-full md:w-auto justify-center bg-white text-deep-black font-black py-4 px-8 rounded-lg text-xl sm:text-2xl flex items-center gap-3 hover:bg-gold hover:text-white transition-all shadow-xl">
+      <i class="fas fa-phone-alt animate-pulse"></i> 023-673-0933
+    </a>
+  </div>
+</section>
+
+<!-- 3. シズル感 -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+      <div class="md:w-1/2 w-full relative">
+        <img src="images/steak.png" alt="極上のステーキ" loading="lazy" class="w-full h-auto rounded-2xl shadow-2xl relative z-10">
+        <div class="absolute -bottom-6 -right-6 bg-gold text-white p-8 rounded-2xl hidden md:block z-20">
+          <p class="text-4xl font-black mb-1">絶妙</p>
+          <p class="text-sm tracking-tighter">火入れの魔術</p>
+        </div>
+      </div>
+      <div class="md:w-1/2">
+        <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 leading-tight">
+          「行儀悪く、箸でガツガツやりたくなる」<br>
+          <span class="text-gold text-xl sm:text-3xl md:text-4xl">本物のソースと肉。</span>
+        </h2>
+        <p class="text-gray-600 text-base sm:text-lg leading-relaxed mb-8">
+          口コミで「抜群の美味しさ、コクがあってたまらない」と絶賛される冷製スープから始まり、赤ワインソースが艶やかに絡む柔らかな肉。添えられた蒸し野菜一つとっても、素材の甘みが際立ちます。
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="border-l-4 border-gold pl-4 bg-gray-50 py-2">
+            <p class="font-bold">ポテトの冷製スープ</p>
+            <p class="text-sm text-gray-500">圧倒的人気を誇る逸品</p>
+          </div>
+          <div class="border-l-4 border-gold pl-4 bg-gray-50 py-2">
+            <p class="font-bold">オージー牛140g</p>
+            <p class="text-sm text-gray-500">満足感を追求したボリューム</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. シェフの権威性 -->
+<section class="bg-gray-100 py-16 md:py-24">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="bg-white p-6 sm:p-8 md:p-16 rounded-3xl shadow-xl flex flex-col md:flex-row gap-8 md:gap-12">
+      <div class="md:w-2/5">
+        <div class="relative">
+          <img src="images/chef.png" alt="田中シェフ" loading="lazy" class="w-full h-64 md:h-auto object-cover rounded-xl filter grayscale contrast-125 brightness-90 shadow-2xl">
+          <div class="absolute inset-0 bg-gold/10 rounded-xl pointer-events-none"></div>
+        </div>
+      </div>
+      <div class="md:w-3/5">
+        <span class="inline-block border-2 border-gold text-gold font-bold px-4 py-1 mb-5 uppercase tracking-widest text-xs">Excellence</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-black mb-4">ごまかしのない西洋料理を。</h2>
+        <p class="text-lg md:text-xl italic text-gray-400 mb-6 tracking-widest uppercase">Chef Hiroaki Tanaka</p>
+        <div class="space-y-5 text-gray-700 leading-relaxed text-base md:text-lg">
+          <p>「お客様を騙すような真似はしたくない」<br>田中浩明シェフが守り抜くのは、ホテルの最前線で34年かけて磨き上げた、基礎に忠実な技術です。</p>
+          <p>歴史を感じさせる七日町の建物の中で、ジャズの音色と共に供されるのは、最新の流行ではなく、時代に左右されない「本物の味」。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 悩みと言語化 -->
+<section class="py-16 md:py-24 bg-deep-black text-white relative overflow-hidden">
+  <div class="container mx-auto px-5 md:px-6 relative z-10">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl font-black mb-4 leading-snug">あなたはまだ、<br class="md:hidden">「本当の西洋料理」を知らない。</h2>
+      <p class="text-gold font-bold tracking-widest uppercase text-xs">Why Choose Tanaka?</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-12">
+      <div class="flex gap-4 sm:gap-6">
+        <span class="text-4xl sm:text-5xl font-black text-gold opacity-30 shrink-0">01</span>
+        <div>
+          <h3 class="font-serif text-xl sm:text-2xl font-bold mb-3">大切な記念日、お店選びで後悔していませんか？</h3>
+          <p class="text-gray-400 leading-relaxed">「静かに食事をしたいのに隣が騒がしい」「写真と実物が違う」。そんな不安はTANAKAにはありません。落ち着いた大人のための空間をお約束します。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 sm:gap-6">
+        <span class="text-4xl sm:text-5xl font-black text-gold opacity-30 shrink-0">02</span>
+        <div>
+          <h3 class="font-serif text-xl sm:text-2xl font-bold mb-3">本物の「ソースの深み」を知っていますか？</h3>
+          <p class="text-gray-400 leading-relaxed">手間を惜しまず、何時間もかけて煮込む赤ワインソース。化学調味料では出せない、本物の滋味深さがここにあります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute top-0 right-0 text-7xl md:text-9xl font-black text-white/[0.03] pointer-events-none select-none">AUTHENTIC</div>
+</section>
+
+<!-- 6. 特典・オファー -->
+<section class="py-16 md:py-24 bg-white overflow-hidden">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="border-4 md:border-8 border-gold p-6 pt-12 md:p-16 relative">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 sm:px-8 whitespace-nowrap">
+        <h2 class="font-serif text-2xl sm:text-3xl font-black uppercase tracking-tighter">Limited Offer</h2>
+      </div>
+      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+        <div class="lg:w-1/2">
+          <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-black mb-5 leading-tight">
+            <span class="text-gold">【記念日限定】</span><br>
+            特製バースデープレート<br>&amp; 絶品スープをご提供
+          </h3>
+          <p class="text-gray-600 mb-6 text-base sm:text-lg">
+            誕生日や結婚記念日でご予約の方には、シェフ特製のバースデープレートをプレゼント。さらに、口コミで大人気の「ポテトの冷製スープ」をコースの核としてご用意いたします。
+          </p>
+          <ul class="space-y-3 mb-4">
+            <li class="flex items-start font-bold text-base sm:text-xl"><i class="fas fa-check-circle text-gold mr-3 mt-1"></i>34年の技術が詰まった冷製スープ</li>
+            <li class="flex items-start font-bold text-base sm:text-xl"><i class="fas fa-check-circle text-gold mr-3 mt-1"></i>心を込めたメッセージプレート</li>
+            <li class="flex items-start font-bold text-base sm:text-xl"><i class="fas fa-check-circle text-gold mr-3 mt-1"></i>落ち着いた窓際席への優先案内</li>
+          </ul>
+        </div>
+        <div class="lg:w-1/2 w-full relative">
+          <img src="https://images.unsplash.com/photo-1513271922710-7550f522ac8d?auto=format&fit=crop&q=80&w=800" alt="バースデープレート" loading="lazy" class="w-full h-auto rounded-lg shadow-2xl">
+          <div class="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 bg-red-600 text-white font-bold py-4 px-4 sm:py-6 sm:px-6 rounded-full text-center rotate-12 shadow-xl border-4 border-white">
+            <p class="text-xs uppercase">Limited</p>
+            <p class="text-base sm:text-xl">完全予約</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-gradient-to-b from-gray-900 via-deep-black to-black text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#b39159_1px,transparent_1px)] [background-size:16px_16px]"></div>
+  <div class="container mx-auto px-5 md:px-6 relative z-10">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="bg-gold/20 border border-gold text-gold text-xs px-4 py-1.5 rounded-full font-bold uppercase tracking-widest inline-block mb-3">Coming Soon</span>
+      <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl font-black mb-4">これからの「TANAKA」の新しいおもてなし</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto font-light">お客様の声から生まれた、さらに贅沢で楽しいひとときを演出する新サービスを準備中です。</p>
+    </div>
+    <div class="max-w-4xl mx-auto bg-white/5 border border-gold/30 rounded-3xl p-6 md:p-12 backdrop-blur-md shadow-2xl">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-10">
+        <div class="md:w-1/2">
+          <div class="inline-block bg-gold text-white font-bold text-xs px-3 py-1 rounded mb-4">新サービス予告</div>
+          <h3 class="font-serif text-xl sm:text-2xl md:text-3xl font-black mb-5 leading-snug">
+            お料理に合わせて選べる、<br>
+            <span class="text-gold">「気軽に楽しむワインペアリング提案」</span>
+          </h3>
+          <p class="text-gray-300 leading-relaxed mb-5 text-sm sm:text-base">
+            「ワインに詳しくなくても、自分の好みにぴったりの一杯を見つけたい」「一皿ごとに一番合うマリアージュを気軽に体験したい」。そんなお客様の願いを叶える、新しいスマートペアリングシステム＆ソムリエ提案を準備中。
+          </p>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-start"><i class="fas fa-check text-gold mr-3 mt-1"></i>専門知識不要！スマホで簡単、今の気分に合うワイン診断</li>
+            <li class="flex items-start"><i class="fas fa-check text-gold mr-3 mt-1"></i>田中シェフのソースと最高に調和するグラスワインセット</li>
+            <li class="flex items-start"><i class="fas fa-check text-gold mr-3 mt-1"></i>お酒が苦手な方でも楽しめる自家製ノンアルペアリングも</li>
+          </ul>
+        </div>
+        <div class="md:w-1/2 w-full">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gold/20">
+            <img src="images/paring.png" alt="ワインペアリングイメージ" loading="lazy" class="w-full h-64 md:h-80 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-5">
+              <div>
+                <p class="text-gold text-xs font-bold uppercase tracking-wider mb-1">Wine Pairing Service</p>
+                <p class="text-white font-bold text-base sm:text-lg">極上のマリアージュを、もっと身近に。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="text-center mb-10 md:mb-16">
+      <h2 class="font-serif text-3xl md:text-5xl font-black mb-4">ACCESS</h2>
+      <p class="text-gold font-bold tracking-widest">店舗案内・地図</p>
+    </div>
+    <div class="flex flex-col lg:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+      <div class="lg:w-1/2 p-6 sm:p-8 md:p-12">
+        <h3 class="font-serif text-xl sm:text-2xl font-bold mb-6 border-b-2 border-gold inline-block pb-2">西洋料理 TANAKA</h3>
+        <dl class="space-y-5 text-base sm:text-lg">
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <dt class="font-black text-gold sm:w-32 shrink-0"><i class="fas fa-map-marker-alt mr-2"></i>住所</dt>
+            <dd class="text-gray-600">〒990-0042<br>山形県山形市七日町2丁目1-3</dd>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4 border-t border-gray-100 pt-5">
+            <dt class="font-black text-gold sm:w-32 shrink-0"><i class="fas fa-phone mr-2"></i>電話番号</dt>
+            <dd class="text-gray-600 font-bold"><a href="tel:0236730933">023-673-0933</a></dd>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4 border-t border-gray-100 pt-5">
+            <dt class="font-black text-gold sm:w-32 shrink-0"><i class="fas fa-clock mr-2"></i>営業時間</dt>
+            <dd class="text-gray-600">ランチ・ディナー<br><span class="text-xs">※予約状況により変動いたします。</span></dd>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4 border-t border-gray-100 pt-5">
+            <dt class="font-black text-gold sm:w-32 shrink-0"><i class="fas fa-calendar-times mr-2"></i>定休日</dt>
+            <dd class="text-gray-600">水曜日・木曜日</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="lg:w-1/2 bg-gray-200">
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.18012800107!2d140.33625517477998!3d38.25212818452147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb60396943975%3A0x9a1b8fcacd6c5c30!2z6KW_5rSL5paZ55CGIFRBTkFLQQ!5e0!3m2!1sja!2sjp!4v1770344188370!5m2!1sja!2sjp" title="西洋料理TANAKAの地図" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 最終CTA -->
+<section class="py-16 md:py-24 bg-deep-black text-white text-center">
+  <div class="container mx-auto px-5 md:px-6 max-w-3xl">
+    <h2 class="font-serif text-3xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8 leading-tight">
+      今すぐ、<br><span class="text-gold text-stroke">山形の最高傑作</span>を味わう。
+    </h2>
+    <p class="text-base sm:text-xl text-gray-400 mb-10 md:mb-12">お席の確保は、お電話または公式サイトから。<br>※現在、ランチの予約が大変混み合っております。</p>
+    <div class="grid gap-5">
+      <a href="tel:0236730933" class="btn-premium py-6 md:py-8 rounded-2xl text-2xl sm:text-3xl font-black flex flex-col items-center justify-center">
+        <span class="text-sm font-normal mb-1">お電話でのご予約はこちら</span>
+        <span><i class="fas fa-phone-alt mr-2"></i>023-673-0933</span>
+      </a>
+      <a href="http://www.seiyoryori-tanaka.com/" target="_blank" rel="noopener" class="bg-white text-black py-5 md:py-6 rounded-2xl text-lg sm:text-xl font-bold hover:bg-gold hover:text-white transition-all shadow-xl">
+        公式サイトで詳細を見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="bg-black py-12 md:py-16 text-center text-gray-500">
+  <div class="container mx-auto px-5 md:px-6">
+    <h2 class="font-serif text-white text-2xl mb-4 font-black">西洋料理 TANAKA</h2>
+    <p class="mb-6 tracking-widest text-xs sm:text-sm">Yamagata Nanokamachi Seiyoryori Tanaka</p>
+    <div class="flex justify-center gap-8 mb-10 text-2xl">
+      <a href="https://www.facebook.com/profile.php?id=100063608649166" aria-label="Facebook" class="hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+    
+    </div>
+    <p class="text-xs border-t border-white/10 pt-8">&copy; 西洋料理 TANAKA. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- スマホ用 固定予約バー -->
+<a href="tel:0236730933" class="md:hidden fixed bottom-0 inset-x-0 z-50 btn-premium text-white text-center font-bold py-3 flex items-center justify-center gap-2" style="padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));">
+  <i class="fas fa-phone-alt"></i> 電話で予約する 023-673-0933
+</a>
+<div class="md:hidden h-14 bg-black"></div>
+
+</body>
+</html>
