@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>credo | 山形、2組限定の隠れ家モダンフレンチ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: { gold: '#c2a878' } } }
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #c2a878; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Serif JP', serif;
+    background: #fdfdfc;
+    color: #1a1a1a;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    -webkit-text-size-adjust: 100%;
+  }
+  .font-serif-en { font-family: 'Playfair Display', 'Noto Serif JP', serif; }
+
+  /* 背景画像(スマホでは fixed が効かないため通常スクロール、PCのみ視差) */
+  .hero-image {
+    background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+      url('images/main.png') center / cover no-repeat;
+  }
+  .concept-image {
+    background: url('https://img.freepik.com/free-photo/chef-finishing-gourmet-dish-with-herbs_23-2148763212.jpg') center / cover no-repeat;
+  }
+  @media (min-width: 768px) and (hover: hover) {
+    .hero-image, .concept-image { background-attachment: fixed; }
+  }
+
+  .btn-outline { border: 1px solid var(--gold); color: var(--gold); transition: all .4s; }
+  .btn-outline:hover, .btn-outline:active { background: var(--gold); color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: all 1s ease-out; }
+  .reveal.active { opacity: 1; transform: none; }
+
+  @keyframes scroll-line { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
+  .animate-scroll-line { animation: scroll-line 2s infinite ease-in-out; }
+
+  .map-container { position: relative; height: 0; padding-bottom: 75%; overflow: hidden; }
+  @media (min-width: 768px) { .map-container { padding-bottom: 50%; } }
+  .map-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* スマホ固定CTAの分だけ下に余白 */
+  body { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0px); }
+  @media (max-width: 767px) { footer { padding-bottom: 6rem; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .animate-scroll-line { animation: none; }
+  }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- FV -->
+<header class="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden text-white">
+  <div class="absolute inset-0 hero-image"></div>
+  <div class="relative z-10 text-center flex flex-col items-center px-6">
+    <div class="reveal active">
+      <p class="text-lg sm:text-2xl md:text-3xl tracking-[0.3em] md:tracking-[0.6em] font-light leading-relaxed mb-10 md:mb-12">
+        山形の息吹を、<br class="sm:hidden">一皿に込めて。
+      </p>
+    </div>
+    <div class="mt-4 reveal active" style="transition-delay:.3s">
+      <p class="font-serif-en italic text-[10px] md:text-xs tracking-[0.5em] opacity-70 mb-2 uppercase">Modern French</p>
+      <h1 class="text-3xl md:text-4xl font-bold tracking-[0.4em] font-serif-en">credo</h1>
+    </div>
+  </div>
+  <div class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+    <span class="text-[10px] tracking-[0.5em] uppercase mb-3 opacity-70">Scroll</span>
+    <div class="w-px h-14 md:h-20 bg-white/30 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-scroll-line"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Concept -->
+<section class="py-20 md:py-32 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
+    <div class="reveal relative order-2 md:order-1 w-full md:w-1/2 flex justify-center">
+      <img src="images/beef.png" alt="山形食材のモダンフレンチ" loading="lazy" class="w-full max-w-md shadow-2xl">
+      <div class="absolute -bottom-8 -right-8 w-64 h-80 bg-stone-100 -z-10 hidden md:block"></div>
+    </div>
+    <div class="reveal order-1 md:order-2 md:w-1/2 flex flex-col items-start gap-6 md:gap-8">
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold tracking-[0.15em] md:tracking-[0.2em] leading-tight text-stone-800">
+        一日、二組という贅沢。
+      </h2>
+      <div class="max-w-md md:pt-4">
+        <p class="mb-8 leading-loose text-stone-600 text-[15px] md:text-base">
+          山形市鉄砲町の一角、ひっそりと佇む一軒家。<br>
+          扉を開けば、そこはあなただけのために用意された<br>
+          特別な食卓。
+        </p>
+        <p class="mb-10 md:mb-12 leading-loose text-stone-600 text-[15px] md:text-base">
+          オーナーシェフ村山優輔が追求するのは、<br>
+          フレンチの伝統的な「ソース」と、<br>
+          山形の野趣溢れる「旬」の融合。
+        </p>
+        <a href="#reservation" class="btn-outline px-10 md:px-12 py-4 inline-block font-semibold">Reserve</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Courses -->
+<section class="bg-stone-50 py-20 md:py-32 border-y border-stone-200">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14 md:mb-20">
+      <p class="font-serif-en italic text-gold tracking-widest mb-2">Menu de Saison</p>
+      <h2 class="text-2xl md:text-3xl font-bold">季節のおまかせコース</h2>
+    </div>
+    <div class="space-y-10 md:space-y-16">
+      <div class="flex flex-col md:flex-row justify-between md:items-baseline border-b border-stone-300 pb-6 md:pb-8 reveal">
+        <div>
+          <h3 class="text-lg md:text-xl font-bold mb-2">Lunch Course</h3>
+          <p class="text-sm text-stone-500 italic">ご褒美のひとときを、柔らかな光の中で</p>
+        </div>
+       
+      </div>
+      <div class="flex flex-col md:flex-row justify-between md:items-baseline border-b border-stone-300 pb-6 md:pb-8 reveal">
+        <div>
+          <h3 class="text-lg md:text-xl font-bold mb-2">Dinner Course</h3>
+          <p class="text-sm text-stone-500 italic">ソースの美学が織りなす、至高のフルコース</p>
+        </div>
+       
+      </div>
+      <div class="flex flex-col md:flex-row justify-between md:items-baseline border-b border-stone-300 pb-6 md:pb-8 reveal">
+        <div>
+          <h3 class="text-lg md:text-xl font-bold mb-2">Wine Pairing</h3>
+          <p class="text-sm text-stone-500 italic">料理に寄り添う、5種のエッセンス</p>
+        </div>
+      
+      </div>
+    </div>
+    <p class="text-center mt-10 md:mt-12 text-xs text-stone-400 leading-relaxed">※お料理の内容は仕入れ状況により毎日変わります。食材名のみを記したお品書きをお楽しみください。</p>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-20 md:py-32 px-6 bg-stone-900 text-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 md:mb-20 reveal">
+      <p class="font-serif-en italic text-gold tracking-widest mb-2 text-sm">Coming Soon</p>
+      <h2 class="text-2xl md:text-4xl font-bold tracking-[0.15em] md:tracking-[0.2em]">これからの、特別なご提案</h2>
+      <p class="text-stone-400 text-sm mt-4 leading-relaxed">一日二組限定の空間だからこそ叶う、新しいプライベートサービスを準備しております。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10 max-w-4xl mx-auto">
+      <div class="bg-stone-800/60 p-6 md:p-8 border border-stone-700/50 reveal flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-serif-en tracking-widest text-gold block mb-3">Service 01</span>
+          <h3 class="text-lg md:text-xl font-bold mb-4">完全貸切プライベート・アニバーサリー</h3>
+          <p class="text-stone-300 text-sm leading-relaxed mb-6">大切な方との記念日やプロポーズに。空間全体を完全貸切にし、お二人の思い出に寄り添ったオーダーメイドコースと特別な演出をご用意します。</p>
+        </div>
+        <div class="pt-4 border-t border-stone-700 flex justify-between items-center text-xs text-stone-400">
+          <span>予定時期：今春リリース</span>
+          <span class="text-gold italic font-serif-en">Private</span>
+        </div>
+      </div>
+      <div class="bg-stone-800/60 p-6 md:p-8 border border-stone-700/50 reveal flex flex-col justify-between" style="transition-delay:.2s">
+        <div>
+          <span class="text-xs font-serif-en tracking-widest text-gold block mb-3">Service 02</span>
+          <h3 class="text-lg md:text-xl font-bold mb-4">余韻を持ち帰る「特製ソースギフト」</h3>
+          <p class="text-stone-300 text-sm leading-relaxed mb-6">「ご自宅でもcredoの味を楽しみたい」というお声にお応えし、フレンチの真髄である自家製ソースやコンフィチュールを、ご自宅用のお土産として数量限定販売。</p>
+        </div>
+        <div class="pt-4 border-t border-stone-700 flex justify-between items-center text-xs text-stone-400">
+          <span>予定時期：初夏予定</span>
+          <span class="text-gold italic font-serif-en">Gift</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visual Break -->
+<section class="h-[50vh] md:h-[60vh] concept-image relative flex items-center justify-center px-6">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <p class="relative z-10 text-white text-lg sm:text-2xl md:text-3xl tracking-[0.3em] md:tracking-[0.5em] font-light text-center leading-loose">記憶に残る、<br class="sm:hidden">最後の一口まで。</p>
+</section>
+
+<!-- Chef -->
+<section class="py-20 md:py-32 px-6 bg-white">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+    <div class="reveal">
+      <span class="font-serif-en italic text-gold text-lg md:text-xl block mb-4">The Craftsmanship</span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 leading-snug">革新は、<br>基本の積み重ねから。</h2>
+      <div class="space-y-5 text-stone-600 leading-loose text-[15px] md:text-base">
+        <p>25歳という若さで独立した村山優輔が、山形で見出したのは「足し算の美学」ではなく「素材の引き算」でした。</p>
+        <p>パリやスイス、そして東京で学んだ洗練された技術は、山形の力強い食材と出会い、唯一無二の表現へと昇華されます。</p>
+        <p>一滴のソースに込められた情熱。それがcredoの「信頼」です。</p>
+      </div>
+      <div class="mt-10 md:mt-12 flex items-center gap-6">
+        <div class="w-12 md:w-16 h-px bg-stone-300"></div>
+        <p class="font-bold text-stone-800">Owner Chef / 村山 優輔</p>
+      </div>
+    </div>
+    <div class="reveal grid grid-cols-2 gap-3 md:gap-4">
+      <img src="images/chef.png" alt="Chef Work" loading="lazy" class="w-full h-52 md:h-80 object-cover mt-8 md:mt-12 shadow-lg">
+      <img src="images/beef2.png" alt="ソースの美学" loading="lazy" class="w-full h-52 md:h-80 object-cover shadow-lg">
+    </div>
+  </div>
+</section>
+
+<!-- Map -->
+<section class="py-20 md:py-32 bg-stone-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-10 md:mb-16">
+      <p class="font-serif-en italic text-gold tracking-widest mb-2">Access</p>
+      <h2 class="text-2xl md:text-3xl font-bold">地図・アクセス</h2>
+    </div>
+    <div class="map-container shadow-2xl rounded-sm">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d141847.24883551907!2d140.14950849222885!3d38.22356953392529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8bb5a49bf0d499%3A0x26a0b1e024216618!2scredo!5e0!3m2!1sja!2sjp!4v1770345476870!5m2!1sja!2sjp" title="credo の地図" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="mt-8 md:mt-10 text-center text-stone-600">
+      <p>〒990-2332 山形県山形市飯田5丁目21-11</p>
+      <p class="text-sm mt-2">駐車場完備 / 山形バイパス「鉄砲町」交差点より車で3分</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer / Contact -->
+<footer id="reservation" class="bg-stone-900 text-white py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-serif-en font-bold mb-6 md:mb-8">credo</h2>
+        <div class="space-y-4 text-stone-400">
+          <p>〒990-2332 山形県山形市飯田5丁目21-11</p>
+          <p>Tel: <a href="tel:023-609-9280" class="text-white text-xl">023-609-9280</a></p>
+          <p>定休日: 日曜日・月曜日</p>
+          <div class="pt-6">
+            <a href="https://instagram.com/credo.ymg" class="inline-block border border-white/30 px-6 py-2 hover:bg-white hover:text-black transition-all">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 md:p-10 text-stone-900 shadow-2xl">
+        <h3 class="text-xl font-bold mb-5 md:mb-6 font-serif-en italic">Reservation</h3>
+        <p class="text-sm mb-8 leading-relaxed">一日二組限定のため、週末のご予約はお早めにお願いいたします。お電話、またはInstagramのDMにて承っております。</p>
+        <div class="space-y-4">
+          <a href="tel:023-609-9280" class="block w-full text-center py-4 bg-stone-900 text-white font-bold tracking-widest hover:bg-stone-800 transition-colors">Call to Reserve</a>
+          <p class="text-[10px] text-center text-stone-400">※キャンセルポリシーについてはお電話にてご確認ください</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 md:mt-32 pt-8 border-t border-white/10 text-center text-[10px] tracking-[0.3em] text-stone-500 uppercase">
+      &copy; Modern French credo. Elegance in Yamagata.
+    </div>
+  </div>
+</footer>
+
+<!-- スマホ用 固定予約ボタン -->
+<a href="tel:023-609-9280" id="sp-cta"
+   class="md:hidden fixed left-0 right-0 bottom-0 z-50 bg-gold text-white text-center font-bold tracking-widest py-4 translate-y-full transition-transform duration-500"
+   style="padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));">
+  電話で予約する
+</a>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const cta = document.getElementById('sp-cta');
+  const footer = document.getElementById('reservation');
+
+  function onScroll() {
+    const h = window.innerHeight;
+    reveals.forEach(el => {
+      if (el.getBoundingClientRect().top < h - 100) el.classList.add('active');
+    });
+    // FVを過ぎたら表示、フッター到達で非表示
+    const past = window.scrollY > h * 0.8;
+    const atFooter = footer.getBoundingClientRect().top < h * 0.6;
+    cta.classList.toggle('translate-y-full', !past || atFooter);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+</script>
+</body>
+</html>
