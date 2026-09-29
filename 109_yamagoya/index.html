@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="岩手県遠野市で1969年創業。名物のハンバーグ定食ホワイトソースをどうぞ。">
+<title>レストラン 山小屋 | 岩手県遠野市で愛される至高のハンバーグ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { retro: '#fdfaf1', brown: '#4e342e', accent: '#d84315' },
+  fontFamily: { serif: ['"Noto Serif JP"', 'serif'], sans: ['"Noto Sans JP"', 'sans-serif'] }
+}}}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
+  .text-shadow-strong { text-shadow: 2px 2px 4px rgba(0,0,0,.8); }
+  /* FV背景：写真を使う場合は url() を差し替えてください */
+  .fv-bg { background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url('images/hanbagu.jpg') center/cover no-repeat, #4e342e; }
+  .bonus-box { border: 3px dashed #d84315; position: relative; }
+  .bonus-tag { position: absolute; top: -15px; left: 16px; background: #d84315; color: #fff; padding: 2px 14px; font-weight: 700; font-size: .9rem; }
+  #map { height: 300px; width: 100%; z-index: 1; }
+  @media (min-width: 768px) { #map { height: 100%; min-height: 400px; } }
+</style>
+</head>
+<body class="bg-retro text-gray-900 leading-relaxed antialiased">
+
+<!-- 1. FV -->
+<header class="fv-bg relative min-h-[85svh] md:min-h-screen flex items-center justify-center text-white px-4 py-16">
+  <div class="text-center max-w-4xl">
+    <div class="inline-block bg-accent font-bold py-1 px-3 mb-5 text-xs sm:text-base">岩手県遠野市・創業1969年の名店</div>
+    <h1 class="font-serif font-black text-3xl sm:text-5xl lg:text-7xl leading-tight mb-6 text-shadow-strong">
+      「ただいま」と言えば、<br><span class="text-yellow-400">至福の味</span>が待っている。
+    </h1>
+    <p class="text-base sm:text-xl font-bold mb-8 text-shadow-strong">
+      看板メニュー：ハンバーグ定食 <span class="border-b-4 border-yellow-400">ホワイトソース</span>
+    </p>
+    <a href="#access" class="inline-block w-full sm:w-auto bg-accent hover:bg-orange-700 active:scale-95 transition text-white font-black py-4 px-8 sm:px-12 rounded-xl text-lg sm:text-2xl shadow-2xl">
+      今すぐ詳細をチェックする
+    </a>
+    <p class="mt-4 text-xs sm:text-base font-bold">※駐車場完備・テイクアウト予約受付中</p>
+  </div>
+</header>
+
+<!-- 2. CTA -->
+<section class="bg-brown text-white border-y-4 border-yellow-500 py-8">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-around gap-6 text-center md:text-left">
+    <div>
+      <p class="text-yellow-400 font-bold mb-1">お電話でのご予約・お問い合わせ</p>
+      <a href="tel:0198622284" class="text-3xl sm:text-5xl font-black tracking-tight">0198-62-2284</a>
+    </div>
+    <div class="flex flex-col items-center">
+      <p class="text-sm mb-2">公式Instagramにて最新情報発信中</p>
+      <a href="https://www.instagram.com/yamagoya40/" target="_blank" rel="noopener" class="bg-white text-brown font-black py-3 px-8 rounded-full hover:bg-gray-200 transition">@yamagoya40 をフォローする</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ベネフィット -->
+<section class="py-14 md:py-20 bg-white">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-center font-serif text-2xl sm:text-4xl md:text-5xl font-black text-brown mb-10 leading-snug">
+      なぜ、「山小屋」は<br class="sm:hidden">55年以上も愛され続けるのか？
+    </h2>
+    <div class="space-y-4 md:space-y-6">
+      <div class="flex items-start bg-retro p-5 md:p-6 rounded-xl border-l-8 border-accent shadow-sm">
+        <span class="text-accent text-2xl md:text-3xl mr-3 md:mr-4">✔</span>
+        <div>
+          <h3 class="text-lg md:text-xl font-bold mb-1">手作りの極み。選べるソースで自分好みの味を。</h3>
+          <p class="text-gray-600 text-sm md:text-base">冷凍品は一切なし。注文を受けてから焼き上げるハンバーグは、ホワイトソース、デミグラスなど複数のソースから選べます。</p>
+        </div>
+      </div>
+      <div class="flex items-start bg-retro p-5 md:p-6 rounded-xl border-l-8 border-accent shadow-sm">
+        <span class="text-accent text-2xl md:text-3xl mr-3 md:mr-4">✔</span>
+        <div>
+          <h3 class="text-lg md:text-xl font-bold mb-1">昭和レトロな空間で「自分を取り戻す」時間。</h3>
+          <p class="text-gray-600 text-sm md:text-base">ジャズが流れる店内、懐かしい純喫茶の佇まい。忙しい日常を忘れ、ゆっくりとした時間の流れを楽しめます。</p>
+        </div>
+      </div>
+      <div class="flex items-start bg-retro p-5 md:p-6 rounded-xl border-l-8 border-accent shadow-sm">
+        <span class="text-accent text-2xl md:text-3xl mr-3 md:mr-4">✔</span>
+        <div>
+          <h3 class="text-lg md:text-xl font-bold mb-1">「ボリューム満点」で心も体も満たされる。</h3>
+          <p class="text-gray-600 text-sm md:text-base">ハーフ＆ハーフでも大満足のボリューム。コスパ最強の食体験をお約束します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. お客様の声 -->
+<section class="py-14 md:py-20 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <p class="text-center text-accent font-bold mb-2">Social Proof</p>
+    <h2 class="text-center font-serif text-2xl sm:text-4xl md:text-5xl font-black text-brown mb-12 underline decoration-yellow-500">「旨い！旨い！」と完食する人が続出。</h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-lg border-2 border-gray-200 relative">
+        <div class="absolute -top-4 left-4 bg-accent text-white py-1 px-4 font-bold rotate-2 text-sm">感動の声 01</div>
+        <div class="text-yellow-500 mb-3 text-xl mt-2">★★★★★</div>
+        <p class="text-base md:text-lg font-bold mb-3">「カナダ人の旦那が終始『これは旨い！旨い！』と完食。料理を作る方の感情も感じられる本当に美味しいお店でした。」</p>
+        <p class="text-gray-600 text-sm italic">― カナダから帰国されたお客様</p>
+      </div>
+      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-lg border-2 border-gray-200 relative">
+        <div class="absolute -top-4 left-4 bg-accent text-white py-1 px-4 font-bold rotate-2 text-sm">感動の声 02</div>
+        <div class="text-yellow-500 mb-3 text-xl mt-2">★★★★★</div>
+        <p class="text-base md:text-lg font-bold mb-3">「11時30分過ぎには駐車場は満車。懐かしい昔の純喫茶の美味しい味わいでした。JAの貯金箱も興味深かったです！」</p>
+        <p class="text-gray-600 text-sm italic">― ご家族でご来店のお客様</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ストーリー -->
+<section class="py-14 md:py-20 bg-white">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8 md:gap-12 max-w-5xl">
+    <div class="md:w-1/2 w-full">
+      <!-- 写真を背景として設定（必要に応じて story.jpg の部分を変更してください） -->
+      <div class="relative aspect-[4/3] rounded-2xl shadow-xl bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url('images/chef.png');">
+        <div class="absolute bottom-3 right-3 left-3 sm:left-auto bg-brown/90 text-white p-3 sm:p-4 font-serif rounded-lg text-sm sm:text-base">
+          創業1969年。<br>受け継がれる「遠野の味」。
+        </div>
+      </div>
+    </div>
+    <div class="md:w-1/2 w-full">
+      <h3 class="text-xl md:text-2xl font-black text-brown mb-5 border-b-2 border-accent pb-2">店主：児山 信一の物語</h3>
+      <p class="text-gray-700 leading-loose mb-4 text-sm md:text-base">東京練馬の名店「新世紀」で磨いた技を携え、故郷・遠野へ。「お客様に満足しておなかいっぱいになって帰ってほしい」その一心で、半世紀以上フライパンを振り続けてきました。</p>
+      <p class="text-gray-700 leading-loose text-sm md:text-base">今では名物となった「ジョッキパフェ」や「ホワイトソース」も、お客様の笑顔を想像しながら生まれたもの。「山小屋」は、あなたの「心のふるさと」でありたいと願っています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 特典・お知らせ -->
+<section class="py-14 md:py-20 bg-retro">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="bonus-box bg-white p-6 md:p-12 rounded-2xl shadow-xl">
+      <div class="bonus-tag">山小屋からの特別なお知らせ</div>
+      <h3 class="text-xl md:text-3xl font-black text-brown mb-6 text-center mt-4">ご来店前に必ずご確認ください</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <span class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-xs shrink-0">★</span>
+            <span class="font-bold">テイクアウト予約OK</span>
+          </div>
+          <p class="text-sm text-gray-600">お電話一本で、お店の味をご自宅でお楽しみいただけます。事前予約がスムーズです。</p>
+        </div>
+        <div>
+          <div class="flex items-center gap-3 mb-1">
+            <span class="bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center text-xs shrink-0">★</span>
+            <span class="font-bold">お子様連れ大歓迎</span>
+          </div>
+          <p class="text-sm text-gray-600">広々とした店内で、ご家族での団らんを。お子様向けメニューの調整も可能です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6.5 COMING SOON -->
+<section class="py-14 md:py-20 bg-white border-t border-gray-200">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="text-center mb-10 md:mb-14">
+      <span class="text-accent font-bold tracking-widest text-sm block mb-2">Coming Soon &amp; Future Vision</span>
+      <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-black text-brown">「山小屋」が仕掛ける、新しいワクワク</h2>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-sm md:text-base">お客様の声から生まれた新しいサービスや、季節を彩る取り組みを続々スタートします。</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <div class="bg-retro p-6 md:p-8 rounded-2xl border border-orange-100 flex flex-col justify-between">
+        <div>
+          <div class="text-3xl mb-3">📸</div>
+          <span class="bg-accent text-white text-xs font-bold py-1 px-3 rounded-full inline-block mb-3">インスタ強化中</span>
+          <h3 class="text-lg md:text-xl font-bold text-brown mb-2">「本日のおすすめ」をStoriesで毎日配信</h3>
+          <p class="text-gray-600 text-sm mb-5">毎朝仕入れる旬の食材や、その日限りの限定メニューをInstagramストーリーで速報！</p>
+        </div>
+        <a href="https://www.instagram.com/yamagoya40/" target="_blank" rel="noopener" class="text-accent font-bold text-sm hover:underline">Instagramを見る ➜</a>
+      </div>
+      <div class="bg-retro p-6 md:p-8 rounded-2xl border border-orange-100 flex flex-col justify-between">
+        <div>
+          <div class="text-3xl mb-3">🍧</div>
+          <span class="bg-accent text-white text-xs font-bold py-1 px-3 rounded-full inline-block mb-3">季節限定企画</span>
+          <h3 class="text-lg md:text-xl font-bold text-brown mb-2">「旬を味わう特製ジョッキパフェ」</h3>
+          <p class="text-gray-600 text-sm mb-5">名物の大容量ジョッキパフェに、遠野産のフルーツや季節の素材を使った限定バージョンが続々登場。</p>
+        </div>
+        <span class="text-gray-400 text-sm font-bold">随時新作発表予定</span>
+      </div>
+      <div class="bg-retro p-6 md:p-8 rounded-2xl border border-orange-100 flex flex-col justify-between">
+        <div>
+          <div class="text-3xl mb-3">☕</div>
+          <span class="bg-accent text-white text-xs font-bold py-1 px-3 rounded-full inline-block mb-3">観光・ドライブに</span>
+          <h3 class="text-lg md:text-xl font-bold text-brown mb-2">遠野観光の合間に「レトロカフェ利用」</h3>
+          <p class="text-gray-600 text-sm mb-5">「ランチのあと、ちょっとゆっくりお茶したい…」そんな観光客の皆様に向けて、珈琲とスイーツが楽しめるカフェタイムを強化中。</p>
+        </div>
+        <span class="text-gray-400 text-sm font-bold">ご予約なしでも大歓迎</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. アクセス -->
+<section id="access" class="py-16 md:py-24 bg-brown text-white">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="font-serif text-2xl sm:text-4xl md:text-6xl font-black mb-8 md:mb-10 leading-tight">さあ、あなたも<br>「本物の洋食」に出会いませんか？</h2>
+    <div class="max-w-6xl mx-auto bg-white text-gray-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+      <div class="md:w-5/12 p-6 md:p-10 text-left">
+        <h4 class="text-xl md:text-2xl font-bold text-brown mb-5 italic underline decoration-accent">Shop Information</h4>
+        <ul class="space-y-5 font-bold">
+          <li class="flex items-start"><span class="mr-3 text-2xl">📍</span>
+            <div><p class="text-sm text-gray-500 font-normal">住所</p><p>岩手県遠野市東舘町10-5</p></div></li>
+          <li class="flex items-start"><span class="mr-3 text-2xl">📞</span>
+            <div><p class="text-sm text-gray-500 font-normal">電話番号</p><p class="text-xl md:text-2xl">0198-62-2284</p></div></li>
+          <li class="flex items-start"><span class="mr-3 text-2xl">🚗</span>
+            <div><p class="text-sm text-gray-500 font-normal">駐車場</p><p class="text-base">駐車場完備（混雑時は遠野市役所駐車場もご利用いただけます）</p></div></li>
+        </ul>
+        <div class="mt-8 space-y-3">
+          <a href="tel:0198622284" class="block w-full bg-accent hover:bg-orange-700 text-white text-center font-black py-4 rounded-xl shadow-lg transition text-lg">電話で予約・状況確認をする</a>
+          <a href="https://www.instagram.com/yamagoya40/" target="_blank" rel="noopener" class="block w-full border-2 border-brown text-brown text-center font-black py-3 rounded-xl hover:bg-gray-100 transition">Instagramで最新情報を見る</a>
+        </div>
+      </div>
+      <div class="md:w-7/12 bg-gray-200">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d788244.7725691554!2d140.57824761808087!3d39.49008232091214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85fbe39ba929b5%3A0x86a692277ae7a99f!2z5bGx5bCP5bGL!5e0!3m2!1sja!2sjp!4v1790658003557!5m2!1sja!2sjp" width="100%" height="100%" style="border:0; width:100%; height:100%; min-height:300px;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+    <p class="mt-10 text-gray-400 text-xs sm:text-sm">&copy; 2024 レストラン 山小屋 | Tono Iwate Japan</p>
+  </div>
+</section>
+
+<!-- スマホ用 固定電話ボタン -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-brown/95 border-t-2 border-yellow-500 px-4 pt-3 shadow-2xl" style="padding-bottom: calc(.75rem + env(safe-area-inset-bottom));">
+  <a href="tel:0198622284" class="block bg-accent active:bg-orange-800 text-white text-center font-black py-3 rounded-xl text-lg">📞 電話で予約する 0198-62-2284</a>
+</div>
+
+<script>
+window.addEventListener('load', function () {
+  // 店舗座標（遠野市東舘町10-5付近）※実際の位置に合わせて調整してください
+  var lat = 39.3484, lng = 141.5284;
+  var map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], 17);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  L.marker([lat, lng]).addTo(map)
+    .bindPopup("<div style='text-align:center'><b>レストラン 山小屋</b><br>岩手県遠野市東舘町10-5<br><a href='tel:0198622284'>0198-62-2284</a></div>")
+    .openPopup();
+});
+</script>
+</body>
+</html>
