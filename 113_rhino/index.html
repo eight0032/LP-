@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RHINO | 盛岡・開運橋通のカフェ＆バー</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap">
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { rhino: { green: '#2d3e33', gold: '#b88d4d', bg: '#f8f5f0' } },
+  fontFamily: { serif: ['"Shippori Mincho"', 'serif'], sans: ['"Noto Sans JP"', 'sans-serif'] }
+}}}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  /* 画像を入れる枠：<img class="w-full h-full object-cover"> を中に入れてください */
+  .ph { background: linear-gradient(135deg, #3d5244, #2d3e33); }
+  .frame { position: relative; }
+  .frame::before { content: ''; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid #b88d4d; z-index: 0; }
+  @media (max-width: 767px) { .frame::before { inset: 10px -8px -10px 10px; } }
+</style>
+</head>
+<body class="bg-rhino-bg font-sans text-neutral-700 antialiased pb-20 md:pb-0">
+
+<!-- 1. ヒーロー -->
+<header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden ph">
+  <!-- 背景写真 -->
+  <img src="images/omurice.png" alt="リノベーション空間とワイン・料理のイメージ" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="relative z-10 text-center text-white px-6">
+    <p class="mb-5 text-xs md:text-sm tracking-[0.3em] opacity-80">MORIOKA KAIUNBASHIDORI</p>
+    <h1 class="font-serif font-bold text-4xl sm:text-5xl md:text-7xl leading-tight mb-8">
+      時を忘れる、<br><span class="text-rhino-gold">リノベーション空間。</span>
+    </h1>
+    <div class="w-12 h-px bg-white mx-auto mb-8"></div>
+    <p class="text-base md:text-xl font-light tracking-widest leading-relaxed">
+      とろ〜り卵と濃厚デミグラスのオムライスを、<br class="hidden md:block">ナチュールワインと共に。
+    </p>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-15 animate-bounce">
+    <div class="w-px h-14 bg-white/50 mx-auto"></div>
+  </div>
+</header>
+
+<!-- 2. CTA -->
+<section class="bg-rhino-green text-white py-12 md:py-16">
+  <div class="container mx-auto px-6 text-center">
+    <p class="font-serif text-lg md:text-xl mb-8 tracking-widest">心を満たす、一杯と一皿。</p>
+    <a href="https://www.instagram.com/rhino_morioka/" target="_blank" rel="noopener"
+       class="inline-flex items-center justify-center w-full sm:w-auto border border-rhino-gold text-rhino-gold font-bold py-4 px-10 rounded-full active:bg-rhino-gold active:text-white hover:bg-rhino-gold hover:text-white transition">
+      最新情報はInstagramから
+    </a>
+  </div>
+</section>
+
+<!-- 3. コンセプト＆フード -->
+<section class="py-16 md:py-28 overflow-hidden">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-16">
+      <div class="w-full lg:w-1/2 frame pr-3 md:pr-0">
+        <div class="relative z-10 aspect-[4/5] ph shadow-2xl overflow-hidden">
+          <img src="images/omurice.jpg" alt="オムライス" class="w-full h-full object-cover">
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <p class="text-rhino-gold font-bold tracking-widest mb-3 italic">Our Pride</p>
+        <h2 class="font-serif font-bold text-3xl md:text-5xl leading-tight mb-6">看板メニュー、<br>オムライスへのこだわり。</h2>
+        <p class="text-neutral-600 leading-loose mb-8">
+          一口食べれば広がる卵の甘みと、じっくり煮込んだデミグラスソースの深いコク。
+          RHINOが最も大切にしているのは、シンプルだからこそ誤魔化しのきかない「一皿の完成度」です。
+          ランチではボリューム満点に、夜はワインの最高のパートナーとして。
+        </p>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-rhino-green font-bold">
+          <a href="tel:019-618-3007" class="font-serif italic text-3xl">019-618-3007</a>
+          <span class="text-sm sm:border-l sm:border-neutral-300 sm:pl-4 opacity-70">お電話でのご予約も承ります</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 店内・雰囲気 -->
+<section class="py-16 md:py-28 bg-white/60 border-y border-neutral-100">
+  <div class="container mx-auto px-6 max-w-5xl">
+    <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+      <div class="w-full md:w-1/2 aspect-[3/2] ph shadow-xl rounded-sm overflow-hidden">
+        <img src="images/store.png" alt="店内" class="w-full h-full object-cover">
+      </div>
+      <div class="w-full md:w-1/2">
+        <h3 class="font-serif text-2xl md:text-3xl mb-6 leading-snug">古民家とアートが紡ぐ、<br>安らぎの時間。</h3>
+        <p class="text-neutral-600 leading-loose mb-6">
+          盛岡の静かな通りに佇む古民家をリノベーション。
+          店内には選び抜かれたアート作品が並び、訪れるたびに新しい発見と癒やしを与えてくれます。
+          看板犬の「くんちゃん」も、皆様の憩いの時間をそっと見守っています。
+        </p>
+        <ul class="space-y-2 text-sm text-neutral-500">
+          <li><span class="text-rhino-gold mr-2">✓</span>ナチュールワイン＆クラフトビール完備</li>
+          <li><span class="text-rhino-gold mr-2">✓</span>一人飲みに嬉しいグラスワイン 600円〜</li>
+          <li><span class="text-rhino-gold mr-2">✓</span>カフェ利用のみも大歓迎</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Coming Soon -->
+<section class="py-16 md:py-28 bg-[#f2efe9]">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <div class="text-center mb-14">
+      <p class="text-rhino-gold font-bold tracking-[0.2em] text-sm mb-3">Future Plan</p>
+      <h2 class="font-serif font-bold text-3xl md:text-5xl mb-4">Coming Soon</h2>
+      <div class="w-12 h-px bg-rhino-gold mx-auto mb-4"></div>
+      <p class="text-neutral-600 text-sm md:text-base">RHINOがこれからお届けする、新しい体験と特別なメニュー。</p>
+    </div>
+
+    <!-- 2枚のカードを横並び（PC時は2列、スマホ時は1列） -->
+    <div class="grid md:grid-cols-2 gap-8 items-stretch">
+      
+      <!-- カード1：パティシエ特製季節のスイーツ -->
+      <div class="bg-white p-8 md:p-10 rounded-xl shadow-md flex flex-col justify-between">
+        <div>
+          <span class="bg-rhino-gold/10 text-rhino-gold px-3 py-1 text-xs font-bold rounded-full mb-4 inline-block">季節限定・随時展開</span>
+          <h3 class="font-serif font-bold text-xl md:text-2xl mb-4 leading-snug">旬の食材を味わう<br>「パティシエ特製季節のスイーツ」</h3>
+          <p class="text-neutral-600 leading-relaxed mb-6 text-sm md:text-base">
+            岩手県産の旬のフルーツや厳選素材を贅沢に使用した、オリジナルの期間限定スイーツを順次展開予定。ランチやディナーの後の別腹としてはもちろん、ティータイムの贅沢なひとときを彩ります。
+          </p>
+          <ul class="space-y-2 text-sm text-neutral-600 border-l-2 border-rhino-gold pl-4 mb-6">
+            <li><strong>春・夏：</strong>盛岡産ブルーベリーや季節のタルト</li>
+            <li><strong>秋・冬：</strong>濃厚な栗のガトーショコラ・ホットワインペアリング</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- カード2：#RHINOの時間 -->
+      <div class="bg-white p-8 md:p-10 rounded-xl shadow-md flex flex-col justify-between">
+        <div>
+          <span class="bg-rhino-gold/10 text-rhino-gold px-3 py-1 text-xs font-bold rounded-full mb-4 inline-block">SNS連動企画</span>
+          <h3 class="font-serif font-bold text-xl md:text-2xl mb-4 leading-snug">「#RHINOの時間」<br>フォトコンテスト＆カフェ特典</h3>
+          <p class="text-neutral-600 leading-relaxed mb-6 text-sm md:text-base">
+            レトロな店内の窓辺やアート作品、コーヒーの香りが広がる空間での「あなただけの特別なカフェタイム」をInstagramでシェアしませんか？ハッシュタグをつけて投稿してくださった方には、次回使える嬉しいカフェ特典をご用意する予定です。
+          </p>
+        </div>
+        <div class="pt-4">
+          <a href="https://www.instagram.com/rhino_morioka/" target="_blank" rel="noopener"
+             class="inline-flex items-center text-rhino-green font-bold hover:text-rhino-gold transition text-sm">
+            最新の投稿をチェックして続報を待つ →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6. こんなひとときに -->
+<section class="py-16 md:py-28">
+  <div class="container mx-auto px-6 text-center max-w-6xl">
+    <h2 class="font-serif text-2xl md:text-4xl mb-12 md:mb-16">こんなひとときに、RHINOを。</h2>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-left">
+      <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-rhino-gold">
+        <div class="text-3xl mb-4">🌙</div>
+        <h4 class="font-serif text-xl mb-3">一人の夜を愉しむ</h4>
+        <p class="text-sm text-neutral-600 leading-relaxed">カウンターでゆったりとグラスワインを。女性お一人でも気兼ねなく過ごせる、大人の隠れ家です。</p>
+      </div>
+      <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-rhino-gold">
+        <div class="text-3xl mb-4">☀️</div>
+        <h4 class="font-serif text-xl mb-3">贅沢な週末ランチ</h4>
+        <p class="text-sm text-neutral-600 leading-relaxed">名物のオムライスやゴロゴロ野菜のカレー。ボリューム満点の食事で、心もお腹も満たされます。</p>
+      </div>
+      <div class="bg-white p-8 md:p-10 shadow-sm border-t-2 border-rhino-gold">
+        <div class="text-3xl mb-4">👥</div>
+        <h4 class="font-serif text-xl mb-3">大切な人とシェア</h4>
+        <p class="text-sm text-neutral-600 leading-relaxed">一皿の量が多いので、シェアして楽しむのがおすすめ。美味しい食事と会話が弾む、最高の雰囲気です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 口コミ -->
+<section class="py-16 md:py-28 bg-rhino-green text-white">
+  <div class="container mx-auto px-6">
+    <h2 class="font-serif text-2xl md:text-3xl text-center mb-12 md:mb-16 tracking-widest">Voice</h2>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-12 max-w-5xl mx-auto">
+      <div class="pl-6 border-l border-rhino-gold/50">
+        <p class="font-serif text-base md:text-lg leading-loose mb-4">「コスパ最高。女性一人ご飯も居心地良し。」</p>
+        <p class="text-xs opacity-60">— Local Guide ★★★★</p>
+      </div>
+      <div class="pl-6 border-l border-rhino-gold/50">
+        <p class="font-serif text-base md:text-lg leading-loose mb-4">「古民家の雰囲気が最高。看板犬も可愛い。」</p>
+        <p class="text-xs opacity-60">— Traveler ★★★★★</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 店舗情報 -->
+<section class="py-16 md:py-28 bg-[#f0ede6]">
+  <div class="container mx-auto px-4 sm:px-6 text-center max-w-4xl">
+    <h2 class="font-serif font-bold text-3xl md:text-5xl leading-snug mb-10">
+      扉の先にある、<br class="md:hidden"><span class="text-rhino-gold">あなただけの居場所。</span>
+    </h2>
+    <a href="tel:019-618-3007"
+       class="inline-flex w-full sm:w-auto items-center justify-center bg-rhino-green text-white font-bold py-4 px-10 rounded-full shadow-lg mb-14 md:mb-20">
+      📞 019-618-3007
+    </a>
+
+    <div class="bg-white p-6 md:p-12 shadow-2xl rounded-sm text-left grid md:grid-cols-2 gap-10 md:gap-12">
+      <div>
+        <h3 class="font-serif text-2xl mb-6 font-bold border-b border-neutral-100 pb-4">Shop Info</h3>
+        <div class="space-y-5 text-sm">
+          <p><span class="text-rhino-gold font-bold block mb-1 italic">Address</span>〒020-0026 岩手県盛岡市開運橋通2-33</p>
+          <p><span class="text-rhino-gold font-bold block mb-1 italic">Hours</span>18:00 - 24:00<br><small class="opacity-60">※夜の営業はSNSをご確認ください</small></p>
+          <p><span class="text-rhino-gold font-bold block mb-1 italic">Closed</span> 火曜日・水曜日</p>
+        </div>
+      </div>
+      <div class="relative w-full aspect-[4/3] shadow-lg rounded-sm overflow-hidden">
+        <iframe class="absolute inset-0 w-full h-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.685559347013!2d141.13882907533295!3d39.701773336013375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85762e33ad80bf%3A0x8f2c1554f9ad7c1c!2sRHINO!5e0!3m2!1sja!2sjp!4v1770340236740!5m2!1sja!2sjp"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-white py-12 text-center">
+  <div class="mb-4 font-serif text-2xl font-bold text-rhino-green opacity-20">RHINO</div>
+  <p class="text-xs opacity-40 tracking-[0.2em]">&copy; RHINO MORIOKA. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<!-- スマホ用 固定バー（予約・Instagram） -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 flex bg-rhino-green text-white text-sm font-bold shadow-[0_-4px_12px_rgba(0,0,0,.15)]"
+     style="padding-bottom: env(safe-area-inset-bottom)">
+  <a href="tel:019-618-3007" class="flex-1 py-4 text-center">📞 電話する</a>
+  <a href="https://www.instagram.com/rhino_morioka/" target="_blank" rel="noopener"
+     class="flex-1 py-4 text-center bg-rhino-gold">Instagram</a>
+</div>
+
+</body>
+</html>
