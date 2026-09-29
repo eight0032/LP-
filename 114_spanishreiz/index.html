@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>スパニッシュライツ | 盛岡・菜園 本格スペイン料理と情熱のライブ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+  :root { --red:#A50000; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { font-family:'Noto Sans JP',sans-serif; overflow-x:hidden;
+         padding-bottom:calc(4rem + env(safe-area-inset-bottom)); }
+  @media (min-width:768px){ body{ padding-bottom:0; } }
+  .serif { font-family:'Noto Serif JP',serif; }
+  .brush { font-family:'Yuji Syuku',serif; }
+  .bg-red { background:var(--red); }
+  .text-red { color:var(--red); }
+  .hero-title { text-shadow:2px 2px 10px rgba(0,0,0,.8); line-height:1.4; }
+  .skew { transform:skewY(-2.5deg); margin-top:-2rem; padding:3rem 0; }
+  .skew > div { transform:skewY(2.5deg); }
+  @media (min-width:768px){ .skew{ margin-top:-3rem; padding:5rem 0; } }
+  .photo { background:linear-gradient(135deg,#1c1917,#3b0a0a 60%,#000); }
+  .safe-bottom { padding-bottom:env(safe-area-inset-bottom); }
+</style>
+</head>
+<body class="bg-[#fdfcf0] text-gray-900">
+
+<!-- Header -->
+<header class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur border-b-2 border-[var(--red)] shadow-md">
+  <div class="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between gap-3">
+    <div class="min-w-0">
+      <p class="text-[9px] md:text-[10px] font-bold tracking-widest text-red leading-none uppercase truncate">Authentic Spanish Bar Morioka</p>
+      <h1 class="font-black text-lg md:text-2xl tracking-tighter text-red">SPANISH LIGHTS</h1>
+    </div>
+    <div class="flex items-center gap-4 shrink-0">
+      <a href="tel:0196526791" class="hidden md:block font-bold text-red hover:opacity-70">019-652-6791</a>
+      <a href="http://www.hotpepper.jp/strJ000274399/" target="_blank" rel="noopener"
+         class="bg-red text-white px-4 py-2 rounded-full font-bold text-xs md:text-sm shadow-lg whitespace-nowrap">24h Web予約</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden">
+  <div class="absolute inset-0 bg-stone-900">
+    <img src="images/paeria.jpg"
+         alt="スパニッシュライツ店内イメージ" class="w-full h-full object-cover opacity-60">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
+  <div class="relative z-10 text-center px-5 pt-24 pb-16 max-w-4xl">
+    <div class="mb-4 inline-block bg-red text-white px-5 py-1 text-[10px] md:text-xs font-bold tracking-[0.3em] rounded-full">EST. MORIOKA</div>
+    <h2 class="hero-title text-3xl sm:text-4xl md:text-6xl font-black serif mb-8 tracking-tight">
+      盛岡、菜園の地下に<br><span class="text-yellow-400">情熱のスペイン</span>が<br>息づいている。
+    </h2>
+    <p class="text-sm sm:text-base md:text-xl brush mb-6 tracking-[0.15em]">名物「漆黒のイカ墨パエリア」</p>
+    <div class="mx-auto w-px bg-white/50 h-16 animate-bounce"></div>
+  </div>
+</section>
+
+<!-- Lead -->
+<section class="relative py-16 md:py-24 px-5 overflow-hidden">
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <h3 class="text-2xl md:text-4xl font-black mb-8 md:mb-12 text-red serif leading-snug">
+      東京のバルとは一線を画す、<br class="hidden md:block">圧倒的な「味」と「熱気」。
+    </h3>
+    <p class="text-base md:text-xl leading-loose text-gray-700 font-medium">
+      三陸の豊かな恵みをスペインの技法で昇華させる。<br class="hidden md:block">
+      パエリア、パテ、カルパッチョ、アヒージョ…。<br class="hidden md:block">
+      地下に広がる開放的な空間で、<br class="hidden md:block">
+      ワインを片手に、日常を忘れる本場のひとときを。
+    </p>
+  </div>
+  <div class="absolute -bottom-4 -right-2 text-7xl md:text-[12rem] font-black text-gray-200/40 serif select-none pointer-events-none">España</div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-stone-900 text-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="text-yellow-400 font-bold tracking-[0.3em] block mb-3 uppercase text-xs md:text-sm">New Project &amp; Services</span>
+      <h3 class="text-3xl md:text-5xl font-black serif mb-4">COMING SOON</h3>
+      <p class="text-stone-400 text-sm md:text-lg leading-relaxed">
+        「スペイン料理が初めてで何を選べばいいか分からない」「子ども連れでも楽しめる？」<br class="hidden md:block">
+        そんな声にお応えする、新しいサービスを準備中です。
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+      <div class="bg-stone-800/80 p-6 md:p-10 rounded-3xl border border-stone-700 relative">
+        <span class="absolute top-4 right-4 md:top-6 md:right-6 bg-yellow-400 text-black text-[11px] font-bold px-3 py-1 rounded-full">近日開始</span>
+        <div class="w-12 h-12 md:w-14 md:h-14 bg-red text-white rounded-2xl flex items-center justify-center text-xl md:text-2xl mb-5 shadow-lg"><i class="fas fa-compass"></i></div>
+        <h4 class="text-xl md:text-2xl font-bold serif mb-3">はじめてのスペイン料理ナビ＆キッズメニュー</h4>
+        <p class="text-stone-300 text-sm md:text-base leading-relaxed mb-5">初心者向けのおすすめ食べ比べセットや、辛味を抑えたお子様向けの特製パエリア・タパスの案内ガイドを導入予定。ご家族みんなで安心してお楽しみいただけます。</p>
+        <ul class="space-y-2 text-sm text-stone-400 border-t border-stone-700 pt-4">
+          <li class="flex gap-2"><i class="fas fa-check text-yellow-400 mt-1"></i>初心者向け：人気3種盛り合わせプレート</li>
+          <li class="flex gap-2"><i class="fas fa-check text-yellow-400 mt-1"></i>お子様向け：マイルドなオムレツ＆ミートボール</li>
+          <li class="flex gap-2"><i class="fas fa-check text-yellow-400 mt-1"></i>アレルギー・辛味成分の分かりやすい表記</li>
+        </ul>
+      </div>
+      <div class="bg-stone-800/80 p-6 md:p-10 rounded-3xl border border-stone-700 relative">
+        <span class="absolute top-4 right-4 md:top-6 md:right-6 bg-yellow-400 text-black text-[11px] font-bold px-3 py-1 rounded-full">順次公開</span>
+        <div class="w-12 h-12 md:w-14 md:h-14 bg-red text-white rounded-2xl flex items-center justify-center text-xl md:text-2xl mb-5 shadow-lg"><i class="fas fa-wine-glass-alt"></i></div>
+        <h4 class="text-xl md:text-2xl font-bold serif mb-3">AIソムリエ・ペアリング診断</h4>
+        <p class="text-stone-300 text-sm md:text-base leading-relaxed mb-5">その日の気分やオーダーした料理に合わせて、ぴったりのスペイン産ワインやノンアルコールカクテルをスマートフォンから簡単に診断・提案してもらえるデジタルサービスを準備中。</p>
+        <ul class="space-y-2 text-sm text-stone-400 border-t border-stone-700 pt-4">
+          <li class="flex gap-2"><i class="fas fa-check text-yellow-400 mt-1"></i>お料理との相性を一発判定</li>
+          <li class="flex gap-2"><i class="fas fa-check text-yellow-400 mt-1"></i>アルコールが苦手な方への特製ドリンク提案</li>
+          <li class="flex gap-2"><i class="fas fa-check text-yellow-400 mt-1"></i>スタッフへのスムーズなオーダー連動</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Signature Dish -->
+<section class="skew bg-stone-900 text-white overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 py-10">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="relative">
+        <div class="absolute -top-4 -left-2 w-24 h-24 md:w-32 md:h-32 bg-red flex items-center justify-center z-10 rounded-full rotate-12 shadow-2xl">
+          <span class="brush text-lg md:text-2xl text-white text-center leading-tight">必食の<br>逸品</span>
+        </div>
+        <div class="rounded-2xl overflow-hidden border-4 md:border-8 border-white/5 shadow-2xl">
+          <!-- 画像を表示するためのタグに変更 -->
+          <img src="images/paeria.jpg" alt="イカ墨パエリア" class="w-full aspect-[4/3] object-cover">
+        </div>
+      </div>
+      <div class="space-y-6 md:space-y-8">
+        <div>
+          <span class="text-yellow-400 font-bold tracking-[0.25em] block mb-2 uppercase text-xs md:text-sm">Signature Dish</span>
+          <h3 class="text-3xl md:text-5xl font-black serif leading-tight">五感を満たす、<br>漆黒の芸術。</h3>
+        </div>
+        <p class="text-gray-300 text-base md:text-lg leading-loose">
+          当店の代名詞「イカ墨のパエリア」。<br>
+          濃厚な海の旨味と香りが凝縮されたお米の炊き加減は、まさに職人技。<br>
+          一口ごとに広がる深いコクは、ワインとの相性も抜群です。
+        </p>
+        <div class="grid grid-cols-2 gap-3 md:gap-6">
+          <div class="bg-white/5 p-4 md:p-5 rounded-xl border border-white/10">
+            <span class="text-xs text-yellow-400 block mb-1 font-bold uppercase tracking-widest">Ingredient</span>
+            <span class="font-bold text-base md:text-lg">三陸の海の幸</span>
+          </div>
+          <div class="bg-white/5 p-4 md:p-5 rounded-xl border border-white/10">
+            <span class="text-xs text-yellow-400 block mb-1 font-bold uppercase tracking-widest">Wine</span>
+            <span class="font-bold text-base md:text-lg">スペイン直送瓶</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Points -->
+<section class="py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14 md:mb-20">
+      <h3 class="text-3xl md:text-5xl font-black serif inline-block relative px-4">
+        選ばれる理由
+        <span class="absolute bottom-0 left-0 w-full h-2 bg-red opacity-20"></span>
+      </h3>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+      <div class="relative bg-white p-8 md:p-10 shadow-xl rounded-2xl border-t-8 border-[var(--red)]">
+        <span class="absolute -top-8 left-5 text-6xl md:text-7xl font-black text-gray-100 italic">01</span>
+        <h4 class="text-xl md:text-2xl font-bold mb-4 relative serif">ハズレなしの絶品料理</h4>
+        <p class="text-gray-600 leading-relaxed">パテからオムレツまで、地元盛岡の旬の食材を贅沢に使用。どのメニューも東京のクオリティに負けない完成度を誇ります。</p>
+      </div>
+      <div class="relative bg-white p-8 md:p-10 shadow-xl rounded-2xl border-t-8 border-[var(--red)]">
+        <span class="absolute -top-8 left-5 text-6xl md:text-7xl font-black text-gray-100 italic">02</span>
+        <h4 class="text-xl md:text-2xl font-bold mb-4 relative serif">地下に広がる開放感</h4>
+        <p class="text-gray-600 leading-relaxed">階段を下りればそこは別世界。広いオープンスペースは、デートや女子会、大規模な団体様まで周りを気にせず楽しめます。</p>
+      </div>
+      <div class="relative bg-white p-8 md:p-10 shadow-xl rounded-2xl border-t-8 border-[var(--red)]">
+        <span class="absolute -top-8 left-5 text-6xl md:text-7xl font-black text-gray-100 italic">03</span>
+        <h4 class="text-xl md:text-2xl font-bold mb-4 relative serif">情熱のフラメンコ</h4>
+        <p class="text-gray-600 leading-relaxed">不定期で開催される本格フラメンコライブ。圧倒的な迫力のステップと歌声が、ディナーをより華やかに彩ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="py-16 md:py-24 bg-stone-100">
+  <div class="max-w-5xl mx-auto px-5">
+    <h3 class="text-center brush text-3xl md:text-4xl mb-10 md:mb-16 text-red">「美味しい！」の声を、ご紹介。</h3>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+      <figure class="bg-white p-6 md:p-10 rounded-2xl shadow-lg border border-stone-200 relative overflow-hidden">
+        <i class="fas fa-quote-left absolute top-4 left-4 text-stone-100 text-5xl md:text-6xl"></i>
+        <blockquote class="relative italic text-gray-700 md:text-lg leading-relaxed mb-5 font-medium">
+          「イカ墨のパエリア、マッシュルームアヒージョ、どれも本当に美味しい！ワインも豊富でオーナーさんが丁寧に教えてくれました。また是非伺います！」
+        </blockquote>
+        <figcaption class="relative flex items-center gap-1 text-orange-400 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <span class="ml-2 text-gray-400">Google クチコミより</span>
+        </figcaption>
+      </figure>
+      <figure class="bg-white p-6 md:p-10 rounded-2xl shadow-lg border border-stone-200 relative overflow-hidden">
+        <i class="fas fa-quote-left absolute top-4 left-4 text-stone-100 text-5xl md:text-6xl"></i>
+        <blockquote class="relative italic text-gray-700 md:text-lg leading-relaxed mb-5 font-medium">
+          「雰囲気が最高です！席数もあって広い。友達もワインが進みすぎていました。サービスも非常に良く、盛岡で一番おすすめのスペイン料理店です。」
+        </blockquote>
+        <figcaption class="relative flex items-center gap-1 text-orange-400 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <span class="ml-2 text-gray-400">Google クチコミより</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="py-20 md:py-32 bg-red text-white text-center">
+  <div class="max-w-4xl mx-auto px-5">
+    <h3 class="text-3xl md:text-6xl font-black serif mb-6 md:mb-10 leading-tight">盛岡で、<br class="md:hidden">忘れられない夜を。</h3>
+    <p class="text-base md:text-2xl mb-10 md:mb-14 opacity-90 brush tracking-widest">人気店のため、事前予約をおすすめします</p>
+    <div class="flex flex-col md:flex-row gap-4 md:gap-8 justify-center items-center">
+      <a href="tel:0196526791" class="w-full md:w-80 bg-white text-red font-black py-5 md:py-7 rounded-full text-xl md:text-2xl shadow-2xl active:scale-95 transition">
+        <i class="fas fa-phone mr-2"></i>019-652-6791
+      </a>
+      <a href="http://www.hotpepper.jp/strJ000274399/" target="_blank" rel="noopener" class="w-full md:w-80 bg-yellow-400 text-black font-black py-5 md:py-7 rounded-full text-xl md:text-2xl shadow-2xl active:scale-95 transition">
+        Web予約はこちら
+      </a>
+    </div>
+    <p class="mt-8 text-xs md:text-sm opacity-80">※当日予約・団体利用のご相談はお電話にて承ります。</p>
+  </div>
+</section>
+
+<!-- Info & Map -->
+<section class="py-16 md:py-24 bg-white px-5">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+    <div class="space-y-8">
+      <div>
+        <h4 class="text-2xl md:text-3xl font-black serif text-red mb-6">SHOP INFO</h4>
+        <dl class="border-t border-stone-100">
+          <div class="flex gap-3 border-b border-stone-100 py-4">
+            <dt class="w-24 shrink-0 font-bold text-gray-500 text-xs pt-1">Shop Name</dt>
+            <dd class="font-bold">スパニッシュライツ</dd>
+          </div>
+          <div class="flex gap-3 border-b border-stone-100 py-4">
+            <dt class="w-24 shrink-0 font-bold text-gray-500 text-xs pt-1">Address</dt>
+            <dd class="text-sm md:text-base">〒020-0024 岩手県盛岡市菜園1丁目3-6 B1F</dd>
+          </div>
+          <div class="flex gap-3 border-b border-stone-100 py-4">
+            <dt class="w-24 shrink-0 font-bold text-gray-500 text-xs pt-1">Contact</dt>
+            <dd><a href="tel:0196526791" class="font-bold text-red">019-652-6791</a></dd>
+          </div>
+          <div class="flex gap-3 border-b border-stone-100 py-4">
+            <dt class="w-24 shrink-0 font-bold text-gray-500 text-xs pt-1">Closed</dt>
+            <dd>月曜日</dd>
+          </div>
+          <div class="flex gap-3 border-b border-stone-100 py-4">
+            <dt class="w-24 shrink-0 font-bold text-gray-500 text-xs pt-1">Notice</dt>
+            <dd class="text-sm">喫煙所は店外にございます。団体利用は事前相談を。</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="flex gap-3">
+        <a href="https://x.com/supanisshurawzs" aria-label="X (Twitter)" class="w-12 h-12 bg-stone-900 text-white rounded-full flex items-center justify-center shadow-lg"><i class="fab fa-twitter"></i></a>
+        <!-- 地球儀アイコンの公式サイトリンクを追加 -->
+        <a href="https://spanishreiz.com/" target="_blank" rel="noopener noreferrer" aria-label="Official Website" class="w-12 h-12 bg-stone-900 text-white rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-globe"></i></a>
+        <a href="http://www.hotpepper.jp/strJ000274399/" class="h-12 px-6 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">ホットペッパーグルメ</a>
+      </div>
+    </div>
+    <div class="w-full h-72 md:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 md:border-8 border-stone-50">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.7286463599366!2d141.14671457486466!3d39.70080469890363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85762f6fb61a31%3A0xad056280e8d4b7aa!2z44K544OR44OL44OD44K344Ol44Op44Kk44OE!5e0!3m2!1sja!2sjp!4v1770340763099!5m2!1sja!2sjp"
+              title="スパニッシュライツの地図" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-stone-950 text-stone-500 py-10 text-center text-[10px] tracking-[0.25em] uppercase">
+  <p>&copy; SPANISH LIGHTS ALL RIGHTS RESERVED.</p>
+</footer>
+
+<!-- Mobile fixed action bar -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 shadow-[0_-5px_30px_rgba(0,0,0,.5)] bg-white safe-bottom">
+  <a href="tel:0196526791" class="bg-white text-red font-black h-16 flex items-center justify-center text-base active:bg-stone-100">
+    <i class="fas fa-phone mr-2"></i>電話で予約
+  </a>
+  <a href="http://www.hotpepper.jp/strJ000274399/" class="bg-red text-white font-black h-16 flex items-center justify-center text-base active:bg-red-900">
+    <i class="fas fa-calendar-alt mr-2"></i>Webで予約
+  </a>
+</div>
+
+</body>
+</html>
