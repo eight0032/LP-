@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>カフェダイニング ブローニュ | アートホテル盛岡【公式】</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+  // ※ 元コードでは text-accent / bg-primary が未定義だったため、ここで定義しています
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#8b4513', accent: '#b8901f', gold: '#d4af37', cream: '#fdfaf6', brick: '#f4eee8' },
+        fontFamily: {
+          sans: ['"Noto Sans JP"', 'sans-serif'],
+          serif: ['"Noto Serif JP"', 'serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #fdfaf6; color: #333; -webkit-text-size-adjust: 100%; }
+  /* 画像が未設定でも崩れないよう、背景グラデーションを敷く */
+  .ph { background: linear-gradient(135deg, #c9a66b, #8b4513); }
+  .gold-frame { border: 2px solid #d4af37; position: relative; }
+  .gold-frame::after { content: ''; position: absolute; inset: 4px; border: 1px solid #d4af37; pointer-events: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .shimmer { background-image: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%); background-size: 200% 100%; animation: shimmer 3s infinite; }
+    @keyframes shimmer { from { background-position: -100% 0; } to { background-position: 100% 0; } }
+  }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ファーストビュー -->
+<header class="relative flex min-h-[100svh] items-center justify-center overflow-hidden ph">
+  <img src="images/paring.png" alt="貴賓なホテルビュッフェ" class="absolute inset-0 h-full w-full object-cover" onerror="this.remove()">
+  <div class="absolute inset-0 bg-black/55"></div>
+
+  <div class="relative z-10 mx-auto w-full max-w-3xl px-5 py-16 text-center text-white">
+    <p class="font-serif text-base tracking-[0.2em] text-gold sm:text-xl">ART HOTEL MORIOKA</p>
+    <div class="mx-auto mt-2 mb-6 h-px w-40 bg-gold sm:w-56"></div>
+
+    <h1 class="font-serif font-bold leading-snug [text-shadow:0_2px_8px_rgba(0,0,0,.7)]">
+      <span class="mb-3 block text-lg font-normal sm:text-2xl">週末、五感を満たす贅沢を。</span>
+      <span class="text-2xl sm:text-4xl md:text-5xl">岩手素材の和洋中ビュッフェと<br><span class="text-gold">本格6種のカレー</span>の共演</span>
+    </h1>
+
+    <div class="mt-8 flex flex-col items-center gap-5 sm:mt-10 md:flex-row md:justify-center md:gap-8">
+      <p class="border-l-2 border-gold pl-4 text-left">
+        <span class="block text-sm sm:text-base">土日祝限定 90分制</span>
+        <span class="text-sm">大人</span>
+        <span class="text-3xl font-bold sm:text-4xl">1,800</span><span class="text-xs">円(税込)</span>
+      </p>
+      <a href="#cta" class="shimmer block w-full max-w-xs rounded-sm bg-gold px-6 py-4 text-center text-base font-bold text-gray-900 shadow-2xl transition hover:bg-yellow-600 sm:w-auto sm:px-10 sm:text-lg">
+        特典付きで今すぐ予約する
+      </a>
+    </div>
+  </div>
+  <a href="#reasons" aria-label="下へスクロール" class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-2xl text-white">⌄</a>
+</header>
+
+<!-- 選ばれる理由 -->
+<section id="reasons" class="bg-brick py-14 sm:py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mb-10 text-center sm:mb-14">
+      <h2 class="font-serif text-3xl font-bold text-primary sm:text-5xl">Boulogne's Pride</h2>
+      <p class="mt-3 font-serif tracking-widest text-accent">ブローニュが選ばれる3つの理由</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3 md:gap-10">
+      <article class="gold-frame bg-white p-6 shadow-lg sm:p-8">
+        <div class="ph mb-5 h-44 w-full overflow-hidden rounded sm:h-48"><img src="images/curry.png" alt="本格カレー" class="h-full w-full object-cover" loading="lazy" onerror="this.remove()"></div>
+        <p class="mb-2 font-serif text-4xl italic text-gold/70">01</p>
+        <h3 class="mb-3 border-b border-gray-100 pb-2 text-lg font-bold text-gray-800 sm:text-xl">本格カレー6種の競演</h3>
+        <p class="text-sm leading-relaxed text-gray-600">名物の盛岡スープカレーをはじめ、スパイシーからマイルドまで、シェフ特製の本格カレーを常時6種類ご用意。カレー好きをも唸らせる深いコクと香りが自慢です。</p>
+      </article>
+
+      <article class="gold-frame bg-white p-6 shadow-lg sm:p-8">
+        <div class="ph mb-5 h-44 w-full overflow-hidden rounded sm:h-48"><img src="images/buffe.jpg" alt="和洋中ビュッフェ" class="h-full w-full object-cover" loading="lazy" onerror="this.remove()"></div>
+        <p class="mb-2 font-serif text-4xl italic text-gold/70">02</p>
+        <h3 class="mb-3 border-b border-gray-100 pb-2 text-lg font-bold text-gray-800 sm:text-xl">岩手の恵みを「和洋中」で</h3>
+        <p class="text-sm leading-relaxed text-gray-600">銀河鶏「菜彩鶏」や八幡平産マッシュルームなど、地元食材を惜しみなく使用。一流ホテルの味を一度に楽しめる、贅沢なラインナップをお楽しみください。</p>
+      </article>
+
+      <article class="gold-frame bg-white p-6 shadow-lg sm:p-8">
+        <div class="ph mb-5 h-44 w-full overflow-hidden rounded sm:h-48"><img src="images/roast.png" alt="ライブキッチン" class="h-full w-full object-cover" loading="lazy" onerror="this.remove()"></div>
+        <p class="mb-2 font-serif text-4xl italic text-gold/70">03</p>
+        <h3 class="mb-3 border-b border-gray-100 pb-2 text-lg font-bold text-gray-800 sm:text-xl">五感で楽しむライブキッチン</h3>
+        <p class="text-sm leading-relaxed text-gray-600">目の前で調理されるローストビーフや、茹でたてのパスタ。音と香りが食欲をそそるライブ感は、ブローニュならではの特別な体験です。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- クチコミ -->
+<section class="overflow-hidden bg-white py-14 sm:py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mb-10 text-center sm:mb-14">
+      <h2 class="text-3xl font-bold sm:text-4xl">Voice</h2>
+      <p class="mt-2 font-serif text-gray-500">お客様から寄せられた嬉しいお声</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 md:gap-8">
+      <figure class="rounded-tr-[40px] bg-gray-50 p-6 sm:p-8">
+        <div class="mb-3 text-accent" aria-label="評価4.5">★★★★☆</div>
+        <blockquote>
+          <p class="mb-4 font-bold leading-relaxed text-gray-700">「カレーの種類の多さに感動。盛岡スープカレーが最高でした!」</p>
+          <p class="text-sm leading-relaxed text-gray-500">カレーが6種類もあり、盛岡スープカレーも絶品。デザートのアイスクリームまでついて大変お得です。最後にデザートプレートまで付きました。</p>
+        </blockquote>
+      </figure>
+      <figure class="rounded-bl-[40px] bg-gray-50 p-6 sm:p-8">
+        <div class="mb-3 text-accent" aria-label="評価5">★★★★★</div>
+        <blockquote>
+          <p class="mb-4 font-bold leading-relaxed text-gray-700">「ローストビーフが肉厚!バイキングとは思えないクオリティ。」</p>
+          <p class="text-sm leading-relaxed text-gray-500">ローストビーフが肉厚で食べ応え抜群。一人でも入りやすい雰囲気で、スタッフの方の接客もホテル併設だけあって非常に上質でした。</p>
+        </blockquote>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- オファー -->
+<section class="relative overflow-hidden bg-primary py-14 text-center text-white sm:py-20">
+  <div class="absolute inset-0 opacity-20">
+    <img src="images/dessert.png" alt="" class="h-full w-full object-cover" loading="lazy" onerror="this.remove()">
+  </div>
+  <div class="relative z-10 mx-auto max-w-3xl px-5">
+    <h2 class="mb-8 font-serif text-2xl font-bold leading-relaxed sm:mb-12 sm:text-4xl">週末のランチタイムを、<br>最高の「ご褒美」に変えませんか?</h2>
+    <p class="mb-6 inline-block rounded-full bg-gold px-6 py-2 text-sm font-bold text-gray-900 sm:px-8 sm:text-base">WEB予約限定特典</p>
+    <p class="mb-6 font-serif text-4xl italic sm:mb-8 sm:text-6xl">Special Dessert Plate</p>
+    <p class="text-base font-bold leading-relaxed sm:text-xl">通常メニューにはない「特製デザートプレート」を<br class="hidden sm:block">予約者様全員にプレゼントいたします。</p>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="bg-gray-100 py-14 sm:py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mb-10 text-center sm:mb-14">
+      <p class="mb-2 font-serif text-sm tracking-[0.2em] text-accent">Future Plans</p>
+      <h2 class="font-serif text-3xl font-bold text-primary sm:text-5xl">Coming Soon</h2>
+      <p class="mt-3 text-sm text-gray-600 sm:text-base">お客様の声から生まれた、これから始まる新しいサービスやメニューの予告です。</p>
+    </div>
+    <div class="mx-auto grid max-w-4xl gap-6 md:grid-cols-2 md:gap-8">
+      <article class="relative rounded border-t-4 border-gold bg-white p-6 pt-12 shadow-md sm:p-8 sm:pt-12">
+        <span class="absolute right-4 top-4 rounded-full bg-gold/20 px-3 py-1 text-xs font-bold text-accent">近日登場</span>
+        <h3 class="mb-3 text-lg font-bold text-gray-800 sm:text-xl">お子様・ファミリービュッフェ</h3>
+        <p class="text-sm leading-relaxed text-gray-600">「子供と一緒に楽しみたい」というお声にお応えし、ミニハンバーグやデザートなどのお子様専用メニュー&amp;キッズスペースを新設予定!ご家族みんなで笑顔になれる週末を提供します。</p>
+      </article>
+      <article class="relative rounded border-t-4 border-gold bg-white p-6 pt-12 shadow-md sm:p-8 sm:pt-12">
+        <span class="absolute right-4 top-4 rounded-full bg-gold/20 px-3 py-1 text-xs font-bold text-accent">企画進行中</span>
+        <h3 class="mb-3 text-lg font-bold text-gray-800 sm:text-xl">岩手産ブランド豚のロースト</h3>
+        <p class="text-sm leading-relaxed text-gray-600">大人気ライブキッチンに、岩手の豊かな自然で育った「岩手県産ブランド豚」の特製ローストが登場予定。シェフが目の前で切り分ける極上の味わいをお楽しみに。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 予約 -->
+<section id="cta" class="bg-brick py-14 sm:py-20">
+  <div class="mx-auto max-w-4xl px-4">
+    <div class="gold-frame overflow-hidden bg-white p-6 shadow-2xl sm:p-10 md:p-12">
+      <div class="mb-8 text-center sm:mb-10">
+        <p class="mb-2 font-bold tracking-widest text-accent">RESERVATION</p>
+        <h2 class="text-2xl font-bold text-gray-800 sm:text-3xl">ご予約・お問い合わせ</h2>
+      </div>
+      <div class="grid items-center gap-8 md:grid-cols-2 md:gap-10">
+        <div>
+          <p class="mb-5 leading-relaxed text-gray-600">土日祝日のビュッフェは大変ご好評をいただいております。スムーズなご案内のため、事前のご予約をおすすめしております。</p>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex gap-3"><span aria-hidden="true">🕐</span><span>ランチ 11:30〜 (90分制)</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">📅</span><span>土・日・祝日限定営業</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">💴</span><span>大人 1,800円 / 小学生以下 料金設定あり</span></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-4">
+          <a href="https://art-morioka.com/restaurants/boulogne" class="shimmer rounded bg-gold px-4 py-5 text-center text-lg font-bold text-gray-900 shadow-lg transition hover:bg-yellow-600 sm:py-6 sm:text-xl">WEB予約(24時間受付)</a>
+          <a href="tel:05054893265" class="flex items-center justify-center gap-3 rounded bg-gray-800 px-4 py-4 text-lg font-bold text-white transition hover:bg-black">📞 050-5489-3265</a>
+          <p class="text-center text-xs font-bold text-gray-500">【平日 月〜金 定休】</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 -->
+<section class="bg-white py-14 sm:py-20">
+  <div class="mx-auto flex max-w-6xl flex-col gap-10 px-4 md:flex-row md:gap-12">
+    <div class="md:w-1/2">
+      <h3 class="mb-5 border-l-4 border-gold pl-4 text-xl font-bold text-primary sm:text-2xl">Access</h3>
+      <div class="aspect-video overflow-hidden rounded-lg bg-gray-200 shadow-inner">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.5935112569655!2d141.13989327486493!3d39.70384259872128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f857630f79d9a6d%3A0x40ac56f649634def!2z44Kr44OV44Kn44OA44Kk44OL44Oz44KwIOODluODreODvOODi-ODpQ!5e0!3m2!1sja!2sjp!4v1770338743300!5m2!1sja!2sjp" title="ブローニュの地図" class="h-full w-full border-0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="md:w-1/2">
+      <h3 class="mb-5 border-l-4 border-gold pl-4 text-xl font-bold text-primary sm:text-2xl">Information</h3>
+      <dl class="text-gray-700">
+        <div class="flex flex-col gap-1 border-b py-3 sm:flex-row sm:gap-0"><dt class="w-28 shrink-0 font-bold">店名</dt><dd>カフェダイニング ブローニュ</dd></div>
+        <div class="flex flex-col gap-1 border-b py-3 sm:flex-row sm:gap-0"><dt class="w-28 shrink-0 font-bold">住所</dt><dd>〒020-0022 岩手県盛岡市大通3丁目3-18 アートホテル盛岡 1F</dd></div>
+        <div class="flex flex-col gap-1 border-b py-3 sm:flex-row sm:gap-0"><dt class="w-28 shrink-0 font-bold">お支払い</dt><dd>クレジットカード・QRコード決済可</dd></div>
+        <div class="flex flex-col gap-1 border-b py-3 sm:flex-row sm:gap-0"><dt class="w-28 shrink-0 font-bold">特徴</dt><dd>アンティークなレンガ調の内装 / 全席禁煙 / 子供連れ歓迎</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="bg-gray-900 py-10 text-white sm:py-12" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));">
+  <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center md:flex-row md:justify-between md:text-left">
+    <div>
+      <p class="mb-2 font-serif text-2xl text-gold">Boulogne</p>
+      <p class="text-xs text-gray-400">Café Dining Boulogne inside ART HOTEL MORIOKA</p>
+    </div>
+    <div class="flex gap-6 text-sm">
+      <a href="https://art-morioka.com/restaurants/boulogne" class="text-gray-400 underline transition hover:text-white">公式HP</a>
+      <a href="https://www.instagram.com/art_hotel_morioka/" class="text-gray-400 underline transition hover:text-white">Instagram</a>
+    </div>
+    <p class="text-xs text-gray-500">&copy; Art Hotel Morioka All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
