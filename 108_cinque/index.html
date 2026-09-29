@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>薪窯ピッツァ チンクエ | 岩手県花巻市</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Noto+Serif+JP:wght@600;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  body{font-family:'Noto Sans JP',sans-serif;background:#fdfcfb;color:#1a1a1a;overflow-x:hidden;-webkit-text-size-adjust:100%}
+  .serif{font-family:'Noto Serif JP',serif}
+  .accent-font{font-family:'Cormorant Garamond',serif}
+  .bg-text{position:absolute;font-size:clamp(3rem,15vw,12rem);font-weight:900;color:rgba(0,0,0,.03);white-space:nowrap;pointer-events:none;line-height:1}
+  .line-divider{width:60px;height:2px;background:#8b0000;margin:1.5rem auto}
+  /* iOSでは background-attachment:fixed が効かないためPCのみ適用 */
+  .parallax-bg{background-position:center;background-repeat:no-repeat;background-size:cover}
+  @media (min-width:768px){.parallax-bg{background-attachment:fixed}}
+  .floating-cta{writing-mode:vertical-rl}
+  #map{height:300px;width:100%;z-index:10}
+  @media (min-width:768px){#map{height:100%;min-height:400px}}
+  .safe-bottom{padding-bottom:env(safe-area-inset-bottom,0px)}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- FV -->
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="images/pizza.png" alt="薪窯でピッツァを焼く職人" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-stone-50"></div>
+  </div>
+  <div class="relative z-10 text-center px-5">
+    <span class="accent-font text-white text-lg sm:text-2xl mb-4 block tracking-[0.2em] sm:tracking-[0.3em] opacity-80 uppercase">Authentic Napoli Style</span>
+    <h1 class="text-white text-4xl sm:text-6xl md:text-8xl font-black serif leading-tight mb-6 md:mb-8">薪窯、<br class="md:hidden">静寂、<br class="md:hidden">ピッツァ。</h1>
+    <div class="w-1 h-16 md:h-24 bg-red-700 mx-auto mb-6 md:mb-8"></div>
+    <p class="text-white text-base md:text-xl tracking-wider md:tracking-widest font-light leading-relaxed">
+      岩手県花巻市、台温泉の麓。<br>取材お断りの隠れ家で味わう「真実の味」。
+    </p>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 accent-font tracking-widest text-xs sm:text-sm uppercase">Scroll to Experience</div>
+</section>
+
+<!-- 特徴 -->
+<section class="py-16 md:py-32 relative overflow-hidden">
+  <div class="bg-text top-4 left-0 accent-font">PIZZERIA CINQUE</div>
+  <div class="container mx-auto px-5 md:px-6 max-w-5xl relative">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20">
+      <div>
+        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black serif mb-4 leading-tight">イチオシ<br><span class="text-red-800">マルゲリータトンノ</span></h2>
+        <div class="w-20 h-1 bg-red-800"></div>
+      </div>
+      <p class="text-gray-500 mt-5 md:mt-0 md:text-right accent-font text-lg md:text-xl uppercase tracking-tight">The masterpiece of firewood oven</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="relative mx-3 md:mx-0">
+        <img src="images/pizza2.png" alt="焼きたてのマルゲリータトンノ" class="rounded-sm shadow-2xl w-full">
+        <div class="absolute -top-3 -left-3 md:-top-4 md:-left-4 border border-red-800 w-full h-full -z-10"></div>
+      </div>
+      <div class="space-y-5 md:space-y-6">
+        <p class="text-xl md:text-2xl serif font-bold">「生地が、とにかく美味い。」</p>
+        <p class="leading-loose text-gray-600 text-[15px] md:text-base">
+          薪窯で一気に焼き上げるからこそ実現する、外側の「カリッ」と、内側の「もちっ」。<br>
+          ツナ（トンノ）と玉ねぎ、そして熟成されたチーズが溶け合う至福の瞬間。
+          美食家たちが「花巻まで来る価値がある」と断言する、チンクエの代名詞です。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- パララックス -->
+<section class="h-[50vh] md:h-[60vh] parallax-bg flex items-center justify-center relative" style="background-image:url('images/pizza.jpg');">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="relative z-10 text-center text-white px-5">
+    <h3 class="serif text-2xl sm:text-3xl md:text-5xl mb-5 md:mb-6">「おすすめは、ありません。」</h3>
+    <p class="max-w-xl mx-auto opacity-90 leading-relaxed font-light text-sm md:text-base">
+      店主の言葉は、すべてのメニューに対する究極の自信。<br>
+      薪の爆ぜる音と香ばしい匂いの中、ただ食事を愉しむ贅沢。
+    </p>
+  </div>
+</section>
+
+<!-- クチコミ -->
+<section class="py-16 md:py-32 bg-stone-950 text-white">
+  <div class="container mx-auto px-5 md:px-6 max-w-6xl">
+    <div class="text-center mb-12 md:mb-24">
+      <span class="accent-font text-red-700 tracking-[0.4em] md:tracking-[0.5em] text-sm block mb-4 uppercase">Testimonials</span>
+      <h2 class="text-3xl md:text-4xl serif font-black">四つ星・五つ星の喝采。</h2>
+      <div class="line-divider"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-12">
+      <div class="border-l border-white/10 pl-6 md:pl-8 py-2 md:py-4">
+        <p class="text-yellow-500 mb-3 md:mb-4">★★★★★</p>
+        <p class="text-sm font-light leading-loose text-gray-400 italic">「本格的な薪窯のピッツァは初めて。焼肉を食べる予定がなければもう一枚食べたかったほど。」</p>
+      </div>
+      <div class="border-l border-white/10 pl-6 md:pl-8 py-2 md:py-4">
+        <p class="text-yellow-500 mb-3 md:mb-4">★★★★★</p>
+        <p class="text-sm font-light leading-loose text-gray-400 italic">「ピザ窯がテーブルからも見える。薪窯の香ばしさとさっくり歯ごたえの良さ。花巻の方が羨ましい。」</p>
+      </div>
+      <div class="border-l border-white/10 pl-6 md:pl-8 py-2 md:py-4">
+        <p class="text-yellow-500 mb-3 md:mb-4">★★★★☆</p>
+        <p class="text-sm font-light leading-loose text-gray-400 italic">「こじんまりとしたバルといった感じ。サラダの瑞々しさ、豆乳パンナコッタまで抜かりなく美味い。」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗案内 -->
+<section id="shop-info" class="py-16 md:py-32 bg-[#fdfcfb] scroll-mt-4">
+  <div class="container mx-auto px-4 md:px-6 max-w-5xl">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="accent-font text-gray-400 tracking-[0.4em] md:tracking-[0.5em] text-sm block mb-4 uppercase">Access</span>
+      <h2 class="text-3xl md:text-4xl serif font-black">店舗案内</h2>
+      <div class="line-divider"></div>
+    </div>
+    <div class="bg-white shadow-sm border border-stone-100 overflow-hidden">
+      <div class="grid md:grid-cols-2">
+        <div class="p-6 sm:p-10 md:p-16">
+          <h3 class="serif text-2xl md:text-3xl mb-6 md:mb-8 border-b border-stone-100 pb-4">Cinque</h3>
+          <dl class="space-y-5 md:space-y-6 text-sm">
+            <div class="flex border-b border-stone-50 pb-4">
+              <dt class="w-20 md:w-24 shrink-0 text-gray-400 uppercase tracking-tight">Address</dt>
+              <dd class="flex-1 font-medium">〒025-0305 岩手県花巻市台第5地割9-3</dd>
+            </div>
+            <div class="flex border-b border-stone-50 pb-4">
+              <dt class="w-20 md:w-24 shrink-0 text-gray-400 uppercase tracking-tight">Closed</dt>
+              <dd class="flex-1 font-medium">日曜日・月曜日</dd>
+            </div>
+            <div class="flex border-b border-stone-50 pb-4">
+              <dt class="w-20 md:w-24 shrink-0 text-gray-400 uppercase tracking-tight">Policy</dt>
+              <dd class="flex-1 font-medium text-red-800">取材・動画撮影禁止 / 駐車場少なめ</dd>
+            </div>
+          </dl>
+          <div class="mt-8 md:mt-12 space-y-3">
+            <a href="https://www.google.com/maps/search/?api=1&query=39.4395,141.0374" target="_blank" rel="noopener" class="block w-full text-center py-4 border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition duration-300 tracking-widest text-xs uppercase font-bold">Open in Google Maps</a>
+            <a href="https://www.instagram.com/pizzeria_cinque/" target="_blank" rel="noopener" class="block w-full text-center py-4 bg-stone-900 text-white hover:bg-red-900 transition duration-300 tracking-widest text-xs uppercase font-bold">Follow on Instagram</a>
+          </div>
+        </div>
+        <div class="relative min-h-[300px] md:min-h-full">
+          <!-- 地図の埋め込み -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.921085000843!2d141.0700230748498!3d39.448515614000094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f63e933d330d1%3A0xbee928504c42f2da!2z44OB44Oz44Kv44Ko!5e0!3m2!1sja!2sjp!4v1790659710351!5m2!1sja!2sjp" width="100%" height="100%" style="border:0; position: absolute; top: 0; left: 0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-stone-100 border-t border-stone-200">
+  <div class="container mx-auto px-5 md:px-6 max-w-4xl">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="accent-font text-red-800 tracking-[0.3em] text-sm block mb-3 uppercase">Future Concept</span>
+      <h2 class="text-3xl md:text-4xl serif font-black mb-4">Coming Soon</h2>
+      <p class="text-gray-600 text-sm max-w-xl mx-auto leading-relaxed">
+        温泉街を歩く中で、ふらっと扉を開けてくれたら。<br>
+        そんな隠れ家としての佇まいを大切にしながら、旅の不安や迷いをそっと解消する仕組みを考えています。
+      </p>
+      <div class="w-12 h-1 bg-red-800 mx-auto mt-6"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5 md:gap-8">
+      <div class="bg-white p-6 md:p-8 rounded-sm shadow-sm border border-stone-200">
+        <span class="text-xs tracking-widest text-red-800 font-bold uppercase block mb-2">Service Idea 01</span>
+        <h3 class="serif text-lg md:text-xl font-bold mb-3">周辺駐車場のリアルタイム案内</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">「車をどこに止めよう？」という不安を解消するため、近隣駐車場の空き状況やアクセス経路をSNSやマップ上でスマートに確認できる案内。</p>
+      </div>
+      <div class="bg-white p-6 md:p-8 rounded-sm shadow-sm border border-stone-200">
+        <span class="text-xs tracking-widest text-red-800 font-bold uppercase block mb-2">Service Idea 02</span>
+        <h3 class="serif text-lg md:text-xl font-bold mb-3">今日の混雑・営業カレンダー</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">定休日（日・月）の確認や、その日の混雑具合・焼き上がり目安などをSNSのストーリーズ等でさりげなく、リアルタイムにお知らせ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-14 md:py-20 pb-24 md:pb-20 text-center border-t border-stone-200 bg-white">
+  <span class="accent-font text-2xl tracking-tight">Pizzeria Cinque</span>
+  <p class="text-[10px] text-gray-400 mt-4 tracking-[0.2em] uppercase">Since 2014 / Hanamaki, Iwate</p>
+</footer>
+
+<!-- 追従ボタン: PCは縦書き、スマホは下部固定バー -->
+<div class="fixed right-6 bottom-10 z-[100] hidden md:block">
+  <a href="#shop-info" class="floating-cta bg-red-900 text-white text-[10px] font-bold tracking-widest px-4 py-8 rounded-full hover:bg-black transition duration-300">LOCATE US</a>
+</div>
+<div class="fixed inset-x-0 bottom-0 z-[100] md:hidden bg-red-900/95 backdrop-blur safe-bottom">
+  <a href="#shop-info" class="block text-center text-white text-xs font-bold tracking-[0.3em] py-3.5">LOCATE US</a>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  window.addEventListener('load', function () {
+    const lat = 39.4395, lng = 141.0374;
+    const map = L.map('map', { scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false }).setView([lat, lng], 15);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    const icon = L.divIcon({
+      html: '<div style="background:#8b0000;width:20px;height:20px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff"></div>',
+      className: '', iconSize: [20, 20], iconAnchor: [10, 20]
+    });
+    L.marker([lat, lng], { icon }).addTo(map)
+      .bindPopup("<b class='serif'>Pizzeria Cinque</b><br>岩手県花巻市台第5地割9-3").openPopup();
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
