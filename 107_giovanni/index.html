@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ダイニング＆バー ジョバンニ | ランチバイキング</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { gold: { DEFAULT: '#b38e44', dark: '#8e6d2d' } },
+  fontFamily: { serif: ['"Noto Serif JP"', 'serif'], sans: ['"Noto Sans JP"', 'sans-serif'] }
+}}};
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  section[id] { scroll-margin-top: 64px; }
+  .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.75)); }
+  .section-title::after { content:""; display:block; width:50px; height:2px; background:#b38e44; margin:16px auto 0; }
+  .img-hero  { background-image:url('images/viking.jpg'); }
+  .img-chef  { background-image:url('images/buffe.jpg'); }
+  .img-curry { background-image:url('images/curry.jpg'); }
+  .img-drink { background-image:url('images/kakuteru.png'); }
+  .img-dessert { background-image:url('images/dessert.png'); }
+  #map { width:100%; height:300px; z-index:10; border-radius:1rem; }
+  @media (min-width:768px){ #map { height:400px; } }
+  @media (hover:hover){ .card-hover{transition:transform .3s} .card-hover:hover{transform:translateY(-8px)} }
+  @media (prefers-reduced-motion:no-preference){ .pulse{animation:pulse 2s infinite} }
+  @keyframes pulse{50%{transform:scale(1.04)}}
+</style>
+</head>
+<body class="font-sans bg-white text-gray-900 leading-relaxed antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 inset-x-0 z-[100] bg-white/90 backdrop-blur-md border-b border-gray-100" style="padding-top:env(safe-area-inset-top)">
+  <div class="container mx-auto px-4 md:px-6 h-14 flex justify-between items-center">
+    <a href="#top" class="font-serif font-bold text-base md:text-xl tracking-tight">Dining &amp; Bar <span class="text-gold">GIOVANNI</span></a>
+    <nav class="hidden md:flex gap-8 items-center text-sm font-bold">
+      <a href="#menu" class="hover:text-gold transition">メニュー</a>
+      <a href="#coming-soon" class="hover:text-gold transition">新サービス</a>
+      <a href="#about" class="hover:text-gold transition">こだわり</a>
+      <a href="#voice" class="hover:text-gold transition">お客様の声</a>
+      <a href="#access" class="hover:text-gold transition">アクセス</a>
+      <a href="https://morioka.metropolitan.jp/contact_restaurant/index.php" target="_blank" rel="noopener" class="bg-gold text-white px-6 py-2 rounded-sm hover:bg-gold-dark transition">ご予約</a>
+    </nav>
+    <div class="flex items-center gap-4 md:hidden">
+      <a href="tel:019-625-6261" aria-label="電話する" class="text-gold text-xl"><i class="fas fa-phone-alt"></i></a>
+      <button id="menuBtn" aria-label="メニューを開く" aria-expanded="false" class="text-2xl w-10 h-10 flex items-center justify-center"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <nav id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 text-center font-bold">
+    <a href="#menu" class="block py-4 border-b border-gray-100">メニュー</a>
+    <a href="#coming-soon" class="block py-4 border-b border-gray-100">新サービス</a>
+    <a href="#about" class="block py-4 border-b border-gray-100">こだわり</a>
+    <a href="#voice" class="block py-4 border-b border-gray-100">お客様の声</a>
+    <a href="#access" class="block py-4 border-b border-gray-100">アクセス</a>
+    <a href="https://morioka.metropolitan.jp/contact_restaurant/index.php" target="_blank" rel="noopener" class="block py-4 bg-gold text-white">ご予約</a>
+  </nav>
+</header>
+
+<!-- FIRST VIEW -->
+<section id="top" class="relative min-h-[100svh] flex items-center overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="w-full h-full bg-cover bg-center img-hero"></div>
+    <div class="absolute inset-0 hero-overlay"></div>
+  </div>
+  <div class="container mx-auto px-5 md:px-6 relative z-10 text-white pt-16">
+    <div class="max-w-3xl">
+      <p class="font-serif text-xs sm:text-lg md:text-xl mb-4 tracking-[0.2em] md:tracking-[0.3em] opacity-90">HOTEL METROPOLITAN MORIOKA</p>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 leading-[1.25] drop-shadow-lg">
+        五感、震える。<br>至極の50種バイキング。
+      </h1>
+      <div class="flex flex-wrap gap-3 md:gap-4 items-center">
+        <span class="bg-gold text-white px-4 py-1 text-xs md:text-sm font-bold">LUNCH BUFFET</span>
+        <p class="text-base md:text-2xl font-light tracking-wide">できたての「感動」を、ライブキッチンから。</p>
+      </div>
+      <div class="mt-10 md:mt-12">
+        <a href="#reserve" class="pulse inline-block w-full sm:w-auto text-center bg-white text-gray-900 font-bold px-8 md:px-12 py-4 md:py-5 rounded-full text-base md:text-lg shadow-2xl hover:bg-gray-100 transition">
+          特別なランチを予約する <i class="fas fa-arrow-right ml-2 text-gold"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section id="menu" class="py-16 md:py-24">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="text-gold font-bold tracking-widest uppercase text-sm">Performance</span>
+      <h2 class="font-serif text-2xl md:text-4xl font-bold mt-2 section-title">五感を刺激するライブキッチン</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+      <div class="relative">
+        <div class="w-full aspect-[4/3] bg-cover bg-center rounded-2xl shadow-2xl img-chef"></div>
+        <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white/90 backdrop-blur p-3 md:p-4 rounded-lg shadow-lg">
+          <p class="text-[10px] md:text-xs font-bold text-gray-500 uppercase">Chef's Spirit</p>
+          <p class="font-serif text-xs md:text-sm italic">焼きたての瞬間を逃さない</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-serif text-xl md:text-2xl font-bold mb-5">「できたて」という最高のご馳走。</h3>
+        <p class="text-gray-600 mb-8 leading-loose text-sm md:text-base">
+          ジョバンニの象徴、それは目の前でシェフが腕を振るうライブキッチン。<br>
+          音、香り、そして溢れ出す旨味。バイキングの常識を覆す「一皿の完成度」を追求しました。旬の食材が最高の状態で提供される瞬間をお見逃しなく。
+        </p>
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="bg-gold/10 w-10 h-10 flex items-center justify-center rounded-full text-gold shrink-0"><i class="fas fa-utensils"></i></div>
+            <div>
+              <p class="font-bold">常時50種類以上のラインナップ</p>
+              <p class="text-xs md:text-sm text-gray-500">和・洋・中、旬の味覚を網羅した圧倒的なバリエーション。</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="bg-gold/10 w-10 h-10 flex items-center justify-center rounded-full text-gold shrink-0"><i class="fas fa-shield-virus"></i></div>
+            <div>
+              <p class="font-bold">安心の衛生対策</p>
+              <p class="text-xs md:text-sm text-gray-500">個別盛り、手袋の徹底、広い通路。ホテルの品格を。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section id="coming-soon" class="py-16 md:py-24 bg-gradient-to-b from-stone-900 to-stone-950 text-white relative overflow-hidden">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="container mx-auto px-5 md:px-6 relative z-10">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="bg-gold/20 text-gold text-xs font-bold tracking-[0.25em] px-4 py-1.5 rounded-full uppercase border border-gold/30">Coming Soon</span>
+      <h2 class="font-serif text-2xl md:text-5xl font-bold mt-4 tracking-wide">これからの、新しいおもてなし</h2>
+      <p class="text-stone-400 text-sm md:text-base mt-3">ジョバンニがお客様の声をもとに準備している、新しいサービスプランの数々です。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+      <div class="bg-stone-800/60 backdrop-blur border border-stone-700/60 rounded-2xl p-6 md:p-8 shadow-2xl hover:border-gold/50 transition group">
+        <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold text-xl mb-5 group-hover:bg-gold group-hover:text-white transition-all"><i class="fas fa-glass-cheers"></i></div>
+        <h3 class="font-serif text-xl md:text-2xl font-bold mb-3">パーティープランの全面強化</h3>
+        <p class="text-stone-300 text-sm leading-relaxed mb-5">歓送迎会やご親族の集まり、記念日など、特別なシーンにふさわしい貸切対応やオーダーメイドのプレミアムビュッフェプランを鋭意準備中。より プライベートで贅沢なひとときを演出します。</p>
+        <div class="flex items-center text-gold text-xs font-bold tracking-wider"><span>近日公開予定</span><i class="fas fa-clock ml-2"></i></div>
+      </div>
+      <div class="bg-stone-800/60 backdrop-blur border border-stone-700/60 rounded-2xl p-6 md:p-8 shadow-2xl hover:border-gold/50 transition group">
+        <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center text-gold text-xl mb-5 group-hover:bg-gold group-hover:text-white transition-all"><i class="fas fa-gift"></i></div>
+        <h3 class="font-serif text-xl md:text-2xl font-bold mb-3">サプライズ＆柔軟なメッセージ対応</h3>
+        <p class="text-stone-300 text-sm leading-relaxed mb-5">大切な方のお誕生日や結婚記念日を彩る、メッセージ付き特製デザートプレートやオリジナル演出の数々。お客様一人ひとりのリクエストにきめ細やかに寄り添い、心に残るおもてなしを形にします。</p>
+        <div class="flex items-center text-gold text-xs font-bold tracking-wider"><span>近日公開予定</span><i class="fas fa-clock ml-2"></i></div>
+      </div>
+    </div>
+    <p class="mt-12 text-center text-stone-400 text-xs md:text-sm leading-loose">※サービスの詳細や開始時期につきましては、決まり次第当ページおよびSNS等でお知らせいたします。</p>
+  </div>
+</section>
+
+<!-- SIGNATURE MENU -->
+<section id="about" class="py-16 md:py-24 bg-stone-50">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="text-gold font-bold tracking-widest uppercase text-sm">Signature</span>
+      <h2 class="font-serif text-2xl md:text-4xl font-bold mt-2 section-title">ジョバンニのこだわり</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+        <div class="h-52 md:h-64 bg-cover bg-center img-curry relative">
+          <span class="absolute top-4 left-4 bg-gold text-white text-[10px] px-3 py-1 font-bold tracking-widest">MUST EAT</span>
+        </div>
+        <div class="p-6 md:p-8">
+          <h3 class="font-serif text-lg md:text-xl font-bold mb-3">名物「4時間カレー」</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">じっくりと煮込み、旨味を極限まで凝縮。多くのファンを虜にする、ジョバンニが最も誇る逸品です。</p>
+        </div>
+      </article>
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+        <div class="h-52 md:h-64 bg-cover bg-center img-drink relative">
+          <span class="absolute top-4 left-4 bg-gold text-white text-[10px] px-3 py-1 font-bold tracking-widest">FREE FLOW</span>
+        </div>
+        <div class="p-6 md:p-8">
+          <h3 class="font-serif text-lg md:text-xl font-bold mb-3">選べるノンアルコール</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">お料理に合わせて楽しめる、彩り豊かなカクテル。お替り自由で、ランチタイムをより優雅に演出します。</p>
+        </div>
+      </article>
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover sm:col-span-2 lg:col-span-1">
+        <div class="h-52 md:h-64 bg-cover bg-center img-dessert relative">
+          <span class="absolute top-4 left-4 bg-gold text-white text-[10px] px-3 py-1 font-bold tracking-widest">DESSERT</span>
+        </div>
+        <div class="p-6 md:p-8">
+          <h3 class="font-serif text-lg md:text-xl font-bold mb-3">宝石のようなスイーツ</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">専属パティシエが作る多彩なデザート。最後の一口まで満足が続く、贅沢な締めくくりを。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section id="voice" class="py-16 md:py-24">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="text-gold font-bold tracking-widest uppercase text-sm">Voice</span>
+      <h2 class="font-serif text-2xl md:text-4xl font-bold mt-2 section-title">お客様の声</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 md:gap-8 max-w-5xl mx-auto">
+      <!-- ここにお客様の声を入れてください -->
+      <figure class="border-l-4 border-gold bg-stone-50 p-6 rounded-r-xl">
+        <blockquote class="text-sm text-gray-700 leading-relaxed">（お客様の声をここに入力）</blockquote>
+        <figcaption class="mt-3 text-xs text-gray-400">30代 女性</figcaption>
+      </figure>
+      <figure class="border-l-4 border-gold bg-stone-50 p-6 rounded-r-xl">
+        <blockquote class="text-sm text-gray-700 leading-relaxed">（お客様の声をここに入力）</blockquote>
+        <figcaption class="mt-3 text-xs text-gray-400">40代 男性</figcaption>
+      </figure>
+      <figure class="border-l-4 border-gold bg-stone-50 p-6 rounded-r-xl">
+        <blockquote class="text-sm text-gray-700 leading-relaxed">（お客様の声をここに入力）</blockquote>
+        <figcaption class="mt-3 text-xs text-gray-400">20代 女性</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access" class="py-16 md:py-24 bg-stone-50">
+  <div class="container mx-auto px-5 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="text-gold font-bold tracking-widest uppercase text-sm">Access</span>
+      <h2 class="font-serif text-2xl md:text-4xl font-bold mt-2 section-title">アクセス</h2>
+    </div>
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+      <div>
+        <div id="map" class="shadow-xl overflow-hidden rounded-lg">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.5718516502593!2d141.13415317486502!3d39.70432949869204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f857636a8ab74d3%3A0xac7803b5c9b9e86!2z44OA44Kk44OL44Oz44Kw77yG44OQ44O8IOOCuOODp-ODkOODs-ODiw!5e0!3m2!1sja!2sjp!4v1790729214124!5m2!1sja!2sjp" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+      <div class="space-y-6 md:space-y-8">
+        <div>
+          <h3 class="font-serif text-xl md:text-2xl font-bold mb-3 italic">Location</h3>
+          <p class="text-lg mb-2">ダイニング＆バー ジョバンニ</p>
+          <p class="text-gray-600 leading-loose text-sm md:text-base">〒020-0033 岩手県盛岡市盛岡駅前北通2-27<br>ホテルメトロポリタン盛岡NEW WING 2階</p>
+        </div>
+        <div class="border-l-4 border-gold pl-5">
+          <p class="font-bold mb-1">盛岡駅より徒歩3分</p>
+          <p class="text-sm text-gray-500">北通りのNEW WING棟2階へお越しください。</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-widest">Contact</p>
+          <a href="tel:019-625-6261" class="text-2xl md:text-3xl font-bold text-gold hover:opacity-70 transition"><i class="fas fa-phone-alt mr-2 text-xl"></i>019-625-6261</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE & FOOTER -->
+<section id="reserve" class="py-16 md:py-24 bg-stone-900 text-white" style="padding-bottom:calc(4rem + env(safe-area-inset-bottom))">
+  <div class="container mx-auto px-5 md:px-6 text-center">
+    <h2 class="font-serif text-2xl md:text-5xl font-bold mb-10 md:mb-12 leading-snug">至福のひとときを、今すぐ予約。</h2>
+    <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center max-w-md md:max-w-none mx-auto">
+      <a href="https://morioka.metropolitan.jp/contact_restaurant/index.php" target="_blank" rel="noopener" class="bg-gold hover:bg-white hover:text-stone-900 text-white px-8 md:px-12 py-5 md:py-6 rounded-sm font-bold text-lg md:text-xl transition-all shadow-2xl">
+        WEB予約はこちら <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+      </a>
+      <a href="https://www.instagram.com/metropolitanmorioka_official/" target="_blank" rel="noopener" class="border border-white/20 hover:bg-white/10 px-8 md:px-12 py-5 md:py-6 rounded-sm font-bold text-lg md:text-xl transition">
+        公式Instagram <i class="fab fa-instagram ml-2"></i>
+      </a>
+    </div>
+    <p class="mt-16 md:mt-20 text-[10px] tracking-[0.2em] md:tracking-[0.3em] text-stone-500 uppercase">&copy; Hotel Metropolitan Morioka NEW WING. All rights reserved.</p>
+  </div>
+</section>
+
+<!-- Fixed mobile reserve bar -->
+<a href="https://morioka.metropolitan.jp/contact_restaurant/index.php" target="_blank" rel="noopener"
+   class="md:hidden fixed bottom-0 inset-x-0 z-[90] bg-gold text-white text-center font-bold py-3 shadow-[0_-4px_12px_rgba(0,0,0,.15)]"
+   style="padding-bottom:calc(.75rem + env(safe-area-inset-bottom))">ご予約はこちら</a>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  // Mobile menu
+  const btn = document.getElementById('menuBtn'), menu = document.getElementById('mobileMenu');
+  const toggle = (open) => {
+    menu.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', open);
+    btn.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+  };
+  btn.addEventListener('click', () => toggle(menu.classList.contains('hidden')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+
+ 
+</script>
+</body>
+</html>
