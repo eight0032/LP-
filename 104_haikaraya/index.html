@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HAIKARA-YA(ハイカラヤ)| 花巻で愛される絶品オムライス</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@600;800&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#fffaf0;--surface:#fff;--soft:#fff3e0;--text:#333;--muted:#6b7280;--red:#b91c1c;--gold:#d97706;--line:#fde3c0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1917;--surface:#292524;--soft:#33291f;--text:#f5f5f4;--muted:#a8a29e;--red:#ef4444;--gold:#f59e0b;--line:#4a3a28}}
+:root[data-theme="dark"]{--bg:#1c1917;--surface:#292524;--soft:#33291f;--text:#f5f5f4;--muted:#a8a29e;--red:#ef4444;--gold:#f59e0b;--line:#4a3a28}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.mincho{font-family:'Shippori Mincho',serif}
+.bg-s{background:var(--surface)}.bg-soft{background:var(--soft)}
+.t-red{color:var(--red)}.t-gold{color:var(--gold)}.t-muted{color:var(--muted)}
+.b-red{background:var(--red)}.b-gold{background:var(--gold)}
+.bd{border-color:var(--line)}
+
+.badge{display:inline-block;background:#f59e0b;color:#fff;padding:.4rem .9rem;transform:rotate(-3deg);font-weight:700;border-radius:4px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.bob{animation:bob 3s infinite}
+.ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fde68a,#fdba74);font-size:3rem}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero relative min-h-[100svh] flex items-center justify-center px-4 py-16 text-center text-white overflow-hidden">
+  
+  <!-- 【背景レイヤー】画像とグラデーションオーバーレイ -->
+  <div class="absolute inset-0 -z-10">
+    <!-- 背景画像（オムライスや洋食のシズル感がある美味しそうな写真） -->
+    <img 
+      src="images/omurice.png" 
+      alt="オムライス背景" 
+      class="w-full h-full object-cover object-center scale-105 animate-pulse duration-[10000ms]"
+    />
+    
+    <!-- 視認性を高めるためのグラデーションオーバーレイ（全体を暗くしつつ、中央を程よく調整） -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+    
+    <!-- さらに温かみ（アンバー調）をプラスする色味の調整 -->
+    <div class="absolute inset-0 bg-amber-950/30 mix-blend-multiply"></div>
+  </div>
+
+  <!-- 【コンテンツ】 -->
+  <div class="max-w-3xl relative z-10">
+    <div class="bob mb-5"><span class="badge text-sm sm:text-lg shadow-lg">花巻で行列ができる洋食店</span></div>
+    <h1 class="mincho font-black leading-tight mb-5 drop-shadow-2xl">
+      <span class="block text-xl sm:text-3xl mb-2" style="color:#fbbf24">一度食べたら、忘れられない。</span>
+      <span class="text-4xl sm:text-7xl">至福の<span style="color:#facc15">ふわとろ</span><br>オムライス。</span>
+    </h1>
+    <p class="mincho font-bold text-base sm:text-2xl mb-8">創業1999年。素材の優しさを一皿に込めて。</p>
+    <a href="#cta" class="b-red inline-flex items-center gap-2 rounded-full px-8 py-4 text-lg sm:text-2xl font-black shadow-2xl active:scale-95 transition">今すぐお品書きを見る ↓</a>
+  </div>
+</header>
+
+<!-- REASONS -->
+<section class="bg-s py-14 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <span class="t-red font-black tracking-widest text-sm">REASONS</span>
+      <h2 class="mincho text-2xl sm:text-4xl font-bold mt-1">ハイカラヤが選ばれる理由</h2>
+      <div class="b-gold w-20 h-1 mx-auto mt-3"></div>
+    </div>
+    <div class="grid gap-8 sm:grid-cols-3">
+      <div class="text-center">
+        <div class="relative inline-block mb-4">
+          <div class="ph w-36 h-36 sm:w-44 sm:h-44 rounded-full border-8 bd shadow-xl">🍳</div>
+          <span class="b-red absolute -top-2 -left-2 w-10 h-10 rounded-full text-white font-black text-xl flex items-center justify-center shadow-lg">1</span>
+        </div>
+        <h3 class="t-red text-lg font-bold mb-2">職人技のふわとろ卵</h3>
+        <p class="t-muted text-sm leading-relaxed">バターの香りと絶妙な火加減。口に入れた瞬間に溶けるような食感は、熟練の職人だからこそ成せる業です。</p>
+      </div>
+      <div class="text-center">
+        <div class="relative inline-block mb-4">
+          <div class="ph w-36 h-36 sm:w-44 sm:h-44 rounded-full border-8 bd shadow-xl">🍲</div>
+          <span class="b-red absolute -top-2 -left-2 w-10 h-10 rounded-full text-white font-black text-xl flex items-center justify-center shadow-lg">2</span>
+        </div>
+        <h3 class="t-red text-lg font-bold mb-2">風味豊かなハヤシソース</h3>
+        <p class="t-muted text-sm leading-relaxed">コク深く、酸味のバランスを追求した特製ソース。ライスとの相性を極限まで高め、後を引く美味しさを実現。</p>
+      </div>
+      <div class="text-center">
+        <div class="relative inline-block mb-4">
+          <div class="ph w-36 h-36 sm:w-44 sm:h-44 rounded-full border-8 bd shadow-xl">🍮</div>
+          <span class="b-red absolute -top-2 -left-2 w-10 h-10 rounded-full text-white font-black text-xl flex items-center justify-center shadow-lg">3</span>
+        </div>
+        <h3 class="t-red text-lg font-bold mb-2">自家製デザートの誘惑</h3>
+        <p class="t-muted text-sm leading-relaxed">名物「ハイカラプリン」は、絶妙な硬さとほろ苦いカラメルが絡み合う、お食事後の必須アイテムです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 1 -->
+<section id="cta" class="bg-soft py-12 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="t-red text-xl sm:text-3xl font-bold mb-8">💬 「平日でもランチは激混み」が美味しさの証。</h2>
+    <div class="bg-s border-4 rounded-[2rem] p-6 sm:p-10 relative shadow-xl" style="border-color:var(--gold)">
+      <div class="b-gold absolute -top-5 left-1/2 -translate-x-1/2 text-white px-5 py-1 rounded-full font-bold text-sm whitespace-nowrap">最新情報をチェック</div>
+      <p class="mincho font-bold text-base sm:text-lg mt-2 mb-6">
+        自慢の一皿や日替わりの限定メニューを<br class="hidden sm:block">公式Instagramで写真や動画で配信中！
+      </p>
+      <a href="https://www.instagram.com/haikaraya_1999/" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 text-white px-8 py-4 rounded-2xl text-lg sm:text-2xl font-black shadow-lg active:scale-95 transition">公式Instagramを見る</a>
+      <p class="t-muted text-xs mt-3">フォロー＆タグ付け大歓迎です!</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="bg-s py-14 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-center mb-10">
+      <span class="t-gold block text-sm font-bold mb-1">OUR DISHES</span>
+      <span class="text-2xl sm:text-4xl font-bold">おすすめメニュー</span>
+    </h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+      
+      <!-- メニュー1: オムライス ハヤシソース -->
+      <div class="bg-soft rounded-2xl p-3 sm:p-4 shadow-md flex flex-col">
+        <div class="h-28 sm:h-40 rounded-xl mb-3 overflow-hidden">
+          <img src="images/omurice.jpg" alt="オムライス ハヤシソース" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-bold text-sm sm:text-lg">オムライス ハヤシソース</h3>
+        <p class="t-muted text-xs mb-1">圧倒的人気No.1</p>
+        <p class="t-red font-black text-sm">花巻の名物味</p>
+      </div>
+
+      <!-- メニュー2: 粗挽きハンバーグ -->
+      <div class="bg-soft rounded-2xl p-3 sm:p-4 shadow-md flex flex-col">
+        <div class="h-28 sm:h-40 rounded-xl mb-3 overflow-hidden">
+          <img src="images/hanbagu.png" alt="粗挽きハンバーグ" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-bold text-sm sm:text-lg">粗挽きハンバーグ</h3>
+        <p class="t-muted text-xs mb-1">肉の旨味をダイレクトに</p>
+        <p class="t-red font-black text-sm">満足感たっぷり</p>
+      </div>
+
+      <!-- メニュー3: 釜焼きピザ -->
+      <div class="bg-soft rounded-2xl p-3 sm:p-4 shadow-md flex flex-col">
+        <div class="h-28 sm:h-40 rounded-xl mb-3 overflow-hidden">
+          <img src="images/pizza.png" alt="釜焼きピザ" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-bold text-sm sm:text-lg">釜焼きピザ</h3>
+        <p class="t-muted text-xs mb-1">リーズナブルで大満足</p>
+        <p class="t-red font-black text-sm">本格派のボリューム</p>
+      </div>
+
+      <!-- メニュー4: ハイカラプリン -->
+      <div class="bg-soft rounded-2xl p-3 sm:p-4 shadow-md flex flex-col">
+        <div class="h-28 sm:h-40 rounded-xl mb-3 overflow-hidden">
+          <img src="images/purin.png" alt="ハイカラプリン" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-bold text-sm sm:text-lg">ハイカラプリン</h3>
+        <p class="t-muted text-xs mb-1">絶句するほどの旨さ</p>
+        <p class="t-red font-black text-sm">食後の至福</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OWNER -->
+<section class="bg-soft py-14 sm:py-20 border-y bd">
+  <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+    <div class="w-full md:w-2/5">
+      <div class="relative p-3 border-2 rounded-[2.5rem]" style="border-color:var(--gold)">
+        <!-- 画像に変更した部分 -->
+        <div class="h-64 rounded-[2rem] shadow-2xl overflow-hidden">
+          <img src="images/chef.png" alt="代表 畠山 明彦" class="w-full h-full object-cover">
+        </div>
+        <div class="b-red absolute -bottom-4 -left-2 text-white py-2 px-5 rounded-lg font-bold shadow-lg text-sm">代表 畠山 明彦</div>
+      </div>
+    </div>
+    <div class="w-full md:w-3/5">
+      <span class="t-red font-black text-sm block mb-2">OWNER'S STORY</span>
+      <h2 class="mincho text-2xl sm:text-4xl font-black mb-5 leading-tight">素材本来の「優しい味」を、<br>花巻の日常に。</h2>
+      <div class="mincho space-y-4 leading-relaxed text-base sm:text-lg" style="opacity:.85">
+        <p>1999年の創業以来、一貫して大切にしてきたのは、気取らず、でも飽きのない美味しさを提供することです。</p>
+        <p>オムライスのライス一つとっても、ただのケチャップライスではありません。バターで丁寧に炒め上げ、卵との一体感を追求した「ハイカラ流」のこだわり。お客様の「美味しい!」という笑顔こそが、私たちの原動力です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="bg-soft py-14 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <span class="b-gold text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest inline-block mb-3">COMING SOON</span>
+      <h2 class="mincho text-2xl sm:text-4xl font-bold">もっと想いを伝える、これからの試み</h2>
+      <div class="b-red w-20 h-1 mx-auto mt-3"></div>
+      <p class="t-muted mt-4 max-w-2xl mx-auto text-sm">ハイカラヤの美味しさや職人のこだわりを、より温かくお客様にお届けするために。私たちがこれから取り組んでいきたい「あればいいな」のサービス構想です。</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="bg-s p-6 sm:p-8 rounded-3xl shadow-lg border-2 bd">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="b-red text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-md">🌱</span>
+          <span class="text-xs font-bold bg-soft t-red px-3 py-1 rounded-full">新サービス構想 01</span>
+        </div>
+        <h3 class="mincho text-xl sm:text-2xl font-bold mb-3">季節の食材ストーリーと「手書きメッセージカード」</h3>
+        <p class="t-muted text-sm leading-relaxed mb-5">公式HPでの旬の食材紹介に加え、お席の卓上ポップやお会計時のミニメッセージカードを導入。その日仕入れた岩手県産の野菜や卵の産地、シェフの想いを直筆の温もりとともにお伝えします。</p>
+        <div class="bg-soft p-4 rounded-2xl border bd text-xs t-red font-bold">❤️ 「料理の背景を知ると、もっと美味しく感じられる」そんな体験をお届けします。</div>
+      </div>
+      <div class="bg-s p-6 sm:p-8 rounded-3xl shadow-lg border-2 bd">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="b-red text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-md">🍴</span>
+          <span class="text-xs font-bold bg-soft t-red px-3 py-1 rounded-full">新サービス構想 02</span>
+        </div>
+        <h3 class="mincho text-xl sm:text-2xl font-bold mb-3">おうちで作る「ハイカラヤの隠し味」コラム</h3>
+        <p class="t-muted text-sm leading-relaxed mb-5">公式LINE会員様限定で、ご自宅のオムライスがお店の味に近づくちょっとしたコツや、自家製ハヤシソースに合わせる隠し味のヒントを配信。お店の外でも繋がれるワクワクをお届けします。</p>
+        <div class="bg-soft p-4 rounded-2xl border bd text-xs t-red font-bold">🔔 LINE登録者限定のシークレット試食会なども企画中!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="bg-s py-14 border-t bd">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-center text-2xl sm:text-3xl font-bold mb-10">店舗アクセス</h2>
+    <div class="max-w-2xl mx-auto space-y-5">
+      <h3 class="text-xl font-bold flex items-center gap-2"><span class="b-red w-2 h-7 block"></span>HAIKARA-YA</h3>
+      
+      <!-- 地図埋め込みエリア -->
+      <div class="w-full rounded-2xl overflow-hidden shadow-md border bd aspect-video">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.114006570249!2d141.1116084!3d39.376296200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f6762b04246d7%3A0x4d189efd8500c9e8!2s77yo77yh77yp77yr77yh77yy77yh4oiS77y577yhIOODj-OCpOOCq-ODqeODpA!5e0!3m2!1sja!2sjp!4v1790743566306!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+
+      <p class="flex items-start gap-3 text-base sm:text-lg">
+        <span>📍</span>
+        <span>〒025-0039 岩手県花巻市諏訪町2丁目1-14<br><span class="t-muted text-xs">(花巻PAスマートICから車で約5分)</span></span>
+      </p>
+      <p class="flex items-center gap-3">
+        <span>📞</span>
+        <a href="tel:0198236919" class="font-bold text-2xl underline">0198-23-6919</a>
+      </p>
+      <div class="bg-soft p-5 rounded-2xl border bd">
+        <p class="font-bold mb-1">【定休日】</p>
+        <p>毎週火曜、第1・3火水曜</p>
+        <p class="t-red font-bold text-sm mt-2">※現在はランチ営業のみとなっております</p>
+      </div>
+      
+      <p class="t-muted text-xs text-center">※駐車場は12台分完備。満車の際はお待ちいただく場合がございます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="b-red text-white py-20 px-4 text-center">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="mincho text-3xl sm:text-5xl font-black mb-8 leading-tight">花巻のランチなら、<br>ハイカラヤへおいで。</h2>
+    <a href="tel:0198236919" class="b-gold bob inline-flex items-center gap-3 text-white px-8 py-5 rounded-full text-xl sm:text-3xl font-black shadow-2xl active:scale-95 transition">
+      <span>📞</span> 0198-23-6919
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 bg-stone-900 text-white text-center" style="padding-bottom:calc(2.5rem + env(safe-area-inset-bottom,0px))">
+  <div class="flex justify-center gap-6 mb-4 text-sm">
+    <a href="https://www.instagram.com/haikaraya_1999/" class="underline hover:opacity-80">Instagram</a>
+    <a href="https://haikara-ya.com/" class="underline hover:opacity-80">公式サイト</a>
+  </div>
+  <p class="text-sm opacity-50">&copy; HAIKARA-YA. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
