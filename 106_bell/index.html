@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="1968年盛岡創業。びっくりドンキー第1号店「ベル大通店」のご案内。">
+  <title>ハンバーグのベル大通店 | びっくりドンキーの原点、ここにあり。</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            donkey: { brown: '#5d4037', orange: '#d84315', yellow: '#ffb300', bg: '#fdfaf5', sand: '#f0e6d2' }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            mincho: ['"Sawarabi Mincho"', 'serif'],
+            hand: ['"Yuji Syuku"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Sawarabi+Mincho&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { background-color: #fdfaf5; color: #332211; padding-bottom: env(safe-area-inset-bottom); }
+    .bg-wood {
+      background-color: #5d4037;
+      background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 2px, transparent 2px 14px),
+                        repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 9px);
+    }
+    .btn-main {
+      background: linear-gradient(to bottom, #ffb300, #f57c00);
+      box-shadow: 0 6px 0 #bf360c;
+      border: 2px solid #5d4037;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-main:hover { transform: scale(1.02); box-shadow: 0 4px 0 #bf360c; }
+    .btn-main:active { transform: translateY(6px); box-shadow: 0 0 0 #bf360c; }
+    .sketch-border {
+      border: 3px solid #5d4037;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    }
+    .stamp {
+      display: inline-block; border: 3px double #d84315; color: #d84315;
+      padding: 4px 10px; font-weight: 700; transform: rotate(-5deg);
+    }
+    #map { height: 300px; width: 100%; border-radius: 12px; z-index: 0; }
+    @media (min-width: 1024px) { #map { height: 400px; } }
+    /* ヒーロー高さ：モバイルのアドレスバー対策 */
+    .hero { min-height: 100vh; min-height: 100svh; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body class="font-sans overflow-x-hidden antialiased">
+
+  <!-- 1. ファーストビュー -->
+  <header class="hero relative flex items-center justify-center px-4 py-16 bg-wood text-white">
+    <div class="absolute inset-0 opacity-50">
+      <img src="images/hanbagu.png"
+           alt="ハンバーグディッシュ" class="w-full h-full object-cover">
+    </div>
+
+    <div class="relative z-10 max-w-5xl w-full text-center">
+      <div class="mb-5">
+        <span class="stamp font-hand text-base sm:text-xl lg:text-2xl bg-white/90">Since 1968 MORIOKA</span>
+      </div>
+      <h1 class="font-mincho font-black text-4xl sm:text-6xl lg:text-8xl leading-tight mb-6 sm:mb-8 drop-shadow-2xl">
+        すべての感動は、<br><span class="text-yellow-400">ここ</span>から始まった。
+      </h1>
+      <p class="font-hand text-lg sm:text-2xl lg:text-3xl tracking-widest mb-8 sm:mb-10">
+        びっくりドンキー第1号店「ベル大通店」
+      </p>
+
+      <div class="bg-white/95 text-gray-800 p-6 sm:p-8 lg:p-12 rounded-lg sketch-border max-w-2xl mx-auto shadow-2xl -rotate-1">
+        <p class="text-donkey-orange font-bold text-lg sm:text-xl mb-2">【限定公開中】</p>
+        <h2 class="font-black text-xl sm:text-2xl lg:text-3xl mb-6 leading-relaxed">
+          なぜ、13坪の店が<br>全国300店舗になったのか？
+        </h2>
+        <a href="#story" class="block w-full px-6 sm:px-12 py-4 sm:py-6 text-lg sm:text-2xl font-black text-white rounded-lg btn-main">
+          創業秘話を今すぐ読む
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. SNS -->
+  <section id="cta" class="py-12 sm:py-16 bg-donkey-sand border-y-4 border-donkey-brown">
+    <div class="max-w-xl mx-auto px-4 text-center">
+      <p class="font-mincho font-black text-xl sm:text-2xl mb-6 sm:mb-8">原点の味を、五感で楽しむ。</p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+        <a href="https://www.instagram.com/bikkuri__donkey/" target="_blank" rel="noopener"
+           class="flex items-center justify-center px-6 py-4 bg-white border-2 border-donkey-brown rounded-full font-bold hover:bg-pink-50 transition">
+          Instagramを覗く
+        </a>
+        <a href="https://www.youtube.com/channel/UCW8c0CvIb_EFAOSymdCvkwg" target="_blank" rel="noopener"
+           class="flex items-center justify-center px-6 py-4 bg-white border-2 border-donkey-brown rounded-full font-bold hover:bg-red-50 transition">
+          YouTubeで物語を見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 4. 創業ストーリー -->
+  <section id="story" class="py-14 sm:py-24 bg-donkey-brown text-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-12 items-center">
+        <div class="lg:col-span-7 relative">
+          <div class="absolute -left-10 -top-10 w-48 h-48 bg-yellow-400/20 rounded-full blur-3xl"></div>
+          <p class="font-mincho font-black italic text-4xl sm:text-6xl opacity-30 mb-2 relative">HISTORY</p>
+          <div class="text-gray-900 bg-white/90 p-6 sm:p-8 rounded-2xl sketch-border relative z-10">
+            <h3 class="font-hand font-black text-2xl sm:text-4xl mb-6 sm:mb-8 leading-snug">
+              1968年、盛岡。<br>13坪の挑戦がはじまった。
+            </h3>
+            <div class="space-y-5 text-base sm:text-lg leading-relaxed">
+              <p>創業者・庄司昭夫が大阪での修行を経て、岩手県盛岡市に開業した「ハンバーガーとサラダの店・べる」。</p>
+              <p>「マクドナルドが来る前に、日本独自のハンバーグ文化を」という熱い想い。1973年、現在も愛される「ハンバーグディッシュ」の原型がこの店で産声を上げました。</p>
+              <p class="text-donkey-orange font-bold">あの日、盛岡の人々を驚かせた感動を、今も私たちはこの場所で守り続けています。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="relative mx-auto max-w-md lg:max-w-none pb-6 pr-4 sm:pr-6">
+            <img src="images/hanbagu2.png"
+                 alt="創業当時をイメージ" loading="lazy"
+                 class="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition duration-500 w-full">
+            <div class="absolute bottom-0 right-0 bg-donkey-orange p-4 sm:p-6 rounded-lg text-center shadow-xl rotate-3">
+              <p class="text-xs font-bold tracking-widest text-white">Original Shop</p>
+              <p class="text-xl sm:text-2xl font-black text-white">第1号店</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- 5. ACCESS -->
+  <section id="access" class="py-14 sm:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10 sm:mb-16">
+        <h2 class="font-mincho font-black text-3xl sm:text-4xl mb-3">ACCESS</h2>
+        <p class="font-hand text-lg sm:text-xl text-donkey-orange">盛岡の歴史、その中心へ。</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div class="bg-gray-100 p-3 sm:p-4 rounded-3xl sketch-border shadow-inner">
+          <!-- Googleマップのiframeを直接配置 -->
+          <div class="overflow-hidden rounded-2xl h-full min-h-[350px]">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.672487538413!2d141.14667057486488!3d39.7020671988278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8576257b6d4b05%3A0x6815ebb2285979a3!2z44OP44Oz44OQ44O844Kw44Gu44OZ44Or5aSn6YCa5bqX!5e0!3m2!1sja!2sjp!4v1790732803139!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" class="w-full h-full min-h-[350px]"></iframe>
+          </div>
+        </div>
+
+        <div class="space-y-6 sm:space-y-8">
+          <div class="pl-5 border-l-8 border-donkey-orange">
+            <h4 class="text-xl sm:text-2xl font-bold mb-2">ハンバーグのベル大通店</h4>
+            <p class="text-gray-600">〒020-0022 岩手県盛岡市大通１丁目４−７</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <a href="tel:0196292245" class="block p-5 sm:p-6 bg-donkey-bg rounded-xl border border-donkey-brown/20">
+              <p class="text-donkey-orange font-bold text-sm mb-1">Phone</p>
+              <p class="text-xl font-black">019-629-2245</p>
+              <p class="text-xs text-gray-500 mt-1">タップして電話する</p>
+            </a>
+            <div class="p-5 sm:p-6 bg-donkey-bg rounded-xl border border-donkey-brown/20">
+              <p class="text-donkey-orange font-bold text-sm mb-1">Hours</p>
+              <p class="text-lg font-bold">7:00 - 24:00</p>
+              <p class="text-xs text-gray-500 mt-1">※モーニング利用可能</p>
+            </div>
+          </div>
+
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="py-14 sm:py-24 bg-[#fcf8f2] border-t-4 border-donkey-brown">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10 sm:mb-16">
+        <span class="stamp font-hand text-lg sm:text-xl bg-white/95 mb-4">Coming Soon</span>
+        <h2 class="font-mincho font-black text-3xl lg:text-5xl mb-4 mt-3 leading-snug">あればいいなと思うサービス企画</h2>
+        <p class="font-hand text-lg sm:text-xl text-donkey-orange">ベル大通店での思い出を、形にしてお持ち帰り。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl sketch-border shadow-lg -rotate-1 md:hover:rotate-0 transition duration-300">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 bg-donkey-orange/10 rounded-full flex items-center justify-center text-2xl sm:text-3xl mb-5 mx-auto">✉️</div>
+          <h3 class="font-mincho font-black text-xl sm:text-2xl mb-3 text-center">創業記念ポストカード</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">創業当時の貴重な写真とヒストリーを記載。旅の思い出やお部屋のインテリア、大切な人への手紙としてもお使いいただけます。</p>
+          <div class="text-center"><span class="inline-block bg-donkey-brown/10 text-donkey-brown font-bold text-xs px-3 py-1 rounded-full">来店者限定予定</span></div>
+        </div>
+
+        <div class="bg-white p-6 sm:p-8 rounded-2xl sketch-border shadow-lg rotate-1 md:hover:rotate-0 transition duration-300">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 bg-donkey-orange/10 rounded-full flex items-center justify-center text-2xl sm:text-3xl mb-5 mx-auto">📛</div>
+          <h3 class="font-mincho font-black text-xl sm:text-2xl mb-3 text-center">オリジナル缶バッジ</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">ベル大通店ファンの証となるレトロ可愛い缶バッジ。バッグやジャケットに付けて、原点への愛をアピールしよう！</p>
+          <div class="text-center"><span class="inline-block bg-donkey-brown/10 text-donkey-brown font-bold text-xs px-3 py-1 rounded-full">シークレットデザインあり</span></div>
+        </div>
+
+        <div class="bg-white p-6 sm:p-8 rounded-2xl sketch-border shadow-lg -rotate-1 md:hover:rotate-0 transition duration-300">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 bg-donkey-orange/10 rounded-full flex items-center justify-center text-2xl sm:text-3xl mb-5 mx-auto">🏷️</div>
+          <h3 class="font-mincho font-black text-xl sm:text-2xl mb-3 text-center">記念ダイカットステッカー</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">スマホやノートパソコンに貼れる、耐水・耐候性のオリジナルステッカー。1号店のモチーフをスタイリッシュにアレンジ。</p>
+          <div class="text-center"><span class="inline-block bg-donkey-brown/10 text-donkey-brown font-bold text-xs px-3 py-1 rounded-full">全3種展開予定</span></div>
+        </div>
+      </div>
+
+      <div class="mt-10 sm:mt-12 text-center bg-white/80 p-6 sm:p-8 rounded-2xl border-2 border-dashed border-donkey-brown max-w-2xl mx-auto">
+        <p class="font-bold text-gray-800 text-base sm:text-lg mb-2">「こんなグッズがほしい！」のリクエスト募集中</p>
+        <p class="text-sm text-gray-600">今後、来店記念品や限定グッズの企画を鋭意検討中です。あなたの声が実際のグッズになるかも…！？</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Footer -->
+  <footer class="py-16 sm:py-24 bg-wood text-white text-center border-t-8 border-yellow-500">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-mincho font-black text-3xl sm:text-4xl lg:text-6xl leading-snug mb-6 sm:mb-8">
+        盛岡大通、<br>あの日の扉があなたを待っている。
+      </h2>
+      <p class="font-hand text-xl sm:text-2xl mb-10 sm:mb-12 opacity-80">ハンバーグのベル 大通店</p>
+      <div class="pt-8 border-t border-white/20 text-xs sm:text-sm opacity-60">
+        <p>&copy; ハンバーグのベル大通店 / 株式会社アレフ</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function () {
+      const lat = 39.701540, lng = 141.149174;
+      // スマホでは1本指のドラッグでページがスクロールできるよう dragging を調整
+      const isTouch = window.matchMedia('(pointer: coarse)').matches;
+      const map = L.map('map', {
+        scrollWheelZoom: false,
+        dragging: !isTouch,
+        tap: false
+      }).setView([lat, lng], 17);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup("<b>ハンバーグのベル大通店</b><br>びっくりドンキー1号店").openPopup();
+    });
+  </script>
+</body>
+</html>
