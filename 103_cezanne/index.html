@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>セザンヌ 盛岡南インター店 | 薪窯で焼く本格石窯ピザと旬のパスタ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap">
+<style>
+:root{
+  --bg:#fdfcf8; --fg:#2d2d2d; --muted:#6b6b6b; --card:#ffffff; --soft:#f5f5f4; --line:#e7e5e4;
+  --red:#c0392b; --red-soft:#fde8e6; --amber:#b45309; --amber-soft:#fef3c7; --nav:rgba(255,255,255,.92);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1c1917; --fg:#f5f5f4; --muted:#a8a29e; --card:#292524; --soft:#231f1d; --line:#44403c;
+    --red:#ef6b5c; --red-soft:#4a221d; --amber:#f59e0b; --amber-soft:#3f2d0c; --nav:rgba(28,25,23,.92);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1c1917; --fg:#f5f5f4; --muted:#a8a29e; --card:#292524; --soft:#231f1d; --line:#44403c;
+  --red:#ef6b5c; --red-soft:#4a221d; --amber:#f59e0b; --amber-soft:#3f2d0c; --nav:rgba(28,25,23,.92);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Noto Sans JP',"Hiragino Sans","Yu Gothic",sans-serif;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:'M PLUS Rounded 1c','Noto Sans JP',sans-serif}
+.card{background:var(--card);border:1px solid var(--line);border-radius:1rem}
+.muted{color:var(--muted)}
+.red{color:var(--red)}
+.btn{background:#c0392b;color:#fff;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:scale(.98)}
+@media (hover:hover){.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.25)}}
+.hero{background:radial-gradient(circle at 30% 20%,#e0662a 0,#a8281c 45%,#3e2723 100%)}
+.wood{background:linear-gradient(135deg,#3e2723,#2d1b18)}
+.badge{background:radial-gradient(circle,#c0392b,#96281b);box-shadow:0 4px 10px rgba(0,0,0,.3)}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero relative overflow-hidden text-white bg-neutral-900" style="min-height:80svh">
+  <!-- 背景画像（プレースホルダーとしてUnsplashの本格的なピッツァ・石窯の美しいフリー画像を設定しています。必要に応じて src や style の URL を変更してください） -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="images/pizza.png" 
+      alt="石窯焼きピッツァのイメージ" 
+      class="w-full h-full object-cover object-center scale-105 animate-pulse duration-[10000ms]"
+    >
+    <!-- 文字の視認性を高めるためのグラデーション・ダークオーバーレイ -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
+  </div>
+
+  <!-- 背景の大きなピッツァの絵文字アクセント -->
+  <div class="absolute -right-10 -bottom-10 text-[14rem] opacity-10 select-none leading-none z-10" aria-hidden="true">🍕</div>
+  
+  <!-- バッジ -->
+  <div class="badge absolute top-4 left-4 w-24 h-24 sm:w-32 sm:h-32 rounded-full flex flex-col items-center justify-center text-center z-20 bg-red-900/90 backdrop-blur-sm border-2 border-white/20 shadow-lg">
+    <span class="text-[10px] sm:text-xs font-bold">石窯焼き</span>
+    <span class="text-lg sm:text-2xl font-black leading-tight">本格派</span>
+    <span class="text-[10px] sm:text-xs font-bold">盛岡南IC すぐ</span>
+  </div>
+
+  <!-- メインコンテンツ -->
+  <div class="relative z-20 flex flex-col items-center justify-center text-center px-5 pt-32 pb-16 sm:pt-20" style="min-height:80svh">
+    <p class="text-base sm:text-2xl font-black mb-3 drop-shadow">
+      <span class="bg-red-800 px-3 py-1 rounded">薪窯の炎</span>が生む、至福の香ばしさ。
+    </p>
+    <h1 class="text-4xl sm:text-7xl font-black leading-tight mb-6 drop-shadow-lg">
+      本物の<span class="text-yellow-300">ピッツァ</span><br>を味わう贅沢。
+    </h1>
+    <p class="text-sm sm:text-xl font-bold bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-md">
+      「15年ぶりでも、やっぱり美味しい。」
+    </p>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="sticky z-50 backdrop-blur border-b-4 border-red-700 shadow-md" style="top:env(--x,0px);top:env(safe-area-inset-top,0px);background:var(--nav);padding-top:.5rem;padding-bottom:.5rem">
+  <div class="max-w-6xl mx-auto px-4 flex items-center justify-between gap-3">
+    <div class="min-w-0">
+      <span class="block text-[10px] font-bold muted leading-none">盛岡の本格イタリアン</span>
+      <span class="text-lg sm:text-xl font-black red leading-tight">セザンヌ</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="hidden md:block text-right">
+        <p class="text-xs font-bold muted leading-none">ご予約・お問合せ</p>
+        <p class="text-xl font-black">019-637-1260</p>
+      </div>
+      <a href="tel:0196371260" class="btn rounded-full px-4 py-2.5 sm:px-6 sm:py-3 font-black text-sm whitespace-nowrap">
+        📞 <span class="hidden sm:inline">今すぐ</span>電話予約
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- STRENGTHS -->
+<section class="py-14 sm:py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 sm:mb-14">
+      <span class="red font-black tracking-widest block mb-1 text-sm">OUR STRENGTHS</span>
+      <h2 class="text-3xl sm:text-5xl font-black">セザンヌが選ばれる理由</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-12">
+      <div class="card p-6">
+        <h3 class="text-xl sm:text-2xl font-black mb-4 flex items-start gap-3">
+          <span class="shrink-0 bg-red-700 text-white w-9 h-9 flex items-center justify-center rounded-full italic">1</span>
+          <span>職人が薪窯で焼く本格ピザ</span>
+        </h3>
+        <p class="muted leading-relaxed">厳選した粉を使用した生地を、400度以上の高温で一気に焼き上げます。外はカリッと、中はモチモチ。薪窯ならではの「燻した香り」が具材の旨味を引き立てます。</p>
+      </div>
+      <div class="card p-6">
+        <h3 class="text-xl sm:text-2xl font-black mb-4 flex items-start gap-3">
+          <span class="shrink-0 bg-red-700 text-white w-9 h-9 flex items-center justify-center rounded-full italic">2</span>
+          <span>旬の食材が躍るパスタ</span>
+        </h3>
+        <p class="muted leading-relaxed mb-5">四季折々の食材を使用した種類豊富なパスタも人気。生パスタのモチモチ感と、絶妙なソースのバランスは一度食べたら忘れられません。</p>
+        <div class="text-right rounded-xl p-4" style="background:var(--soft);border-top:4px solid #166534">
+          <span class="text-xs font-bold block">LUNCH SET FROM</span>
+          <span class="text-4xl font-black red">1,265</span><span class="text-sm font-bold">円〜</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access" class="py-14 sm:py-20 px-4" style="background:var(--soft)">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl sm:text-4xl font-black mb-2">ACCESS</h2>
+      <p class="red font-bold tracking-widest">店舗アクセス</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5 md:gap-8">
+      <!-- 左側：店舗情報 -->
+      <div class="space-y-4">
+        <div class="card p-5" style="border-left:4px solid var(--red)">
+          <h4 class="font-black text-lg mb-2">📍 所在地</h4>
+          <p class="muted text-sm leading-relaxed">〒020-0834<br>岩手県盛岡市永井12地割113-1</p>
+          <span class="text-xs font-bold muted block mt-2">盛岡南インターより車で約3分</span>
+        </div>
+        <div class="card p-5" style="border-left:4px solid var(--red)">
+          <h4 class="font-black text-lg mb-2">🕐 営業時間</h4>
+          <p class="muted text-sm leading-relaxed">11:00〜21:30</p>
+          <span class="font-bold red block mt-2 text-sm">定休日：火曜日</span>
+        </div>
+        <div class="card p-5" style="border-left:4px solid var(--red)">
+          <h4 class="font-black text-lg mb-2">🚗 駐車場</h4>
+          <p class="muted text-sm">店舗横に専用駐車場完備</p>
+        </div>
+      </div>
+
+      <!-- 右側：Googleマップ埋め込み ＆ 公式サイトリンク -->
+      <div class="card p-4 sm:p-6 flex flex-col items-center justify-center gap-4">
+        <div class="w-full h-[350px] sm:h-full min-h-[300px] rounded-xl overflow-hidden shadow-inner">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.644261034378!2d141.13528817486218!3d39.65771990148722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f859d2c6a19930b%3A0x7b6dca619779585d!2z44K744K244Oz44OMIOebm-WyoeWNl-OCpOODs-OCv-ODvOW6lw!5e0!3m2!1sja!2sjp!4v1790746685711!5m2!1sja!2sjp" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+        
+        <!-- 地球儀アイコン付き公式サイトリンク -->
+        <a href="https://www.cezanne.mobi/index.html" target="_blank" rel="noopener"
+           class="btn w-full rounded-xl px-6 py-3 font-black text-sm sm:text-base text-center flex items-center justify-center gap-2">
+          <span class="text-lg" aria-hidden="true">🌐</span>
+          <span>公式サイトを見る</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-14 sm:py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <span class="inline-block bg-amber-800 text-white px-4 py-1 rounded-full text-xs font-black tracking-widest mb-2">FUTURE CONCEPTS</span>
+      <h2 class="text-3xl sm:text-5xl font-black">COMING SOON</h2>
+      <p class="font-bold mt-2 text-sm sm:text-base" style="color:var(--amber)">「こんなサービスがあったら嬉しい！」を実現へ。新しい取り組みを企画中</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card p-6" style="border-top:4px solid var(--red)">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-black px-3 py-1 rounded-full" style="background:var(--red-soft);color:var(--red)">車利用者向け</span>
+          <span class="text-2xl">🚗</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-black mb-3">焼きたてピザのドライブスルー＆車内受取り</h3>
+        <p class="muted text-sm leading-relaxed mb-5">「車から降りずに、あの本格薪窯ピザを持ち帰りたい！」そんなお声にお応えするため、専用のテイクアウト窓口や、お車までお持ちする受取りサービスを準備中。ドライブの途中やご帰宅前にもサクッと本格イタリアンを。</p>
+        <p class="text-xs font-bold muted rounded-xl p-3" style="background:var(--soft)">✅ 盛岡南ICからも近いので、お出かけついでに最適！</p>
+      </div>
+      <div class="card p-6" style="border-top:4px solid #d97706">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-black px-3 py-1 rounded-full" style="background:var(--amber-soft);color:var(--amber)">デリバリー展開</span>
+          <span class="text-2xl">🛵</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-black mb-3">Uber Eatsなどのデリバリー参加計画</h3>
+        <p class="muted text-sm leading-relaxed mb-5">「おうち時間でもセザンヌの味を楽しみたい！」という熱いご要望にお応えすべく、各種フードデリバリーサービスへの参加を検討しています。ご自宅の食卓が、一瞬で本格イタリアンのレストランに変わる日も近いです。</p>
+        <p class="text-xs font-bold muted rounded-xl p-3" style="background:var(--soft)">✅ ご家族でのパーティーや、おうちディナーにも対応予定！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="wood text-white py-14 sm:py-20 px-4 text-center">
+  <div class="max-w-xl mx-auto">
+    <h2 class="text-2xl sm:text-4xl font-black mb-8 leading-snug">薪窯の炎に癒されながら、<br>特別なひとときを。</h2>
+    <div class="rounded-2xl p-6 shadow-2xl" style="background:var(--card);color:var(--fg)">
+      <p class="text-sm font-bold muted mb-3">ご予約・お問合せはこちら</p>
+      <a href="tel:0196371260" class="btn block rounded-xl px-6 py-4 font-black text-2xl">📞 019-637-1260</a>
+    </div>
+  </div>
+</section>
+
+<footer class="py-8 text-center text-xs" style="background:#2d1b18;color:#a8a29e">
+  <p class="mb-1">セザンヌ 盛岡南インター店</p>
+  <p>&copy; CEZANNE. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
