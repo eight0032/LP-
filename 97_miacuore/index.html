@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>バル ミア・クオーレ(MIA CUORE) | 盛岡駅前 本格イタリアンバル</title>
+  <meta name="description" content="盛岡駅から徒歩1分。焼きたてピザと岩手の食材を使ったイタリアンバル。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700&family=Kalam:wght@700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { wine: '#a51d1d', gold: '#d4af37', wood: '#1a120b', paper: '#fdfaf6' },
+        fontFamily: {
+          sans: ['"Noto Sans JP"', 'sans-serif'],
+          serif: ['"Noto Serif JP"', 'serif'],
+          hand: ['Kalam', 'cursive']
+        }
+      } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #fdfaf6; color: #333; padding-bottom: env(safe-area-inset-bottom); }
+    .blackboard {
+      background-color: #2c3e50;
+      background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 6px 6px;
+      border: 6px solid #5d4037;
+    }
+    .photo { background: linear-gradient(135deg, #3a2a1c, #1a120b); background-size: cover; background-position: center; }
+    .pad-top { padding-top: env(safe-area-inset-top); }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ヒーロー -->
+  <header class="relative min-h-[100svh] flex items-center justify-center text-center text-white bg-black overflow-hidden px-5 pad-top">
+    <!-- 背景画像：実際の画像のURLまたはパスに差し替えてください -->
+    <div id="hero-bg" class="photo absolute inset-0 opacity-60 bg-cover bg-center" style="background-image: url('images/wine.jpg');"></div>
+    
+    <!-- 写真の視認性を高めるためのグラデーション・黒オーバーレイ（必要に応じて調整してください） -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <div class="relative z-10 w-full max-w-xl">
+      <p class="inline-block border-2 border-white px-4 py-1 mb-5 text-xs sm:text-sm font-bold tracking-widest">盛岡駅前・徒歩1分</p>
+      <h1 class="font-serif font-black text-4xl sm:text-6xl md:text-8xl leading-tight mb-4 drop-shadow-2xl">
+        盛岡の<span class="text-yellow-400">PIZZA</span>と、<br>心躍る<span class="text-yellow-400">WINE</span>。
+      </h1>
+      <p class="font-serif font-bold text-base sm:text-xl md:text-2xl mb-8">盛岡で、イタリアの風を感じる大人の隠れ家バル</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+        <a href="#menu" class="bg-white text-wine px-8 py-4 rounded-full font-black text-lg shadow-xl active:scale-95 transition">MENUをチェック</a>
+        <a href="#reserve" class="bg-yellow-500 text-black px-8 py-4 rounded-full font-black text-lg shadow-xl active:scale-95 transition">今すぐ予約</a>
+      </div>
+    </div>
+  </header>
+
+ <!-- おすすめ -->
+  <section id="menu" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-5 max-w-5xl">
+      <div class="text-center mb-12">
+        <span class="text-wine font-hand text-xl md:text-2xl">Recommended</span>
+        <h2 class="font-serif text-3xl md:text-5xl font-black mt-1">イチオシの逸品</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <!-- ピザの画像（実際の画像のURLまたはパスに差し替えてください） -->
+        <div id="pizza-img" class="photo rounded-lg h-56 md:h-80 shadow-xl md:order-2 bg-cover bg-center" style="background-image: url('images/pizza.png');"></div>
+        
+        <div class="bg-red-50 p-6 md:p-8 rounded-tr-[60px] md:rounded-tr-[100px] border-l-8 border-wine md:order-1">
+          <span class="text-wine font-bold">PIZZA</span>
+          <h3 class="font-serif text-2xl md:text-3xl font-black mb-4 leading-snug">焼きたて、とろける。<br>職人渾身の本格ピザ</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">高温のオーブンで一気に焼き上げるピザは、外はカリッと、中はモチモチの黄金比。とろ〜り伸びるチーズとフレッシュな素材の旨味が口いっぱいに広がります。</p>
+          <div class="flex items-center gap-4 text-red-800 font-bold">
+            <span class="text-2xl font-serif">¥1,200〜</span>
+            <span class="bg-wine text-white text-xs px-2 py-1">人気NO.1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mt-14 md:mt-20">
+        <!-- トリッパの画像（実際の画像のURLまたはパスに差し替えてください） -->
+        <div id="trippa-img" class="photo rounded-lg h-56 md:h-80 shadow-xl bg-cover bg-center" style="background-image: url('images/torippa.jpg');"></div>
+        
+        <div class="bg-gray-50 p-6 md:p-8 rounded-bl-[60px] md:rounded-bl-[100px] border-r-8 border-gray-800">
+          <span class="text-gray-500 font-bold">APPETIZER</span>
+          <h3 class="font-serif text-2xl md:text-3xl font-black mb-4 leading-snug">「これがお通し!?」<br>驚きを呼ぶトリッパ</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">クチコミで絶賛される「ハチノスのトマト煮込み」。臭みを一切抜いた丁寧な仕込み。一口食べれば、メインディッシュ級の満足感に包まれます。</p>
+          <div class="bg-white p-4 shadow-sm italic text-sm text-gray-600 border-l-2 border-red-400">「お通しがこれだとテンション上がります!」(40代男性)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 黒板メニュー -->
+  <section class="py-14 md:py-20 bg-wood">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="blackboard p-5 sm:p-8 md:p-16 rounded-lg text-white">
+        <div class="text-center mb-10">
+          <h2 class="font-serif text-3xl md:text-5xl font-black mb-3">Today's Selection</h2>
+          <p class="text-yellow-400 font-hand text-lg md:text-xl">Chef's special ingredients from Iwate</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+          <ul class="space-y-5">
+            <li class="flex justify-between gap-3 border-b border-white/30 pb-2"><span class="font-bold">本日のお任せ3種盛り合わせ</span><span class="text-yellow-400 font-serif whitespace-nowrap"></span></li>
+            <li class="flex justify-between gap-3 border-b border-white/30 pb-2"><span class="font-bold">宮古直送!魚介のカルパッチョ</span><span class="text-yellow-400 font-serif whitespace-nowrap"></span></li>
+            <li class="flex justify-between gap-3 border-b border-white/30 pb-2"><span class="font-bold">岩手産エーデルワイン(グラス)</span><span class="text-yellow-400 font-serif whitespace-nowrap"></span></li>
+          </ul>
+          <ul class="space-y-5">
+            <li class="flex justify-between gap-3 border-b border-white/30 pb-2"><span class="font-bold">自慢の生パスタ 各種</span><span class="text-yellow-400 font-serif whitespace-nowrap"></span></li>
+            <li class="flex justify-between gap-3 border-b border-white/30 pb-2"><span class="font-bold">こだわり肉料理のグリル</span><span class="text-yellow-400 font-serif"></span></li>
+            <li class="flex justify-between gap-3 border-b border-white/30 pb-2"><span class="font-bold">飲み放題付きパーティプラン</span><span class="text-yellow-400 font-serif whitespace-nowrap"></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 特典 -->
+  <section class="py-14 bg-wine text-white">
+    <div class="container mx-auto px-5 text-center">
+      <h2 class="font-serif text-3xl md:text-4xl font-black mb-8 italic">SPECIAL OFFER</h2>
+      <div class="max-w-3xl mx-auto bg-white text-black p-1 md:p-2 rounded-2xl shadow-2xl">
+        <div class="border-4 border-dashed border-wine p-6 md:p-8 rounded-xl">
+          <p class="text-wine font-bold mb-2">【WEB限定】この画面を提示するだけ!</p>
+          <h3 class="font-serif text-2xl sm:text-3xl md:text-5xl font-black mb-4 text-red-800 leading-snug">ウェルカムドリンク1杯<br><span class="text-wine">無料サービス!</span></h3>
+          <p class="text-gray-600 mb-6 font-bold tracking-wider">★ 岩手産エーデルワインもOK ★</p>
+          <a href="#reserve" class="inline-block bg-wine text-white px-8 sm:px-12 py-4 rounded-full font-black text-lg shadow-lg active:scale-95 transition">クーポンを利用して予約</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="py-16 md:py-24 bg-wood text-white">
+    <div class="container mx-auto px-5">
+      <div class="text-center mb-12">
+        <span class="text-yellow-400 font-hand text-xl md:text-2xl">Future Projects</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-black mt-1">Coming Soon</h2>
+        <p class="text-gray-400 mt-3 text-sm md:text-base">お客様の「あったらいいな」をカタチに。近日始動予定のサービス構想</p>
+        <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <article class="bg-black/40 border border-white/10 p-6 md:p-8 rounded-2xl relative">
+          <span class="absolute top-4 right-4 bg-yellow-500 text-black text-xs font-black px-3 py-1 rounded-full">Planning</span>
+          <div class="text-3xl mb-4">🍷</div>
+          <h3 class="text-lg md:text-xl font-bold mb-3 pr-20">オーダーメイド・ペアリング提案</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">「このピザにはどれが合う?」にお答え!その日の気分や料理に合わせて、ソムリエが最適なワインのマリアージュをご提案するデジタル診断&専用メニューを開発中。</p>
+        </article>
+        <article class="bg-black/40 border border-white/10 p-6 md:p-8 rounded-2xl relative">
+          <span class="absolute top-4 right-4 bg-yellow-500 text-black text-xs font-black px-3 py-1 rounded-full">Planning</span>
+          <div class="text-3xl mb-4">🧀</div>
+          <h3 class="text-lg md:text-xl font-bold mb-3 pr-20">月替わり「岩手 × イタリア」小皿バル</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">地元の厳選された旬食材(短角牛や三陸の魚介など)を使った、ここでしか味わえない限定タパスを毎月日替わり・数量限定で楽しめる特別企画を準備しています。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<!-- 予約・店舗情報 -->
+  <section id="reserve" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-5 max-w-5xl">
+      <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+        <div class="lg:w-1/2">
+          <h2 class="font-serif text-3xl md:text-4xl font-black mb-4">MIA CUORE</h2>
+          <p class="text-lg md:text-xl font-bold text-wine mb-8">盛岡駅前で、心温まる本格バル体験を。</p>
+          <dl class="space-y-6">
+            <div>
+              <dt class="font-bold">住所</dt>
+              <dd class="text-gray-600">〒020-0034 岩手県盛岡市盛岡駅前通9−7</dd>
+              <dd class="text-sm text-wine font-bold mt-1">盛岡駅から徒歩約1分!</dd>
+            </div>
+            <div>
+              <dt class="font-bold">電話番号</dt>
+              <dd><a href="tel:0196231275" class="text-2xl sm:text-3xl font-black text-black">019-623-1275</a></dd>
+            </div>
+            <div>
+              <dt class="font-bold">定休日</dt>
+              <dd class="text-gray-600">日曜日(祝前日は営業の場合あり)</dd>
+            </div>
+          </dl>
+          <div class="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href="tel:0196231275" class="text-center bg-wine text-white px-8 py-4 rounded-full font-black text-lg shadow-lg active:scale-95 transition">電話で予約する</a>
+            <a href="https://nahan-morioka.owst.jp/" target="_blank" rel="noopener" class="text-center bg-black text-white px-8 py-4 rounded-full font-black text-lg shadow-lg active:scale-95 transition">公式サイトで詳しく見る</a>
+          </div>
+          
+          <!-- Instagramリンクボタン -->
+          <div class="mt-4">
+            <a href="https://www.instagram.com/miacuore_morioka/?hl=ja" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white px-8 py-4 rounded-full font-black text-lg shadow-lg active:scale-95 transition">
+              <!-- Instagramアイコン（SVG） -->
+              <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              Instagramで最新情報をチェック
+            </a>
+          </div>
+        </div>
+        <div class="lg:w-1/2">
+          <div class="rounded-2xl overflow-hidden shadow-2xl h-72 sm:h-96 lg:h-[450px] border-4 border-gray-100">
+            <!-- Googleマップ埋め込み -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82614.94102621434!2d141.03464994529548!3d39.69029429449862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8577646b5713c1%3A0xbb23030eae18a981!2z44OQ44OrIOODn-OCouODu-OCr-OCquODvOODrA!5e0!3m2!1sja!2sjp!4v1790833022411!5m2!1sja!2sjp" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-wood py-10 text-white/60 text-center border-t border-white/10">
+    <p class="text-sm">Bal MIA CUORE - Italian Style Bar &amp; Grill</p>
+    <p class="mt-4 text-[10px] tracking-widest">&copy; 2024 バル ミア・クオーレ All Rights Reserved.</p>
+  </footer>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <style>#map{height:100%;width:100%;z-index:1}</style>
+
+  <script>
+    // ▼ 画像生成APIキー(空のままなら暗い背景色のまま表示されます)
+    const apiKey = "";
+
+    async function generateImage(prompt, elementId, imgClass, asBackground = false) {
+      const el = document.getElementById(elementId);
+      if (!el || !apiKey) return;
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ instances: [{ prompt }], parameters: { sampleCount: 1 } })
+        });
+        const data = await res.json();
+        const b64 = data.predictions?.[0]?.bytesBase64Encoded;
+        if (b64) el.style.backgroundImage = `url(data:image/png;base64,${b64})`;
+      } catch (e) { console.error('Image generation failed:', e); }
+    }
+
+    function initMap() {
+      const lat = 39.7020, lng = 141.1378;
+      const map = L.map('map', { scrollWheelZoom: false, tap: true }).setView([lat, lng], 17);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup("<div style='text-align:center'><b>バル ミア・クオーレ</b><br>盛岡駅から徒歩1分</div>").openPopup();
+    }
+
+    window.addEventListener('load', () => {
+      initMap();
+
+      generateImage("A cinematic photograph of a cozy Italian bar interior at night in Japan, warm ambient lighting, wine bottles on shelves, wooden tables", "hero-bg");
+      generateImage("Close-up of a freshly baked Margherita pizza with melting mozzarella, basil, steam rising, professional food photography", "pizza-img");
+      generateImage("Italian Trippa alla Romana in a rustic ceramic bowl, herbs, rich red sauce, professional food photography", "trippa-img");
+
+      const scenes = [
+        { prompt: "An empty wooden bar counter with a glass of red wine, warm lighting, professional photography", title: "1人飲みカウンター" },
+        { prompt: "A modern private dining room in an Italian restaurant, set for a small group, warm lighting", title: "2階 完全個室" },
+        { prompt: "Happy Japanese friends toasting with wine glasses in a stylish Italian bar", title: "各種宴会・貸切" }
+      ];
+      const box = document.getElementById('scene-container');
+      scenes.forEach((s, i) => {
+        const id = `scene-img-${i}`;
+        const div = document.createElement('div');
+        div.id = id;
+        div.className = 'photo relative overflow-hidden rounded-xl h-56 sm:h-72 lg:h-80';
+        div.innerHTML = `<div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-5"><h4 class="text-white text-lg md:text-xl font-bold">${s.title}</h4></div>`;
+        box.appendChild(div);
+        generateImage(s.prompt, id);
+      });
+    });
+  </script>
+</body>
+</html>
