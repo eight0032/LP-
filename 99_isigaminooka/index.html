@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>レストラン石神の丘 | 絶品！地産地消の焼きカレー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Noto+Sans+JP:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', sans-serif;
+      background-color: #fffdf5;
+      background-image: radial-gradient(#f3e5ab 0.5px, transparent 0.5px);
+      background-size: 20px 20px;
+      -webkit-text-size-adjust: 100%;
+    }
+    .font-rounded { font-family: 'M PLUS Rounded 1c', sans-serif; }
+    .font-cursive { font-family: 'Caveat', cursive; }
+    .float { animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .badge-sale {
+      background: #e74c3c; color: #fff; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; transform: rotate(15deg);
+      border: 2px dashed rgba(255,255,255,.6);
+      box-shadow: 2px 2px 10px rgba(0,0,0,.15);
+    }
+    #map { height: 100%; width: 100%; min-height: 280px; z-index: 1; }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    @media (prefers-reduced-motion: reduce) {
+      .float, .animate-pulse { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body class="text-gray-800 antialiased overflow-x-hidden">
+
+  <!-- HERO -->
+  <section class="relative min-h-[100svh] flex items-center overflow-hidden px-5 py-14 md:py-0">
+    <div class="absolute top-10 left-0 w-28 h-28 md:w-32 md:h-32 bg-orange-300 rounded-full blur-3xl opacity-30"></div>
+    <div class="absolute bottom-20 right-0 w-40 h-40 md:w-48 md:h-48 bg-green-300 rounded-full blur-3xl opacity-30"></div>
+
+    <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-10">
+      <div class="md:w-1/2 text-center md:text-left">
+        <div class="inline-flex items-center bg-white border-2 border-orange-500 text-orange-600 text-xs sm:text-sm font-bold px-4 py-1 rounded-full mb-5 font-rounded shadow-sm">
+          <i class="fas fa-medal mr-2"></i>いわて地産地消レストラン 2つ星
+        </div>
+        <h1 class="font-rounded font-extrabold text-orange-600 leading-tight mb-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          <span class="block text-xl sm:text-2xl md:text-3xl text-gray-700 font-normal mb-2">とろ〜りチーズと</span>
+          11種の野菜が<br>
+          <span class="relative inline-block">
+            主役です！
+            <svg class="absolute -bottom-2 left-0 w-full h-3 text-yellow-400" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0 5 Q 25 0 50 5 T 100 5" fill="none" stroke="currentColor" stroke-width="4"/></svg>
+          </span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-8 leading-relaxed font-bold">
+          岩手町「石神の丘」でしか出会えない<br>
+          心ときめく焼きカレー体験。
+        </p>
+        <a href="#cta-bottom" class="inline-flex items-center justify-center w-full sm:w-auto bg-orange-600 text-white font-bold py-4 px-10 rounded-full text-lg sm:text-xl shadow-xl active:scale-95 hover:scale-105 transition">
+          今すぐ注文する！
+        </a>
+      </div>
+
+      <div class="md:w-1/2 relative w-full">
+        <div class="float relative z-20">
+          <img src="images/curry.png"
+               alt="絶品焼きカレー"
+               class="rounded-[32px] md:rounded-[40px] shadow-2xl border-8 border-white rotate-2 w-full max-w-xs sm:max-w-md mx-auto"
+               onerror="this.src='https://placehold.co/600x600/e67e22/ffffff?text=Curry'">
+          <div class="absolute -top-4 right-2 sm:-top-6 sm:-right-2 w-20 h-20 sm:w-24 sm:h-24 badge-sale text-base sm:text-xl font-rounded animate-pulse">
+            <div class="text-center leading-tight">一番<br>人気!</div>
+          </div>
+        </div>
+        <div class="absolute -bottom-6 left-2 sm:-bottom-8 sm:-left-4 bg-white px-4 py-2 shadow-lg rounded-lg -rotate-6 z-30 font-cursive text-2xl sm:text-3xl text-green-700 border-2 border-green-100">
+          Local Veggies!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING PHONE -->
+  <div class="fixed right-4 z-50" style="bottom: calc(1rem + env(safe-area-inset-bottom, 0px));">
+    <a href="tel:0195611602" aria-label="電話で予約" class="flex items-center bg-green-600 text-white w-14 h-14 md:w-auto md:h-auto justify-center rounded-full shadow-2xl active:scale-95 hover:scale-110 transition md:px-6 md:py-4">
+      <i class="fas fa-phone-alt text-xl md:text-2xl"></i>
+      <span class="hidden md:inline ml-3 font-bold">電話で予約</span>
+    </a>
+  </div>
+
+  <!-- VEGETABLES -->
+  <section class="py-16 md:py-20 bg-white px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10 md:mb-16">
+        <span class="font-cursive text-3xl md:text-4xl text-orange-400 block mb-2">Vegetable Power</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-rounded text-gray-800">中身はこんなに贅沢です</h2>
+        <div class="w-20 h-1 bg-orange-200 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="p-5 md:p-6 bg-orange-50 rounded-3xl text-center shadow-sm hover:bg-orange-600 hover:text-white transition duration-300">
+          <div class="text-4xl mb-3">🥬</div>
+          <span class="font-bold text-base md:text-lg">春みどり</span>
+          <p class="text-xs mt-1 opacity-70">岩手町特産</p>
+        </div>
+        <div class="p-5 md:p-6 bg-green-50 rounded-3xl text-center shadow-sm hover:bg-green-600 hover:text-white transition duration-300">
+          <div class="text-4xl mb-3">🥕</div>
+          <span class="font-bold text-base md:text-lg">にんじん</span>
+          <p class="text-xs mt-1 opacity-70">採れたて鮮度</p>
+        </div>
+        <div class="p-5 md:p-6 bg-yellow-50 rounded-3xl text-center shadow-sm hover:bg-yellow-600 hover:text-white transition duration-300">
+          <div class="text-4xl mb-3">🥔</div>
+          <span class="font-bold text-base md:text-lg">じゃがいも</span>
+          <p class="text-xs mt-1 opacity-70">ホクホク食感</p>
+        </div>
+        <div class="p-5 md:p-6 bg-purple-50 rounded-3xl text-center shadow-sm hover:bg-purple-600 hover:text-white transition duration-300">
+          <div class="text-4xl mb-3">🧀</div>
+          <span class="font-bold text-base md:text-lg">濃厚チーズ</span>
+          <p class="text-xs mt-1 opacity-70">とろける旨味</p>
+        </div>
+      </div>
+
+      <p class="text-center mt-10 text-gray-500 font-bold bg-gray-100 px-5 py-2 rounded-full w-fit mx-auto text-sm md:text-base">
+        さらに 旬の野菜など全11種類以上を凝縮！
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="py-16 md:py-20 bg-[#FDF5E6] overflow-hidden px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-14 md:gap-16">
+      <div class="md:w-1/2 relative w-full">
+        <div class="bg-white p-3 shadow-2xl rotate-2 rounded-lg">
+          <img src="images/kyabetu.jpg" alt="地産地消のこだわり" class="rounded w-full"
+               onerror="this.src='https://placehold.co/600x400/27ae60/ffffff?text=Fresh'">
+        </div>
+        <div class="absolute -bottom-6 right-0 sm:-right-4 bg-orange-600 text-white p-4 sm:p-6 font-rounded shadow-2xl rounded-tr-[32px]">
+          <p class="text-xs sm:text-sm font-bold opacity-80">いわて地産地消レストラン</p>
+          <p class="text-lg sm:text-2xl font-bold">2つ星獲得の誇り</p>
+        </div>
+      </div>
+
+      <div class="md:w-1/2 mt-6 md:mt-0">
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 font-rounded text-orange-900 leading-tight italic">
+          "地元の恵みを、<br>最高の一皿に。"
+        </h3>
+        <p class="text-gray-700 leading-loose text-base md:text-lg mb-8">
+          私たちは地域の農業振興を第一に考えています。<br>
+          特に岩手町自慢の<strong>「いわて春みどりキャベツ」</strong>の甘みと食感は、他では味わえない宝物です。
+          一皿一皿に、農家さんの想いと私たちの情熱を込めて提供しています。
+        </p>
+        <div class="flex items-center gap-5">
+          <svg width="56" height="56" viewBox="0 0 100 100" class="text-orange-600 shrink-0" aria-hidden="true">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M30 70 Q 50 20 70 70" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="50" cy="40" r="10" fill="currentColor"/>
+          </svg>
+          <div>
+            <p class="text-xs font-bold text-gray-400 tracking-widest uppercase">Operated by</p>
+            <p class="text-base md:text-lg font-bold text-gray-600">岩手町ふるさと振興公社</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-[#FDF5E6] to-white relative overflow-hidden px-4">
+    <div class="absolute -right-10 top-6 opacity-10 text-8xl md:text-9xl" aria-hidden="true">🌟</div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="text-center mb-10 md:mb-16">
+        <span class="inline-block bg-orange-600 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3 tracking-widest uppercase shadow-sm">Coming Soon</span>
+        <h2 class="text-2xl sm:text-4xl md:text-5xl font-black font-rounded text-gray-800 mb-4 leading-snug">
+          あればいいな♪ をカタチにする新サービス
+        </h2>
+        <p class="text-gray-600 text-base md:text-lg">石神の丘をもっと楽しんでいただくための、ワクワクする企画を準備中！</p>
+        <div class="w-20 h-1.5 bg-orange-400 mx-auto mt-6 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div class="bg-white rounded-[2rem] p-6 sm:p-8 shadow-xl border-2 border-orange-100 flex flex-col justify-between relative overflow-hidden hover:border-orange-500 transition duration-300">
+          <div class="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-4 py-1 rounded-bl-xl">近日公開</div>
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-3xl mb-5">🎟️</div>
+            <h3 class="text-xl sm:text-2xl font-bold font-rounded text-gray-800 mb-3">物産コーナー お得クーポン</h3>
+            <p class="text-gray-600 leading-relaxed text-sm mb-6">
+              レストランでお食事をされた方限定！敷地内の物産コーナーや産直で使える、ちょっぴりお得な割引デジタルクーポンを配信予定です。
+            </p>
+          </div>
+          <div class="bg-orange-50 text-orange-600 rounded-xl py-3 px-4 text-center font-bold text-sm">乞うご期待！</div>
+        </div>
+
+        <div class="bg-white rounded-[2rem] p-6 sm:p-8 shadow-xl border-2 border-green-100 flex flex-col justify-between relative overflow-hidden hover:border-green-500 transition duration-300">
+          <div class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl">開発中</div>
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center text-3xl mb-5">🍛</div>
+            <h3 class="text-xl sm:text-2xl font-bold font-rounded text-gray-800 mb-3">焼きカレーの事前スマホ注文</h3>
+            <p class="text-gray-600 leading-relaxed text-sm mb-6">
+              「待ち時間なしで熱々を食べたい！」という声にお応えして、スマホから事前に注文・お取り置きができるテイクアウト予約システムを導入します。
+            </p>
+          </div>
+          <div class="bg-green-50 text-green-600 rounded-xl py-3 px-4 text-center font-bold text-sm">お楽しみに！</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="py-16 md:py-20 bg-white px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10 md:mb-16">
+        <span class="text-orange-500 font-bold block mb-2 tracking-widest uppercase text-sm">Real Voice</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-rounded">食べて感動した皆さんの声</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <figure class="bg-white border-2 border-gray-50 shadow-xl rounded-[2rem] p-6 sm:p-8">
+          <div class="text-yellow-400 mb-4 flex gap-1" aria-label="評価 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote class="text-gray-600 leading-relaxed italic mb-6">「焼きカレーと夕焼けピコのセット、美味しすぎて２週間連続で食べました！景色も最高です。」</blockquote>
+          <figcaption class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold">A</div>
+            <span class="ml-3 text-sm font-bold text-gray-400">2週間前の投稿</span>
+          </figcaption>
+        </figure>
+
+        <figure class="bg-white border-2 border-gray-50 shadow-xl rounded-[2rem] p-6 sm:p-8">
+          <div class="text-yellow-400 mb-4 flex gap-1" aria-label="評価 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote class="text-gray-600 leading-relaxed italic mb-6">「石神軒ラーメンのファンですが、焼きカレーも絶品。野菜が甘くてびっくりします！」</blockquote>
+          <figcaption class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold">S</div>
+            <span class="ml-3 text-sm font-bold text-gray-400">1ヶ月前の投稿</span>
+          </figcaption>
+        </figure>
+
+        <figure class="bg-white border-2 border-gray-50 shadow-xl rounded-[2rem] p-6 sm:p-8">
+          <div class="text-yellow-400 mb-4 flex gap-1" aria-label="評価 4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+          </div>
+          <blockquote class="text-gray-600 leading-relaxed italic mb-6">「美術館の帰りに寄りました。雰囲気も穏やかで、レモンが効いた焼きうどんも最高！」</blockquote>
+          <figcaption class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">K</div>
+            <span class="ml-3 text-sm font-bold text-gray-400">3日前の投稿</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+<!-- ACCESS & INFO -->
+  <section id="cta-bottom" class="py-16 md:py-24 bg-[#FFFAF0] px-4 safe-bottom">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10 md:mb-16">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-orange-600 font-rounded mb-5">Come and Enjoy!</h2>
+        <p class="text-lg sm:text-2xl text-gray-700 font-bold">皆様のお越しを、スタッフ一同お待ちしております！</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-stretch">
+        <!-- 店舗情報 -->
+        <div class="bg-white p-6 sm:p-10 rounded-[2rem] md:rounded-[3rem] shadow-2xl border-t-8 border-orange-500 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold mb-6 md:mb-8 flex items-center text-gray-800">
+              <span class="bg-orange-100 text-orange-600 w-10 h-10 rounded-lg flex items-center justify-center mr-4"><i class="fas fa-info-circle"></i></span>
+              店舗情報
+            </h3>
+            <ul class="space-y-5 text-base sm:text-lg">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1.5 mr-4 text-orange-400 w-4 text-center"></i>
+                <span>岩手県岩手郡岩手町五日市<br>第10地割121-20</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone mr-4 text-orange-400 w-4 text-center"></i>
+                <a href="tel:0195611602" class="font-bold underline decoration-orange-200 decoration-2 underline-offset-4">0195-61-1602</a>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-clock mr-4 text-orange-400 w-4 text-center"></i>
+                <span>10:30 〜 17:30</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 space-y-4">
+            <a href="https://isigaminooka.jp/contact/" class="block w-full bg-gray-800 text-white text-center py-4 rounded-2xl font-bold hover:bg-black transition text-lg shadow-lg">お問い合わせ</a>
+            <a href="https://www.instagram.com/isigaminooka/" class="block w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center py-4 rounded-2xl font-bold shadow-lg">
+              <i class="fab fa-instagram mr-2"></i>Instagramを見る
+            </a>
+          </div>
+        </div>
+
+        <!-- Map + 周辺 -->
+        <div class="flex flex-col gap-6">
+          <div class="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl h-[320px] md:h-[400px] relative bg-gray-100 border-4 border-white">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.79182880407!2d141.2094161343901!3d39.96840673767331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8519e79b5032af%3A0xd1d3d1609efb746a!2z44Os44K544OI44Op44Oz55-z56We44Gu5LiY!5e0!3m2!1sja!2sjp!4v1790827232593!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="bg-white p-6 sm:p-8 rounded-[2rem] md:rounded-[3rem] shadow-xl border-l-8 border-green-500">
+            <h4 class="font-bold text-lg sm:text-xl mb-4 text-green-700 underline decoration-green-200 decoration-4">周辺の楽しみかた</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 gap-4">
+              <div class="flex items-center gap-4 text-gray-600"><span class="text-2xl">🎨</span><p class="font-bold">石神の丘美術館</p></div>
+              <div class="flex items-center gap-4 text-gray-600"><span class="text-2xl">🫐</span><p class="font-bold">ブルーベリー園</p></div>
+              <div class="flex items-center gap-4 text-gray-600"><span class="text-2xl">💕</span><p class="font-bold">恋人の聖地</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 md:mt-20 text-gray-400 text-xs sm:text-sm text-center">
+        <p>&copy; レストラン石神の丘 | 株式会社岩手町ふるさと振興公社</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    window.addEventListener('load', function () {
+      const coords = [39.954625, 141.221558]; // 座標は概算です。実際の位置に合わせて調整してください
+      // スマホでは1本指のスクロールを優先し、ピンチで拡大縮小できるようにする
+      const map = L.map('map', {
+        scrollWheelZoom: false,
+        dragging: !L.Browser.mobile,
+        tap: false
+      }).setView(coords, 15);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+
+      const storeIcon = L.divIcon({
+        html: '<div class="bg-orange-600 text-white rounded-full shadow-lg flex items-center justify-center border-2 border-white" style="width:40px;height:40px;"><i class="fas fa-utensils"></i></div>',
+        className: '',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40]
+      });
+
+      L.marker(coords, { icon: storeIcon }).addTo(map)
+        .bindPopup('<div class="text-center"><b>レストラン石神の丘</b><br>岩手町五日市121-20</div>')
+        .openPopup();
+
+      window.addEventListener('resize', function () { map.invalidateSize(); });
+    });
+  </script>
+</body>
+</html>
