@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>限定食堂 Sa La | 矢巾町の隠れ家イタリアン×ラーメン</title>
+    <meta name="description" content="岩手県矢巾町の隠れ家レストラン。イタリアン×ラーメン「研究料理」を、日替わりの限定メニューで。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.05em; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+        .serif { font-family: 'Noto Serif JP', serif; }
+        .bg-gold { background-color: #B8860B; }
+        .text-gold { color: #B8860B; }
+        .bg-dark { background-color: #121212; }
+        .gold-border { border-color: #B8860B; }
+        .hero-gradient { background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%); }
+        .card-shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .cta-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(184,134,11,0.4); }
+            70%  { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(184,134,11,0); }
+            100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(184,134,11,0); }
+        }
+        #map { height: 320px; width: 100%; border-radius: 0.5rem; z-index: 10; }
+        @media (min-width: 768px) { #map { height: 400px; } }
+        /* ノッチ付きスマホ対応 */
+        header, footer { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+        footer { padding-bottom: calc(3rem + env(safe-area-inset-bottom)); }
+        @media (prefers-reduced-motion: reduce) {
+            .cta-pulse, .animate-pulse { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body class="bg-white text-stone-900 leading-relaxed">
+
+    <!-- 1. FVエリア -->
+    <header class="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden py-20">
+        <div class="absolute inset-0 z-0">
+            <img src="images/ramen.jpg" alt="イタリアンプレート" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-5 max-w-4xl mx-auto">
+            <div class="mb-6 inline-flex flex-wrap items-center justify-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                <span class="text-gold text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                <span class="text-xs sm:text-sm tracking-widest">矢巾町の隠れ家レストラン</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 leading-tight serif">
+                <span class="text-xl sm:text-3xl md:text-4xl block mb-3 font-normal">イタリアン×ラーメン</span>
+                「五感を揺さぶる」<br>唯一無二の研究料理
+            </h1>
+
+            <p class="text-base md:text-xl mb-8 md:mb-10 opacity-90 font-light leading-relaxed">
+                岩手県産「あべどり」と旬の覚出汁が織りなす、<br class="hidden md:block">
+                創業シェフが贈る8年越しの復活の味。
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div class="bg-white text-stone-900 px-6 py-5 rounded-lg shadow-2xl flex items-center gap-4">
+                    <div class="text-left">
+                        <p class="text-xs text-stone-500 font-bold">看板メニュー</p>
+                        <p class="text-lg sm:text-xl font-black serif">ピアット・ウニコ</p>
+                    </div>
+                    <div class="h-10 w-px bg-stone-200"></div>
+                    <div class="text-gold text-xl sm:text-2xl font-black">Limited</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-50">
+            <span class="text-[10px] tracking-[0.3em] uppercase mb-2">Scroll Down</span>
+            <div class="w-px h-10 bg-white animate-pulse"></div>
+        </div>
+    </header>
+
+    <!-- 2. CTA -->
+    <section class="bg-dark text-white py-14 md:py-16 px-5">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-gold font-bold mb-4 text-base sm:text-xl">＼ SNSで話題の「研究料理」を体験する ／</p>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-8 md:mb-10 serif">昨日の限定メニュー・空席状況はこちら</h2>
+
+            <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                <a href="https://x.com/sl0IbF6nLQLCIzx" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 bg-white text-black font-black py-4 md:py-5 px-6 rounded shadow-xl active:bg-stone-200 hover:bg-stone-100 transition duration-300">
+                    <i class="fab fa-x-twitter text-white bg-black w-9 h-9 flex items-center justify-center rounded-full"></i>
+                    <span>最新の献立をチェック</span>
+                </a>
+                <a href="tel:080-2837-1169" class="cta-pulse flex items-center justify-center gap-3 bg-gold text-white font-black py-4 md:py-5 px-6 rounded shadow-xl hover:opacity-90 transition duration-300">
+                    <i class="fas fa-phone-alt text-xl"></i>
+                    <span>本日の空席を電話で確認</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 特徴セクション -->
+    <section class="py-16 md:py-24 px-5 bg-stone-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="text-gold font-bold tracking-widest uppercase text-sm">Our Strength</span>
+                <h2 class="text-2xl md:text-4xl font-black mt-2 serif">Sa Laが「特別」な3つの理由</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-8 md:p-10 card-shadow border-b-4 gold-border text-center">
+                    <div class="text-gold text-4xl mb-5"><i class="fas fa-vial"></i></div>
+                    <h3 class="text-xl font-black mb-4 serif">至極の融合</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed">「ピアット・ウニコ」から「覚出汁ラーメン」まで。ジャンルに縛られない自由な発想。</p>
+                </div>
+                <div class="bg-white p-8 md:p-10 card-shadow border-b-4 gold-border text-center">
+                    <div class="text-gold text-4xl mb-5"><i class="fas fa-leaf"></i></div>
+                    <h3 class="text-xl font-black mb-4 serif">岩手県産食材</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed">地元「あべどり」や三陸の覚。生産者の想いが詰まった厳選素材を最高の状態で。</p>
+                </div>
+                <div class="bg-white p-8 md:p-10 card-shadow border-b-4 gold-border text-center">
+                    <div class="text-gold text-4xl mb-5"><i class="fas fa-couch"></i></div>
+                    <h3 class="text-xl font-black mb-4 serif">大人の隠れ家</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed">住宅街に佇む、靴を脱いで上がるスタイル。自分へのご褒美にふさわしい時間を。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ストーリー -->
+    <section class="py-16 md:py-24 px-5 overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <div class="w-full md:w-1/2 relative pb-6">
+                    <img src="images/chef.png" alt="厨房イメージ" class="relative z-10 rounded shadow-2xl w-full h-auto" loading="lazy">
+                    <div class="absolute bottom-0 right-2 md:-right-6 bg-dark text-white p-4 md:p-6 z-20">
+                        <p class="text-xs uppercase tracking-widest mb-1">Owner Chef</p>
+                        <p class="text-xl md:text-2xl font-black serif">佐野 苗</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-gold font-bold border-l-4 gold-border pl-3">Creator's Story</span>
+                    <h2 class="text-2xl md:text-3xl font-black mt-4 mb-6 md:mb-8 serif">かつての名店「NOTE'」から、<br>さらなる高みへ。</h2>
+                    <p class="text-stone-700 leading-relaxed">
+                        一人で全てを切り盛りする「ワンオペ」にこだわるのは、お客様一人ひとりへ自分の手で最高の一皿を届けたいから。「美味しい」の先にある「驚き」を求めて。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. COMING SOON -->
+    <section class="py-16 md:py-24 px-5 bg-stone-900 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="inline-block px-4 py-1 bg-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-3 border border-gold/40">Coming Soon</span>
+                <h2 class="text-2xl md:text-4xl font-black serif">あればいいなと思う、未来のサービス構想</h2>
+                <p class="text-stone-400 text-sm mt-3">お客様の声をもとに、さらに快適で特別な体験をお届けする新機能を企画中。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <div class="bg-stone-800/80 p-6 md:p-8 rounded-xl border border-stone-700 relative">
+                    <div class="absolute top-4 right-4 bg-gold/10 text-gold text-[10px] font-bold px-3 py-1 rounded-full">構想中</div>
+                    <div class="text-gold text-3xl mb-4"><i class="fas fa-wine-glass-alt"></i></div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 serif">おまかせペアリング予約</h3>
+                    <p class="text-xs text-stone-400 leading-relaxed">料理の進捗やその日の仕入れに合わせ、最適なワインや日本酒を自動で提案・事前予約できるスマートオーダーシステム。</p>
+                </div>
+                <div class="bg-stone-800/80 p-6 md:p-8 rounded-xl border border-stone-700 relative">
+                    <div class="absolute top-4 right-4 bg-gold/10 text-gold text-[10px] font-bold px-3 py-1 rounded-full">開発予定</div>
+                    <div class="text-gold text-3xl mb-4"><i class="fas fa-bell"></i></div>
+                    <h3 class="text-lg md:text-xl font-bold mb-2 serif">新作ラーメン速報通知</h3>
+                    <p class="text-xs text-stone-400 leading-relaxed">SNSのチェックを逃しても大丈夫。気まぐれで登場する「本日の限定ラーメン」や急な空席状況をLINEや通知でお届け。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 6. インフォメーション・アクセス -->
+    <section class="py-16 md:py-24 px-5 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-black serif">Access &amp; Info</h2>
+                <p class="text-stone-500 mt-2">住宅街にひっそりと佇む、大人の隠れ家</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="order-2 md:order-1">
+                    <!-- id="map" を削除し、iframeを直接配置 -->
+                    <div class="shadow-inner border border-stone-200 overflow-hidden rounded-lg h-full min-h-[350px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.777495054489!2d141.14908107485934!3d39.609694504364356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8585d7001f0db1%3A0x747840d5fd8f4a47!2z6ZmQ5a6a6aOf5aCCIFNhIExh!5e0!3m2!1sja!2sjp!4v1790906168351!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="bg-stone-50 p-6 md:p-8 rounded-lg h-full">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-gold font-bold text-sm uppercase mb-1">Address</h4>
+                                <p class="text-stone-800">〒028-3615 岩手県紫波郡矢巾町南矢幅第8地割406</p>
+                            </div>
+                            <div>
+                                <h4 class="text-gold font-bold text-sm uppercase mb-1">Reservation</h4>
+                                <p class="text-2xl font-black serif text-stone-900"><a href="tel:080-2837-1169" class="inline-block py-1">080-2837-1169</a></p>
+                            </div>
+                            <div>
+                                <h4 class="text-gold font-bold text-sm uppercase mb-1">Hours / Holiday</h4>
+                                <p class="text-stone-800">11:30〜19:15 / 水曜定休日 (不定休あり)</p>
+                            </div>
+                            <div class="p-4 bg-white border-l-4 gold-border text-xs leading-relaxed text-stone-600">
+                                <i class="fas fa-info-circle mr-1"></i> 駐車場は店前に3台分ございます。靴を脱いで上がるスタイルのため、リラックスしてお越しください。お支払いは現金のみとなります。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="bg-dark text-white pt-12 text-center border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-5">
+            <h2 class="text-2xl md:text-3xl font-black serif mb-2">限定食堂 Sa La</h2>
+            <p class="text-gold tracking-[0.2em] text-sm mb-8">Sano Laboratory</p>
+            <div class="flex justify-center mb-8">
+                <a href="tel:080-2837-1169" aria-label="電話をかける" class="w-12 h-12 flex items-center justify-center border border-white/30 rounded-full hover:bg-gold transition">
+                    <i class="fas fa-phone-alt text-white"></i>
+                </a>
+            </div>
+            <p class="text-[10px] opacity-40">&copy; 2025 限定食堂 Sa La.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Leaflet.js Map Initialization
+        const lat = 39.6106;
+        const lng = 141.1311;
+        const map = L.map('map', {
+            center: [lat, lng],
+            zoom: 16,
+            scrollWheelZoom: false,
+            tap: true
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        const marker = L.marker([lat, lng]).addTo(map);
+        marker.bindPopup("<b style='font-family:serif;'>限定食堂 Sa La</b><br>岩手県紫波郡矢巾町南矢幅").openPopup();
+
+        map.on('focus', () => map.scrollWheelZoom.enable());
+        map.on('blur', () => map.scrollWheelZoom.disable());
+    </script>
+
+</body>
+</html>
