@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a1a">
+<title>サバービア | 金ケ崎の創作イタリアン・スープパスタ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+  :root { --primary:#c2410c; --bg-creme:#fdfbf7; --text-main:#2d2a26; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { font-family:'Noto Sans JP',sans-serif; color:var(--text-main); background:var(--bg-creme); line-height:1.8; overflow-x:hidden; }
+  .font-mincho { font-family:'Shippori Mincho',serif; }
+  .accent-font { font-family:'Playfair Display',serif; }
+  .vertical-text { writing-mode:vertical-rl; text-orientation:mixed; }
+  .hero-section { background:#1a1a1a; min-height:100vh; min-height:100svh; }
+  .scroll-down { position:absolute; bottom:24px; left:50%; width:1px; height:80px; background:rgba(255,255,255,.3); }
+  .scroll-down::after { content:''; position:absolute; top:0; left:0; width:1px; height:40px; background:#fff; animation:scroll-anim 2s infinite; }
+  @keyframes scroll-anim { 0%{top:0} 100%{top:80px;opacity:0} }
+  .section-title-en { font-size:.75rem; letter-spacing:.3em; text-transform:uppercase; color:var(--primary); font-weight:700; margin-bottom:.5rem; }
+  .border-deco { position:relative; padding-bottom:1.5rem; }
+  .border-deco::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:40px; height:2px; background:var(--primary); }
+  .image-loading { background:#e7e5e4; position:relative; overflow:hidden; }
+  .image-loading::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent); animation:skeleton 1.5s infinite; }
+  @keyframes skeleton { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+  #map { height:320px; width:100%; border-radius:4px; z-index:0; }
+  @media (min-width:768px){ #map{ height:450px; } }
+  .call-bar { padding-bottom:calc(env(safe-area-inset-bottom,0px) + .75rem); }
+  @media (prefers-reduced-motion:reduce){ .scroll-down::after,.image-loading::after{ animation:none; } html{ scroll-behavior:auto; } }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ファーストビュー -->
+<header id="hero" class="relative flex items-center hero-section overflow-hidden min-h-[90vh]">
+  <!-- 方法①: background-imageをインラインスタイルやCSSで指定する場合 -->
+  <div id="hero-img-container" class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('images/buryure.png');"></div>
+  
+  <!-- 方法②: <img>タグで配置したい場合はこちらに変更（背景のdivをコメントアウトして以下を有効化）
+  <img src="https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=1920&q=80" alt="カフェの雰囲気" class="absolute inset-0 w-full h-full object-cover z-0">
+  -->
+
+  <div class="absolute inset-0 bg-black/55 z-[1]"></div>
+
+  <div class="container mx-auto px-5 sm:px-8 md:px-12 py-20 z-10 text-white relative">
+    <div class="max-w-3xl">
+      <p class="font-mincho text-base sm:text-xl md:text-2xl mb-4 tracking-widest opacity-90">岩手・金ケ崎の静かな住宅街で</p>
+      <h1 class="font-mincho text-4xl sm:text-6xl md:text-8xl font-bold leading-tight mb-6 md:mb-8">
+        記憶に残る、<br><span class="text-orange-500">一滴の余韻。</span>
+      </h1>
+      <p class="text-sm sm:text-lg md:text-xl font-light mb-8 md:mb-10 leading-relaxed max-w-xl opacity-85">
+        6種の海の幸が溶け合う濃厚スープパスタと、<br class="hidden sm:block">心までとろける自家製クレームブリュレ。<br class="hidden sm:block">南部鉄器が温める、特別な「日常」をあなたに。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-6">
+        <a href="tel:0197444741" class="bg-orange-700 hover:bg-orange-600 transition-colors px-8 py-4 rounded-sm font-bold flex items-center justify-center gap-3 shadow-xl">
+          <i class="fas fa-phone-alt"></i><span>お席を予約する</span>
+        </a>
+        <a href="https://www.instagram.com/suburbiacafe/" target="_blank" rel="noopener" class="border border-white/50 hover:bg-white/10 transition-colors px-8 py-4 rounded-sm font-bold flex items-center justify-center gap-3">
+          <i class="fab fa-instagram"></i><span>最新情報をみる</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 vertical-text font-mincho text-white/20 text-4xl tracking-[1em] z-10">CREATIVE ITALIAN SUBURBIA</div>
+  <div class="scroll-down z-10 hidden sm:block"></div>
+</header>
+
+<!-- コンセプト -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+      <div class="w-full md:w-5/12 order-2 md:order-1">
+        <!-- 背景画像として設定する場合 -->
+        <div id="concept-img-container" class="w-full aspect-[4/3] md:aspect-square bg-cover bg-center rounded-sm shadow-xl overflow-hidden" style="background-image: url('images/pasta.png');"></div>
+        
+        <!-- または <img> タグで配置したい場合はこちらを有効化（上のdivをコメントアウト）
+        <img src="images/pasta" alt="スープパスタのこだわり" class="w-full aspect-[4/3] md:aspect-square object-cover rounded-sm shadow-xl">
+        -->
+      </div>
+      <div class="w-full md:w-7/12 order-1 md:order-2">
+        <div class="section-title-en">Our Philosophy</div>
+        <h2 class="font-mincho text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-snug">
+          ただのパスタではない。<br>それは、魚介の「旨」を味わう時間。
+        </h2>
+        <p class="text-gray-600 mb-5 text-[15px] md:text-base">
+          ムール貝、えび、いか、あさり、ベビーホタテ、そしてワタリガニ。6種類の海の幸を惜しみなく使用した私たちのスープパスタは、もはや料理という名の「作品」です。
+        </p>
+        <p class="text-gray-600 mb-8 text-[15px] md:text-base">
+          深型の器にたっぷりと注がれたスープは、最後の一口まで熱々のまま。トマトクリームのまろやかさと、魚介から溢れ出す濃厚な出汁が、あなたの五感を満たします。
+        </p>
+        <div class="inline-flex items-center gap-4 text-orange-700 font-bold border-b-2 border-orange-700 pb-1 cursor-pointer hover:opacity-80 transition-opacity">
+          こだわりをさらに詳しく <i class="fas fa-arrow-right text-sm"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- イチオシ -->
+<section class="py-16 md:py-24 bg-stone-900 text-white overflow-hidden">
+  <div class="container mx-auto px-5 sm:px-8">
+    <div class="text-center mb-10 md:mb-16">
+      <div class="section-title-en">Recommended</div>
+      <h2 class="font-mincho text-3xl md:text-4xl font-bold">至福の締めくくり。</h2>
+    </div>
+    <div class="flex flex-col md:flex-row bg-white/5 rounded-sm overflow-hidden border border-white/10">
+      <!-- 背景画像として設定する場合 -->
+      <div id="brulee-img-container" class="w-full md:w-1/2 aspect-video md:aspect-auto md:min-h-[360px] bg-cover bg-center overflow-hidden" style="background-image: url('images/buryure.png');"></div>
+      
+      <!-- または <img> タグで配置したい場合はこちらを有効化（上のdivをコメントアウト）
+      <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=1000&q=80" alt="自家製クレームブリュレ" class="w-full md:w-1/2 aspect-video md:aspect-auto object-cover">
+      -->
+
+      <div class="w-full md:w-1/2 p-6 sm:p-10 md:p-12 flex flex-col justify-center">
+        <h3 class="text-2xl sm:text-3xl font-bold mb-5 italic accent-font">Creme Brulee</h3>
+        <p class="text-gray-400 mb-6 leading-relaxed text-[15px]">
+          ランチの満足度を完成させるのは、パティシエの手仕事が光るデザートです。パリッと繊細なキャラメリゼの下に隠された、驚くほど濃厚なカスタード。一口で「幸せ」と言葉が漏れる、サバービア自慢の逸品。
+        </p>
+        <ul class="space-y-3 mb-8 text-[15px]">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-orange-500 mt-1.5"></i><span>毎日店内で丁寧に焼き上げ</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-orange-500 mt-1.5"></i><span>ランチセットへの追加注文が一番人気</span></li>
+        </ul>
+        <a href="https://www.instagram.com/suburbiacafe/" target="_blank" rel="noopener" class="text-center bg-white text-stone-900 font-bold py-4 hover:bg-orange-500 hover:text-white transition-colors">
+          インスタグラムで写真をもっと見る
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section class="py-16 md:py-24 bg-stone-50">
+  <div class="container mx-auto px-5 sm:px-8">
+    <div class="text-center mb-10 md:mb-16">
+      <div class="section-title-en">Access</div>
+      <h2 class="font-mincho text-3xl md:text-4xl font-bold border-deco inline-block">アクセス</h2>
+    </div>
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 max-w-6xl mx-auto">
+      <!-- マップ部分（Googleマップのiframeを直接配置） -->
+      <div class="w-full lg:w-2/3">
+        <div class="shadow-xl w-full h-[350px] sm:h-[450px] rounded-sm overflow-hidden">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3091.174204017698!2d141.09385687483604!3d39.21620912783179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f489c3301aaab%3A0x58b2baf7bbaadcd2!2z44K144OQ44O844OT44Ki!5e0!3m2!1sja!2sjp!4v1790904246906!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+      <!-- 店舗情報部分 -->
+      <div class="w-full lg:w-1/3 flex flex-col justify-center">
+        <div class="bg-white p-6 sm:p-8 rounded-sm shadow-md border border-stone-100">
+          <h3 class="font-mincho text-2xl font-bold mb-6 text-orange-800">サバービア</h3>
+          <div class="space-y-6 text-gray-600">
+            <div>
+              <p class="text-xs font-bold text-stone-400 mb-1 uppercase tracking-widest">Address</p>
+              <p class="text-sm">〒029-4503<br>岩手県胆沢郡金ケ崎町西根南荒巻６８−１</p>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-stone-400 mb-1 uppercase tracking-widest">Phone</p>
+              <a href="tel:0197444741" class="text-xl font-bold text-gray-800 hover:text-orange-700 transition-colors">0197-44-4741</a>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-stone-400 mb-1 uppercase tracking-widest">Features</p>
+              <ul class="text-sm space-y-2">
+                <li><i class="fas fa-car mr-2 text-orange-700"></i>駐車場 20台完備</li>
+                <li><i class="fas fa-utensils mr-2 text-orange-700"></i>創作イタリアン・スープパスタ</li>
+                <li><i class="fas fa-users mr-2 text-orange-700"></i>宴会・貸切対応（20〜50名）</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-8">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=岩手県胆沢郡金ケ崎町西根南荒巻６８−１" target="_blank" rel="noopener" class="block text-center bg-stone-800 text-white py-3.5 font-bold hover:bg-stone-700 transition-colors rounded-sm">
+              <i class="fas fa-route mr-2"></i>ルート案内を表示
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-white border-t border-stone-200">
+  <div class="container mx-auto px-5 sm:px-8">
+    <div class="text-center mb-10 md:mb-16">
+      <div class="section-title-en">Coming Soon</div>
+      <h2 class="font-mincho text-3xl md:text-4xl font-bold border-deco inline-block">これからのサバービア</h2>
+      <p class="text-gray-500 mt-4 text-sm md:text-base">お客様の「あったらいいな」を形にする、新しい試み。</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+      <div class="bg-stone-50 border border-stone-200 p-6 sm:p-8 rounded-sm shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">SNS Service</span>
+            <i class="fab fa-instagram text-2xl text-orange-700"></i>
+          </div>
+          <h3 class="font-mincho text-xl sm:text-2xl font-bold mb-4 text-stone-900">本日の限定メニュー配信</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-6">毎朝の仕入れ状況に合わせて、その日だけの特別な食材を使ったシェフ気まぐれパスタや限定ドルチェをInstagramにて配信予定。「今日しか出会えない味」をぜひチェックしてください。</p>
+        </div>
+        <div class="pt-4 border-t border-stone-200 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500">
+          <span><i class="far fa-clock mr-1"></i>順次スタート予定</span>
+          <a href="https://www.instagram.com/suburbiacafe/" target="_blank" rel="noopener" class="text-orange-700 font-bold hover:underline">フォローして最新情報を待つ <i class="fas fa-chevron-right ml-1"></i></a>
+        </div>
+      </div>
+
+      <div class="bg-stone-50 border border-stone-200 p-6 sm:p-8 rounded-sm shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Takeout</span>
+            <i class="fas fa-shopping-bag text-2xl text-orange-700"></i>
+          </div>
+          <h3 class="font-mincho text-xl sm:text-2xl font-bold mb-4 text-stone-900">特製オードブル・テイクアウト</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-6">ご自宅でのパーティーやお祝い事、特別な日の食卓を彩る「サバービア特製オードブル」や人気メニューのテイクアウトサービスを準備中。お店の味をご家庭でもお楽しみいただけます。</p>
+        </div>
+        <div class="pt-4 border-t border-stone-200 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500">
+          <span><i class="far fa-clock mr-1"></i>予約受付開始予定</span>
+          <a href="tel:0197444741" class="text-orange-700 font-bold hover:underline">詳細はお電話でお問い合わせ <i class="fas fa-chevron-right ml-1"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="bg-stone-950 text-white pt-16 md:pt-24 pb-28 md:pb-12">
+  <div class="container mx-auto px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-10 md:gap-12 text-center md:text-left">
+      <p class="font-mincho text-2xl sm:text-3xl leading-snug">
+        いつもの日常に、<br><span class="text-orange-600">特別な余韻を。</span>
+      </p>
+      <div class="text-center md:text-right">
+        <p class="text-sm text-stone-400 mb-2 tracking-widest uppercase">Reservation</p>
+        <a href="tel:0197444741" class="text-3xl sm:text-4xl md:text-5xl font-bold hover:text-orange-500 transition-colors">0197-44-4741</a>
+        <div class="mt-8 flex justify-center md:justify-end">
+          <a href="https://www.instagram.com/suburbiacafe/" target="_blank" rel="noopener" aria-label="Instagram" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-stone-900 transition-colors">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 md:mt-24 pt-8 border-t border-white/5 text-center text-[10px] text-stone-500 uppercase tracking-widest">
+      &copy; Suburbia Creative Italian Soup Pasta Kanegasaki.
+    </div>
+  </div>
+</footer>
+
+<!-- スマホ用 固定予約バー -->
+<div class="call-bar md:hidden fixed bottom-0 inset-x-0 z-50 px-4 pt-3 bg-gradient-to-t from-black/70 to-transparent">
+  <a href="tel:0197444741" class="flex items-center justify-center gap-3 bg-orange-700 active:bg-orange-600 text-white font-bold py-3.5 rounded-sm shadow-xl">
+    <i class="fas fa-phone-alt"></i><span>電話で予約 0197-44-4741</span>
+  </a>
+</div>
+
+<script>
+  // 画像生成APIキー（ご自身のキーを設定。空のままの場合は画像なしで表示されます）
+  const apiKey = "";
+
+  function initMap() {
+    const lat = 39.197412, lng = 141.114704;
+    const isTouch = L.Browser.mobile;
+    // スマホでは1本指でのページスクロールを妨げないようにする
+    const map = L.map('map', { dragging: !isTouch, tap: false, scrollWheelZoom: false }).setView([lat, lng], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    const icon = L.divIcon({
+      html: '<i class="fas fa-map-marker-alt text-orange-700 text-4xl"></i>',
+      className: '', iconSize: [30, 42], iconAnchor: [15, 42]
+    });
+    L.marker([lat, lng], { icon }).addTo(map)
+      .bindPopup('<strong>サバービア</strong><br><span style="font-size:12px">創作イタリアン・スープパスタ</span>')
+      .openPopup();
+  }
+
+  async function generateAndSetImage(prompt, containerId, isHero = false) {
+    const container = document.getElementById(containerId);
+    if (!apiKey) { container.classList.remove('image-loading'); return; }
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ instances: [{ prompt }], parameters: { sampleCount: 1 } })
+      });
+      if (!res.ok) throw new Error('Generation failed');
+      const result = await res.json();
+      const url = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+      if (isHero) {
+        container.style.backgroundImage = `url('${url}')`;
+      } else {
+        const img = document.createElement('img');
+        img.src = url; img.alt = '';
+        img.className = 'w-full h-full object-cover transition-opacity duration-1000 opacity-0';
+        container.appendChild(img);
+        setTimeout(() => img.classList.remove('opacity-0'), 100);
+      }
+    } catch (e) {
+      console.error('Image generation error:', e);
+    } finally {
+      container.classList.remove('image-loading');
+    }
+  }
+
+  window.addEventListener('load', () => {
+    initMap();
+    generateAndSetImage("Professional food photography of a rich seafood soup pasta with prawns, mussels, and blue crab in a deep ceramic bowl, steam rising, warm bokeh lighting, cinematic plating", "hero-img-container", true);
+    generateAndSetImage("Extreme close-up of a seafood tomato cream soup pasta, focus on fresh clams and warm steam, rustic italian texture", "concept-img-container");
+    generateAndSetImage("Close-up of a golden creme brulee in a ceramic dish, perfectly scorched caramelized sugar top, delicate dessert photography", "brulee-img-container");
+  });
+</script>
+</body>
+</html>
