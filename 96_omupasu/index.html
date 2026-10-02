@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>オムライス専門店 オムパス | 3日間仕込みの濃厚デミグラス</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--red:#b91c1c;--yellow:#f59e0b;--brown:#4b2c20;--cream:#fffaf0;--card:#ffffff;--soft:#fff3e0;--muted:#6b5a52;--line:#f3dfc4;--foot:#1c1411}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--red:#ef6b5f;--brown:#f5e6d8;--cream:#1d1613;--card:#2a201b;--soft:#33261f;--muted:#c9b5a6;--line:#4a3a30;--foot:#120d0b}}
+:root[data-theme="dark"]{--red:#ef6b5f;--brown:#f5e6d8;--cream:#1d1613;--card:#2a201b;--soft:#33261f;--muted:#c9b5a6;--line:#4a3a30;--foot:#120d0b}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--brown);background:var(--cream)}
+.serif{font-family:'Noto Serif JP',serif}.maru{font-family:'Zen Maru Gothic',sans-serif}
+.ttl{position:relative;display:inline-block;padding-bottom:14px;margin-bottom:28px}
+.ttl::after{content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:56px;height:3px;background:var(--yellow)}
+.egg{background:linear-gradient(135deg,#fcd34d,#f59e0b)}
+/* 画像の代わりに使うCSSイラスト */
+.plate{background:radial-gradient(circle at 50% 60%,#fff 0 62%,#f1e4d3 63% 100%)}
+.omu{background:radial-gradient(ellipse at 40% 35%,#fde68a,#f59e0b 70%);box-shadow:inset 0 -10px 20px rgba(120,53,15,.25)}
+.sauce{background:linear-gradient(160deg,#6b2f1a,#3b1a0e)}
+.cream-s{background:linear-gradient(160deg,#fff7e6,#f5deb3)}
+.float{animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.float{animation:none}html{scroll-behavior:auto}}
+a:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- ファーストビュー -->
+<header class="bg-[var(--card)] overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 pt-10 pb-16 md:pb-24 flex flex-col md:flex-row items-center gap-12">
+    <div class="md:w-1/2 text-center md:text-left">
+      <span class="inline-block bg-red-700 text-white px-3 py-1 rounded text-xs sm:text-sm font-bold mb-4">盛岡・津志田の行列ができる店</span>
+      <h1 class="serif font-black leading-tight text-4xl sm:text-5xl md:text-6xl mb-5">
+        一食入魂。<br><span class="text-[var(--red)]">3日間</span>の<br>情熱デミ。
+      </h1>
+      <p class="font-bold leading-relaxed mb-8 text-base sm:text-lg">
+        牛スジと香味野菜を赤ワインで煮込み続けた、店主こだわりのソース。ふわとろ卵との共演。
+      </p>
+      <a href="#menu" class="egg inline-block text-white text-lg font-bold px-8 py-4 rounded-full shadow-xl active:scale-95 transition-transform">至福のメニューへ</a>
+    </div>
+    <div class="md:w-1/2 w-full max-w-sm md:max-w-none relative">
+      <!-- 驚愕の50円大盛りバッジ -->
+      <div class="absolute -top-4 -left-2 sm:-left-6 z-10 bg-yellow-400 text-white w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-bold rotate-12 shadow-lg">
+        <span class="text-xs">驚愕の</span><span class="text-xl sm:text-2xl">50円</span><span class="text-xs">大盛り</span>
+      </div>
+      
+      <!-- 丸型プレート風の画像エリア -->
+      <div class="float aspect-square rounded-full border-8 border-white shadow-2xl overflow-hidden relative bg-amber-50">
+        <img 
+          src="images/omurice.jpg" 
+          alt="デミグラスソースのオムライス" 
+          class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+        >
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 特徴 -->
+<section class="py-16 px-5 bg-[var(--card)] text-center">
+  <h2 class="ttl serif text-2xl sm:text-3xl font-bold italic">Why OMUPASU?</h2>
+  <p class="mb-10 -mt-4">オムパスが愛される3つの理由</p>
+  <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+    
+    <!-- 理由01 -->
+    <div class="p-6 sm:p-8 bg-[var(--soft)] rounded-2xl flex flex-col">
+      <div class="h-36 rounded-xl mb-5 overflow-hidden bg-white shadow-inner">
+        <img 
+          src="images/demi.png" 
+          alt="3日間煮込んだデミグラスソースのイメージ" 
+          class="w-full h-full object-cover"
+        >
+      </div>
+      <span class="text-4xl font-black text-orange-300 block mb-1 italic">01</span>
+      <h3 class="text-xl font-bold mb-3">3日間の魔法</h3>
+      <p class="text-sm leading-relaxed text-[var(--muted)]">牛スジ、香味野菜、赤ワイン。3日間煮込み続け、一晩寝かせて完成するデミグラスソース。</p>
+    </div>
+
+    <!-- 理由02 -->
+    <div class="p-6 sm:p-8 bg-[var(--soft)] rounded-2xl flex flex-col">
+      <div class="h-36 rounded-xl mb-5 overflow-hidden bg-white shadow-inner">
+        <img 
+          src="images/omurice2.jpg" 
+          alt="黄金のふわとろ卵のイメージ" 
+          class="w-full h-full object-cover"
+        >
+      </div>
+      <span class="text-4xl font-black text-orange-300 block mb-1 italic">02</span>
+      <h3 class="text-xl font-bold mb-3">黄金のふわとろ卵</h3>
+      <p class="text-sm leading-relaxed text-[var(--muted)]">スプーンを入れた瞬間に広がる絶妙な半熟加減。プロにしか出せないこの食感。</p>
+    </div>
+
+    <!-- 理由03 -->
+    <div class="p-6 sm:p-8 bg-[var(--soft)] rounded-2xl flex flex-col">
+      <div class="h-36 rounded-xl mb-5 overflow-hidden bg-white shadow-inner">
+        <img 
+          src="images/chef.png" 
+          alt="お店の温かなおもてなしのイメージ" 
+          class="w-full h-full object-cover"
+        >
+      </div>
+      <span class="text-4xl font-black text-orange-300 block mb-1 italic">03</span>
+      <h3 class="text-xl font-bold mb-3">人情とおもてなし</h3>
+      <p class="text-sm leading-relaxed text-[var(--muted)]">接客担当の「おばあちゃん」が醸し出す温かな空気。心まで満たされます。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- メニュー -->
+<section id="menu" class="py-16 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="ttl serif text-3xl sm:text-4xl font-bold mb-10">Recommended Menu</h2>
+    <div class="bg-[var(--card)] rounded-3xl shadow-xl overflow-hidden p-6 sm:p-10 text-left">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="bg-red-700 text-white text-xs px-2 py-1 rounded">No.1 人気</span>
+        <span class="text-[var(--red)] font-bold">デミ×チキンクリーム</span>
+      </div>
+      <h3 class="maru text-2xl sm:text-3xl font-bold mb-3">二色オムライス Bセット</h3>
+      <p class="text-[var(--muted)] mb-5 leading-relaxed">サラダ・スープ・デザート、さらにおかわり自由のコーヒー付き!</p>
+      <div class="text-4xl font-black text-[var(--red)] mb-5">¥990 <span class="text-sm text-[var(--muted)] font-normal">(税込)</span></div>
+      <ul class="text-sm space-y-2">
+        <li>✔ 3日間仕込みのデミグラスソース</li>
+        <li>✔ クリーミーなチキンクリームソース</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 px-5 bg-gradient-to-b from-[var(--soft)] to-[var(--line)]">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="inline-block bg-amber-500 text-white px-4 py-1 rounded-full text-xs font-bold mb-4">NEW PROJECTS</span>
+    <h2 class="ttl serif text-3xl font-bold block">Coming Soon</h2>
+    <p class="mb-10 text-[var(--muted)] -mt-4">お客様の声にお応えして。オムパスに「あったらいいな」の新サービス準備中!</p>
+    <div class="grid md:grid-cols-2 gap-6 text-left">
+      <div class="bg-[var(--card)] p-6 sm:p-8 rounded-2xl shadow-md border-t-4 border-amber-400 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-bold">企画進行中</span><span class="text-2xl" aria-hidden="true">🍽️</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">待望の「小盛り」設定</h3>
+          <p class="text-sm text-[var(--muted)] leading-relaxed">「普通盛りだと少し多い」「色々な種類を少しずつ楽しみたい!」そんな女性やご年配のお客様の声から誕生。お値段も少しお得になる予定です。</p>
+        </div>
+        <p class="mt-6 pt-4 border-t border-[var(--line)] text-xs text-amber-700 font-bold">⏰ まもなく導入予定</p>
+      </div>
+      <div class="bg-[var(--card)] p-6 sm:p-8 rounded-2xl shadow-md border-t-4 border-amber-400 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-bold">検討中</span><span class="text-2xl" aria-hidden="true">🛍️</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">特製デミのテイクアウト</h3>
+          <p class="text-sm text-[var(--muted)] leading-relaxed">「家でもこのデミグラスソースが食べたい!」という熱いご要望にお応えし、ご自宅用ソースやオムライスのテイクアウトパックを試作中です。</p>
+        </div>
+        <p class="mt-6 pt-4 border-t border-[var(--line)] text-xs text-amber-700 font-bold">⏰ 順次対応予定</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section id="access" class="py-16 px-5 bg-[var(--card)]">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="ttl serif text-3xl font-bold italic">Access Map</h2>
+      <p class="-mt-4">岩手県盛岡市津志田4地割28-1</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+      <!-- 地図埋め込みエリア -->
+      <div class="bg-[var(--soft)] rounded-2xl p-4 sm:p-6 flex flex-col h-full">
+        <div class="w-full h-80 sm:h-96 rounded-xl overflow-hidden shadow-inner mb-4">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.2880869499927!2d141.14268417486278!3d39.66573370100679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f859df1ddf9d87d%3A0x609b8a677c508c03!2z44Kq44Og44OR44K5!5e0!3m2!1sja!2sjp!4v1790901888559!5m2!1sja!2sjp" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+        <div class="text-center">
+        
+        </div>
+      </div>
+
+      <!-- 店舗情報・注意事項エリア -->
+      <div class="space-y-6">
+        <div class="p-6 sm:p-8 bg-[var(--soft)] rounded-2xl">
+          <h4 class="text-xl font-bold mb-5 text-[var(--red)]">🏪 店舗情報</h4>
+          <dl class="space-y-4">
+            <div class="flex border-b border-[var(--line)] pb-2"><dt class="w-24 font-bold shrink-0">住所</dt><dd>〒020-0835<br>岩手県盛岡市津志田4地割28-1</dd></div>
+            <div class="flex border-b border-[var(--line)] pb-2"><dt class="w-24 font-bold shrink-0">定休日</dt><dd>月曜日・火曜日</dd></div>
+            <div class="flex border-b border-[var(--line)] pb-2"><dt class="w-24 font-bold shrink-0">駐車場</dt><dd>6台完備(住宅地のためお早めに)</dd></div>
+            <div class="flex text-sm text-[var(--red)] font-bold"><dt class="w-24 shrink-0">お支払い</dt><dd>券売機:現金のみ(万札不可)</dd></div>
+          </dl>
+        </div>
+        <div class="bg-red-700 text-white p-6 rounded-2xl shadow-lg">
+          <h4 class="font-bold mb-2">🚗 お車でお越しの方へ</h4>
+          <p class="text-sm leading-relaxed">住宅街の一角にございます。駐車場は50分程度で満車になることが多いため、開店時間(11:00)前の到着をお勧めいたします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[var(--foot)] text-white py-10 px-6 text-center">
+  <h3 class="serif text-2xl mb-3 italic text-yellow-500">OMUPASU</h3>
+  <p class="text-sm opacity-70 mb-6">岩手県盛岡市。3日間煮込んだデミグラスソースが自慢のオムライス専門店。</p>
+  <p class="text-xs opacity-50">&copy; 2024 オムパス All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
