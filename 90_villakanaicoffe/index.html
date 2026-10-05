@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>【公式】レストラン・ヴィラ | 岩手町産短角牛と至福の珈琲</title>
+    <meta name="description" content="岩手県岩手町の老舗レストラン・ヴィラ。岩手町産の短角牛を使った贅沢ハンバーグ、本格石窯ピザ、自家焙煎コーヒー。">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Leaflet (地図) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { accent: '#e64a19', gold: '#d4af37', cream: '#fcf9f2' } } }
+        };
+    </script>
+    <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #fcf9f2; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+        .font-heading { font-family: 'Shippori Mincho', serif; }
+        .hero-gradient { background: linear-gradient(to bottom, rgba(0,0,0,.35) 0%, rgba(0,0,0,.75) 100%); }
+        .check-list li { display: flex; gap: .6rem; align-items: flex-start; }
+        .check-list li::before { content: '✔'; color: #e64a19; font-weight: 700; flex-shrink: 0; }
+        #map { height: 320px; width: 100%; z-index: 0; }
+        @media (min-width: 768px) { #map { height: 420px; } }
+        /* ふわっと表示（動きを減らす設定の人には適用しない） */
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+            .reveal.show { opacity: 1; transform: none; }
+        }
+        .img-box { background: linear-gradient(135deg, #5d4037, #3e2723); }
+    </style>
+</head>
+<body class="text-gray-800 leading-relaxed">
+
+    <!-- 1. FV -->
+    <section class="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden img-box">
+        <!-- 画像: images/hanbagu.png を差し替えてください -->
+        <img src="images/hanbagu.png" alt="短角牛ハンバーグ" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <div class="relative z-10 text-center px-5 py-16 max-w-3xl">
+            <div class="inline-block bg-accent text-xs sm:text-sm font-bold py-1 px-4 mb-5 rounded-full tracking-wider">
+                岩手県初・ラテアート提供の老舗
+            </div>
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-7xl mb-6 leading-tight drop-shadow-lg">
+                <span class="text-base sm:text-2xl md:text-3xl block mb-3 opacity-90">創業40余年の伝統が辿り着いた</span>
+                究極の<span class="text-yellow-400">短角牛</span><br class="sm:hidden">ハンバーグ
+            </h1>
+            <p class="text-sm sm:text-lg md:text-2xl mb-8 font-bold border-y border-white/30 py-3 inline-block px-2">
+                累計提供数 30,000食突破。<br class="sm:hidden">岩手町沼宮内の「愛」の味。
+            </p>
+            <div>
+                <button onclick="scrollToForm()" class="w-full sm:w-auto bg-yellow-500 active:bg-yellow-400 hover:bg-yellow-400 text-black text-lg sm:text-xl font-black py-4 sm:py-5 px-8 sm:px-12 rounded-full shadow-2xl transition">
+                    今すぐ無料クーポンを受け取る
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CTA（上部・追従） -->
+    <section class="bg-white border-b-4 border-yellow-500 sticky top-0 z-50 shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+            <p class="font-bold text-sm md:text-xl leading-snug">
+                ＼ 今だけ！ ／<br class="md:hidden">
+                LINE登録で<span class="text-accent underline">自家焙煎珈琲</span>プレゼント
+            </p>
+            <button onclick="scrollToForm()" class="shrink-0 bg-accent text-white font-bold text-sm md:text-base py-2.5 px-4 md:px-8 rounded-lg hover:brightness-110 transition shadow">
+                特典をGET
+            </button>
+        </div>
+    </section>
+
+    <!-- 3. こだわり -->
+    <section class="py-16 md:py-24 px-5 bg-amber-50/60">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 md:mb-16 reveal">
+                <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl mb-4">なぜ「ヴィラ」が愛され続けるのか？</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="rounded-2xl overflow-hidden shadow-xl aspect-[4/3] img-box reveal">
+                    <img src="images/pizza.png" alt="ヴィラ店内" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                </div>
+                <ul class="space-y-5 text-base sm:text-lg md:text-xl font-bold check-list reveal">
+                    <li>岩手町産「短角牛」を贅沢に使用した爆誕ハンバーグ</li>
+                    <li>創業者がイタリア・ナポリで修行した本格石窯ピザ</li>
+                    <li>県内初！40年の歴史が紡ぐ本格ラテアート</li>
+                    <li>漫画蔵書数 数千冊。時間を忘れる圧倒的「愛」空間</li>
+                    <li>自家焙煎にこだわった、香り高い究極のコーヒー</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 自己紹介 -->
+    <section class="py-16 md:py-24 px-5 bg-white">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+            <div class="w-3/4 sm:w-1/2 md:w-1/3 reveal">
+                <div class="relative">
+                    <div class="rounded-2xl shadow-xl overflow-hidden aspect-[3/4] img-box">
+                        <img src="images/chef.png" alt="店主イメージ" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="absolute -bottom-4 -right-2 sm:-right-4 bg-stone-800 text-white p-3 sm:p-4 text-xs sm:text-sm font-bold">
+                        Owner / Master<br>金井 由道
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-2/3 reveal">
+                <h2 class="font-heading text-2xl sm:text-3xl mb-6 text-stone-800">ドライブインから「岩手の名店」へ。</h2>
+                <p class="mb-4 text-gray-600 leading-loose">
+                    1976年、私たちは小さなドライブインとして産声を上げました。しかし、「本当に美味しいものを届けたい」という想いは止まりませんでした。
+                </p>
+                <p class="text-gray-600 leading-loose">
+                    ナポリでの修行、石窯の導入、そして希少な「短角牛」との出会い。一つひとつの挑戦が、今の「ヴィラ」を作っています。私たちはただのレストランではありません。あなたの人生の1ページに刻まれる「愛の場」でありたいのです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩み・解決 -->
+    <section class="py-16 md:py-24 px-5 bg-stone-900 text-white">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl mb-10 md:mb-16 text-center reveal">日常の疲れに、最高の癒やしを。</h2>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="space-y-6 reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-red-500/20 w-10 h-10 shrink-0 flex items-center justify-center rounded-lg text-red-500">✘</div>
+                        <p class="text-base sm:text-lg">チェーン店では味わえない、心のこもった料理が食べたい</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-red-500/20 w-10 h-10 shrink-0 flex items-center justify-center rounded-lg text-red-500">✘</div>
+                        <p class="text-base sm:text-lg">周りを気にせず、一人でゆっくり読書に没頭したい</p>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden aspect-[4/3] img-box reveal">
+                    <img src="images/coffe.jpg" alt="石窯ピザ" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.5 COMING SOON -->
+    <section class="py-16 md:py-24 px-5 bg-stone-100 border-y border-stone-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10 md:mb-14 reveal">
+                <span class="bg-yellow-500 text-black text-xs font-black py-1 px-3 rounded-full inline-block mb-3">Coming Soon</span>
+                <h2 class="font-heading text-2xl sm:text-4xl md:text-5xl mb-4 text-stone-800">ヴィラの味が、もっと身近に。</h2>
+                <p class="text-gray-600 font-bold text-sm sm:text-base">お客様の声から生まれた、新しいサービスを準備中です。</p>
+                <div class="w-20 h-1 bg-accent mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-lg border border-stone-200 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="text-3xl mb-3">🍕</div>
+                        <h3 class="font-heading text-xl md:text-2xl font-bold mb-3 text-stone-800">石窯ピザのテイクアウト</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">本格石窯で焼き上げるアツアツのナポリピザをご自宅でも。ご家族やご友人とのパーティーに、ヴィラの味を手軽にお持ち帰りいただけます。</p>
+                    </div>
+                    <div class="bg-yellow-50 text-yellow-800 text-xs font-bold py-2 px-4 rounded-xl text-center">近日予約受付開始予定</div>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-lg border border-stone-200 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="text-3xl mb-3">🛵</div>
+                        <h3 class="font-heading text-xl md:text-2xl font-bold mb-3 text-stone-800">デリバリー（Uber等）参加</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">「外出できないけれど美味しいものが食べたい」そんな日に。短角牛を使ったハンバーグや自慢のメニューをご自宅までお届けするシステムを調整中！</p>
+                    </div>
+                    <div class="bg-yellow-50 text-yellow-800 text-xs font-bold py-2 px-4 rounded-xl text-center">提携パートナー交渉中</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 6. アクセス -->
+    <section class="py-16 md:py-24 px-5 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10 reveal">
+                <h2 class="font-heading text-3xl md:text-4xl mb-4 text-stone-800">ACCESS</h2>
+                <p class="text-gray-600 font-bold text-sm sm:text-base">国道4号線沿い、広い駐車場を完備してお待ちしております</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6 md:gap-8 items-start">
+                <div class="lg:col-span-2 shadow-xl rounded-3xl overflow-hidden relative z-0 h-full min-h-[350px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.7735035661076!2d141.22776377488213!3d39.9911666814325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8519aa358ebe55%3A0x7316b849db2b88af!2z44O044Kj44Op!5e0!3m2!1sja!2sjp!4v1791172947758!5m2!1sja!2sjp" width="100%" height="100%" style="border:0; min-height: 350px;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+
+                <div class="bg-stone-50 p-6 md:p-8 rounded-3xl shadow-lg border border-stone-100">
+                    <h3 class="font-heading text-xl md:text-2xl mb-6 text-stone-800 border-b-2 border-yellow-500 pb-2 inline-block">店舗情報</h3>
+                    <div class="space-y-5">
+                        <div>
+                            <p class="text-xs text-gray-400 font-bold mb-1">Address</p>
+                            <p class="font-bold">〒028-4301<br>岩手県岩手郡岩手町沼宮内第15地割21-3</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-bold mb-1">Phone</p>
+                            <a href="tel:0195622468" class="text-2xl font-black text-accent">0195-62-2468</a>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-bold mb-1">Holiday</p>
+                            <p class="font-bold">定休日：年末年始<br>駐車場完備</p>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <footer class="py-10 bg-stone-900 text-stone-500 text-center text-sm" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));">
+        <p>&copy; 2024 Restaurant VILLA. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ふわっと表示
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // 地図
+        window.addEventListener('load', () => {
+            const lat = 39.9538, lng = 141.2215;
+            const map = L.map('map', { scrollWheelZoom: false, tap: false }).setView([lat, lng], 15);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup("<b>ヴィラ 沼宮内店</b><br>岩手町産の短角牛ハンバーグ！").openPopup();
+        });
+    </script>
+</body>
+</html>
