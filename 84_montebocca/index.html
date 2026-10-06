@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>モンテボッカ | 盛岡・開運橋の隠れ家イタリアン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#5d1a12;--accent:#c6a357;--bg:#faf9f6;--surface:#ffffff;--alt:#f3efe6;--text:#1f1b18;--muted:#5b5650;--on-primary:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--primary:#7a2a20;--bg:#17120f;--surface:#221b17;--alt:#1d1713;--text:#f1ebe2;--muted:#b9afa3}}
+:root[data-theme="dark"]{--primary:#7a2a20;--bg:#17120f;--surface:#221b17;--alt:#1d1713;--text:#f1ebe2;--muted:#b9afa3}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+@media(min-width:768px){body{padding-bottom:0}}
+.serif{font-family:'Noto Serif JP',serif}
+.italic-serif{font-family:'Playfair Display',serif;font-style:italic}
+.muted{color:var(--muted)}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.vertical-text{writing-mode:vertical-rl;text-orientation:mixed}
+.hero{min-height:100svh;background:radial-gradient(ellipse at 50% 30%,rgba(198,163,87,.35),transparent 60%),linear-gradient(160deg,#3a0f0a,#5d1a12 55%,#1d0a07)}
+.ph{background:linear-gradient(135deg,#7a3b2b,#c6a357);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85)}
+.ph.b{background:linear-gradient(135deg,#3a2a22,#8a6a45)}
+.ph.c{background:linear-gradient(135deg,#5d1a12,#a8553f)}
+.btn{transition:all .4s}
+.btn:hover{letter-spacing:.15em;box-shadow:0 10px 20px rgba(93,26,18,.25)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+.fade{animation:fade 1.6s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="hero relative w-full flex items-center justify-center text-white px-4 min-h-[90vh] md:min-h-screen bg-cover bg-center" style="background-image: url('images/hamu.jpg');">
+  <!-- 背景画像の上に重ねる暗めのオーバーレイ（テキストを読みやすくするため） -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="text-center fade relative z-10">
+    <div class="italic-serif text-xl md:text-2xl opacity-80 mb-6">Italiano e Caffè</div>
+    <h1 class="serif font-black text-5xl sm:text-6xl md:text-8xl tracking-tight mb-4">Monte Bocca</h1>
+    <p class="serif text-lg md:text-xl tracking-[0.3em] opacity-90 mb-10">モンテボッカ</p>
+    <div class="w-px h-16 md:h-24 mx-auto" style="background:var(--accent)"></div>
+  </div>
+</header>
+
+<!-- Nav (PC) -->
+<nav class="sticky top-0 z-50 hidden md:block backdrop-blur-md border-b border-black/10" style="background:color-mix(in srgb,var(--surface) 90%,transparent)">
+  <div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+    <div class="serif font-bold text-2xl tracking-widest" style="color:var(--primary)">モンテボッカ</div>
+    <div class="flex gap-8 items-center text-sm font-bold tracking-widest">
+      <a href="#story" class="hover:opacity-70">物語</a>
+      <a href="#menu" class="hover:opacity-70">お料理</a>
+      <a href="#access" class="hover:opacity-70">案内</a>
+      <a href="tel:0196531415" class="btn py-2 px-6 rounded-full" style="background:var(--primary);color:var(--on-primary)">ご予約:019-653-1415</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Story -->
+<section id="story" class="py-20 md:py-32">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="serif text-base md:text-lg mb-8 tracking-[0.3em]" style="color:var(--accent)">【 完全予約制 】</div>
+    <h2 class="serif text-2xl sm:text-3xl md:text-4xl leading-loose mb-10 tracking-wider">開運橋のたもと、<br>螺旋階段の先に広がる<br>木のぬくもり。</h2>
+    <div class="gold-line mb-10"></div>
+    <p class="muted leading-[2.3] md:leading-[2.5] text-base md:text-lg font-light tracking-wider">
+      岩手県産の木材に囲まれた吹き抜けの空間。<br>
+      大型の焙煎機が静かに時を刻み、<br>
+      素材の味を活かした「優しいイタリアン」が運ばれる。<br><br>
+      大切な誰かと、ゆっくりと語り合いたい夜に。<br>
+      私たちは二、三日前からの約束(予約)を大切に、<br>
+      最高の一皿をご用意してお待ちしております。
+    </p>
+  </div>
+</section>
+
+<!-- Signature dish -->
+<section id="menu" class="py-10 md:py-20">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="grid md:grid-cols-2 items-stretch rounded-3xl overflow-hidden shadow-xl" style="background:var(--surface)">
+      <!-- 画像部分 -->
+      <div class="relative min-h-[280px] md:min-h-[500px]">
+        <img 
+          src="images/roast.png" 
+          alt="極上の鴨のロースト" 
+          class="w-full h-full object-cover"
+        >
+        <div class="absolute top-5 left-5 md:top-8 md:left-8 p-4 md:p-6 vertical-text serif text-lg md:text-xl tracking-widest z-10" style="background:color-mix(in srgb,var(--primary) 92%,transparent);color:var(--on-primary)">自慢の逸品</div>
+      </div>
+      
+      <!-- テキスト部分 -->
+      <div class="p-8 sm:p-12 md:p-16 flex flex-col justify-center">
+        <span class="serif text-sm mb-3 tracking-widest" style="color:var(--accent)">SIGNATURE DISH</span>
+        <h3 class="serif text-3xl md:text-4xl mb-6 leading-tight">極上の鴨のロースト</h3>
+        <p class="muted leading-loose mb-8 tracking-wider text-sm md:text-base">
+          当店へお越しの際、ぜひ召し上がっていただきたいのがこの「鴨のロースト」。じっくりと火を入れ、皮目はパリッと、身は驚くほどジューシーに仕上げました。素材が持つ本来の旨みを引き立てる、繊細な火入れの技。ワインとの相性も抜群です。
+        </p>
+        <div class="serif text-base md:text-lg pb-2 inline-block self-start border-b" style="border-color:var(--accent)">価格:事前予約にて承ります</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-16 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-16">
+      
+      <!-- 特徴1: 自家焙煎の香り -->
+      <div class="text-center">
+        <div class="aspect-[4/5] sm:aspect-[3/4] rounded-full mb-6 shadow-lg max-w-[260px] mx-auto overflow-hidden">
+          <img 
+            src="images/coffe.jpg" 
+            alt="自家焙煎の香り" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <h4 class="serif text-xl md:text-2xl mb-3">自家焙煎の香り</h4>
+        <p class="text-sm muted leading-loose">大型焙煎機で仕上げるこだわりの一杯。イタリアンと珈琲、両方の魅力を追求しています。</p>
+      </div>
+
+      <!-- 特徴2: 優しいおもてなし -->
+      <div class="text-center">
+        <div class="aspect-[4/5] sm:aspect-[3/4] rounded-full mb-6 shadow-lg max-w-[260px] mx-auto overflow-hidden">
+          <img 
+            src="images/dinner.png" 
+            alt="優しいおもてなし" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <h4 class="serif text-xl md:text-2xl mb-3">優しいおもてなし</h4>
+        <p class="text-sm muted leading-loose">夜の街にありながら、味付けは優しく。健康を気遣う方や、お子様連れでも安心です。</p>
+      </div>
+
+      <!-- 特徴3: 隠れ家の景観 -->
+      <div class="text-center sm:col-span-2 md:col-span-1">
+        <div class="aspect-[4/5] sm:aspect-[3/4] rounded-full mb-6 shadow-lg max-w-[260px] mx-auto overflow-hidden">
+          <img 
+            src="images/store.png" 
+            alt="隠れ家の景観" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <h4 class="serif text-xl md:text-2xl mb-3">隠れ家の景観</h4>
+        <p class="text-sm muted leading-loose">開運橋通を見下ろすテラス席。心地よい風とプロジェクターを備えた開放的な店内。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Coming soon -->
+<section class="py-16 md:py-28" style="background:var(--alt)">
+  <div class="max-w-5xl mx-auto px-5 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="serif text-sm tracking-[0.4em] mb-4 block" style="color:var(--accent)">COMING SOON</span>
+      <h3 class="serif text-2xl sm:text-3xl md:text-5xl font-bold tracking-wider mb-6">新しい昼のストーリー</h3>
+      <div class="gold-line w-24 mx-auto mb-6"></div>
+      <p class="muted text-sm md:text-lg tracking-wider leading-relaxed">
+        大型焙煎機が奏でる香ばしいアロマと、木漏れ日が差し込む心地よい空間。<br class="hidden md:inline">
+        夜の隠れ家から、昼下がりの癒やしへ。モンテボッカのポテンシャルを広げる新サービスを構想中。
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+      <div class="p-7 md:p-10 rounded-3xl shadow-lg" style="background:var(--surface)">
+        <div class="serif text-sm tracking-widest mb-2" style="color:var(--accent)">SERVICE 01</div>
+        <h4 class="serif text-xl md:text-2xl mb-4 font-bold">昼下がりの「テロワール珈琲」と焼き菓子</h4>
+        <p class="muted text-sm leading-loose">焙煎したての豆の個性を最大限に引き出したスペシャルティコーヒーと、店内で焼き上げる素朴で上品な焼き菓子を楽しめる昼間カフェ営業。開運橋を眺めながら贅沢な読書や語らいの時間を。</p>
+      </div>
+      <div class="p-7 md:p-10 rounded-3xl shadow-lg" style="background:var(--surface)">
+        <div class="serif text-sm tracking-widest mb-2" style="color:var(--accent)">SERVICE 02</div>
+        <h4 class="serif text-xl md:text-2xl mb-4 font-bold">自家焙煎豆のセレクション &amp; テイクアウト</h4>
+        <p class="muted text-sm leading-loose">「おうちでもモンテボッカの味を楽しみたい」という声にお応えし、厳選されたコーヒー豆の量り売りや、街歩きのお供になるこだわりのテイクアウト・ドリップコーヒーの提供を予定しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Access -->
+<section id="access" class="py-16 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div>
+        <h3 class="serif text-3xl md:text-4xl mb-10">ご案内</h3>
+        <div class="space-y-7">
+          <div class="flex flex-col sm:flex-row gap-1 sm:gap-6">
+            <span class="sm:w-24 font-bold tracking-widest shrink-0" style="color:var(--accent)">場所</span>
+            <p class="muted">〒020-0026 岩手県盛岡市開運橋通1-16 2F<br>(開運橋郵便局の2階です)</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-1 sm:gap-6">
+            <span class="sm:w-24 font-bold tracking-widest shrink-0" style="color:var(--accent)">電話</span>
+            <a href="tel:0196531415" class="text-xl font-bold">019-653-1415</a>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-1 sm:gap-6">
+            <span class="sm:w-24 font-bold tracking-widest shrink-0" style="color:var(--accent)">備考</span>
+            <ul class="muted text-sm space-y-2 list-disc ml-4 tracking-wider">
+              <li>完全予約制(2〜3日前までにご連絡ください)</li>
+              <li>クレジットカード決済可</li>
+              <li>エレベーター完備(階段裏にございます)</li>
+              <li>授乳室・オムツ替えスペース対応可</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 flex flex-col gap-4">
+          <a href="https://www.facebook.com/montebocca2014" target="_blank" rel="noopener" class="font-bold border-b-2 pb-1 self-start tracking-widest" style="color:var(--accent);border-color:var(--accent)">最新情報はFacebookをご覧ください →</a>
+        </div>
+      </div>
+      
+      <!-- Google Map 埋め込み -->
+      <div class="rounded-3xl shadow-xl overflow-hidden w-full h-full min-h-[300px] md:min-h-[400px]">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.656295728113!2d141.14075827486485!3d39.702431198805975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f857631cce6aaab%3A0xe4cacb75040988c0!2z44Oi44Oz44OG44Oc44OD44Kr!5e0!3m2!1sja!2sjp!4v1791260962365!5m2!1sja!2sjp" 
+          width="100%" 
+          height="100%" 
+          style="border:0; width:100%; height:100%; min-height:inherit;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="py-24 md:py-40 text-center text-white px-6" style="background:linear-gradient(160deg,#3a0f0a,var(--primary))">
+  <h3 class="serif text-2xl sm:text-3xl md:text-5xl mb-10 tracking-widest leading-relaxed">今宵、至福の一皿を<br>お約束します。</h3>
+  <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center max-w-md md:max-w-none mx-auto">
+    <a href="tel:0196531415" class="btn py-4 md:py-6 px-10 md:px-16 rounded-full text-lg md:text-xl font-bold shadow-2xl" style="background:var(--accent);color:#2b1a05">📞 お電話で予約する</a>
+    <a href="https://www.facebook.com/montebocca2014" target="_blank" rel="noopener" class="py-4 md:py-6 px-10 md:px-16 rounded-full text-lg md:text-xl font-bold border border-white/40 hover:bg-white/10 transition">SNSから相談</a>
+  </div>
+</section>
+
+<footer class="py-10 text-center muted text-xs tracking-widest">
+  <p class="serif text-lg mb-3 tracking-[0.4em]" style="color:var(--text)">Monte Bocca</p>
+  <p>&copy; 2024 モンテボッカ All Rights Reserved.</p>
+</footer>
+
+<!-- Mobile fixed reservation bar -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 px-4 pt-3 backdrop-blur-md border-t border-black/10" style="background:color-mix(in srgb,var(--surface) 92%,transparent);padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))">
+  <a href="tel:0196531415" class="block text-center py-3 rounded-full font-bold tracking-widest" style="background:var(--primary);color:var(--on-primary)">📞 ご予約 019-653-1415</a>
+</div>
+
+</body>
+</html>
