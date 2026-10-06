@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>琥珀の森レストラン くんのこ | 短角牛ハンバーグ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { amber2: '#d97706', amberdeep: '#92400e', forest: '#064e3b', deep: '#022c22', cream: '#fdfaf3' },
+      fontFamily: { serif: ['"Noto Serif JP"', 'serif'], sans: ['"Noto Sans JP"', 'sans-serif'] }
+    } }
+  }
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #fdfaf3; color: #022c22; line-height: 1.8; padding-bottom: env(safe-area-inset-bottom); }
+  h1, h2, h3 { font-family: 'Noto Serif JP', serif; }
+  .amber-gradient { background: linear-gradient(135deg, #d97706 0%, #92400e 100%); }
+  .section-title { position: relative; display: inline-block; padding-bottom: 14px; }
+  .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: #d97706; }
+  .special-box { border: 2px dashed #d97706; background: #fff; }
+  #map { height: 300px; width: 100%; border-radius: 1rem; z-index: 1; }
+  @media (min-width: 768px) { #map { height: 400px; } }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(12deg); } 50% { transform: translateY(-8px) rotate(12deg); } }
+  .badge-float { animation: float 3s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .badge-float, .animate-bounce { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- 1. FV -->
+<header class="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden bg-deep">
+  <!-- 背景画像: src に実際の画像パスを指定してください -->
+  <img src="images/forest.png" alt="琥珀の森" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-forest/30 to-black/70"></div>
+
+  <div class="relative z-10 text-center px-5 pt-24 pb-24 w-full">
+    <div class="absolute top-0 right-3 md:right-10 badge-float">
+      <div class="bg-red-600 text-white w-24 h-24 md:w-32 md:h-32 rounded-full flex flex-col items-center justify-center border-4 border-white shadow-xl leading-tight">
+        <span class="text-[10px] md:text-xs font-bold">数量限定</span>
+        <span class="text-base md:text-xl font-black">幻の赤身</span>
+        <span class="text-[10px] md:text-xs">短角牛使用</span>
+      </div>
+    </div>
+
+    <p class="text-amber-400 font-bold tracking-[0.2em] md:tracking-[0.3em] mb-4 text-sm md:text-lg">久慈 琥珀博物館直営レストラン</p>
+    <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight drop-shadow-2xl">
+      溢れ出す、<br class="md:hidden"><span class="text-amber-400">生命の旨味。</span>
+    </h1>
+    <p class="text-base md:text-2xl mb-10 max-w-3xl mx-auto font-medium drop-shadow-lg">
+      「オールグリーン」のパノラマに抱かれ、<br class="hidden md:block">
+      最高級短角牛ハンバーグと過ごす、特別な休日。
+    </p>
+    <div class="flex flex-col items-center gap-4">
+      <a href="#cta" class="amber-gradient text-white font-bold py-4 px-8 md:py-5 md:px-12 rounded-full text-lg md:text-2xl shadow-[0_0_20px_rgba(217,119,6,0.5)] active:scale-95 transition-transform w-full max-w-xs md:max-w-none md:w-auto">
+        <i class="fas fa-calendar-check mr-2"></i>今すぐお席を予約する
+      </a>
+      <p class="text-xs md:text-sm text-white/80"><i class="fas fa-info-circle mr-1"></i>平日なら、より静かな特等席をご案内できます</p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+    <i class="fas fa-chevron-down text-2xl opacity-70"></i>
+  </div>
+</header>
+
+<!-- 2. 第1 CTA -->
+<section id="cta" class="bg-forest text-white py-12 md:py-14 px-5 relative z-10 shadow-2xl scroll-mt-4">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10">
+    <div class="text-center md:text-left">
+      <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+        <span class="bg-amber-500 text-xs px-2 py-1 rounded font-bold">イチオシ</span>
+        <div class="flex text-amber-400 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-bold">究極の短角牛ハンバーグ</h2>
+      <p class="opacity-80 text-sm mt-1">肉本来の力強さを引き出す、伝統の調理法。</p>
+    </div>
+    <div class="w-full md:w-auto text-center">
+      <p class="text-xs mb-2 opacity-70 italic">お電話でのご予約が最もスムーズです</p>
+      <a href="tel:0194593881" class="text-3xl md:text-4xl font-bold text-amber-400 inline-flex items-center justify-center gap-3 active:text-white transition-colors">
+        <i class="fas fa-phone-alt"></i>0194-59-3881
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ビジュアル / ベネフィット -->
+<section class="py-16 md:py-24 px-5 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="text-amber2 font-bold mb-2 text-sm">VISUAL EXPERIENCE</p>
+      <h2 class="text-2xl md:text-5xl font-black section-title leading-snug">五感すべてで、<br class="md:hidden">琥珀の森を味わい尽くす</h2>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-7 relative">
+        <div class="absolute -inset-2 bg-amber-100 rounded-3xl -rotate-2"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-gradient-to-br from-amberdeep to-forest">
+          <!-- 料理写真: src に実際の画像パスを指定してください -->
+          <img src="images/hanbagu.png" alt="短角牛ハンバーグ" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        </div>
+      </div>
+
+      <div class="md:col-span-5 space-y-6">
+        <div class="bg-cream p-6 md:p-8 rounded-2xl border-l-4 border-amber-600 shadow-sm">
+          <p class="text-gray-700 leading-relaxed font-medium italic">「窓からの景色はオールグリーン。お食事はもちろん、景色だけでも満足なランチでした！」</p>
+        </div>
+        <ul class="space-y-4 font-bold text-forest">
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle text-amber-500 mt-1.5"></i>久慈の旬を閉じ込めた山菜の付け合わせ</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle text-amber-500 mt-1.5"></i>日本人の舌に合うよう研究されたソース</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle text-amber-500 mt-1.5"></i>都会では出会えない、圧倒的な緑の静寂</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. アクセス & マップ -->
+<section id="access" class="py-16 md:py-24 bg-cream border-y border-amber-100 scroll-mt-4">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="text-amber2 font-bold mb-2 text-sm">ACCESS MAP</p>
+      <h2 class="text-2xl md:text-5xl font-black section-title">琥珀の森への道のり</h2>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-stretch">
+      <div class="md:col-span-4 space-y-6 order-2 md:order-1 flex flex-col justify-between">
+        <div class="space-y-6">
+          <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border-t-4 border-amber-600">
+            <h3 class="text-lg md:text-xl font-bold mb-3 text-forest flex items-center gap-2"><i class="fas fa-map-marker-alt text-amber2"></i>店舗所在地</h3>
+            <p class="text-gray-700 text-sm leading-loose">
+              〒028-0071<br>岩手県久慈市小久慈町<br>第19地割156-134<br>
+              <span class="text-xs text-amber-700 font-bold">※久慈琥珀博物館 敷地内</span>
+            </p>
+          </div>
+          <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border-t-4 border-forest">
+            <h3 class="text-lg md:text-xl font-bold mb-3 text-forest flex items-center gap-2"><i class="fas fa-clock text-amber2"></i>営業時間</h3>
+            <p class="text-gray-700 text-sm leading-loose">
+              11:30 ～ 14:30<br>
+              <span class="font-bold">定休日：不定休</span>
+            </p>
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=琥珀の森レストランくんのこ" target="_blank" rel="noopener"
+            class="flex items-center justify-center gap-2 bg-white border border-amber-600 text-amberdeep font-bold py-3 rounded-full hover:bg-amber-50 transition-colors shadow-sm">
+          <i class="fas fa-directions"></i> Googleマップでルートを検索
+        </a>
+      </div>
+
+      <div class="md:col-span-8 order-1 md:order-2 flex flex-col">
+        <div class="relative w-full h-full min-h-[350px] md:min-h-[450px] rounded-2xl overflow-hidden shadow-sm border border-amber-100 bg-white">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.7646227683204!2d141.7204290748929!3d40.169794070633465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f84eb37c64cb3f3%3A0x7a2ae663a0f31309!2z55Cl54-A44Gu5qOu44Os44K544OI44Op44Oz44GP44KT44Gu44GT!5e0!3m2!1sja!2sjp!4v1791254020832!5m2!1sja!2sjp" class="absolute inset-0 w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. クチコミ -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="text-2xl md:text-5xl font-black text-center mb-12 md:mb-20 leading-snug">喜びの声は、<br class="md:hidden">久慈の森に響いています</h2>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+      <div class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-amber-50 p-6 md:p-10">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="w-12 h-12 shrink-0 bg-amber-100 rounded-full flex items-center justify-center text-amber-600"><i class="fas fa-user"></i></div>
+          <div>
+            <p class="font-bold">初めて食べました！</p>
+            <div class="flex text-amber-500 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed italic">「窓からの景色はオールグリーン。お食事はもちろん、景色だけでも満足なランチでした！」</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-amber-50 p-6 md:p-10">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="w-12 h-12 shrink-0 bg-forest text-white rounded-full flex items-center justify-center"><i class="fas fa-phone"></i></div>
+          <div>
+            <p class="font-bold">お電話の対応も素敵でした</p>
+            <div class="flex text-amber-500 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed italic">「お料理の提供タイミングも絶妙で、大変満足でした。地元でも愛される素敵なお店です。」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 特典 / クロージング -->
+<section class="py-16 md:py-24 bg-forest text-white px-5">
+  <div class="max-w-4xl mx-auto">
+    <div class="special-box relative p-6 md:p-16 rounded-3xl text-center overflow-hidden text-deep">
+      <i class="fas fa-leaf text-8xl md:text-9xl absolute -bottom-8 -right-8 opacity-5 pointer-events-none"></i>
+      <h2 class="text-2xl md:text-3xl font-black mb-6 text-amberdeep">ご予約特典・フリードリンク</h2>
+      <div class="w-20 h-1 bg-amber-500 mx-auto mb-8"></div>
+      <p class="text-base md:text-lg mb-8 leading-relaxed">
+        200円で楽しめるフリードリンクには、地元産のりんごやぶどうジュースも。<br class="hidden md:block">
+        お電話一本で、窓際の特等席を優先的に確保いたします。
+      </p>
+      <a href="tel:0194593881" class="amber-gradient w-full block text-white font-black py-5 md:py-6 rounded-xl text-2xl md:text-3xl shadow-2xl active:scale-[0.98] transition-transform">
+        <i class="fas fa-phone-alt mr-3"></i>0194-59-3881
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 6.5 COMING SOON -->
+<section id="coming-soon" class="py-16 md:py-24 bg-cream border-y border-amber-200 scroll-mt-4">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block mb-3">Coming Soon</span>
+      <h2 class="text-2xl md:text-5xl font-black section-title leading-snug">あればいいな、をカタチに。<br class="md:hidden">新・特別体験プラン</h2>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-sm md:text-base">久慈の自然と文化を五感ですべて味わい尽くす、現在企画中のスペシャルプログラムです。</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-start">
+      <div class="bg-white p-6 md:p-10 rounded-3xl shadow-xl border-l-8 border-amber-600 relative">
+        <div class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-4">近日発表・季節限定</div>
+        <div class="flex items-center gap-3 text-amber-600 font-bold mb-3">
+          <i class="fas fa-seedling text-xl"></i><span class="text-sm md:text-base">体験型ワークショップ ＆ 短角牛極上ランチセット</span>
+        </div>
+        <h3 class="text-xl md:text-3xl font-bold text-forest mb-4 leading-snug">「琥珀の森づくり ＆ 栃輪のめぐみランチ」</h3>
+        <p class="text-gray-700 leading-relaxed mb-6 text-sm md:text-base">
+          午前中は、久慈の豊かな森を散策しながら木々のぬくもりに触れる「木工・ボタニカルクラフト体験（または森のガイドツアー）」を実施。心身がリフレッシュしたあとは、当店の看板メニューである「最高級短角牛ハンバーグランチコース」で贅沢なひとときをお楽しみいただけます。
+        </p>
+        <ul class="space-y-3 text-sm text-forest font-medium mb-6">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i>初心者も安心のガイド付きワークショップ</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i>満席必至のランチコースを優先ご案内</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i>参加者限定のオリジナル記念品プレゼント</li>
+        </ul>
+        <div class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 font-medium leading-relaxed">
+          <i class="fas fa-bell mr-1"></i>詳細の発表や先行予約の受付開始は、公式メルマガ・Instagramにて告知予定です。どうぞお楽しみに！
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-2 bg-gradient-to-tr from-amber-200 to-emerald-100 rounded-3xl rotate-2 hidden md:block"></div>
+        <div class="relative bg-white p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
+          <div class="flex items-center justify-between border-b pb-4 gap-2">
+            <span class="font-bold text-forest">体験プランの流れ（予定）</span>
+            <span class="text-xs text-gray-400 shrink-0">所要時間: 約4時間</span>
+          </div>
+          <div class="space-y-5 text-sm">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold">1</div>
+              <div><p class="font-bold text-forest">10:00 〜 森のワークショップ</p><p class="text-gray-600 text-xs">自然素材を使ったクラフトやガイドウォークを体験。</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold">2</div>
+              <div><p class="font-bold text-forest">12:00 〜 特製ランチコース</p><p class="text-gray-600 text-xs">オールグリーンの窓際席で短角牛ハンバーグを堪能。</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-forest text-white flex items-center justify-center shrink-0 font-bold">3</div>
+              <div><p class="font-bold text-forest">14:00 〜 お見送り・解散</p><p class="text-gray-600 text-xs">久慈琥珀博物館へのご入館も自由に楽しめます。</p></div>
+            </div>
+          </div>
+          <div class="pt-2 text-center">
+            <a href="https://www.instagram.com/bisutorokunnoko/" target="_blank" rel="noopener" class="inline-block bg-forest text-white font-bold py-3 px-8 rounded-full text-sm shadow-md active:opacity-80">
+              <i class="fab fa-instagram mr-2"></i>Instagramで最新情報をチェック
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. フッター -->
+<footer class="py-14 md:py-20 bg-deep text-white/90 px-5">
+  <div class="max-w-6xl mx-auto text-center">
+    <h3 class="text-xl md:text-2xl font-black mb-8 text-amber-400">琥珀の森レストラン くんのこ</h3>
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-10 text-sm">
+      <a href="https://www.instagram.com/bisutorokunnoko/" class="hover:text-amber-400 py-1">Instagram</a>
+      <a href="http://www.kuji.co.jp/kunnoko" class="hover:text-amber-400 py-1">公式サイト</a>
+      <a href="#access" class="hover:text-amber-400 py-1">アクセス</a>
+    </div>
+    <p class="text-[10px] tracking-widest opacity-40">© 琥珀の森レストラン くんのこ. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- 固定電話ボタン（スマホのみ） -->
+<a href="tel:0194593881" class="md:hidden fixed right-4 z-50 amber-gradient text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center text-xl"
+   style="bottom: calc(1rem + env(safe-area-inset-bottom));" aria-label="電話で予約する">
+  <i class="fas fa-phone-alt"></i>
+</a>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const coords = [40.1824, 141.7451];
+  const map = L.map('map', { scrollWheelZoom: false }).setView(coords, 15);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  }).addTo(map);
+  const icon = L.divIcon({
+    html: '<div style="background:#d97706;width:40px;height:40px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 5px 15px rgba(0,0,0,.3)"><i class="fas fa-utensils" style="color:#fff;transform:rotate(45deg);font-size:18px"></i></div>',
+    className: '', iconSize: [40, 40], iconAnchor: [20, 40], popupAnchor: [0, -40]
+  });
+  L.marker(coords, { icon }).addTo(map)
+    .bindPopup('<div style="text-align:center"><strong style="color:#064e3b">琥珀の森レストラン くんのこ</strong><br><span style="font-size:12px">久慈琥珀博物館 敷地内</span></div>')
+    .openPopup();
+</script>
+</body>
+</html>
