@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レストラン G･greet | 盛岡駅徒歩2分・絶景と愉しむ本格洋食</title>
+  <meta name="description" content="盛岡駅西口直結・マリオス4F。特製ソースカツ丼と絶景ディナー。最大60名の貸切・パーティー受付中。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { gold: '#c5a059', ink: '#1a1512', brown: '#3d2b1f', paper: '#fdfaf7' },
+        fontFamily: {
+          serif: ['"Noto Serif JP"', 'serif'],
+          sans: ['"Noto Sans JP"', 'sans-serif']
+        }
+      } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #fdfaf7; color: #1a1512; -webkit-text-size-adjust: 100%; }
+    .grad { background: linear-gradient(135deg, #1a1512 0%, #3d2b1f 100%); }
+    .btn { background: linear-gradient(to bottom, #f59e0b, #d97706); box-shadow: 0 4px 0 #b45309; }
+    .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #b45309; }
+    /* 画像を差し替えるときは、.ph の中に <img class="w-full h-full object-cover"> を入れてください */
+    .ph { background: linear-gradient(160deg, #2a2420, #4a3a2e); }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body class="font-sans antialiased pb-20 md:pb-0">
+
+  <!-- お知らせバー -->
+  <div class="bg-black text-white text-center text-[11px] sm:text-sm font-bold tracking-wider py-2 px-3 leading-snug">
+    盛岡駅西口直結・マリオス4F｜最大60名様の貸切・パーティー受付中
+  </div>
+
+ <!-- 1. FV -->
+  <section class="relative min-h-[88vh] flex items-center justify-center text-center text-white px-4 py-16 overflow-hidden">
+    <!-- 背景画像 -->
+    <img 
+      src="images/katudon.jpg" 
+      alt="レストラン G･greet 内観・料理イメージ" 
+      class="absolute inset-0 w-full h-full object-cover z-0"
+    />
+    
+    <!-- テキストの視認性を高めるための半透明オーバーレイ -->
+    <div class="absolute inset-0 bg-black/50 z-10"></div>
+
+    <!-- コンテンツ部分（z-20を指定して画像やオーバーレイの上に配置） -->
+    <div class="relative z-20 w-full max-w-3xl border-y-2 border-gold bg-black/40 backdrop-blur-sm py-10 px-4 sm:px-8">
+      <p class="font-serif font-black text-gold text-lg sm:text-2xl tracking-widest mb-4">
+        料理人生<span class="text-5xl sm:text-7xl mx-1">45</span>年の集大成
+      </p>
+      <h1 class="font-serif font-black text-3xl sm:text-5xl md:text-6xl leading-tight mb-6">
+        地上20メートル、<br>
+        <span class="text-gold">至高の本格洋食</span>を心ゆくまで。
+      </h1>
+      <ul class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 text-xs sm:text-sm">
+        <li class="bg-white text-black font-bold px-3 py-1">特製ソースカツ丼</li>
+        <li class="bg-white text-black font-bold px-3 py-1">岩手地産地消</li>
+        <li class="bg-white text-black font-bold px-3 py-1">盛岡駅徒歩2分</li>
+      </ul>
+      <p class="font-bold tracking-widest text-sm sm:text-xl opacity-90">レストラン G･greet（ジーグリート）</p>
+    </div>
+  </section>
+
+  <!-- 2. 3つの実績 -->
+  <section class="bg-white border-b py-10">
+    <div class="max-w-5xl mx-auto px-4 grid grid-cols-3 gap-2 sm:gap-8 text-center">
+      <div>
+        <p class="text-gray-500 text-[10px] sm:text-sm font-bold">アクセス</p>
+        <p class="font-serif font-black text-gold text-3xl sm:text-5xl">2<span class="text-sm sm:text-xl text-ink">分</span></p>
+        <p class="text-[11px] sm:text-sm font-bold mt-1 leading-snug">盛岡駅西口・<br class="sm:hidden">マリオス4F直結</p>
+      </div>
+      <div class="border-x border-gray-200">
+        <p class="text-gray-500 text-[10px] sm:text-sm font-bold">満足度</p>
+        <p class="font-serif font-black text-gold text-3xl sm:text-5xl">95<span class="text-sm sm:text-xl text-ink">%</span></p>
+        <p class="text-[11px] sm:text-sm font-bold mt-1 leading-snug">料理・サービスへの<br class="sm:hidden">満足度評価</p>
+      </div>
+      <div>
+        <p class="text-gray-500 text-[10px] sm:text-sm font-bold">貸切人数</p>
+        <p class="font-serif font-black text-gold text-3xl sm:text-5xl">60<span class="text-sm sm:text-xl text-ink">名</span></p>
+        <p class="text-[11px] sm:text-sm font-bold mt-1 leading-snug">最大貸切人数・<br class="sm:hidden">マイク完備</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 特別優待 -->
+  <section class="grad text-white text-center px-4 py-16">
+    <div class="relative max-w-3xl mx-auto border-2 border-gold px-5 pt-10 pb-8 sm:p-12">
+      <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold text-black font-black tracking-widest px-5 py-2 whitespace-nowrap text-sm sm:text-base">特別優待案内</div>
+      <h2 class="font-serif font-bold text-xl sm:text-4xl mb-5">「Webを見た」でお得なランチ体験を</h2>
+      <p class="sm:text-xl leading-relaxed mb-8">
+        全ランチメニューに<span class="text-yellow-400 font-bold underline">ドリンクバー＆スープバー</span>が付属。<br class="hidden md:block">
+        圧倒的コスパで愉しむ本格洋食をご堪能ください。
+      </p>
+      <a href="https://ggreet.owst.jp/" class="btn block sm:inline-block w-full sm:w-auto text-white font-black text-lg sm:text-2xl tracking-widest py-4 sm:py-5 sm:px-16 rounded-sm">
+        お品書き・WEB予約
+      </a>
+    </div>
+  </section>
+
+ <!-- 4. 看板メニュー -->
+  <section class="bg-stone-50 px-4 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-12">
+      <div class="relative w-full md:w-1/2 h-72 sm:h-[460px] overflow-hidden rounded-sm shadow-md">
+        <!-- 挿入する画像タグ -->
+        <img 
+          src="images/katudon.jpg" 
+          alt="特製ソースカツ丼" 
+          class="w-full h-full object-cover"
+        />
+        <!-- 既存のデザインパーツ -->
+        <div class="absolute -top-3 -left-3 w-16 h-16 border-t-4 border-l-4 border-gold pointer-events-none"></div>
+        <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-white px-3 py-2 font-serif italic text-sm sm:text-xl">Specialty: Source Katsu-don</div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <p class="text-gold font-bold tracking-widest mb-2 text-sm">SIGNATURE MENU</p>
+        <h2 class="font-serif font-black text-3xl sm:text-4xl mb-5 border-b-2 border-black pb-3 inline-block">特製ソースカツ丼</h2>
+        <p class="text-lg sm:text-xl font-bold text-orange-900 mb-5">岩手・八幡平産「杜仲茶ポーク」の極上体験</p>
+        <p class="text-gray-700 leading-loose">
+          料理長・中道が選び抜いた岩手ブランド豚。その旨みを引き立てるのは、長年継ぎ足された秘伝のソース。サクッとした食感の後に広がる肉汁とソースの芳醇な香りは、まさに至福の一時です。
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- 5. 料理長ストーリー -->
+  <section class="grad text-white px-4 py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+      <div class="w-full md:w-2/5">
+        <div class="border-2 border-gold p-2">
+          <!-- 挿入する画像タグ -->
+          <img 
+            src="images/chef.png" 
+            alt="料理長 中道孝" 
+            class="w-full h-80 sm:h-[400px] object-cover"
+          />
+        </div>
+      </div>
+      <div class="w-full md:w-3/5">
+        <p class="text-gold font-bold tracking-widest mb-3 text-sm">OWNER CHEF STORY</p>
+        <h2 class="font-serif font-black text-2xl sm:text-4xl md:text-5xl leading-tight mb-6">
+          「岩手の旬」と対話する<br>45年の料理道。
+        </h2>
+        <div class="space-y-5 opacity-90 leading-relaxed sm:text-lg">
+          <p>1962年、岩手に生まれ。若くして調理の道を志した中道孝は、名だたるホテルや国内外のイタリア料理店で研鑽を積み、洋食の真髄を追求してきました。</p>
+          <p class="font-serif italic text-gold">「親しみやすく、かつ本物の味を。盛岡の空の下で、最高の一皿をお届けします。」</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- 6. シーン -->
+  <section class="bg-white px-4 py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="font-serif font-black text-2xl sm:text-4xl text-center mb-12 relative pb-4 after:content-[''] after:absolute after:w-24 after:h-1 after:bg-gold after:bottom-0 after:left-1/2 after:-translate-x-1/2">
+        あらゆる「大切な瞬間」に。
+      </h2>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+        <article>
+          <!-- ビジネスランチの画像 -->
+          <div class="h-32 sm:h-48 mb-3 overflow-hidden rounded-sm shadow-sm">
+            <img 
+              src="images/coffe.jpg" 
+              alt="ビジネスランチ" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="font-bold mb-1 text-sm sm:text-base">ビジネスランチ</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">迅速な提供とフリードリンクで、打ち合わせもスムーズに。</p>
+        </article>
+        
+        <article>
+          <!-- 結婚式二次会の画像 -->
+          <div class="h-32 sm:h-48 mb-3 overflow-hidden rounded-sm shadow-sm">
+            <img 
+              src="images/party.jpg" 
+              alt="結婚式二次会" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="font-bold mb-1 text-sm sm:text-base">結婚式二次会</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">最大60名。マイク・スクリーン完備で思い出に残る演出を。</p>
+        </article>
+        
+        <article>
+          <!-- 女子会ランチの画像 -->
+          <div class="h-32 sm:h-48 mb-3 overflow-hidden rounded-sm shadow-sm">
+            <img 
+              src="images/lunch.jpg" 
+              alt="女子会ランチ" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="font-bold mb-1 text-sm sm:text-base">女子会ランチ</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">レンガ調の温かい内装と、マリオス4階からの絶景が会話を弾ませます。</p>
+        </article>
+        
+        <article>
+          <!-- ディナー夜景の画像 -->
+          <div class="h-32 sm:h-48 mb-3 overflow-hidden rounded-sm shadow-sm">
+            <img 
+              src="images/yakei.png" 
+              alt="ディナー夜景" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="font-bold mb-1 text-sm sm:text-base">ディナー夜景</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">夜はロマンチックな夜景を。落ち着いた大人な雰囲気で至福の一時を。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section class="bg-stone-100 border-y border-stone-200 px-4 py-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="inline-block bg-gold text-black text-xs font-black px-3 py-1 tracking-widest mb-3">NEW PROJECT</span>
+        <h2 class="font-serif font-black text-2xl sm:text-4xl">COMING SOON</h2>
+        <p class="text-gray-600 mt-2 text-sm sm:text-base">駅直結の利便性をさらに高める、新しいサービスを企画中。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md border-t-4 border-gold flex flex-col justify-between">
+          <div>
+            <span class="inline-block text-xs font-bold text-orange-800 bg-orange-100 px-3 py-1 rounded-full mb-4">テイクアウト企画</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold mb-3">駅チカ本格洋食弁当のテイクアウト</h3>
+            <p class="text-gray-700 leading-relaxed mb-6 text-sm sm:text-base">「G･greetの味をご自宅やオフィス、新幹線の中でも楽しみたい」そんな声にお応えして、特製ソースカツ丼やシェフ自慢の洋食をお弁当スタイルでご提供予定です。事前予約で待ち時間なしのお受け取りが可能になります。</p>
+          </div>
+          <p class="text-xs text-gray-400 font-bold tracking-wider border-t pt-4">準備中（今春スタート予定）</p>
+        </div>
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md border-t-4 border-gold flex flex-col justify-between">
+          <div>
+            <span class="inline-block text-xs font-bold text-orange-800 bg-orange-100 px-3 py-1 rounded-full mb-4">クイックカフェ企画</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold mb-3">乗り換え・待ち合わせ用の軽めセット</h3>
+            <p class="text-gray-700 leading-relaxed mb-6 text-sm sm:text-base">電車の待ち時間や、ちょっとしたお仕事・お打ち合わせの合間に。サクッと食べられるミニサイズのスープ＆サンドセットや、こだわりのブレンドコーヒーなどを手軽に楽しめるクイックメニューを準備しています。</p>
+          </div>
+          <p class="text-xs text-gray-400 font-bold tracking-wider border-t pt-4">準備中（今春スタート予定）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- 7. アクセス -->
+  <section id="access" class="bg-stone-50 px-4 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-gold font-bold tracking-widest mb-1 text-sm">ACCESS</p>
+        <h2 class="font-serif font-black text-2xl sm:text-4xl">地図・所在地</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 sm:gap-8 items-start">
+        <div class="md:col-span-1 space-y-4">
+          <div class="bg-white p-5 rounded shadow-sm border-l-4 border-gold">
+            <h3 class="font-bold text-lg mb-1">住所</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">〒020-0045<br>岩手県盛岡市盛岡駅西通2丁目9-1<br>マリオス 4F</p>
+          </div>
+          <div class="bg-white p-5 rounded shadow-sm border-l-4 border-gold">
+            <h3 class="font-bold text-lg mb-1">アクセス</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">JR盛岡駅 西口より徒歩2分<br>バスターミナル直結</p>
+          </div>
+          <div class="bg-white p-5 rounded shadow-sm border-l-4 border-gold">
+            <h3 class="font-bold text-lg mb-1">営業時間</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">lunch：11:00〜14:00 / dinner：17：00～21：30<br>定休日：日曜日</p>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="border-2 border-gold p-1 bg-white shadow-xl rounded">
+            <iframe 
+              title="G･greetの地図" 
+              class="w-full h-72 sm:h-[400px] block" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.711316240234!2d141.13141057486473!3d39.70119429888024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85763339b96fe1%3A0xd669081852ac3ca3!2z44Os44K544OI44Op44OzIEfvvaVncmVldCjjgrjjg7zjgrDjg6rjg7zjg4gp!5e0!3m2!1sja!2sjp!4v1791249650934!5m2!1sja!2sjp" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+          </div>
+          <p class="mt-3 text-xs text-gray-500 md:text-right">※マリオス内のエレベーターで4Fへお越しください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 最終CTA -->
+  <section class="grad text-white text-center border-t border-gold px-4 py-16 sm:py-20">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-gold font-bold tracking-widest mb-3 text-sm">RESERVATION</p>
+      <h2 class="font-serif font-black text-2xl sm:text-5xl leading-tight mb-10">盛岡駅徒歩2分。<br>特別な場所が、ここにあります。</h2>
+      <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <a href="tel:0196811990" class="flex items-center justify-center gap-3 bg-white text-black py-5 rounded-sm shadow-xl active:bg-stone-100">
+          <span class="text-left">
+            <span class="block text-xs font-bold text-gray-500">お電話でのご予約・お問い合わせ</span>
+            <span class="block text-2xl font-black">019-681-1990</span>
+          </span>
+        </a>
+        <a href="https://ggreet.owst.jp/" class="btn flex items-center justify-center text-white py-5 rounded-sm shadow-xl">
+          <span class="text-left">
+            <span class="block text-xs font-bold opacity-80">24時間受付可能</span>
+            <span class="block text-2xl font-black">WEBから予約する</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-black text-stone-400 py-10 text-center text-xs">
+    <p class="font-bold text-white tracking-widest mb-2">Restaurant G･greet</p>
+    <p class="mb-4">&copy; 2026 G･greet All rights reserved.</p>
+    <div class="flex justify-center gap-6 text-sm">
+      <a href="https://www.instagram.com/ggreet1/" class="underline">Instagram</a>
+      <a href="https://ggreet.owst.jp/" class="underline">公式サイト</a>
+    </div>
+  </footer>
+
+  <!-- スマホ用 追従予約バー -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-2 bg-black border-t border-gold" style="padding-bottom: env(safe-area-inset-bottom, 0px)">
+    <a href="tel:0196811990" class="text-white text-center font-bold py-3 text-sm border-r border-gold">電話で予約</a>
+    <a href="https://ggreet.owst.jp/" class="text-center font-black py-3 text-sm text-black bg-gold">WEB予約</a>
+  </nav>
+
+</body>
+</html>
