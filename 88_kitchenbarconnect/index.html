@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>キッチンバル コネクト | ナチュラルワインと地産食材の至福</title>
+<meta name="description" content="北上市のナチュラルワインと地産食材のキッチンバル。ブッラータのカプレーゼが人気。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: { colors: { wine: '#722f37', olive: '#556b2f', gold: '#b39155' } } }
+  };
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #fdfbf7; color: #333; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+  .serif { font-family: 'Noto Serif JP', serif; }
+  .eng-serif { font-family: 'Playfair Display', serif; }
+  .hero {
+    background: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.65)),
+      url('images/kapureze.jpg') center/cover;
+  }
+  .btn-white { background:#fff; color:#722f37; box-shadow:0 10px 30px rgba(0,0,0,.3); transition:.3s; }
+  .btn-white:hover { background:#722f37; color:#fff; }
+  .btn-gold {
+    background: linear-gradient(135deg,#f1c40f,#d4af37); color:#722f37;
+    box-shadow: 0 6px 0 #b38b00, 0 12px 24px rgba(0,0,0,.3); transition:.2s;
+  }
+  .btn-gold:active { transform: translateY(5px); box-shadow: 0 1px 0 #b38b00; }
+  .pulse::before {
+    content:''; position:absolute; inset:0; border-radius:9999px; background:rgba(255,255,255,.4);
+    animation: ring 2s infinite;
+  }
+  @keyframes ring { 0%{transform:scale(.95);opacity:1} 100%{transform:scale(1.3);opacity:0} }
+  .badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#b39155; color:#fff;
+    padding:2px 16px; border-radius:20px; font-size:.75rem; font-weight:700; white-space:nowrap; }
+  #map { height:100%; width:100%; z-index:1; }
+  .leaflet-tile-pane { filter: grayscale(100%) contrast(110%); }
+  .safe-b { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  @media (prefers-reduced-motion: reduce) { .pulse::before, .animate-bounce { animation: none; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<!-- ヒーロー -->
+<header class="hero relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden px-5 py-16">
+  <div class="absolute top-8 left-8 hidden md:block border-l border-white/50 pl-4 py-2">
+    <p class="eng-serif text-2xl">Kitchen Bar<br>CONNECT</p>
+  </div>
+
+  <div class="text-center w-full max-w-3xl">
+    <span class="inline-block border border-white px-3 py-1 mb-6 tracking-[.2em] md:tracking-[.3em] text-[11px] sm:text-sm backdrop-blur-sm">NATURAL WINE &amp; LOCAL FOOD</span>
+    <h1 class="serif text-[2rem] sm:text-5xl md:text-7xl font-bold mb-6 md:mb-8 leading-[1.4] drop-shadow-lg">
+      一皿の口福、<br>とろけるブッラータ。
+    </h1>
+    <p class="text-base sm:text-xl md:text-2xl mb-10 md:mb-12 serif italic opacity-90">北上の豊かな地で、心と食を繋ぐ。</p>
+
+    <div class="flex flex-col gap-5 items-center">
+      <div class="pulse relative w-full sm:w-auto">
+        <a href="#coupon" class="btn-white relative z-10 flex items-center justify-center gap-3 px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-2xl tracking-wider">
+          <i class="fas fa-gift"></i>無料特典を受け取る
+        </a>
+      </div>
+      <p class="text-xs sm:text-sm border-b border-white/60 pb-1 tracking-wider font-light">北上駅から徒歩8分 / 諏訪神社前</p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-70">
+    <i class="fas fa-chevron-down text-2xl"></i>
+  </div>
+</header>
+
+<!-- 追従LINEバー -->
+<section class="bg-wine text-white sticky top-0 z-50 shadow-lg border-b border-white/10">
+  <div class="container mx-auto px-3 py-2.5 md:py-4 flex items-center justify-between md:justify-center gap-3 md:gap-10">
+    <p class="text-xs sm:text-base font-bold flex items-center gap-2 leading-tight">
+      <span class="bg-white text-wine px-2 py-0.5 rounded text-xs font-black shrink-0">限定</span>
+      <span>「ブッラータのカプレーゼ」<br class="sm:hidden">クーポン配布中</span>
+    </p>
+    <a href="#" class="bg-green-500 hover:bg-green-600 text-white px-4 sm:px-8 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-base flex items-center shrink-0 shadow-lg active:scale-95 transition">
+      <i class="fab fa-line text-xl sm:text-2xl mr-1.5"></i>特典を受け取る
+    </a>
+  </div>
+</section>
+
+<!-- 商品 -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5 max-w-6xl">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="eng-serif text-gold text-lg md:text-xl mb-2">Signature Dish</p>
+      <h2 class="serif text-2xl md:text-5xl font-bold leading-snug">ナイフを入れた瞬間、<br class="md:hidden">物語が動き出す。</h2>
+    </div>
+
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div class="w-full lg:w-1/2 relative">
+        <img src="images/kapureze.jpg" alt="ブッラータのカプレーゼ" loading="lazy" class="w-full rounded-lg shadow-2xl">
+        <div class="absolute -bottom-5 right-3 md:-right-6 bg-white px-4 py-3 shadow-xl rounded-lg">
+          <p class="text-wine font-bold text-base md:text-xl serif italic">極上のとろ〜り感</p>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-1/2 space-y-6 md:space-y-8 mt-4">
+        <h3 class="serif text-2xl md:text-4xl text-wine font-bold border-l-4 border-gold pl-4 md:pl-6">ブッラータのカプレーゼ</h3>
+        <p class="text-gray-700 leading-loose text-base md:text-lg">
+          イタリア語で「バターのような」という意味を持つブッラータ。巾着状のチーズを割れば、中から濃厚なクリームが溢れ出します。<br><br>
+          コネクトでは、この至極のチーズを地元・岩手県産小麦の自家製パンや、季節の新鮮な食材と共に提供。濃いめの味付けが、ナチュラルワインの繊細な風味を一層引き立てます。
+        </p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4 pt-3">
+          <div class="relative border border-slate-200 bg-white p-3 md:p-4 text-center rounded">
+            <span class="badge">Must Try</span>
+            <p class="text-wine font-bold mt-1 text-sm md:text-base">ワインとの相性</p>
+            <p class="text-xs md:text-sm text-gold mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+          </div>
+          <div class="relative border border-slate-200 bg-white p-3 md:p-4 text-center rounded">
+            <span class="badge">Must Try</span>
+            <p class="text-wine font-bold mt-1 text-sm md:text-base">鮮度のこだわり</p>
+            <p class="text-xs md:text-sm text-gray-500 font-bold mt-1">産地直送フレッシュ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- こだわり -->
+<section class="py-16 md:py-24 bg-stone-50">
+  <div class="container mx-auto px-5 max-w-6xl">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="eng-serif text-gold text-lg md:text-xl mb-2">Our Pride</p>
+      <h2 class="serif text-2xl md:text-3xl font-bold">「コネクト」が愛される3つの理由</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-10">
+      <article class="bg-white rounded-2xl overflow-hidden shadow-sm">
+        <img src="images/wine.png" alt="ナチュラルワイン" loading="lazy" class="w-full h-44 md:h-48 object-cover">
+        <div class="p-6 md:p-8">
+          <span class="text-gold eng-serif text-3xl block mb-2">01</span>
+          <h4 class="serif text-lg md:text-xl font-bold mb-3">常時10種以上の<br>ナチュラルワイン</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">自然に寄り添って造られたワインを厳選。店主自らテイスティングし、その日の料理に最適な一本を提案します。</p>
+        </div>
+      </article>
+      <article class="bg-white rounded-2xl overflow-hidden shadow-sm">
+        <img src="images/pizza.png" alt="地元食材のパスタ" loading="lazy" class="w-full h-44 md:h-48 object-cover">
+        <div class="p-6 md:p-8">
+          <span class="text-gold eng-serif text-3xl block mb-2">02</span>
+          <h4 class="serif text-lg md:text-xl font-bold mb-3">県産小麦と<br>地元食材の調和</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">石窯で焼くピッツァやパスタには岩手県産小麦を使用。地元の滋味溢れる食材を、お酒に合う最高の味付けで。</p>
+        </div>
+      </article>
+      <article class="bg-white rounded-2xl overflow-hidden shadow-sm">
+        <img src="images/store.png" alt="店内の観葉植物" loading="lazy" class="w-full h-44 md:h-48 object-cover">
+        <div class="p-6 md:p-8">
+          <span class="text-gold eng-serif text-3xl block mb-2">03</span>
+          <h4 class="serif text-lg md:text-xl font-bold mb-3">諏訪神社を望む<br>リラックス空間</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">店内に溢れる植物と、窓の外に広がる景観。日常を忘れさせてくれる、身の丈に合った心地よい場所。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#b39155_1px,transparent_1px)] [background-size:16px_16px]"></div>
+  <div class="container mx-auto px-5 max-w-5xl relative z-10">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="inline-block bg-gold/20 text-gold border border-gold/40 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-[.2em] mb-4">Coming Soon</span>
+      <h2 class="serif text-2xl md:text-5xl font-bold mb-4 leading-snug">もっとワインが楽しくなる、<br class="md:hidden">新サービス。</h2>
+      <p class="text-stone-400 text-sm md:text-base">「口頭だけじゃもったいない！」お客様の声から生まれた新しい取り組み</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-stone-800/80 border border-stone-700 rounded-3xl p-6 md:p-12 shadow-2xl">
+      <div class="space-y-5">
+        <div class="inline-flex items-center gap-2 bg-wine/60 px-3 py-1 rounded text-xs font-bold">
+          <i class="fas fa-star text-yellow-300"></i> 近日導入予定
+        </div>
+        <h3 class="serif text-xl md:text-3xl font-bold leading-snug">「一目でわかる」<br>ペアリング可視化プロジェクト</h3>
+        <p class="text-stone-300 text-sm md:text-base leading-relaxed">
+          「どのワインがこの料理に合うの？」というお悩みを解決するため、メニューブックやテーブルの特製ポップに<strong class="text-gold">〈料理と相性抜群のワインの組み合わせ理由〉</strong>を視覚的にわかりやすく記載します。
+        </p>
+        <ul class="space-y-3 text-stone-300 text-sm">
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold mt-1"></i><span>メニューを開くだけで、ベストなペアリングが一目でわかる</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold mt-1"></i><span>店内のミニポップで「今日のオススメ組み合わせ」を発信</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold mt-1"></i><span>ワイン選びに迷わず、もっと深く食と酒の体験を楽しめる</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-stone-900 border border-stone-700 rounded-2xl p-5 md:p-6 relative">
+        <div class="absolute top-3 right-3 bg-gold text-stone-900 font-bold text-[10px] px-2 py-0.5 rounded">イメージPOP</div>
+        <p class="eng-serif text-gold text-sm mb-1">Pairing Guide Example</p>
+        <h4 class="serif text-base md:text-lg font-bold mb-4 border-b border-stone-700 pb-2 pr-16">ブッラータのカプレーゼ × オレンジワイン</h4>
+        <div class="space-y-3 text-xs md:text-sm text-stone-300">
+          <div class="bg-stone-800 p-3 rounded-lg border border-stone-700">
+            <p class="font-bold text-white mb-1"><i class="fas fa-wine-glass-alt text-gold mr-1"></i> 相性の秘密</p>
+            <p class="leading-relaxed">チーズの濃厚なミルキーさと、オレンジワイン特有の心地よい苦み（タンニン）が抜群の相性！お互いの旨味を引き立て合います。</p>
+          </div>
+          <div class="flex items-center justify-between text-stone-400 pt-2 border-t border-stone-800 gap-2">
+            <span>#コネクトのペアリング</span>
+            <span class="text-gold font-bold text-right">テーブルポップにて展開予定</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 特典 -->
+<section id="coupon" class="py-16 md:py-24 bg-white scroll-mt-16">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="border-4 border-double border-wine p-1.5 md:p-2 rounded-3xl">
+      <div class="bg-wine text-white p-6 sm:p-10 md:p-16 rounded-2xl text-center relative overflow-hidden">
+        <i class="fas fa-wine-glass absolute -right-8 -bottom-8 text-9xl opacity-10 rotate-12"></i>
+
+        <span class="inline-block bg-white text-wine px-5 py-1 rounded-full font-bold mb-6 tracking-widest text-xs md:text-sm">LINE FRIEND PRIVILEGE</span>
+        <h2 class="serif text-[1.65rem] sm:text-4xl md:text-6xl font-black mb-8 leading-tight">今すぐ、至福の<br>「ブッラータ」を。</h2>
+
+        <div class="mb-10 p-5 md:p-8 bg-white/10 rounded-2xl border border-white/20 backdrop-blur-md">
+          <p class="text-base md:text-2xl font-bold mb-3">ディナータイム限定特典</p>
+          <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+            <span class="text-3xl md:text-4xl font-black text-yellow-300">無料プレゼント</span>
+            <span class="hidden md:block text-2xl opacity-50">/</span>
+            <span class="text-base md:text-2xl font-medium">ブッラータのカプレーゼ(ハーフ)</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <a href="#" class="btn-gold flex items-center justify-center text-xl sm:text-3xl md:text-4xl font-black px-6 md:px-20 py-5 md:py-8 rounded-full w-full md:w-auto">
+            <i class="fab fa-line text-3xl md:text-5xl mr-3"></i>今すぐクーポンをGET
+          </a>
+          <div class="mt-8 flex flex-col items-center gap-2 text-stone-200">
+            <p class="text-sm font-bold flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i>1分で完了・登録は無料です</p>
+            <p class="text-xs opacity-70">※ボタンをタップするとLINEアプリが自動で起動します</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- インフォメーション -->
+<footer class="bg-stone-900 text-white pt-16 md:pt-24 pb-8 safe-b">
+  <div class="container mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 mb-16">
+      <div class="space-y-6">
+        <h3 class="serif text-3xl md:text-4xl">CONNECT</h3>
+        <div class="space-y-4 text-stone-400 text-sm md:text-base">
+          <p class="flex items-start"><i class="fas fa-map-marker-alt w-8 mt-1 text-gold shrink-0"></i><span>〒024-0034 岩手県北上市諏訪町1丁目2-19</span></p>
+          <p class="flex items-center"><i class="fas fa-phone w-8 text-gold shrink-0"></i><a href="tel:0197726935" class="underline underline-offset-4">0197-72-6935</a></p>
+          <p class="flex items-start"><i class="fas fa-clock w-8 mt-1 text-gold shrink-0"></i><span>Lunch: 11:30～14:00 / Dinner: 18:00〜21:00</span></p>
+          <p class="flex items-center"><i class="fas fa-calendar-times w-8 text-gold shrink-0"></i><span>定休日: 日曜日</span></p>
+        </div>
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/kitchenbarconnect/" aria-label="Instagram" class="w-12 h-12 border border-stone-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.kitchenbarconnect.com/" aria-label="公式サイト" class="w-12 h-12 border border-stone-700 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+      <div class="h-72 md:h-80 rounded-2xl overflow-hidden shadow-2xl border border-stone-800">
+        <div id="map"></div>
+      </div>
+    </div>
+    <div class="text-center text-stone-500 text-[11px] tracking-widest pt-8 border-t border-stone-800">
+      &copy; KITCHEN BAR CONNECT. ALL RIGHTS RESERVED.
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const lat = 39.28452, lng = 141.11824;
+    const map = L.map('map', { scrollWheelZoom: false, tap: true }).setView([lat, lng], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker([lat, lng]).addTo(map)
+      .bindPopup("<b style='color:#722f37;'>キッチンバル コネクト</b><br>岩手県北上市諏訪町1丁目2-19")
+      .openPopup();
+    window.addEventListener('resize', () => map.invalidateSize());
+  });
+</script>
+</body>
+</html>
