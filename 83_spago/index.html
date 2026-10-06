@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>spaghetti SPAGO | 盛岡で守り続ける、東京ハシヤの真髄</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;500;900&display=swap" rel="stylesheet">
+
+<style>
+  :root { --deep-red:#8e1d1d; --gold:#b08d57; --ink:#1a1a1a; --paper:#f9f7f2; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--paper); color:var(--ink); padding-bottom:env(safe-area-inset-bottom); }
+  .mincho { font-family:'Shippori Mincho',serif; }
+  .vertical { writing-mode:vertical-rl; letter-spacing:.5em; }
+  .hero-bg {
+    background:linear-gradient(to right,rgba(26,26,26,.85),rgba(26,26,26,.35)), var(--hero-image, linear-gradient(135deg,#3a1a1a,#1a1a1a));
+    background-size:cover; background-position:center;
+  }
+  .img-ph { background:linear-gradient(135deg,#4a2a22,#1f1512); }
+  .accent-box { background:var(--deep-red); box-shadow:10px 10px 0 rgba(176,141,87,.4); }
+  .btn:active { transform:scale(.98); }
+  @media (hover:hover){ .btn:hover { filter:brightness(1.1); transform:translateY(-2px); } }
+  #map { height:320px; width:100%; z-index:10; }
+  @media (min-width:768px){ #map { height:450px; } }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .animate-pulse{animation:none} }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header id="hero" class="relative min-h-[100svh] flex items-center overflow-hidden py-16 bg-zinc-900">
+  <div class="absolute inset-0 z-0">
+    <img src="images/pasta2.jpg" alt="盛岡本町通のパスタイメージ" class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30"></div>
+  </div>
+  <div class="absolute right-10 top-20 vertical text-white/20 text-5xl font-bold mincho hidden lg:block z-10">盛岡本町通にて、伝統を継ぐ。</div>
+  <div class="container mx-auto px-5 z-10">
+    <div class="max-w-2xl border-l-4 border-white pl-5 md:pl-8 py-4 bg-white/10 backdrop-blur-sm rounded-r-lg">
+      <p class="text-white text-base md:text-2xl mb-2 font-light tracking-[.2em] md:tracking-[.3em] mincho">東京新宿ハシヤ系</p>
+      <h1 class="text-white text-5xl sm:text-6xl md:text-8xl font-black mb-6 leading-tight mincho">
+        本物が放つ、<br><span class="text-[#d4af37]">深淵の味。</span>
+      </h1>
+      <p class="text-black text-sm sm:text-lg md:text-xl leading-loose mb-8 font-medium bg-white/80 p-4 rounded-sm shadow-lg border-l-4 border-[#8e1d1d]">
+        「ヤバイ、美味い」。お客様にそう言わしめるのは、<br class="hidden sm:block">
+        三十余年、頑なに守り続けてきた職人の矜持。<br class="hidden sm:block">
+        盛岡で唯一無二、伝説のパスタを。
+      </p>
+      <a href="#cta" class="btn block sm:inline-block bg-[#c0392b] text-white px-8 py-4 md:px-10 md:py-5 rounded-sm font-bold tracking-widest text-center transition shadow-xl hover:bg-[#a93226]">至高のメニューを見る</a>
+    </div>
+  </div>
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white animate-pulse text-center z-10">
+    <p class="text-xs tracking-widest mb-2">SCROLL</p>
+    <div class="w-px h-10 bg-white mx-auto"></div>
+  </div>
+</header>
+
+<!-- STORY -->
+<section class="py-16 md:py-24 relative overflow-hidden">
+  <div class="container mx-auto px-5">
+    <div class="flex flex-col lg:flex-row items-stretch lg:items-center">
+      <div class="lg:w-7/12 relative z-10">
+        <img id="img-meat-sauce" alt="極上のミートソース" src="images/pasta.jpg" class="img-ph shadow-2xl w-full aspect-[4/3] object-cover rounded-sm">
+        <div class="accent-box text-white p-5 md:p-10 mt-4 md:mt-0 md:absolute md:-bottom-12 md:-right-8">
+          <p class="mincho text-xl md:text-3xl font-bold leading-tight"><br><span class="text-[#d4af37]">最高傑作</span></p>
+        </div>
+      </div>
+      <div class="lg:w-5/12 lg:-ml-20 mt-10 lg:mt-0 bg-white p-6 sm:p-10 lg:p-16 shadow-xl relative z-20 border-t-8 border-[#8e1d1d]">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 mincho leading-relaxed">粉チーズさえ不要。<br>完成された一皿。</h2>
+        <p class="text-gray-600 leading-loose mb-6 text-sm md:text-base">
+          当店のミートソースを一口食べれば、これまでの常識が覆ります。木製のお皿に盛られた熱々のソースは、東京新宿の名店から引き継いだ門外不出のレシピ。<br><br>
+          「今まで来なかったことを後悔した」というお声こそ、私たちが伝統を守り続ける理由です。
+        </p>
+        <hr class="border-gray-100 mb-6">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KODAWARI -->
+<section class="py-16 md:py-24 bg-[#1a1a1a] text-white">
+  <div class="container mx-auto px-5 text-center mb-12 md:mb-16">
+    <span class="text-[#d4af37] font-bold tracking-[.4em] mb-4 block text-sm">KODAWARI</span>
+    <h2 class="text-2xl md:text-4xl font-bold mincho">SPAGOが「本物」である理由</h2>
+  </div>
+  <div class="container mx-auto px-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div>
+      <h3 class="text-lg md:text-xl font-bold mb-3 mincho text-[#d4af37]">01. 継承される味</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">東京新宿「ハシヤ」ののれん分けとして、盛岡でその味を忠実に再現。先代から受け継いだ技術と想いを一皿に込めています。</p>
+    </div>
+    <div>
+      <h3 class="text-lg md:text-xl font-bold mb-3 mincho text-[#d4af37]">02. 独特の構成</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">たっぷりとした刻み海苔、新鮮なウニとイカ。和の素材をパスタと融合させた「ハシヤ系」ならではの衝撃を提供します。</p>
+    </div>
+    <div class="sm:col-span-2 lg:col-span-1">
+      <h3 class="text-lg md:text-xl font-bold mb-3 mincho text-[#d4af37]">03. 寛ぎの空間</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">調理のライブ感を楽しめるカウンター。女性お一人でも、お子様連れでも安心してお過ごしいただける温かな空間作りを徹底しています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="py-16 md:py-24">
+  <div class="container mx-auto px-5">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-center text-2xl md:text-3xl font-bold mb-12 md:mb-16 mincho">お客様の声</h2>
+      <div class="space-y-10">
+        <div class="flex gap-4 md:gap-8 items-start border-b border-gray-200 pb-8">
+          <span class="text-4xl text-[#d4af37] font-serif leading-none">“</span>
+          <div>
+            <p class="text-base md:text-lg font-bold mb-2">「ヤバイ、美味い！テーブルの粉チーズは不要でした」</p>
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base">初めて入店しましたが、ド定番のミートソースを食べて感動。今まで来なかったことを後悔するレベル。ウニとイカのパスタも海苔の香りが最高でした。</p>
+          </div>
+        </div>
+        <div class="flex gap-4 md:gap-8 items-start border-b border-gray-200 pb-8">
+          <span class="text-4xl text-[#d4af37] font-serif leading-none">“</span>
+          <div>
+            <p class="text-base md:text-lg font-bold mb-2">「味は確か。奥さんが引き継ぐ伝説の味」</p>
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base">以前から訪問しています。ご主人は亡くなりましたが、その味を奥さんがしっかり引き継いでいます。顰らない店ですが、味の深みは本物です。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-16 md:py-24 bg-[#f2efe9] border-y border-gray-200">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-12">
+      <span class="text-[#8e1d1d] font-bold tracking-[.4em] mb-4 block text-sm">COMING SOON</span>
+      <h2 class="text-2xl md:text-4xl font-bold mincho mb-4">あればいいなと思う、新サービス構想</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">お客様からの嬉しいお声や「こんなサービスがあったら」をもとに、現在スタッフで検討・準備を進めている新企画です。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+      <div class="bg-white p-6 md:p-8 rounded-sm shadow-md border-t-4 border-[#b08d57]">
+        <span class="text-xs bg-[#8e1d1d]/10 text-[#8e1d1d] px-3 py-1 rounded font-bold inline-block mb-4">検討中</span>
+        <h3 class="text-lg md:text-xl font-bold mb-3 mincho">おうちでSPAGO（テイクアウト容器拡充）</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">ご自宅やオフィスでも木皿の雰囲気をそのままに楽しんでいただける、専用テイクアウト容器と温め直しガイドのセット開発。</p>
+      </div>
+      <div class="bg-white p-6 md:p-8 rounded-sm shadow-md border-t-4 border-[#b08d57]">
+        <span class="text-xs bg-[#8e1d1d]/10 text-[#8e1d1d] px-3 py-1 rounded font-bold inline-block mb-4">アイデア募集中</span>
+        <h3 class="text-lg md:text-xl font-bold mb-3 mincho">裏メニュー・トッピング投票</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">常連様の間で密かに人気の組み合わせや、過去の限定メニューをアンケートで投票し、定期的に復刻させる参加型イベント。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="py-16 md:py-24 bg-[#8e1d1d] text-white">
+  <div class="container mx-auto px-5 text-center">
+    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 md:mb-8 mincho">その一口が、日常を彩る。</h2>
+    <p class="text-white/80 mb-10 md:mb-12 text-sm md:text-lg leading-relaxed">
+      混雑状況や、最新の営業カレンダーは公式ブログにて随時配信中。<br class="hidden sm:block">
+      ご来店時に画面をご提示いただくだけで、特典を受け取れます。
+    </p>
+    <div class="max-w-2xl mx-auto bg-white text-gray-900 p-4 sm:p-8 md:p-12 shadow-2xl rounded-sm">
+      <div class="border-2 border-dashed border-[#b08d57] p-5 md:p-8 bg-[#f9f7f2]">
+        <p class="text-xs tracking-[.2em] text-[#8e1d1d] font-bold mb-2">WEB SCREEN PRESENT</p>
+        <h3 class="text-xl md:text-3xl font-bold mb-4 mincho">ご来店特典引換画面</h3>
+        <p class="text-sm text-gray-600 mb-5">ご注文時にこちらの画面をスタッフにご提示ください。</p>
+        <div class="bg-white border border-gray-300 p-5 rounded shadow-inner mb-5">
+          <p class="text-xs text-gray-400 font-mono mb-1">SPAGO SPECIAL BENEFIT</p>
+          <p class="text-lg md:text-2xl font-bold text-[#8e1d1d] mincho leading-snug">「常連様限定・裏トッピング（大葉増量 or 特製ガーリックオイル）」サービス</p>
+          <p class="text-xs text-gray-500 mt-2">※お食事をご注文のお客様に限ります。有効期限：本ページ表示中</p>
+        </div>
+        <button onclick="alertBenefitUsed()" class="btn w-full bg-[#8e1d1d] hover:bg-[#721515] text-white font-bold py-4 px-4 rounded-sm transition shadow-md tracking-wider text-sm md:text-base">特典画面を利用済みにする（スタッフ確認用）</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="text-[#d4af37] font-bold tracking-[.4em] mb-4 block text-sm">ACCESS</span>
+      <h2 class="text-2xl md:text-4xl font-bold mincho">お越しを、お待ちしております。</h2>
+    </div>
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+      <div class="lg:w-1/3 space-y-7">
+        <div>
+          <h4 class="font-bold border-l-4 border-[#8e1d1d] pl-4 mb-3">所在地</h4>
+          <p class="text-gray-600 leading-relaxed text-sm md:text-base">〒020-0015<br>岩手県盛岡市本町通１丁目８−２１<br>トーカンキャステール上ノ橋</p>
+        </div>
+        <div>
+          <h4 class="font-bold border-l-4 border-[#8e1d1d] pl-4 mb-3">お問い合わせ</h4>
+          <a href="tel:0196511911" class="inline-block text-2xl font-bold text-[#8e1d1d] mb-2">019-651-1911</a>
+          <p class="text-sm text-gray-500 font-bold">定休日：水曜日</p>
+        </div>
+        <div class="p-5 rounded-sm border border-gray-100 bg-[#f9f7f2]">
+          <p class="text-xs text-gray-500 leading-loose">上ノ橋近く、トーカンキャステールの1階にございます。周辺にコインパーキングもございますが、お車でお越しの際は事前のご確認をお願いいたします。</p>
+        </div>
+      </div>
+      <div class="lg:w-2/3 w-full shadow-2xl rounded-sm overflow-hidden border-4 md:border-8 border-white">
+        <div id="map" class="w-full h-[320px] md:h-[450px]">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.5222013645894!2d141.15118182695315!3d39.70544559999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8576233b636f59%3A0x33ae8209edd290f7!2sspaghetti%20SPAGO!5e0!3m2!1sja!2sjp!4v1791264258076!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-14 md:py-20 bg-[#f9f7f2] border-t border-gray-200">
+  <div class="container mx-auto px-5">
+    <div class="flex flex-col lg:flex-row justify-between gap-10">
+      <div class="lg:w-1/3">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 mincho">spaghetti<br><span class="text-[#8e1d1d]">SPAGO</span></h2>
+        <p class="text-sm text-gray-600">&copy; spaghetti SPAGO. All Rights Reserved.</p>
+      </div>
+      <div class="lg:w-2/3">
+        <div class="border-l-2 border-gray-200 pl-5">
+          <h4 class="font-bold mb-3">公式ブログ・おすすめ情報</h4>
+          <p class="text-xs text-gray-500 mb-3 leading-relaxed">今が旬の食材を使った季節メニューや、店主のおすすめトッピング情報をブログで随時発信中。来店前のチェックで「今日の当たりメニュー」が見つかります。</p>
+          <a href="http://spagolog.cocolog-nifty.com/" target="_blank" rel="noopener" class="text-sm text-gray-600 hover:text-[#8e1d1d] underline font-medium">✨ 公式ブログ：SPAGOな日々をチェックする</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+</html>
