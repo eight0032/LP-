@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="盛岡・菜園の生パスタと手作りピザのお店「オリーブの実」。">
+<title>オリーブの実 | 盛岡の生パスタと手作りピザの店</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { olive: { DEFAULT: '#556b2f', dark: '#3d4a1d' }, paper: '#fdfaf5' },
+      fontFamily: {
+        serif: ['"Noto Serif JP"', 'serif'],
+        sans: ['"Noto Sans JP"', 'sans-serif'],
+        script: ['"Mrs Saint Delafield"', 'cursive']
+      }
+    } }
+  }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  body { background-color: #fdfaf5; padding-bottom: env(safe-area-inset-bottom); }
+  .orn { display:flex; align-items:center; justify-content:center; gap:.75rem; }
+  .orn::before, .orn::after { content:""; height:1px; width:32px; background:#556b2f; flex:none; }
+  .orn-w::before, .orn-w::after { background:#fff; opacity:.6; }
+  #map { height: 300px; width: 100%; z-index: 0; }
+  @media (min-width:768px){ #map { height: 400px; } .orn::before,.orn::after{ width:50px; } }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body class="font-sans text-stone-800 antialiased">
+
+<!-- FV -->
+<header class="relative min-h-[100svh] flex items-center justify-center bg-stone-900 overflow-hidden">
+  <img src="images/pasta.jpg" alt="レモンのペペロンチーノ" class="absolute inset-0 w-full h-full object-cover opacity-50">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+
+  <div class="relative z-10 text-center px-4 py-20 w-full">
+    <p class="text-white tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-base font-bold">SINCE 2000 | MORIOKA SAIEN</p>
+    <div class="h-px w-20 bg-white/50 mx-auto my-3"></div>
+    <h1 class="font-serif text-white font-bold text-5xl sm:text-6xl md:text-8xl mb-2">オリーブの実</h1>
+    <p class="font-script text-orange-300 text-4xl sm:text-5xl md:text-6xl mb-6 opacity-90">Authentic Italian Cuisine</p>
+
+    <div class="max-w-2xl mx-auto border border-white/30 backdrop-blur-sm p-5 sm:p-8 rounded-sm">
+      <h2 class="font-serif text-yellow-400 font-bold text-xl sm:text-2xl md:text-4xl leading-snug mb-4">
+        「生パスタのモチモチ感と<br class="md:hidden">レモンの爽快感」
+      </h2>
+      <p class="text-white text-base md:text-lg mb-6 leading-relaxed opacity-90">
+        イチオシ：瀬戸内レモンのペペロンチーノ<br>
+        <span class="text-sm font-bold">盛岡の中心で、手作りの味を守り続けて20余年。</span>
+      </p>
+      <a href="#reservation" class="inline-flex items-center justify-center w-full sm:w-auto bg-orange-500 active:bg-orange-600 hover:bg-orange-600 text-white px-8 py-4 text-lg md:text-xl font-bold rounded-full shadow-2xl transition">
+        今すぐ席を予約する
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-center animate-bounce hidden sm:block">
+    <span class="block text-xs tracking-widest mb-2">SCROLL</span>
+    <div class="w-px h-10 bg-white/50 mx-auto"></div>
+  </div>
+</header>
+
+<!-- 特徴 -->
+<section class="py-16 md:py-24 px-4 overflow-hidden">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 md:mb-20">
+      <span class="text-olive font-bold tracking-[0.2em] block mb-2 uppercase text-sm">Our Strengths</span>
+      <h3 class="font-serif font-bold text-2xl sm:text-4xl md:text-5xl orn">オリーブの実、3つのこだわり</h3>
+    </div>
+
+    <!-- こだわり1 -->
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-20 md:mb-32">
+      <div class="w-full md:w-1/2 relative">
+        <img src="images/pasta.png" alt="生パスタ" loading="lazy" class="w-full rounded-lg shadow-2xl aspect-[4/3] object-cover">
+        <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl hidden md:block">
+          <p class="font-serif italic text-lg text-olive">"Fresh Pasta &amp; Pizza"</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <span class="text-5xl md:text-6xl font-bold text-stone-200 font-serif block -mb-6 md:-mb-8">01</span>
+        <h4 class="font-serif font-bold text-2xl md:text-3xl mb-5 border-b-2 border-olive pb-3 inline-block">店内で仕込む「生パスタ」</h4>
+        <p class="leading-relaxed text-stone-600 mb-6 font-medium">
+          クチコミでも絶賛されるもちもちのフェットチーネ。乾麺か生麺か選べるのも、パスタ専門店ならではの喜びです。「細いの、平べったいの」と分かりやすい言葉でお好みを伺います。
+        </p>
+        <ul class="space-y-3 font-bold text-olive">
+          <li><i class="fa-solid fa-check mr-2"></i>毎日店内で仕込む鮮度</li>
+          <li><i class="fa-solid fa-check mr-2"></i>厳選された小麦粉を使用</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- こだわり2 -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
+      <div class="w-full md:w-1/2 relative">
+        <img src="images/pizza.png" alt="キッチンのライブ感" loading="lazy" class="w-full rounded-lg shadow-2xl aspect-[4/3] object-cover">
+        <div class="absolute -bottom-6 -left-6 bg-white p-6 shadow-xl hidden md:block">
+          <p class="font-serif italic text-lg text-olive">"Kitchen Live Concept"</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <span class="text-5xl md:text-6xl font-bold text-stone-200 font-serif block -mb-6 md:-mb-8">02</span>
+        <h4 class="font-serif font-bold text-2xl md:text-3xl mb-5 border-b-2 border-olive pb-3 inline-block">入り口から広がる「ライブ感」</h4>
+        <p class="leading-relaxed text-stone-600 mb-6 font-medium">
+          扉を開けた瞬間に広がるキッチンの活気。最大22席の小規模店だからこそ実現できる、シェフとの距離感と温かみ。若いスタッフの自然な笑顔が、心地よい時間をお約束します。
+        </p>
+        <blockquote class="p-5 bg-stone-100 border-l-4 border-olive italic">
+          「すぐにドアを開けて見送ってくれる心遣いに感動しました」
+          <span class="block text-right text-sm mt-2 text-stone-400 font-bold not-italic">— Googleクチコミより</span>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- レビュー -->
+<section class="py-16 md:py-24 bg-stone-900 text-white">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-10 md:mb-16">
+    <h3 class="font-serif font-bold text-2xl sm:text-3xl md:text-5xl mb-4">愛される理由は、確かな味に。</h3>
+    <p class="opacity-60 text-sm md:text-base">盛岡の美食家たちに支持される理由</p>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-5 md:gap-8">
+    <figure class="bg-white/5 p-6 md:p-8 rounded-lg border border-white/10">
+      <div class="text-yellow-500 mb-4 text-sm" aria-label="5点"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <blockquote class="leading-relaxed mb-6 italic">「フェットチーネはもちもちで、酸味も絶妙。レモンがちょうど良いとてもおいしいペペロンチーノでした。」</blockquote>
+      <figcaption class="flex items-center gap-4"><span class="w-10 h-px bg-white/30"></span><span class="text-xs opacity-50 font-bold uppercase tracking-widest">Customer Review</span></figcaption>
+    </figure>
+    <figure class="bg-white/5 p-6 md:p-8 rounded-lg border border-white/10">
+      <div class="text-yellow-500 mb-4 text-sm" aria-label="4.5点"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+      <blockquote class="leading-relaxed mb-6 italic">「お勧めは海鮮系のサラダ。一人一皿注文するほど美味しい。グラスワインも安価ながら美味しく、魅力の一つ。」</blockquote>
+      <figcaption class="flex items-center gap-4"><span class="w-10 h-px bg-white/30"></span><span class="text-xs opacity-50 font-bold uppercase tracking-widest">Customer Review</span></figcaption>
+    </figure>
+    <figure class="bg-white/5 p-6 md:p-8 rounded-lg border border-white/10">
+      <div class="text-yellow-500 mb-4 text-sm" aria-label="5点"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <blockquote class="leading-relaxed mb-6 italic">「こちらの状況をよく見ていて、タイミングよくドアを開けてくれました。温かみのある内装で居心地が良いです。」</blockquote>
+      <figcaption class="flex items-center gap-4"><span class="w-10 h-px bg-white/30"></span><span class="text-xs opacity-50 font-bold uppercase tracking-widest">Customer Review</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 特典 -->
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-4xl mx-auto relative">
+    <div class="absolute -top-8 -left-2 md:-top-10 md:-left-10 text-7xl md:text-9xl text-stone-200 font-script select-none opacity-60">Gift</div>
+    <div class="bg-white border-2 border-olive p-6 sm:p-10 md:p-16 text-center shadow-2xl relative z-10">
+      <span class="text-[#8b0000] font-bold text-xs md:text-sm tracking-widest block mb-4 uppercase">— Repeat Customer Only —</span>
+      <h3 class="font-serif font-bold text-xl md:text-3xl mb-6 leading-tight">
+        前回のレシートで、<br>
+        <span class="text-olive italic text-lg md:text-2xl block mt-2">「格別のジェラート」をプレゼント</span>
+      </h3>
+      <p class="text-stone-500 mb-8 leading-relaxed max-w-lg mx-auto font-medium text-sm md:text-base">
+        皆様のまたのご来店を、心よりお待ちしております。Instagramのフォロー画面提示でも特典をご利用いただけます。
+      </p>
+      <a href="https://www.instagram.com/olivenomi.morioka/" target="_blank" rel="noopener" class="inline-flex w-full sm:w-auto bg-stone-900 text-white px-8 py-4 font-bold items-center justify-center gap-2 hover:bg-stone-800 transition rounded-sm shadow-lg">
+        <i class="fa-brands fa-instagram"></i> Instagramをフォロー
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden">
+  <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=1200" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-15">
+  <div class="max-w-6xl mx-auto px-4 relative z-10">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="text-orange-400 font-bold tracking-[0.3em] block mb-2 uppercase text-sm">Coming Soon</span>
+      <h3 class="font-serif font-bold text-2xl md:text-5xl orn orn-w">あればいいなと思う、新しいサービス構想</h3>
+      <p class="text-stone-300 mt-4 max-w-xl mx-auto text-sm md:text-base">オリーブの実をもっと楽しんでいただくための、現在検討中・準備中の企画です。</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+      <article class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-lg backdrop-blur-md flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="bg-orange-500 text-xs px-3 py-1 font-bold rounded-full uppercase tracking-wider">Idea 01</span>
+            <span class="text-xs text-stone-400">映画館チカ企画</span>
+          </div>
+          <h4 class="font-serif font-bold text-xl md:text-2xl mb-4 text-yellow-400">映画の半券で、ちょっとお得に。</h4>
+          <p class="text-stone-300 leading-relaxed mb-6 font-medium text-sm md:text-base">映画館の近くという立地を活かして！映画鑑賞の前後に対象のチケット（半券）をお持ちいただくと、お会計から割引、または限定のドリンクやデザートサービスが受けられる特典を企画中です。</p>
+        </div>
+        <div class="border-t border-white/10 pt-4 flex items-center justify-between text-sm text-stone-400">
+          <span><i class="fa-solid fa-film text-orange-400 mr-2"></i>映画の余韻をイタリアンとともに</span>
+          <span class="font-bold text-orange-400 shrink-0 ml-2">準備中</span>
+        </div>
+      </article>
+
+      <article class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-lg backdrop-blur-md flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="bg-olive text-xs px-3 py-1 font-bold rounded-full uppercase tracking-wider">Idea 02</span>
+            <span class="text-xs text-stone-400">こだわりパスタ企画</span>
+          </div>
+          <h4 class="font-serif font-bold text-xl md:text-2xl mb-4 text-yellow-400">同じソースで「二種の麺」食べ比べ</h4>
+          <p class="text-stone-300 leading-relaxed mb-6 font-medium text-sm md:text-base">「乾麺と生麺、どちらにするかいつも迷う…」そんなお声から生まれたアイデア。同じ自慢のパスタソースで、食感の異なる2種類の麺をひと皿で楽しめる贅沢な盛り合わせメニューを試作中です。</p>
+        </div>
+        <div class="border-t border-white/10 pt-4 flex items-center justify-between text-sm text-stone-400">
+          <span><i class="fa-solid fa-utensils text-olive mr-2"></i>もちもち食感の新たな発見</span>
+          <span class="font-bold text-orange-400 shrink-0 ml-2">試作中</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 予約・情報 -->
+<section id="reservation" class="py-16 md:py-24 bg-stone-100 scroll-mt-4">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+
+      <!-- 左：情報＋地図 -->
+      <div>
+        <h3 class="font-serif font-bold text-3xl md:text-4xl mb-8 border-l-8 border-olive pl-4 md:pl-6">Access &amp; Info</h3>
+        <div class="space-y-5 text-base md:text-lg mb-8">
+          <div class="flex items-start gap-4">
+            <i class="fa-solid fa-location-dot mt-1.5 text-olive w-5 text-center"></i>
+            <p class="font-medium">〒020-0024 岩手県盛岡市菜園2丁目4−23<br><span class="text-sm opacity-60">盛岡中心部。最寄りバス停より徒歩1〜2分</span></p>
+          </div>
+          <div class="flex items-center gap-4">
+            <i class="fa-solid fa-clock text-olive w-5 text-center"></i>
+            <p class="font-medium">Lunch / Dinner (定休日なし)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <i class="fa-solid fa-wallet text-olive w-5 text-center"></i>
+            <p class="font-medium">各種カード・PayPay・au PAY利用可</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <i class="fa-solid fa-users text-olive w-5 text-center"></i>
+            <p class="font-medium">最大22席（貸切パーティーも対応可能）</p>
+          </div>
+        </div>
+        <div class="relative w-full h-80 sm:h-96">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.6811305336873!2d141.14412967486484!3d39.70187289883947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85762fc0462fd5%3A0x20d8d641e7690d36!2z44Kq44Oq44O844OW44Gu5a6f!5e0!3m2!1sja!2sjp!4v1791334160211!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+      </div>
+
+      <!-- 右：予約導線 -->
+      <div class="flex flex-col">
+        <div class="bg-white p-6 sm:p-10 shadow-2xl rounded-sm border-t-4 border-orange-500 mb-8">
+          <h4 class="font-serif font-bold text-2xl mb-4 text-center">ご予約・お問い合わせ</h4>
+          <p class="text-stone-500 text-sm mb-8 text-center leading-relaxed font-medium">
+            週末やランチタイムは混み合う場合がございます。<br>お早めのご予約をお勧めしております。
+          </p>
+          <a href="https://booking.resty.jp/webrsv/vacant/s014002505/9313" target="_blank" rel="noopener" class="block w-full bg-orange-500 text-white py-4 md:py-5 text-center font-bold text-lg md:text-xl rounded-sm hover:bg-orange-600 active:bg-orange-600 shadow-lg transition">
+            WEB予約フォーム
+          </a>
+          <div class="text-center py-5">
+            <span class="text-sm opacity-60 block mb-2 uppercase">— Or Call Us —</span>
+            <a href="tel:0196543377" class="text-3xl sm:text-4xl font-bold text-olive hover:opacity-80 transition"><i class="fa-solid fa-phone text-2xl mr-2"></i>019-654-3377</a>
+          </div>
+          <p class="text-xs text-stone-400 text-center font-bold leading-relaxed">
+            ※少人数のため、お電話が繋がりにくい時間帯がございます。<br>WEB予約を24時間受け付けております。
+          </p>
+        </div>
+        <img src="images/pasta2.png" alt="店舗内観" loading="lazy" class="w-full h-52 md:h-64 object-cover rounded-lg shadow-xl">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 bg-stone-900 text-white/50 text-center text-sm border-t border-white/10 pb-28 md:pb-10">
+  <div class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3 px-4">
+    <a href="http://mozart-company.com/olive/" class="hover:text-white transition font-bold tracking-widest uppercase">Official Website</a>
+    <a href="https://www.instagram.com/olivenomi.morioka/" target="_blank" rel="noopener" class="hover:text-white transition font-bold tracking-widest uppercase">Instagram</a>
+  </div>
+  <p class="font-serif italic tracking-widest px-4">&copy; <span id="year">2026</span> オリーブの実. Established in Morioka.</p>
+</footer>
+
+<!-- スマホ用：画面下部の固定予約バー -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-stone-900/95 backdrop-blur border-t border-white/10 grid grid-cols-2 gap-2 p-2" style="padding-bottom: calc(.5rem + env(safe-area-inset-bottom))">
+  <a href="tel:0196543377" class="flex items-center justify-center gap-2 bg-white text-stone-900 font-bold py-3 rounded-sm text-sm"><i class="fa-solid fa-phone"></i>電話する</a>
+  <a href="https://mozart-company.com/interview/" target="_blank" rel="noopener" class="flex items-center justify-center bg-orange-500 text-white font-bold py-3 rounded-sm text-sm">WEB予約</a>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  // 店舗座標（近似値。実際の位置に合わせて調整してください）
+  const shopLatLng = [39.7013, 141.1471];
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // スマホでは1本指スクロールが地図に奪われないようにする
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const map = L.map('map', { scrollWheelZoom: false, dragging: !isTouch, tap: false }).setView(shopLatLng, 17);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker(shopLatLng).addTo(map)
+      .bindPopup("<b style='font-family:serif;color:#556b2f;'>オリーブの実</b><br>岩手県盛岡市菜園2丁目4−23")
+      .openPopup();
+  });
+</script>
+</body>
+</html>
