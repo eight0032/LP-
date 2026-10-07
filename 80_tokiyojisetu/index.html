@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ときよじせつ ONODERA | 岩手の旬を味わうイタリアン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: { colors: { gold: { DEFAULT: '#c5a059', light: '#e6d5b8', dark: '#8e6d31' } } } }
+};
+</script>
+<style>
+  body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fffaf5; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+  .serif { font-family: 'Noto Serif JP', serif; }
+  .gold-gradient { background: linear-gradient(135deg, #8e6d31 0%, #c5a059 50%, #e6d5b8 100%); }
+  .divider { height: 1px; width: 60%; margin: 24px auto; background: linear-gradient(90deg, transparent, #c5a059, transparent); }
+  .text-shadow { text-shadow: 2px 2px 4px rgba(0,0,0,.8); }
+  .cta-floating { animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+  @media (prefers-reduced-motion: reduce) { .cta-floating { animation: none; } }
+  #map { height: 300px; width: 100%; border-radius: 1rem; z-index: 10; }
+  @media (min-width: 768px) { #map { height: 400px; } }
+  .leaflet-container { font-family: 'Noto Sans JP', sans-serif; }
+  footer { padding-bottom: max(3rem, env(safe-area-inset-bottom)); }
+</style>
+</head>
+<body>
+
+<!-- 1. FV -->
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black text-white px-5 py-16">
+  <div class="absolute inset-0">
+    <img src="images/curry.jpg" alt="ときよじせつ 料理の瞬間" class="w-full h-full object-cover opacity-50">
+  </div>
+  <div class="absolute top-6 right-6 z-20 hidden md:block">
+    <div class="bg-white/90 text-gold p-4 rounded-full border-2 border-gold text-center w-32 h-32 flex flex-col justify-center shadow-2xl">
+      <span class="text-[10px] font-bold uppercase">Iwate Best</span>
+      <span class="text-xl font-black">★★★★★</span>
+      <span class="text-[10px] font-bold">口コミ高評価</span>
+    </div>
+  </div>
+  <div class="relative z-10 text-center w-full max-w-5xl">
+    <div class="mb-5 flex justify-center items-center gap-3">
+      <div class="h-px w-6 md:w-8 bg-gold/70"></div>
+      <span class="serif tracking-[0.25em] md:tracking-[0.4em] text-gold text-sm md:text-lg font-bold">時世時節 ONODERA</span>
+      <div class="h-px w-6 md:w-8 bg-gold/70"></div>
+    </div>
+    <h1 class="serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-5 text-shadow">
+      一期一会の「旬」を<br><span class="text-gold">記憶</span>に刻む。
+    </h1>
+    <p class="text-sm sm:text-base md:text-xl mb-8 font-light leading-relaxed tracking-wider md:tracking-widest text-shadow opacity-90">
+      岩手・北上で、1回転のみ許された<br>五感を揺さぶる対話型コース料理。
+    </p>
+    <div class="inline-block bg-black/60 backdrop-blur-md p-4 md:p-6 border-l-4 border-gold text-left">
+      <p class="text-gold font-bold text-sm md:text-base mb-1">【WEB予約限定】</p>
+      <p class="text-xs sm:text-sm md:text-base tracking-wide leading-relaxed">
+        伝説の「極みグリーンカレー」秘話動画<br class="md:hidden"> ＆ 初回ドリンク特典
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CTA (上部) -->
+<section class="py-12 md:py-16 gold-gradient text-white text-center px-5">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="serif text-xl md:text-3xl font-bold mb-5">「一生ものの食体験」への入り口はこちら</h2>
+    <div class="bg-white/10 backdrop-blur-md p-5 md:p-8 rounded-2xl border border-white/30">
+      <p class="mb-6 text-base md:text-lg">旬の食材が最も輝く瞬間、空き状況をリアルタイムで配信。</p>
+      <a href="https://www.instagram.com/tokiyojisetu/" target="_blank" rel="noopener" class="cta-floating flex items-center justify-center w-full bg-white text-gold px-6 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl font-black shadow-2xl hover:bg-gray-100 transition-colors">
+        <i class="fab fa-line mr-3 text-2xl md:text-3xl"></i>限定特典付きLINE登録
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 静止画・権威性 -->
+<section class="py-16 md:py-24 bg-white px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 md:mb-16">
+      <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-bold">なぜ、美食家たちは<br class="md:hidden">ここを目指すのか。</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <!-- 静止画に変更（不要になった不透明度クラスや再生ボタンアイコンを削除） -->
+      <div class="aspect-video bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border-4 border-gold/20 flex items-center justify-center relative">
+        <img src="images/store.png" alt="調理シーン" class="w-full h-full object-cover">
+      </div>
+      <div class="space-y-7">
+        <div class="flex items-start gap-4">
+          <div class="bg-gold text-white w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold">1</div>
+          <div>
+            <h3 class="serif text-lg md:text-xl font-bold mb-2">対話から生まれるコース</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">その日の食材と、お客様の好みが交差し、その日だけの物語が紡がれます。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="bg-gold text-white w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold">2</div>
+          <div>
+            <h3 class="serif text-lg md:text-xl font-bold mb-2">岩手のテロワール</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">やなぎわ鮎、短角牛など、地元の誇りを最高鮮度でお届けします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-20 bg-[#141414] text-white px-5 relative overflow-hidden">
+  <div class="absolute -right-20 -top-20 w-72 h-72 md:w-96 md:h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="inline-block bg-gold/20 text-gold border border-gold/40 text-xs px-4 py-1.5 rounded-full tracking-widest font-bold mb-3 uppercase">Coming Soon</span>
+      <h2 class="serif text-2xl md:text-4xl font-bold mb-4">記憶を彩る、個室の特別なおもてなし</h2>
+      <div class="divider opacity-40"></div>
+      <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        木曜・金曜・土曜の個室ご案内限定。食材のバックストーリーを綴った「特製ストーリーメッセージカード」の配布を準備中です。
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+      <div class="bg-white/5 border border-gold/30 p-6 md:p-8 rounded-2xl backdrop-blur-md">
+        <div class="text-gold text-3xl mb-4"><i class="fas fa-calendar-alt"></i></div>
+        <h3 class="serif text-lg font-bold mb-2 text-gold">対象日程</h3>
+        <p class="text-sm text-gray-300 leading-relaxed">木曜・金曜・土曜の個室確約プラン限定の、プライベートな特別サービスです。</p>
+      </div>
+      <div class="bg-white/5 border border-gold/30 p-6 md:p-8 rounded-2xl backdrop-blur-md">
+        <div class="text-gold text-3xl mb-4"><i class="fas fa-feather-alt"></i></div>
+        <h3 class="serif text-lg font-bold mb-2 text-gold">食材のヒストリー</h3>
+        <p class="text-sm text-gray-300 leading-relaxed">生産者の想いや、今夜の食材が育ったテロワール（風土）の物語を手書き風にカード化。</p>
+      </div>
+      <div class="bg-white/5 border border-gold/30 p-6 md:p-8 rounded-2xl backdrop-blur-md">
+        <div class="text-gold text-3xl mb-4"><i class="fas fa-gift"></i></div>
+        <h3 class="serif text-lg font-bold mb-2 text-gold">旅の思い出づくりに</h3>
+        <p class="text-sm text-gray-300 leading-relaxed">お食事の感動と岩手の記憶をそのままお持ち帰りいただける、心に刻む演出です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. お客様の声 -->
+<section class="py-16 md:py-20 bg-[#f9f5f0] px-5">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="serif text-center text-2xl md:text-3xl font-bold mb-10 md:mb-16 underline decoration-gold decoration-4 underline-offset-8">美食家たちのリアルな声</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gold/10">
+        <div class="flex text-gold mb-4 gap-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-gray-700 text-sm italic mb-4 leading-relaxed">「岩手に来たら是非。素材の味が最高の形で引き出されます。」</p>
+        <p class="text-xs font-bold text-gray-400">— 50代 男性 / 観光客</p>
+      </div>
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gold/10">
+        <div class="flex text-gold mb-4 gap-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-gray-700 text-sm italic mb-4 leading-relaxed">「臨場感あるオープンキッチン。お腹いっぱいになる幸せな体験。」</p>
+        <p class="text-xs font-bold text-gray-400">— 40代 女性 / 地元常連様</p>
+      </div>
+      <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gold/10">
+        <div class="flex text-gold mb-4 gap-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-gray-700 text-sm italic mb-4 leading-relaxed">「うなぎランチも絶品。ティクアウトのオードブルも大好評でした。」</p>
+        <p class="text-xs font-bold text-gray-400">— 30代 女性 / ファミリー</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Access -->
+<section class="py-16 md:py-24 bg-white px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10 md:mb-16">
+      <h2 class="serif text-3xl md:text-4xl font-bold">ACCESS</h2>
+      <div class="divider"></div>
+      <p class="text-gray-600 text-sm md:text-base">岩手県北上市本通り１丁目８−２８</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-2">
+        <!-- 高さを固定（min-h と h-[450px]）にして途切れないように修正 -->
+        <div class="w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3088.027497880598!2d141.11301567484037!3d39.28762692358664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f4491f5b0af87%3A0x5bd84381264baa39!2z44Go44GN44KI44GY44Gb44GkIE9OT0RFUkE!5e0!3m2!1sja!2sjp!4v1791340005840!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+      <div class="space-y-6 bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100">
+        <div>
+          <h4 class="font-bold text-gold border-b border-gold/30 pb-2 mb-3">所在地</h4>
+          <p class="text-sm leading-relaxed">〒024-0094<br>岩手県北上市本通り１丁目８−２８</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-gold border-b border-gold/30 pb-2 mb-3">営業時間</h4>
+          <p class="text-sm leading-relaxed">1回転限定（予約制）<br>定休日：日曜日</p>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=ときよじせつONODERA" target="_blank" rel="noopener" class="block w-full text-center bg-gray-900 text-white py-4 rounded-full text-sm font-bold hover:bg-black transition-colors">
+          <i class="fas fa-external-link-alt mr-2"></i>Google Mapで開く
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CTA (下部) -->
+<section class="py-16 md:py-24 gold-gradient text-white text-center px-5">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold mb-8">岩手の「今」を、その舌で。</h2>
+    <a href="https://www.instagram.com/tokiyojisetu/" target="_blank" rel="noopener" class="cta-floating flex items-center justify-center w-full bg-white text-gold px-6 md:px-12 py-5 md:py-6 rounded-full text-xl md:text-2xl font-black shadow-2xl">
+      <i class="fab fa-line mr-3 text-3xl md:text-4xl"></i>特典付きLINE予約
+    </a>
+  </div>
+</section>
+
+<footer class="pt-12 bg-black text-white px-5 text-center">
+  <p class="serif text-xl font-bold">ときよじせつ ONODERA</p>
+  <p class="text-[10px] text-gray-500 mt-6 tracking-widest">&copy; 2024 TOKIYOJISETU ONODERA. ALL RIGHTS RESERVED.</p>
+</footer>
+
+
+</body>
+</html>
