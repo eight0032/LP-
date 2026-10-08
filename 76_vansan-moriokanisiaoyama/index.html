@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Italian Kitchen VANSAN 盛岡西青山店 | 家族で楽しむ体験型イタリアン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;800&family=Caveat:wght@700&display=swap">
+<script>
+tailwind.config = { theme: { extend: { colors: {
+  'vansan-red': 'var(--red)', 'vansan-dark': 'var(--dark)'
+}}}};
+</script>
+<style>
+:root{--red:#E60012;--gold:#D4AF37;--dark:#2D2926;--cream:#FFFDF9;--panel:#ffffff;--muted:#5b5650;--soft:#f3f1ee;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--dark:#f2ede6;--cream:#1d1a18;--panel:#2a2623;--muted:#b9b2a8;--soft:#161412}}
+:root[data-theme="dark"]{--dark:#f2ede6;--cream:#1d1a18;--panel:#2a2623;--muted:#b9b2a8;--soft:#161412}
+html{scroll-behavior:smooth;scroll-padding-top:calc(4.5rem + env(safe-area-inset-top,0px))}
+body{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden;-webkit-text-size-adjust:100%}
+.font-mincho{font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif}
+.font-hand{font-family:'Caveat',cursive}
+.hdr{padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--cream) 92%,transparent);backdrop-filter:blur(12px)}
+.cta-gold{background:linear-gradient(135deg,#D4AF37,#F1D37E 50%,#D4AF37);color:#4A3C00;box-shadow:0 4px 0 #B28F20,0 8px 20px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s}
+.cta-gold:active{transform:translateY(4px);box-shadow:0 0 0 #B28F20}
+.panel{background:var(--panel);color:var(--dark)}
+.muted{color:var(--muted)}
+.ph{display:flex;align-items:center;justify-content:center;font-size:4rem}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.float-anim{animation:float 4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.float-anim{animation:none}html{scroll-behavior:auto}}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bar{padding-bottom:calc(.75rem + env(safe-area-inset-bottom,0px))}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="hdr fixed top-0 left-0 w-full z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="font-black text-vansan-red text-lg tracking-tight">VANSAN</span>
+      <span class="text-xs font-bold border-l border-current pl-2 truncate">盛岡西青山店</span>
+    </div>
+    <nav class="hidden md:flex gap-6 text-sm font-bold">
+      <a href="#menu" class="hover:text-vansan-red">メニュー</a>
+      <a href="#coming-soon" class="text-vansan-red hover:underline">Coming Soon</a>
+      <a href="#experience" class="hover:text-vansan-red">こだわり</a>
+      <a href="#info" class="hover:text-vansan-red">店舗情報</a>
+    </nav>
+    <a href="https://vansan-ltd.jp/vansan/vansan-moriokanishi/" class="bg-vansan-red text-white px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap">予約する</a>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="relative pt-24 pb-14 md:pt-36 md:pb-28 overflow-hidden">
+  <div class="absolute top-10 right-0 w-48 h-48 md:w-64 md:h-64 bg-yellow-200/40 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-10 left-0 w-56 h-56 md:w-80 md:h-80 bg-red-300/20 rounded-full blur-3xl -z-10"></div>
+  <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-12 gap-10 items-center">
+    <div class="md:col-span-7 text-center md:text-left">
+      <div class="inline-block bg-vansan-red text-white px-4 py-1 rounded-sm mb-4 -rotate-1 font-bold text-sm md:text-base">本格イタリアン × エンターテイメント</div>
+      <h1 class="text-[2.6rem] sm:text-6xl md:text-7xl font-black leading-tight mb-5 font-mincho">
+        家族の笑顔、<br><span class="text-vansan-red">モチモチ</span>の幸せ。
+      </h1>
+      <p class="text-base md:text-xl muted mb-8 font-bold leading-relaxed">
+        石窯ピッツァと生パスタが楽しめるカジュアルイタリアン。お子様連れでも安心、ママ会・女子会・お祝いに最適。
+      </p>
+      <a href="#coming-soon" class="cta-gold inline-block w-full sm:w-auto text-center px-8 py-4 md:px-10 md:py-5 rounded-full text-lg md:text-xl font-black">新着・限定メニューを見る ›</a>
+    </div>
+    <div class="md:col-span-5 relative max-w-xs sm:max-w-sm md:max-w-none mx-auto w-full">
+      <div class="float-anim">
+        <!-- 画像を挿入：絵文字の代わりにimgタグに変更し、円形に切り抜いています -->
+        <div class="rounded-full border-[10px] md:border-[12px] shadow-2xl w-full aspect-square overflow-hidden" style="border-color:var(--panel);">
+          <img src="images/pizza.png" alt="石窯焼きピッツァ" class="w-full h-full object-cover">
+        </div>
+      </div>
+      <div class="absolute -top-3 -right-2 md:-top-4 md:-right-4 panel shadow-xl rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center border-2 border-dashed border-red-500 rotate-12 bg-white z-10">
+        <span class="text-red-500 font-black text-center leading-tight text-sm md:text-base">石窯<br>焼きたて</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- メニュー -->
+<section id="menu" class="py-16 md:py-20 panel">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="text-vansan-red font-hand text-3xl">Our Signature</span>
+      <h2 class="text-3xl md:text-4xl font-black font-mincho mt-2">VANSAN 3大イチオシ</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+      <article>
+        <h3 class="text-xl md:text-2xl font-black mb-2">マルゲリータ &amp; クワトロ</h3>
+        <p class="muted font-bold">人気No.1ピッツァ。2つの味を一度に贅沢に。</p>
+      </article>
+      <article>
+        <h3 class="text-xl md:text-2xl font-black mb-2">名物！のせ放題パスタ</h3>
+        <p class="muted font-bold">最高級生ハムや黒胡椒シラスが山盛りに！</p>
+      </article>
+      <article>
+        <h3 class="text-xl md:text-2xl font-black mb-2">生撮り &amp; 滝のドルチェ</h3>
+        <p class="muted font-bold">味はもちろん、動画映え間違いなしの演出。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section id="coming-soon" class="py-16 md:py-24" style="background:linear-gradient(to bottom,color-mix(in srgb,#fbbf24 14%,var(--cream)),color-mix(in srgb,#fb923c 14%,var(--cream)))">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="bg-vansan-red text-white text-xs font-black px-4 py-1.5 rounded-full tracking-widest inline-block mb-3">Coming Soon</span>
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-black font-mincho leading-snug">盛岡西青山店だけの<br class="sm:hidden">「新・おもてなし構想」</h2>
+      <p class="muted mt-4 font-bold text-sm md:text-base">チェーンの安心感に、岩手の温もりをプラス。まもなく始まる新しいサービスをご紹介。</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <article class="panel rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">ご当地限定</span>
+            <span class="text-xs muted font-bold">今春スタート予定</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-black mb-3">岩手短角牛と盛岡リンゴの石窯クワトロ</h3>
+          <p class="muted text-sm leading-relaxed font-bold">旨味の強い「岩手短角牛」のボロネーゼソースに、ほのかな酸味が絶妙な「盛岡産リンゴ」のコンポートを合わせた、西青山店でしか食べられないプレミアム限定ピッツァ。</p>
+        </div>
+      </article>
+      <article class="panel rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">季節限定</span>
+            <span class="text-xs muted font-bold">近日発表</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-black mb-3">三陸産ホタテとウニの濃厚クリーム生パスタ</h3>
+          <p class="muted text-sm leading-relaxed font-bold">三陸の荒波で育ったぷりぷりのホタテと、甘み豊かなウニをふんだんに使用。特製モチモチ生パスタに絡む、磯の香り豊かな贅沢すぎる一皿を開発中。</p>
+        </div>
+      </article>
+      <article class="panel rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-between md:col-span-2 lg:col-span-1">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-pink-100 text-pink-800 text-xs font-bold px-3 py-1 rounded-full">キッズ向け新企画</span>
+            <span class="text-xs muted font-bold">準備中</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-black mb-3">「ちびっ子ピッツァ職人」体験プログラム</h3>
+          <p class="muted text-sm leading-relaxed font-bold">週末限定でお子様が自分で生地を伸ばし、好きなトッピングをして石窯で焼ける体験イベント。家族の楽しい思い出づくりをさらにサポートします。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- こだわり -->
+<section id="experience" class="py-16 md:py-20 bg-[#2D2926] text-white">
+  <div class="max-w-5xl mx-auto px-5 flex flex-col md:flex-row items-center gap-10 md:gap-12">
+    <div class="flex-1">
+      <h2 class="text-3xl md:text-5xl font-black mb-6 md:mb-8 leading-tight font-mincho">
+        「子供がいるから…」と<br>オシャレな外食を<br>
+        <span class="text-yellow-400 underline decoration-wavy decoration-2 underline-offset-8">諦めていませんか？</span>
+      </h2>
+      <p class="text-gray-300 mb-8 leading-relaxed font-bold text-sm md:text-base">
+        VANSAN盛岡西青山店は、「家族で気軽に行ける本格イタリアン」がコンセプト。お子様はキッズスペースで楽しく、大人は本格料理をゆっくりと。
+      </p>
+      <div class="grid grid-cols-2 gap-3 md:gap-4">
+        <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+          <div class="text-3xl mb-2" aria-hidden="true">🧸</div>
+          <p class="font-bold text-sm">キッズスペース完備</p>
+        </div>
+        <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+          <div class="text-3xl mb-2" aria-hidden="true">🍼</div>
+          <p class="font-bold text-sm">離乳食無料</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 w-full">
+      <!-- 絵文字の代わりにimgタグに変更し、角丸とシャドウを適用しています -->
+      <div class="rounded-3xl shadow-2xl w-full h-56 md:h-80 overflow-hidden border border-white/10">
+        <img src="images/wine.png" alt="店内イメージ" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 地図埋め込みセクション -->
+<div class="w-full h-72 md:h-96 bg-gray-100">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.422943291243!2d141.10088997486648!3d39.7301493971426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f857773f2b99399%3A0xd37f4dadde24cfcd!2zSXRhbGlhbiBLaXRjaGVu 인ANSAN!5e0!3m2!1sja!2sjp!4v1791420047393!5m2!1sja!2sjp" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+
+<!-- フッター -->
+<footer id="info" class="pt-16 pb-32 md:pb-12 px-5" style="background:var(--soft)">
+  <div class="max-w-7xl mx-auto text-center">
+   
+    <p class="muted mb-2">〒020-0132 岩手県盛岡市西青山2丁目31-11</p>
+    <p class="muted mb-8 font-bold">TEL: <a href="tel:0196817113" class="underline">019-681-7113</a></p>
+    <a href="https://vansan-ltd.jp/contact/" class="inline-block bg-vansan-red text-white px-10 py-4 rounded-full font-bold">お問い合わせはこちら</a>
+  </div>
+</footer>
+
+<!-- スマホ固定フッターCTA -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 bar px-4 pt-3 flex gap-3 shadow-[0_-4px_16px_rgba(0,0,0,.12)]" style="background:var(--panel)">
+  <a href="tel:0196817113" class="flex-1 text-center py-3 rounded-full font-bold border-2 border-vansan-red text-vansan-red">電話する</a>
+  <a href="https://vansan-ltd.jp/vansan/vansan-moriokanishi/" class="flex-1 text-center py-3 rounded-full font-bold bg-vansan-red text-white">予約する</a>
+</div>
+
+</body>
+</html>
