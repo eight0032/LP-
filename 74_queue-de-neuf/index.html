@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>クードヌフ | 盛岡の隠れ家ダイニングバー</title>
+<meta name="description" content="盛岡・大通の隠れ家ダイニングバー。世界の樽生ビール12タップと独創的な欧州料理。名物は海老のアヒージョ。">
+<meta name="theme-color" content="#0a0e17">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --primary-dark:#0a0e17; --accent-gold:#c5a059; --soft-white:#f1f5f9; }
+  html { scroll-behavior:smooth; scroll-padding-top:72px; -webkit-text-size-adjust:100%; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--primary-dark); color:var(--soft-white); line-height:1.8; overflow-x:hidden; }
+  .serif-jp { font-family:'Noto Serif JP',serif; }
+  .serif-en { font-family:'Bodoni Moda',serif; }
+  .bg-gold { background-color:var(--accent-gold); }
+  .text-gold { color:var(--accent-gold); }
+  .border-gold { border-color:var(--accent-gold); }
+
+  .glass-card { background:rgba(255,255,255,.03); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); border:1px solid rgba(197,160,89,.2); transition:all .5s ease; }
+  @media (hover:hover) { .glass-card:hover { border-color:var(--accent-gold); background:rgba(255,255,255,.06); } }
+
+  .cta-button { position:relative; overflow:hidden; transition:all .4s cubic-bezier(.23,1,.32,1); letter-spacing:.08em; min-height:48px; }
+  .cta-button::before { content:''; position:absolute; top:50%; left:50%; width:300%; height:300%; background:rgba(255,255,255,.1); transform:translate(-50%,-50%) rotate(45deg) scale(0); transition:transform .6s ease; }
+  @media (hover:hover) { .cta-button:hover::before { transform:translate(-50%,-50%) rotate(45deg) scale(1); } }
+  .cta-button:active { transform:scale(.98); }
+
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .8s ease-out, transform .8s ease-out; }
+  .reveal.active { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } html { scroll-behavior:auto; } }
+
+  .elegant-line { height:1px; background:linear-gradient(90deg,transparent,var(--accent-gold),transparent); width:100%; margin:1.5rem 0; }
+
+  /* iOSでは background-attachment:fixed が効かないためPCのみ適用 */
+  .parallax-bg { background-size:cover; background-position:center; background-repeat:no-repeat; }
+  @media (min-width:1024px) and (hover:hover) { .parallax-bg { background-attachment:fixed; } }
+
+  .safe-top { padding-top:max(.75rem, env(safe-area-inset-top)); }
+  .safe-bottom { padding-bottom:max(3rem, env(safe-area-inset-bottom)); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Header -->
+<header class="fixed top-0 inset-x-0 z-50 safe-top pb-3 px-4 md:px-6 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
+  <div class="serif-en text-xl md:text-2xl tracking-tighter text-gold font-bold">Queue de Neuf</div>
+  <a href="tel:0196041006" class="text-xs md:text-sm font-bold tracking-widest border border-gold px-4 py-2.5 rounded-full active:bg-gold active:text-white md:hover:bg-gold md:hover:text-white transition-colors">
+    <i class="fa-solid fa-phone mr-1 md:hidden"></i>RESERVATION
+  </a>
+</header>
+
+<!-- 1. First View -->
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 pb-24">
+  <div class="absolute inset-0 z-0">
+    <img src="images/kakuteru.png" alt="雰囲気のあるバーの店内" class="w-full h-full object-cover opacity-40">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
+  </div>
+  <div class="container mx-auto px-5 z-10 text-center">
+    <span class="serif-en text-gold text-base md:text-xl italic tracking-widest mb-4 block">Refined Dining &amp; Craft Beer</span>
+    <h1 class="serif-jp text-[2rem] sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+      盛岡の夜を彩る、<br><span class="text-gold">大人の隠れ家。</span>
+    </h1>
+    <div class="elegant-line max-w-xs mx-auto"></div>
+    <p class="text-sm sm:text-lg md:text-xl font-light mb-10 tracking-[0.12em] md:tracking-[0.2em] text-gray-300">
+      世界の樽生ビール 12TAP<br class="sm:hidden"> × 独創的な欧州料理
+    </p>
+    <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+      <a href="#menu" class="cta-button w-full max-w-xs md:w-auto bg-gold text-white px-10 py-4 rounded-full font-bold shadow-xl">イチオシを体験する</a>
+      <div class="text-xs tracking-widest border-l border-gold pl-4 text-left">
+        OPEN 18:00 - LATE<br>CLOSED ON MONDAY
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-50">
+    <span class="serif-en text-[10px] tracking-[0.5em] mb-3">SCROLL</span>
+    <div class="w-px h-10 bg-gold animate-pulse"></div>
+  </div>
+</section>
+
+<!-- 2. Signature -->
+<section id="menu" class="py-16 md:py-24 relative overflow-hidden">
+  <div class="container mx-auto px-5 relative z-10">
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <div class="w-full lg:w-1/2 reveal">
+        <span class="text-gold serif-en text-sm tracking-widest mb-2 block">SIGNATURE DISH</span>
+        <h2 class="serif-jp text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-snug">
+          旨みが弾ける、<br>至福の「海老のアヒージョ」
+        </h2>
+        <p class="text-gray-400 mb-8 leading-loose text-[15px] md:text-base">
+          クードヌフの看板、それは熱々のオイルの中で踊る大ぶりの海老。選び抜かれたガーリックの香りが食欲をそそり、一口食べればビールの苦味と絶妙に響き合います。これを食べずして、クードヌフの夜は始まりません。
+        </p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <img src="images/ebi.png" alt="海老のアヒージョ" loading="lazy" class="rounded-lg shadow-2xl w-full aspect-[4/5] object-cover">
+          <img src="images/beer.jpg" alt="樽生ビールを注ぐ様子" loading="lazy" class="rounded-lg shadow-2xl mt-6 w-full aspect-[4/5] object-cover">
+        </div>
+      </div>
+
+      <div class="w-full lg:w-1/2 glass-card p-6 sm:p-8 md:p-10 rounded-3xl reveal">
+        <div class="mb-8 text-center">
+          <i class="fa-solid fa-beer-mug-empty text-gold text-4xl md:text-5xl mb-5"></i>
+          <h3 class="serif-jp text-xl md:text-2xl font-bold mb-3">世界の生ビール 12種</h3>
+          <p class="text-sm text-gray-400">盛岡でも稀少な6連×2台の専門サーバーを完備。<br>地元のベアレンから世界のプレミアムまで、<br>常に最高の状態でサーブします。</p>
+        </div>
+        <div class="space-y-5">
+          <div class="flex justify-between items-center gap-3 border-b border-white/10 pb-4">
+            <span class="font-bold tracking-wider text-sm md:text-base">地ビール / ベアレン</span>
+            <span class="text-gold font-bold italic serif-en whitespace-nowrap"></span>
+          </div>
+          <div class="flex justify-between items-center gap-3 border-b border-white/10 pb-4">
+            <span class="font-bold tracking-wider text-sm md:text-base">独創デザート / チョモランマ</span>
+            <span class="text-gold font-bold italic serif-en whitespace-nowrap"></span>
+          </div>
+          <div class="flex justify-between items-center gap-3 border-b border-white/10 pb-4">
+            <span class="font-bold tracking-wider text-sm md:text-base">欧州多国籍コース</span>
+            <span class="text-gold font-bold italic serif-en"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Coming Soon -->
+<section class="py-16 md:py-24 bg-[#070b12] border-y border-white/5 relative overflow-hidden">
+  <div class="container mx-auto px-5 relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-10 md:mb-16 reveal">
+      <span class="text-gold serif-en text-xs md:text-sm tracking-[0.3em] mb-3 block uppercase">Coming Soon / Special Service</span>
+      <h2 class="serif-jp text-2xl md:text-4xl font-bold mb-4 leading-snug">初来店のお客様へ。<br class="sm:hidden">「迷ったらこれ」な限定セット</h2>
+      <p class="text-gray-400 text-sm">クードヌフの魅力を一度に味わえる、特別なおすすめ三品を準備中。</p>
+      <div class="elegant-line max-w-xs mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 max-w-5xl mx-auto">
+      <div class="glass-card p-7 rounded-2xl reveal relative overflow-hidden">
+        <div class="absolute top-4 right-4 bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold">Item 01</div>
+        <span class="serif-en text-gold text-xs tracking-widest mb-2 block pt-6 md:pt-0">SIGNATURE</span>
+        <h3 class="serif-jp text-lg md:text-xl font-bold mb-3">名物 海老のアヒージョ</h3>
+        <p class="text-gray-400 text-sm">ぐつぐつ煮立った特製ガーリックオイルと大ぶり海老の、看板メニュー。</p>
+      </div>
+      <div class="glass-card p-7 rounded-2xl reveal relative overflow-hidden" style="transition-delay:.1s">
+        <div class="absolute top-4 right-4 bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold">Item 02</div>
+        <span class="serif-en text-gold text-xs tracking-widest mb-2 block pt-6 md:pt-0">CRAFT BEER</span>
+        <h3 class="serif-jp text-lg md:text-xl font-bold mb-3">厳選 樽生ビール一杯</h3>
+        <p class="text-gray-400 text-sm">12タップから選べる、アヒージョに最も合う一杯をスタッフがセレクト。</p>
+      </div>
+      <div class="glass-card p-7 rounded-2xl reveal relative overflow-hidden" style="transition-delay:.2s">
+        <div class="absolute top-4 right-4 bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold">Item 03</div>
+        <span class="serif-en text-gold text-xs tracking-widest mb-2 block pt-6 md:pt-0">DESSERT</span>
+        <h3 class="serif-jp text-lg md:text-xl font-bold mb-3">名物 チョモランマ</h3>
+        <p class="text-gray-400 text-sm">食事の締めを華やかに彩る、他では味わえない独創的なオリジナルデザート。</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 md:mt-12 reveal">
+      <p class="text-gold text-xs md:text-sm tracking-widest mb-6">※近日中にご予約時のオプションとして導入予定です。</p>
+      <a href="https://queuedeneuf.foodre.jp/" class="inline-flex items-center justify-center min-h-[48px] border border-gold text-gold px-8 py-3 rounded-full text-sm tracking-widest active:bg-gold active:text-white md:hover:bg-gold md:hover:text-white transition-all">
+        まずは席のみ予約ですぐ体験する
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Parallax Quote -->
+<section class="min-h-[50vh] md:h-[60vh] parallax-bg flex items-center justify-center relative py-16" style="background-image:url('images/bar.jpg');">
+  <div class="absolute inset-0 bg-black/60"></div>
+  <div class="container mx-auto px-5 z-10 text-center reveal">
+    <h3 class="serif-jp text-xl sm:text-2xl md:text-4xl italic font-bold text-white leading-relaxed">
+      「賑わいの中で、<br class="md:hidden">大切な人と語らう隠れ家。」
+    </h3>
+  </div>
+</section>
+
+<!-- 5. Reviews -->
+<section class="py-16 md:py-24 bg-[#05080f]">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16 reveal">
+      <span class="text-gold serif-en text-sm tracking-[0.5em] mb-4 block">REVIEWS</span>
+      <h2 class="serif-jp text-2xl md:text-3xl font-bold italic">確かな、感動の声。</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 max-w-5xl mx-auto">
+      <div class="glass-card p-7 md:p-8 rounded-2xl reveal">
+        <div class="flex gap-1 text-gold mb-5" aria-label="5段階中4">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star text-white/20"></i>
+        </div>
+        <p class="text-gray-300 mb-6 italic">「鳥居シェフのアヒージョは一味違います。ワインもお料理も間違いないお店です。」</p>
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 shrink-0 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold">K</div>
+          <span class="text-xs tracking-widest">K 様 (常連のお客様)</span>
+        </div>
+      </div>
+      <div class="glass-card p-7 md:p-8 rounded-2xl reveal" style="transition-delay:.2s">
+        <div class="flex gap-1 text-gold mb-5" aria-label="5段階中5">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-gray-300 mb-6 italic">「女子会で利用しましたが、お料理全部美味しかったです✨特別な日にまた行きたい。」</p>
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 shrink-0 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold">A</div>
+          <span class="text-xs tracking-widest">A 様 (グループ利用)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CTA -->
+<section class="py-16 md:py-24 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gold/5"></div>
+  <div class="container mx-auto px-4 sm:px-5 text-center z-10 relative reveal">
+    <h3 class="serif-jp text-2xl sm:text-3xl md:text-5xl font-bold mb-8 md:mb-10 tracking-tight text-gold leading-snug">
+      盛岡の夜、<br class="md:hidden">最後の一軒にふさわしい場所。
+    </h3>
+
+    <div class="max-w-4xl mx-auto glass-card p-6 sm:p-10 md:p-16 rounded-[28px] md:rounded-[40px] shadow-2xl">
+      <p class="text-base md:text-xl text-gray-300 mb-10 md:mb-12">
+        「予約してよかった」と言っていただける、<br class="hidden md:block">
+        特別な一皿と一杯をご用意してお待ちしております。
+      </p>
+
+      <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center">
+        <a href="tel:0196041006" class="bg-gold text-white px-6 md:px-12 py-5 md:py-6 rounded-full font-bold text-xl md:text-2xl cta-button flex items-center justify-center gap-3 shadow-2xl">
+          <i class="fa-solid fa-phone"></i> 019-604-1006
+        </a>
+        
+      </div>
+
+      <!-- Googleマップの埋め込み -->
+      <div class="mt-8 md:mt-10 w-full overflow-hidden rounded-2xl shadow-lg border border-white/10">
+        <div class="relative w-full h-64 md:h-80">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1534.811353084065!2d141.1433007634765!3d39.7031863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f857630113ddc01%3A0x86bfad626e70faf3!2z44Kv44O844OJ44OM44OD44OV!5e0!3m2!1sja!2sjp!4v1791425190491!5m2!1sja!2sjp" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+
+      <div class="mt-8 md:mt-10 pt-8 md:pt-10 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left text-sm text-gray-400">
+        <div>
+          <p class="mb-4 flex items-start gap-3"><i class="fa-solid fa-location-dot text-gold mt-1.5 w-4 text-center"></i><span>盛岡市大通2丁目7−20 ウエダビル 4F</span></p>
+          <p class="flex items-start gap-3"><i class="fa-solid fa-clock text-gold mt-1.5 w-4 text-center"></i><span>18:00〜4:00 (定休日:月曜)</span></p>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-2 bg-white rounded shrink-0"><i class="fa-solid fa-store text-gray-900 text-3xl"></i></div>
+          <p>エスカレーターで4階までお越しください。隠れ家のような空間が広がっています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="pt-12 safe-bottom bg-black border-t border-white/5">
+  <div class="container mx-auto px-5 text-center">
+    <div class="serif-en text-gold text-2xl mb-6">Queue de Neuf</div>
+    <div class="flex justify-center gap-6 md:gap-8 mb-8 text-gray-500 text-sm">
+     
+    </div>
+    <p class="text-[10px] text-gray-600 tracking-[0.2em] uppercase">&copy; 2026 Queue de Neuf. Design for Gourmet.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
