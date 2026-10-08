@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>イタリアンキッチン マウンティー | 北上市の本格薪窯ピッツァ</title>
+    <meta name="description" content="北上市の本格薪窯ピッツァ。450℃の薪窯で焼き上げる、ナポリの正解。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { gold: '#d4af37', stone900: '#1a1a1a' },
+                    aspectRatio: { '4/3': '4 / 3' }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #b22222;
+            --dark-stone: #1a1a1a;
+            --gold-accent: #d4af37;
+        }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: #fdfcf0;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .brush { font-family: 'Yuji Syuku', serif; }
+
+        .bg-stone-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            background-color: var(--dark-stone);
+        }
+
+        /* 炎のようなグラデーションボタン */
+        .cta-button {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #e67e22 0%, #b22222 100%);
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.4);
+        }
+        .cta-button:hover {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+            box-shadow: 0 8px 25px rgba(178, 34, 34, 0.6);
+        }
+
+        .impact-number {
+            font-family: Georgia, serif;
+            color: var(--gold-accent);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-red);
+        }
+
+        /* ノッチ付きスマホの安全領域 */
+        footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .cta-button, .cta-button:hover { transition: none; transform: none; }
+        }
+    </style>
+</head>
+<body class="leading-relaxed antialiased">
+
+ <!-- 1. FVエリア -->
+    <section class="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden py-16">
+        <div class="absolute inset-0 z-0">
+            <img src="images/pizza.png" alt="薪窯の熱気が伝わるピッツァ" class="w-full h-full object-cover brightness-50">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+
+        <div class="relative z-10 text-center px-5 w-full max-w-5xl">
+            <div class="mb-8 md:mb-12 flex justify-center">
+                <span class="bg-red-700 text-white px-4 md:px-6 py-2 text-xs md:text-base font-bold tracking-[0.2em] md:tracking-[0.25em] uppercase rounded-sm border border-red-500 shadow-lg inline-block">Iwate Kitakami</span>
+            </div>
+
+            <h1 class="text-[2.5rem] leading-[1.25] sm:text-6xl md:text-8xl font-black mb-6 md:mb-8 brush italic">
+                <span class="text-white">薪を焼べ、</span><br>
+                <span class="text-yellow-500">450℃の熱狂。</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-2xl mb-10 md:mb-12 serif tracking-widest">本格薪窯で焼き上げる、ナポリの正解。</p>
+
+            <div class="flex justify-center">
+                <a href="tel:019-762-3021" class="cta-button inline-flex items-center justify-center text-white font-bold py-4 md:py-5 px-6 md:px-14 rounded-full text-base sm:text-xl md:text-3xl w-full sm:w-auto max-w-sm sm:max-w-none">
+                    今すぐ空席・予約を確認 <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+  
+  
+
+    <!-- 4. 自己紹介（ストーリー） -->
+    <section class="py-16 md:py-24 bg-stone-50 border-y border-stone-200">
+        <div class="container mx-auto px-5 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div class="relative mr-3 mb-3 md:mr-0 md:mb-0">
+                    <img src="images/wine.png" alt="こだわりのワインとピッツァ" loading="lazy" class="rounded shadow-2xl relative z-10 w-full">
+                    <div class="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 w-full h-full border-2 border-red-800 z-0"></div>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 serif leading-snug">
+                        <span class="text-red-800 text-xs md:text-sm block mb-2 tracking-widest font-sans">CONCEPT</span>
+                        ワインのラベルに刻んだ、<br>家族の歩み。
+                    </h2>
+                    <div class="space-y-5 md:space-y-6 text-gray-700 leading-loose text-sm md:text-base">
+                        <p>
+                            「マウンティー」は、ただのレストランではありません。<br>
+                            オーナーのコウジをはじめ、家族全員が情熱を注ぐ場所です。
+                        </p>
+                        <p>
+                            長男の名を冠した「DON VINCENZO」、そして次男の運命を指紙に刻んだ「INVERSUS」。<br>
+                            ワイン一本一本に物語があるように、私たちのピッツァ一枚一枚にも、北上の食材への敬意と家族の愛が詰まっています。
+                        </p>
+                        <p class="font-bold text-stone-900">
+                            「ここに来れば、美味しいだけじゃない何かが届く」<br>
+                            そんな場所でありたいと願っています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 悩み/解決 -->
+    <section class="py-16 md:py-20 bg-stone-texture text-white">
+        <div class="container mx-auto px-5 text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-black mb-12 md:mb-16 brush text-yellow-500">なぜ、マウンティーが選ばれるのか？</h2>
+
+            <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+                <div class="space-y-3 md:space-y-4">
+                    <div class="impact-number text-5xl md:text-6xl font-bold">450<span class="text-2xl">℃</span></div>
+                    <h3 class="text-lg md:text-xl font-bold border-b border-red-800 pb-2 max-w-xs mx-auto">薪窯だけの高火力</h3>
+                    <p class="text-stone-400 text-sm max-w-xs mx-auto">大型の石窯で一気に焼き上げるからこそ生まれる、パリ・もち食感の黄金比。</p>
+                </div>
+                <div class="space-y-3 md:space-y-4">
+                    <div class="impact-number text-5xl md:text-6xl font-bold">100<span class="text-2xl">%</span></div>
+                    <h3 class="text-lg md:text-xl font-bold border-b border-red-800 pb-2 max-w-xs mx-auto">北上の旬を活かす</h3>
+                    <p class="text-stone-400 text-sm max-w-xs mx-auto">きたかみ牛や初物の国産コーンなど、地元の「一番美味しい瞬間」をピッツァに。</p>
+                </div>
+                <div class="space-y-3 md:space-y-4">
+                    <div class="impact-number text-5xl md:text-6xl font-bold">MAX</div>
+                    <h3 class="text-lg md:text-xl font-bold border-b border-red-800 pb-2 max-w-xs mx-auto">満足のボリューム</h3>
+                    <p class="text-stone-400 text-sm max-w-xs mx-auto">「ランチなのに具沢山！」と驚かれるサラダと、食べ応え抜群のピッツァ。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Coming Soon: 本格ピザのテイクアウトサービス -->
+    <section class="py-16 md:py-24 bg-stone-900 text-white border-t border-stone-800">
+        <div class="container mx-auto px-5 max-w-5xl">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 px-4 py-1.5 text-xs font-bold tracking-widest uppercase rounded-full inline-block mb-4">COMING SOON</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black serif mb-4 leading-snug">マウンティーの本格ピザが、<br>ご自宅でも。</h2>
+                <p class="text-stone-400 text-sm md:text-base">「お店のあの味を家でも食べたい」という声にお応えして、新サービスを準備中。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-black/50 p-5 sm:p-8 md:p-12 rounded-2xl border border-stone-800 relative overflow-hidden">
+                <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-red-900/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative">
+                    <h3 class="text-xl md:text-2xl font-bold text-yellow-400 mb-6 serif flex items-center">
+                        <i class="fas fa-box-open mr-3"></i> 本格テイクアウトサービス構想
+                    </h3>
+                    <div class="space-y-6 text-stone-300 leading-relaxed text-sm md:text-base">
+                        <p class="flex items-start">
+                            <span class="bg-red-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3 mt-1 shrink-0">1</span>
+                            <span><strong class="text-white">焼きたてを完全キープ「専用保温バッグ」</strong><br>店内の450℃の熱気と香ばしさをそのままお持ち帰りいただける、専用の断熱保温バッグを導入予定。ご自宅でも開けた瞬間にとろけるチーズを楽しめます。</span>
+                        </p>
+                        <p class="flex items-start">
+                            <span class="bg-red-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3 mt-1 shrink-0">2</span>
+                            <span><strong class="text-white">電話やWEBで完結「秒速お持ち帰り予約」</strong><br>待ち時間ゼロ。スマホや事前のお電話で受取時間を指定してオーダー。お店に着いたら並ばずサッと受け取れます。</span>
+                        </p>
+                        <p class="flex items-start">
+                            <span class="bg-red-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3 mt-1 shrink-0">3</span>
+                            <span><strong class="text-white">おうちでイタリアン「仕上げキット」</strong><br>半焼き状態でのお渡しや、北上の特製食材をトッピングしてご自宅のオーブンで温めるだけで「お店の味」が再現できるキットも検討中。</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <img src="images/pizza2.png" alt="ピザのテイクアウトイメージ" loading="lazy" class="rounded-xl shadow-2xl border border-stone-700 w-full object-cover aspect-4/3">
+                    <div class="absolute top-3 right-3 md:top-4 md:right-4 bg-red-800 text-white font-bold px-3 py-1 rounded text-xs tracking-wider shadow">
+                        準備中
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 7. CTA (Footer) -->
+    <section class="py-16 md:py-24 bg-stone-texture text-white">
+        <div class="container mx-auto px-5 text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-10 md:mb-12 brush text-yellow-500">北上で、本物を喰らう。</h2>
+
+            <div class="max-w-md mx-auto mb-14 md:mb-20">
+                <a href="tel:0197623021" class="cta-button block text-white font-black py-5 md:py-6 rounded-xl text-2xl md:text-3xl mb-4 shadow-2xl">
+                    お電話で空席確認 <i class="fas fa-phone-alt ml-2"></i>
+                </a>
+                <p class="text-stone-400 text-sm">タップしてお電話でのお問い合わせ</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 text-left border-t border-stone-800 pt-12 md:pt-16">
+                <div class="space-y-4 text-sm md:text-base">
+                    <h4 class="text-gold font-bold text-lg md:text-xl mb-6">Italian Kitchen MOUNTEE</h4>
+                    <p class="flex items-start"><i class="fas fa-map-marker-alt text-red-600 mr-3 mt-1.5 w-4 text-center shrink-0"></i> <span>〒024-0031 岩手県北上市青柳町2丁目7-7 青柳ビル</span></p>
+                    <p class="flex items-start"><i class="fas fa-phone text-red-600 mr-3 mt-1.5 w-4 text-center shrink-0"></i> <a href="tel:0197623021" class="underline underline-offset-4">019-762-3021</a></p>
+                    <p class="flex items-start"><i class="fas fa-calendar-times text-red-600 mr-3 mt-1.5 w-4 text-center shrink-0"></i> <span>定休日：水曜日</span></p>
+                    <p class="flex items-start"><i class="fas fa-parking text-red-600 mr-3 mt-1.5 w-4 text-center shrink-0"></i> <span>駐車場：店横5台完備（若干狭いためご注意ください）</span></p>
+                    <div class="flex gap-6 pt-4">
+                        <a href="https://www.instagram.com/italiankitchenmoutee/" aria-label="Instagram" class="text-3xl hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="rounded-xl overflow-hidden h-56 md:h-auto border border-stone-800">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3088.115737173622!2d141.1135596748402!3d39.28562572370568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f448d84665dbd%3A0x621e771368d9bb22!2z44Kk44K_44Oq44Ki44Oz44Kt44OD44OB44OzIOODnuOCpuODs-ODhuOCo-ODvA!5e0!3m2!1sja!2sjp!4v1791422354479!5m2!1sja!2sjp" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-8 bg-black text-stone-600 text-center text-xs tracking-widest px-4">
+        &copy; Italian Kitchen MOUNTEE All Rights Reserved.
+    </footer>
+
+</body>
+</html>
