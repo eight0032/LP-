@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>洋食 金宝堂 | 創業100年 盛岡が誇る老舗の味</title>
+<meta name="description" content="盛岡駅前徒歩3分。大正12年創業の洋食 金宝堂。秘伝のデミグラスソースと岩手の恵みを。">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Noto Sans JP', sans-serif; background-color: #f4f1ea; overflow-x: hidden; }
+  .serif { font-family: 'Shippori Mincho', serif; }
+  .text-accent { color: #b32d2e; }
+  .bg-accent { background-color: #b32d2e; }
+  .border-accent { border-color: #b32d2e; }
+  .vertical-text { writing-mode: vertical-rl; }
+  .gold-border { border: 1px solid #d4af37; }
+  .hero-zoom { animation: zoom 20s infinite alternate; }
+  @keyframes zoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+  @media (prefers-reduced-motion: reduce) { .hero-zoom { animation: none; } html { scroll-behavior: auto; } }
+  .safe-top { padding-top: env(safe-area-inset-top, 0px); }
+  .safe-bottom { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem); }
+</style>
+</head>
+<body class="text-stone-900 antialiased">
+
+<!-- ファーストビュー -->
+<header class="relative h-[100svh] min-h-[560px] overflow-hidden flex items-center justify-center bg-stone-900">
+  <div class="absolute inset-0 z-0">
+    <img src="images/omurice.jpg"
+         alt="金宝堂の洋食料理" class="w-full h-full object-cover hero-zoom">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/60"></div>
+  </div>
+
+  <div class="relative z-10 text-center text-white px-5 safe-top">
+    <div class="mb-5 md:mb-6 flex justify-center items-center gap-3 md:gap-4">
+      <span class="h-px w-8 md:w-12 bg-white"></span>
+      <span class="serif text-sm sm:text-lg md:text-xl tracking-[0.25em]">創業大正十二年</span>
+      <span class="h-px w-8 md:w-12 bg-white"></span>
+    </div>
+    <h1 class="serif text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight tracking-wider">
+      盛岡に、<br><span class="text-yellow-500">金宝堂</span>あり。
+    </h1>
+    <p class="serif text-base sm:text-xl md:text-3xl tracking-widest opacity-90 leading-relaxed">
+      百年の刻が磨き上げた、<br class="sm:hidden">至高の洋食。
+    </p>
+  </div>
+
+  <div class="absolute left-8 bottom-6 hidden lg:block z-20">
+    <p class="vertical-text serif text-white text-2xl tracking-[0.4em] leading-relaxed border-l border-white/30 pl-4 py-2">
+      受け継がれる秘伝のソース。<br>岩手の恵みを、一皿の芸術に。
+    </p>
+  </div>
+</header>
+
+<!-- 追従CTA -->
+<div class="sticky top-0 z-50 bg-black/90 text-white py-3 border-b border-yellow-600/50 backdrop-blur-sm safe-top">
+  <div class="container mx-auto px-4 flex justify-between items-center gap-3">
+    <div class="hidden md:block">
+      <p class="serif text-sm text-yellow-500">公式LINE登録特典</p>
+      <p class="text-xs">【限定】ドリンク1杯無料クーポン配布中</p>
+    </div>
+    <div class="flex gap-2 sm:gap-4 items-center w-full md:w-auto">
+      <a href="#booking" class="flex-1 md:flex-none bg-accent hover:bg-red-800 text-white font-bold py-3 px-4 sm:px-8 rounded-sm transition text-center serif tracking-widest text-sm md:text-base">ご予約・お問合せ</a>
+      <a href="https://morioka-kimpodo.com/" class="flex-1 md:flex-none border border-white hover:bg-white hover:text-black py-3 px-4 sm:px-8 rounded-sm transition text-center text-sm md:text-base">オンラインショップ</a>
+    </div>
+  </div>
+</div>
+
+<!-- イントロ -->
+<section class="py-16 md:py-24 px-5">
+  <div class="container mx-auto max-w-5xl">
+    <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+      <div class="w-full md:w-1/2 relative">
+        <img src="images/tonteki.jpg"
+             alt="看板メニューのトンテキ" loading="lazy" class="rounded shadow-2xl w-full h-auto">
+        <div class="absolute -bottom-5 right-2 md:-bottom-6 md:-right-6 bg-accent text-white p-4 sm:p-6 md:p-8 rounded-sm shadow-xl">
+          <p class="serif text-base sm:text-xl md:text-2xl leading-relaxed">一週間、<br>煮込み抜いた<br>デミグラス。</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 mt-6 md:mt-0">
+        <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-accent leading-snug">
+          ただの洋食ではない。<br>それは、盛岡の記憶。
+        </h2>
+        <p class="text-stone-700 leading-loose mb-5 text-[15px] md:text-base">
+          岩手県産ブランド豚「紅木豚」を贅沢に使用。玉ねぎの甘みが溶け込んだ秘伝のカレー風味ソースが、ジューシーな肉厚ロースを包み込む。
+        </p>
+        <p class="text-stone-700 leading-loose text-[15px] md:text-base">
+          一口食べれば、大正・昭和・平成、そして令和へと続く「金宝堂」の情熱が口いっぱいに広がります。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 魅力 -->
+<section class="py-16 md:py-24 bg-stone-900 text-stone-300">
+  <div class="container mx-auto px-5 text-center max-w-4xl">
+    <h2 class="serif text-2xl sm:text-3xl md:text-4xl text-white mb-10 md:mb-16 tracking-widest">盛岡を訪れる、すべての方へ</h2>
+    <div class="space-y-8 md:space-y-12">
+      <div class="border-l-2 border-accent pl-5 md:pl-8 text-left">
+        <p class="serif text-lg md:text-xl text-white mb-2">名物麺類は、もう堪能されましたか？</p>
+        <p class="opacity-80 leading-relaxed text-sm md:text-base">冷麺も、じゃじゃ麺も、わんこ蕎麦も素晴らしい。しかし、盛岡駅前には「もう一つの正解」があります。100年愛される洋食の重みを、ぜひその舌で。</p>
+      </div>
+      <div class="border-l-2 border-accent pl-5 md:pl-8 text-left">
+        <p class="serif text-lg md:text-xl text-white mb-2">喧騒を離れ、静謐なひとときを。</p>
+        <p class="opacity-80 leading-relaxed text-sm md:text-base">駅前の喧騒を忘れさせる地下1階の隠れ家。落ち着いたアンティーク調の空間で、大切なお連れ様と、あるいは自分へのご褒美に、本物の味を。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-stone-100 border-y border-stone-300">
+  <div class="container mx-auto px-5 max-w-5xl">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="text-accent uppercase tracking-[0.3em] font-bold text-xs sm:text-sm block mb-2">Coming Soon</span>
+      <h2 class="serif text-2xl sm:text-3xl md:text-4xl font-bold text-stone-800 leading-snug">金宝堂が贈る、これからの新しいおもてなし</h2>
+      <p class="text-stone-600 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">100年の伝統を守りつつ、お客様の特別な瞬間をさらに彩る新プランを準備中です。</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+      <div class="bg-white p-6 md:p-8 pt-12 md:pt-8 rounded-sm shadow-md gold-border relative flex flex-col justify-between">
+        <div>
+          <div class="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs px-3 py-1 font-bold rounded-full">近日公開</div>
+          <h3 class="serif text-xl md:text-2xl font-bold text-stone-800 mb-4 md:pr-0">極上の宴会・プレミアム忘新年会プラン</h3>
+          <p class="text-stone-700 leading-relaxed mb-6 text-sm md:text-base">「大切な仲間やご親族と、老舗の味を心ゆくまで味わいたい」そんなご要望にお応えし、名物のトンテキや特製ハンバーグ、ワインやビールに合うオードブルをふんだんに盛り込んだ贅沢な飲み放題付きコースを新開発。</p>
+        </div>
+        <div class="border-t border-stone-100 pt-4 text-sm text-stone-500">
+          <span class="font-bold text-accent">■ 特徴：</span> 貸切対応可 / 飲み放題充実 / ご予算に応じたカスタマイズ
+        </div>
+      </div>
+
+      <div class="bg-white p-6 md:p-8 pt-12 md:pt-8 rounded-sm shadow-md gold-border relative flex flex-col justify-between">
+        <div>
+          <div class="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs px-3 py-1 font-bold rounded-full">近日公開</div>
+          <h3 class="serif text-xl md:text-2xl font-bold text-stone-800 mb-4">記念日・お誕生日のアニバーサリー特典</h3>
+          <p class="text-stone-700 leading-relaxed mb-6 text-sm md:text-base">ご家族の記念日や大切な方のお誕生日に。特製メッセージプレート付きのデザートや、写真撮影サービスなど、老舗の落ち着いた空間で思い出に残るひとときを演出するアニバーサリープランがまもなく登場します。</p>
+        </div>
+        <div class="border-t border-stone-100 pt-4 text-sm text-stone-500">
+          <span class="font-bold text-accent">■ 特徴：</span> 特製デザートプレート / 記念撮影 / 事前予約特典あり
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- クチコミ -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5">
+    <h2 class="serif text-center text-3xl md:text-4xl mb-10 md:mb-16 italic text-stone-800">Voices of Guests</h2>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+      <div class="p-6 md:p-8 bg-stone-50 border-t-4 border-accent shadow-sm">
+        <div class="flex text-yellow-500 mb-3 text-lg md:text-xl" aria-label="5つ星">★★★★★</div>
+        <p class="text-stone-700 italic leading-loose mb-5 text-sm md:text-base">「トンテキとハンバーグ、この両方を楽しめるセットが最高です。デミグラスソースが濃厚で、ソースだけなめていたくなるほどの美味しさでした。」</p>
+        <p class="text-right text-sm font-bold text-stone-500">― 盛岡駅前の老舗を訪れたお客様</p>
+      </div>
+      <div class="p-6 md:p-8 bg-stone-50 border-t-4 border-accent shadow-sm">
+        <div class="flex text-yellow-500 mb-3 text-lg md:text-xl" aria-label="4つ星">★★★★</div>
+        <p class="text-stone-700 italic leading-loose mb-5 text-sm md:text-base">「岩手産ブランド豚『紅木豚』のロースかつを注文。スープもシンプルながら非常に良いお味。静かにゆっくり食事を楽しみたい方には最高のお店です。」</p>
+        <p class="text-right text-sm font-bold text-stone-500">― 観光で訪れたお客様</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 特典 -->
+<section class="py-16 md:py-24 bg-accent text-white px-5">
+  <div class="container mx-auto text-center">
+    <div class="max-w-3xl mx-auto border-2 border-white/30 p-6 sm:p-10 md:p-12">
+      <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-6 md:mb-8 tracking-wider leading-snug">至福の「焼きカレー」を、<br>さらに愉しむために。</h2>
+      <p class="text-base md:text-xl mb-8 md:mb-10 opacity-90 leading-relaxed">公式LINEへのご登録、またはお電話でのご予約時に<br>「LPを見た」とお伝えください。</p>
+      <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-yellow-400 mb-5">自家製サラダをサービス</div>
+      <p class="text-xs md:text-sm opacity-70">※お食事をご注文いただいたお客様限定となります</p>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 -->
+<section id="booking" class="py-16 md:py-24 px-5 scroll-mt-20">
+  <div class="container mx-auto max-w-6xl">
+    <div class="flex flex-col md:flex-row gap-10 md:gap-12">
+      <div class="w-full md:w-1/2">
+        <h2 class="serif text-3xl md:text-4xl mb-6 md:mb-8">店舗情報</h2>
+        <dl class="text-left text-sm md:text-base">
+          <div class="flex border-b border-stone-300 py-4"><dt class="serif w-20 md:w-28 shrink-0 font-bold">店名</dt><dd>洋食 金宝堂（きんぽうどう）</dd></div>
+          <div class="flex border-b border-stone-300 py-4"><dt class="serif w-20 md:w-28 shrink-0 font-bold">創業</dt><dd>1923年（大正12年）</dd></div>
+          <div class="flex border-b border-stone-300 py-4"><dt class="serif w-20 md:w-28 shrink-0 font-bold">所在地</dt><dd>〒020-0034 岩手県盛岡市盛岡駅前通10−3<br><span class="text-sm text-stone-500">（盛岡駅より徒歩3分）</span></dd></div>
+          <div class="flex border-b border-stone-300 py-4"><dt class="serif w-20 md:w-28 shrink-0 font-bold">営業時間</dt><dd>11:30〜（ランチ・ディナー営業）</dd></div>
+          <div class="flex border-b border-stone-300 py-4"><dt class="serif w-20 md:w-28 shrink-0 font-bold">定休日</dt><dd>月曜日</dd></div>
+        </dl>
+      </div>
+
+      <div class="w-full md:w-1/2 flex flex-col justify-center gap-5">
+        <div class="bg-white p-6 md:p-8 shadow-xl border border-stone-200">
+          <p class="text-center serif text-lg md:text-xl mb-4 text-stone-700">お電話でのご予約・お問い合わせ</p>
+          <a href="tel:0196241800" class="block text-center text-3xl sm:text-4xl md:text-5xl font-bold text-accent mb-4 active:scale-95 transition">019-624-1800</a>
+          <p class="text-center text-stone-500 text-sm">受付時間：11:30〜21:00（月曜定休）</p>
+        </div>
+        <div class="flex gap-3 md:gap-4">
+          <a href="https://www.instagram.com/kimpodo_morioka/" class="flex-1 text-center py-4 bg-stone-800 text-white font-bold rounded hover:bg-stone-700 transition">Instagram</a>
+          <a href="https://morioka-kimpodo.com/" class="flex-1 text-center py-4 border-2 border-stone-800 text-stone-800 font-bold rounded hover:bg-stone-800 hover:text-white transition">公式サイト</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="py-10 md:py-12 bg-stone-900 text-stone-500 text-center safe-bottom">
+  <p class="serif text-white text-xl mb-3">洋食 金宝堂</p>
+  <p class="text-xs tracking-widest opacity-50 uppercase">&copy; 2024 Restoro Kimpodo. Since 1923</p>
+</footer>
+
+</body>
+</html>
