@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>レストラン&カフェ ルッシュ | 究極のふわとろ「オムガノフ」</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-padding-top: 84px; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: #443322; background: #fffaf0; }
+  .font-serif { font-family: 'Shippori Mincho', serif; }
+  .font-hand { font-family: 'Caveat', cursive; }
+  .btn-gold { background: linear-gradient(135deg, #d97706 0%, #b45309 100%); box-shadow: 0 4px 15px rgba(180, 83, 9, .3); }
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid #b45309; outline-offset: 2px; }
+</style>
+</head>
+<body class="w-full min-h-screen overflow-x-hidden">
+
+<!-- ナビゲーション -->
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 px-4 sm:px-8 lg:px-16 py-3 flex justify-between items-center" style="padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));">
+  <a href="#" class="flex items-center gap-3 min-w-0">
+    <div class="w-10 h-10 rounded-full bg-amber-700 text-white flex items-center justify-center font-serif font-bold text-lg shrink-0">R</div>
+    <div class="min-w-0">
+      <span class="text-[10px] text-amber-800 tracking-widest block font-bold leading-tight">RESTAURANT &amp; CAFÉ</span>
+      <span class="font-serif text-lg sm:text-xl font-bold text-amber-900 leading-tight">ルッシュ</span>
+    </div>
+  </a>
+
+  <!-- PC -->
+  <div class="hidden xl:flex items-center gap-6 text-sm font-bold text-amber-900">
+    <a href="#about" class="hover:text-amber-600 whitespace-nowrap">ルッシュの魅力</a>
+    <a href="#signature" class="hover:text-amber-600 whitespace-nowrap">名物オムガノフ</a>
+    <a href="#story" class="hover:text-amber-600 whitespace-nowrap">シェフの想い</a>
+    <a href="#anniversary" class="text-red-700 hover:text-red-500 flex items-center gap-1 whitespace-nowrap">✨ coming soon<span class="text-[10px] bg-red-100 px-2 py-0.5 rounded-full text-red-800">記念日コース</span></a>
+    <a href="#voice" class="hover:text-amber-600 whitespace-nowrap">お客様の声</a>
+    <a href="#access" class="hover:text-amber-600 whitespace-nowrap">アクセス・情報</a>
+  </div>
+
+  <div class="flex items-center gap-2 shrink-0">
+    <a href="tel:019-613-5925" class="btn-gold text-white px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap">空席確認・予約</a>
+    <!-- スマホ用メニュー -->
+    <details class="xl:hidden relative">
+      <summary aria-label="メニューを開く" class="w-10 h-10 flex items-center justify-center rounded-full border border-amber-300 text-amber-900 cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </summary>
+      <div class="absolute right-0 mt-3 w-56 bg-white border border-amber-100 rounded-2xl shadow-xl p-2 text-sm font-bold text-amber-900">
+        <a href="#about" class="block px-4 py-3 rounded-xl hover:bg-amber-50">ルッシュの魅力</a>
+        <a href="#signature" class="block px-4 py-3 rounded-xl hover:bg-amber-50">名物オムガノフ</a>
+        <a href="#story" class="block px-4 py-3 rounded-xl hover:bg-amber-50">シェフの想い</a>
+        <a href="#anniversary" class="block px-4 py-3 rounded-xl hover:bg-red-50 text-red-700">✨ 記念日コース</a>
+        <a href="#voice" class="block px-4 py-3 rounded-xl hover:bg-amber-50">お客様の声</a>
+        <a href="#access" class="block px-4 py-3 rounded-xl hover:bg-amber-50">アクセス・情報</a>
+      </div>
+    </details>
+  </div>
+</nav>
+
+<!-- ヒーロー -->
+<header class="relative bg-[#fdf2e9] overflow-hidden">
+  <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#e67e22_1px,transparent_1px)] [background-size:16px_16px]"></div>
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 py-12 sm:py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+    <div>
+      <div class="inline-block bg-red-700 text-white text-[11px] sm:text-xs px-3 py-1.5 mb-4 font-bold tracking-wider rounded-full">紫波町グルメMAP 最優秀賞受賞</div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight text-amber-950 mb-5">
+        ひとくちで<br>
+        <span class="text-5xl sm:text-6xl lg:text-7xl text-red-800">心までとろける、</span><br>
+        至福の時。
+      </h1>
+      <p class="text-base lg:text-lg text-amber-900/80 mb-8 leading-relaxed">
+        厳選された卵3個を使用した黄金の「ふわとろ」オムライスに、<br class="hidden lg:inline">
+        ロシア料理店で7年修行したシェフが紡ぎなす濃厚ビーフストロガノフを。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <a href="https://www.instagram.com/explore/locations/105691234201660/" target="_blank" rel="noopener" class="btn-gold text-white px-8 py-4 rounded-full font-bold text-center">公式Instagramを見る</a>
+        <a href="#anniversary" class="border-2 border-red-700 text-red-800 bg-white/80 px-8 py-4 rounded-full font-bold text-center hover:bg-red-700 hover:text-white transition-colors">✨ coming soon 記念日コース</a>
+      </div>
+    </div>
+
+    <!-- 画像配置エリア -->
+    <div class="relative flex justify-center">
+      <div class="relative w-full max-w-lg aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-amber-100 flex items-center justify-center">
+        
+        <!-- ご用意いただいた画像を表示するタグ -->
+        <img src="images/omurice.png" alt="看板メニュー オムガノフ" class="w-full h-full object-cover">
+
+        <!-- キャプションオーバーレイ -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-5 sm:p-6 pointer-events-none">
+          <div class="text-white">
+            <span class="text-amber-300 font-hand text-2xl block">Special Dish</span>
+            <p class="font-serif text-xl sm:text-2xl font-bold">看板メニュー「オムガノフ」</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 人気No.1バッジ -->
+      <div class="absolute -top-4 right-0 sm:-top-6 sm:-right-6 w-24 h-24 sm:w-32 sm:h-32 bg-amber-600 rounded-full text-white flex flex-col items-center justify-center text-center p-2 shadow-xl border-4 border-white rotate-12">
+        <span class="text-[9px] sm:text-[10px] tracking-wider">人気No.1</span>
+        <span class="font-bold text-xs sm:text-sm">至極の一皿</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 共感 -->
+<section id="about" class="py-16 sm:py-20 px-5 sm:px-8 lg:px-16 bg-[#fffaf0]">
+  <div class="max-w-4xl mx-auto text-center">
+    <span class="font-hand text-3xl text-amber-600 block mb-2">Message</span>
+    <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-900 mb-8 leading-snug">お腹も心も、満たされたいあなたへ。</h2>
+    <div class="space-y-4 text-base lg:text-lg leading-relaxed text-amber-900/80 max-w-2xl mx-auto">
+      <p>「美味しいものは食べたいけれど、忙しくて時間はかけられない」</p>
+      <p>「日常の中で、ほんの少しだけ贅沢なご褒美を味わいたい」</p>
+      <p class="font-bold text-amber-950 pt-4">忙しい毎日に追われるあなたにこそ、ルッシュの『オムガノフ』で最高の笑顔になってほしい。そんな想いからこの一皿は生まれました。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 名物 -->
+<section id="signature" class="py-16 sm:py-24 px-5 sm:px-8 lg:px-16 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12 sm:mb-16">
+      <span class="font-hand text-3xl text-amber-600 block mb-1">Our Signature</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-red-900">名物「オムガノフ」のこだわり</h2>
+      <div class="w-16 h-1 bg-amber-600 mx-auto mt-4"></div>
+    </div>
+
+    <!-- POINT 01 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-14 md:mb-20">
+      <div class="rounded-3xl overflow-hidden shadow-xl aspect-[16/10] bg-amber-100">
+        <!-- POINT 01 用の画像タグ -->
+        <img src="images/omurice.jpg" alt="黄金に輝くふわとろオムライス" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <div class="inline-block bg-amber-600 text-white text-xs px-3 py-1 rounded-full font-bold mb-4">POINT 01</div>
+        <h3 class="font-serif text-2xl lg:text-3xl font-bold text-amber-950 mb-4">黄金に輝く、卵3個の「ふわとろ」</h3>
+        <p class="text-gray-700 leading-relaxed">味付けは塩コショウのみ。だからこそ、熟練のシェフによる絶妙な火入れの技術が際立ちます。スプーンを入れた瞬間、バターの芳醇な香りと共に溢れ出す幸せの食感をお楽しみください。</p>
+      </div>
+    </div>
+
+    <!-- POINT 02 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div class="md:order-1">
+        <div class="inline-block bg-red-800 text-white text-xs px-3 py-1 rounded-full font-bold mb-4">POINT 02</div>
+        <h3 class="font-serif text-2xl lg:text-3xl font-bold text-red-950 mb-4">濃厚デミグラスのロシア流ソース</h3>
+        <p class="text-gray-700 leading-relaxed">生クリームのコクと、深みのあるデミグラスソースが織りなす本格ビーフストロガノフ。ロシア料理店で7年修行した店主ならではの、お肉やキノコがしっかり入った贅沢な味わいです。</p>
+      </div>
+      <div class="rounded-3xl overflow-hidden shadow-xl aspect-[16/10] md:order-2 bg-amber-100">
+        <!-- POINT 02 用の画像タグ -->
+        <img src="images/hanbagu.png" alt="濃厚デミグラスのロシア流ソース" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming soon -->
+<section id="anniversary" class="py-16 sm:py-24 px-5 sm:px-8 lg:px-16 bg-gradient-to-b from-amber-50 to-[#fdf2e9] border-y border-amber-200">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 sm:mb-16">
+      <div class="inline-flex items-center gap-2 bg-red-800 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-wider mb-3">✨ COMING SOON — 新サービス予告 —</div>
+      <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-950">大切な人と祝う、特別ディナーコース</h2>
+      <p class="text-sm lg:text-base text-amber-900/80 mt-3 max-w-2xl mx-auto">「誕生日や記念日に、ルッシュ自慢の味をゆっくり楽しみたい」そんな声にお応えする、軽めのペアコースが新登場。</p>
+      <div class="w-16 h-1 bg-red-800 mx-auto mt-4"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10 sm:mb-12">
+      <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-amber-100 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold text-amber-700 block mb-1">Appetizer &amp; Soup</span>
+          <h3 class="font-serif text-xl font-bold text-amber-950 mb-3">特製前菜サラダ＆スープ</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">季節の新鮮野菜を使った彩り豊かな前菜と、優しい味わいの自家製スープでコースの幕開け。</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-amber-800 font-bold">✓ 始まりを彩る一皿</div>
+      </div>
+
+      <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-red-800 flex flex-col justify-between relative md:-translate-y-2 mt-3 md:mt-0">
+        <div class="absolute -top-3 right-6 bg-red-700 text-white text-[10px] px-3 py-0.5 rounded-full font-bold">Main Dish</div>
+        <div>
+          <span class="text-xs font-bold text-red-800 block mb-1">Special Main</span>
+          <h3 class="font-serif text-xl font-bold text-amber-950 mb-3">選べるメイン（オムガノフ等）</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">看板メニューの「オムガノフ」または厳選肉料理からその日の気分でお選びいただけます。</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-red-800 font-bold">✓ 贅沢ふわとろ体験</div>
+      </div>
+
+      <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-amber-100 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold text-amber-700 block mb-1">Dessert &amp; Drink</span>
+          <h3 class="font-serif text-xl font-bold text-amber-950 mb-3">本日のデザート ＆ ドリンク</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">大人気の自家製チーズスフレ等（日替わり）と、香ばしい自家製ホットコーヒーでゆったりとした余韻を。</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-amber-800 font-bold">✓ 心満たされる締めくくり</div>
+      </div>
+    </div>
+
+    <div class="bg-white/90 border border-amber-200 rounded-2xl p-6 lg:p-8 text-center max-w-2xl mx-auto shadow-md">
+      <p class="text-sm font-bold text-amber-900 mb-1">🎁 記念日オプション（ご予約時にお伝えします）</p>
+      <p class="text-xs text-gray-600 mb-4">デザートプレートへのメッセージ添えなど、お気軽にご相談ください。</p>
+      <a href="tel:019-613-5925" class="inline-block btn-gold text-white px-6 sm:px-8 py-3 rounded-full text-sm font-bold">新コースの先行お問い合わせ・予約</a>
+    </div>
+  </div>
+</section>
+
+<!-- シェフ -->
+<section id="story" class="bg-amber-950 text-white py-16 sm:py-24 px-5 sm:px-8 lg:px-16">
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+    <div class="flex justify-center">
+      <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full border-4 border-amber-600 overflow-hidden shadow-2xl bg-amber-800">
+        <!-- シェフの画像タグ -->
+        <img src="images/chef.png" alt="オーナーシェフ 小松 大志" class="w-full h-full object-cover">
+      </div>
+    </div>
+    <div class="md:col-span-2 text-center md:text-left">
+      <span class="text-xs tracking-[0.3em] mb-2 block text-amber-400 font-bold">Story of Chef</span>
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold mb-6 leading-snug">震災を越え、紫波町で<br class="hidden sm:inline">愛される一皿を。</h2>
+      <p class="text-sm lg:text-base leading-loose text-amber-100/90 mb-6 text-left">
+        「紫波町といえば、ルッシュのオムライス」そう言っていただける店を目指し、2018年に夫婦でオープンしました。結婚式場やロシア料理店で培った技術を、この町の人たちの「笑顔」のために使いたい。温かな常連様に支えられ、一皿一皿に心を込めて作り続けています。
+      </p>
+      <p class="font-serif text-lg text-amber-300">オーナーシェフ 小松 大志</p>
+    </div>
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section id="voice" class="py-16 sm:py-24 px-5 sm:px-8 lg:px-16 bg-[#fffaf0]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-center font-serif text-2xl sm:text-3xl lg:text-4xl text-amber-900 mb-10 sm:mb-16">Voice — お客様の声 —</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-md border border-amber-100">
+        <div class="text-amber-500 text-2xl sm:text-3xl mb-2" aria-label="星5つ">★★★★★</div>
+        <p class="text-gray-700 leading-relaxed text-sm lg:text-base mb-6">「こんなに美しいオムライス、初めて見ました。バターの香るふわとろ卵と、濃厚なビーフストロガノフのバランスが最高！忙しい昼下がりでしたが、一気に幸せな気持ちになりました。」</p>
+        <p class="text-xs font-bold text-amber-800 text-right">— 30代 女性 / 常連様</p>
+      </div>
+      <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-md border border-amber-100">
+        <div class="text-amber-500 text-2xl sm:text-3xl mb-2" aria-label="星5つ">★★★★★</div>
+        <p class="text-gray-700 leading-relaxed text-sm lg:text-base mb-6">「メニューが絞られていて提供が早いのも嬉しいポイント。座席数はこじんまりしていますが、それ以上の感動と価値がある名店です。また絶対リピートします！」</p>
+        <p class="text-xs font-bold text-amber-800 text-right">— 40代 男性 / 会社員様</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- アクセス -->
+<footer id="access" class="bg-[#fdf2e9] py-16 sm:py-20 px-5 sm:px-8 lg:px-16 border-t border-amber-200">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-10 sm:mb-12">
+      <span class="font-hand text-3xl text-amber-600 block mb-1">Information</span>
+      <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-amber-900">店舗情報・アクセス</h2>
+      <div class="w-12 h-1 bg-amber-600 mx-auto mt-4"></div>
+    </div>
+
+    <div class="text-center mb-12 sm:mb-16">
+      <a href="tel:019-613-5925" class="inline-flex items-center justify-center gap-3 btn-gold text-white px-6 sm:px-10 py-4 sm:py-5 rounded-2xl text-base sm:text-xl font-bold w-full sm:w-auto">
+        <svg class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        <span>電話で予約する（019-613-5925）</span>
+      </a>
+      <p class="text-xs text-red-700 font-bold mt-3">※座席数が少ないため、ご来店前のお電話での空き確認がおすすめです。</p>
+    </div>
+
+    <div class="bg-white p-6 sm:p-8 lg:p-12 rounded-3xl shadow-lg border border-amber-200 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-sm">
+      <div class="space-y-4">
+        <div><span class="text-xs font-bold text-amber-700 block mb-1">店名</span><p class="font-bold text-base">レストラン&amp;カフェ ルッシュ</p></div>
+        <div><span class="text-xs font-bold text-amber-700 block mb-1">住所</span><p>〒028-3305 岩手県紫波郡紫波町日詰郡山165</p></div>
+        <div><span class="text-xs font-bold text-amber-700 block mb-1">営業時間</span><p>11:30 - 14:30 / 17:30 - 20:00</p></div>
+      </div>
+      <div class="space-y-4">
+        <div><span class="text-xs font-bold text-amber-700 block mb-1">定休日</span><p class="text-red-700 font-bold">月曜日</p></div>
+        <div><span class="text-xs font-bold text-amber-700 block mb-1">駐車場</span><p>店舗前4台あり（※乗り合わせでのご来店がおすすめです）</p></div>
+        <div><span class="text-xs font-bold text-amber-700 block mb-1">お支払い</span><p>現金 / PayPay</p></div>
+      </div>
+    </div>
+
+    <div class="mt-14 text-center opacity-60">
+      <p class="font-hand text-5xl mb-2 text-amber-900">Ruche</p>
+      <p class="text-xs tracking-widest text-amber-900">&copy; RESTAURANT &amp; CAFÉ RUCHE. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
