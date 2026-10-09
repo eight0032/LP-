@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>シュパーゲル | 盛岡・菜園で味わう本格ドイツ料理と自家製ソーセージ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { gold: '#c5a059', cream: '#f9f6f0', ink: '#1a1a1a' },
+    fontFamily: {
+      serif: ['"Shippori Mincho"', 'serif'],
+      sans: ['"Noto Sans JP"', 'sans-serif']
+    }
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #f9f6f0; -webkit-text-size-adjust: 100%; padding-bottom: env(safe-area-inset-bottom); }
+  h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+
+  .hero {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+      url('images/roast.jpg') center/cover;
+  }
+  .parallax {
+    background: linear-gradient(rgba(26,26,26,.8), rgba(26,26,26,.8)),
+      url('https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?auto=format&fit=crop&w=1200&q=75') center/cover;
+  }
+  /* background-attachment: fixed は iOS Safari で崩れるため PC のみ */
+  @media (min-width: 1024px) { .hero, .parallax { background-attachment: fixed; } }
+
+  .btn-gold {
+    background: linear-gradient(135deg, #c5a059, #a37e3d);
+    box-shadow: 0 4px 15px rgba(163,126,61,.4);
+  }
+  .ornament { display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .ornament::before, .ornament::after { content: ""; height: 1px; width: 32px; background: #c5a059; }
+  @media (min-width: 768px) { .ornament { gap: 20px; } .ornament::before, .ornament::after { width: 60px; } }
+</style>
+</head>
+<body class="font-sans text-gray-800 antialiased pb-20 md:pb-0">
+
+<!-- ファーストビュー -->
+<section class="hero relative flex min-h-[100svh] items-center justify-center px-5 text-center text-white">
+  <div class="pointer-events-none absolute inset-3 border border-white/10 md:inset-4"></div>
+  <div class="relative z-10">
+    <div class="ornament mb-5 text-xs font-bold tracking-[0.2em] text-gold md:text-base">SINCE 2011 MORIOKA</div>
+    <h1 class="mb-6 text-3xl font-bold leading-snug tracking-wider sm:text-5xl lg:text-7xl md:mb-8">
+      盛岡で唯一の<br><span class="text-gold">「丸鶏ロースト」</span><br>本格ドイツを、その手に。
+    </h1>
+    <p class="mb-10 text-sm font-light leading-relaxed tracking-widest opacity-90 sm:text-lg md:text-2xl md:mb-12">
+      ドイツ修業のシェフが贈る、<br class="sm:hidden">自家製ソーセージと美食の夜
+    </p>
+    <a href="#booking" class="btn-gold inline-block rounded-sm px-10 py-4 text-base font-bold text-white transition active:scale-95 md:px-12 md:py-5 md:text-lg">
+      今すぐ予約する
+    </a>
+  </div>
+</section>
+
+<!-- クイック情報 -->
+<div class="border-b bg-white px-4 py-5 text-center">
+  <div class="mx-auto flex max-w-4xl flex-col items-center gap-2 md:flex-row md:justify-center md:gap-8">
+    <a href="tel:0196812730" class="text-xl font-bold text-ink">📞 019-681-2730</a>
+    <div class="text-xs text-gray-500 md:text-sm">
+      <span class="mx-1 inline-block">盛岡市菜園1丁目12-8 地下1階</span>
+      <span class="mx-1 inline-block">定休日：日曜日</span>
+    </div>
+  </div>
+</div>
+
+<!-- コンセプト -->
+<section class="mx-auto max-w-5xl px-5 py-16 md:py-24">
+  <div class="mb-10 text-center md:mb-16">
+    <span class="text-xs font-bold italic tracking-widest text-gold md:text-sm">Authentic German Cuisine</span>
+    <h2 class="mb-5 mt-3 text-2xl font-bold sm:text-3xl md:text-4xl">美食の都、バイエルンの薫り。</h2>
+    <div class="mx-auto h-1 w-16 bg-gold md:w-20"></div>
+  </div>
+  <div class="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+    <div class="space-y-5 text-base leading-loose text-gray-700 md:text-lg">
+      <p>「シュパーゲル」は、ドイツで研鑽を積んだシェフによる本格派ドイツ料理店です。</p>
+      <p>看板メニューの「丸鶏ロースト（ヴィーズンヘンドゥル）」は、盛岡で唯一提供している逸品。カリッと香ばしい皮と、溢れ出すジューシーな肉汁。その丁寧な仕事が、地元常連客や観光客から厚い支持をいただいています。</p>
+      <p>落ち着いた間接照明のなか、多種多様なドイツビールと共に、心ゆくまで伝統の味をお楽しみください。</p>
+    </div>
+    <div class="relative mx-3 md:mx-0">
+      <div class="absolute -inset-3 border border-gold opacity-30 md:-inset-4"></div>
+      <img src="images/sosezi.png"
+           alt="自家製ソーセージ盛り合わせ" loading="lazy" class="relative z-10 w-full shadow-2xl">
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="border-y border-gold/20 bg-white px-5 py-16 md:py-24">
+  <div class="mx-auto max-w-4xl text-center">
+    <span class="mb-4 inline-block rounded-full bg-gold px-4 py-1 text-xs font-bold tracking-widest text-white">Coming Soon</span>
+    <h2 class="mb-6 text-2xl font-bold leading-snug sm:text-3xl md:text-4xl">ドイツ料理が初めての方へ。<br class="sm:hidden">王道定番セット</h2>
+    <div class="mx-auto mb-8 h-1 w-16 bg-gold"></div>
+    <p class="mb-10 text-left text-sm leading-loose text-gray-600 sm:text-center md:mb-12 md:text-lg">
+      「何から頼めばいいかわからない…」そんなドイツ料理初心者のお客様に向けて、自家製ソーセージや名物丸鶏ロースト、おすすめビールが一度に楽しめる
+      <strong>「ビギナーズ・ジャーマンセット」</strong>を近日リリース予定！これ一つで本場の魅力を余すことなく体験できます。
+    </p>
+    <div class="grid gap-4 rounded border border-gold/30 bg-cream p-4 text-left md:grid-cols-3 md:gap-6 md:p-8">
+      <div class="bg-white p-4 shadow-sm">
+        <div class="mb-2 font-bold text-gold">01. 自家製ソーセージ</div>
+        <p class="text-sm text-gray-500">最初に食べてほしい、肉の旨味が詰まった自慢の一本。</p>
+      </div>
+      <div class="bg-white p-4 shadow-sm">
+        <div class="mb-2 font-bold text-gold">02. 丸鶏ロースト</div>
+        <p class="text-sm text-gray-500">盛岡唯一。外はカリッと中はジューシーな名物。</p>
+      </div>
+      <div class="bg-white p-4 shadow-sm">
+        <div class="mb-2 font-bold text-gold">03. ドイツ樽生ビール</div>
+        <p class="text-sm text-gray-500">料理と最高にマッチする、本場の味わい一杯。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 名物 -->
+<section class="parallax px-5 py-20 text-white md:py-32">
+  <div class="mx-auto max-w-3xl text-center">
+    <div class="ornament mb-6 text-gold">♛</div>
+    <h2 class="mb-5 text-3xl font-bold leading-snug md:mb-8 md:text-5xl">唯一無二の名物：<br class="sm:hidden">丸鶏ロースト</h2>
+    <p class="mb-8 text-base font-bold italic text-gold md:mb-12 md:text-xl">Wiesnhendl - ヴィーズンヘンドゥル</p>
+    <div class="border border-gold/30 bg-black/50 p-6 backdrop-blur-md sm:p-10 md:p-12">
+      <p class="mb-6 text-left text-base leading-loose sm:text-center md:text-lg">
+        じっくりと時間をかけ、皮はクリスピーに、身はしっとりと。
+        ドイツのオクトーバーフェストを象徴するこの味を、ここ盛岡で。
+        一口食べれば、そこはもうミュンヘンのお祭り広場です。
+      </p>
+      <div class="font-serif text-3xl text-gold"> <span class="text-base text-white/60">(税込)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ギャラリー -->
+<section class="bg-white px-5 py-16 md:py-24">
+  <div class="mx-auto max-w-6xl">
+    <h2 class="ornament mb-10 text-center text-2xl font-bold sm:text-3xl md:mb-16 md:text-4xl">イチオシの逸品</h2>
+    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-12">
+      <div>
+        <div class="mb-4 aspect-[4/3] overflow-hidden bg-gray-100 sm:aspect-square">
+          <img src="images/sosezi.png" alt="自家製ソーセージ" loading="lazy" class="h-full w-full object-cover">
+        </div>
+        <h3 class="mb-2 text-lg font-bold md:text-xl">自家製ソーセージ</h3>
+        <p class="text-sm italic text-gray-500">一本一本丁寧に仕込まれた、美味しさを詰め込んだ原点の味。</p>
+      </div>
+      <div>
+        <div class="mb-4 aspect-[4/3] overflow-hidden bg-gray-100 sm:aspect-square">
+          <img src="images/pizza.jpg" alt="特製ピザ" loading="lazy" class="h-full w-full object-cover">
+        </div>
+        <h3 class="mb-2 text-lg font-bold md:text-xl">クリスピー・ピザ</h3>
+        <p class="text-sm italic text-gray-500">癖になるシンプルな美味しさ。一度は食べていただきたい人気メニュー。</p>
+      </div>
+      <div class="sm:col-span-2 md:col-span-1">
+        <div class="mb-4 aspect-[4/3] overflow-hidden bg-gray-100 sm:aspect-[2/1] md:aspect-square">
+          <img src="images/beer.jpg" alt="ドイツビール" loading="lazy" class="h-full w-full object-cover">
+        </div>
+        <h3 class="mb-2 text-lg font-bold md:text-xl">ドイツ樽生ビール</h3>
+        <p class="text-sm italic text-gray-500">豊富なラインナップ。酸味と苦味が響く、通好みの本格派。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- クチコミ -->
+<section class="bg-ink px-5 py-16 text-white md:py-24">
+  <div class="mx-auto max-w-5xl">
+    <h2 class="mb-10 text-center text-2xl font-bold text-gold md:mb-16 md:text-3xl">Voice of Our Guests</h2>
+    <div class="grid gap-6 md:grid-cols-2 md:gap-8">
+      <div class="border-l-4 border-gold bg-white/5 p-6 md:p-10">
+        <div class="mb-4 text-sm tracking-widest text-gold">★★★★★</div>
+        <p class="italic leading-relaxed">「店内は小洒落てて、大人な雰囲気です。ソーセージ盛り合わせは絶対注文してほしい一品。店主は無口な感じですが、実はとても親切。料理も美味しくてつい つい色々頼んでしまいます。」</p>
+      </div>
+      <div class="border-l-4 border-gold bg-white/5 p-6 md:p-10">
+        <div class="mb-4 text-sm tracking-widest text-gold">★★★★★</div>
+        <p class="italic leading-relaxed">「お酒も食事もとっても美味しい！ピザが特に美味しくて、1度食べてもらいたい！！店主さんも見えるところにメニューを動かしてくれたり親切な方でした✨️」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- インフォメーション -->
+<footer id="booking" class="bg-[#0f0f0f] px-5 py-16 text-white md:py-24">
+  <div class="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:gap-20">
+    <div>
+      <h2 class="mb-8 font-serif text-4xl font-bold italic tracking-widest text-gold md:mb-10 md:text-5xl">Spargel</h2>
+      <div class="space-y-6">
+        <div>
+          <p class="text-gray-400">〒020-0024</p>
+          <p class="text-lg md:text-xl">岩手県盛岡市菜園1丁目12-8 地下1階</p>
+          <p class="mt-2 text-sm text-gray-500">盛岡駅・川徳百貨店からアクセス良好</p>
+        </div>
+        <a href="tel:0196812730" class="block text-3xl font-bold hover:text-gold md:text-4xl">📞 019-681-2730</a>
+        <p>🕔 18:00 〜 24:00(定休日：日曜日)</p>
+      </div>
+      <a href="https://x.com/katsupon69" target="_blank" rel="noopener"
+         class="mt-8 inline-flex items-center gap-3 rounded-full bg-white/10 px-6 py-3 transition hover:bg-gold">
+        <span class="font-bold">𝕏</span><span>最新情報をSNSでチェック</span>
+      </a>
+    </div>
+    <div class="border border-white/10 bg-white/5 p-6 shadow-2xl sm:p-10">
+      <h3 class="ornament mb-6 text-2xl font-bold">Reservation</h3>
+      <p class="mb-8 leading-loose text-gray-400">
+        カウンター席、テーブル席をご用意しております。<br>
+        貸切は15名様より最大30名様まで承ります。宴会や二次会など、お気軽にご相談ください。<br>
+        <span class="text-gold">※混雑が予想されるため、事前のご予約をおすすめいたします。</span>
+      </p>
+      <a href="tel:0196812730" class="btn-gold block w-full py-5 text-center text-lg font-bold text-white transition active:scale-95">
+        空席状況をお電話で確認
+      </a>
+    </div>
+  </div>
+  <div class="mt-16 border-t border-white/5 pt-8 text-center text-xs tracking-widest text-gray-500">
+    &copy; 2024 Spargel Gastronomie. All Rights Reserved.
+  </div>
+</footer>
+
+<!-- スマホ用 固定予約バー -->
+<div class="fixed inset-x-0 bottom-0 z-50 border-t border-gold/30 bg-ink/95 px-4 pt-3 backdrop-blur md:hidden"
+     style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));">
+  <a href="tel:0196812730" class="btn-gold block rounded-sm py-3 text-center font-bold text-white active:scale-95">📞 電話で予約する</a>
+</div>
+
+</body>
+</html>
