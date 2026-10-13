@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MITAD-Y-MITAD | 盛岡の隠れ家スペイン地中海料理</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: { colors: {
+    'spanish-red': '#c1121f', 'spanish-gold': '#ffb703',
+    'deep-black': '#1a1a1a', 'warm-beige': '#fdfaf5'
+  } } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Serif JP', serif; color: #1a1a1a; background: #fdfaf5; -webkit-text-size-adjust: 100%; }
+  .font-eng { font-family: 'Montserrat', sans-serif; }
+  .serif-eng { font-family: 'Playfair Display', serif; }
+  .accent-line { height: 2px; width: 100%; margin: 1rem 0; background: linear-gradient(to right, transparent, #ffb703, transparent); }
+  .cta-button { background: linear-gradient(135deg, #c1121f 0%, #780001 100%); transition: transform .3s ease, box-shadow .3s ease; }
+  .cta-button:active, .cta-button:hover { transform: scale(1.03); box-shadow: 0 20px 25px -5px rgba(0,0,0,.2); }
+  .menu-card { border-bottom: 4px solid #ffb703; transition: transform .3s ease; }
+  .menu-card:hover { transform: translateY(-8px); }
+  .paella-circle { position: absolute; border: 1px solid #ffb703; border-radius: 50%; pointer-events: none; }
+  @keyframes scaleOut { from { transform: scale(1.1); } to { transform: scale(1); } }
+  .hero-img { animation: scaleOut 20s ease-in-out infinite alternate; }
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 1s ease-out, transform 1s ease-out; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { opacity: 1; transform: none; transition: none; }
+    .hero-img { animation: none; }
+  }
+</style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+<!-- 1. FV -->
+<header class="relative min-h-screen flex items-center justify-center text-white overflow-hidden" style="min-height:100svh">
+  <div class="absolute inset-0 z-0">
+    <img src="images/paeria.jpg" alt="本格パエリア" class="hero-img w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/80"></div>
+  </div>
+  <div class="relative z-10 text-center px-5 py-20">
+    <div class="mb-4 inline-block">
+      <span class="font-eng tracking-[0.25em] text-xs sm:text-sm md:text-base border-b border-spanish-gold pb-1">EST. 2011 MORIOKA</span>
+    </div>
+    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold mb-6 serif-eng italic leading-tight">
+      Authentic <br class="md:hidden"><span class="text-spanish-gold">Spanish</span>
+    </h1>
+    <p class="text-lg sm:text-xl md:text-3xl font-bold tracking-wider md:tracking-widest mb-10 leading-relaxed">
+      盛岡、材木町の路地裏に<br class="sm:hidden">息づく情熱。
+    </p>
+    <a href="#cta-main" class="cta-button inline-flex items-center px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-xl shadow-2xl border-2 border-white/20">
+      <span class="mr-3">パエリアのご予約はこちら</span><i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="paella-circle w-40 h-40 md:w-64 md:h-64 -top-10 -left-10 opacity-20"></div>
+  <div class="paella-circle w-56 h-56 md:w-96 md:h-96 -bottom-16 -right-16 opacity-20"></div>
+</header>
+
+<!-- 2. Impact -->
+<section class="py-14 md:py-20 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-5 flex flex-col items-center text-center">
+    <div class="font-eng text-spanish-red font-bold text-6xl sm:text-8xl md:text-[12rem] opacity-5 absolute top-0 left-0 leading-none select-none">PASSION</div>
+    <div class="relative z-10 max-w-3xl">
+      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-relaxed">
+        「30歳までに起業する」<br>その夢と情熱を、一皿のパエリアに。
+      </h2>
+      <div class="accent-line"></div>
+      <p class="text-gray-600 leading-loose text-sm sm:text-base">
+        盛岡の風土とスペインの知恵が交差する場所。<br>
+        震災を乗り越え、地域と共に歩んできた MITAD-Y-MITAD。<br>
+        古材のカウンターで、最高の一杯と最高の一皿をお愉しみください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Sizzle -->
+<section class="py-16 md:py-24 bg-deep-black text-white">
+  <div class="container mx-auto px-5">
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+      <div class="w-full lg:w-1/2">
+        <div class="relative">
+          <img src="images/ahijo.jpg" alt="調理の様子" class="rounded-lg shadow-2xl w-full h-64 sm:h-80 lg:h-auto object-cover">
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <h3 class="serif-eng text-4xl md:text-5xl italic text-spanish-gold mb-4">The Sizzle</h3>
+        <h4 class="text-xl md:text-2xl font-bold mb-5">五感で味わう、地中海の息吹。</h4>
+        <p class="text-gray-400 leading-loose mb-8 text-sm md:text-base">
+          パエリアパンの上でパチパチと音を立てるスープ、オープンキッチンから漂うガーリックと魚介の香り。私たちが提供するのは「料理」だけではありません。その場に流れる「活気」と「時間」そのものです。
+        </p>
+        <ul class="space-y-4 font-bold text-black bg-white/90 p-5 md:p-6 rounded-xl text-sm md:text-base">
+          <li class="flex items-start"><i class="fas fa-check text-spanish-red mr-3 mt-1"></i>本格スペイン仕込みの地中海料理</li>
+          <li class="flex items-start"><i class="fas fa-check text-spanish-red mr-3 mt-1"></i>季節ごとの厳選食材と自家製パン</li>
+          <li class="flex items-start"><i class="fas fa-check text-spanish-red mr-3 mt-1"></i>誰でも楽しめる、温かな接客</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Menu -->
+<section class="py-16 md:py-24">
+  <div class="container mx-auto px-5 text-center">
+    <div class="mb-10 md:mb-16">
+      <span class="serif-eng text-spanish-red text-lg md:text-xl font-bold italic">Specialities</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-2">イチオシの逸品</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-md sm:max-w-none mx-auto">
+      <div class="menu-card bg-white p-4 rounded-xl shadow-lg">
+        <img src="images/paeria.jpg" alt="パエリア" loading="lazy" class="w-full h-52 md:h-64 object-cover rounded-lg mb-5">
+        <h5 class="text-lg md:text-xl font-bold mb-2">極上パエリア</h5>
+        <p class="text-sm text-gray-600 leading-relaxed">お米の一粒一粒に魚介の旨味を凝縮させた、当店の看板メニューです。</p>
+      </div>
+      <div class="menu-card bg-white p-4 rounded-xl shadow-lg">
+        <img src="images/ahijo.jpg" alt="アヒージョ" loading="lazy" class="w-full h-52 md:h-64 object-cover rounded-lg mb-5">
+        <h5 class="text-lg md:text-xl font-bold mb-2">海老のアヒージョ</h5>
+        <p class="text-sm text-gray-600 leading-relaxed">ガーリックの香りが食欲をそそる、ワインにぴったりの一皿。</p>
+      </div>
+      <div class="menu-card bg-white p-4 rounded-xl shadow-lg sm:col-span-2 lg:col-span-1 sm:max-w-sm sm:mx-auto lg:max-w-none">
+        <img src="images/chirin.jpg" alt="チリンドロン" loading="lazy" class="w-full h-52 md:h-64 object-cover rounded-lg mb-5">
+        <h5 class="text-lg md:text-xl font-bold mb-2">鶏のチリンドロン</h5>
+        <p class="text-sm text-gray-600 leading-relaxed">スパイシーで夏にぴったり。丁寧に煮込んだ伝統の味。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4.5 Coming Soon -->
+<section class="py-14 md:py-20 bg-warm-beige border-y-2 border-spanish-gold/30">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="font-eng tracking-[0.15em] text-spanish-red font-bold text-xs md:text-sm bg-spanish-gold/20 px-4 py-1 rounded-full uppercase">New Service Preview</span>
+      <h2 class="serif-eng text-4xl md:text-5xl font-bold mt-3">Coming Soon</h2>
+      <p class="text-gray-600 mt-2 text-sm md:text-base">お客様の「あったらいいな」をカタチに。<br class="sm:hidden">準備中の新メニュー＆サービスをご案内します。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto">
+      <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border-t-4 border-spanish-red flex flex-col justify-between gap-6">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-spanish-red text-white text-xs font-bold px-3 py-1 rounded-full">新メニュー開発中</span>
+            <i class="fas fa-utensils text-2xl text-spanish-gold"></i>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold mb-3">『はじめてのスペイン地中海体験コース』</h3>
+          <p class="text-sm text-spanish-red font-bold mb-4">「何を頼めばいいか分からない…」という方も安心！</p>
+          <p class="text-gray-600 text-sm leading-relaxed">スペイン料理が初めての方でも迷わず楽しめる特別スタータ―パック。看板メニューの「極上パエリア」「海老のアヒージョ」「自家製パン」「季節のタパス盛り合わせ」が一つになった、MITAD-Y-MITADの魅力を丸ごと堪能できる満足フルコースです。</p>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between gap-2">
+          <span class="text-xs text-gray-500 font-bold">移転オープン後に提供予定</span>
+          <span class="text-xs font-bold text-spanish-red">お一人様からご注文OK</span>
+        </div>
+      </div>
+      <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border-t-4 border-spanish-gold flex flex-col justify-between gap-6">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-spanish-gold text-deep-black text-xs font-bold px-3 py-1 rounded-full">Instagram連携案内</span>
+            <i class="fab fa-instagram text-2xl text-spanish-red"></i>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold mb-3">電話予約のカンタンガイド＆最新空席状況</h3>
+          <p class="text-sm text-yellow-700 font-bold mb-4">お電話の前にサッと確認！ピン留め＆ハイライトで公開中</p>
+          <p class="text-gray-600 text-sm leading-relaxed">お電話予約の際に「お伝えいただくとスムーズな項目（希望日時・人数・パエリアの事前ご注文・アレルギーの有無など）」をInstagramの<b>ピン留め投稿</b>および<b>ハイライト「お電話予約ガイド」</b>にてわかりやすくまとめております。ぜひチェックの上ご予約ください！</p>
+        </div>
+        <a href="https://www.instagram.com/mitadymitad_spain/" target="_blank" rel="noopener" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white text-center py-3.5 rounded-xl font-bold text-sm hover:opacity-90 active:opacity-80 transition flex items-center justify-center gap-2">
+          <i class="fab fa-instagram text-lg"></i><span>Instagramハイライトでガイドを見る</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Story -->
+<section id="story-section" class="relative py-20 md:py-32 text-white bg-cover bg-center md:bg-fixed" style="background-image:url('images/tapas.jpg')">
+  <div class="absolute inset-0 bg-black/70"></div>
+  <div class="container mx-auto px-5 relative z-10">
+    <div class="max-w-2xl bg-white/10 backdrop-blur-md p-7 sm:p-10 md:p-16 border border-white/20 rounded-2xl">
+      <span class="font-eng tracking-widest text-spanish-gold text-sm">OUR STORY</span>
+      <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 mb-6 md:mb-8">「半分ずつ」という名の店</h3>
+      <p class="leading-loose opacity-90 mb-6 text-sm sm:text-base">
+        店名「MITAD-Y-MITAD」はスペイン語で「半分ずつ」。<br>
+        拓郎の技術と貴子の感性、地域の食材とスペインの伝統、転居の想い、そして私たちとお客様。<br>
+        すべてが半分ずつ補い合い、一つの幸せな空間を作ることを願って名付けました。
+      </p>
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-px bg-spanish-gold"></div>
+        <span class="serif-eng italic">Takuro &amp; Takako Mizuno</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-deep-black text-white py-14 md:py-20" style="padding-bottom:max(3.5rem, env(safe-area-inset-bottom))">
+  <div class="container mx-auto px-5">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 mb-10 md:mb-16 border-b border-white/10 pb-10 md:pb-16">
+      <div>
+        <h4 class="serif-eng text-3xl md:text-4xl mb-5">MITAD-Y-MITAD</h4>
+        <p class="text-gray-400 leading-loose text-sm md:text-base">
+          〒020-0032 岩手県盛岡市夕顔瀬町23-4（移転予定）<br>
+          営業時間：ランチタイム12:00〜14:30 / ディナータイム17:00〜21:00<br>
+          定休日：日曜日・月曜日
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-3 md:gap-4">
+       
+        <img src="images/bread.jpg" alt="自家製パン" loading="lazy" class="rounded opacity-70 md:opacity-50 md:hover:opacity-100 transition duration-500 w-full h-28 md:h-32 object-cover">
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-xs md:text-sm">
+      &copy; 2025 MITAD-Y-MITAD SPAIN. Designed for passion.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('section, .menu-card').forEach(el => { el.classList.add('fade-in'); io.observe(el); });
+</script>
+</body>
+</html>
