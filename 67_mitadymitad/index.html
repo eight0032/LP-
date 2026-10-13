@@ -56,8 +56,8 @@ tailwind.config = {
     <p class="text-lg sm:text-xl md:text-3xl font-bold tracking-wider md:tracking-widest mb-10 leading-relaxed">
       盛岡、材木町の路地裏に<br class="sm:hidden">息づく情熱。
     </p>
-    <a href="#cta-main" class="cta-button inline-flex items-center px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-xl shadow-2xl border-2 border-white/20">
-      <span class="mr-3">パエリアのご予約はこちら</span><i class="fas fa-arrow-right"></i>
+    <a href="tel:0196527113" class="cta-button inline-flex items-center px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-xl shadow-2xl border-2 border-white/20">
+      <span class="mr-3">パエリアのご予約はこちら</span><i class="fas fa-phone"></i>
     </a>
   </div>
   <div class="paella-circle w-40 h-40 md:w-64 md:h-64 -top-10 -left-10 opacity-20"></div>
@@ -201,6 +201,7 @@ tailwind.config = {
 <footer class="bg-deep-black text-white py-14 md:py-20" style="padding-bottom:max(3.5rem, env(safe-area-inset-bottom))">
   <div class="container mx-auto px-5">
     <div class="grid md:grid-cols-2 gap-10 md:gap-16 mb-10 md:mb-16 border-b border-white/10 pb-10 md:pb-16">
+      <!-- 左カラム：店舗情報 -->
       <div>
         <h4 class="serif-eng text-3xl md:text-4xl mb-5">MITAD-Y-MITAD</h4>
         <p class="text-gray-400 leading-loose text-sm md:text-base">
@@ -209,9 +210,11 @@ tailwind.config = {
           定休日：日曜日・月曜日
         </p>
       </div>
-      <div class="grid grid-cols-2 gap-3 md:gap-4">
-       
-        <img src="images/bread.jpg" alt="自家製パン" loading="lazy" class="rounded opacity-70 md:opacity-50 md:hover:opacity-100 transition duration-500 w-full h-28 md:h-32 object-cover">
+      <!-- 右カラム：Googleマップ -->
+      <div>
+        <div class="w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.3381193162895!2d141.13069117486523!3d39.709583398376935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85763705a32109%3A0xc3081c3d5c5537a3!2zTUlUQUQtWS1NSVRBRCAt44Of44K_IOOCpCDjg5_jgr8t!5e0!3m2!1sja!2sjp!4v1791857240353!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
       </div>
     </div>
     <div class="text-center text-gray-500 text-xs md:text-sm">

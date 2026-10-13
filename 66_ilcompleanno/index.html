@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>il compleanno | 盛岡・内丸 街のイタリアン食堂</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { wine: '#5c161a', 'wine-dark': '#4a1114', gold: '#c5a059', paper: '#f9f7f2' },
+    fontFamily: {
+      sans: ['"Noto Sans JP"', 'sans-serif'],
+      serif: ['"Noto Serif JP"', 'serif'],
+      eng: ['"Playfair Display"', 'serif']
+    }
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .hero { min-height: 100vh; min-height: 100svh; }
+  .v-text { writing-mode: vertical-rl; letter-spacing: .5em; }
+  .fade-up { animation: fadeUp 1.2s ease-out both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .fade-up { animation: none; } }
+ 
+</style>
+</head>
+<body class="bg-paper font-sans text-[#2d2d2d] leading-relaxed antialiased">
+
+<!-- 1. FV -->
+<header class="hero relative flex items-center justify-center overflow-hidden">
+   <img src="images/sand.jpg" alt="" class="absolute inset-0 w-full h-full object-cover"> 
+  <div class="absolute inset-0 ph-food" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 flex flex-col md:flex-row items-center md:justify-between text-white text-center md:text-left">
+    <div class="md:order-2 fade-up">
+      <p class="font-eng italic text-xl md:text-3xl mb-4 border-b border-gold inline-block">il compleanno</p>
+      <h1 class="font-serif font-bold text-[2.5rem] sm:text-5xl md:text-7xl leading-tight mb-6">
+        昼を<span class="text-gold">、</span><br>摘む贅沢<span class="text-gold">。</span>
+      </h1>
+      <p class="text-base md:text-xl font-light tracking-widest opacity-90">
+        盛岡・内丸で出会う、<br>“生きたワイン”と季節のイタリアン食堂
+      </p>
+    </div>
+    <div class="hidden md:block md:order-1 fade-up" style="animation-delay:.3s">
+      <p class="v-text font-serif text-xl border-l border-gold pl-4 py-8 leading-none">日曜限定<br>特別なサンドイッチ</p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-white text-center opacity-70">
+    <p class="font-eng text-xs tracking-widest mb-2">SCROLL</p>
+    <div class="w-px h-12 bg-gold mx-auto"></div>
+  </div>
+</header>
+
+<!-- 2. CTA -->
+<section class="relative -mt-8 md:-mt-12 z-20 px-4">
+  <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-12 shadow-2xl text-center border-t-4 border-gold">
+    <h2 class="font-serif text-xl sm:text-2xl md:text-3xl mb-5 text-wine">最新のラインナップを愉しむ</h2>
+    <p class="text-gray-600 mb-8 text-sm md:text-base leading-relaxed">
+      人気のサンドイッチやデリは数に限りがございます。<br class="hidden sm:block">
+      本日のお品書きや営業状況は、Instagramにて毎日更新しております。
+    </p>
+    <a href="https://instagram.com/ilcompleanno?igshid=YmMyMTA2M2Y=" target="_blank" rel="noopener"
+       class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-wine hover:bg-wine-dark text-white rounded-full text-base sm:text-lg font-bold transition-all duration-500 shadow-lg hover:tracking-wider">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      最新情報を公式Instagramで見る
+    </a>
+  </div>
+</section>
+
+<!-- 3. コンセプト -->
+<section class="py-16 md:py-24 px-6 overflow-hidden">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+    <div class="w-full md:w-1/2 relative">
+      <!-- 動画部分を削除し、通常の画像用エリアに変更 -->
+      <div class="aspect-[4/5] rounded-sm shadow-xl relative overflow-hidden">
+        <img src="images/pasta.jpg" alt="コンセプトイメージ" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden md:block absolute -bottom-6 -right-6 w-32 h-32 bg-gold/10 -z-10"></div>
+    </div>
+    <div class="w-full md:w-1/2">
+      <h3 class="font-eng text-gold text-lg md:text-xl mb-2 italic">Story &amp; Philosophy</h3>
+      <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-wine mb-6 md:mb-8 leading-snug">素材の息吹を、<br>そのままテーブルへ。</h2>
+      <p class="text-gray-700 mb-8 leading-loose text-sm md:text-base">
+        素材から向き合い、料理人目線で仕入れる本格小料理。<br>
+        地産地消にこだわり、その時一番美味しいものを。<br>
+        il compleannoが紡ぐ、特別な時間と空気感をお届けします。
+      </p>
+      <div class="grid grid-cols-2 gap-6 md:gap-8 text-center">
+        <div>
+          <p class="font-serif text-2xl md:text-3xl text-gold mb-1">16-16</p>
+          <p class="text-xs text-gray-500">Uchimaru, Morioka</p>
+        </div>
+        <div>
+          <p class="font-serif text-2xl md:text-3xl text-gold mb-1">019-625-5351</p>
+          <p class="text-xs text-gray-500">Shop Phone</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 自己紹介 -->
+<section class="py-16 md:py-24 bg-white/50 border-y border-gold/20">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="font-serif text-2xl md:text-3xl text-wine mb-4 italic">“街のイタリアン食堂”として</h2>
+      <div class="w-12 h-px bg-gold mx-auto"></div>
+    </div>
+    <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+      <div class="w-full max-w-sm md:max-w-none md:w-2/5">
+        <div class="p-2 border border-gold">
+          <!-- プレースホルダーを削除し、画像タグに変更 -->
+          <div class="aspect-square overflow-hidden">
+            <img src="images/chef.png" alt="店主・オーナーの肖像" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-3/5">
+        <p class="font-serif text-lg md:text-xl mb-6">かしこまりすぎない、<br class="md:hidden">でも妥協のない本物の味を。</p>
+        <p class="text-gray-600 mb-8 leading-loose text-sm md:text-base">
+          岩手県盛岡市、内丸。夫婦で営むこの場所は、常連さんも、ふらりと立ち寄った一見さんも、誰もが同じように温かい時間を過ごせる場所です。<br><br>
+          特別な日だけではなく、日常のふとした瞬間に思い出していただけるような、そんな“街の食堂”でありたいと考えています。
+        </p>
+        <div class="bg-wine/5 p-5 md:p-6 border-l-2 border-wine">
+          <p class="text-wine font-bold mb-2 uppercase text-sm tracking-widest">Our Strength</p>
+          <ul class="text-sm space-y-2 text-gray-700">
+            <li>・小さなカウンターで愉しむ“生きたワイン”</li>
+            <li>・テイクアウトもOK、こだわりのデリと惣菜</li>
+            <li>・素材を活かした料理人目線の本格イタリアン</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 悩み・ベネフィット -->
+<section class="py-16 md:py-24 bg-wine text-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="font-serif text-2xl md:text-4xl mb-10 md:mb-12 italic">日常に、小さなイタリアを。</h2>
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+      <div class="text-left space-y-6 md:space-y-8">
+        <div class="flex gap-4"><span class="font-eng text-gold text-2xl italic shrink-0">01.</span><p class="text-base md:text-lg opacity-80">日曜日に開いている、美味しいお店が見つからない時。</p></div>
+        <div class="flex gap-4"><span class="font-eng text-gold text-2xl italic shrink-0">02.</span><p class="text-base md:text-lg opacity-80">ワインを学びたいけれど、敷居の高さを感じている時。</p></div>
+        <div class="flex gap-4"><span class="font-eng text-gold text-2xl italic shrink-0">03.</span><p class="text-base md:text-lg opacity-80">お家でも、プロの味を愉しみたい時。</p></div>
+      </div>
+      <div class="bg-white/10 p-6 md:p-8 rounded-sm border border-white/20 flex items-center justify-center">
+        <p class="font-serif text-xl md:text-2xl leading-relaxed text-gold">il compleannoは<br>そんなあなたの<br>「間違いない」場所になります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- クチコミ -->
+<section class="py-16 md:py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-12 gap-2">
+      <div>
+        <h2 class="font-eng text-gold text-lg md:text-xl italic">Review</h2>
+        <h3 class="font-serif text-2xl md:text-3xl text-wine">お客様の声</h3>
+      </div>
+      <div class="hidden md:block w-1/2 h-px bg-gold/30 mb-2"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+      <figure class="bg-white p-6 md:p-8 shadow-md relative">
+        <div class="text-gold text-sm mb-4 tracking-widest" aria-label="星5つ">★★★★★</div>
+        <blockquote class="text-gray-700 italic leading-relaxed text-sm md:text-base">
+          「素敵なご夫婦の可愛いお店♡ 選んで頂いたワインもお惣菜やサンドイッチもどれも美味しくてお気に入りのお店になりました！ 初心者でも歓迎してくれて嬉しかったです」
+        </blockquote>
+      </figure>
+      <figure class="bg-white p-6 md:p-8 shadow-md relative">
+        <div class="text-gold text-sm mb-4 tracking-widest" aria-label="星4つ">★★★★<span class="opacity-30">★</span></div>
+        <blockquote class="text-gray-700 italic leading-relaxed text-sm md:text-base">
+          「日曜日、近くの飲食店が軒並み定休日となっておりフラフラ歩いていたら開いていました。日曜限定のサンドイッチや、種類豊富なサラダ等が並んでいました。店員さんも話しかけやすい雰囲気でした。」
+        </blockquote>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 特典 -->
+<section class="py-16 md:py-24 px-6 bg-stone-100">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="relative px-6 sm:px-10 py-12 md:py-16 border border-gold">
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-stone-100 px-4 font-eng text-gold tracking-widest uppercase whitespace-nowrap text-sm md:text-base">Special Benefit</div>
+      <h2 class="font-serif text-2xl md:text-3xl text-wine mb-6">ボトルシェアの愉しみ</h2>
+      <p class="text-base md:text-lg text-gray-700 leading-loose mb-8">
+        店頭販売の厳選ワインを<br>
+        <span class="text-2xl md:text-3xl font-bold text-gold mx-2">+2,000円</span><br>
+        のイートインチャージで、店内でそのままお愉しみいただけます。
+      </p>
+      <p class="text-sm text-gray-500">お好きなワインを囲んで、ゆったりとした時間を。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 px-6 bg-white border-t border-gold/20">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="inline-block px-4 py-1 bg-gold/10 text-gold font-bold text-xs md:text-sm tracking-widest uppercase mb-3">New Service Project</span>
+      <h2 class="font-serif text-3xl md:text-4xl text-wine mb-4">Coming Soon</h2>
+      <p class="text-gray-600 text-sm md:text-base">「あったらいいな」を形に。新しいおうちディナーの提案です。</p>
+      <div class="w-12 h-px bg-gold mx-auto mt-6"></div>
+    </div>
+    <div class="bg-wine/5 border border-gold/30 p-6 md:p-12 rounded-sm">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center">
+        <div class="w-full md:w-1/2">
+          <!-- プレースホルダーを削除し、画像タグに変更 -->
+          <div class="aspect-[4/3] border border-gold/40 overflow-hidden">
+            <img src="images/wine.png" alt="お惣菜とワインのペアリングイメージ" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 space-y-5">
+          <div class="inline-block px-3 py-1 bg-wine text-white text-xs font-bold tracking-wider">順次スタート予定</div>
+          <h3 class="font-serif text-xl md:text-2xl text-wine leading-snug">「お惣菜×厳選ワイン」<br>シェフのおすすめペアリング提案</h3>
+          <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+            「どの惣菜にどのワインを合わせたらいい？」そんなお悩みを解決！<br>
+            店頭のショーケースやワインコーナーに、相性抜群の組み合わせをひと目で学べる<strong>「おすすめペアリングPOP」</strong>を順次掲示いたします。
+          </p>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex gap-3"><span class="text-gold">🍷</span><span>テイクアウト惣菜とワインの最高の組み合わせがすぐわかる</span></li>
+            <li class="flex gap-3"><span class="text-gold">🍴</span><span>特別な日の晩酌や、ホームパーティーの持ち寄りに大活躍</span></li>
+          </ul>
+          <p class="text-xs text-gray-500 italic">※店頭POPおよびInstagramの投稿にて、毎月のおすすめペアリングをご紹介予定です。お楽しみに！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 最終CTA & インフォ -->
+<section class="py-16 md:py-24 px-6 bg-wine text-white text-center relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+  <div class="max-w-4xl mx-auto relative z-10">
+    <h2 class="font-serif text-2xl sm:text-3xl md:text-5xl mb-10 md:mb-12 leading-tight">内丸の小さなカウンターで、<br>お待ちしております。</h2>
+    <a href="https://instagram.com/ilcompleanno?igshid=YmMyMTA2M2Y=" target="_blank" rel="noopener"
+       class="inline-block w-full sm:w-auto px-8 sm:px-16 py-4 sm:py-6 border-2 border-gold text-gold hover:bg-gold hover:text-wine rounded-sm text-base sm:text-xl font-bold transition-all duration-500 mb-14 md:mb-20 uppercase tracking-widest">
+      Visit our Instagram
+    </a>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-12 text-left border-t border-white/20 pt-12 md:pt-16">
+      <div>
+        <h3 class="font-eng text-2xl mb-6 italic">Information</h3>
+        <div class="space-y-4 text-sm opacity-90">
+          <p class="flex gap-3"><span aria-hidden="true">📞</span><a href="tel:0196255351" class="underline underline-offset-4">019-625-5351</a></p>
+          <p class="flex gap-3"><span aria-hidden="true">📍</span><span>〒020-0023 岩手県盛岡市内丸16-16 大手先ビル</span></p>
+          <p class="flex gap-3"><span aria-hidden="true">🕒</span><span>定休日：月曜日・火曜日</span></p>
+        </div>
+      </div>
+      <!-- Googleマップの埋め込み -->
+      <div class="h-56 md:h-64 rounded-sm overflow-hidden border border-white/20">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.5663933410146!2d141.151671874865!3d39.70445219868474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85762fdc7b8fe5%3A0xf7be466e582ec0d7!2sil%20compleanno!5e0!3m2!1sja!2sjp!4v1791859044351!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 bg-wine text-white/40 text-center text-xs sm:text-sm border-t border-white/10">
+  <p class="font-eng tracking-widest">il compleanno &copy; 2024. Morioka, Iwate.</p>
+</footer>
+
+</body>
+</html>
