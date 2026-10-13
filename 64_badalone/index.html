@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Badalone | 岩手・花巻の旬を味わう完全予約制レストラン</title>
+<meta name="description" content="岩手・花巻の旬の食材を一皿ずつ丁寧に。昼・夜 各1組〜2組限定、完全予約制のレストランBadalone。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { gold: '#c2a371', dark: '#0a0a0a', 'dark-wood': '#1a1510', washi: '#f9f7f2' },
+      fontFamily: { serif: ['"Shippori Mincho"', 'serif'], display: ['"Noto Serif JP"', 'serif'] }
+    } }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Shippori Mincho', serif; background: #0a0a0a; color: #e5e5e5; padding-bottom: env(safe-area-inset-bottom); }
+  .serif-900 { font-family: 'Noto Serif JP', serif; font-weight: 900; }
+  .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+  /* スマホでは横書き、PCでは縦書き */
+  @media (min-width: 768px) { .md-vertical { writing-mode: vertical-rl; text-orientation: mixed; } }
+  .hero-gradient { background: linear-gradient(to bottom, rgba(10,10,10,.2) 0%, rgba(10,10,10,.8) 80%, #0a0a0a 100%); }
+  .cta-gold { background: linear-gradient(45deg, #c2a371 0%, #e5cfab 50%, #c2a371 100%); color: #1a1510; text-shadow: 0 1px 0 rgba(255,255,255,.3); }
+  .washi-bg { background-image: url('https://www.transparenttextures.com/patterns/p6.png'); }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fadeIn { animation: fadeInUp 1.2s ease forwards; }
+  @media (prefers-reduced-motion: reduce) { .animate-fadeIn { animation: none; } }
+</style>
+</head>
+<body class="leading-relaxed antialiased">
+
+<!-- FV -->
+<section class="relative min-h-[100svh] flex items-center justify-end overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="images/roast.png" alt="白金豚のロースト" class="w-full h-full object-cover scale-110">
+    <div class="absolute inset-0 hero-gradient"></div>
+  </div>
+  <div class="relative z-10 mr-[8%] md:mr-[10%] py-16 flex items-center animate-fadeIn">
+    <div class="vertical-text text-white">
+      <h1 class="text-4xl md:text-7xl serif-900 tracking-[0.2em] leading-loose">
+        一期一会の<span class="text-gold">美食体験</span>
+      </h1>
+      <p class="text-base md:text-2xl mt-6 md:mt-8 tracking-[0.4em] md:tracking-[0.5em] opacity-90 border-r border-gold pr-4">
+        岩手・花巻の旬を綴る、<br>一日二組だけの贅。
+      </p>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-center">
+    <p class="text-[10px] md:text-xs tracking-[0.3em] uppercase mb-2 text-gold">Badalone Premium Dining</p>
+    <div class="w-px h-12 md:h-16 bg-gradient-to-b from-transparent to-gold mx-auto"></div>
+  </div>
+</section>
+
+<!-- 限定告知 -->
+<section class="py-10 md:py-12 bg-dark-wood border-y border-[#332a20]">
+  <div class="max-w-4xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left">
+    <div class="flex flex-col sm:flex-row items-center gap-3 md:gap-4">
+      <span class="bg-gold text-black px-4 py-1 text-sm font-bold">完全予約制</span>
+      <p class="text-base md:text-lg text-gold tracking-widest">昼・夜 各一組〜二組限定のご案内</p>
+    </div>
+    <p class="text-xs md:text-sm opacity-70">※旬の食材のみを使用するため、前日までのご予約をお願いしております。</p>
+  </div>
+</section>
+
+<!-- CTA 1 -->
+<section class="py-16 md:py-20 washi-bg bg-white text-black text-center px-5">
+  <div class="max-w-3xl mx-auto border border-gray-200 px-5 pt-12 pb-8 md:p-10 relative">
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white px-4 md:px-6 text-gold serif-900 text-base md:text-xl whitespace-nowrap">WEB限定提示特典</div>
+    <h2 class="text-xl md:text-3xl font-bold mb-5 md:mb-6 serif-900 leading-snug">ソムリエ厳選の「岩手の醸酒」で乾杯を。</h2>
+    <p class="mb-8 md:mb-10 text-gray-600 leading-loose text-sm md:text-base">
+      ご注文時にこの画面をスタッフへご提示いただいた方へ、ディナーコースの始まりに相応しい<br class="hidden md:block">
+      <span class="border-b-2 border-gold">「岩手の地酒または希少ワイン1杯」</span>をサービスいたします。
+    </p>
+    <div class="block md:inline-block w-full md:w-auto px-8 md:px-16 py-5 md:py-6 cta-gold font-bold text-lg md:text-xl rounded shadow-2xl">
+      ご注文時にこの画面をご提示ください
+    </div>
+    <p class="mt-5 text-xs text-gray-400">※ご入店時またはご注文時に、スタッフへこちらの画面をお見せください。</p>
+  </div>
+</section>
+
+<!-- 世界観 -->
+<section class="py-16 md:py-24 bg-dark text-white overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="relative">
+        <div class="hidden md:block absolute -top-10 -left-10 w-40 h-40 border-l border-t border-gold opacity-30"></div>
+        <div class="relative aspect-[4/3] md:aspect-[4/5] bg-black shadow-2xl">
+          <img src="images/chef.png" alt="調理シーン" class="w-full h-full object-cover opacity-80" loading="lazy">
+        </div>
+      </div>
+      <div class="md-vertical md:h-[600px] md:text-left">
+        <h2 class="text-2xl md:text-5xl serif-900 leading-loose text-gold">
+          岩手の土が育み、<br>夫婦の技が磨く。
+        </h2>
+        <p class="text-base md:text-lg mt-6 md:mt-12 leading-loose opacity-80">
+          白金豚の甘み、三陸の潮風、<br>
+          そして農家が手塩にかけた旬野菜。<br>
+          素材が教える「一番の食べ方」を<br>
+          一皿ずつ、丁寧に、真っ直ぐに。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 作り手 -->
+<section class="py-16 md:py-24 washi-bg bg-washi text-black">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <p class="text-gold tracking-[0.3em] mb-2 uppercase text-sm">Craftsmanship</p>
+      <h2 class="text-3xl md:text-4xl serif-900">作り手のご紹介</h2>
+    </div>
+    <div class="grid md:grid-cols-2 shadow-2xl overflow-hidden rounded-lg">
+      <div class="bg-white p-7 md:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-100">
+        <span class="text-gold text-xs tracking-widest mb-3 md:mb-4 font-bold">Chef</span>
+        <h3 class="text-xl md:text-2xl mb-4 serif-900">清水 正康 <span class="block sm:inline text-sm font-normal opacity-60">Masayasu Shimizu</span></h3>
+        <p class="text-sm leading-loose text-gray-700">
+          東京のイタリアンで研鑽を積み、2013年独立。化学専攻の背景を持つ彼が追求するのは、素材のポテンシャルを極限まで高める「調理の最適解」。岩手の地で、東京の感性と地元の魅力を融合させます。
+        </p>
+      </div>
+      <div class="bg-[#fcfaf7] p-7 md:p-12 flex flex-col justify-center">
+        <span class="text-gold text-xs tracking-widest mb-3 md:mb-4 font-bold">Sommelier &amp; Sake Diploma</span>
+        <h3 class="text-xl md:text-2xl mb-4 serif-900">清水 弥江 <span class="block sm:inline text-sm font-normal opacity-60">Yaie Shimizu</span></h3>
+        <p class="text-sm leading-loose text-gray-700">
+          日本ソムリエ協会岩手支部副支部長。社会福祉・心理学の視点を取り入れた接客は、心地よい間と専門的な提案を両立。岩手の地酒やナチュラルワインから、お客様の好みに沿った最高の一杯を導き出します。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- クチコミ -->
+<section class="py-16 md:py-24 bg-dark text-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="text-center text-2xl md:text-3xl serif-900 mb-10 md:mb-16 text-gold">お客様との一期一会</h2>
+    <div class="grid md:grid-cols-3 gap-5 md:gap-8">
+      <div class="p-6 md:p-8 border border-gray-800 bg-white/5">
+        <div class="text-gold mb-4" aria-label="5点満点中5点">★★★★★</div>
+        <p class="text-sm leading-loose italic opacity-80">「地産地消にこだわり、食材の生産農家へ注文をせず、勧めてもらった物を受け入れる…食の一期一会がヒトサラ毎に表現されていました。味付けも洗練されていて、申し分なしでした。」</p>
+        <p class="mt-5 text-xs text-gold">— 50代 男性</p>
+      </div>
+      <div class="p-6 md:p-8 border border-gray-800 bg-white/5">
+        <div class="text-gold mb-4" aria-label="5点満点中5点">★★★★★</div>
+        <p class="text-sm leading-loose italic opacity-80">「入籍日のお祝いとして利用。岩手の食を堪能できるコースはどれも美味しく、食材のお話もお聞きできて素敵な時間を過ごせました。花巻にこんなに素敵な場所がある事がとても嬉しいです。」</p>
+        <p class="mt-5 text-xs text-gold">— 30代 女性</p>
+      </div>
+      <div class="p-6 md:p-8 border border-gray-800 bg-white/5">
+        <div class="text-gold mb-4" aria-label="5点満点中4点">★★★★☆</div>
+        <p class="text-sm leading-loose italic opacity-80">「食材にこだわりを感じ、店の雰囲気も良い。シェフはシャイで気さくな人で料理を愛しているのが伝わりました。カボチャニョッキと短角牛、白金豚の粕漬けベーコンが特に良かったです。」</p>
+        <p class="mt-5 text-xs text-gold">— 40代 カップル</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-[#14100c] border-y border-[#2a221a] text-white">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="inline-block px-4 py-1 border border-gold text-gold text-xs tracking-[0.3em] uppercase mb-3">New Hospitality</span>
+      <h2 class="text-3xl md:text-5xl serif-900 text-gold tracking-widest">coming soon</h2>
+      <p class="text-sm text-gray-400 mt-4 tracking-wider">より深く食材と出逢い、物語を味わっていただくための新しい取り組み</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5 md:gap-10">
+      <div class="p-6 md:p-8 border border-[#332a20] bg-black/40 rounded-sm relative overflow-hidden transition-colors hover:border-gold">
+        <div class="absolute -top-3 -right-3 text-6xl font-bold text-white/5 serif-900">01</div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-2 h-2 bg-gold rounded-full shrink-0"></span>
+          <h3 class="text-lg md:text-xl serif-900 text-gold">食材のヒストリー &amp; 生産者ストーリー</h3>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-300">
+          店内にひっそりと掲示されるストーリーポップ。岩手の風土が育んだ一皿の素材について、生産者様の人柄やこだわり、その日の食材が届くまでの背景を写真と言葉で紐解きます。お料理を待つ時間も、豊かな対話へと変えていきます。
+        </p>
+      </div>
+      <div class="p-6 md:p-8 border border-[#332a20] bg-black/40 rounded-sm relative overflow-hidden transition-colors hover:border-gold">
+        <div class="absolute -top-3 -right-3 text-6xl font-bold text-white/5 serif-900">02</div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-2 h-2 bg-gold rounded-full shrink-0"></span>
+          <h3 class="text-lg md:text-xl serif-900 text-gold">シェフより 季節のメッセージカード</h3>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-300">
+          コース料理をお召し上がりになるテーブルには、その日のメニューと共にシェフからのメッセージカードを添えて。本日お届けするコースのテーマや、ペアリングの意図、岩手の季節の切り取り方を一筆認めてお届けいたします。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 特典 -->
+<section class="py-16 md:py-24 washi-bg bg-white text-black px-5">
+  <div class="max-w-4xl mx-auto border-4 border-double border-gold p-6 md:p-16 text-center">
+    <h2 class="text-2xl md:text-3xl serif-900 mb-6 md:mb-8 text-gold uppercase tracking-widest">Celebration Offer</h2>
+    <h3 class="text-xl md:text-2xl mb-6">大切な記念日には、心ばかりの祝杯を。</h3>
+    <p class="text-gray-600 leading-loose mb-8 md:mb-10 text-sm md:text-base">
+      誕生日、結婚記念日、特別な御祝い…。<br>
+      ご予約時にその旨をお伝えいただいたお客様には、<br>
+      シェフ特製の「アニバーサリー・ドルチェプレート」を<br>
+      無料にてご用意させていただきます。
+    </p>
+    <div class="w-32 h-px bg-gold mx-auto mb-8 md:mb-10"></div>
+    <p class="serif-900 text-lg md:text-xl tracking-widest">花巻の静寂の中で、記憶に残るひとときを。</p>
+  </div>
+</section>
+
+<!-- CTA 2 -->
+<section class="py-20 md:py-32 bg-dark-wood text-white text-center relative overflow-hidden">
+  <div class="absolute inset-0 opacity-40">
+    <img src="images/pasta.jpg" alt="店内" class="w-full h-full object-cover" loading="lazy">
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
+  <div class="relative z-10 max-w-3xl mx-auto px-5">
+    <h2 class="text-2xl md:text-5xl serif-900 mb-8 md:mb-10 leading-snug text-gold">今月、最高のヒトサラを。<br>ご予約を心よりお待ちしております。</h2>
+    <div class="flex flex-col md:flex-row gap-4 md:gap-6 justify-center mb-12 md:mb-16">
+      <a href="tel:0198-xxx-xxxx" class="block w-full md:w-auto px-8 md:px-16 py-5 md:py-6 border-2 border-gold text-gold font-bold text-lg md:text-xl rounded hover:bg-gold hover:text-black transition-all">
+        お電話でのご予約
+      </a>
+    </div>
+    <div class="space-y-2 md:space-y-3 text-white">
+      <p class="text-xl md:text-2xl serif-900 text-gold mb-4">Badalone (バダローネ)</p>
+      <p class="text-base md:text-lg tracking-wider">〒025-0092 岩手県花巻市大通り1丁目5-12</p>
+      <p class="text-base md:text-lg tracking-wider">昼：1組（12:00〜） / 夜：1〜2組（18:00〜22:00）</p>
+      <p class="text-base md:text-lg tracking-wider">完全予約制 / 水曜定休</p>
+    </div>
+
+    <!-- Google Map 埋め込み -->
+    <div class="mt-8 md:mt-10 w-full overflow-hidden rounded-lg shadow-xl border border-gray-700">
+      <div class="relative w-full aspect-[16/9] md:aspect-[21/9]">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083.454658194424!2d141.10990557484635!3d39.39121881741778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f67414a653449%3A0x2caa0bd3744589b5!2sBadalone!5e0!3m2!1sja!2sjp!4v1791869342147!5m2!1sja!2sjp" class="absolute top-0 left-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+
+    <div class="mt-10 md:mt-12 flex justify-center gap-8">
+      <a href="https://www.instagram.com/badalone_/" class="text-white hover:text-gold transition-colors border-b border-transparent hover:border-gold py-2">Instagram</a>
+      <a href="http://badalone.jp/" class="text-white hover:text-gold transition-colors border-b border-transparent hover:border-gold py-2">Official Site</a>
+    </div>
+  </div>
+</section>
+
+<footer class="py-8 bg-black text-center text-xs tracking-widest opacity-40">
+  &copy; 2024 Badalone. All Rights Reserved.
+</footer>
+
+</body>
+</html>
