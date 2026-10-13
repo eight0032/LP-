@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>プチコレット | 岩手県北上市の洋食レストラン</title>
+<meta name="description" content="北上で25年、愛され続けるカジュアル洋食。三陸の幸と地元の旬を、ふわトロオムライスで。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#e67e22', secondary: '#f39c12', cream: '#fffaf5', ink: '#4a3c31' },
+        fontFamily: {
+          sans: ['"Noto Sans JP"', 'sans-serif'],
+          serif: ['"Shippori Mincho"', 'serif'],
+          hand: ['Caveat', 'cursive']
+        },
+        keyframes: {
+          fadeIn: { from: { opacity: 0, transform: 'translateY(12px)' }, to: { opacity: 1, transform: 'none' } },
+          floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } }
+        },
+        animation: { fadeIn: 'fadeIn 1s ease-out forwards', floaty: 'floaty 3s ease-in-out infinite' }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+  body { background: #fffaf5; background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png"); }
+  h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+  .brush::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 8px; background: rgba(243,156,18,.3); border-radius: 50%; z-index: -1; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s, transform .8s; }
+  .reveal.show { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .animate-floaty, .animate-fadeIn { animation: none; opacity: 1; }
+  }
+</style>
+</head>
+<body class="font-sans text-ink antialiased pb-24 md:pb-0">
+
+<!-- ヒーロー -->
+<header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="images/omurice.jpg"
+         alt="プチコレットのオムライス" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/60"></div>
+  </div>
+
+  <div class="relative z-10 text-center px-5 py-16 opacity-0 animate-fadeIn">
+    <span class="font-hand text-2xl sm:text-3xl md:text-4xl text-secondary block mb-2">Welcome to Petty Colette</span>
+    <p class="text-white tracking-[0.15em] sm:tracking-[0.3em] text-xs sm:text-sm md:text-base font-bold mb-6">北上で25年、愛され続けるカジュアル洋食</p>
+
+    <h1 class="text-white font-bold mb-8 leading-tight drop-shadow-lg text-4xl sm:text-6xl md:text-8xl">
+      <span class="text-lg sm:text-2xl md:text-4xl block mb-3 font-normal">三陸の幸と地元の旬を。</span>
+      至福の<span class="text-secondary">ふわトロ</span><br>オムライス
+    </h1>
+
+    <div class="flex flex-col items-center gap-4">
+      <a href="#cta" class="bg-primary hover:bg-orange-600 text-white text-lg sm:text-xl font-bold px-8 sm:px-12 py-4 sm:py-5 rounded-full shadow-2xl transition active:scale-95">
+        お席のご予約はこちら <i class="fas fa-chevron-right ml-2 text-sm"></i>
+      </a>
+      <p class="text-white/90 text-xs sm:text-sm flex items-center gap-2">
+        <i class="fas fa-map-marker-alt"></i> 北上駅から車で5分 / 駐車場完備
+      </p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white opacity-70 animate-bounce hidden sm:block">
+    <p class="text-[10px] tracking-widest uppercase mb-2">Scroll</p>
+    <div class="w-px h-10 bg-white mx-auto"></div>
+  </div>
+</header>
+
+<!-- 予約CTA -->
+<section id="cta" class="py-12 md:py-16 bg-white relative z-20 shadow-xl">
+  <div class="container mx-auto px-5 max-w-4xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+    <div class="text-center md:text-left">
+      <h2 class="text-xl sm:text-2xl font-bold mb-2">今すぐ、至福のひとときを予約する</h2>
+      <p class="text-gray-500 text-sm">お電話、またはホットペッパーにて承っております</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+      <a href="tel:0197643958" class="flex items-center justify-center gap-3 bg-white text-primary border-2 border-primary px-6 py-4 rounded-full font-bold text-lg sm:text-xl hover:bg-orange-50 transition-colors">
+        <i class="fas fa-phone-alt"></i> 019-764-3958
+      </a>
+      <a href="https://www.hotpepper.jp/strJ000275754/" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 bg-red-600 text-white px-6 py-4 rounded-full font-bold text-lg sm:text-xl hover:bg-red-700 transition-colors shadow-lg shadow-red-200">
+        <i class="fas fa-calendar-alt"></i> ネット予約
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="reveal py-16 md:py-24 overflow-hidden">
+  <div class="container mx-auto px-5 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    <div class="relative w-full lg:w-1/2">
+      <div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
+      <img src="images/soup.png" alt="プチコレットの空間"
+           loading="lazy" class="rounded-[2rem] shadow-2xl relative z-10 object-cover w-full aspect-[4/3] lg:aspect-[4/5]">
+      <div class="absolute -bottom-5 right-3 sm:-right-6 bg-white p-4 sm:p-6 rounded-2xl shadow-xl z-20">
+        <p class="text-primary font-bold text-base sm:text-lg">Since 1999</p>
+        <p class="text-xs text-gray-500">北上で愛されて四半世紀</p>
+      </div>
+    </div>
+
+    <div class="w-full lg:w-1/2">
+      <span class="text-secondary font-hand text-2xl sm:text-3xl block mb-2">Our Philosophy</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 leading-tight">
+        「素材」が語る、<br><span class="brush relative inline-block">飾らないごちそう。</span>
+      </h2>
+      <div class="space-y-5 text-gray-600 text-base sm:text-lg leading-relaxed">
+        <p>三陸の海が育んだ魚介、地元の農家さんが土からこだわった野菜。私たちの料理に欠かせないのは、岩手の豊かな大地と海の恵みです。</p>
+        <p>プチコレットが大切にしているのは、その「素材」の味を最大限に引き出すこと。25年変わらぬ想いで、一皿一皿、丁寧に心を込めてお作りしています。</p>
+        <div class="pt-4 border-t border-orange-100 flex items-center gap-4">
+          <div class="shrink-0 w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-primary text-xl"><i class="fas fa-utensils"></i></div>
+          <div>
+            <p class="font-bold text-gray-800">アットホームな清潔空間</p>
+            <p class="text-sm">ご家族、小さなお子様連れも歓迎です</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Signature -->
+<section class="reveal py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="text-primary font-bold text-sm uppercase">Signature Menu</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-2">看板メニュー、ふわトロオムライス。</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+      <div class="lg:text-right space-y-8 order-2 lg:order-1">
+        <div>
+          <h3 class="text-xl font-bold mb-2">厳選された地卵</h3>
+          <p class="text-gray-500">コク深く、鮮やかな黄色の地卵を贅沢に使用。プロの火加減で究極の食感へ。</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">秘伝のケチャップライス</h3>
+          <p class="text-gray-500">具材の旨味が凝縮されたライスは、卵との相性を計算し尽くした絶妙な味付け。</p>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2 max-w-sm mx-auto w-full">
+        <div class="animate-floaty">
+          <img src="images/omurice.jpg" alt="オムライス" loading="lazy"
+               class="w-full aspect-square object-cover rounded-full shadow-2xl border-8 border-white">
+        </div>
+      </div>
+
+      <div class="space-y-8 order-3">
+        <div>
+          <h3 class="text-xl font-bold mb-2">ボリューム満点</h3>
+          <p class="text-gray-500">「お腹いっぱい食べてほしい」という店主の想い。大満足のサイズ感です。</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">選べる楽しさ</h3>
+          <p class="text-gray-500">定番のケチャップから、デミグラスまで。その日の気分でお選びいただけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Course -->
+<section class="reveal py-16 md:py-24 bg-cream">
+  <div class="container mx-auto px-5">
+    <div class="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-12 gap-4">
+      <div>
+        <span class="text-secondary font-hand text-2xl">Menu &amp; Course</span>
+        <h2 class="text-3xl md:text-4xl font-bold">ランチコースのご紹介</h2>
+      </div>
+      <p class="text-gray-500 md:w-1/3">スープ、サラダ、デザートにコーヒーまで。日常に「ちょっとした贅沢」を添える、プチコースをご堪能ください。</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <!-- 1 -->
+      <article class="bg-white rounded-3xl overflow-hidden shadow-lg">
+        <div class="h-56 sm:h-64 overflow-hidden">
+          <img src="images/fish.png" alt="魚ランチ" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 sm:p-8">
+          <div class="flex justify-between items-start mb-3 gap-2">
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-800">お魚ランチ</h3>
+            <span class="text-primary font-bold whitespace-nowrap">¥2,200</span>
+          </div>
+          <p class="text-gray-600 mb-5 text-sm">三陸産の白身魚をパリッとソテー。バターとオリーブオイルの風味が香る、上品な一皿です。</p>
+          <p class="text-xs text-gray-400">スープ / サラダ / デザート / ドリンク</p>
+        </div>
+      </article>
+
+      <!-- 2 (人気) -->
+      <article class="bg-white rounded-3xl overflow-hidden shadow-lg border-2 border-primary relative lg:scale-105 z-10">
+        <div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full z-20">人気NO.1</div>
+        <div class="h-56 sm:h-64 overflow-hidden">
+          <img src="images/pork.png" alt="肉ランチ" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 sm:p-8">
+          <div class="flex justify-between items-start mb-3 gap-2">
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-800">ありすポークランチ</h3>
+            <span class="text-primary font-bold whitespace-nowrap">¥2,400</span>
+          </div>
+          <p class="text-gray-600 mb-5 text-sm">驚くほど柔らかな肉質。ジューシーなのに重くない、地元産「ありすポーク」を秘伝のタレで。</p>
+          <p class="text-xs text-gray-400">スープ / サラダ / デザート / ドリンク</p>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="bg-white rounded-3xl overflow-hidden shadow-lg md:col-span-2 lg:col-span-1">
+        <div class="h-56 sm:h-64 overflow-hidden">
+          <img src="images/taruto.jpg" alt="デザート" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6 sm:p-8">
+          <div class="flex justify-between items-start mb-3 gap-2">
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-800">パティシエ特製ケーキ</h3>
+            <span class="text-primary font-bold whitespace-nowrap">¥600〜</span>
+          </div>
+          <p class="text-gray-600 mb-5 text-sm">甘さ控えめで素材の味を活かしたケーキ。コーヒーとの相性抜群で、テイクアウトも人気です。</p>
+          <p class="text-xs text-gray-400">チーズ / ショコラ / 季節のフルーツ</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="reveal py-16 md:py-24 bg-cream border-y border-orange-100">
+  <div class="container mx-auto px-5 max-w-5xl">
+    <div class="text-center mb-10 md:mb-12">
+      <span class="inline-block bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-widest uppercase mb-3">Coming Soon</span>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">あればいいなを形に！<br class="sm:hidden">テイクアウトお弁当サービス準備中</h2>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-sm sm:text-base">「プチコレットの味をご自宅やオフィスでも楽しみたい」というたくさんのご要望にお応えし、特製テイクアウト弁当の提供を準備しております。</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 shadow-md border border-orange-100 relative overflow-hidden">
+        <div class="absolute top-3 -right-8 bg-secondary text-white text-[10px] font-bold px-8 py-1 rotate-45">NEW</div>
+        <div class="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center text-primary text-2xl mb-4"><i class="fas fa-box-open"></i></div>
+        <h3 class="text-xl font-bold mb-2">特製オムライス重</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">お店の味そのままに！冷めてもふわトロ感が楽しめる独自製法仕上げの贅沢オムライス弁当です。</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-md border border-orange-100">
+        <div class="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center text-primary text-2xl mb-4"><i class="fas fa-utensils"></i></div>
+        <h3 class="text-xl font-bold mb-2">ありすポークの贅沢重</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">地元ブランド豚「ありすポーク」のジューシーなソテーを豪快に乗せた、会議や特別な日のための満足弁当。</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-md border border-orange-100">
+        <div class="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center text-primary text-2xl mb-4"><i class="fas fa-wine-glass-alt"></i></div>
+        <h3 class="text-xl font-bold mb-2">洋食オードブルセット</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">三陸産魚介のポワレや手作り惣菜を詰め合わせた、ホームパーティーやご家族の集まりに最適な特製オードブル。</p>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center bg-white p-5 rounded-2xl shadow-sm border border-gray-100 max-w-xl mx-auto">
+      <p class="text-sm font-bold text-gray-700"><i class="fab fa-instagram text-pink-600 mr-2"></i>開始時期やメニュー詳細は公式Instagramにて順次お知らせいたします！</p>
+    </div>
+  </div>
+</section>
+
+<!-- Access / Info -->
+<section class="py-16 md:py-24 bg-[#3b2f27] text-white">
+  <div class="container mx-auto px-5 max-w-5xl">
+    <div class="text-center mb-10">
+      <span class="text-secondary font-hand text-2xl">Access</span>
+      <h2 class="text-3xl md:text-4xl font-bold">店舗情報</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
+      <div class="space-y-6">
+        <div class="flex gap-4">
+          <i class="fas fa-clock mt-1 text-secondary w-5 text-center"></i>
+          <div>
+            <p class="font-bold">営業時間 / 定休日</p>
+            <p>11:00〜14:50/17:00〜20：50</p>
+            <p class="text-red-300 font-bold">定休日：月曜日</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <i class="fas fa-map-marker-alt mt-1 text-secondary w-5 text-center"></i>
+          <div>
+            <p class="font-bold">住所</p>
+            <p>〒024-0022 岩手県北上市黒沢尻3丁目1-37</p>
+            <p class="text-sm text-white/70">北上駅から車で5分 / 駐車場完備</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <i class="fas fa-phone-alt mt-1 text-secondary w-5 text-center"></i>
+          <div>
+            <p class="font-bold">電話番号</p>
+            <a href="tel:0197643958" class="text-2xl sm:text-3xl font-bold">019-764-3958</a>
+          </div>
+        </div>
+        <div class="pt-2 flex gap-4">
+          <a href="https://www.instagram.com/petty_colette1030/" target="_blank" rel="noopener" aria-label="Instagram"
+             class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors"><i class="fab fa-instagram"></i></a>
+         
+        </div>
+      </div>
+
+      <div class="rounded-3xl overflow-hidden h-72 md:h-full md:min-h-[360px]">
+        <iframe title="プチコレットの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.4633216858694!2d141.12756087648354!3d39.278542924198124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f59f635f7957f%3A0xe74e92a83e070d6a!2z44CSMDI0LTAwMjIg5bKp5omL55yM5YyX5LiK5biC6buS5rKi5bC777yT5LiB55uu77yR4oiS77yT77yX!5e0!3m2!1sja!2sjp!4v1710000000000!5m2!1sja!2sjp"
+                width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <p class="mt-16 pt-6 border-t border-white/10 text-center text-xs sm:text-sm text-white/40">&copy; 2024 Petty Colette. Created for Japanese local flavors.</p>
+  </div>
+</section>
+
+<!-- スマホ用 固定CTA -->
+<div class="fixed inset-x-5 bottom-5 z-50 md:hidden" style="padding-bottom: env(safe-area-inset-bottom, 0px)">
+  <a href="tel:0197643958" class="flex items-center justify-center gap-3 bg-primary text-white p-4 rounded-full shadow-2xl font-bold text-lg active:scale-95 transition-transform">
+    <i class="fas fa-phone-alt"></i> お電話で予約する
+  </a>
+</div>
+
+<script>
+  // スクロール表示
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
