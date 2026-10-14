@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>リストランテカツヤマ | 宮古の恵みを一皿に込めて</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { gold: '#b38e44', cream: '#fdfcf9', sand: '#f9f7f2', ink: '#2c2c2c' },
+        fontFamily: {
+          serif: ['"Noto Serif JP"', 'serif'],
+          sans: ['"Noto Sans JP"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#fdfcf9; color:#2c2c2c; overflow-x:hidden; -webkit-text-size-adjust:100%; }
+  .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+  .bg-gold-gradient { background: linear-gradient(135deg,#b38e44 0%,#d4b57a 100%); }
+  .title-line::after { content:''; display:block; width:40px; height:1px; background:#b38e44; margin:1.25rem auto 0; }
+  /* パララックスはPC(ホバー可能な大画面)のみ。iOS等では fixed が崩れるため無効化 */
+  .parallax { background-size:cover; background-position:center; }
+  @media (min-width:1024px) and (hover:hover) { .parallax { background-attachment:fixed; } }
+  .safe-bottom { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.25rem); }
+  @media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body class="font-sans leading-relaxed antialiased">
+
+<!-- ヒーロー -->
+<header class="relative min-h-[85svh] md:min-h-screen flex items-center overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="images/main.png" alt="宮古の新鮮なパスタ" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 py-20 text-white flex items-center justify-between">
+    <div class="max-w-2xl">
+      <span class="inline-block border-l-2 border-gold pl-3 text-gold tracking-[0.2em] text-xs sm:text-sm mb-5 font-serif">SINCE 19XX | MIYAKO, IWATE</span>
+      <h1 class="font-serif font-semibold text-[2rem] leading-[1.4] sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.3] mb-6">
+        その一口に、<br>宮古の海が<br><span class="text-gold">息づいている。</span>
+      </h1>
+      <p class="text-sm sm:text-lg font-light leading-loose opacity-90">
+        ヨーロッパで研鑽を積んだシェフが辿り着いたのは、<br class="hidden md:block">
+        故郷・宮古の潮風が運ぶ、純粋な旬の味覚でした。
+      </p>
+    </div>
+    <div class="vertical-text hidden lg:block font-serif text-2xl tracking-[0.5em] border-l border-white/30 pl-8 h-64 opacity-80">
+      本格イタリアンの、その先へ。
+    </div>
+  </div>
+  <a href="#intro" aria-label="下へスクロール" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-[10px] tracking-widest text-center">
+    SCROLL
+    <span class="block w-px h-10 bg-white/30 mx-auto mt-2 relative overflow-hidden">
+      <span class="absolute top-0 left-0 w-full h-1/2 bg-gold animate-bounce"></span>
+    </span>
+  </a>
+</header>
+
+<!-- スマホ用 電話ボタン -->
+<a href="tel:0193620022" aria-label="電話で予約する"
+   class="fixed right-4 z-50 md:hidden bg-gold-gradient w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl"
+   style="bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem)">
+  <i class="fa-solid fa-phone text-xl"></i>
+</a>
+
+<!-- 導入 -->
+<section id="intro" class="py-16 md:py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <h2 class="font-serif text-xl sm:text-3xl md:text-4xl text-center leading-snug title-line mb-12">
+      地元漁港から届く「宝石」を<br>最高の一皿に仕立てる。
+    </h2>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+      <div class="space-y-5 text-gray-600 leading-loose text-[15px] sm:text-base">
+        <p>「渡り蟹の濃厚なコク」「生トマトと桜えびの芳醇な香り」<br>宮古港でその日に揚がった魚介は、どれも個性に溢れています。</p>
+        <p>私たちは、その素材が持つ「本来の力」を邪魔しないよう、火入れ一つ、塩の加減一つに心血を注ぎます。熟練の技が導き出す、素材との対話をお楽しみください。</p>
+        <a href="#lunch" class="inline-flex items-center gap-2 text-gold font-bold pt-2 group">
+          こだわり抜いたパスタランチを見る
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition"></i>
+        </a>
+      </div>
+      <div class="relative">
+        <img src="images/pasta.png" alt="調理の様子" loading="lazy" class="rounded-2xl shadow-2xl w-full aspect-[4/3] object-cover">
+        <div class="absolute -bottom-5 left-4 sm:-left-6 bg-white p-4 sm:p-6 shadow-xl rounded-lg">
+          <p class="font-serif text-gold text-lg sm:text-xl font-bold italic">Freshness First</p>
+          <p class="text-xs text-gray-400">宮古港 直送素材使用</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3つの理由 -->
+<section class="py-16 md:py-24 bg-sand">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="text-gold text-sm tracking-widest font-bold mb-3">REASON</p>
+      <h2 class="font-serif text-xl sm:text-3xl lg:text-4xl leading-relaxed mb-4">宮古のランチを、もっと豊かに、<br class="sm:hidden">もっと心安らぐものに。</h2>
+      <p class="text-gray-500 text-sm sm:text-base">お食事の時間を大切にするあなたへ。</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 md:gap-8">
+      <article class="bg-white p-7 rounded-2xl shadow-sm border border-gray-100">
+        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-5 text-gold"><i class="fa-solid fa-wine-glass"></i></div>
+        <h3 class="font-bold mb-3 tracking-wider">本格的な味を気軽に</h3>
+        <p class="text-sm text-gray-500 leading-loose font-light">「本格イタリアンは敷居が高い…」そんな心配はいりません。普段着で気楽に楽しめる、素材重視のスタイルです。</p>
+      </article>
+      <article class="bg-white p-7 rounded-2xl shadow-sm border border-gray-100">
+        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-5 text-gold"><i class="fa-solid fa-leaf"></i></div>
+        <h3 class="font-bold mb-3 tracking-wider">野菜の力を信じる</h3>
+        <p class="text-sm text-gray-500 leading-loose font-light">メインの魚介を引き立てるのは、土地の味がする旬の野菜たち。スープからドルチェまで、丁寧な手仕事が光ります。</p>
+      </article>
+      <article class="bg-white p-7 rounded-2xl shadow-sm border border-gray-100">
+        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-5 text-gold"><i class="fa-solid fa-couch"></i></div>
+        <h3 class="font-bold mb-3 tracking-wider">静寂というご馳走</h3>
+        <p class="text-sm text-gray-500 leading-loose font-light">ステンドグラスが優しく灯る店内。小規模店だからこそ叶う、ゆったりとした会話と時間の流れを提供します。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ギャラリー -->
+<section class="parallax relative min-h-[50svh] md:h-[60vh] flex items-center justify-center py-16"
+         style="background-image:url('images/pasta.jpg')">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative z-10 text-center text-white px-5">
+    <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl tracking-widest leading-relaxed mb-6">「もう一度、訪れたい」<br>そう思っていただける理由。</h2>
+    <div class="flex justify-center items-center gap-4">
+      <span class="w-14 sm:w-20 h-px bg-white/50"></span>
+      <i class="fa-solid fa-quote-left text-2xl text-gold"></i>
+      <span class="w-14 sm:w-20 h-px bg-white/50"></span>
+    </div>
+  </div>
+</section>
+
+<!-- 特典・オファー -->
+<section id="lunch" class="py-16 md:py-24 bg-white border-b">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+    <div class="w-full md:w-1/2">
+      <img src="images/dessert.png" alt="特製ドルチェ" loading="lazy" class="rounded-3xl shadow-2xl w-full aspect-[4/3] object-cover">
+    </div>
+    <div class="w-full md:w-1/2">
+      <span class="bg-gold text-white px-4 py-1 text-xs font-bold rounded-full mb-5 inline-block">RECOMMENDED</span>
+      <h2 class="font-serif text-2xl sm:text-3xl mb-6 leading-snug">ランチの余韻を、<br>至福のドルチェとともに。</h2>
+      <p class="text-gray-600 leading-loose mb-8 text-[15px] sm:text-base">「果物の美味しさを引き立てる」と常連様に愛される当店のデザート。パスタランチに＋300円で、心もお腹も満たされるフルセットへアップグレードいただけます。</p>
+      <div class="bg-[#fcfaf2] p-6 sm:p-8 rounded-2xl border border-gold/20">
+        <h3 class="font-bold text-gold mb-3 flex items-center gap-2"><i class="fa-solid fa-utensils"></i> 選べるパスタランチ</h3>
+        
+        <ul class="text-sm text-gray-500 space-y-1.5">
+          <li>・本日のスープ（冷製/温製）</li>
+          <li>・季節の彩りサラダ</li>
+          <li>・選べる日パーソナルパスタ（全6種）</li>
+          <li>・ドリンク</li>
+          <li class="text-gold font-bold">＋300円で「特製ドルチェ」が付きます</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-sand border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <span class="inline-block bg-gold-gradient text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-widest mb-4">COMING SOON</span>
+      <h2 class="font-serif text-xl sm:text-3xl md:text-4xl leading-snug mb-4">もっと身近に、もっと特別に。<br class="hidden sm:block">新しい取り組みを準備しています。</h2>
+      <p class="text-gray-500 font-light text-sm sm:text-base">カツヤマの味と最新情報を、皆様の日常へお届けするために。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5 md:gap-8">
+      <article class="bg-white p-7 sm:p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center text-gold text-2xl"><i class="fa-brands fa-instagram"></i></div>
+            <span class="text-xs font-bold text-gold bg-gold/10 px-3 py-1 rounded-full">準備中</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold font-serif mb-3">「本日の水揚げ＆メニュー」リアルタイム発信</h3>
+          <p class="text-sm text-gray-500 leading-relaxed font-light mb-5">宮古港に揚がった極上の魚介や、シェフ厳選の季節野菜。その日届いた新鮮な食材と「本日のパスタメニュー」を公式SNSで毎日いち早くお知らせします。</p>
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex items-center text-xs text-gold font-bold">
+          フォローで最新の旬を見逃さない <i class="fa-solid fa-arrow-right ml-2"></i>
+        </div>
+      </article>
+      <article class="bg-white p-7 sm:p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center text-gold text-2xl"><i class="fa-solid fa-bag-shopping"></i></div>
+            <span class="text-xs font-bold text-gold bg-gold/10 px-3 py-1 rounded-full">順次スタート予定</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold font-serif mb-3">贅沢テイクアウト＆限定オードブル</h3>
+          <p class="text-sm text-gray-500 leading-relaxed font-light mb-5">ご自宅での特別な記念日やホームパーティーに。リストランテカツヤマの本格的な味わいをそのまま詰め込んだ、シェフ特製オードブル＆持ち帰りメニューをご用意します。</p>
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex items-center text-xs text-gold font-bold">
+          食卓にレストランの華やかさを <i class="fa-solid fa-arrow-right ml-2"></i>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- シェフ紹介 -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <img src="images/chef.png" alt="シェフ勝山" loading="lazy" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-5 object-cover border-4 border-gold/20 p-1">
+    <h2 class="text-2xl font-serif">オーナーシェフ 勝山</h2>
+    <p class="text-gold text-sm tracking-widest mt-2 mb-10">CHEF'S PHILOSOPHY</p>
+    <div class="text-left bg-gray-50 p-6 sm:p-10 rounded-3xl relative">
+      <i class="fa-solid fa-quote-left absolute top-5 left-5 text-3xl sm:text-4xl text-gold/10"></i>
+      <p class="relative z-10 text-gray-600 leading-loose font-light text-[15px] sm:text-base">
+        ヨーロッパでの修業時代、一番心に響いたのは、高価な食材よりも「その土地の、その瞬間の恵み」を慈しむ文化でした。宮古に戻り、この海の豊かさを改めて知ったとき、自分の進むべき道が決まりました。
+        <br><br>
+        私の役割は、素材の声を聴き、お客様へ届ける通訳のようなもの。隠れ家のようなこの場所で、気負わず、本物の味を楽しんでいただければ幸いです。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 予約 -->
+<section class="py-16 md:py-24 bg-gold-gradient text-white">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <h2 class="font-serif text-3xl md:text-5xl mb-6 leading-tight">宮古の贅沢を、予約する。</h2>
+    <p class="mb-10 opacity-90 tracking-wider text-sm sm:text-base">席数に限りがございます。お電話にてお早めにご相談ください。</p>
+    <div class="grid md:grid-cols-2 gap-5 md:gap-8 items-stretch">
+      <div class="bg-white text-ink p-7 sm:p-10 rounded-3xl flex flex-col justify-center shadow-xl">
+        <p class="text-sm text-gold font-bold mb-3 tracking-widest">お電話でのご予約・お問い合わせ</p>
+        <a href="tel:0193620022" class="text-3xl sm:text-4xl md:text-5xl font-bold font-serif hover:text-gold transition mb-3 block">0193-62-0022</a>
+        <p class="text-xs text-gray-400 font-medium leading-relaxed">【営業時間】ランチ / ディナー（予約優先）<br>定休日：水曜日</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-md p-7 sm:p-10 rounded-3xl text-left border border-white/20 flex flex-col justify-between">
+        <div class="space-y-5">
+          <div>
+            <h4 class="font-bold mb-1 flex items-center gap-2"><i class="fa-solid fa-location-dot"></i> ACCESS</h4>
+            <p class="text-sm opacity-90 font-light mb-3">〒027-0085 岩手県宮古市黒田町6−29<br>宮古駅から徒歩約7分</p>
+            
+            <!-- 埋め込み地図 -->
+            <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-inner border border-white/10">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.2743363273416!2d141.94809807486138!3d39.64354010233701!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85cb73ae99ac29%3A0x341d0c1507be39dd!2z44Oq44K544OI44Op44Oz44OG44Kr44OE44Ok44Oe!5e0!3m2!1sja!2sjp!4v1791940551388!5m2!1sja!2sjp" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1 flex items-center gap-2"><i class="fa-solid fa-car"></i> PARKING</h4>
+            <p class="text-sm opacity-90 font-light">店舗前2台 / 向かいの砂利駐車場 数台分完備</p>
+          </div>
+          <div class="pt-2 flex gap-3">
+            <a href="https://www.instagram.com/ristorante_katuyama/" target="_blank" rel="noopener" aria-label="Instagram"
+               class="w-11 h-11 shrink-0 bg-white rounded-full flex items-center justify-center text-gold shadow-lg">
+              <i class="fa-brands fa-instagram text-xl"></i>
+            </a>
+            <a href="https://ristorante-katuyama.wixsite.com/miyako" target="_blank" rel="noopener"
+               class="flex-1 bg-white/20 border border-white text-white text-center py-2.5 rounded-full text-sm font-bold tracking-widest shadow-lg hover:bg-white hover:text-gold transition">
+              公式サイト
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッター（スマホの固定電話ボタンと重ならないよう下余白あり） -->
+<footer class="pt-10 pb-24 md:pb-10 bg-white text-center safe-bottom">
+  <p class="font-serif text-lg sm:text-xl tracking-[0.25em] text-gold mb-4 uppercase">Ristorante Katuyama</p>
+  <p class="text-xs text-gray-400 font-medium">&copy; 2024 Ristorante Katuyama. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
