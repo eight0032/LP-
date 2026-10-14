@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>トレンタ 月が丘店 | 盛岡で愛される茹でたてスパゲッティ</title>
+<meta name="description" content="盛岡・月が丘の茹でたてスパゲッティ専門店。年中無休・駐車場完備。">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { tgreen: '#008c45', tred: '#cd212a', tgold: '#c5a059' },
+    fontFamily: { sans: ['"Zen Maru Gothic"', 'sans-serif'], serif: ['"Shippori Mincho"', 'serif'] }
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { -webkit-text-size-adjust: 100%; padding-bottom: env(safe-area-inset-bottom); background: #fffaf2; }
+  .marker { background: linear-gradient(transparent 70%, #ffdfba 70%); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .marquee { animation: marquee 30s linear infinite; width: max-content; }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee, .animate-pulse, .animate-bounce { animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body class="font-sans text-gray-800 leading-relaxed antialiased">
+
+<!-- Header -->
+<header class="bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-gray-100" style="padding-top:env(safe-area-inset-top)">
+  <div class="container mx-auto px-4 py-2.5 flex justify-between items-center gap-3">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="font-black text-2xl md:text-3xl tracking-tighter text-tgreen italic">TREnTA</span>
+      <span class="text-[10px] md:text-xs font-bold bg-tred text-white px-2 py-0.5 rounded whitespace-nowrap">月が丘店</span>
+    </div>
+    <nav class="hidden md:flex gap-6 text-sm font-bold">
+      <a href="#about" class="hover:text-tred">こだわり</a>
+      <a href="#menu" class="hover:text-tred">メニュー</a>
+      <a href="#voice" class="hover:text-tred">お客様の声</a>
+      <a href="#contact" class="hover:text-tred">アクセス</a>
+    </nav>
+    <a href="tel:019-643-1230" class="bg-tred text-white px-4 py-2 rounded-full font-bold text-sm shadow whitespace-nowrap">
+      <i class="fas fa-phone mr-1"></i><span class="hidden sm:inline">019-643-1230</span><span class="sm:hidden">電話する</span>
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative min-h-[85svh] md:min-h-[90vh] flex items-center overflow-hidden bg-black">
+  <img src="images/pizza.png" alt="とろ〜りマルゲリータ" class="absolute inset-0 w-full h-full object-cover opacity-60">
+  <div class="container mx-auto px-5 relative z-10 text-white py-16">
+    <div class="max-w-2xl">
+      <p class="inline-block bg-white text-tred px-3 py-1 font-bold text-xs md:text-sm mb-5 rounded-sm">盛岡・月が丘の茹でたてスパゲッティ専門店</p>
+      <h1 class="font-serif font-bold leading-tight mb-5 text-4xl sm:text-5xl md:text-7xl">
+        <span class="block text-xl sm:text-3xl md:text-4xl mb-2 opacity-90">香る旨味、満たされる幸せ。</span>
+        本物の味を、<br><span class="text-yellow-400">お腹いっぱい</span>どうぞ。
+      </h1>
+      <p class="text-base md:text-xl mb-8 opacity-90 font-medium">
+        創業者が東京で学んだ「茹でたて」のコシと、<br class="hidden md:block">地元食材が織りなす極上のスープパスタ＆ピザ。
+      </p>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+        <a href="#contact" class="bg-tred hover:bg-red-700 text-white text-center px-8 py-4 rounded-full font-black text-lg md:text-xl shadow-[0_10px_20px_rgba(205,33,42,0.4)]">今すぐ予約・お問合せ</a>
+        <div class="flex items-center gap-3 text-sm font-bold">
+          <span class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><i class="fas fa-pizza-slice text-yellow-400"></i></span>
+          年中無休で営業中！
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<section class="bg-tgreen py-3 overflow-hidden" aria-hidden="true">
+  <div class="marquee flex gap-10 text-white font-bold text-base md:text-lg tracking-widest opacity-90 italic whitespace-nowrap pr-10">
+    <span>🍝 Lunch Large Serving Free</span><span>🍕 Freshly Baked Pizza</span><span>🍝 Seasonal Specials</span><span>👨‍👩‍👧‍👦 Family Friendly</span>
+    <span>🍝 Lunch Large Serving Free</span><span>🍕 Freshly Baked Pizza</span><span>🍝 Seasonal Specials</span><span>👨‍👩‍👧‍👦 Family Friendly</span>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="py-16 md:py-24">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12 md:mb-20">
+      <span class="text-tgold font-bold tracking-[0.2em] mb-2 block text-sm">— OUR PRIDE —</span>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold">トレンタ、３つのこだわり</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-5xl mx-auto">
+      <div>
+        <div class="relative mb-5 overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[4/5] shadow-xl">
+          <img src="images/pasta.png" loading="lazy" class="w-full h-full object-cover" alt="スープスパゲッティ">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent flex items-end p-5"><h3 class="text-white text-xl md:text-2xl font-bold">鮮魚のスープパスタ</h3></div>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">海鮮の旨味が凝縮された「ペスカトーレ」は、もはやスープ。最後の一滴まで飲み干したくなる、トレンタの代名詞です。</p>
+      </div>
+      <div>
+        <div class="relative mb-5 overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[4/5] shadow-xl">
+          <img src="images/pizza2.png" loading="lazy" class="w-full h-full object-cover" alt="マルゲリータ">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent flex items-end p-5"><h3 class="text-white text-xl md:text-2xl font-bold">とろけるピザ</h3></div>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">イチオシのマルゲリータ。外はパリッと、中はモチモチの生地に、とろ〜りチーズ。焼きたての香りが食欲を刺激します。</p>
+      </div>
+      <div class="sm:col-span-2 lg:col-span-1 sm:max-w-md sm:mx-auto lg:max-w-none w-full">
+        <div class="relative mb-5 overflow-hidden rounded-2xl aspect-[4/3] md:aspect-[4/5] shadow-xl">
+          <img src="images/salada.png" loading="lazy" class="w-full h-full object-cover" alt="レタスサラダ">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent flex items-end p-5"><h3 class="text-white text-xl md:text-2xl font-bold">鮮度抜群のサラダ</h3></div>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">秋田県産無農薬水耕栽培のレタスを使用。自家製ドレッシングとの相性は抜群で、サラダのリピーターも絶えません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Coming soon -->
+<section class="py-14 md:py-20 bg-gradient-to-b from-amber-50 to-white border-y border-amber-200">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="inline-block bg-tred text-white text-xs md:text-sm font-black px-4 py-1.5 rounded-full tracking-widest mb-3 animate-pulse">New Projects In Progress</span>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold text-gray-900"><span class="text-tred italic font-black block sm:inline sm:mr-2">Coming Soon!</span>あったらいいなをカタチに</h2>
+      <p class="text-gray-600 mt-4 max-w-xl mx-auto text-sm md:text-base">トレンタ月が丘店では、お客様のご要望にお応えして、さらにお食事を楽しんでいただける新サービスを準備中です！</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+      <div class="bg-white rounded-3xl p-7 shadow-xl border border-amber-100 flex flex-col justify-between relative overflow-hidden">
+        <span class="absolute top-0 right-0 bg-tgreen text-white text-xs font-bold px-4 py-1 rounded-bl-xl">新発想セット</span>
+        <div>
+          <div class="w-14 h-14 rounded-2xl bg-red-50 text-tred flex items-center justify-center text-2xl mb-5"><i class="fas fa-mug-hot"></i></div>
+          <h3 class="font-serif text-lg md:text-xl font-bold mb-3">選べる！カップスープパスタ 飲み比べ（食べ比べ）セット</h3>
+          <p class="text-gray-600 text-sm mb-5">「色んな味を少しずつ試したい！」というお声に応え、カップサイズのスープパスタ2〜3種を1度に楽しめる贅沢なセットが登場予定！</p>
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-tgreen"><span>準備中・近日登場予定</span><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="bg-white rounded-3xl p-7 shadow-xl border border-amber-100 flex flex-col justify-between relative overflow-hidden">
+        <span class="absolute top-0 right-0 bg-tred text-white text-xs font-bold px-4 py-1 rounded-bl-xl">月が丘店限定</span>
+        <div>
+          <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-5"><i class="fas fa-leaf"></i></div>
+          <h3 class="font-serif text-lg md:text-xl font-bold mb-3">岩手・盛岡の旬食材を味わう 限定ランチメニュー</h3>
+          <p class="text-gray-600 text-sm mb-5">地元の農家さん・漁港から届くその時期一番美味しい食材をふんだんに使用した、月が丘店だけのオリジナル限定パスタを展開します。</p>
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-tred"><span>準備中・近日登場予定</span><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="bg-white rounded-3xl p-7 shadow-xl border border-amber-100 flex flex-col justify-between relative overflow-hidden">
+        <span class="absolute top-0 right-0 bg-gray-800 text-white text-xs font-bold px-4 py-1 rounded-bl-xl">テイクアウト＆EC</span>
+        <div>
+          <div class="w-14 h-14 rounded-2xl bg-green-50 text-tgreen flex items-center justify-center text-2xl mb-5"><i class="fas fa-shopping-bag"></i></div>
+          <h3 class="font-serif text-lg md:text-xl font-bold mb-3">おうちでトレンタ！ピザ・オードブル＆特製ドレッシング</h3>
+          <p class="text-gray-600 text-sm mb-5">ホームパーティー用オードブルのWEB予約や、ファン多数の「自家製特製ドレッシング」店頭・オンライン販売を順次スタート！</p>
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-gray-700"><span>順次予約受付スタート</span><i class="fas fa-arrow-right"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voice -->
+<section id="voice" class="py-16 md:py-24 bg-tgreen/5">
+  <div class="container mx-auto px-4">
+    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-10 md:mb-16"><span class="marker italic">愛され続けて、25年以上。</span></h2>
+    <div class="space-y-8 md:space-y-12 max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-5 md:gap-8 items-center bg-white p-5 md:p-8 rounded-3xl shadow-sm">
+        <div class="flex-1">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+          <h3 class="text-lg md:text-xl font-bold mb-3">「下手なラーメンを食べるより満足度が高い」</h3>
+          <p class="text-gray-600 leading-relaxed mb-3 text-sm md:text-base">全メニュー美味しいがスープパスタ系は本当に絶品。アマトリチャーナがほどよいトマトの酸味と玉ねぎの旨みが効いて飽きがこない。店員さんの対応も丁寧で素敵なお店です。</p>
+          <p class="text-sm font-bold text-tgreen">— 月が丘在住 S様</p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row-reverse gap-5 md:gap-8 items-center bg-white p-5 md:p-8 rounded-3xl shadow-sm">
+        <div class="flex-1">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+          <h3 class="text-lg md:text-xl font-bold mb-3">「冬でも温まる、心遣いのお店」</h3>
+          <p class="text-gray-600 leading-relaxed mb-3 text-sm md:text-base">年中無休でお正月の外食難民にならずにすみました。熱々のピザとパスタ、冬はトイレまで暖房が入っていて温かい。そんな細かな気配りが嬉しいお店です。</p>
+          <p class="text-sm font-bold text-tgreen">— 盛岡市在住 K様</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="relative">
+        <div class="w-full h-72 sm:h-96 md:h-[500px] rounded-3xl md:rounded-[3rem] overflow-hidden shadow-2xl"><img src="images/chef.png" loading="lazy" class="w-full h-full object-cover" alt="職人の姿"></div>
+        <div class="absolute -bottom-5 right-3 md:-bottom-8 md:-right-8 bg-tgreen text-white p-4 md:p-8 rounded-2xl shadow-xl">
+          <p class="text-xl md:text-3xl font-black italic">Since 1998</p>
+          <p class="text-[10px] md:text-xs font-bold opacity-80 mt-1 tracking-widest text-center">TRENTA HISTORY</p>
+        </div>
+      </div>
+      <div class="mt-4 md:mt-0">
+        <span class="text-tred font-bold tracking-[0.2em] mb-3 block">— Story —</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">「イタリア語で30」<br>その名に込めた原点。</h2>
+        <p class="text-gray-600 mb-5 leading-loose text-sm md:text-base">1998年、秋田県横手市のわずか30坪・30席の小さな店から私たちの挑戦は始まりました。創業者の柏原桜人は、東京の有名店で学んだ本物の味を「地元の人にお腹いっぱい食べてほしい」という一心で提供し続けてきました。</p>
+        <p class="text-gray-600 mb-7 leading-loose text-sm md:text-base">現在では20店舗以上に広がりましたが、想いは同じです。「家族の笑顔」と「地域になくてはならない企業」を目指し、今日も茹でたての最高の一皿をお届けします。</p>
+        <div class="flex items-center gap-4"><div class="w-12 h-px bg-tred"></div><p class="font-bold text-lg md:text-xl">代表取締役 柏原 桜人</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Access -->
+<section id="contact" class="py-16 md:py-24 bg-gray-900 text-white">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 max-w-6xl mx-auto">
+      <div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-8">トレンタ 月が丘店</h2>
+        <div class="space-y-6">
+          <div class="flex gap-4"><i class="fas fa-map-marker-alt text-tred text-2xl mt-1 w-6 text-center"></i><div><p class="text-gray-400 text-xs font-bold mb-1 tracking-widest">ADDRESS</p><p class="text-lg md:text-xl font-bold leading-relaxed">〒020-0121<br>岩手県盛岡市月が丘３丁目４０−８０</p></div></div>
+          <div class="flex gap-4"><i class="fas fa-phone-alt text-tred text-2xl mt-1 w-6 text-center"></i><div><p class="text-gray-400 text-xs font-bold mb-1 tracking-widest">PHONE</p><a href="tel:019-643-1230" class="text-2xl md:text-3xl font-black">019-643-1230</a></div></div>
+          <div class="flex gap-4"><i class="fas fa-clock text-tred text-2xl mt-1 w-6 text-center"></i><div><p class="text-gray-400 text-xs font-bold mb-1 tracking-widest">HOURS</p><p class="text-lg font-bold">年中無休 | 駐車場完備<br><span class="text-sm text-gray-400">※県営運動公園すぐそば。青い看板が目印です。</span></p></div></div>
+        </div>
+        <div class="mt-10">
+          <p class="font-bold mb-3">Follow Us</p>
+          <div class="flex gap-4">
+            <a href="https://www.instagram.com/trenta_tsuki_gaoka/" aria-label="Instagram" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-tred"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.trenta.co.jp/" aria-label="公式サイト" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-tgreen"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white text-gray-800 p-6 sm:p-8 md:p-12 rounded-3xl md:rounded-[2rem] shadow-2xl self-start">
+        <h3 class="text-2xl font-black mb-4 text-center text-tgreen italic">TREnTA Reservation</h3>
+        <p class="text-center text-sm text-gray-500 mb-7 leading-relaxed">お席の確保、テイクアウトのご注文は<br class="hidden md:block">お電話またはWebフォームより承ります。</p>
+        <a href="https://www.trenta.co.jp/e-mailform-jp/inquiry.html" target="_blank" rel="noopener" class="block w-full bg-tred text-white text-center font-black py-4 md:py-5 rounded-2xl shadow-[0_10px_30px_rgba(205,33,42,0.3)] mb-6"><i class="fas fa-envelope mr-2"></i>お問合せフォーム</a>
+        <div class="text-center">
+          <p class="text-xs text-gray-400 font-bold mb-3 tracking-widest italic">— OR CALL US —</p>
+          <a href="tel:019-643-1230" class="text-3xl font-black hover:text-tred">019-643-1230</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-black py-8 pb-24 md:pb-8">
+  <p class="text-gray-500 text-[10px] font-bold tracking-[0.3em] text-center">&copy; 2024 TREnTA Food Service Co., Ltd.</p>
+</footer>
+
+<!-- Floating call button (mobile) -->
+<a href="tel:019-643-1230" aria-label="電話する" class="md:hidden fixed right-5 z-50 w-14 h-14 bg-tred text-white rounded-full flex items-center justify-center shadow-2xl" style="bottom:calc(1.25rem + env(safe-area-inset-bottom))">
+  <i class="fas fa-phone-alt text-xl"></i>
+</a>
+
+</body>
+</html>
