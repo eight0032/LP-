@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>りもーね | 滝沢駅徒歩1分のナポリタンとウイスキーの店</title>
+<meta name="description" content="岩手県滝沢市・滝沢駅から徒歩1分。500種類のウイスキーが並ぶナポリタンの店「りもーね」。">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #fcfaf2;
+    overflow-x: hidden;           /* スマホの横揺れ防止 */
+    -webkit-text-size-adjust: 100%;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); /* 固定バー分の余白(スマホ) */
+  }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
+  .font-heading { font-family: 'Shippori Mincho', serif; }
+  .font-en { font-family: 'Playfair Display', serif; }
+  .slant-bg { clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%); }
+  .bg-chalkboard { background-color: #2c3e50; background-image: url('https://www.transparenttextures.com/patterns/black-chalkboard.png'); }
+  .texture-paper { background-image: url('https://www.transparenttextures.com/patterns/p6-mini.png'); }
+  .bg-wood { background-color: #1a120b; }
+  .shine { position: relative; overflow: hidden; }
+  .shine::after {
+    content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,.3), transparent);
+    transform: rotate(45deg); animation: shine 3s infinite;
+  }
+  @keyframes shine { from { transform: translateX(-100%) rotate(45deg); } to { transform: translateX(100%) rotate(45deg); } }
+  @media (prefers-reduced-motion: reduce) { .shine::after, .animate-pulse { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body class="text-gray-900 leading-relaxed">
+
+<!-- 1. FV -->
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-white">
+  <div class="absolute top-6 left-4 font-en text-[14vw] leading-none opacity-[0.04] font-bold pointer-events-none select-none">RIMONE<br>PASTA &amp; BAR</div>
+
+  <div class="container mx-auto px-5 py-16 md:py-20 flex flex-col md:flex-row items-center relative z-10 gap-12 md:gap-0">
+    <div class="md:w-3/5 text-center md:text-left">
+      <div class="shine inline-flex items-center gap-2 bg-black text-white px-4 py-2 mb-6 tracking-wider text-xs sm:text-sm font-bold">
+        <i class="fas fa-map-marker-alt text-orange-500"></i> 岩手県滝沢駅 徒歩1分
+      </div>
+      <h1 class="font-heading text-[2.75rem] sm:text-6xl lg:text-8xl font-black mb-6 leading-[1.15]">
+        旨みが跳ねる、<br><span class="text-orange-600">至福のナポリタン。</span>
+      </h1>
+      <p class="text-base sm:text-xl md:text-2xl font-bold text-gray-700 mb-8 border-l-8 border-orange-600 pl-4 text-left inline-block md:block">
+        500銘柄のウイスキーが並ぶ<br class="md:hidden">圧倒的な空間で。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="#access" class="bg-orange-600 text-white px-8 py-4 rounded-full font-black text-lg sm:text-xl hover:bg-orange-700 transition shadow-xl inline-flex items-center justify-center gap-3">
+          <i class="fas fa-utensils"></i> お店へ行く
+        </a>
+      </div>
+    </div>
+
+    <div class="w-4/5 sm:w-3/5 md:w-2/5 relative">
+      <div class="absolute inset-0 bg-orange-100 rounded-full scale-125 -z-10 blur-2xl opacity-60"></div>
+      <img src="images/napolitan.png" alt="至高のナポリタン"
+           class="w-full rounded-[2rem] shadow-2xl border-8 border-white rotate-3 md:hover:rotate-0 transition-transform duration-500 bg-gray-100">
+      <div class="shine absolute -top-6 -right-2 sm:-top-8 sm:-right-6 w-24 h-24 sm:w-32 sm:h-32 bg-yellow-400 rounded-full flex flex-col items-center justify-center font-black text-black shadow-lg border-4 border-white rotate-12">
+        <span class="text-[10px] sm:text-xs">看板メニュー</span>
+        <span class="text-xl sm:text-2xl italic font-en">No.1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CTA -->
+<div class="relative z-20 -mt-8 mb-8">
+  <div class="container mx-auto px-4">
+    <div class="bg-black text-white p-6 sm:p-8 md:p-12 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 border-b-8 border-orange-600">
+      <div class="text-center md:text-left">
+        <p class="text-orange-500 font-bold mb-2 text-sm">＼ 予約・お問い合わせはこちら ／</p>
+        <h2 class="text-2xl md:text-4xl font-black">滝沢で「美味しい」に出会う。</h2>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+        <a href="tel:0196880077" class="text-3xl md:text-4xl font-en font-bold hover:text-orange-500 transition-colors">
+          <i class="fas fa-phone-alt mr-2 text-orange-500"></i>019-688-0077
+        </a>
+        <div class="h-10 w-px bg-gray-700 hidden md:block"></div>
+        <p class="text-sm font-bold text-gray-400 text-center sm:text-left">11:00 - 21:30<br>日曜定休</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 4. 自己紹介 -->
+<section class="py-16 md:py-24 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-5">
+    <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16 max-w-6xl mx-auto">
+      <div class="md:w-1/2 w-full">
+        <div class="relative">
+          <div class="absolute -top-8 right-0 font-en text-6xl md:text-9xl text-gray-100 font-bold -z-10 select-none">OWNER</div>
+          <h3 class="text-sm font-bold text-orange-600 tracking-widest mb-3">創業者の想い</h3>
+          <h4 class="text-3xl md:text-5xl font-black mb-6 md:mb-8 leading-tight">滝沢の地に、<br>「食」と「酒」の憩い場を。</h4>
+          <p class="text-base md:text-lg text-gray-700 leading-loose mb-8">
+            店主の石川慎也です。私たちが提供したいのは単なる食事ではありません。
+            フレッシュなトマトの香りが立ち上るナポリタンを囲む笑顔、そして壁一面500種のウイスキーから自分だけの一杯を見つける至福の時間。
+            大学が近いこの場所で、学生から地元の方まで、第二の我が家のようにくつろげる空間を守り続けています。
+          </p>
+          <div class="bg-gray-50 p-5 border-l-4 border-orange-600">
+            <p class="font-bold text-gray-900">店主：石川 慎也 (Shinya Ishikawa)</p>
+          </div>
+        </div>
+      </div>
+      <div class="md:w-1/2 w-full max-w-sm md:max-w-none">
+        <div class="relative p-3 md:p-4">
+          <div class="absolute inset-0 bg-orange-600 -rotate-3 rounded-3xl"></div>
+          <div class="bg-gray-200 aspect-[4/5] rounded-2xl overflow-hidden relative shadow-xl">
+            <img src="images/chef.png" alt="店主" loading="lazy" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. クチコミ -->
+<section class="bg-chalkboard text-white slant-bg">
+  <div class="container mx-auto px-5 py-20 md:py-28">
+    <div class="text-center mb-10 md:mb-16">
+      <h3 class="text-3xl md:text-5xl font-black mb-3">お客様が語る「りもーね」</h3>
+      <p class="text-orange-400 font-bold tracking-widest font-en">REAL VOICE</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div class="bg-white text-gray-900 p-6 md:p-8 rounded-tr-[3rem] rounded-bl-[3rem] shadow-xl">
+        <div class="flex text-yellow-400 mb-3 text-xs gap-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="font-bold leading-relaxed italic">「フレッシュなトマトを使った完成された味。これで1,500円は納得の値段です。」</p>
+      </div>
+      <div class="bg-white text-gray-900 p-6 md:p-8 rounded-tl-[3rem] rounded-br-[3rem] shadow-xl">
+        <div class="flex text-yellow-400 mb-3 text-xs gap-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="font-bold leading-relaxed italic">「30分近くテレワークしましたが嫌な顔ひとつせず。道を教えてくれたりと親切でした。」</p>
+      </div>
+      <div class="bg-white text-gray-900 p-6 md:p-8 rounded-tr-[3rem] rounded-bl-[3rem] shadow-xl">
+        <div class="flex text-yellow-400 mb-3 text-xs gap-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="font-bold leading-relaxed italic">「ウイスキーのボトルが並ぶお洒落な店内。お酒を嗜みながら食事を楽しむお店。」</p>
+      </div>
+      <div class="bg-white text-gray-900 p-6 md:p-8 rounded-tl-[3rem] rounded-br-[3rem] shadow-xl">
+        <div class="flex text-yellow-400 mb-3 text-xs gap-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="font-bold leading-relaxed italic">「皮はパリッと、香草が効いて香ばしいチキンソテーも絶品。また寄らせていただきます。」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- 6.5 Coming Soon -->
+<section class="py-16 md:py-20 texture-paper border-y border-orange-200/50">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="bg-orange-600 text-white px-6 py-2 rounded-full font-black text-xs md:text-sm tracking-widest inline-block mb-4 shadow-md font-en">NEW PROJECT</span>
+      <h3 class="text-3xl md:text-5xl font-black font-en text-gray-900 tracking-wider">COMING SOON</h3>
+      <p class="text-gray-600 font-bold mt-2 text-sm md:text-base">あったらいいなをカタチに！現在準備中の新サービス</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+      <div class="bg-white rounded-3xl p-6 pt-12 md:p-10 md:pt-12 shadow-xl border-2 border-orange-100 hover:border-orange-500 transition relative flex flex-col justify-between">
+        <div class="absolute top-4 right-4 bg-yellow-400 text-black font-black px-4 py-1 rounded-full text-xs font-en tracking-wider shadow">PREPARING</div>
+        <div>
+          <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-2xl md:text-3xl mb-5 shadow-sm"><i class="fas fa-utensils"></i></div>
+          <h4 class="text-xl md:text-3xl font-black mb-4 leading-snug">欲張りナポリタン<br><span class="text-orange-600">ハーフ＆ハーフ プレート</span></h4>
+          <p class="text-gray-600 font-bold leading-relaxed mb-6 text-sm md:text-base">「どの味も美味しそうで決められない…」そんなお悩みにお応えします！豊富な種類のナポリタンメニューから、お好きな2種類を贅沢にワンプレートへ盛り合わせた夢のセットが登場予定です。</p>
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs md:text-sm text-orange-600 font-bold">
+          <span><i class="far fa-clock mr-2"></i>近日スタート予定</span>
+          <span class="font-en">#夢のワンプレート</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 pt-12 md:p-10 md:pt-12 shadow-xl border-2 border-orange-100 hover:border-orange-500 transition relative flex flex-col justify-between">
+        <div class="absolute top-4 right-4 bg-yellow-400 text-black font-black px-4 py-1 rounded-full text-xs font-en tracking-wider shadow">PREPARING</div>
+        <div>
+          <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-2xl md:text-3xl mb-5 shadow-sm"><i class="fas fa-graduation-cap"></i></div>
+          <h4 class="text-xl md:text-3xl font-black mb-4 leading-snug">平日限定！ガッツリ満足<br><span class="text-orange-600">大盛り増量サービス</span></h4>
+          <p class="text-gray-600 font-bold leading-relaxed mb-6 text-sm md:text-base">岩手県立大学をはじめ、近隣の学生さん・お腹いっぱい食べたい皆様を大応援！平日のランチ・ディナー限定で、自慢のナポリタンを大盛りでガッツリ楽しめる特別サービスを準備中です！</p>
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs md:text-sm text-orange-600 font-bold">
+          <span><i class="far fa-clock mr-2"></i>近日スタート予定</span>
+          <span class="font-en">#学生＆ガッツリ派応援</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. アクセス -->
+<section id="access" class="bg-wood text-white py-16 md:py-24 relative overflow-hidden scroll-mt-4">
+  <div class="absolute inset-0 opacity-20 pointer-events-none bg-cover bg-center" style="background-image:url('images/pasta.png')"></div>
+  <div class="container mx-auto px-5 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12 md:mb-20">
+        <h3 class="text-4xl md:text-6xl font-en font-bold italic mb-4">Information</h3>
+        <div class="w-20 h-1 bg-orange-600 mx-auto"></div>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="space-y-8">
+          <div class="border-l-4 border-orange-600 pl-5 md:pl-8">
+            <h4 class="text-2xl md:text-3xl font-black mb-6">Italian Pub りもーね</h4>
+            <div class="space-y-4 md:space-y-6 text-base md:text-xl font-medium">
+              <p class="flex items-start"><i class="fas fa-map-marker-alt text-orange-500 w-8 text-xl md:text-2xl mt-1 shrink-0"></i><span>〒020-0621 岩手県滝沢市大崎265-2</span></p>
+              <p class="flex items-center"><i class="fas fa-phone-alt text-orange-500 w-8 text-xl md:text-2xl shrink-0"></i> 019-688-0077</p>
+              <p class="flex items-center"><i class="fas fa-clock text-orange-500 w-8 text-xl md:text-2xl shrink-0"></i> 11:00 ～ 20:00</p>
+              <p class="flex items-center"><i class="fas fa-calendar-times text-orange-500 w-8 text-xl md:text-2xl shrink-0"></i> 定休日：日曜日</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 md:gap-4">
+            <a href="tel:0196880077" class="bg-orange-600 hover:bg-orange-700 text-white text-center py-4 md:py-6 rounded-2xl font-black text-base md:text-xl transition shadow-lg"><i class="fas fa-phone-alt mr-2"></i>電話予約</a>
+            <a href="https://www.instagram.com/rimone1001" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/20 text-white text-center py-4 md:py-6 rounded-2xl font-black text-base md:text-xl transition border border-white/30"><i class="fab fa-instagram mr-2"></i>最新情報</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-2 bg-orange-600 rounded-3xl blur opacity-25"></div>
+          <div class="relative h-[260px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#1e272e]">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3065.3501051525386!2d141.1447926743971!3d39.79913789299917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8573182c7fe7a3%3A0x6ed8b5c3c05a4c81!2z44KK44KC44O844Gt!5e0!3m2!1sja!2sjp!4v1791938509926!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-black py-10 text-center">
+  <div class="container mx-auto px-4 text-gray-500 text-xs md:text-sm tracking-widest">
+    <h2 class="font-en italic text-white text-2xl md:text-3xl mb-4">Rimone</h2>
+    <p>&copy; 2024 りもーね - Authentic Pasta &amp; Bar</p>
+  </div>
+</footer>
+
+<!-- スマホ用 固定CTAバー -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-black/95 backdrop-blur border-t border-orange-600 px-3 pt-2" style="padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));">
+  <div class="flex gap-2">
+    <a href="tel:0196880077" class="flex-1 bg-orange-600 text-white text-center py-3 rounded-full font-black"><i class="fas fa-phone-alt mr-2"></i>電話する</a>
+    <a href="#access" class="flex-1 bg-white text-gray-900 text-center py-3 rounded-full font-black"><i class="fas fa-map-marker-alt mr-2 text-orange-600"></i>アクセス</a>
+  </div>
+</div>
+
+</body>
+</html>
