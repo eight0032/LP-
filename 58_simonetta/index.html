@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="岩手県雫石町のパスタの店 シモネッタ。自家製パンチェッタと濃厚チーズのカルボナーラが看板。火・木・土・日限定のプレミアムランチ。">
+    <title>パスタの店 シモネッタ | 岩手県雫石町の最高峰パスタランチ</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1a1a1a;
+            background-color: #fff;
+            -webkit-text-size-adjust: 100%;
+            word-break: auto-phrase;      /* 日本語の文節で改行（対応ブラウザ） */
+            overflow-wrap: anywhere;
+        }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-italian-red { color: #bc002d; }
+        .bg-italian-red { background-color: #bc002d; }
+        .border-italian-red { border-color: #bc002d; }
+
+        .gold-gradient {
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        }
+        .gold-text {
+            background: linear-gradient(45deg, #bf953f, #b38728, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-shine { position: relative; overflow: hidden; }
+        .cta-shine::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+            pointer-events: none;
+        }
+        @keyframes shine {
+            0%   { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .section-title { position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 3px;
+            background-color: #bc002d;
+        }
+
+        /* ヒーロー：スマホのアドレスバーを考慮した高さ */
+        .hero { min-height: 100vh; min-height: 100svh; }
+
+        /* スマホ下部の固定電話ボタン用の余白 */
+        @media (max-width: 767px) {
+            body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cta-shine::after { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- FVエリア -->
+    <header class="hero relative flex items-center justify-center bg-zinc-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-50">
+            <!-- 著作権に配慮したプレースホルダー画像 -->
+            <img src="images/pasta.jpg" alt="パスタメイン画像" class="w-full h-full object-cover">
+        </div>
+
+        <!-- ゴールドのタスキ -->
+        <div class="absolute top-4 md:top-10 left-0 gold-gradient text-black py-1.5 md:py-2 px-4 md:px-10 text-xs sm:text-sm md:text-base font-black shadow-xl transform -rotate-2 z-20 max-w-[85%]">
+            岩手・盛岡周辺パスタ最高評価
+        </div>
+
+        <div class="relative z-10 text-center text-white px-4 pt-24 pb-16 md:pt-20 w-full max-w-5xl">
+            <div class="mb-5 md:mb-6 flex justify-center">
+                <span class="inline-block border-2 border-white px-3 md:px-4 py-1 text-xs md:text-sm tracking-widest font-bold">SHIZUKUISHI / IWATE</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-8xl font-black mb-8 md:mb-10 leading-tight drop-shadow-2xl mt-6 md:mt-16">
+                食通を唸らせる<br>
+                <span class="gold-text">究極の一皿。</span>
+            </h1>
+
+            <div class="bg-black/60 backdrop-blur-sm p-5 md:p-10 rounded-sm border border-white/20 inline-block text-left max-w-full">
+                <p class="text-lg sm:text-xl md:text-3xl font-bold mb-4 leading-relaxed text-center">
+                    イチオシ：トマト仕立ての<br class="md:hidden">キーマカレーパスタ
+                </p>
+                <div class="flex items-center justify-center space-x-2 text-yellow-400 text-xl md:text-2xl mb-4" aria-label="5つ星">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm md:text-lg text-gray-200 text-center font-bold leading-relaxed">自家製パンチェッタと濃厚チーズが織りなす極上のハーモニー</p>
+            </div>
+
+            <div class="mt-10 md:mt-12">
+                <a href="#booking" class="cta-shine inline-block gold-gradient text-black font-black py-4 px-8 md:py-5 md:px-12 rounded-full text-lg md:text-2xl shadow-[0_0_30px_rgba(191,149,63,0.5)] active:scale-95 md:hover:scale-105 transition-transform">
+                    至高の味を予約する <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- メリット・実績 -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="text-3xl md:text-4xl font-black section-title mb-6 text-italian-red uppercase tracking-tighter">Why Simonetta?</h2>
+                <p class="text-gray-500 font-bold">シモネッタが選ばれる3つの理由</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10 md:gap-12 max-w-md md:max-w-none mx-auto">
+                <!-- 理由1 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-2xl mb-5 md:mb-6">
+                        <img src="images/cheese.png" alt="チーズ演出" loading="lazy" class="w-full h-56 md:h-64 object-cover transition-transform duration-500 md:group-hover:scale-110">
+                        <div class="absolute top-0 left-0 bg-italian-red text-white w-11 h-11 md:w-12 md:h-12 flex items-center justify-center font-black text-xl md:text-2xl shadow-lg">01</div>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">五感を刺激する<br>チーズのライブ演出</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">「チーズをかけてもよろしいですか？」店主が目の前で削り出す濃厚なチーズ。香りと見た目のアトラクション性が、食事を一段上の体験へ引き上げます。</p>
+                </div>
+
+                <!-- 理由2 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-2xl mb-5 md:mb-6">
+                        <img src="images/salada.png" alt="豪華サラダ" loading="lazy" class="w-full h-56 md:h-64 object-cover transition-transform duration-500 md:group-hover:scale-110">
+                        <div class="absolute top-0 left-0 bg-italian-red text-white w-11 h-11 md:w-12 md:h-12 flex items-center justify-center font-black text-xl md:text-2xl shadow-lg">02</div>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">メインを凌駕する<br>圧倒的ボリュームのサラダ</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">自家製パテや砂肝、白いんげんなどが贅沢に乗ったサラダ。鮮度抜群のシャキシャキ野菜を、秘伝の自家製ドレッシングでお楽しみいただけます。</p>
+                </div>
+
+                <!-- 理由3 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-2xl mb-5 md:mb-6">
+                        <img src="images/pasta.png" alt="パスタ" loading="lazy" class="w-full h-56 md:h-64 object-cover transition-transform duration-500 md:group-hover:scale-110">
+                        <div class="absolute top-0 left-0 bg-italian-red text-white w-11 h-11 md:w-12 md:h-12 flex items-center justify-center font-black text-xl md:text-2xl shadow-lg">03</div>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">記憶に刻まれる<br>エッジの効いた味付け</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">しっかりとしたニンニクのコクとトマトの辛み。盛岡周辺で「最上級」と称される、個性豊かで力強い味わいがリピーターを離しません。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon：旬の野菜をふんだんに使った季節の軽めランチコース -->
+    <section class="py-16 md:py-24 bg-amber-50/50 border-y border-amber-200/60 relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-72 h-72 md:w-96 md:h-96 bg-yellow-200/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-5 max-w-5xl relative z-10">
+            <div class="text-center mb-10 md:mb-16">
+                <span class="inline-block bg-amber-200 text-amber-900 px-4 py-1 rounded-full text-xs font-black tracking-widest uppercase mb-4 shadow-sm">Coming Soon</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black mb-6 leading-tight">
+                    旬の恵みを贅沢に味わう<br>
+                    <span class="gold-text">「季節のこだわり軽めランチコース」</span>
+                </h2>
+                <p class="text-gray-600 font-bold max-w-2xl mx-auto leading-relaxed text-sm md:text-base text-left md:text-center">
+                    お客様からの「あればいいな」を実現。雫石の四季折々の旬野菜をふんだんに取り入れ、メイン料理が季節ごとにガラリと変わる、心も体も満たされる限定ランチコースが新登場。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-5 md:gap-8 mb-10 md:mb-12">
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-amber-100 flex flex-col justify-between">
+                    <div>
+                        <div class="text-italian-red font-black text-sm mb-2">POINT 01</div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3">旬替わりメイン料理</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">その時期に最も美味しい雫石の旬野菜と、厳選食材を組み合わせた、シモネッタならではの創作メインが一皿に。</p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-gray-100 text-xs text-gray-400 font-bold">※季節ごとに内容が変化します</div>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-amber-100 flex flex-col justify-between">
+                    <div>
+                        <div class="text-italian-red font-black text-sm mb-2">POINT 02</div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3">大満足の軽め構成</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">名物の特製サラダや手作りデザート・ドリンクもセットにしつつ、お腹と心にちょうどいいボリューム感に調整したスペシャルなコース。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-amber-100 flex flex-col justify-between">
+                    <div>
+                        <div class="text-italian-red font-black text-sm mb-2">POINT 03</div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3">限定プレオープン</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">火・木・土・日の営業日限定で、まもなく提供開始予定。常連様からのご要望に応えて開発された、今だけの要チェックプラン。</p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-gray-100 text-xs text-amber-600 font-bold">近日スタート予定</div>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 text-white p-6 md:p-8 rounded-2xl text-center shadow-xl flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6">
+                <div class="text-left">
+                    <p class="text-yellow-400 font-bold text-sm mb-1"><i class="fas fa-bell mr-2"></i>最新の提供開始日や詳細について</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">コースの切り替わり時期やご予約の空き状況は、お電話にてお気軽にお問い合わせください。</p>
+                </div>
+                <a href="tel:0196911737" class="w-full md:w-auto bg-white text-black font-black py-3.5 px-8 rounded-full text-lg active:bg-gray-200 md:hover:bg-gray-100 transition-colors whitespace-nowrap shadow-lg">
+                    <i class="fas fa-phone-alt mr-2 text-italian-red"></i>問い合わせる
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ストーリーセクション -->
+    <section class="py-16 md:py-24 bg-zinc-50 overflow-hidden">
+        <div class="container mx-auto px-5">
+            <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-16">
+                <div class="lg:w-1/2 relative w-full">
+                    <div class="absolute -top-8 -left-8 w-32 h-32 md:w-40 md:h-40 bg-italian-red/10 rounded-full blur-3xl"></div>
+                    <img src="images/chef.png" alt="店内イメージ" loading="lazy" class="relative z-10 rounded-3xl shadow-2xl w-full">
+                    <!-- スマホでは画像の下に重ねず通常配置、PCでは右下に重ねる -->
+                    <div class="relative z-20 mt-4 lg:mt-0 lg:absolute lg:-bottom-6 lg:-right-6 bg-white p-5 md:p-6 shadow-xl rounded-2xl lg:max-w-xs text-sm italic border-l-4 border-italian-red font-bold text-gray-800 leading-relaxed">
+                        「スナックをリノベーションした隠れ家的な空間で、本物の味を追求し続けています。」
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <span class="text-italian-red font-bold tracking-widest uppercase mb-4 block">Founder Story</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-6 md:mb-8 leading-tight">イタリアンの正統派を目指し、<br>雫石に根差した7年間。</h2>
+                    <p class="text-base md:text-lg text-gray-700 leading-relaxed mb-5 md:mb-6">
+                        店主・下黒沢が2017年に母と二人三脚でオープン。看板メニューの「カルボナーラ」に使用するパンチェッタは、豚バラ肉をじっくり塩漬け熟成させた自家製です。
+                    </p>
+                    <p class="text-base md:text-lg text-gray-700 leading-relaxed">
+                        店名「シモネッタ」はイタリアの愛らしい女性の名前から。地元雫石の歴史を大切にしながら、一人のお客様、一皿のパスタに全力を注ぐため、現在はワンオペレーションでの営業を貫いています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- クチコミセクション -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-5">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-black section-title mb-4">お客様の感動の声</h2>
+                <p class="text-gray-400 font-bold tracking-widest uppercase text-sm">Customer Reviews</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5 md:gap-8 max-w-5xl mx-auto">
+                <div class="bg-gray-50 p-6 pt-10 md:p-8 md:pt-12 rounded-3xl relative shadow-sm border border-gray-100">
+                    <i class="fas fa-quote-left text-3xl md:text-4xl text-gray-200 absolute top-4 left-5 md:top-6 md:left-6"></i>
+                    <div class="relative z-10">
+                        <p class="text-base md:text-lg font-bold mb-3 md:mb-4">「サラダの存在感がすごい！」</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">セットのサラダが存在感ばっちり。パスタに店主が「チーズかけてもよろしいですか？」と尋ねる演出はアトラクション的で楽しく、パスタも最高に美味しかったです。</p>
+                        <div class="flex items-center">
+                            <div class="text-yellow-500 mr-2 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <span class="text-xs font-bold text-gray-500">40代 女性のお客様</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 pt-10 md:p-8 md:pt-12 rounded-3xl relative shadow-sm border border-gray-100">
+                    <i class="fas fa-quote-left text-3xl md:text-4xl text-gray-200 absolute top-4 left-5 md:top-6 md:left-6"></i>
+                    <div class="relative z-10">
+                        <p class="text-base md:text-lg font-bold mb-3 md:mb-4">「どれを食べても絶品。」</p>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">パスタ好きなのでどれを食べてもおいしく、うれしい限り。サラダとパテも絶品。いつもランチだけどワインに合わせたい、雫石の名店です。</p>
+                        <div class="flex items-center">
+                            <div class="text-yellow-500 mr-2 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <span class="text-xs font-bold text-gray-500">50代 男性のお客様</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- インフォメーション -->
+<section id="booking" class="py-16 md:py-24 bg-zinc-900 text-white scroll-mt-4">
+    <div class="container mx-auto px-4 max-w-4xl border border-white/20 p-6 sm:p-8 md:p-16 rounded-sm bg-black/40 shadow-2xl">
+        <div class="text-center mb-10 md:mb-12">
+            <h2 class="text-3xl md:text-5xl font-black mb-6 gold-text italic serif leading-tight">Premium Lunch Experience</h2>
+           
+            <p class="text-base md:text-lg text-gray-300 leading-relaxed">
+                一皿ずつ丁寧に調理するため、1日の提供数には限りがございます。<br class="hidden md:block">
+                ご来店前のお電話でのご確認を強くおすすめしております。
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-10 items-center mb-12">
+            <div class="space-y-4 text-left">
+                <div class="flex items-center space-x-4 border-b border-white/10 pb-4">
+                    <i class="fas fa-map-marker-alt text-italian-red text-xl w-6 text-center shrink-0"></i>
+                    <div>
+                        <p class="text-xs text-gray-500">ADDRESS</p>
+                        <p class="font-bold">岩手県岩手郡雫石町上町西９０</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 border-b border-white/10 pb-4">
+                    <i class="fas fa-clock text-italian-red text-xl w-6 text-center shrink-0"></i>
+                    <div>
+                        <p class="text-xs text-gray-500">BUSINESS HOURS</p>
+                        <p class="font-bold">11:20 〜 13:30 /17:00 〜 20:00</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 border-b border-white/10 pb-4">
+                    <i class="fas fa-calendar-times text-italian-red text-xl w-6 text-center shrink-0"></i>
+                    <div>
+                        <p class="text-xs text-gray-500">CLOSED</p>
+                        <p class="font-bold">月曜日(水曜日・金曜日のディナーは休業）</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="mb-4 text-sm font-bold text-yellow-400">お電話でのご予約・お問い合わせ</p>
+                <a href="tel:0196911737" class="cta-shine block bg-white text-black py-5 md:py-6 rounded-xl text-2xl sm:text-3xl font-black active:bg-gray-200 md:hover:bg-gray-100 transition-colors shadow-xl">
+                    <i class="fas fa-phone-alt mr-2 text-italian-red"></i>019-691-1737
+                </a>
+                <p class="mt-4 text-xs text-gray-400 uppercase tracking-widest font-bold">Tap to call simonetta</p>
+            </div>
+        </div>
+
+        <!-- Google マップ埋め込みエリア -->
+        <div class="w-full rounded-sm overflow-hidden border border-white/10 shadow-lg">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.978631777939!2d140.96637657486437!3d39.69518439924067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85799780dd2231%3A0x9e7f6d7fedafaedd!2z44OR44K544K_44Gu5bqXIOOCt-ODouODjeODg-OCvw!5e0!3m2!1sja!2sjp!4v1792039532066!5m2!1sja!2sjp" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+    </div>
+</section>
+
+    <!-- フッター -->
+    <footer class="py-10 md:py-12 bg-black text-white border-t border-white/10">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="serif italic text-3xl md:text-4xl mb-6 md:mb-8 gold-text">Simonetta</h2>
+            <div class="flex justify-center space-x-8 mb-6 md:mb-8 text-2xl">
+               
+            </div>
+            <p class="text-gray-500 text-xs tracking-widest uppercase">&copy; 2026 Simonetta Shizukuishi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- スマホ用 固定電話ボタン（768px未満のみ表示） -->
+    <a href="tel:0196911737"
+       class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-italian-red text-white text-center font-black py-4 shadow-[0_-4px_16px_rgba(0,0,0,0.25)]"
+       style="padding-bottom: calc(1rem + env(safe-area-inset-bottom));">
+        <i class="fas fa-phone-alt mr-2"></i>電話で予約する
+    </a>
+
+</body>
+</html>
