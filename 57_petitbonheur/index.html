@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>プティボヌール | 矢巾町の気軽なフレンチ居酒屋</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f9f6f2; --surface:#ffffff; --ink:#1f1a1a; --muted:#5f5656;
+  --wine:#5a1a1f; --wine-text:#5a1a1f; --gold:#b3935c; --line:rgba(0,0,0,.1);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#181213; --surface:#221a1b; --ink:#f3ece4; --muted:#b9aba2;
+    --wine:#6e2128; --wine-text:#e9b7a8; --gold:#c9a872; --line:rgba(255,255,255,.12);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#181213; --surface:#221a1b; --ink:#f3ece4; --muted:#b9aba2;
+  --wine:#6e2128; --wine-text:#e9b7a8; --gold:#c9a872; --line:rgba(255,255,255,.12);
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden;line-height:1.8}
+.mincho{font-family:'Shippori Mincho','Hiragino Mincho ProN',serif}
+.latin{font-family:'Playfair Display',Georgia,serif;font-style:italic}
+.bg-paper{background:var(--paper)} .bg-surface{background:var(--surface)} .bg-wine{background:var(--wine)}
+.bg-gold{background:var(--gold)}
+.t-wine{color:var(--wine-text)} .t-gold{color:var(--gold)} .t-muted{color:var(--muted)}
+.b-gold{border-color:var(--gold)} .b-line{border-color:var(--line)}
+.vertical{writing-mode:vertical-rl;text-orientation:mixed}
+
+
+
+/* 最初の1回だけのフェードイン */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease-out,transform .9s ease-out}
+.js .reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- FV -->
+<section class="relative min-h-screen overflow-hidden bg-surface">
+  <div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col-reverse justify-center gap-10 px-5 py-14 md:flex-row md:items-center md:gap-8 md:px-8">
+    <div class="relative md:w-1/2">
+      <div class="flex gap-6">
+        <p class="vertical mincho shrink-0 border-r-2 b-gold pr-5 text-xl font-bold leading-loose tracking-[0.2em] md:text-3xl">小さな幸せを、<br>一皿に込めて。</p>
+        <div class="min-w-0 pt-2">
+          <h1 class="latin text-4xl leading-tight t-wine md:text-6xl">Petit Bonheur</h1>
+          <p class="mincho mt-4 text-base t-muted md:text-xl">東京仕込みの技術と、<br>矢巾の恵みが出会う場所。</p>
+          <h2 class="mincho mt-6 text-2xl font-bold leading-snug md:text-4xl">絶品、<br><span class="t-wine underline decoration-[var(--gold)] underline-offset-8">バターライスオムレット</span></h2>
+        </div>
+      </div>
+      <a href="#booking" class="mt-10 inline-block w-full rounded-sm bg-wine px-8 py-4 text-center font-bold text-white shadow-xl transition-opacity hover:opacity-85 md:w-auto md:px-12">ご予約はこちら →</a>
+    </div>
+    
+    <!-- 画像表示部分 -->
+    <div class="mx-auto w-[78%] max-w-sm md:w-1/2 md:max-w-none">
+      <div class="aspect-square w-full overflow-hidden rounded-full border b-line shadow-inner">
+        <img src="images/omurice.jpg" alt="バターライスオムレットのイメージ" class="h-full w-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="px-5 py-20 md:py-24">
+  <div class="reveal mx-auto max-w-2xl text-center">
+    <p class="latin mb-2 text-2xl t-gold">Story</p>
+    <h2 class="mincho mb-10 text-2xl font-bold leading-relaxed tracking-widest md:text-4xl">店名に込めた、<br>ひとつの約束。</h2>
+    <div class="space-y-6 text-base t-muted md:text-lg">
+      <p>フランス語で「小さな幸せ」を意味する<br class="hidden md:block">プティボヌール。</p>
+      <p>仕事帰りの一杯、週末の贅沢、<br class="hidden md:block">大切な人との語らい。</p>
+      <p>豪華なフルコースではないけれど、<br class="hidden md:block">ここには確かな「手仕事」と「温もり」があります。</p>
+      <p class="font-bold t-wine">一口食べれば、明日が少し楽しみになる。<br>そんな場所でありたいと願っています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- シズル感 -->
+<section class="bg-surface">
+  <div class="mx-auto flex max-w-6xl flex-col items-stretch md:flex-row md:items-center">
+    <div class="reveal md:w-1/2">
+      <!-- 画像表示部分 -->
+      <div class="aspect-[4/3] w-full overflow-hidden md:aspect-square">
+        <img src="images/omurice2.jpg" alt="切り分けたオムレットのイメージ" class="h-full w-full object-cover">
+      </div>
+    </div>
+    <div class="reveal px-5 py-12 md:w-1/2 md:p-20">
+      <div class="border-l-4 b-gold pl-6">
+        <p class="text-lg" style="color:#d4a017" aria-label="星5つ">★★★★★</p>
+        <blockquote class="mincho my-4 text-xl font-bold leading-relaxed md:text-2xl">「この値段でいいの？<br>もっともっと払える、<br>そんな感動がここにあります。」</blockquote>
+        <p class="text-sm italic t-muted">― お客様のクチコミより抜粋</p>
+        <p class="mt-6 text-sm t-muted md:text-base">岩手のブランド米「銀河のしずく」を贅沢に使用。バターの香りが鼻を抜け、特製ソースとのマリアージュは、まさに至福の時間。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- こだわり -->
+<section class="bg-paper px-5 py-20 md:py-24">
+  <div class="mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:items-center md:gap-16">
+    <div class="reveal order-2 md:order-1 md:w-1/2">
+      <h3 class="mincho mb-8 text-3xl font-bold t-wine md:text-4xl">地の利を、皿の上に。</h3>
+      <ul class="space-y-6">
+        <li class="flex items-start gap-4"><span class="mt-1 bg-gold px-3 py-1 text-xs font-bold text-white">01</span><div><p class="text-lg font-bold">矢巾町産の原木しいたけ</p><p class="text-sm t-muted">肉厚で香り高い、大地の恵みをダイレクトに。</p></div></li>
+        <li class="flex items-start gap-4"><span class="mt-1 bg-gold px-3 py-1 text-xs font-bold text-white">02</span><div><p class="text-lg font-bold">地元ワイナリーの醸造酒</p><p class="text-sm t-muted">自園自醸ワイン紫波など、地元の味をさらに深めるペアリング。</p></div></li>
+        <li class="flex items-start gap-4"><span class="mt-1 bg-gold px-3 py-1 text-xs font-bold text-white">03</span><div><p class="text-lg font-bold">丁寧な手仕事</p><p class="text-sm t-muted">一つひとつ時間をかけて仕込む、本格フレンチの真髄。</p></div></li>
+      </ul>
+    </div>
+    <div class="reveal order-1 md:order-2 md:w-1/2">
+      <div class="relative">
+        <!-- 画像表示部分 -->
+        <div class="aspect-[4/3] w-full overflow-hidden rounded-sm shadow-lg md:aspect-[3/4]">
+          <img src="images/chef.png" alt="厨房で盛り付けるシェフのイメージ" class="h-full w-full object-cover">
+        </div>
+        <div class="absolute -bottom-6 -left-4 hidden bg-wine p-5 text-white shadow-xl md:block"><p class="latin text-2xl">Quality First</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="border-t b-line bg-paper px-5 py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal mb-10 text-center">
+      <span class="inline-block rounded-full bg-gold px-4 py-1 text-sm font-bold tracking-widest text-white">COMING SOON</span>
+      <h2 class="mincho mt-3 text-2xl font-bold tracking-wider t-wine md:text-5xl">焼き立てキッシュのテイクアウト</h2>
+      <p class="mt-4 text-sm t-muted md:text-base">お店の味をご自宅で。もっと気軽に「小さな幸せ」をお届けするために準備中です。</p>
+    </div>
+    <div class="reveal mx-auto max-w-3xl rounded-sm border b-gold bg-surface p-6 shadow-lg md:p-12">
+      <div class="space-y-5">
+        <p class="inline-block border-b-2 b-gold pb-1 text-xs font-bold tracking-widest t-wine">TAKEOUT &amp; GIFT</p>
+        <h3 class="mincho text-xl font-bold leading-snug md:text-3xl">サクサクのパイ生地と、<br>濃厚なアパレイユの極上ハーモニー。</h3>
+        <p class="text-sm t-muted md:text-base">矢巾町産の新鮮な野菜と地鶏、旬の味覚を贅沢に閉じ込めたプティボヌール特製の自家製キッシュ。ご家庭での特別な晩酌やホームパーティーのお供、大切な方への手土産にもぴったりです。</p>
+        <div class="space-y-1 rounded border-l-4 b-gold bg-paper p-4 text-xs t-muted">
+          <p class="font-bold t-wine">✦ 提供予定ラインナップ</p>
+          <p>・矢巾産 原木しいたけとベーコンのキッシュ・ロレーヌ</p>
+          <p>・季節の地場野菜と濃厚チーズのキッシュ</p>
+        </div>
+        <p class="inline-block rounded bg-paper px-3 py-1.5 text-xs font-bold t-gold">※ 開始時期や事前予約のご案内は公式Instagramにてお知らせいたします</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 通販 -->
+<section class="border-y b-line bg-surface px-5 py-20">
+  <div class="reveal mx-auto flex max-w-5xl flex-col overflow-hidden rounded-sm bg-paper shadow-xl md:flex-row">
+    <div class="p-8 md:w-1/2 md:p-12">
+      <p class="mb-4 text-sm font-bold tracking-widest t-gold">ONLINE SHOP</p>
+      <h2 class="mincho mb-6 text-2xl font-bold t-wine md:text-3xl">ご自宅でも、小さな幸せを。</h2>
+      <p class="mb-8 text-sm t-muted md:text-base">人気のキッシュやガトーショコラを冷凍でお届け。プティボヌールの味を、大切な方への贈り物や、自分へのご褒美に。</p>
+      <a href="https://www.pb-yahaba.net/" class="inline-block border-b-2 b-gold pb-1 font-bold t-wine">オンラインショップを見る</a>
+    </div>
+    <!-- 画像表示部分 -->
+    <div class="relative min-h-[240px] md:w-1/2 md:min-h-[400px]">
+      <img src="images/cake.png" alt="ギフトボックスのイメージ" class="absolute inset-0 h-full w-full object-cover">
+    </div>
+  </div>
+</section>
+
+<!-- 予約 -->
+<section id="booking" class="bg-wine px-5 py-24 text-center text-white md:py-32">
+  <div class="reveal mx-auto max-w-3xl">
+    <h2 class="mincho mb-8 text-3xl font-bold leading-snug tracking-[0.1em] md:text-5xl">今夜、心温まる<br>ひとときを。</h2>
+    <p class="mb-12 text-base opacity-80 md:text-lg">一日にご案内できる数には限りがございます。<br>お早めのご予約をお待ちしております。</p>
+    
+    <div class="mx-auto mb-12 grid max-w-2xl gap-4 md:grid-cols-2 md:gap-8">
+      <a href="https://www.pb-yahaba.net/" class="block rounded-sm bg-white py-5 font-bold shadow-xl" style="color:#5a1a1f">ネットで予約する</a>
+      <a href="tel:080-5576-6062" class="block rounded-sm border-2 border-white py-5 font-bold text-white">電話で問い合わせ</a>
+    </div>
+
+    <!-- Googleマップ埋め込み部分 -->
+    <div class="mb-12 overflow-hidden rounded-sm shadow-xl">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.6067884463537!2d141.1461292748596!3d39.61353940413422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8585745d4eaae1%3A0x83fc9420a627f0b7!2z44OX44OG44Kj44Oc44OM44O844Or!5e0!3m2!1sja!2sjp!4v1792042698372!5m2!1sja!2sjp" class="h-[350px] w-full border-0 md:h-[400px]" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <div class="space-y-1 text-sm opacity-70">
+      <p>〒028-3618 岩手県紫波郡矢巾町駅東１丁目１−２２</p>
+      <p>080-5576-6062 | 駐車場完備</p>
+    </div>
+  </div>
+</section>
+
+<footer class="px-5 py-10 text-center" style="background:var(--surface)">
+  <div class="mb-6 flex justify-center gap-6 t-wine">
+    <a href="https://www.instagram.com/petitbonheur.yahaba/">Instagram</a>
+    <a href="https://www.pb-yahaba.net/">Official Site</a>
+  </div>
+  <p class="text-xs t-muted">&copy; 2020 Petit Bonheur All Rights Reserved.</p>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+try{
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+}catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('on')})}
+</script>
+</body>
+</html>
