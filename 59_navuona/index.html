@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ナヴォーナ | 岩手県1位に輝いた至高のイタリアン・洋食</title>
+    <meta name="description" content="岩手・奥州の人気洋食店ランキング第1位。名物「アラビアータ」を味わえるトラットリア・ナヴォーナ。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ita-red: #ce2b37;
+            --ita-green: #008c45;
+            --ita-gold: #b39156;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fcfaf7;
+            -webkit-text-size-adjust: 100%;
+        }
+        .serif-jp { font-family: 'Noto Serif JP', serif; }
+        .accent-font { font-family: 'Kaushan Script', cursive; }
+        .paper-texture {
+            background-image: radial-gradient(#e5e7eb 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+        .section-title { position: relative; display: inline-block; padding-bottom: 1rem; }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--ita-red);
+        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all .8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .ita-border { border-top: 5px solid var(--ita-green); border-bottom: 5px solid var(--ita-red); }
+        .hero-bg {
+            background:
+                linear-gradient(to right, rgba(0,0,0,.75), rgba(0,0,0,.45)),
+                radial-gradient(circle at 75% 40%, rgba(206,43,55,.45), transparent 55%),
+                #1a0e0a;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .fade-in { opacity: 1; transform: none; transition: none; }
+        }
+    </style>
+</head>
+<body class="paper-texture text-gray-800 antialiased">
+
+  <!-- 1. ヒーロー (背景画像パターン) -->
+    <header class="min-h-[100svh] flex items-center relative overflow-hidden bg-cover bg-center" style="background-image: url('images/pizza.png');">
+        <!-- 文字を読みやすくするための半透明の黒オーバーレイ -->
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <div class="container mx-auto px-5 sm:px-6 py-16 z-10">
+            <div class="max-w-3xl text-white">
+                <span class="inline-block bg-[#ce2b37] text-white px-4 py-1 mb-5 text-xs sm:text-sm tracking-wider font-bold rounded-full">岩手・奥州の人気洋食店ランキング 第1位</span>
+                <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 serif-jp leading-tight">
+                    心に響く、<br>至福のひと皿。
+                </h1>
+                <p class="text-xl sm:text-2xl mb-8 accent-font text-[#f4f4f4]">Trattoria Navuona</p>
+                <div class="border-l-4 border-[#ce2b37] pl-4 sm:pl-6 mb-10">
+                    <p class="text-base sm:text-xl leading-relaxed">
+                        ローマの風を感じる創造的なイタリアン。<br>
+                        名物「アラビアータ」が、あなたの日常を特別に変える。
+                    </p>
+                </div>
+                <a href="#reservation" class="block sm:inline-block text-center bg-white text-[#ce2b37] hover:bg-[#ce2b37] hover:text-white font-bold py-4 sm:py-5 px-8 sm:px-12 rounded-full transition-colors duration-300 shadow-2xl">
+                    店舗情報・ご予約はこちら
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-2 flex z-10" aria-hidden="true">
+            <div class="w-1/3 bg-[#008c45]"></div>
+            <div class="w-1/3 bg-white"></div>
+            <div class="w-1/3 bg-[#ce2b37]"></div>
+        </div>
+    </header>
+
+    <!-- 2. 特徴 -->
+    <section class="py-12 sm:py-16 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 text-center">
+                <div class="p-6">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-red-50 rounded-full flex items-center justify-center text-3xl">🍝</div>
+                    <h3 class="text-lg font-bold mb-2 serif-jp">本格的な味わい</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">ローマの「ナヴォーナ広場」をイメージした創造性あふれる一皿。</p>
+                </div>
+                <div class="p-6 border-y md:border-y-0 md:border-x border-gray-100">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-green-50 rounded-full flex items-center justify-center text-3xl">💰</div>
+                    <h3 class="text-lg font-bold mb-2 serif-jp">嬉しいコスパ</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">ランチ1,000円以内、ディナー2,000円以内。日常使いできる贅沢。</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-amber-50 rounded-full flex items-center justify-center text-3xl">🍷</div>
+                    <h3 class="text-lg font-bold mb-2 serif-jp">落ち着く空間</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">おしゃれでゆったりとした店内。大切な友人やご家族との時間に。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 看板メニュー -->
+    <section class="py-16 sm:py-24 fade-in">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <span class="accent-font text-[#b39156] text-2xl block mb-2">Our Signature</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 sm:mb-12 serif-jp section-title">一度は食べてほしい、看板メニュー</h2>
+
+            <div class="max-w-4xl mx-auto bg-stone-900 rounded-2xl overflow-hidden shadow-2xl p-6 sm:p-8 md:p-12 text-white text-left flex flex-col md:flex-row items-center gap-8">
+                <!-- 画像部分 -->
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <img src="images/pasta.png" alt="絶品アラビアータ" class="w-full h-64 sm:h-72 md:h-80 object-cover rounded-xl shadow-lg">
+                </div>
+
+                <!-- テキスト部分 -->
+                <div class="w-full md:w-1/2">
+                    <span class="bg-[#ce2b37] text-xs font-bold px-3 py-1 rounded-full">イチオシ</span>
+                    <h4 class="text-2xl sm:text-3xl font-bold my-3 serif-jp text-[#FFE082]">絶品アラビアータ</h4>
+                    <p class="text-sm leading-relaxed mb-6 text-gray-300">
+                        「トマトソースの甘くて優しい味わい」と「ピリッとした辛味」の黄金比。<br>
+                        歯み応えのある太麺がソースと絡み合う、ナヴォーナ究極の逸品。
+                    </p>
+                    <div class="border-t border-gray-700 pt-4 flex justify-between items-center">
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="py-14 sm:py-20 bg-gradient-to-b from-stone-100 to-amber-50 fade-in border-y border-amber-200">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <span class="inline-block bg-black text-amber-300 px-4 py-1 text-xs font-bold tracking-widest rounded-full mb-3">Coming Soon</span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 serif-jp">これから始まる、新しいナヴォーナ</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-10 sm:mb-12 text-sm leading-relaxed">お客様からの「あったらいいな！」にお応えして、準備を進めている新サービスをご紹介します。</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 sm:p-8 pt-10 rounded-2xl shadow-lg border border-amber-100 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">順次展開予定</div>
+                    <div class="text-4xl mb-4">🌸 🍁</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 serif-jp">岩手の四季を味わう「季節限定メニュー」</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        地元の旬食材をふんだんに使った特別メニューが登場！春の山菜パスタ、夏の冷製アラビアータ、秋のキノコ＆ウニの濃厚リゾットなど、その時期にしか味わえない至高のひと皿をお届けします。
+                    </p>
+                    <p class="text-xs text-amber-700 font-bold">✨ 定番人気メニューに加わる新しい楽しみ</p>
+                </div>
+
+                <div class="bg-white p-6 sm:p-8 pt-10 rounded-2xl shadow-lg border border-amber-100 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">準備中</div>
+                    <div class="text-4xl mb-4">🍙 🍳</div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 serif-jp">人気の味をご家庭で！「テイクアウト開始」</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        「おうちでもナヴォーナのオムライスやハンバーグが食べたい」という声にお応えします！絶品ソースの特製オムライスや肉汁あふれるハンバーグ弁当のテイクアウト展開を準備中です。
+                    </p>
+                    <p class="text-xs text-amber-700 font-bold">✨ お電話での事前注文受付も予定</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 4. ストーリー -->
+    <section class="py-16 sm:py-24 bg-[#1d3557] text-white paper-texture">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-12">
+                <!-- 画像部分 -->
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <img src="images/chef.png" alt="お店の雰囲気や外観" class="w-full max-w-md h-72 sm:h-80 md:h-96 object-cover rounded-2xl shadow-2xl border-2 border-[#b39156]/40">
+                </div>
+
+                <!-- テキスト部分 -->
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 serif-jp leading-tight text-[#b39156]">
+                        岩手の地で、<br>ローマの喜びを分かち合う。
+                    </h3>
+                    <p class="text-base leading-relaxed mb-6 opacity-90">
+                        トラットリア・ナヴォーナは、本場イタリア・ローマの「ナヴォーナ広場」のように、人々が集まり、創造的な料理を楽しむ場所でありたいという願いを込めてオープンしました。
+                    </p>
+                    <p class="text-base leading-relaxed mb-8 opacity-90">
+                        比較的新しい店舗ながら、地元のお客様に支えられ「人気の洋食店ランキング1位」をいただくまでになりました。お一人様からご家族まで、心を込めたおもてなしをお約束します。
+                    </p>
+                    <div class="accent-font text-3xl text-[#b39156]">Trattoria Navuona</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. クチコミ -->
+    <section class="py-16 sm:py-24 fade-in">
+        <div class="container mx-auto px-5 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="text-[#ce2b37] font-bold tracking-widest block mb-2 text-sm">Guest Reviews</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold serif-jp">お客様からの嬉しいお声</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="text-yellow-400 mb-4" aria-label="5点満点中5点">★★★★★</div>
+                    <p class="text-gray-700 leading-relaxed text-sm mb-6">「チーズパスタを注文しました。挽肉とナスが入ったトマトベースのパスタにたっぷりチーズ！熱々で本当に美味しかったです。」</p>
+                    <p class="text-xs font-bold text-gray-400">— 30代 女性</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="text-yellow-400 mb-4" aria-label="5点満点中5点">★★★★★</div>
+                    <p class="text-gray-700 leading-relaxed text-sm mb-6">「昔ながらのオムライスが絶品！ソースと中のライスが美味しすぎてペロリでした。次はピザも食べてみたいです。」</p>
+                    <p class="text-xs font-bold text-gray-400">— 20代 女性</p>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="text-yellow-400 mb-4" aria-label="5点満点中4点">★★★★☆</div>
+                    <p class="text-gray-700 leading-relaxed text-sm mb-6">「ハンバーグが牛100%？と思うほど肉肉しくて好みでした。店内の雰囲気もおしゃれで落ち着きます。」</p>
+                    <p class="text-xs font-bold text-gray-400">— 40代 男性</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. インフォメーション -->
+    <section class="py-14 sm:py-20 bg-[#f9f7f2] ita-border">
+        <div class="container mx-auto px-5 sm:px-6 max-w-4xl">
+            <div class="bg-white p-6 sm:p-8 md:p-12 shadow-xl rounded-2xl text-center">
+                <h3 class="text-xl sm:text-2xl font-bold mb-8 serif-jp">店舗のご案内</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left mb-8">
+                    <div class="border-l-4 border-[#b39156] pl-4">
+                        <h4 class="font-bold text-[#ce2b37] mb-1 text-xs tracking-widest">Lunch Time</h4>
+                        <p class="text-xl sm:text-2xl font-bold serif-jp">〜 1,000 Yen</p>
+                        <p class="text-xs text-gray-500 mt-1">サラダ・ドリンク付きでお得に楽しめます。</p>
+                    </div>
+                    <div class="border-l-4 border-[#b39156] pl-4">
+                        <h4 class="font-bold text-[#ce2b37] mb-1 text-xs tracking-widest">Dinner Time</h4>
+                        <p class="text-xl sm:text-2xl font-bold serif-jp">〜 2,000 Yen</p>
+                        <p class="text-xs text-gray-500 mt-1">ゆったりとお酒やピザを愉しむ夜。</p>
+                    </div>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-lg text-xs text-amber-900 leading-relaxed text-left border border-amber-200">
+                    <p class="font-bold mb-1">🅿️ 駐車場について</p>
+                    <p>店舗前に4〜5台分ございますが、混雑時は満車となる場合がございます。その際は近隣の「Zプラザ・アテルイ」駐車場などのご利用も便利です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- 7. 最終CTA -->
+    <section id="reservation" class="py-16 sm:py-24 bg-white fade-in scroll-mt-4">
+        <div class="container mx-auto px-5 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 serif-jp leading-snug">皆様のご来店を、<br>心よりお待ちしております。</h2>
+
+            <div class="max-w-xl mx-auto space-y-6">
+                <a href="tel:0197-34-1221" class="block w-full bg-[#ce2b37] text-white py-4 sm:py-5 rounded-full text-xl sm:text-2xl font-bold shadow-xl hover:bg-[#b0222d] transition-colors">
+                    📞 0197-34-1221
+                </a>
+                <p class="text-gray-500 text-xs">火曜定休日 | お電話にてご予約も承っております</p>
+
+                <div class="mt-10 p-5 sm:p-6 border border-gray-200 rounded-2xl text-left bg-[#fcfaf7]">
+                    <h4 class="font-bold mb-3 flex items-center text-gray-800">
+                        <span class="w-6 h-6 bg-[#008c45] text-white rounded-full flex items-center justify-center mr-2 text-xs shrink-0">📍</span>
+                        SHOP INFO
+                    </h4>
+                    <p class="text-sm text-gray-700 mb-1">〒023-0814 岩手県奥州市水沢袋町7-2</p>
+                    <p class="text-sm text-gray-700">JR東北本線「水沢駅」より徒歩圏内</p>
+                    
+                    <!-- Googleマップ埋め込み -->
+                    <div class="mt-4 w-full h-64 sm:h-72 rounded-xl overflow-hidden shadow-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3094.5864852718682!2d141.1382745748316!3d39.13864033243562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f4a73ca36bab7%3A0x41dd4e9305f12204!2z44OK44O044Kp44O844OK!5e0!3m2!1sja!2sjp!4v1792037396021!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+
+                    <div class="mt-4">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-white py-10 text-center">
+        <div class="container mx-auto px-5 sm:px-6">
+            <h2 class="accent-font text-3xl mb-2">Trattoria Navuona</h2>
+            <p class="text-xs text-gray-400 tracking-widest mb-6">Creative Italian Cuisine in Oshu</p>
+            <p class="text-xs text-gray-500">&copy; 2026 Trattoria Navuona. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
