@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="盛岡市月が丘の本格イタリアンバール Buon'Agio。週替わりランチとボリューム満点のパスタ。">
+<meta name="theme-color" content="#ce2b37">
+<title>Italian Bar Buon'Agio | 盛岡市月が丘の本格イタリアンバール</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; padding-bottom: calc(env(safe-area-inset-bottom) + 4.5rem); }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
+  .heading-serif { font-family: 'Noto Serif JP', serif; }
+  .italic-serif { font-family: 'Playfair Display', serif; font-style: italic; }
+  .bg-paper { background-color: #fcfaf2; background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"); }
+  .hero-mask { background: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.8)); }
+  .diagonal-line { clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%); }
+  .floating { animation: floating 3s ease-in-out infinite; }
+  @keyframes floating { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @media (prefers-reduced-motion: reduce) { .floating, .animate-bounce { animation: none; } }
+</style>
+</head>
+<body class="bg-paper text-stone-800 antialiased">
+
+<!-- 1: Hero -->
+<header class="relative h-[85svh] md:h-screen min-h-[560px] overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="images/pasta.jpg" alt="Buon'Agioのパスタ" class="w-full h-full object-cover">
+    <div class="absolute inset-0 hero-mask"></div>
+  </div>
+
+  <nav class="absolute top-0 inset-x-0 px-4 py-4 md:p-6 flex justify-between items-center z-50">
+    <div class="text-white font-bold text-xl md:text-2xl italic-serif tracking-widest">Buon'Agio</div>
+    <a href="tel:08033384259" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full text-sm font-bold md:hidden">
+      <i class="fas fa-phone mr-1"></i>予約
+    </a>
+  </nav>
+
+  <div class="relative h-full flex items-center justify-center text-center text-white px-5">
+    <div class="max-w-4xl pt-8">
+      <p class="text-green-400 text-sm md:text-xl font-bold mb-5 md:mb-6 tracking-[0.15em] md:tracking-[0.2em]">
+        <span class="bg-green-700 text-white px-3 py-1 mr-2 uppercase text-xs">Morioka</span>盛岡市月が丘
+      </p>
+      <h1 class="heading-serif text-[1.65rem] leading-snug sm:text-4xl md:text-6xl lg:text-7xl md:leading-tight mb-8 md:mb-10 drop-shadow-2xl">
+        「ごゆっくり」という名の<br>隠れ家バールで至福のパスタを。
+      </h1>
+      <div class="flex justify-center mt-8">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+    <i class="fas fa-chevron-down text-2xl text-white/50"></i>
+  </div>
+</header>
+
+<!-- 2: CTA -->
+<section id="cta" class="relative z-20 py-10 md:py-16 -mt-8 md:-mt-12">
+  <div class="container mx-auto px-4">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
+      <div class="md:w-2/3 p-6 md:p-12">
+        <h2 class="heading-serif text-2xl md:text-3xl font-bold mb-4 leading-snug">週替わりの贅沢。<br class="sm:hidden">ボリューム満点の本格ランチ</h2>
+        <p class="text-stone-600 mb-6 md:mb-8 text-sm md:text-base leading-relaxed">オープン前から行列ができる「ランパスメニュー」も数量限定で提供中。美味しいサラダとスープがセットで心もお腹も満たされます。</p>
+        <div class="flex flex-wrap gap-2 md:gap-4">
+          <span class="bg-stone-100 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-bold"><i class="fas fa-check text-green-600 mr-2"></i>ランチ:パスタ/ピザ</span>
+          <span class="bg-stone-100 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-bold"><i class="fas fa-check text-green-600 mr-2"></i>ディナー:バルスタイル</span>
+          <span class="bg-stone-100 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-bold"><i class="fas fa-check text-green-600 mr-2"></i>おにぎり持ち込み歓迎</span>
+        </div>
+      </div>
+      <div class="md:w-1/3 bg-red-600 p-6 md:p-8 text-white flex flex-col justify-center items-center text-center">
+        <p class="text-sm mb-1 opacity-80 uppercase tracking-widest font-bold">Reservation</p>
+        <p class="text-xs mb-3">お気軽にお電話ください</p>
+        <a href="tel:08033384259" class="text-2xl md:text-3xl font-bold mb-4 md:hover:scale-110 transition">080-3338-4259</a>
+        <a href="https://www.instagram.com/kasshiy8635/" target="_blank" rel="noopener" class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-sm hover:bg-stone-100 transition">Instagramを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3: Features -->
+<section class="py-14 md:py-24 overflow-hidden">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10 md:mb-20">
+      <span class="italic-serif text-xl md:text-2xl text-red-600 block mb-2">Features</span>
+      <h2 class="heading-serif text-2xl md:text-4xl font-bold">ブォナージョが選ばれる3つの理由</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 md:gap-12 max-w-6xl mx-auto">
+      <div class="group">
+        <div class="relative mb-5 overflow-hidden rounded-2xl">
+          <img src="images/pasta2.jpg" alt="パスタ" loading="lazy" class="w-full h-52 md:h-64 object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute top-4 left-4 bg-red-600 text-white w-11 h-11 flex items-center justify-center rounded-full font-bold text-lg">01</div>
+        </div>
+        <h3 class="heading-serif text-xl md:text-2xl font-bold mb-3">もちもち食感のこだわりパスタ</h3>
+        <p class="text-stone-600 leading-relaxed text-sm md:text-base">一度食べたらハマる「辛いカルボナーラ」や「ペペロンチーノ」など、他では味わえない独自の味を追求しています。</p>
+      </div>
+      <div class="group">
+        <div class="relative mb-5 overflow-hidden rounded-2xl">
+          <img src="images/bar.jpg" alt="店内の雰囲気" loading="lazy" class="w-full h-52 md:h-64 object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute top-4 left-4 bg-red-600 text-white w-11 h-11 flex items-center justify-center rounded-full font-bold text-lg">02</div>
+        </div>
+        <h3 class="heading-serif text-xl md:text-2xl font-bold mb-3">「お気軽に」を体現した空間</h3>
+        <p class="text-stone-600 leading-relaxed text-sm md:text-base">カウンター席完備で、お一人様でも安心。広くて明るい店内は、家族連れやデート、夜のバル利用にも最適です。</p>
+      </div>
+      <div class="group">
+        <div class="relative mb-5 overflow-hidden rounded-2xl">
+          <img src="images/pasta3.jpg" alt="ランチ" loading="lazy" class="w-full h-52 md:h-64 object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute top-4 left-4 bg-red-600 text-white w-11 h-11 flex items-center justify-center rounded-full font-bold text-lg">03</div>
+        </div>
+        <h3 class="heading-serif text-xl md:text-2xl font-bold mb-3">驚きのボリュームと独自ルール</h3>
+        <p class="text-stone-600 leading-relaxed text-sm md:text-base">パスタランチは満足の食べ応え。ライスメニューがない代わりにおにぎりの持ち込みOKという温かい心遣いが自慢です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4: Problem / Solution -->
+<section class="py-16 md:py-24 bg-stone-900 text-white diagonal-line">
+  <div class="container mx-auto px-4 py-10 md:py-20">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <div class="md:w-1/2 w-full">
+        <h2 class="heading-serif text-2xl md:text-3xl mb-6 md:mb-8 leading-relaxed">
+          <span class="text-stone-500 block text-lg mb-2 italic-serif">Problem</span>
+          盛岡でパスタランチに迷っていませんか?
+        </h2>
+        <ul class="space-y-3 md:space-y-4 text-stone-400 text-sm md:text-base">
+          <li class="flex items-start gap-3"><i class="fas fa-times-circle mt-1 text-red-500"></i>本格的なパスタは量が少なくて物足りない…</li>
+          <li class="flex items-start gap-3"><i class="fas fa-times-circle mt-1 text-red-500"></i>おしゃれなお店は一人で入りにくい雰囲気…</li>
+          <li class="flex items-start gap-3"><i class="fas fa-times-circle mt-1 text-red-500"></i>いつも同じようなメニューばかりで飽きてしまう…</li>
+        </ul>
+      </div>
+      <div class="md:w-1/2 w-full bg-white/10 p-6 md:p-8 rounded-2xl border border-white/20 backdrop-blur-sm">
+        <p class="italic-serif text-xl text-green-400 mb-2">Solution</p>
+        <h3 class="heading-serif text-xl md:text-2xl font-bold mb-4">ブォナージョにお任せください!</h3>
+        <p class="leading-relaxed text-stone-300 text-sm md:text-base">週替わりのランチは飽きのボリューム。店名通り「ごゆっくり・お気軽に」を体現した温かな接客で、一度食べたらハマる独自配合のもちもちパスタをお届けします。</p>
+        <div class="mt-6 pt-5 border-t border-white/20 grid grid-cols-2 gap-4">
+          <div class="text-center"><p class="text-xl md:text-2xl font-bold text-red-500">たっぷり</p><p class="text-xs opacity-60">ボリューム満足度</p></div>
+          <div class="text-center"><p class="text-xl md:text-2xl font-bold text-green-500">大歓迎</p><p class="text-xs opacity-60">お一人様・家族連れ</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Coming Soon -->
+<section class="py-14 md:py-20 bg-gradient-to-br from-red-950 via-stone-900 to-stone-950 text-white relative overflow-hidden">
+  <div class="absolute -right-6 -bottom-6 opacity-10 text-7xl md:text-9xl font-black italic-serif select-none">SOON</div>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+      <span class="inline-block bg-gradient-to-r from-amber-400 to-yellow-500 text-stone-950 px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest mb-3 shadow-lg">Coming Soon</span>
+      <h2 class="heading-serif text-2xl md:text-4xl font-bold mb-4 leading-snug">「あったらいいな」をカタチに。<br>新サービス準備中!</h2>
+      <p class="text-stone-300 text-sm md:text-base leading-relaxed">大好評の「週替わりランチ」の最新情報を、どこよりも早くお届け!さらに便利で楽しいコンテンツを現在準備中です。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+      <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/15 relative flex flex-col justify-between hover:border-amber-400/50 transition">
+        <div class="absolute top-4 right-4 bg-amber-400 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">準備中</div>
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-2xl bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-600 flex items-center justify-center text-2xl text-white shadow-md"><i class="fab fa-instagram"></i></div>
+            <div>
+              <p class="text-xs text-amber-400 font-bold uppercase tracking-wider">Weekly Menu</p>
+              <h3 class="text-lg md:text-xl font-bold">週替わりランチメニュー先行配信</h3>
+            </div>
+          </div>
+          <p class="text-stone-300 text-sm leading-relaxed mb-5">「今週のパスタは何だろう?」がすぐわかる!毎週のランチラインナップや限定メニュー、シェフの気まぐれ仕込み風景をInstagramストーリーズ&LINE公式アカウントでいち早く発信します。</p>
+        </div>
+        <ul class="space-y-2 text-xs text-stone-300 border-t border-white/10 pt-4">
+          <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i>今週の限定パスタ&ピザを動画・画像でお知らせ</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i>ランチ完売情報や空席状況のリアルタイム配信</li>
+        </ul>
+      </div>
+      <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/15 relative flex flex-col justify-between hover:border-green-400/50 transition">
+        <div class="absolute top-4 right-4 bg-green-400 text-stone-950 text-xs font-bold px-3 py-1 rounded-full">準備中</div>
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-2xl bg-emerald-500 flex items-center justify-center text-2xl text-white shadow-md"><i class="fab fa-line"></i></div>
+            <div>
+              <p class="text-xs text-emerald-400 font-bold uppercase tracking-wider">LINE Member Service</p>
+              <h3 class="text-lg md:text-xl font-bold">LINE限定特典&事前取り置き</h3>
+            </div>
+          </div>
+          <p class="text-stone-300 text-sm leading-relaxed mb-5">人気の数量限定ランパスメニューやランチセットの「売り切れ」を防止!LINEからワンタップでランチのお取り置き予約や、友達限定クーポンの配信を予定しています。</p>
+        </div>
+        <ul class="space-y-2 text-xs text-stone-300 border-t border-white/10 pt-4">
+          <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i>数量限定ランチの事前キープ・お取り置き予約</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i>雨の日限定割引やバースデークーポンプレゼント</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6: Reviews -->
+<section class="py-14 md:py-24 bg-white relative overflow-hidden">
+  <div class="absolute top-0 right-0 p-6 md:p-20 opacity-5 text-6xl md:text-9xl italic-serif font-bold">Review</div>
+  <div class="container mx-auto px-4 relative z-10">
+    <h2 class="heading-serif text-2xl md:text-3xl text-center mb-8 md:mb-16">盛岡で支持される理由(お客様の声)</h2>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+      <div class="p-6 md:p-8 bg-stone-50 border-l-4 border-red-600 rounded-r-xl shadow-sm">
+        <div class="flex items-center gap-1 text-yellow-500 mb-3 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-stone-700 leading-relaxed font-medium mb-4 text-sm md:text-base">「大好きなお店です。どれを食べても美味しいです。お店の雰囲気もとても良く、1人でも入りやすいので何度も通っています。おすすめは辛いカルボナーラとペペロンチーノです。もちもちの麺で、1度食べたらハマること間違いなしです。」</p>
+        <p class="text-sm text-stone-400 text-right">盛岡市在住 / 30代女性</p>
+      </div>
+      <div class="p-6 md:p-8 bg-stone-50 border-l-4 border-green-600 rounded-r-xl shadow-sm">
+        <div class="flex items-center gap-1 text-yellow-500 mb-3 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-stone-700 leading-relaxed font-medium mb-4 text-sm md:text-base">「日曜のランチで利用。2人で迷って、カルボナーラとアラビアータを注文。どちらもおいしかったです!おいしいサラダとスープが付いてきたのもうれしかったです。夜も飲みに行ってみたいと思いました。」</p>
+        <p class="text-sm text-stone-400 text-right">盛岡市在住 / カップル利用</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7: Info -->
+<footer class="bg-stone-950 text-white pt-14 md:pt-24 pb-8 md:pb-12">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 md:gap-16 border-b border-white/10 pb-10 md:pb-16">
+      
+      <!-- 店舗情報エリア -->
+      <div class="md:w-1/2">
+        <h2 class="italic-serif text-4xl md:text-5xl mb-6 md:mb-8 tracking-tighter text-red-600">Buon'Agio</h2>
+        <p class="text-stone-400 mb-8 leading-[2] text-sm md:text-base">店名「ブォナージョ」は、イタリア語で「ごゆっくり・お気軽に」を意味します。<br>日常の喧騒を離れ、おいしいイタリアンと心地よい時間をお楽しみください。</p>
+        <div class="space-y-4 text-sm md:text-base">
+          <div class="flex items-start gap-4"><i class="fas fa-map-marker-alt text-red-600 mt-1 w-4 text-center"></i><p class="text-stone-300">〒020-0121 岩手県盛岡市月が丘1丁目28-3 新興電気第2ビル 1階</p></div>
+          <div class="flex items-start gap-4"><i class="fas fa-clock text-red-600 mt-1 w-4 text-center"></i><p class="text-stone-300">営業時間:ランチ / ディナー<br><span class="text-sm opacity-60">定休日:月曜日</span></p></div>
+          <div class="flex items-start gap-4"><i class="fas fa-phone-alt text-red-600 mt-1 w-4 text-center"></i><a href="tel:08033384259" class="text-xl md:text-2xl font-bold tracking-widest">080-3338-4259</a></div>
+        </div>
+      </div>
+
+      <!-- 地図 ＆ 予約案内エリア -->
+      <div class="md:w-1/2 flex flex-col justify-between items-center text-center bg-white/5 p-6 md:p-8 rounded-3xl border border-white/10 gap-6">
+        
+        <!-- Google Map 埋め込みエリア -->
+        <div class="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.2445923602536!2d141.11023907486674!3d39.73415629690206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8576eb3a5e3de3%3A0x6d336a7cbc96b6bb!2zSXRhbGlhbiBCYXIgQnVvbidBZ2lv77yI44Kk44K_44Oq44Ki44Oz44OQ44O844OrIOODtOOCqeODiuODvOOCuOODp--8iQ!5e0!3m2!1sja!2sjp!4v1792029435029!5m2!1sja!2sjp" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+
+        <div class="w-full flex flex-col items-center">
+          <h3 class="heading-serif text-xl md:text-2xl mb-3">ご来店お待ちしております</h3>
+          <p class="text-stone-400 mb-6 text-sm md:text-base">お席のご予約や、週替わりランチの内容確認など、お気軽にお電話ください。</p>
+          <a href="tel:08033384259" class="w-full max-w-sm bg-red-600 hover:bg-red-700 py-4 rounded-full text-lg md:text-xl font-bold mb-6 shadow-xl shadow-red-900/40 transition">電話で予約・問い合わせ</a>
+          <div class="flex gap-6">
+            <a href="https://www.instagram.com/kasshiy8635/" target="_blank" rel="noopener" aria-label="Instagram" class="text-3xl text-stone-500 hover:text-pink-500 transition p-1"><i class="fab fa-instagram"></i></a>
+            <a href="https://morioka.mypl.net/shop/00000352813/" target="_blank" rel="noopener" aria-label="Webサイト" class="text-3xl text-stone-500 hover:text-blue-500 transition p-1"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="mt-8 text-center text-stone-600 text-xs"><p>&copy; Italian Bar Buon'Agio. All Rights Reserved.</p></div>
+  </div>
+</footer>
+
+<!-- スマホ用 固定予約バー -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-t border-stone-200 px-4 pt-3 shadow-[0_-4px_12px_rgba(0,0,0,.08)]" style="padding-bottom: calc(env(safe-area-inset-bottom) + .75rem)">
+  <a href="tel:08033384259" class="flex items-center justify-center gap-2 bg-red-600 active:bg-red-700 text-white font-bold py-3 rounded-full text-base">
+    <i class="fas fa-phone-alt"></i>電話で予約する
+  </a>
+</div>
+
+</body>
+</html>
