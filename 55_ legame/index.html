@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Legame dall’ orto | 岩手・花巻の旬をつなぐイタリアン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --green:#1b4332; --gold:#b08d57; --cream:#f9f7f2; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans JP',sans-serif; color:#2d2d2d; background:var(--cream); -webkit-text-size-adjust:100%; }
+  h1,h2,h3,.vertical-text { font-family:'Shippori Mincho',serif; }
+  .vertical-text { writing-mode:vertical-rl; text-orientation:mixed; }
+  .hero-pattern {
+    background-color:var(--green);
+    background-image:radial-gradient(circle at 50% 50%, rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+  .section-title::after { content:""; display:block; width:60px; height:2px; background:var(--gold); margin:15px auto; }
+  .decoration-line { width:1px; height:80px; background:var(--gold); margin:0 auto; }
+  .cta-button { transition:transform .4s cubic-bezier(.165,.84,.44,1), box-shadow .4s; }
+  .cta-button:hover { transform:translateY(-3px); box-shadow:0 15px 30px rgba(0,0,0,.15); }
+  .menu-card { background:#fff; border-radius:0 30px 0 30px; }
+  .safe-bottom { padding-bottom:max(1.5rem, env(safe-area-inset-bottom)); }
+  @media (prefers-reduced-motion:reduce){ .animate-bounce{animation:none} html{scroll-behavior:auto} }
+</style>
+</head>
+<body class="leading-relaxed overflow-x-hidden">
+
+<!-- ヒーロー -->
+<header class="relative min-h-[85svh] md:min-h-screen flex items-center overflow-hidden">
+  
+  <!-- 背景画像 & 暗めのオーバーレイ -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="images/pasta.jpg" 
+      alt="メインビジュアル" 
+      class="w-full h-full object-cover"
+    />
+    <!-- 文字を見やすくするための暗いグラデーション/カバー -->
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- うっすら重ねる装飾SVG（元のコードから継承） -->
+  <div class="absolute inset-0 opacity-20 flex items-center justify-center pointer-events-none z-0" aria-hidden="true">
+    <svg class="w-full h-full max-w-4xl" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="200" stroke="#b08d57" stroke-width="1" stroke-dasharray="8 8"/>
+      <path d="M150,250 Q250,100 350,250 T250,400 Z" fill="#b08d57" opacity="0.15"/>
+    </svg>
+  </div>
+
+  <!-- メインコンテンツ -->
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 py-16 md:py-20 flex flex-col md:flex-row items-center justify-between">
+    <div class="text-white text-center md:text-left mb-10 md:mb-0 max-w-2xl">
+      <div class="w-16 h-16 md:w-20 md:h-20 mb-6 mx-auto md:mx-0 border border-[var(--gold)] rounded-full flex items-center justify-center bg-black/30 backdrop-blur-sm">
+        <svg class="w-8 h-8 md:w-10 md:h-10 text-[var(--gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18m-9-9h18M5 5l14 14M5 19L19 5"/>
+        </svg>
+      </div>
+      <p class="text-base sm:text-xl md:text-2xl mb-4 tracking-[0.2em] md:tracking-[0.3em] text-[var(--gold)] font-light">岩手・花巻 吹張町</p>
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-[1.25] tracking-tight">
+        想いをつなぎ、<br>至福のひと皿。
+      </h1>
+      <p class="text-base md:text-xl opacity-90 font-light mb-8">無農薬・無添加へのこだわりと、オーナー夫婦の温かなおもてなし</p>
+      <div class="inline-block bg-white/10 backdrop-blur-md border border-[var(--gold)] px-5 py-3 rounded-sm">
+        <p class="text-xs sm:text-sm tracking-widest text-[var(--gold)]">Specialty: Gorgonzola Pasta</p>
+      </div>
+    </div>
+
+    <div class="hidden md:block vertical-text text-white text-3xl tracking-[0.5em] h-[400px] border-r border-white/20 pr-8">
+      地元生産者と、あなたをつなぐ。
+    </div>
+  </div>
+
+  <!-- 下矢印アニメーション -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce z-10" aria-hidden="true">
+    <i class="fas fa-chevron-down text-2xl text-[var(--gold)]"></i>
+  </div>
+</header>
+
+<!-- 導入 -->
+<section class="py-16 md:py-24 text-center px-5">
+  <div class="decoration-line mb-8"></div>
+  <h2 class="text-2xl md:text-4xl font-bold mb-8 leading-relaxed section-title">
+    心にも体にも優しい、<br>特別な料理体験を。
+  </h2>
+  <p class="max-w-2xl mx-auto text-gray-600 leading-loose text-base md:text-lg">
+    Legame dall’ orto（レガーメ・ダ・オルト）は、地元の自然、人、そしてゲストの皆様との「つながり」を大切にしています。
+    厳選された岩手産の野菜と肉類。素材本来の味を活かすため、余計なものは一切加えない、手作りの味をお届けします。
+  </p>
+</section>
+
+<!-- イチオシ -->
+<section class="py-16 md:py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6">
+    <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-12">
+      
+      <!-- 画像エリア -->
+      <div class="md:w-1/2 w-full aspect-[4/3] md:aspect-square rounded-2xl overflow-hidden border border-[var(--gold)]/20 shadow-md">
+        <img 
+          src="images/cheese.jpg" 
+          alt="自家製濃厚ゴルゴンゾーラ" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- テキストエリア -->
+      <div class="md:w-1/2 w-full">
+        <span class="text-[var(--gold)] font-bold tracking-[0.2em] mb-3 block uppercase text-sm">The Signature</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">至福の<br>ゴルゴンゾーラ</h2>
+        <p class="text-gray-600 mb-8 leading-loose">
+          小麦の味がしっかりと感じられる自家製パスタに、厳選したゴルゴンゾーラチーズが濃厚に絡み合います。
+          一口食べれば、素材の力強さと優しさが同時に広がる、当店の看板メニューです。
+        </p>
+        <div class="bg-gray-50 p-5 md:p-6 border-l-4 border-[var(--gold)]">
+          <p class="italic text-sm text-gray-500">
+            「他では味わえない濃厚さなのに、後味が驚くほど爽やか」
+            <span class="block mt-2 font-bold text-gray-700 not-italic">— 常連客 T様</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 md:py-24 bg-gradient-to-b from-emerald-950 to-[var(--green)] text-white relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto border border-[var(--gold)]/40 p-6 sm:p-10 md:p-16 rounded-3xl backdrop-blur-md bg-black/20 shadow-2xl">
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
+        <span class="inline-block bg-[var(--gold)] text-black font-bold text-xs tracking-widest px-4 py-1 rounded-full uppercase">Coming Soon</span>
+        <span class="text-xs tracking-widest text-emerald-200">新規サービス準備中</span>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 leading-tight">
+        花巻の「今」を味わう。<br>
+        <span class="text-[var(--gold)]">季節の野菜仕立て 軽やかランチコース</span>
+      </h2>
+
+      <p class="text-emerald-100/90 leading-relaxed text-sm sm:text-base md:text-lg mb-8">
+        「もっと気軽に、提携農園の旬野菜を楽しみたい」というお客様の声をかたちに。
+        メイン料理が季節ごとにガラリと変わる、贅沢かつ重たすぎないランチコースを準備中です。
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-gray-900">
+        <div class="bg-white/95 p-5 rounded-2xl">
+          <span class="text-xs font-bold text-[var(--gold)] block mb-1">01. 前菜</span>
+          <h4 class="font-bold text-base mb-1">採れたて旬野菜のデリ盛り合わせ</h4>
+          <p class="text-xs text-gray-500">無農薬野菜の甘みを引き出す自家製ドレッシングで。</p>
+        </div>
+        <div class="bg-white/95 p-5 rounded-2xl border-2 border-[var(--gold)]">
+          <span class="text-xs font-bold text-[var(--gold)] block mb-1">02. 季節のメイン</span>
+          <h4 class="font-bold text-base mb-1">四季の彩りメインプレート</h4>
+          <p class="text-xs text-gray-500">春は山菜、夏はトマト・ズッキーニ等、その時期一番の旨味を。</p>
+        </div>
+        <div class="bg-white/95 p-5 rounded-2xl">
+          <span class="text-xs font-bold text-[var(--gold)] block mb-1">03. 締め・ドリンク</span>
+          <h4 class="font-bold text-base mb-1">焼きたてパン＆プチデザート</h4>
+          <p class="text-xs text-gray-500">自家製パンと小さなドルチェで、心地よい余韻を。</p>
+        </div>
+      </div>
+
+      <div class="text-center bg-white/5 p-5 md:p-6 rounded-2xl border border-white/10">
+        <p class="text-sm text-emerald-200 mb-3">開始時期・詳細決定のご案内は公式LINEにて先行配信いたします</p>
+        <a href="#cta" class="inline-flex items-center text-[var(--gold)] hover:underline font-bold text-sm py-2">
+          先行案内をLINEで受け取る <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- こだわり -->
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl font-bold section-title italic">Our Commitment</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div class="menu-card p-7 md:p-8 shadow-sm">
+        <div class="w-14 h-14 bg-[var(--cream)] flex items-center justify-center rounded-full mb-5">
+          <i class="fas fa-seedling text-[var(--gold)] text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 italic">地元の恵み</h3>
+        <p class="text-gray-600 text-sm leading-loose">提携農園から直接届く無農薬・減農薬野菜。花巻の土が育んだ命を、そのままお皿へ。</p>
+      </div>
+      <div class="menu-card p-7 md:p-8 shadow-sm">
+        <div class="w-14 h-14 bg-[var(--cream)] flex items-center justify-center rounded-full mb-5">
+          <i class="fas fa-hand-holding-heart text-[var(--gold)] text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 italic">手作りへの敬意</h3>
+        <p class="text-gray-600 text-sm leading-loose">サルシッチャ、パン、チーズ。時間はかかっても、自分たちの手で作るからこその安心を。</p>
+      </div>
+      <div class="menu-card p-7 md:p-8 shadow-sm">
+        <div class="w-14 h-14 bg-[var(--cream)] flex items-center justify-center rounded-full mb-5">
+          <i class="fas fa-glass-cheers text-[var(--gold)] text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 italic">特別なひととき</h3>
+        <p class="text-gray-600 text-sm leading-loose">結婚記念日や誕生日。サプライズのデザートプレートで、一生の思い出作りをお手伝い。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-5">
+    <h2 class="text-center text-3xl font-bold mb-12 md:mb-16 italic section-title tracking-widest uppercase">Reviews</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+      <div class="flex gap-4 md:gap-6 border-b pb-8 border-gray-100">
+        <span class="text-3xl md:text-4xl text-[var(--gold)] opacity-50 font-serif font-bold">01</span>
+        <div>
+          <div class="text-yellow-500 mb-2" aria-label="5つ星">★★★★★</div>
+          <p class="text-gray-700 leading-relaxed mb-3 font-bold">「本当に驚くべき素晴らしいプレート」</p>
+          <p class="text-sm text-gray-500">結婚記念日に利用。デザートプレートのサプライズに感動しました。マグロ野菜やニョッキも絶品で、忘れられない日になりました。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 md:gap-6 border-b pb-8 border-gray-100">
+        <span class="text-3xl md:text-4xl text-[var(--gold)] opacity-50 font-serif font-bold">02</span>
+        <div>
+          <div class="text-yellow-500 mb-2" aria-label="5つ星">★★★★★</div>
+          <p class="text-gray-700 leading-relaxed mb-3 font-bold">「素材が生きてる味付け」</p>
+          <p class="text-sm text-gray-500">めちゃくちゃ美味しかったです！連れも美味しいを連発。次は絶対ペスカトーレを食べに行きます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 悩み解決 -->
+<section class="py-16 md:py-24 bg-stone-100">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <p class="text-lg md:text-xl italic mb-5 text-[var(--gold)]">Will you have a special day at Legame?</p>
+    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-10 md:mb-12 leading-tight">
+      「今日は、本当にいい日だったね。」<br>
+      そう言って帰れるレストラン。
+    </h2>
+    <div class="space-y-4 text-left bg-white/90 p-6 sm:p-10 rounded-sm border border-[var(--gold)]/20 shadow-xl">
+      <div class="flex items-start gap-4">
+        <i class="fas fa-check text-[var(--gold)] mt-1.5"></i>
+        <p>記念日を失敗したくない、大切な人との時間</p>
+      </div>
+      <div class="flex items-start gap-4 border-t pt-4">
+        <i class="fas fa-check text-[var(--gold)] mt-1.5"></i>
+        <p>お子様にも安心して食べさせられる、体に優しい食事</p>
+      </div>
+      <div class="flex items-start gap-4 border-t pt-4">
+        <i class="fas fa-check text-[var(--gold)] mt-1.5"></i>
+        <p>都会を離れて、地元の恵みに癒やされたい</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッターCTA & マップ -->
+<section class="pt-16 md:pt-24 bg-[var(--green)] text-white safe-bottom">
+  <div class="max-w-6xl mx-auto px-5">
+    
+    <!-- メインコンテンツ（予約・マップ・情報） -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 border-b border-white/10 pb-12 md:pb-16 items-center">
+      
+      <!-- 1. 予約・案内エリア -->
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6 italic">Reserve Your Seat</h2>
+        <p class="text-sm md:text-base opacity-80 mb-6 font-light leading-relaxed">
+          席数が限られているため、事前のご予約を優先しております。<br>
+          特別な一日を、最高のおもてなしでお迎えします。
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <a href="tel:0198-29-4569" class="bg-white text-[var(--green)] font-bold py-3 px-6 rounded-sm text-center hover:bg-gray-100 transition shadow-md">
+            <i class="fas fa-phone-alt mr-2"></i> 0198-29-4569
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Googleマップ埋め込みエリア -->
+      <div class="w-full h-72 md:h-80 rounded-sm overflow-hidden border border-white/20 shadow-lg">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083.6753079274604!2d141.11197647484616!3d39.38622551771543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f675d3576a90f%3A0xbdacf9564883c01d!2sLegame%20dall%E2%80%99%20orto!5e0!3m2!1sja!2sjp!4v1792199984378!5m2!1sja!2sjp" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+      <!-- 3. 店舗情報エリア -->
+      <div class="w-full bg-white/5 p-6 md:p-8 rounded-sm border border-white/10 text-sm">
+        <h3 class="font-bold mb-4 text-[var(--gold)] tracking-widest uppercase">Information</h3>
+        <div class="space-y-3 opacity-80 font-light">
+          <p><strong>住所:</strong> 〒025-0078 岩手県花巻市吹張町12−5</p>
+          <p><strong>電話:</strong> 0198-29-4569</p>
+          <p><strong>定休日:</strong> 日曜日</p>
+          <p><strong>その他:</strong> 駐車場あり、予約優先</p>
+        </div>
+        <div class="mt-6 flex gap-5 text-2xl">
+          <a href="https://www.instagram.com/legameitarian/" aria-label="Instagram" class="hover:text-[var(--gold)] transition"><i class="fab fa-instagram"></i></a>
+          <a href="http://legamehanamaki.blog.fc2.com/" aria-label="ブログ" class="hover:text-[var(--gold)] transition"><i class="fas fa-desktop"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- コピーライト -->
+    <p class="mt-8 text-center text-xs opacity-40 tracking-[0.15em]">&copy; 2024 Legame dall’ orto. All Rights Reserved.</p>
+  </div>
+</section>
+
+</body>
+</html>
