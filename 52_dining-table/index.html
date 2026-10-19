@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diningた～ぶる | 盛岡・桜山の隠れ家洋食ダイニング</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:ital,wght@1,700&display=swap">
+<style>
+:root{
+  --gold:#C5A059; --paper:#fdfaf3; --white:#ffffff; --ink:#1f1b16; --muted:#5b554c;
+  --accent:#e63946; --night:#17130f; --brown:#6b4414; --soft:#f6f1e6;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#1b1712;--white:#221d17;--ink:#f2ece0;--muted:#b9b0a0;--soft:#2a241c;}
+}
+:root[data-theme="dark"]{--paper:#1b1712;--white:#221d17;--ink:#f2ece0;--muted:#b9b0a0;--soft:#2a241c;}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;overflow-x:hidden;}
+.hand{font-family:'Kiwi Maru','Noto Sans JP',serif;}
+.serif{font-family:'Playfair Display',Georgia,serif;}
+.gold{color:var(--gold);}
+.bg-gold{background:var(--gold);}
+.sec-white{background:var(--white);}
+.sec-soft{background:var(--soft);}
+.muted{color:var(--muted);}
+.deco::before,.deco::after{content:"";display:inline-block;width:24px;height:1px;background:var(--gold);vertical-align:middle;margin:0 12px;}
+.hero{background:radial-gradient(circle at 50% 35%,rgba(197,160,89,.28),transparent 60%),linear-gradient(135deg,#1a1410,#2d1f17 50%,#0f0c0a);min-height:100svh;}
+.bubble{position:relative;background:var(--white);border-radius:.6em;}
+.bubble::after{content:"";position:absolute;bottom:-14px;left:50%;margin-left:-14px;border:14px solid transparent;border-top-color:var(--white);border-bottom:0;}
+.rise{animation:rise 1.1s ease-out both;}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rise,.animate-bounce{animation:none!important}}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero relative flex items-center justify-center text-white px-5 py-16 min-h-[80vh] overflow-hidden">
+  
+  <!-- 背景画像（`src` のパスをお手元の画像ファイル名に置き換えてください） -->
+  <img 
+    src="images/katu.png" 
+    alt="店内の様子" 
+    class="absolute inset-0 w-full h-full object-cover object-center z-0"
+  />
+
+  <!-- テキストを読みにくくしないためのオーバーレイ（暗くする調整膜） -->
+  <div class="absolute inset-0 bg-black/50 sm:bg-black/40 z-0" aria-hidden="true"></div>
+
+  <!-- コンテンツ本体（z-10 で画像より前面に表示） -->
+  <div class="rise relative z-10 text-center max-w-3xl mx-auto">
+    <p class="inline-block border border-white/50 rounded-full px-5 py-1.5 mb-6 text-xs sm:text-sm tracking-[0.25em]">盛岡・内丸 桜山界隈</p>
+    <h1 class="font-bold leading-tight mb-6 text-[1.65rem] sm:text-4xl md:text-6xl">
+      <span class="hand block text-base sm:text-2xl md:text-3xl font-normal text-amber-200 mb-3">「今日、ここに来て良かった」</span>
+      元ホテルシェフが作る<br>心解ける洋食と、隠れ家の夜。
+    </h1>
+    <p class="hand text-sm sm:text-lg md:text-xl mb-9 text-gray-200">お祝いも、サク飲みも。あなたの「テーブル」がここにあります。</p>
+    <a href="#reserve" class="bg-gold hover:brightness-110 text-white font-bold py-4 px-8 sm:px-12 rounded-full shadow-2xl inline-block transition">空席確認・ご予約はこちら</a>
+    <ul class="mt-7 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-sm opacity-90">
+      <li><span class="gold">✓</span> 当日22時まで予約OK</li>
+      <li><span class="gold">✓</span> 15時から昼飲みOK</li>
+    </ul>
+  </div>
+
+  <!-- 下部矢印（z-10 を追加して画像の上に表示） -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce gold text-2xl z-10" aria-hidden="true">⌄</div>
+</header>
+
+<!-- PROBLEM -->
+<section class="sec-white py-16 md:py-24">
+  <div class="mx-auto max-w-5xl px-5">
+    <div class="text-center mb-12">
+      <p class="gold font-bold text-sm tracking-widest mb-2">FOR YOU</p>
+      <h2 class="deco hand text-xl md:text-3xl font-bold">こんなお悩み、ありませんか？</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+      <div class="text-center">
+        <div class="bubble border border-amber-200/40 shadow-sm p-6 mb-6 min-h-[120px] flex items-center justify-center"><p class="font-medium">「記念日を祝いたいけど、<br>高級すぎる店は緊張する…」</p></div>
+        <div class="w-16 h-16 mx-auto rounded-full bg-amber-100/60 flex items-center justify-center text-2xl" aria-hidden="true">🥂</div>
+      </div>
+      <div class="text-center">
+        <div class="bubble border border-amber-200/40 shadow-sm p-6 mb-6 min-h-[120px] flex items-center justify-center"><p class="font-medium">「盛岡で、ゆっくり話せる<br>美味しい隠れ家を知りたい」</p></div>
+        <div class="w-16 h-16 mx-auto rounded-full bg-amber-100/60 flex items-center justify-center text-2xl" aria-hidden="true">🍽️</div>
+      </div>
+      <div class="text-center">
+        <div class="bubble border border-amber-200/40 shadow-sm p-6 mb-6 min-h-[120px] flex items-center justify-center"><p class="font-medium">「早めの時間から、<br>質の良い料理で一杯やりたい」</p></div>
+        <div class="w-16 h-16 mx-auto rounded-full bg-amber-100/60 flex items-center justify-center text-2xl" aria-hidden="true">🕒</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="sec-soft py-16 md:py-24 border-y border-amber-200/30">
+  <div class="mx-auto max-w-4xl px-5 text-center">
+    <p class="gold font-bold mb-4 tracking-widest">その願い、すべて</p>
+    <h3 class="hand text-2xl md:text-5xl font-bold mb-10 leading-tight">「Diningた～ぶる」なら<br class="md:hidden">叶えられます。</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+      <div class="sec-white p-6 md:p-8 rounded-2xl shadow-sm border-l-8 border-[var(--gold)]">
+        <h4 class="font-bold text-lg md:text-xl mb-2">一流の味をカジュアルに</h4>
+        <p class="muted text-sm leading-relaxed">元ホテルシェフが作る本格洋食。クリーミーなリゾットや旬の魚介料理を、肩肘張らずにお楽しみいただけます。</p>
+      </div>
+      <div class="sec-white p-6 md:p-8 rounded-2xl shadow-sm border-l-8 border-[var(--gold)]">
+        <h4 class="font-bold text-lg md:text-xl mb-2">とことん寄り添うおもてなし</h4>
+        <p class="muted text-sm leading-relaxed">「好きなアーティストの曲をかけてほしい」「サプライズを一緒に祝ってほしい」。お客様のわがままに全力で応えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<section class="sec-white py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-5 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="relative">
+      <!-- 「リピ率No.1」バッジ（画像の上に重なるように z-10 を指定） -->
+      <div class="absolute -top-4 -left-2 sm:-left-4 bg-gold text-white w-20 h-20 rounded-full z-10 flex items-center justify-center text-center text-xs font-bold leading-tight shadow-lg">
+        リピ率<br>No.1
+      </div>
+
+      <!-- 画像表示エリア（枠線・角丸・影を保持） -->
+      <div class="rounded-3xl shadow-2xl h-72 md:h-96 overflow-hidden border border-amber-700/30 relative">
+        <img 
+          src="images/rissoto.png" 
+          alt="極上クリーミーリゾット" 
+          class="w-full h-full object-cover object-center"
+        />
+      </div>
+
+      <p class="hand mt-3 text-center text-sm muted">※元ホテルシェフ自慢の最高峰の逸品。</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-5 leading-snug">箸が止まらない、<br><span class="gold">濃厚クリーミーリゾット。</span></h2>
+      <p class="muted leading-loose mb-7 text-sm md:text-base">一口食べれば、素材の旨みとクリームのコクが口いっぱいに広がります。ホテルで培った伝統の技法と、岩手県産の新鮮な食材が融合した、当店でしか味わえない一皿です。</p>
+      <div class="space-y-5">
+        <div class="flex items-start gap-4">
+          <div class="p-3 rounded-lg text-xl" style="background:rgba(197,160,89,.15)" aria-hidden="true">🍷</div>
+          <div>
+            <h5 class="font-bold">豊富なお酒との相性抜群</h5>
+            <p class="text-sm muted">厳選ワインや珍しい焼酎など、洋食に合う一杯をご提案。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="p-3 rounded-lg text-xl" style="background:rgba(197,160,89,.15)" aria-hidden="true">🕒</div>
+          <div>
+            <h5 class="font-bold">15:00から楽しめる贅沢</h5>
+            <p class="text-sm muted">明るい時間からの「自分へのご褒美」も大歓迎です。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="relative py-16 md:py-20 bg-amber-900 text-white">
+  <div class="mx-auto max-w-5xl px-5">
+    <div class="text-center mb-10">
+      <span class="inline-block text-xs px-4 py-1 rounded-full font-bold tracking-widest border border-[var(--gold)] text-amber-200 mb-3" style="background:rgba(197,160,89,.3)">New Project</span>
+      <h2 class="hand text-3xl md:text-4xl font-bold text-amber-100 mb-2">coming soon</h2>
+      <p class="text-amber-200/80 text-sm">〜 旅の合間にちょっと贅沢なひとときを 〜</p>
+    </div>
+    <div class="rounded-3xl border border-amber-500/30 bg-black/30 p-6 md:p-12 flex flex-col md:flex-row gap-8 items-center">
+      <div class="w-full md:w-2/5 text-center">
+        <div class="w-24 h-24 mx-auto rounded-full border border-[var(--gold)]/40 flex items-center justify-center text-5xl mb-4" style="background:rgba(197,160,89,.2)" aria-hidden="true">🧭</div>
+        <span class="bg-[var(--accent)] text-xs font-bold px-3 py-1 rounded-full">準備中・近日スタート</span>
+        <h3 class="hand text-lg md:text-xl font-bold mt-3 text-amber-100">盛岡散策 軽めランチコース</h3>
+      </div>
+      <div class="w-full md:w-3/5 space-y-4 text-sm text-amber-100/90">
+        <p class="text-base text-white font-medium">「岩手・盛岡の魅力を、旅の合間にサクッと堪能してほしい」</p>
+        <p>そんな想いから、観光や盛岡散策の合間に気軽に立ち寄れる、ちょっと軽めで贅沢な「昼限定のショートランチコース」を只今企画・開発中です！</p>
+        <ul class="space-y-2 pt-3 border-t border-amber-500/20 text-xs text-amber-200">
+          <li><span class="gold">✓</span> 岩手県産・季節の味覚を詰め込んだ前菜プレート</li>
+          <li><span class="gold">✓</span> シェフ特製 ミニ名物リゾット or パスタ</li>
+          <li><span class="gold">✓</span> 食後のひと休みに選べるドリンク＆一言デザート</li>
+        </ul>
+        <p class="text-xs text-amber-300/80 italic">※開始時期やメニューの詳細はInstagramにて先行発表いたします！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="py-16 md:py-24 bg-gray-900 text-white">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="text-center mb-12">
+      <h2 class="hand text-2xl md:text-3xl font-bold mb-3">お客様の感動の声</h2>
+      <p class="text-yellow-400 text-2xl tracking-widest" aria-label="5つ星">★★★★★</p>
+      <p class="text-gray-400 text-sm">平均満足度 95%以上</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <figure class="relative rounded-3xl border border-white/10 bg-white/10 p-7 md:p-10">
+        <blockquote class="italic text-gray-200 leading-relaxed mb-6">「アーティストのLIVE後にお祝いで行き、プレートをお願いしましたが、リクエスト通りに書いて下さり感激です。話の中で好きなアーティストを伝えたらお店のBGMを変えてくれて、岩手の方丸ごと好きになれるお店です！」</blockquote>
+        <figcaption class="flex items-center gap-4"><span class="w-12 h-12 rounded-full bg-gold flex items-center justify-center font-bold">静</span><span class="text-sm font-bold text-gray-300">静岡県からお越しのゲスト様</span></figcaption>
+      </figure>
+      <figure class="relative rounded-3xl border border-white/10 bg-white/10 p-7 md:p-10">
+        <blockquote class="italic text-gray-200 leading-relaxed mb-6">「店主さんがとにかく暖かくて居心地のよい空間でした。サプライズのケーキも嬉しかったです！店内のBGMも好きなアーティストにしていただいてテンションが上がりました！」</blockquote>
+        <figcaption class="flex items-center gap-4"><span class="w-12 h-12 rounded-full bg-amber-700 flex items-center justify-center font-bold">盛</span><span class="text-sm font-bold text-gray-300">盛岡市のゲスト様</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="sec-white py-16 md:py-24">
+  <div class="mx-auto max-w-5xl px-5 flex flex-col md:flex-row gap-10 items-center">
+    <!-- 画像表示エリア（高さや角丸・影を保持） -->
+    <div class="w-full md:w-1/2 rounded-2xl border border-amber-200/60 shadow-lg h-64 md:h-80 overflow-hidden relative">
+      <img 
+        src="images/chef.png" 
+        alt="温かなテーブルを囲んで（店内の雰囲気やシェフの写真）" 
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
+
+    <!-- 文章エリア -->
+    <div class="w-full md:w-1/2">
+      <h2 class="deco hand text-xl md:text-2xl font-bold mb-6">店名の由来と、私たちが大切にしていること</h2>
+      <p class="muted leading-loose mb-5 text-sm md:text-base">フランス語で「テーブル」を意味する「たぶる」。<br>2023年12月、盛岡の桜山にオープンしました。<br>ホテルシェフとして長年培った技術を、もっと身近に、もっと自由な形で届けたい。そんな想いから始まった小さなお店です。</p>
+      <p class="muted leading-loose text-sm md:text-base">最大12名という規模だからこそできる、一人ひとりのお客様に寄り添った時間。美味しい料理があるのは当たり前。その先の「楽しかった」「また来たい」という笑顔のために、私たちは今日もテーブルを整えます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="sec-soft py-16 md:py-20">
+  <div class="mx-auto max-w-3xl px-5">
+    <div class="sec-white relative border-2 border-dashed border-[var(--gold)] rounded-[2rem] shadow-xl text-center px-6 py-12 md:p-16">
+      <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-[var(--accent)] text-white px-6 py-2 rounded-full font-bold shadow-md text-sm whitespace-nowrap">LP限定・お祝い特典</div>
+      <h2 class="text-xl md:text-3xl font-bold mb-5">大切な記念日を、もっと特別に。</h2>
+      <p class="text-base md:text-lg mb-6 leading-relaxed">お誕生日、結婚記念日、送別会などでご利用の方へ。<br><span class="text-[var(--accent)] font-bold">「LPを見た」</span>とお伝えいただければ、<br><span class="text-lg md:text-2xl font-bold border-b-2 border-[var(--gold)] inline-block mt-2">特製メッセージプレート ＆ BGM演出</span><br>を無料でプレゼントいたします！</p>
+      <p class="text-xs md:text-sm muted">※ご予約時にご希望のメッセージや好きなアーティストをお知らせください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="sec-white py-16 md:py-24">
+  <div class="mx-auto max-w-4xl px-5 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <!-- 店舗情報 -->
+    <div>
+      <h3 class="serif italic text-2xl font-bold mb-6 pb-2 border-b border-amber-200/50">Shop Information</h3>
+      <dl class="space-y-4">
+        <div class="flex border-b border-amber-200/30 pb-2"><dt class="w-24 shrink-0 font-bold text-sm muted">店名</dt><dd class="font-bold">Diningた～ぶる</dd></div>
+        <div class="flex border-b border-amber-200/30 pb-2"><dt class="w-24 shrink-0 font-bold text-sm muted">住所</dt><dd class="text-sm">〒020-0023 岩手県盛岡市内丸5−3</dd></div>
+        <div class="flex border-b border-amber-200/30 pb-2"><dt class="w-24 shrink-0 font-bold text-sm muted">営業時間</dt><dd class="text-sm">15:00 - 22:00</dd></div>
+        <div class="flex border-b border-amber-200/30 pb-2"><dt class="w-24 shrink-0 font-bold text-sm muted">定休日</dt><dd class="text-sm">月曜日</dd></div>
+      </dl>
+      <a href="https://www.instagram.com/dining_table_sakurayama/" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 text-pink-600 font-bold text-sm hover:underline">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        Instagramで店内の様子を見る
+      </a>
+    </div>
+
+    <!-- 地図エリア（埋め込みコード適用） -->
+    <div class="h-72 md:h-auto min-h-[18rem] rounded-2xl overflow-hidden border border-amber-200/40 shadow-inner">
+      <iframe 
+        title="Diningた～ぶるの地図" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.668466287194!2d141.14937777486483!3d39.702157598822495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f857700509335d1%3A0x899b215b33537d82!2zRGluaW5n44Gf772e44G244KL!5e0!3m2!1sja!2sjp!4v1792377831457!5m2!1sja!2sjp" 
+        class="w-full h-full min-h-[18rem] border-0" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="reserve" class="py-16 md:py-24 bg-gray-900 text-white text-center">
+  <div class="mx-auto max-w-3xl px-5">
+    <h2 class="hand text-3xl md:text-5xl font-bold mb-5">今夜、最高のテーブルを。</h2>
+    <p class="md:text-xl mb-10 opacity-80">お一人様から、最大12名の貸切まで。まずはお気軽にご連絡ください。</p>
+    <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+      <a href="tel:090-6223-4780" class="flex-1 bg-white text-gray-900 py-5 px-6 rounded-2xl font-bold flex flex-col items-center shadow-xl">
+        <span class="text-xs opacity-60 mb-1">当日22時まで受付中</span>
+        <span class="text-xl md:text-2xl">📞 090-6223-4780</span>
+      </a>
+      <a href="https://www.instagram.com/dining_table_sakurayama/" target="_blank" rel="noopener" class="flex-1 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white py-5 px-6 rounded-2xl font-bold flex flex-col items-center shadow-xl">
+        <span class="text-xs opacity-90 mb-1">24時間受付中</span>
+        <span class="text-xl md:text-2xl">Instagram DM</span>
+      </a>
+    </div>
+    <p class="mt-8 text-sm text-gray-400">岩手県盛岡市内丸5−3（月曜定休 / 15:00-23:00）</p>
+  </div>
+</section>
+
+<footer class="bg-black text-gray-500 py-10 text-center text-xs" style="padding-bottom:calc(2.5rem + env(safe-area-inset-bottom,0px))">
+  <p>&copy; 2024 Dining Table. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
