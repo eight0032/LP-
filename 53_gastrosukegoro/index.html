@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ガストロ スケゴロウ | 盛岡の幻想的なイタリアン</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #050505; color: #f0f0f0; }
+  .font-heading { font-family: 'Noto Serif JP', serif; }
+  .font-serif { font-family: 'Playfair Display', serif; }
+  .gold-text { background: linear-gradient(to bottom, #f9e1a9 0%, #d4af37 50%, #b38d1d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cta-button { background: linear-gradient(180deg, #f9e1a9 0%, #d4af37 100%); box-shadow: 0 10px 20px rgba(212,175,55,.3), inset 0 2px 2px rgba(255,255,255,.5); }
+  .badge { background: radial-gradient(circle, #d4af37 0%, #8a6d1a 100%); border: 2px solid #f9e1a9; }
+  .section-line { width: 60px; height: 2px; background: #d4af37; margin: 1rem auto; }
+  .glass-card { background: rgba(255,255,255,.03); border: 1px solid rgba(212,175,55,.2); backdrop-filter: blur(8px); }
+ 
+  .error-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.8); display: flex; align-items: center; justify-content: center; color: #ff4444; font-size: 12px; padding: 20px; text-align: center; z-index: 5; }
+  #hero-bg.img-loading { min-height: 100svh; }
+  header, footer { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- FV -->
+<header id="hero-bg" class="relative min-h-[100svh] flex items-center justify-center text-center px-4 py-16 img-loading bg-cover bg-center bg-no-repeat" style="background-image: url('images/pizza.png');">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="max-w-5xl relative z-10 flex flex-col items-center">
+    <div class="badge w-20 h-20 md:w-24 md:h-24 rounded-full flex flex-col items-center justify-center text-black font-bold leading-tight shadow-2xl mb-6">
+      <span class="text-[10px] md:text-xs">盛岡大通</span>
+      <span class="text-lg md:text-xl">No.1</span>
+      <span class="text-[8px] md:text-[10px]">幻想的空間</span>
+    </div>
+    <p class="text-base md:text-2xl mb-4 tracking-[0.15em] md:tracking-[0.2em] font-light">大切な人と、心に灯をともす時間を。</p>
+    <h1 class="text-[2rem] sm:text-5xl md:text-8xl font-heading mb-6 md:mb-8 leading-tight">
+      1000本のロウソクが彩る<br>
+      <span class="gold-text italic font-serif">Luxury Night</span>
+    </h1>
+    <p class="max-w-2xl mx-auto mb-10 md:mb-12 text-gray-200 text-sm md:text-lg leading-relaxed">
+      岩手の契約農家から届く、力強い旬の食材。<br>
+      五感を揺さぶるアヒージョの香りと、<br class="md:hidden">
+      1000本のワインが織りなす極上のイタリアン。
+    </p>
+    <a href="#booking" class="cta-button text-[#3d2b00] font-bold py-4 px-8 md:py-5 md:px-12 rounded-full text-base md:text-2xl hover:scale-105 transition duration-300 inline-block shadow-2xl w-full max-w-sm md:w-auto md:max-w-none mb-20">
+      今すぐ最高の夜を予約する
+    </a>
+  </div>
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-[10px] tracking-widest text-[#d4af37]">SCROLL</span>
+    <div class="w-px h-10 bg-gradient-to-b from-[#d4af37] to-transparent"></div>
+  </div>
+</header>
+
+<!-- 特徴 -->
+<section class="py-12 md:py-16 bg-[#0a0a0a]">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+      <div>
+        <div class="text-[#d4af37] text-3xl md:text-4xl font-serif mb-2">1,000+</div>
+        <p class="text-xs text-gray-500 uppercase">Candles in Store</p>
+        <p class="text-sm font-bold mt-1">揺らめくロウソクの数</p>
+      </div>
+      <div>
+        <div class="text-[#d4af37] text-3xl md:text-4xl font-serif mb-2">1,000+</div>
+        <p class="text-xs text-gray-500 uppercase">Wine Variations</p>
+        <p class="text-sm font-bold mt-1">厳選されたワイン本数</p>
+      </div>
+      <div>
+        <div class="text-[#d4af37] text-3xl md:text-4xl font-serif mb-2">100%</div>
+        <p class="text-xs text-gray-500 uppercase">Local Ingredients</p>
+        <p class="text-sm font-bold mt-1">岩手契約農家の食材</p>
+      </div>
+      <div>
+        <div class="text-[#d4af37] text-3xl md:text-4xl font-serif mb-2">4.5</div>
+        <p class="text-xs text-gray-500 uppercase">User Ratings</p>
+        <p class="text-sm font-bold mt-1">平均口コミ評価</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- コンテンツ -->
+<section class="py-16 md:py-24 bg-[#0a0a0a] border-y border-[#1a1a1a]">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+      <div class="md:w-1/2">
+        <h3 class="text-xl md:text-3xl font-heading mb-6 leading-relaxed">
+          「チェーン店では味わえない、<br>
+          <span class="text-[#d4af37]">本物の特別感</span>を<br class="md:hidden">探していませんか？」
+        </h3>
+        <div class="space-y-6 text-gray-400 text-sm md:text-base leading-relaxed">
+          <p>大事な記念日や、久しぶりの女子会。<br>せっかくなら「センスがいいね」と<br class="md:hidden">喜ばれるお店を選びたい。</p>
+          <p>スケゴロウは、盛岡の喧騒を忘れさせる隠れ家。<br>カーテンで仕切られたプライベートな空間と、<br>ボリュームたっぷりの美食が、<br class="md:hidden">あなたの期待を超えてみせます。</p>
+        </div>
+      </div>
+      <div class="md:w-1/2 w-full grid grid-cols-2 gap-3 md:gap-4">
+        <!-- 画像1（料理） -->
+        <div class="img-loading rounded-lg overflow-hidden aspect-[3/4]">
+          <img id="side-img1" src="images/pasta.jpg" class="w-full h-full object-cover shadow-xl" alt="こだわりの料理">
+        </div>
+        <!-- 画像2（ワイン） -->
+        <div class="img-loading rounded-lg overflow-hidden aspect-[3/4] translate-y-6 md:translate-y-8">
+          <img id="side-img2" src="images/wine.png" class="w-full h-full object-cover shadow-xl" alt="厳選されたワイン">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-16 md:py-20 bg-[#080808] border-t border-[#1a1a1a]">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto glass-card p-6 pt-12 md:p-12 rounded-3xl relative overflow-hidden border border-[#d4af37]/40 shadow-[0_0_40px_rgba(212,175,55,0.08)]">
+      <div class="absolute top-4 right-4 md:top-6 md:right-6 bg-gradient-to-r from-[#d4af37] to-[#b38d1d] text-black font-bold text-xs md:text-sm px-4 py-1.5 rounded-full tracking-widest uppercase shadow-lg z-10">Coming Soon</div>
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="md:w-1/2 text-left">
+          <p class="text-[#d4af37] text-xs tracking-[0.2em] font-serif uppercase mb-2">New Service Announcement</p>
+          <h3 class="text-xl md:text-3xl font-heading mb-4 leading-tight">
+            ワインやカクテルに詳しくなくても安心。<br>
+            <span class="gold-text">『パーソナル・ペアリング提案』</span>
+          </h3>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">
+            1,000本以上のワインと多彩なカクテルの中から、あなたのご気分やお好みのお料理に合わせた「最高の1杯」をご提案する新サービスを準備中。<br><br>
+            「どれを選べばいいかわからない」「料理に一番合うお酒を楽しみたい」という方も、直感的な質問に答えるだけで、まるで専属ソムリエがいるような極上のマリアージュ体験をお届けします。
+          </p>
+          <div class="flex items-start gap-2 text-xs text-[#d4af37]">
+            <svg class="w-4 h-4 fill-current shrink-0 mt-px" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"></path></svg>
+            <span>今春サービス開始予定（スマートフォンから気軽にご利用いただけます）</span>
+          </div>
+        </div>
+        <div class="md:w-1/2 w-full">
+          <div class="img-loading rounded-2xl overflow-hidden border border-[#d4af37]/20 shadow-2xl aspect-[4/3]">
+            <!-- srcに画像のパスを指定、altを詳細化 -->
+            <img id="pairing-img" src="images/paring.jpg" class="w-full h-full object-cover" alt="パーソナル・ペアリング提案サービスのイメージ">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- お客様の声 -->
+<section class="py-16 md:py-24 bg-[#0a0a0a]">
+  <div class="container mx-auto px-4">
+    <h2 class="text-center text-2xl md:text-3xl font-heading mb-10 md:mb-16">Guest Stories</h2>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <div class="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-t-[#d4af37]">
+        <div class="text-[#d4af37] mb-4">★★★★★</div>
+        <p class="text-gray-300 italic mb-6 leading-relaxed text-sm md:text-base">「キャンドル風のライトで、オシャレな空間となっていました。席はカーテンで仕切られており、とても落ち着く空間でした。」</p>
+        <p class="text-sm font-bold text-[#d4af37]">盛岡市 A様（30代女性）</p>
+      </div>
+      <div class="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-t-[#d4af37]">
+        <div class="text-[#d4af37] mb-4">★★★★★</div>
+        <p class="text-gray-300 italic mb-6 leading-relaxed text-sm md:text-base">「生ハムときのこのリゾットが香り高くて美味しかったです。上質なワインをグラス単位でサーブしてくれるのが有難いですね。」</p>
+        <p class="text-sm font-bold text-[#d4af37]">矢巾町 S様（40代男性）</p>
+      </div>
+      <div class="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-t-[#d4af37]">
+        <div class="text-[#d4af37] mb-4">★★★★★</div>
+        <p class="text-gray-300 italic mb-6 leading-relaxed text-sm md:text-base">「女子会で使いましたが、料理のボリュームに驚き！メインの前に満腹になるほど。飲み放題も豊富で最高でした。」</p>
+        <p class="text-sm font-bold text-[#d4af37]">盛岡市 K様（20代女性）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="py-12 md:py-16 bg-black border-t border-[#1a1a1a] text-center pb-[calc(3rem+env(safe-area-inset-bottom))]">
+  <div class="container mx-auto px-4">
+    <div class="mb-8">
+      <h3 class="text-xl md:text-2xl font-serif gold-text mb-2 tracking-widest uppercase">Gastro Sukegoro</h3>
+      <p class="text-xs text-gray-500 uppercase">Authentic Italian Dining</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto text-left mb-12">
+      <div class="space-y-4">
+        <p class="text-sm font-bold border-b border-[#333] pb-2 text-[#d4af37]">ADDRESS</p>
+        <p class="text-gray-400 text-sm">〒020-0022 岩手県盛岡市大通1丁目10-15</p>
+        <p class="text-sm font-bold border-b border-[#333] pb-2 text-[#d4af37]">TEL</p>
+        <p class="text-gray-400 text-sm"><a href="tel:0196134201">019-613-4201</a></p>
+      </div>
+      <div class="space-y-4">
+        <p class="text-sm font-bold border-b border-[#333] pb-2 text-[#d4af37]">LINKS</p>
+        <div class="flex flex-col gap-2 text-sm">
+          <a href="https://ta7w604.gorp.jp/" class="text-gray-400 hover:text-[#d4af37]">公式サイト</a>
+          <a href="https://www.instagram.com/gastrosukegoro/" class="text-gray-400 hover:text-[#d4af37]">公式Instagram</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-[10px] text-gray-600 tracking-widest uppercase">&copy; Gastro Sukegoro All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const apiKey = ""; // 実行環境でAPIキーを設定してください
+  const modelName = "imagen-4.0-generate-001";
+  const delay = (ms) => new Promise(r => setTimeout(r, ms));
+
+  async function generateImage(prompt, elementId, isBg = false) {
+    const el = document.getElementById(elementId);
+    const parent = el.parentElement || el;
+    const maxRetries = 5;
+
+    
+       
+      }
+    }
+  }
+
+  window.onload = () => {
+    generateImage("A cinematic, high-end Italian restaurant interior dimly lit by one thousand warm glowing candles, intimate luxury atmosphere, wooden tables, bokeh lights, 8k realistic photography", "hero-bg", true);
+    generateImage("Ultra-realistic close up of a sizzling gourmet shrimp and mushroom ajillo in a rustic cast iron skillet, bubbling olive oil, fresh parsley, steam rising, dark moody food photography", "vid-img");
+    generateImage("Exquisite Italian gourmet main dish, grilled wagyu beef steak with seasonal roasted vegetables, artistic plating, warm candle light ambience, professional food photography", "side-img1");
+    generateImage("An elegant bottle of premium Italian red wine and two crystal wine glasses on a dark reflective wooden table, candle light reflections, luxury lounge bar atmosphere", "side-img2");
+    generateImage("A stylish digital tablet on a candlelit restaurant table showing a wine pairing menu, luxury wine glasses and gourmet dish in soft focus background, dark moody elegant lighting", "pairing-img");
+  };
+</script>
+</body>
+</html>
