@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>スパゲッテリア リベルタ | 盛岡・津志田で味わう究極の自家製生パスタ</title>
+<meta name="description" content="盛岡・津志田の自家製生パスタ専門店。三陸の海の幸、県産の食材を生パスタで。">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { gold: '#c5a059', brand: '#a62626', paper: '#f9f7f2', ink: '#1a1816' },
+    fontFamily: {
+      serif: ['"Shippori Mincho"', 'serif'],
+      accent: ['"Playfair Display"', 'serif'],
+      sans: ['"Noto Sans JP"', 'sans-serif']
+    }
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background-color: #f9f7f2; color: #2d2a26; overflow-x: hidden; padding-bottom: env(safe-area-inset-bottom); }
+  .hero-mask { background: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.65)); }
+  .hero { min-height: 100vh; min-height: 100svh; }
+  .title-line { position: relative; display: inline-block; padding: 0 44px; }
+  @media (min-width: 768px) { .title-line { padding: 0 60px; } }
+  .title-line::before, .title-line::after { content: ""; position: absolute; top: 50%; width: 30px; height: 1px; background: #c5a059; }
+  .title-line::before { left: 0; } .title-line::after { right: 0; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .float-img { animation: float 6s ease-in-out infinite; }
+  .btn-elegant { background: linear-gradient(135deg, #c5a059, #a68b4c); transition: transform .3s, box-shadow .3s; letter-spacing: .1em; }
+  .btn-elegant:hover, .btn-elegant:active { transform: scale(1.03); box-shadow: 0 16px 32px rgba(197,160,89,.3); }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: reduce) { .float-img { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- HERO -->
+<header class="hero relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="images/pasta.png" alt="看板パスタ" class="w-full h-full object-cover">
+    <div class="absolute inset-0 hero-mask"></div>
+  </div>
+  <div class="hero relative flex flex-col items-center justify-center text-white text-center px-5 py-16">
+    <div class="mb-6 md:mb-8 opacity-90 float-img">
+      <p class="font-accent text-base sm:text-xl tracking-widest border-b border-white inline-block pb-1">Spaghetteria Liberta</p>
+    </div>
+    <h1 class="font-serif text-[1.75rem] sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-snug mb-6 md:mb-8">
+      岩手の風土が育んだ、<br>
+      <span class="text-gold italic">一生記憶に残る</span>生パスタ。
+    </h1>
+    <div class="max-w-2xl mx-auto mb-10 md:mb-12">
+      <p class="text-sm sm:text-lg md:text-xl font-light tracking-wide leading-loose">
+        店内で一から丁寧に打ち上げる自家製麺。<br>
+        三陸の海の幸、県産の力強い食材が、<br class="hidden md:block">
+        あなたの日常を特別な祝祭へと変える。
+      </p>
+    </div>
+    <div class="bg-white/10 backdrop-blur-md border border-white/20 px-5 py-5 sm:p-6 rounded-sm w-full max-w-md">
+      <p class="text-xs sm:text-sm tracking-widest mb-2">LIMITED PRESENT</p>
+      <p class="text-base sm:text-xl font-serif leading-relaxed">公式SNSフォローで、焼き立ての「熱々フワフワパン」を贈呈</p>
+    </div>
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center">
+      <span class="text-[10px] tracking-[0.3em] mb-3 opacity-70">DISCOVER MORE</span>
+      <div class="w-px h-12 bg-gradient-to-b from-white to-transparent opacity-50"></div>
+    </div>
+  </div>
+</header>
+
+<!-- CTA 1 -->
+<section class="py-14 md:py-16 bg-ink text-white">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <p class="font-serif text-lg md:text-2xl mb-8 leading-relaxed">
+      最高の状態でお召し上がりいただくための<br class="md:hidden"><span class="text-gold">「招待状」</span>を今すぐ。
+    </p>
+    <a href="https://www.instagram.com/liberta_2122/" target="_blank" rel="noopener" class="btn-elegant flex sm:inline-flex items-center justify-center text-white font-bold py-4 sm:py-5 px-8 sm:px-12 rounded-full shadow-lg group">
+      <i class="fab fa-instagram mr-3 text-2xl group-hover:rotate-12 transition"></i>
+      <span>特典を受け取って予約する</span>
+    </a>
+    <p class="mt-6 text-[11px] tracking-[0.15em] opacity-40 italic">Follow us on Instagram to get special benefits</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="py-16 md:py-24 bg-white relative overflow-hidden">
+  <div class="max-w-3xl mx-auto px-5 text-center">
+    <div class="text-gold font-accent text-xs sm:text-sm tracking-[0.3em] mb-4 uppercase">Our Craftmanship</div>
+    <h2 class="font-serif text-2xl md:text-4xl leading-snug mb-6 md:mb-8">噛みしめるほどに、<br>素材の「物語」が溶け出す。</h2>
+    <div class="space-y-5 text-gray-600 leading-loose font-light text-[15px] md:text-base text-left md:text-center">
+      <p>リベルタの厨房では、毎朝その日の気温と湿度に合わせて粉の配合を微調整します。目指すのは、ただの「もちもち」ではありません。</p>
+      <p>ソースが麺の芯まで寄り添い、噛んだ瞬間に小麦の香りが鼻を抜ける。三陸の牡蠣や、アスパラ、白金豚。岩手の四季が織りなすパスタの深淵をご堪能ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHEF -->
+<section class="py-16 md:py-24 bg-paper">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-12 md:mb-16">
+      <h3 class="font-serif text-2xl md:text-3xl title-line">情熱の所在</h3>
+    </div>
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20">
+      <div class="w-56 h-56 md:w-80 md:h-80 flex-shrink-0">
+        <img src="images/chef.png" alt="シェフ" class="w-full h-full object-cover rounded-sm shadow-xl grayscale-[30%]" loading="lazy">
+      </div>
+      <div class="flex-grow">
+        <p class="font-serif text-xl md:text-2xl mb-5 leading-relaxed">「料理は、その土地への敬意である。」</p>
+        <div class="space-y-4 text-gray-600 font-light leading-loose text-[15px] md:text-base">
+          <p>岩手・盛岡。この豊かな大地が育む食材には、生産者の想いが詰まっています。私たちはそのバトンを受け取り、一番輝く形で提供することに使命を感じています。</p>
+          <p>白を基調とした落ち着いた空間で、日常を忘れて一皿と向き合う。そんな至福のひとときをお約束します。</p>
+        </div>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 border-t border-gold/20 pt-6 sm:pt-8">
+          <div>
+            <p class="text-[10px] tracking-widest text-gold uppercase mb-2">Philosophy</p>
+            <p class="font-serif text-lg">地産地消・手打ちの極み</p>
+          </div>
+          <div>
+            <p class="text-[10px] tracking-widest text-gold uppercase mb-2">Hospitality</p>
+            <p class="font-serif text-lg">全方位の決済と心地よさ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDERING -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="order-2 lg:order-1">
+        <img src="images/pasta2.png" class="rounded-sm shadow-2xl w-full" alt="ペペロンチーノ" loading="lazy">
+      </div>
+      <div class="order-1 lg:order-2">
+        <h3 class="font-serif text-2xl md:text-3xl mb-6 md:mb-8 leading-relaxed">ストレスのない、<br>最高のおもてなしを。</h3>
+        <p class="text-gray-600 mb-8 font-light leading-loose text-[15px] md:text-base">
+          クチコミでも高評価をいただく「ペペロンチーノ」。その至高の味に集中していただくため、私たちは注文方法にもこだわりました。
+        </p>
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center flex-shrink-0 text-gold font-accent">01</div>
+            <div>
+              <h4 class="font-bold mb-1">選べる注文スタイル</h4>
+              <p class="text-sm text-gray-500 font-light leading-relaxed">QRコードによるスマートオーダー。スマホが苦手な方は紙での注文も可能です。</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center flex-shrink-0 text-gold font-accent">02</div>
+            <div>
+              <h4 class="font-bold mb-1">多彩なスマート決済</h4>
+              <p class="text-sm text-gray-500 font-light leading-relaxed">現金（1円・5円除く）のほか、クレジット、各種QR決済に完全対応。</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center flex-shrink-0 text-gold font-accent">03</div>
+            <div>
+              <h4 class="font-bold mb-1">広い駐車場と清潔な空間</h4>
+              <p class="text-sm text-gray-500 font-light leading-relaxed">広々とした駐車場を完備。どなたでも安心してお車でお越しいただけます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-16 md:py-24 bg-[#f4f1ea] border-y border-gold/20">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="text-gold tracking-[0.3em] text-xs font-accent uppercase mb-3">Future Experience</p>
+      <h3 class="font-serif text-2xl md:text-4xl title-line">Coming Soon</h3>
+      <p class="mt-6 text-gray-600 font-light max-w-2xl mx-auto text-sm md:text-base leading-loose">
+        皆さまのご要望にお応えし、リベルタでは現在新しい「パスタの愉しみ方」を準備しております。
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+      <div class="bg-white p-7 md:p-10 border border-gold/20 shadow-sm relative overflow-hidden">
+        <div class="absolute top-4 -right-12 bg-gold text-white text-[10px] tracking-widest px-12 py-1 rotate-45 font-accent uppercase shadow-sm">Preparation</div>
+        <div class="text-gold font-accent text-3xl mb-4 opacity-80">01</div>
+        <h4 class="font-serif text-xl md:text-2xl mb-4 leading-snug">少しずつ愉しむ「贅沢パスタテイスティング」</h4>
+        <p class="text-gray-600 font-light leading-loose text-sm mb-6">「あれもこれも食べたい」「自分の特別なお気に入りを見つけたい」という声にお応えし、人気の生パスタを少しずつ複数種類味わえる限定アソートセットを開発中。自家製麺の食感の違いやソースのバリエーションを心ゆくまでお楽しみいただけます。</p>
+        <div class="inline-flex items-center gap-2 text-xs text-gold font-bold tracking-widest uppercase">
+          <span>Taste Experience</span><i class="fas fa-arrow-right text-[10px]"></i>
+        </div>
+      </div>
+      <div class="bg-white p-7 md:p-10 border border-gold/20 shadow-sm relative overflow-hidden">
+        <div class="absolute top-4 -right-12 bg-gold text-white text-[10px] tracking-widest px-12 py-1 rotate-45 font-accent uppercase shadow-sm">Preparation</div>
+        <div class="text-gold font-accent text-3xl mb-4 opacity-80">02</div>
+        <h4 class="font-serif text-xl md:text-2xl mb-4 leading-snug">ご家族で囲む「大皿シェアプレート」</h4>
+        <p class="text-gray-600 font-light leading-loose text-sm mb-6">お子様連れのご家族やご友人同士で、気兼ねなく美味しい時間を分かち合えるファミリースタイル。大皿でダイナミックに提供し、お好みの量を自由に盛り付けて召し上がっていただけるスタイルをご提案予定です。</p>
+        <div class="inline-flex items-center gap-2 text-xs text-gold font-bold tracking-widest uppercase">
+          <span>Family &amp; Friends Share</span><i class="fas fa-arrow-right text-[10px]"></i>
+        </div>
+      </div>
+    </div>
+    <p class="mt-10 text-center text-xs text-gray-500 font-light italic leading-relaxed">※提供開始時期や詳細メニューは、決まり次第公式Instagramにて優先的に発表いたします。</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="py-16 md:py-24 bg-ink text-white">
+  <div class="max-w-5xl mx-auto px-5">
+    <h3 class="font-serif text-2xl md:text-3xl text-center mb-12 md:mb-16 tracking-widest text-gold italic">Voice of Guests</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div class="bg-white/5 p-6 md:p-8 border border-white/10 flex flex-col justify-between">
+        <div>
+          <div class="flex gap-1 text-gold mb-5 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="font-serif italic leading-loose text-sm opacity-90 mb-6">「もちもちのパスタが好きなので、種類も多く全制覇したいくらい。QR注文も快適で、トマトソースも熱々のパンも絶品でした。」</p>
+        </div>
+        <p class="text-[10px] tracking-widest uppercase opacity-40">— Lunch Guest</p>
+      </div>
+      <div class="bg-white/5 p-6 md:p-8 border border-white/10 flex flex-col justify-between md:translate-y-6">
+        <div>
+          <div class="flex gap-1 text-gold mb-5 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="font-serif italic leading-loose text-sm opacity-90 mb-6">「ニンニクのいい香りに誘われて入店。太い生パスタは食べ応え抜群。セットのパンもフワフワ。また必ず行きます。」</p>
+        </div>
+        <p class="text-[10px] tracking-widest uppercase opacity-40">— Gourmet Blogger</p>
+      </div>
+      <div class="bg-white/5 p-6 md:p-8 border border-white/10 flex flex-col justify-between md:col-span-2 lg:col-span-1">
+        <div>
+          <div class="flex gap-1 text-gold mb-5 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+          <p class="font-serif italic leading-loose text-sm opacity-90 mb-6">「三陸牡蠣のパスタをいただきました。ソースとの絡みが最高です。お会計もスムーズで、細かな気配りを感じる名店です。」</p>
+        </div>
+        <p class="text-[10px] tracking-widest uppercase opacity-40">— Weekend Dinner</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-3xl mx-auto px-5 text-center">
+    <div class="mb-8 inline-block">
+      <p class="text-gold tracking-[0.4em] text-sm mb-2 uppercase">Invitation</p>
+      <div class="w-12 h-1 bg-gold mx-auto"></div>
+    </div>
+    <h2 class="font-serif text-2xl md:text-4xl mb-10 md:mb-12 leading-relaxed">この一皿が、<br>あなたの日常に彩りを添える。</h2>
+    <div class="relative p-8 md:p-12 bg-paper border border-gold/20 overflow-hidden">
+      <div class="absolute -right-6 -bottom-6 opacity-[0.04] font-accent text-7xl md:text-9xl pointer-events-none">Liberta</div>
+      <p class="font-serif text-base md:text-lg mb-5 tracking-widest text-gold uppercase">Special Benefit</p>
+      <p class="text-lg md:text-2xl font-bold mb-8 leading-relaxed">公式Instagramフォローで、<br>自家製「フワフワパン」をご提供</p>
+      <a href="https://www.instagram.com/liberta_2122/" target="_blank" rel="noopener" class="btn-elegant block sm:inline-block text-white font-bold py-4 sm:py-5 px-6 sm:px-16 rounded-full shadow-lg">今すぐ特典を確認する</a>
+    </div>
+    <p class="mt-10 text-gray-400 font-light text-sm italic leading-loose">「最高の一皿は、最高の準備から。」<br>ご来店を、心よりお待ちしております。</p>
+  </div>
+</section>
+
+<section class="py-14 md:py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+      <div class="bg-white p-6 md:p-10 shadow-sm border border-gray-100">
+        <h3 class="font-serif text-xl md:text-2xl mb-6 md:mb-8 border-b border-gold pb-3 inline-block">Access Info</h3>
+        <div class="space-y-5 text-sm">
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="sm:w-20 font-bold opacity-50 uppercase tracking-widest text-[10px] sm:mt-1 mb-1 sm:mb-0">Shop</span>
+            <p class="text-lg font-serif">スパゲッテリア リベルタ</p>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="sm:w-20 font-bold opacity-50 uppercase tracking-widest text-[10px] sm:mt-1 mb-1 sm:mb-0">Address</span>
+            <p class="flex-1 leading-relaxed">〒020-0838 岩手県盛岡市津志田町３丁目２６−７０</p>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="sm:w-20 font-bold opacity-50 uppercase tracking-widest text-[10px] sm:mt-1 mb-1 sm:mb-0">Phone</span>
+            <a href="tel:0196012122" class="text-xl font-accent">019-601-2122</a>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="sm:w-20 font-bold opacity-50 uppercase tracking-widest text-[10px] sm:mt-1 mb-1 sm:mb-0">Open</span>
+            <p>Lunch / Dinner（定休日: 水曜日）</p>
+          </div>
+        </div>
+      </div>
+      <div class="aspect-[4/3] lg:aspect-auto lg:min-h-[320px] bg-gray-200 shadow-inner overflow-hidden grayscale contrast-[0.8]">
+        <iframe title="リベルタの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d393143.6297633951!2d140.62299645!3d39.662437200000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f859d24095c6865%3A0xb8a396a96f2e11e2!2z44K544OR44Ky44OD44OG44Oq44KiIOODquODmeODq-OCvw!5e0!3m2!1sja!2sjp!4v1792462038663!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 md:py-12 bg-ink text-white/40 text-center">
+  <div class="max-w-4xl mx-auto px-5">
+    <div class="font-accent text-lg md:text-xl text-white mb-6 tracking-widest">Spaghetteria Liberta</div>
+    <div class="flex justify-center gap-8 mb-8 text-white/60 text-xl">
+      <a href="http://info381200.wixsite.com/osteria" aria-label="公式サイト" class="hover:text-gold transition p-2"><i class="fas fa-globe"></i></a>
+      <a href="https://www.instagram.com/liberta_2122/" aria-label="Instagram" class="hover:text-gold transition p-2"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p class="text-[10px] tracking-widest uppercase mb-2">&copy; 2024 Spaghetteria Liberta</p>
+    <p class="text-[9px] opacity-30">Authentic Italian Experience in Morioka, Iwate.</p>
+  </div>
+</footer>
+
+</body>
+</html>
