@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>muramatsuri | 盛岡・大通の隠れ家ビストロ</title>
+<meta name="description" content="盛岡・大通の隠れ家ビストロ。自然派ワインと厳選肉料理、季節のキッシュ。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: { colors: { bordeaux: '#4a0e0e', gold: '#c5a059', cream: '#fcfaf5' } } }
+};
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #fcfaf5; color: #1a1a1a; -webkit-text-size-adjust: 100%; }
+  .serif { font-family: 'Noto Serif JP', serif; }
+  .playfair { font-family: 'Playfair Display', serif; }
+  .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+  /* 背景ドット柄は疑似要素にして、文字の透明度に影響しないようにする */
+  .dots { position: relative; }
+  .dots::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(#c5a059 .5px, transparent .5px); background-size: 20px 20px; opacity: .15; }
+  .dots > * { position: relative; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease-out, transform .9s ease-out; }
+  .reveal.active { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+  .safe-bottom { padding-bottom: calc(.75rem + env(safe-area-inset-bottom, 0px)); }
+  body { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100" style="padding-top: env(safe-area-inset-top, 0px)">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 h-14 md:h-16 flex items-center justify-between">
+    <a href="#top" class="serif font-bold text-lg md:text-xl tracking-widest text-bordeaux">muramatsuri</a>
+    <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+      <a href="#concept" class="hover:text-gold transition">CONCEPT</a>
+      <a href="#menu" class="hover:text-gold transition">MENU</a>
+      <a href="#reviews" class="hover:text-gold transition">REVIEWS</a>
+      <a href="#booking" class="bg-bordeaux text-white px-4 py-2 rounded text-xs">RESERVE</a>
+    </div>
+    <button id="menu-btn" class="md:hidden p-2 -mr-2 text-bordeaux" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+    <div class="px-4 py-2 flex flex-col text-sm font-medium">
+      <a href="#concept" class="py-3 border-b border-gray-100">CONCEPT</a>
+      <a href="#menu" class="py-3 border-b border-gray-100">MENU</a>
+      <a href="#reviews" class="py-3 border-b border-gray-100">REVIEWS</a>
+      <a href="#booking" class="py-3 text-bordeaux font-bold">RESERVE / ACCESS</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="relative min-h-[100svh] flex items-end md:items-center overflow-hidden">
+  <div class="absolute inset-0">
+  
+    <img id="img-fv" src="images/roast.jpg" alt="ビストロの店内" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/55"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-6 pb-24 md:pb-0 pt-24 flex items-end justify-between text-white">
+    <div>
+      <span class="playfair text-lg md:text-2xl text-gold mb-3 md:mb-4 block italic">Bistro &amp; Wine muramatsuri</span>
+      <h1 class="serif text-4xl sm:text-5xl md:text-7xl font-black leading-tight tracking-tight">
+        日常を彩る、<br><span class="text-gold">大人の隠れ家。</span>
+      </h1>
+      <p class="mt-6 md:mt-8 text-base md:text-xl font-light opacity-90 leading-relaxed max-w-md">
+        盛岡・大通の喧騒を離れた一階奥。<br>
+        自然派ワインと肉料理が奏でる、<br>
+        あなただけの静かな時間。
+      </p>
+    </div>
+    <div class="hidden md:block vertical-text border-l border-gold pl-4 text-sm tracking-[0.3em] font-light">NATURAL WINE &amp; MEAT DISHES</div>
+  </div>
+  <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white text-xs tracking-widest hidden sm:flex flex-col items-center opacity-60">
+    <span>SCROLL</span><div class="w-px h-10 bg-white mt-2"></div>
+  </div>
+</header>
+
+<!-- CONCEPT -->
+<section id="concept" class="py-16 md:py-36 bg-white">
+  <div class="max-w-6xl mx-auto px-5 md:px-6 flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+    <div class="w-full md:w-1/2 reveal">
+      <div class="relative">
+        <img id="img-concept"  src="images/kissyu.jpg"  alt="ビストロの内観" loading="lazy" class="rounded-sm shadow-xl w-full">
+        <div class="hidden sm:block absolute -bottom-6 -right-6 w-40 h-40 bg-gold/10 -z-10"></div>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 reveal">
+      <span class="serif text-gold font-bold tracking-[0.2em] mb-3 block">CONCEPT</span>
+      <h2 class="serif text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-snug">「中村ビル 1階」の奥に、<br>本当の贅沢はありました。</h2>
+      <div class="space-y-5 text-gray-800 leading-loose text-[15px] md:text-base">
+        <p>扉を開けると広がる、落ち着いたヨーロピアンな空間。ここは、大人がマナーを気にしすぎず、「美味しい」を心ゆくまで愉しむための食堂です。</p>
+        <p>盛岡では数少ない自然派ワインと、じっくり焼き上げた肉料理、そして季節のキッシュ。一皿ごとに注がれる愛情と技術を、五感すべてで味わってください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="dots py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 md:px-6">
+    <div class="text-center mb-12 md:mb-20 reveal">
+      <h2 class="serif text-3xl md:text-4xl font-bold mb-4 text-black">muramatsuriの美食</h2>
+      <div class="w-12 h-1 bg-gold mx-auto"></div>
+    </div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
+      <article class="group reveal">
+        <div class="overflow-hidden mb-5 aspect-[4/3] sm:aspect-[3/4] bg-gray-100">
+          <img id="img-wine" src="images/wine.png" alt="自然派ワイン" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+        </div>
+        <h3 class="serif text-xl font-bold mb-3 border-b border-black pb-2 text-black">Natural Wine</h3>
+        <p class="text-[15px] text-black font-semibold leading-relaxed">作り手の顔が見える自然派ワイン。体にスッと馴染む優しさと、輝きのある味わいをセレクトしています。</p>
+      </article>
+      <article class="group reveal">
+        <div class="overflow-hidden mb-5 aspect-[4/3] sm:aspect-[3/4] bg-gray-100">
+          <img id="img-meat" src="images/beef.png" alt="肉料理" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+        </div>
+        <h3 class="serif text-xl font-bold mb-3 border-b border-black pb-2 text-black">Meat &amp; Quiche</h3>
+        <p class="text-[15px] text-black font-semibold leading-relaxed">ステーキフリットやグリル料理など、肉の旨味を最大限に引き出す火入れ。ランチでも本格的な味をお楽しみいただけます。</p>
+      </article>
+      <article class="group reveal sm:col-span-2 md:col-span-1">
+        <div class="overflow-hidden mb-5 aspect-[4/3] sm:aspect-[16/9] md:aspect-[3/4] bg-gray-100">
+          <img id="img-dessert" src="images/dessert.png"  alt="デザートとコーヒー" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+        </div>
+        <h3 class="serif text-xl font-bold mb-3 border-b border-black pb-2 text-black">Dessert &amp; Coffee</h3>
+        <p class="text-[15px] text-black font-semibold leading-relaxed">濃厚なチーズケーキ。食事の最後を飾るデザートと、こだわりの一杯をセットで。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section id="coming-soon" class="py-16 md:py-24 bg-white border-y border-gray-100">
+  <div class="max-w-7xl mx-auto px-5 md:px-6">
+    <div class="text-center mb-10 md:mb-16 reveal">
+      <span class="playfair text-gold text-lg italic block mb-2">New Special Service</span>
+      <h2 class="serif text-3xl md:text-4xl font-bold text-black tracking-wide">COMING SOON</h2>
+      <p class="text-sm text-gray-600 mt-3 font-medium">大切な日をもっと豊かに。新しいプランの準備を進めています。</p>
+      <div class="w-12 h-1 bg-gold mx-auto mt-6"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-12 max-w-5xl mx-auto">
+      <div class="bg-cream p-6 md:p-10 rounded shadow-md border border-gold/20 relative reveal">
+        <span class="absolute top-4 right-4 text-[10px] font-bold bg-gold/20 text-bordeaux px-3 py-1 rounded-full tracking-wider">PREVIEW</span>
+        <span class="text-xs text-gold font-bold tracking-widest block mb-2">Anniversary Plan</span>
+        <h3 class="serif text-xl md:text-2xl font-bold text-black mb-4">アニバーサリー特別コース</h3>
+        <p class="text-sm text-black font-medium leading-relaxed mb-6">誕生日や結婚記念日、ご夫婦の特別な夜のために。厳選肉料理と自然派ワインのペアリング、メッセージ付きデザートプレートがついた心に残るディナーコースをご提供予定です。</p>
+        <ul class="text-xs text-black font-semibold space-y-2 border-t border-gray-200 pt-4">
+          <li class="flex"><span class="text-gold mr-2">✦</span>メッセージ入りアニバーサリープレート</li>
+          <li class="flex"><span class="text-gold mr-2">✦</span>ソムリエ厳選 ワインペアリング付き</li>
+          <li class="flex"><span class="text-gold mr-2">✦</span>お二人だけのゆったりとしたお席をご用意</li>
+        </ul>
+      </div>
+      <div class="bg-cream p-6 md:p-10 rounded shadow-md border border-gold/20 relative reveal">
+        <span class="absolute top-4 right-4 text-[10px] font-bold bg-gold/20 text-bordeaux px-3 py-1 rounded-full tracking-wider">PREVIEW</span>
+        <span class="text-xs text-gold font-bold tracking-widest block mb-2">Private Party Plan</span>
+        <h3 class="serif text-xl md:text-2xl font-bold text-black mb-4">大人数のプライベート貸し切り</h3>
+        <p class="text-sm text-black font-medium leading-relaxed mb-6">結婚式の二次会、歓送迎会、特別な懇親会に。大通の隠れ家空間を贅沢に丸ごと貸し切り。人数やご予算に応じた大皿ビストロ料理と飲み放題コースをわかりやすくラインナップします。</p>
+        <ul class="text-xs text-black font-semibold space-y-2 border-t border-gray-200 pt-4">
+          <li class="flex"><span class="text-gold mr-2">✦</span>着席・立食対応（人数・予算ご相談）</li>
+          <li class="flex"><span class="text-gold mr-2">✦</span>自然派ワインを含むフリードリンクプラン</li>
+          <li class="flex"><span class="text-gold mr-2">✦</span>プロジェクター・マイク貸出対応予定</li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center mt-10 text-xs text-gray-500 font-medium reveal">※詳しい開始時期やご予約方法については公式SNS・Webサイトにて順次発表いたします。</p>
+  </div>
+</section>
+
+<!-- LUNCH -->
+<section class="py-14 md:py-20 bg-bordeaux text-white overflow-hidden relative">
+  <div class="hidden md:block absolute right-0 top-0 w-1/3 h-full opacity-10 vertical-text text-8xl font-black serif select-none">LUNCH TIME</div>
+  <div class="max-w-5xl mx-auto px-5 md:px-6 relative z-10 flex flex-col md:flex-row items-center gap-10 md:gap-12">
+    <div class="md:w-2/3">
+      <span class="text-gold tracking-[0.3em] font-bold block mb-2 text-xs md:text-sm">WEEKLY LUNCH</span>
+      <h2 class="serif text-3xl md:text-5xl font-bold mb-5 md:mb-6 leading-snug">平日・土日は<br>すぐに満席になる人気。</h2>
+      <p class="mb-6 md:mb-8 opacity-90 leading-relaxed md:text-lg">パスタ、カレー、プレート。週替わりで楽しめるランチは、サラダ・スープ付きで1200円〜。「この値段で良いんですか？」と驚かれる本格的な仕上がりです。</p>
+     
+    </div>
+    <div class="md:w-1/3 text-center">
+      <div class="inline-block border-2 border-gold px-8 py-7 md:p-8 rounded-full">
+        <span class="block text-sm">税込</span>
+        <span class="block text-4xl font-black serif">¥1200〜</span>
+        <span class="block text-xs mt-2 font-bold">本格ランチ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="py-16 md:py-24 bg-white">
+  <div class="max-w-3xl mx-auto px-5 md:px-6">
+    <div>
+      <span class="serif text-gold font-bold tracking-[0.2em] mb-3 block">REVIEWS</span>
+      <h2 class="serif text-2xl md:text-3xl font-bold mb-8 text-black">お客様から頂いた、<br>温かいお言葉。</h2>
+      <div class="space-y-8 md:space-y-12">
+        <div class="reveal border-l-2 border-gold pl-5">
+          <p class="text-black italic mb-3 font-semibold text-[15px] leading-relaxed">「夜にコースで頂きました。小盛りで美味しい品が多く、ゆっくり食事を楽しみたい方におすすめです。ステーキと渋皮栗のアイスが特においしいと思いました。」</p>
+          <span class="text-xs font-bold text-gray-500">— 4.0 Star Review</span>
+        </div>
+        <div class="reveal border-l-2 border-gold pl-5">
+          <p class="text-black italic mb-3 font-semibold text-[15px] leading-relaxed">「オシャレだし私が知ってる照り焼じゃない・・・ソースも玄米ごはんもマッシュポテトも美味しい。昼はすぐに満席になるので予約した方が良いです。」</p>
+          <span class="text-xs font-bold text-gray-500">— 5.0 Star Review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
+  <div class="max-w-4xl mx-auto px-4 md:px-6">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="playfair text-gold text-lg italic">Reserve &amp; Shop Info</span>
+      <h2 class="serif text-3xl md:text-4xl font-bold mt-2 text-black">ご予約・アクセス</h2>
+      <div class="w-12 h-1 bg-gold mx-auto mt-6"></div>
+    </div>
+    <div class="bg-white p-6 md:p-16 shadow-xl rounded-sm grid md:grid-cols-2 gap-10 md:gap-12 text-black">
+      <div class="space-y-8">
+        <div>
+          <h4 class="serif font-bold text-bordeaux border-b border-gray-200 pb-2 mb-4">RESERVATION</h4>
+          <a href="tel:0196510266" class="text-2xl font-black serif tracking-tight underline decoration-gold decoration-2 underline-offset-4">019-651-0266</a>
+         
+        </div>
+        <div>
+          <h4 class="serif font-bold text-bordeaux border-b border-gray-200 pb-2 mb-4">BUSINESS HOURS</h4>
+          <dl class="text-sm space-y-2">
+            <div class="flex justify-between gap-4"><dt>Lunch</dt><dd class="text-right">11:30〜 (L.O. 売り切れ次第)</dd></div>
+            <div class="flex justify-between gap-4"><dt>Dinner</dt><dd class="text-right">18:00〜 (要予約)</dd></div>
+            <div class="flex justify-between gap-4 font-bold text-bordeaux pt-2"><dt>Regular Holiday</dt><dd>Monday</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div>
+        <h4 class="serif font-bold text-bordeaux border-b border-gray-200 pb-2 mb-4">ACCESS</h4>
+        <p class="text-sm font-medium leading-loose mb-4">
+          〒020-0022 岩手県盛岡市大通1丁目5-3<br>中村ビル 1階<br>
+          <span class="text-xs text-gray-500">※ やや奥まった場所に入り口があります</span>
+        </p>
+
+        <!-- Google Maps 埋め込み -->
+        <div class="w-full h-48 md:h-56 mb-6 rounded overflow-hidden shadow-sm">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.674693885389!2d141.14619087486477!3d39.70201759883079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85762f8800bb3d%3A0xfbf96f669fce2f16!2smuramatsuri!5e0!3m2!1sja!2sjp!4v1792471918781!5m2!1sja!2sjp" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+
+        <div class="space-y-3">
+          <a href="https://muramatsuri.net/" target="_blank" rel="noopener" class="block text-center border border-gold text-gold py-4 hover:bg-gold hover:text-white transition font-bold tracking-widest text-xs">OFFICIAL SITE</a>
+          
+          <!-- Instagram リンク -->
+          <a href="https://www.instagram.com/muramatsuri_morioka" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 border border-gold text-gold py-4 hover:bg-gold hover:text-white transition font-bold tracking-widest text-xs">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            INSTAGRAM
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUIT -->
+<section id="recruit" class="py-16 md:py-24 bg-white border-t border-gray-100">
+  <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+    <span class="playfair text-gold text-lg italic">Join Us</span>
+    <h2 class="serif text-3xl md:text-4xl font-bold mt-2 text-black">求人情報</h2>
+    <div class="w-12 h-1 bg-gold mx-auto mt-6 mb-8"></div>
+    <p class="text-sm md:text-base text-gray-600 mb-8 leading-relaxed">
+      muramatsuriでは、一緒に働く仲間を募集しています。<br>
+      自然派ワインや美味しいお料理を通じて、お客様へ素敵な時間をお届けしませんか？
+    </p>
+    <a href="https://muramatsuri.net/free/recruit" target="_blank" rel="noopener" class="inline-block bg-gold text-white px-8 py-4 hover:bg-black transition font-bold tracking-widest text-xs rounded-sm shadow-md">
+      求人詳細・応募はこちら
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-14 md:py-20 bg-bordeaux text-white/60 text-center">
+  <div class="max-w-xl mx-auto px-5">
+    <h3 class="serif text-2xl md:text-3xl text-white mb-5 font-black tracking-widest">muramatsuri</h3>
+    <p class="text-xs mb-8 leading-loose">岩手県盛岡市の隠れ家ビストロ。自然派ワインと厳選肉料理で、<br class="hidden sm:inline">特別なひとときを提供します。</p>
+    <p class="text-[10px] tracking-widest">&copy; muramatsuri ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
+<!-- スマホ用 固定予約バー -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 px-4 pt-3 safe-bottom flex gap-3">
+  <a href="tel:0196510266" class="flex-1 bg-bordeaux text-white text-center py-3 rounded text-sm font-bold">電話で予約</a>
+  <a href="#booking" class="flex-1 border border-bordeaux text-bordeaux text-center py-3 rounded text-sm font-bold">アクセス</a>
+</div>
+
+<script>
+  const images = {
+    
+   
+    
+    'img-scene': 'https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop'
+  };
+  Object.entries(images).forEach(([id, src]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.onerror = () => { el.onerror = null; el.src = 'https://placehold.co/800x600/4a0e0e/c5a059?text=muramatsuri'; };
+    el.src = src;
+  });
+
+  // スクロール時のフェードイン
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // モバイルメニュー
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>
