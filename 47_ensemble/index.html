@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>アンサンブル | 盛岡で味わう伝説のドリアと本格タンゴ生演奏</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#c5a059; --dark:#1a1a1a; --bg:#fdfcf9; --surface:#ffffff; --surface2:#f5f5f4;
+  --line:#e7e5e4; --text:#333333; --muted:#57534e; --strong:#1c1917;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#141413; --surface:#1c1b19; --surface2:#222120; --line:#33312e;
+    --text:#d6d3d1; --muted:#a8a29e; --strong:#fafaf9;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#141413; --surface:#1c1b19; --surface2:#222120; --line:#33312e;
+  --text:#d6d3d1; --muted:#a8a29e; --strong:#fafaf9;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-text-size-adjust:100%}
+.serif{font-family:'Noto Serif JP',serif}
+.eng{font-family:'Playfair Display',Georgia,serif;font-style:italic}
+.vertical{writing-mode:vertical-rl;text-orientation:mixed}
+.surface{background:var(--surface)} .surface2{background:var(--surface2)}
+.t-muted{color:var(--muted)} .t-strong{color:var(--strong)}
+.gold{color:var(--gold)}
+.gold-grad{background:linear-gradient(135deg,#c5a059 0%,#e5c98d 50%,#c5a059 100%);color:#1c1917}
+.title-line::after{content:'';display:block;width:40px;height:1px;background:var(--gold);margin:15px auto}
+.js .fade{opacity:0;transform:translateY(20px);transition:opacity .8s ease-out,transform .8s ease-out}
+.js .fade.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .fade{opacity:1;transform:none;transition:none}}
+.photo{background:
+  radial-gradient(circle at 30% 30%,rgba(229,201,141,.45),transparent 55%),
+  linear-gradient(135deg,#3a2a1a,#8a5a2b 55%,#c5a059)}
+.photo2{background:
+  radial-gradient(circle at 70% 25%,rgba(197,160,89,.4),transparent 50%),
+  linear-gradient(160deg,#1a1a1a,#2d2218 60%,#4a3820)}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="relative flex items-center justify-center overflow-hidden min-h-[88svh] photo2">
+  <!-- 背景画像レイヤー (bg-cover, bg-center で画面いっぱいにリサイズ) -->
+  <div 
+    class="absolute inset-0 photo opacity-60 bg-cover bg-center" 
+    style="background-image: url('images/omurice.jpg');">
+  </div>
+  
+  <!-- オーバーレイ（黒の透過指定） -->
+  <div class="absolute inset-0 bg-black/45"></div>
+
+  <div class="absolute right-4 sm:right-10 md:right-20 top-1/2 -translate-y-1/2 z-20">
+    <h1 class="vertical serif text-white text-2xl sm:text-4xl lg:text-5xl font-black leading-loose tracking-widest">
+      五感で<span class="gold">奏でる</span>、<br>伝統の<span class="gold">一皿</span>。
+    </h1>
+  </div>
+
+  <div class="relative z-10 text-center text-white px-6 pr-20 sm:pr-24 md:pr-6">
+    <div class="eng text-xl sm:text-2xl md:text-3xl gold mb-4">Restaurant Ensemble</div>
+    <div class="h-px w-24 bg-white mx-auto mb-6"></div>
+    <h2 class="serif text-base sm:text-xl md:text-2xl font-light tracking-[0.15em] leading-relaxed mb-10">
+      盛岡大通、伝説のドリアと<br class="sm:hidden">本格タンゴの生演奏。
+    </h2>
+    <div class="flex flex-col items-center">
+      <div class="animate-bounce mb-3 gold text-sm">Scroll</div>
+      <div class="w-px h-14 bg-[var(--gold)]"></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="surface py-16 md:py-24 relative overflow-hidden">
+  <div class="container mx-auto px-5 flex flex-col md:flex-row items-center fade">
+    <div class="md:w-1/2 w-full mb-14 md:mb-0 pl-6 md:pl-0">
+      <div class="relative">
+        <div class="photo aspect-[4/3] rounded shadow-2xl relative z-10 flex items-end p-5 overflow-hidden">
+          
+          <!-- 画像本体 -->
+          <img 
+            src="images/ebidoria.jpg" 
+            alt="エビドリア" 
+            class="absolute inset-0 w-full h-full object-cover z-0"
+          >
+          
+          <!-- 文字を見やすくするための下部ダークグラデーション -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+
+          <!-- キャプションテキスト -->
+          <span class="eng text-white/90 text-lg relative z-20">Ebi Doria</span>
+        </div>
+        <div class="absolute -top-5 -left-5 md:-top-10 md:-left-10 w-full h-full border border-[var(--gold)] z-0"></div>
+      </div>
+    </div>
+    <div class="md:w-1/2 md:pl-20 relative w-full">
+      <div class="absolute -top-8 right-0 opacity-10 eng text-6xl md:text-8xl font-bold select-none t-strong">Signature</div>
+      <h3 class="serif t-strong text-2xl sm:text-3xl md:text-4xl mb-8 leading-relaxed">
+        「人生で一番」を更新する<br>至福の体験を。
+      </h3>
+      <p class="t-muted leading-loose mb-8 text-[15px] sm:text-base">
+        「人生でいちばん美味しかったエビドリア」を更新させます。<br>
+        そんな心強いお言葉をいただく一皿は、創業40年の伝統と情熱の結晶。<br>
+        芳醇なソースの香りと、とろけるチーズの深いコク。<br>
+        音楽と共に、あなたの自己肯定感を高める時間をご提供します。
+      </p>
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-px bg-[var(--gold)]"></div>
+        <span class="eng gold">Restaurant Ensemble since 1979</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 1 -->
+<section class="py-10 md:py-12 surface2 border-y border-[var(--line)]">
+  <div class="container mx-auto px-5 text-center">
+    <a href="#form" class="block sm:inline-block w-full sm:w-auto px-6 sm:px-12 py-5 bg-[var(--dark)] text-white font-bold tracking-[0.15em] hover:bg-black transition-colors rounded-sm shadow-xl text-sm sm:text-base">
+      お電話・Webから特別ランチ・ご席を予約する
+    </a>
+    <p class="mt-4 text-xs t-muted italic">※生演奏スケジュールもこちらでご確認いただけます</p>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section class="py-16 md:py-24 bg-[var(--dark)] text-white relative">
+  <div class="container mx-auto px-5 relative z-10 fade">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="eng gold text-xl">Music &amp; Soul</span>
+      <h3 class="serif text-2xl sm:text-3xl md:text-4xl mt-4 title-line">響きあう情熱の調べ</h3>
+    </div>
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+      <div class="lg:w-3/5 w-full">
+        <!-- 動画再生UIを削除し、画像を表示する要素に変更 -->
+        <div class="relative aspect-video rounded-sm overflow-hidden shadow-2xl photo2">
+          <img 
+            src="images/music.jpg" 
+            alt="音楽・生演奏の様子" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+      </div>
+      <div class="lg:w-2/5 text-stone-300">
+        <h4 class="serif text-xl sm:text-2xl text-white mb-6 leading-relaxed">五感を揺さぶる、<br>ミュージックチャージ500円。</h4>
+        <p class="mb-6 leading-relaxed text-[15px]">タンゴの女王と共演した伝説のバンドネオン奏者、森川佳志が遺した「生演奏を重視したライブレストラン」。</p>
+        <p class="leading-relaxed text-[15px]">現在はヴァイオリニスト花田慶子がその調べを継承。プロの生演奏を間近で聴きながら、こだわり抜いた欧州料理を堪能する。盛岡で唯一無二の贅沢を。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET -->
+<section class="py-16 md:py-24 surface">
+  <div class="container mx-auto px-5 max-w-5xl fade">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="order-2 md:order-1">
+        <div class="bg-[var(--bg)] p-7 md:p-12 border border-[var(--line)] rounded-sm">
+          <span class="gold font-bold mb-4 block">To You...</span>
+          <h4 class="serif t-strong text-xl sm:text-2xl mb-8 leading-relaxed">日常から切り離された、<br>静謐なひととき。</h4>
+          <ul class="space-y-6 t-muted text-[15px]">
+            <li class="flex items-start"><span class="w-6 h-px bg-[var(--gold)] mt-3 mr-4 shrink-0"></span><span>都会の喧騒を離れ、ビルの5階という「隠れ家」で落ち着きたい</span></li>
+            <li class="flex items-start"><span class="w-6 h-px bg-[var(--gold)] mt-3 mr-4 shrink-0"></span><span>大切な記念日を、格式ある料理と音楽で彩りたい</span></li>
+            <li class="flex items-start"><span class="w-6 h-px bg-[var(--gold)] mt-3 mr-4 shrink-0"></span><span>本物を知る大人が集う、凛とした空間で過ごしたい</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="order-1 md:order-2 flex flex-col items-center">
+        <div class="vertical serif t-strong text-3xl lg:text-5xl font-bold leading-tight tracking-[0.3em] h-[11em] md:h-auto">
+          おもてなしを<br>味わう、<br>悦びを。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL OFFER -->
+<section class="py-16 md:py-24 surface2 border-t border-[var(--line)] relative overflow-hidden">
+  <div class="container mx-auto px-5 text-center fade">
+    <div class="max-w-3xl mx-auto surface p-8 sm:p-12 md:p-20 shadow-sm border border-[var(--line)] relative">
+      <div class="absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 border-t-2 border-l-2 border-[var(--gold)]"></div>
+      <div class="absolute bottom-0 right-0 w-16 h-16 md:w-24 md:h-24 border-b-2 border-r-2 border-[var(--gold)]"></div>
+      <span class="eng gold text-lg mb-4 block">Special Invitation</span>
+      <h3 class="serif t-strong text-2xl sm:text-3xl font-bold mb-8">心ばかりの贈りもの</h3>
+      <p class="t-muted mb-10 leading-loose text-[15px]">
+        最後まで心地よい時間をお過ごしいただけるよう、<br class="hidden sm:inline">
+        ご来店時に「ホームページを見た」とお申し付けいただいたお客様には<br class="hidden sm:inline">
+        <span class="t-strong font-bold border-b border-[var(--gold)]">「食後のミニデザート」</span>を贈ってサービスさせていただきます。
+      </p>
+      <a href="#form" class="gold-grad block sm:inline-block font-bold py-5 px-8 sm:px-12 rounded-sm shadow-xl active:scale-95 sm:hover:scale-105 transition-transform">ご予約・お問合せはこちら</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-16 md:py-24 bg-[var(--dark)] text-white border-t border-stone-800">
+  <div class="container mx-auto px-5 max-w-5xl fade">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="eng gold text-xl sm:text-2xl tracking-widest block mb-2">COMING SOON</span>
+      <h3 class="serif text-2xl sm:text-3xl md:text-4xl title-line">四季の音色と至福の一皿</h3>
+      <p class="text-stone-400 mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        旬の味覚と生演奏が重なり合う、アンサンブルの新たなプロジェクト。公式SNSにて順次情報解禁＆優先予約を開始いたします。
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-stretch">
+      <div class="bg-stone-900/80 p-6 sm:p-8 rounded-sm border border-stone-800 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-widest gold border border-[var(--gold)]/40 px-3 py-1 rounded-full">Lunch Project</span>
+            <svg class="w-6 h-6 gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </div>
+          <h4 class="text-lg sm:text-xl font-bold serif text-white mb-3 leading-relaxed">旬の味覚を纏う「名物ドリア」と季節の特別ランチ</h4>
+          <p class="text-stone-400 text-sm leading-relaxed mb-6">伝統の看板メニュー「エビドリア」に加え、三陸の旬の海鮮や岩手の季節野菜を贅沢に盛り込んだ「季節限定プレミアムランチ」を展開。シズル感あふれる最新情報を公式SNSにて定期的にお届けします。</p>
+        </div>
+        <div class="pt-4 border-t border-stone-800 flex justify-between items-center text-xs text-stone-500">
+          <span>SNS映えする限定メニューを順次公開</span>
+          <span class="gold font-bold">2026 Ready</span>
+        </div>
+      </div>
+
+      <div class="bg-stone-900/80 p-6 sm:p-8 rounded-sm border border-stone-800 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-widest gold border border-[var(--gold)]/40 px-3 py-1 rounded-full">Special Concert</span>
+            <svg class="w-6 h-6 gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+          </div>
+          <h4 class="text-lg sm:text-xl font-bold serif text-white mb-3 leading-relaxed">四季を奏でるサロンコンサート＆限定ディナーコース</h4>
+          <p class="text-stone-400 text-sm leading-relaxed mb-6">「春のクラシックと新緑のメニュー」「秋のピアソラ・タンゴと旬のポルチーニ」など、季節をテーマにした一夜限りのプレミアム演奏会＆マリアージュディナーを開催予定です。</p>
+        </div>
+        <div class="pt-4 border-t border-stone-800 flex justify-between items-center text-xs text-stone-500">
+          <span>お電話・SNSにて優先座席予約受付</span>
+          <span class="gold font-bold">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 md:mt-12 text-center bg-stone-900/40 p-5 md:p-6 border border-stone-800/80 rounded-sm">
+      <p class="text-stone-300 text-sm leading-relaxed">
+        <svg class="inline w-4 h-4 gold mr-2 -mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>新サービスや限定コンサートの最新情報は、公式Instagramやお電話にて優先してお知らせいたします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="form" class="bg-[var(--dark)] text-white py-16 md:py-24 border-t border-stone-800">
+  <div class="container mx-auto px-5 max-w-6xl">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+      <div class="lg:w-1/2">
+        <h3 class="eng gold text-4xl mb-4">Ensemble</h3>
+        <p class="serif text-lg sm:text-xl tracking-widest mb-10">隠れ家レストラン アンサンブル</p>
+        <div class="space-y-6 text-stone-400 text-[15px]">
+          <div class="flex items-start">
+            <svg class="w-5 h-5 gold mt-1 mr-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>〒020-0022 岩手県盛岡市大通2丁目7-20 ウエダビル 5F</span>
+          </div>
+          <a href="tel:0196523323" class="flex items-center">
+            <svg class="w-5 h-5 gold mr-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>
+            <span class="text-xl sm:text-2xl text-white serif tracking-wider">019-652-3323</span>
+          </a>
+          <div class="flex items-center">
+            <svg class="w-5 h-5 gold mr-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+            <span>日曜定休 / 11:00〜営業開始</span>
+          </div>
+          <div class="flex items-center pt-4">
+            <a href="https://www.instagram.com/ensemble.morioka/" aria-label="Instagram" class="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors mr-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <span class="text-xs tracking-widest">Follow our moments</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2">
+        <div class="bg-white/5 p-7 sm:p-10 rounded-sm border border-white/10">
+          <h4 class="serif text-xl mb-6 gold">Reservation &amp; Inquiry</h4>
+          <p class="text-sm text-stone-400 mb-8 leading-loose">お席のご予約、貸切のご相談、演奏スケジュールへのお問合せはお電話または公式Instagramより承っております。</p>
+          <div class="space-y-4">
+            <a href="tel:0196523323" class="block w-full py-4 bg-white text-stone-900 text-center font-bold rounded-sm hover:bg-stone-200 transition-colors">お電話で予約・お問合せ</a>
+            <a href="https://www.instagram.com/ensemble.morioka/" class="block w-full py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 text-white text-center font-bold rounded-sm hover:opacity-90 transition-opacity">Instagramからメッセージ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 md:mt-24 pt-10 border-t border-white/10 text-center text-xs text-stone-500 tracking-widest">
+      &copy; ENSEMBLE MORIOKA. THE SOUND OF PASSION.
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+try{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.08});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+}catch(e){document.querySelectorAll('.fade').forEach(el=>el.classList.add('visible'))}
+</script>
+</body>
+</html>
