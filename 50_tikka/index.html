@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tikka | 盛岡・南大通で味わう伝統イタリアンと岩手食材の調和</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: { colors: { gold: '#c5a059', 'italian-red': '#b0232a', 'italian-green': '#006233', cream: '#f9f7f2' } } }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f9f7f2; color: #333; line-height: 1.8; overflow-x: hidden; }
+  .serif { font-family: 'Noto Serif JP', serif; }
+  .eng-serif { font-family: 'Playfair Display', serif; }
+  .hero-visual {
+    background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.65)),
+      url('images/pizza.png') center/cover no-repeat;
+    min-height: 100vh; min-height: 100svh;
+  }
+  .gold-border { border: 1px solid #c5a059; }
+  .btn-gold { background: #c5a059; color: #fff; transition: all .3s ease; }
+  .btn-gold:hover { background: #b38f4d; transform: translateY(-2px); }
+  .section-title { position: relative; display: inline-block; padding-bottom: 20px; }
+  .section-title::after { content: ''; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 60px; height: 2px; background: #c5a059; }
+  .review-card { background: #fff; border-top: 3px solid #c5a059; transition: transform .3s ease; position: relative; }
+  .quote-icon { color: rgba(197,160,89,.2); font-size: 2.5rem; position: absolute; top: 10px; right: 16px; }
+  @media (hover: hover) { .review-card:hover { transform: translateY(-5px); } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<!-- 1. ヒーロー -->
+<header class="hero-visual text-white relative flex items-center justify-center px-5 py-24">
+  <div class="absolute top-5 left-5 md:top-8 md:left-8">
+    <div class="eng-serif italic text-xl md:text-2xl tracking-widest border-b border-white/30 pb-1">Tikka</div>
+  </div>
+  <div class="text-center w-full max-w-3xl">
+    <span class="eng-serif italic text-base md:text-2xl mb-4 block tracking-[0.15em] text-gold">Authentic Italian &amp; Local Pride</span>
+    <h1 class="serif text-3xl sm:text-5xl md:text-7xl font-bold leading-snug mb-6 md:mb-8">岩手の土が育み、<br>伝統の技が研ぎ澄ます。</h1>
+    <p class="text-sm sm:text-lg md:text-xl font-light tracking-wider mb-8 md:mb-10 leading-relaxed">
+      薪窯から溢れる香ばしい薫り、黒トリュフの深い吐息。<br>盛岡・南大通で、記憶に刻まれる一枚を。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center max-w-xs sm:max-w-none mx-auto">
+      <a href="#special" class="btn-gold px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base">MENU DETAIL</a>
+      <a href="#contact" class="bg-white/10 backdrop-blur-md border border-white px-8 py-4 rounded-sm font-bold tracking-widest text-sm md:text-base hover:bg-white hover:text-stone-900 transition">RESERVATION</a>
+    </div>
+  </div>
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-xs tracking-widest opacity-70">
+    SCROLL<div class="w-px h-10 bg-white/50 mx-auto mt-2"></div>
+  </div>
+</header>
+
+<!-- 2. CTA -->
+<section class="py-12 md:py-16 bg-stone-900 text-white">
+  <div class="container mx-auto px-5 text-center">
+    <div class="inline-block gold-border px-5 py-8 md:px-8 md:py-10 w-full max-w-xl">
+      <h2 class="serif text-xl md:text-3xl mb-4">至福のひとときを、もっと豊かに。</h2>
+      <p class="text-stone-400 mb-6 text-sm md:text-base tracking-wide">Instagramフォロー画面提示で、「本日のおすすめドリンク」を1杯プレゼント</p>
+      <a href="https://www.instagram.com/tikka1221/" target="_blank" rel="noopener" class="inline-block text-white border-b-2 border-gold pb-1 font-bold hover:text-gold transition">
+        FOLLOW ON INSTAGRAM <i class="fab fa-instagram ml-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. こだわり -->
+<section id="special" class="py-16 md:py-24">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-12 md:mb-20">
+      <span class="eng-serif text-gold text-lg md:text-xl block mb-2 italic">Culinary Arts</span>
+      <h2 class="serif text-2xl md:text-4xl font-bold section-title">五感で味わう、Tikkaのこだわり</h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto">
+      <div class="overflow-hidden shadow-2xl">
+        <img src="images/cheese.png" alt="マルゲリータ" loading="lazy" class="w-full h-64 sm:h-96 lg:h-auto object-cover">
+      </div>
+      <div class="space-y-8">
+        <div>
+          <h3 class="serif text-xl md:text-2xl font-bold mb-3 flex items-center"><span class="w-6 md:w-8 h-px bg-gold mr-3 md:mr-4 shrink-0"></span>岩手食材と伝統の融合</h3>
+          <p class="text-stone-600 text-sm md:text-base">北海道産十勝ブラウンマッシュルームや、希少な黒トリュフ。そして地元盛岡の新鮮な野菜。伝統的なレシピを軸にしながら、この土地でしか出逢えない味を追求しています。</p>
+        </div>
+        <div>
+          <h3 class="serif text-xl md:text-2xl font-bold mb-3 flex items-center"><span class="w-6 md:w-8 h-px bg-gold mr-3 md:mr-4 shrink-0"></span>心躍るパフォーマンス</h3>
+          <p class="text-stone-600 text-sm md:text-base">「4種のチーズのクワトロフォルマッジ」では、お客様の目の前でチーズを削り、地元の「トチ蜜」を添えて。ライブ感溢れる演出が、お食事をより特別な体験に変えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. お客様の声 -->
+<section class="py-16 md:py-24 bg-stone-100">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-10 md:mb-16">
+      <span class="eng-serif text-gold text-lg md:text-xl block mb-2 italic">Customer Reviews</span>
+      <h2 class="serif text-2xl md:text-4xl font-bold section-title">皆様から寄せられた温かい声</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 max-w-6xl mx-auto">
+      <div class="review-card p-6 md:p-8 shadow-sm overflow-hidden">
+        <i class="fas fa-quote-right quote-icon"></i>
+        <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-stone-600 text-sm leading-relaxed mb-5">外観も内装もシンプルでおしゃれにまとめられており、居心地の良い空間。一皿一皿がとても美しく、目移りしてしまいます。ピザは生地も美味しくちょうど良い大きさ。パスタは見た目と香りだけでもワクワクさせてくれますし、味も間違いなしです。シェフの方がとても気さくで、退店の際にはわざわざ直接挨拶をしてくれました。</p>
+        <div class="text-xs font-bold text-stone-400">Google Review / 5.0</div>
+      </div>
+      <div class="review-card p-6 md:p-8 shadow-sm overflow-hidden">
+        <i class="fas fa-quote-right quote-icon"></i>
+        <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <p class="text-stone-600 text-sm leading-relaxed mb-5">ピザ生地モチモチで久しぶりに美味しいピザに出会えました。パスタももっちりしており、ハラペーニョとゴルゴンゾーラの組み合わせは絶品。お食事の味の満足度が高く、来て良かったと思いました。また、退店の際に笑顔が可愛らしいシェフの方が外まで見送ってくださり、心まで穏やかになりました。</p>
+        <div class="text-xs font-bold text-stone-400">Google Review / 4.0</div>
+      </div>
+      <div class="review-card p-6 md:p-8 shadow-sm overflow-hidden">
+        <i class="fas fa-quote-right quote-icon"></i>
+        <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <p class="text-stone-600 text-sm leading-relaxed mb-5">珍しいソースのパスタがあります。黒トリュフと十勝ブラウンマッシュルームのクリームソースパスタを頂きましたが、とても美味しかったです。人気のお店のようで結構混んでいます。帰りには、シェフがわざわざ外まで出てきて挨拶してくれますよ！</p>
+        <div class="text-xs font-bold text-stone-400">Google Review / 4.0</div>
+      </div>
+      <div class="review-card p-6 md:p-8 shadow-sm overflow-hidden">
+        <i class="fas fa-quote-right quote-icon"></i>
+        <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <p class="text-stone-600 text-sm leading-relaxed mb-5">味も良く、落ち着いた良い感じの店。お値段はまあまあするので、気軽に行くというよりは「ご褒美」といった感じです。一人ランチよりは、デートには良いんじゃないかなぁと思いました。</p>
+        <div class="text-xs font-bold text-stone-400">Google Review / 4.0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. シェフ -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+      <div class="w-full md:w-2/5">
+        <img src="images/chef.png" alt="オーナーシェフ 豊岡氏" loading="lazy" class="w-full max-h-96 md:max-h-none object-cover grayscale md:hover:grayscale-0 transition duration-1000 shadow-2xl">
+      </div>
+      <div class="w-full md:w-3/5">
+        <span class="eng-serif text-gold text-lg md:text-xl italic mb-3 block">Owner Chef</span>
+        <h2 class="serif text-2xl md:text-3xl font-bold mb-5">豊岡 勇気 <span class="text-base md:text-lg font-normal ml-2">Yuki Toyooka</span></h2>
+        <p class="mb-6 leading-loose text-sm md:text-base">都内有名店で磨いた技術を携え、2020年。故郷である盛岡に「Tikka」を構えました。店名の由来は、私の母の愛称。家族のような温かさと、本格イタリアンの上品さが共鳴する、そんな場所でありたいと願っています。</p>
+        <div class="p-5 md:p-6 border-l-2 border-gold bg-stone-50 italic text-stone-600 text-sm md:text-base">
+          「また伺います！ご馳走様でした😊」<br>その一言が、私たちの最高の原動力です。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5.5 COMING SOON -->
+<section class="py-14 md:py-20 bg-stone-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-5 pointer-events-none"><i class="fas fa-theater-masks text-[14rem] md:text-[25rem] absolute -right-10 -bottom-6"></i></div>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto border border-gold/40 p-5 sm:p-8 md:p-14 bg-stone-800/80 backdrop-blur-sm rounded-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 md:mb-8 border-b border-gold/30 pb-5">
+        <div>
+          <span class="eng-serif text-gold text-base md:text-lg italic tracking-widest block mb-2">NEW PROJECT</span>
+          <h2 class="serif text-xl sm:text-3xl md:text-4xl font-bold flex flex-wrap items-center gap-3">
+            <span class="bg-italian-red text-white text-xs px-3 py-1 font-sans rounded-full uppercase tracking-wider">Coming Soon</span>
+            盛岡劇場をご利用の皆様へ
+          </h2>
+        </div>
+        <div class="md:text-right">
+          <span class="text-xs text-stone-400 block">Tikka × 盛岡劇場</span>
+          <span class="serif text-sm text-gold">観劇の前後に、特別な一口を。</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center mb-6 md:mb-8">
+        <div class="space-y-4 text-stone-300 text-sm leading-relaxed">
+          <p>盛岡劇場・江南義塾のすぐ近くに位置するTikkaから、舞台やコンサートを愛する皆様へ贈る特別なメニュー企画が始動します。</p>
+          <ul class="space-y-4 pt-2">
+            <li class="flex items-start"><i class="fas fa-ticket-alt text-gold mt-1 mr-3 shrink-0"></i>
+              <span><strong>「開演前クイックランチセット」</strong><br>開演時間に遅れないよう、素早く美味しく味わえる特別窯焼きピッツァ＆サラダコース。</span></li>
+            <li class="flex items-start"><i class="fas fa-wine-glass-alt text-gold mt-1 mr-3 shrink-0"></i>
+              <span><strong>「終演後の余韻ディナーコース」</strong><br>チケット半券のご提示で、作品の余韻に浸りながら味わうアペリティフ＆特製コース。</span></li>
+          </ul>
+        </div>
+        <div class="bg-stone-900/90 p-5 md:p-6 gold-border text-center space-y-3">
+          <i class="fas fa-clock text-gold text-3xl mb-2"></i>
+          <h3 class="serif text-base md:text-lg font-bold">開演時間に合わせたスムーズなおもてなし</h3>
+          <p class="text-xs text-stone-400 leading-relaxed">「観劇前に少しだけ食べたい」「終演後にゆっくり感想を語り合いたい」というお声にお応えします。チケット半券特典や、劇場帰り限定特別オファーも準備中！</p>
+        </div>
+      </div>
+      <div class="text-center pt-4 border-t border-stone-700">
+        <p class="text-xs text-stone-400">※詳細なスタート時期やメニュー内容は、LINEおよび公式Instagramにて順次公開いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 特典 -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-5 text-center">
+    <div class="max-w-3xl mx-auto border-double border-4 border-gold p-6 sm:p-10 md:p-20">
+      <span class="text-italian-red font-bold tracking-[0.25em] text-sm block mb-4">EXCLUSIVE OFFER</span>
+      <h2 class="serif text-2xl sm:text-3xl md:text-5xl font-bold mb-6 md:mb-8 leading-snug">食後を彩る、<br>香りのプレゼント。</h2>
+      <p class="text-stone-600 leading-loose text-sm md:text-base">
+        ご予約またはお問い合わせ時に「LPを見た」とお伝えください。<br>
+        食後のひとときをゆっくりとお過ごしいただくため、<br>
+        <span class="text-base md:text-xl font-bold text-stone-900 underline decoration-gold underline-offset-8">コーヒーまたは紅茶をサービス</span>させていただきます。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. アクセス -->
+<section id="contact" class="py-16 md:py-24 bg-stone-50 border-t">
+  <div class="container mx-auto px-5">
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 max-w-6xl mx-auto">
+      <div class="w-full lg:w-1/2">
+        <h2 class="serif text-3xl md:text-4xl font-bold mb-8">Access &amp; Info</h2>
+        <div class="space-y-6">
+          <div class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-4 text-gold w-4 text-center"></i>
+            <p>〒020-0874 岩手県盛岡市南大通1丁目16-3<br><span class="text-sm text-stone-500">※駐車場に限りがございます。お車の方は事前にお問い合わせください。</span></p></div>
+          <div class="flex items-center"><i class="fas fa-phone-alt mr-4 text-gold w-4 text-center"></i>
+            <a href="tel:0196817882" class="text-xl font-bold hover:text-gold transition">019-681-7882</a></div>
+          <div class="flex items-center"><i class="fas fa-clock mr-4 text-gold w-4 text-center"></i>
+            <p>Lunch / Dinner (定休日: 日曜)</p></div>
+        </div>
+        <div class="mt-10">
+          <a href="https://tikka-italian.com/contact-form/" class="btn-gold block text-center py-4 md:py-5 font-bold tracking-widest text-base md:text-lg shadow-xl">WEB予約・お問い合わせ</a>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 h-72 md:h-[400px] bg-stone-200 shadow-inner rounded-sm overflow-hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.9374328977124!2d141.1544521748645!3d39.69611069918515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f859d3e92856f77%3A0x97da16e29077f52!2sTikka!5e0!3m2!1sja!2sjp!4v1792458753781!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Tikka の地図"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-stone-900 text-white py-10 md:py-12" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom));">
+  <div class="container mx-auto px-5 text-center">
+    <div class="eng-serif italic text-3xl mb-3 text-gold">Tikka</div>
+    <p class="text-xs text-stone-500 tracking-[0.2em] mb-6 uppercase">Traditional Italian &amp; Local Pride</p>
+    <div class="flex justify-center gap-6 md:gap-8 mb-6 text-sm">
+      <a href="https://tikka-italian.com/" class="hover:text-gold transition">HOME</a>
+      <a href="https://www.instagram.com/tikka1221/" class="hover:text-gold transition">INSTAGRAM</a>
+      <a href="https://tikka-italian.com/contact-form/" class="hover:text-gold transition">CONTACT</a>
+    </div>
+    <p class="text-[10px] text-stone-600">&copy; 2026 Tikka. Designed with Passion.</p>
+  </div>
+</footer>
+
+</body>
+</html>
