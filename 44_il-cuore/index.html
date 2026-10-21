@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IL CUORE (イル・クオーレ) | 花巻の旬を味わう本格イタリアン</title>
+<meta name="description" content="岩手県花巻市松園町の本格イタリアン。花巻の農家と歩む旬の野菜と、手打ち生パスタ。">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { gold: '#c5a059', olive: '#3d4a26', wine: '#6b1d1d', paper: '#f9f7f2' },
+    fontFamily: {
+      serif: ['"Shippori Mincho"', '"Noto Serif JP"', 'serif'],
+      sans: ['"Noto Sans JP"', 'sans-serif']
+    }
+  } }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: #f9f7f2; color: #333; overflow-x: hidden; }
+  .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+  /* スマホでは縦書きを解除し、PC(md以上)のみ縦書き */
+  @media (min-width: 768px) { .md-vertical { writing-mode: vertical-rl; text-orientation: mixed; } }
+  .hero { background-color: #2b261f; background-image: radial-gradient(circle at 50% 50%, rgba(197,160,89,.15) 0%, rgba(0,0,0,.8) 100%); }
+  .fade-in { opacity: 0; animation: fadeIn 2s ease-out forwards; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  .line-deco { width: 1px; height: 64px; background: linear-gradient(to bottom, transparent, #c5a059); }
+  @media (prefers-reduced-motion: reduce) { .fade-in { animation: none; opacity: 1; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ファーストビュー -->
+<header class="hero relative w-full min-h-[100svh] overflow-hidden bg-black">
+  
+  <!-- 【追加】背景画像 -->
+  <img 
+    src="images/pasta.png" 
+    alt="IL CUORE 店内・料理のイメージ" 
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  />
+
+  <!-- 【追加】テキスト視認性アップ用オーバーレイ（薄い暗めの層） -->
+  <div class="absolute inset-0 bg-black/40 bg-gradient-to-t from-black/70 via-black/30 to-black/50"></div>
+
+  <!-- SVG装飾（元のコード） -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none flex items-center justify-center">
+    <svg class="w-full h-full max-w-4xl" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="250" cy="250" r="200" stroke="#c5a059" stroke-width="1" stroke-dasharray="4 8"/>
+      <circle cx="250" cy="250" r="150" stroke="#c5a059" stroke-width="0.5"/>
+      <path d="M250 50 L250 450 M50 250 L450 250" stroke="#c5a059" stroke-width="0.5" stroke-dasharray="2 4"/>
+    </svg>
+  </div>
+
+  <!-- ロゴ（元のコード） -->
+  <div class="absolute top-6 left-5 md:top-8 md:left-12 pt-[env(safe-area-inset-top)] z-10">
+    <p class="text-white text-xl md:text-2xl font-bold tracking-[0.3em] font-serif">IL CUORE</p>
+    <p class="text-white text-[10px] tracking-[0.4em] opacity-70 uppercase">Italian Restaurant</p>
+  </div>
+
+  <!-- メインコピー（元のコード） -->
+  <div class="absolute inset-0 flex items-center justify-center md:justify-between px-6 md:px-24 z-10">
+    <div class="vertical-text text-white fade-in" style="animation-delay:.5s">
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl font-bold leading-relaxed tracking-[0.2em]">
+        花巻の風土を、<br>ひと皿の記憶に。
+      </h1>
+    </div>
+    <p class="hidden md:block vertical-text self-start mt-20 text-white text-lg tracking-widest opacity-80 font-serif">
+      創業三十年、愛され続ける理由がここにあります。
+    </p>
+  </div>
+
+  <!-- スクロール指示（元のコード） -->
+  <div class="absolute bottom-[calc(1.5rem+env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
+    <span class="text-white text-xs tracking-widest mb-3">SCROLL</span>
+    <div class="line-deco"></div>
+  </div>
+</header>
+
+<!-- コンセプト -->
+<section class="py-16 md:py-32 bg-paper">
+  <div class="mx-auto px-5 max-w-4xl">
+    <div class="text-center mb-12 md:mb-20">
+      <span class="text-gold tracking-[0.4em] text-sm font-bold block mb-4">CONCEPT</span>
+      <h2 class="font-serif text-2xl md:text-4xl font-bold leading-loose">
+        地場の息吹を感じる、<br>本格イタリアンの真髄。
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+      <div class="order-2 md:order-1">
+        <p class="text-stone-600 leading-[2.1] text-[15px] md:text-base mb-6">
+          岩手県花巻市、松園町。静かな街並みに佇む「イル・クオーレ」は、創業以来三十年、地元の豊かな食材と共に歩んできました。<br><br>
+          オーナーシェフ雪石剛が自ら農家に足を運び、その日最も輝いている旬を厳選。伝統的なイタリアンの技法に、花巻の風土というエッセンスを加えた、唯一無二の料理をお届けします。
+        </p>
+        <a href="#cta" class="inline-block border-b border-gold text-gold py-2 tracking-widest active:opacity-70 hover:opacity-70 transition-opacity">詳しく見る</a>
+      </div>
+      <div class="order-1 md:order-2">
+        <div class="relative p-4">
+          
+          <!-- 【変更】プレースホルダー部分を画像に置き換え -->
+          <div class="w-full aspect-[4/3] rounded-sm shadow-xl relative z-10 overflow-hidden border border-stone-800">
+            <img 
+              src="images/pasta2.png" 
+              alt="自家製 手打ち生パスタ" 
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+
+          <!-- ゴールドのフレーム装飾（元のコード） -->
+          <div class="absolute top-0 right-0 w-3/4 h-3/4 border-t border-r border-gold translate-x-2 -translate-y-2 md:translate-x-4 md:-translate-y-4"></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="py-14 md:py-16 bg-white border-y border-stone-100 scroll-mt-4">
+  <div class="mx-auto px-5 text-center">
+    <h3 class="font-serif text-lg md:text-2xl mb-8 tracking-widest">お席のご予約・お弁当の承り</h3>
+    <div class="flex flex-col items-center">
+      <a href="tel:0198-24-9957" class="block w-full max-w-sm sm:w-auto px-8 sm:px-12 py-5 md:py-6 bg-stone-900 text-white border border-stone-900 transition-colors duration-300 hover:bg-white hover:text-stone-900 active:bg-white active:text-stone-900">
+        <span class="text-xl md:text-2xl font-bold tracking-wide">📞 0198-24-9957</span>
+      </a>
+      <p class="mt-4 text-xs text-stone-500 tracking-widest">【営業時間】11:30〜 / 定休日：火曜日</p>
+      <p class="mt-2 text-gold font-bold italic text-sm md:text-base">「Webサイトを見た」で季節のデザートをサービス</p>
+    </div>
+  </div>
+</section>
+
+<!-- 特徴 -->
+<section class="py-16 md:py-24 bg-paper overflow-hidden">
+  <div class="mx-auto px-5 max-w-6xl">
+
+    <!-- 特徴1 -->
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16 mb-16 md:mb-32">
+      <div class="w-full md:w-3/5">
+        
+        <!-- 【変更】プレースホルダーから画像表示へ -->
+        <div class="w-full h-64 md:h-80 shadow-2xl rounded-sm overflow-hidden border border-stone-800">
+          <img 
+            src="images/yasai.png" 
+            alt="土と風が育む、朝採れの旬野菜" 
+            class="w-full h-full object-cover object-center"
+          />
+        </div>
+
+      </div>
+      <div class="w-full md:w-2/5 flex md:flex-row flex-col">
+        <h4 class="md-vertical md:mr-8 font-serif text-2xl md:text-3xl font-bold leading-loose mb-4 md:mb-0">
+          農家と歩む、<br class="hidden md:inline">一期一会の旬。
+        </h4>
+        <div class="md:pt-8">
+          <span class="text-gold text-xs font-bold block mb-3">01 LOCAL INGREDIENTS</span>
+          <p class="text-stone-500 leading-loose text-sm">
+            シェフ自らが週に一度は農家を訪れ、作物の息吹を確かめます。白ナス、枝豆、そして芳醇なキノコ。花巻の土が育んだ恵みを、そのまま皿の上へ。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 特徴2 -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16">
+      <div class="w-full md:w-3/5">
+        
+        <!-- 【変更】プレースホルダーから画像表示へ -->
+        <div class="w-full h-64 md:h-80 shadow-2xl rounded-sm overflow-hidden border border-stone-800">
+          <img 
+            src="images/pasta3.png" 
+            alt="素材と向き合い手打ちするこだわりの一皿" 
+            class="w-full h-full object-cover object-center"
+          />
+        </div>
+
+      </div>
+      <div class="w-full md:w-2/5 flex md:flex-row-reverse flex-col">
+        <h4 class="md-vertical md:ml-8 font-serif text-2xl md:text-3xl font-bold leading-loose mb-4 md:mb-0">
+          手打ちに込める、<br class="hidden md:inline">熟練の技と心。
+        </h4>
+        <div class="md:pt-8">
+          <span class="text-gold text-xs font-bold block mb-3">02 ARTISAN PASTA</span>
+          <p class="text-stone-500 leading-loose text-sm">
+            創業から守り続ける、自家製生パスタのモチモチとした食感。ソースとの絡みを計算し尽くした、職人の手仕事が光る逸品です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="py-16 md:py-24 bg-stone-100 border-y border-stone-200">
+  <div class="mx-auto px-5 max-w-5xl">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="inline-block bg-gold text-white text-[11px] font-bold px-4 py-1.5 rounded-full tracking-[0.3em] uppercase mb-4">Coming Soon</span>
+      <h2 class="font-serif text-xl md:text-4xl font-bold leading-relaxed">
+        お料理を待つ時間も、豊かなひとときに。<br>
+        「生産者ヒストリーカード」をはじめます。
+      </h2>
+      <div class="w-12 h-0.5 bg-gold mx-auto mt-6"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div class="bg-white p-6 md:p-10 rounded-sm shadow-md border-l-4 border-gold">
+        <span class="text-gold text-xs font-bold tracking-widest uppercase block mb-2">Table Pop &amp; Story Card</span>
+        <h3 class="text-lg md:text-xl font-bold font-serif mb-4 text-stone-800">「今日のひと皿」ができるまでの物語</h3>
+        <p class="text-stone-600 leading-relaxed text-sm mb-6">
+          店内の各テーブルに、その日のパスタに使われている食材のこだわりや、花巻の農家さんの想いを綴った小さな「卓上ポップ（ヒストリーカード）」を順次設置予定です。
+        </p>
+        <ul class="space-y-3 text-sm text-stone-700 border-t border-stone-100 pt-4">
+          <li class="flex items-start gap-3"><span class="text-gold text-xs mt-1">◆</span><span>野菜を育てた農家さんのこだわり・人柄のご紹介</span></li>
+          <li class="flex items-start gap-3"><span class="text-gold text-xs mt-1">◆</span><span>シェフがその食材を選んだ理由と調理の秘密</span></li>
+          <li class="flex items-start gap-3"><span class="text-gold text-xs mt-1">◆</span><span>ご家庭でも試せるワンポイントレシピや小話</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-paper p-6 md:p-8 border border-stone-300 rounded-sm shadow-inner flex flex-col items-center text-center">
+        <div class="w-full max-w-xs bg-white p-6 shadow-md border border-stone-200 relative mb-4">
+          <div class="w-8 h-8 border-t-2 border-l-2 border-gold absolute top-2 left-2"></div>
+          <div class="w-8 h-8 border-b-2 border-r-2 border-gold absolute bottom-2 right-2"></div>
+          <span class="text-[10px] tracking-widest text-stone-400 uppercase block mb-1">IL CUORE STORY CARD</span>
+          <p class="font-serif text-sm font-bold text-stone-800 mb-2">「白ナスと枝豆の物語」</p>
+          <p class="text-[11px] text-stone-500 leading-relaxed italic">
+            「今朝採れたての白ナスは、松園町の〇〇さんが手塩にかけて育てた逸品。皮が柔らかく、火を通すととろけるような甘みに…」
+          </p>
+        </div>
+        <p class="text-xs text-stone-500 tracking-wider leading-relaxed">※卓上に置かれたカードを読みながら、料理への期待が高まる新しい体験をお届けします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ホスピタリティ -->
+<section class="py-16 md:py-24 bg-stone-900 text-white">
+  <div class="mx-auto px-5 max-w-5xl">
+    <div class="text-center mb-14 md:mb-16">
+      <span class="text-gold tracking-[0.4em] text-sm block mb-4">HOSPITALITY</span>
+      <h2 class="font-serif text-xl md:text-3xl">心に寄り添う、おもてなし。</h2>
+    </div>
+    <div class="bg-stone-800 px-6 py-12 md:p-16 rounded-sm relative">
+      <div class="absolute top-0 left-6 md:left-10 -translate-y-1/2 text-gold text-5xl md:text-6xl font-serif leading-none">&ldquo;</div>
+      <p class="text-base md:text-2xl leading-loose font-serif mb-8 md:mb-10 md:text-center">
+        アレルギー食材が入っていることに気づいた瞬間、<br class="hidden md:block">
+        店員さんがすぐに察して、<br class="hidden md:block">
+        別のパスタを無料で作り直してくださいました。<br>
+        まさに「本物」のホスピタリティです。
+      </p>
+      <div class="text-center">
+        <p class="text-gold font-bold">5.0 ★★★★★</p>
+        <p class="text-xs opacity-50 tracking-widest mt-2 uppercase">Google Reviews</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="mx-auto px-5 max-w-6xl">
+    <div class="grid md:grid-cols-2 gap-14 md:gap-20">
+      <div>
+        <h3 class="text-xl font-bold font-serif border-b border-stone-200 pb-4 mb-6 md:mb-8">物語</h3>
+        <p class="text-stone-600 leading-[2.1] text-sm italic mb-8">
+          「故郷・花巻に愛されるレストランを。」<br>
+          東京・イタリアでの修行を経て、1994年に開業。雪石の地を治めていた先祖の歴史を背負い、シェフ雪石剛は今日も厨房に立ち続けます。FM花巻やテレビ岩手等、メディアでも紹介されるその味を、ぜひ一度。
+        </p>
+        <dl class="text-sm">
+          <div class="flex justify-between gap-4 border-b border-stone-100 py-3"><dt class="shrink-0 text-stone-500">店名</dt><dd class="text-right">IL CUORE (イル・クオーレ)</dd></div>
+          <div class="flex justify-between gap-4 border-b border-stone-100 py-3"><dt class="shrink-0 text-stone-500">住所</dt><dd class="text-right">岩手県花巻市松園町1丁目4-1</dd></div>
+          <div class="flex justify-between gap-4 border-b border-stone-100 py-3"><dt class="shrink-0 text-stone-500">定休日</dt><dd class="text-right">火曜日</dd></div>
+          <div class="flex justify-between gap-4 border-b border-stone-100 py-3"><dt class="shrink-0 text-stone-500">駐車場</dt><dd class="text-right">あり（広々完備）</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold font-serif border-b border-stone-200 pb-4 mb-6 md:mb-8">位置</h3>
+        
+        <!-- 【変更】提供いただいた Google Maps の iframe を埋め込み -->
+        <div class="w-full h-72 md:h-80 bg-stone-100 rounded-sm overflow-hidden grayscale contrast-125">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3082.760647398542!2d141.1075192748473!3d39.406920816481566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f672cf2cbbe01%3A0xf5df6afed9208985!2zSUwgQ1VPUkUo44Kk44Or772l44Kv44Kq44O844OsKQ!5e0!3m2!1sja!2sjp!4v1792545260219!5m2!1sja!2sjp" 
+            title="IL CUORE の地図" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+
+        <a href="https://www.instagram.com/il_cuore_hanamaki/" target="_blank" rel="noopener"
+           class="mt-6 inline-flex items-center gap-3 py-2 text-stone-500 hover:text-pink-600 active:text-pink-600 transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span class="text-xs tracking-widest font-bold">FOLLOW US ON INSTAGRAM</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 pb-[calc(2.5rem+env(safe-area-inset-bottom))] bg-paper text-center border-t border-stone-200">
+  <p class="font-serif text-lg md:text-xl tracking-[0.4em] mb-3">IL CUORE</p>
+  <p class="text-[10px] text-stone-400 tracking-widest">&copy; 2024 IL CUORE ALL RIGHTS RESERVED.</p>
+</footer>
+
+</body>
+</html>
