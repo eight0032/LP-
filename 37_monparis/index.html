@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>レストラン・モンパリ | 岩手県花巻市の隠れ家洋食</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --color-wine:#5c0a0a; --color-gold:#b38e44; --color-paper:#f9f7f2; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body { font-family:'Noto Sans JP',sans-serif; background-color:var(--color-paper); color:#333; overflow-x:hidden; }
+    .serif { font-family:'Shippori Mincho',serif; }
+    .vertical-text { writing-mode:vertical-rl; text-orientation:mixed; }
+    .bg-paper-texture { background-image:url("https://www.transparenttextures.com/patterns/natural-paper.png"); }
+    .text-wine { color:var(--color-wine); }
+    .bg-wine { background-color:var(--color-wine); }
+    .text-gold { color:var(--color-gold); }
+    .bg-gold { background-color:var(--color-gold); }
+    .border-gold { border-color:var(--color-gold); }
+    .fade-in { opacity:0; transform:translateY(20px); transition:opacity 1s ease-out, transform 1s ease-out; }
+    .fade-in.visible { opacity:1; transform:translateY(0); }
+    .deco-line { width:1px; height:80px; background:linear-gradient(to bottom, transparent, var(--color-gold), transparent); margin:0 auto; }
+    .safe-bottom { padding-bottom:max(1rem, env(safe-area-inset-bottom)); }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity:1; transform:none; transition:none; }
+      html { scroll-behavior:auto; }
+    }
+  </style>
+</head>
+<body class="bg-paper-texture pb-20 md:pb-0">
+
+  <!-- 1. ファーストビュー -->
+  <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="images/omurice.jpg" alt="レストラン店内" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/45"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-5 md:px-6 flex justify-between items-start text-white min-h-[80svh]">
+      <div class="vertical-text serif text-xl sm:text-2xl md:text-3xl tracking-[0.4em] md:tracking-[0.5em] pt-10 md:pt-12 leading-relaxed">
+        <span class="fade-in" id="fv-text-1">岩手、花巻、星が丘。</span>
+        <span class="fade-in" id="fv-text-2">シャンソンが流れる、</span>
+        <span class="fade-in" id="fv-text-3">大人の隠れ家へ。</span>
+      </div>
+
+      <div class="self-end text-right pb-24 md:pb-0">
+        <div class="serif text-base md:text-xl mb-3 md:mb-4 tracking-widest border-b border-white pb-2 inline-block">創業三十五年</div>
+        <h1 class="text-4xl md:text-6xl font-bold serif leading-snug">レストラン<br>モンパリ</h1>
+      </div>
+    </div>
+
+    <div class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white text-center">
+      <p class="serif text-xs md:text-sm tracking-widest mb-2">Scroll</p>
+      <div class="w-px h-10 md:h-12 bg-white mx-auto opacity-50"></div>
+    </div>
+  </header>
+
+  <!-- 2. リード -->
+  <section class="py-16 md:py-24 px-5 text-center">
+    <div class="deco-line mb-10 md:mb-12"></div>
+    <div class="max-w-2xl mx-auto">
+      <h2 class="serif text-xl sm:text-2xl md:text-3xl text-wine mb-10 md:mb-12 leading-loose vertical-text mx-auto h-[300px] md:h-[400px] tracking-widest">
+        粉とバター、そしてスープから。<br>
+        変わらぬ手間が、<br>
+        懐かしくも新しい一皿を紡ぐ。
+      </h2>
+      <p class="text-gray-600 text-sm md:text-base leading-loose tracking-wider md:tracking-widest">
+        かつて西大通りで灯した火は、<br>
+        今、星が丘の静かな住宅街で穏やかに揺れています。<br>
+        純白のテーブルクロスに、シャンソンの調べ。<br>
+        大切な人と、あるいは自分へのご褒美に、<br>
+        心解けるひとときをお過ごしください。
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. 特典オファー -->
+  <section class="py-10 md:py-12 bg-white/50 border-y border-gold/20">
+    <div class="container mx-auto px-4 text-center">
+      <div class="w-full max-w-md md:max-w-none md:w-auto inline-block border border-gold px-5 py-10 md:p-12 bg-white shadow-sm relative">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-wine text-white px-6 py-1 text-sm tracking-widest serif whitespace-nowrap">期間限定</div>
+        <p class="serif text-wine text-lg md:text-xl mb-4">WEB予約限定のご案内</p>
+        <h3 class="text-2xl md:text-3xl font-bold mb-6 serif leading-snug">名物「エスカルゴのオーブン焼き」<br><span class="text-gold">特別試食クーポン</span></h3>
+        <a href="#contact" class="block md:inline-block bg-wine text-white text-lg md:text-xl font-medium py-4 px-8 md:px-12 active:bg-black hover:bg-black transition-all duration-500 tracking-widest serif">特典を受け取る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. イチオシ -->
+  <section class="py-16 md:py-24 overflow-hidden">
+    <div class="container mx-auto px-5 md:px-4">
+      <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        <div class="w-full md:w-1/2 relative pr-4 pb-4 md:pr-0 md:pb-0">
+          <div class="aspect-[4/5] overflow-hidden shadow-2xl">
+            <img src="images/eskarugo.jpg" alt="エスカルゴ" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="absolute -bottom-0 -right-0 md:-bottom-6 md:-right-6 w-full h-full border border-gold -z-10"></div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <span class="text-gold serif tracking-widest mb-3 block text-sm">Recommended Dish</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 serif text-wine leading-tight">本格エスカルゴの<br>オーブン焼き</h2>
+          <p class="text-gray-700 leading-loose mb-8 text-sm md:text-base">
+            モンパリが長年提供し続けている、自慢の逸品です。<br>
+            ガーリックとバターの香りが食欲をそそり、ワインとの相性も抜群。<br>
+            「ここに来たら、まずはこれ」と仰っていただく、常連様に愛される味をぜひご賞味ください。
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-4 text-sm border-b border-gold/20 pb-2">
+              <span class="bg-gold text-white px-3 py-1 text-[10px] shrink-0">人気</span>
+              <span>モンパリ風花巻ひえカレードリア</span>
+            </div>
+            <div class="flex items-center gap-4 text-sm border-b border-gold/20 pb-2">
+              <span class="bg-gold text-white px-3 py-1 text-[10px] shrink-0">定番</span>
+              <span>手作りカレーのハンバーグランチ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.5 初めての方へ -->
+  <section class="py-16 md:py-24 bg-white/60 border-y border-gold/20">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="text-center mb-10 md:mb-16">
+        <span class="text-gold serif tracking-[0.3em] uppercase block text-xs mb-2">First Visit Special</span>
+        <h2 class="serif text-2xl md:text-4xl text-wine tracking-widest">初めてのモンパリを、ひと皿に。</h2>
+        <div class="w-12 h-px bg-gold mx-auto mt-4"></div>
+      </div>
+
+      <div class="bg-white p-6 md:p-12 border border-gold/30 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <span class="bg-wine text-white text-xs px-3 py-1 serif tracking-widest inline-block mb-4">看板メニュー・初来店限定おすすめ</span>
+            <h3 class="serif text-2xl md:text-3xl text-wine font-bold mb-4">エクラン・ド・モンパリ<br><span class="text-sm font-normal text-gray-600">〜 モンパリの宝石箱 〜</span></h3>
+            <p class="text-gray-700 leading-relaxed mb-6 text-sm">
+              「何から頼めばいいか迷ってしまう」という初めてのお客様のために、創業35年の歴史とこだわりを贅沢に詰め込んだ特別メニューをご用意いたしました。<br><br>
+              名物の「エスカルゴのオーブン焼き」、粉とバターから丁寧にお仕立てした秘伝のスープ、柔らかく仕上げた自慢の一品に、食後のクリームブリュレまで。モンパリの“真骨頂”を一心にお楽しみいただける特別なひと皿です。
+            </p>
+            <div class="p-4 bg-paper-texture border border-gold/20 rounded">
+              <p class="serif text-wine text-sm font-bold mb-1">【初来店おすすめ構成】</p>
+              <p class="text-xs text-gray-600 leading-relaxed">名物エスカルゴ / 本日のポタージュ / 特製メインディッシュ / 純白クロスのパン / 選べる自家製デザート / 食後の珈琲</p>
+            </div>
+          </div>
+          <div>
+            <div class="aspect-[4/3] md:aspect-square bg-wine/5 border border-gold/40 p-3 flex items-center justify-center text-center">
+              <div class="w-full h-full border border-gold/20 flex flex-col items-center justify-center p-6 bg-white">
+                <i class="fas fa-utensils text-4xl text-gold mb-4"></i>
+                <span class="serif text-xl text-wine font-bold mb-2">Écrin de Mon Paris</span>
+                <p class="text-xs text-gray-500 leading-relaxed">一皿ごとに受け継がれる<br>手作りの情熱と優しさ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.6 Coming Soon -->
+  <section class="py-16 md:py-20 bg-wine text-white">
+    <div class="container mx-auto px-5 max-w-4xl text-center">
+      <span class="inline-block border border-gold text-gold text-xs px-4 py-1 tracking-[0.3em] uppercase mb-4 serif">Coming Soon</span>
+      <h2 class="serif text-xl md:text-3xl mb-6 tracking-widest leading-relaxed">「モンパリの食卓便」準備中</h2>
+      <p class="text-gray-300 text-sm md:text-base leading-loose max-w-2xl mx-auto mb-8 font-light text-left md:text-center">
+        「帰省した時だけでなく、自宅でもあの味を食べたい」<br class="hidden md:block">
+        そんなありがたいお声にお応えし、お店の味をそのまま真空・冷凍でお届けするお取り寄せサービスを順次準備しております。<br class="hidden md:block">
+        手作りのカレーソースやエスカルゴバターをご家庭の食卓で。
+      </p>
+      <div class="inline-flex items-center gap-2 text-xs text-gold/80 border-b border-gold/40 pb-1 serif">
+        <i class="far fa-clock"></i> 2024年秋〜冬 提供開始予定
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- 6. こだわり -->
+  <section class="py-16 md:py-24 px-5 bg-gray-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="serif text-xl md:text-2xl mb-12 md:mb-16 tracking-[0.15em] md:tracking-[0.2em] text-wine leading-relaxed">喧騒を離れ、<br>ただ「美味しい」に向き合う。</h2>
+      <div class="grid md:grid-cols-3 gap-10 md:gap-12 text-left">
+        <div class="space-y-3 md:space-y-4">
+          <span class="text-gold serif text-3xl">01</span>
+          <h3 class="font-bold serif text-lg">静かな時間を求めて</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">住宅街に佇む隠れ家。シャンソンの流れる落ち着いた空間で、会話と食事に集中できます。</p>
+        </div>
+        <div class="space-y-3 md:space-y-4">
+          <span class="text-gold serif text-3xl">02</span>
+          <h3 class="font-bold serif text-lg">妥協のない手作りの味</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">レトルトは一切使いません。粉とバターから練り上げるソースは、35年守り続ける誇りです。</p>
+        </div>
+        <div class="space-y-3 md:space-y-4">
+          <span class="text-gold serif text-3xl">03</span>
+          <h3 class="font-bold serif text-lg">地元の恵み、昔の味</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">花巻産の「ひえ」や地元野菜。この土地ならではの洋食を、リーズナブルに楽しめます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. お客様の声 -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-5 md:px-4 max-w-5xl">
+      <h2 class="text-center serif text-2xl md:text-3xl mb-10 md:mb-16 text-wine tracking-widest">お客様との思い出</h2>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+        <div class="p-5 md:p-8 border-l border-gold/30">
+          <p class="italic text-gray-700 leading-loose mb-6 text-sm md:text-base">「柔らかく優しい味のオムライス。デザートのブリュレを頂くと、まるで春の水辺を歩いているような心地よさに包まれます。母の誕生日も、ここで過ごして本当に良かった。」</p>
+          <p class="text-xs text-gold serif tracking-widest">— 帰省のたびにお寄りいただくお客様より</p>
+        </div>
+        <div class="p-5 md:p-8 border-l border-gold/30">
+          <p class="italic text-gray-700 leading-loose mb-6 text-sm md:text-base">「清潔感のあるお店で、いい意味でのレトロ感がある。スープからデザートまで付いてこのお値段は素晴らしい。次回は違うデザートを頼もうと思います。」</p>
+          <p class="text-xs text-gold serif tracking-widest">— 初めてご来店いただいたお客様より</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- 8. 店舗情報 -->
+<section id="contact" class="py-16 md:py-24 bg-paper-texture">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-12 shadow-sm border border-gold/10">
+      <div class="text-center mb-10 md:mb-12">
+        <h2 class="serif text-2xl md:text-3xl mb-4 text-wine">ご予約・お問合せ</h2>
+        <p class="text-sm text-gray-500 tracking-widest">特別な一日のために、お席をご用意いたします。</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+        <div class="space-y-6">
+          <div class="text-center py-6 md:py-8 border-2 border-gold/20 rounded bg-paper-texture">
+            <p class="text-xs text-gray-500 mb-2 tracking-widest">お電話でのご予約・お問合せ</p>
+            <p class="text-3xl md:text-4xl serif text-wine font-bold">0198-24-7947</p>
+            <p class="text-xs text-gray-500 mt-2">受付時間：11:30〜14:00（水曜定休）</p>
+          </div>
+          <a href="tel:0198247947" class="flex items-center justify-center gap-3 bg-wine text-white py-4 rounded shadow-md active:bg-black hover:bg-black transition">
+            <i class="fas fa-phone-alt"></i>
+            <span class="font-bold tracking-widest serif">お電話で予約する</span>
+          </a>
+        </div>
+        <div class="text-sm space-y-4">
+          <div class="flex justify-between gap-4 border-b pb-2"><span class="text-gray-500 shrink-0">住所</span><span class="text-right">岩手県花巻市星が丘1-24-1</span></div>
+          <div class="flex justify-between gap-4 border-b pb-2"><span class="text-gray-500 shrink-0">定休日</span><span class="text-right">水曜日</span></div>
+          <div class="flex justify-between gap-4 border-b pb-2"><span class="text-gray-500 shrink-0">駐車場</span><span class="text-right">10台完備</span></div>
+          <div class="flex justify-between gap-4 border-b pb-2"><span class="text-gray-500 shrink-0">営業時間</span><span class="text-right">11:30〜14:00</span></div>
+        </div>
+      </div>
+
+      <!-- 地図埋め込みエリア -->
+      <div class="mt-8 md:mt-12">
+        <div class="w-full h-64 md:h-80 rounded overflow-hidden shadow-inner border border-gray-200">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3082.9160663556927!2d141.10107607484707!3d39.403404916691265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f672f74e35eeb%3A0x79946e55acbb81d3!2z44Os44K544OI44Op44Oz44O744Oi44Oz44OR44Oq!5e0!3m2!1sja!2sjp!4v1792647226835!5m2!1sja!2sjp" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <footer class="bg-wine text-white/50 py-10 md:py-12 text-center text-xs tracking-widest serif">
+    <p class="mb-4 text-white/80">RESTAURANT MON PARIS</p>
+    <p>&copy; 2024 レストラン・モンパリ</p>
+  </footer>
+
+  <!-- スマホ用 固定予約バー -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-t border-gold/30 px-4 pt-3 safe-bottom">
+    <a href="tel:0198247947" class="flex items-center justify-center gap-3 bg-wine text-white py-3 rounded shadow-md active:bg-black">
+      <i class="fas fa-phone-alt"></i>
+      <span class="font-bold tracking-widest serif">電話で予約する</span>
+    </a>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+      ['fv-text-1','fv-text-2','fv-text-3'].forEach((id, i) => {
+        setTimeout(() => document.getElementById(id).classList.add('visible'), 500 + i * 700);
+      });
+    });
+  </script>
+</body>
+</html>
