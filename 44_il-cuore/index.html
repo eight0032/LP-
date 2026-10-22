@@ -38,17 +38,17 @@ tailwind.config = {
 <!-- ファーストビュー -->
 <header class="hero relative w-full min-h-[100svh] overflow-hidden bg-black">
   
-  <!-- 【追加】背景画像 -->
+  <!-- 背景画像 -->
   <img 
     src="images/pasta.png" 
     alt="IL CUORE 店内・料理のイメージ" 
     class="absolute inset-0 w-full h-full object-cover object-center"
   />
 
-  <!-- 【追加】テキスト視認性アップ用オーバーレイ（薄い暗めの層） -->
+  <!-- テキスト視認性アップ用オーバーレイ（薄い暗めの層） -->
   <div class="absolute inset-0 bg-black/40 bg-gradient-to-t from-black/70 via-black/30 to-black/50"></div>
 
-  <!-- SVG装飾（元のコード） -->
+  <!-- SVG装飾 -->
   <div class="absolute inset-0 opacity-20 pointer-events-none flex items-center justify-center">
     <svg class="w-full h-full max-w-4xl" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="250" cy="250" r="200" stroke="#c5a059" stroke-width="1" stroke-dasharray="4 8"/>
@@ -57,25 +57,25 @@ tailwind.config = {
     </svg>
   </div>
 
-  <!-- ロゴ（元のコード） -->
+  <!-- ロゴ -->
   <div class="absolute top-6 left-5 md:top-8 md:left-12 pt-[env(safe-area-inset-top)] z-10">
     <p class="text-white text-xl md:text-2xl font-bold tracking-[0.3em] font-serif">IL CUORE</p>
     <p class="text-white text-[10px] tracking-[0.4em] opacity-70 uppercase">Italian Restaurant</p>
   </div>
 
-  <!-- メインコピー（元のコード） -->
-  <div class="absolute inset-0 flex items-center justify-center md:justify-between px-6 md:px-24 z-10">
+  <!-- 【変更】メインコピー（文字サイズ縮小 & 下寄せ調整） -->
+  <div class="absolute inset-0 flex items-end justify-center md:justify-between px-6 md:px-24 pb-20 md:pb-28 z-10">
     <div class="vertical-text text-white fade-in" style="animation-delay:.5s">
-      <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl font-bold leading-relaxed tracking-[0.2em]">
+      <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold leading-relaxed tracking-[0.2em]">
         花巻の風土を、<br>ひと皿の記憶に。
       </h1>
     </div>
-    <p class="hidden md:block vertical-text self-start mt-20 text-white text-lg tracking-widest opacity-80 font-serif">
+    <p class="hidden md:block vertical-text self-end text-white text-base md:text-lg tracking-widest opacity-80 font-serif">
       創業三十年、愛され続ける理由がここにあります。
     </p>
   </div>
 
-  <!-- スクロール指示（元のコード） -->
+  <!-- スクロール指示 -->
   <div class="absolute bottom-[calc(1.5rem+env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
     <span class="text-white text-xs tracking-widest mb-3">SCROLL</span>
     <div class="line-deco"></div>
@@ -95,7 +95,7 @@ tailwind.config = {
       <div class="order-2 md:order-1">
         <p class="text-stone-600 leading-[2.1] text-[15px] md:text-base mb-6">
           岩手県花巻市、松園町。静かな街並みに佇む「イル・クオーレ」は、創業以来三十年、地元の豊かな食材と共に歩んできました。<br><br>
-          オーナーシェフ雪石剛が自ら農家に足を運び、その日最も輝いている旬を厳選。伝統的なイタリアンの技法に、花巻の風土というエッセンスを加えた、唯一無二の料理をお届けします。
+          オーナーシェフ雫石剛が自ら農家に足を運び、その日最も輝いている旬を厳選。伝統的なイタリアンの技法に、花巻の風土というエッセンスを加えた、唯一無二の料理をお届けします。
         </p>
         <a href="#cta" class="inline-block border-b border-gold text-gold py-2 tracking-widest active:opacity-70 hover:opacity-70 transition-opacity">詳しく見る</a>
       </div>
@@ -267,7 +267,7 @@ tailwind.config = {
         <h3 class="text-xl font-bold font-serif border-b border-stone-200 pb-4 mb-6 md:mb-8">物語</h3>
         <p class="text-stone-600 leading-[2.1] text-sm italic mb-8">
           「故郷・花巻に愛されるレストランを。」<br>
-          東京・イタリアでの修行を経て、1994年に開業。雪石の地を治めていた先祖の歴史を背負い、シェフ雪石剛は今日も厨房に立ち続けます。FM花巻やテレビ岩手等、メディアでも紹介されるその味を、ぜひ一度。
+          東京・イタリアでの修行を経て、1994年に開業。雫石の地を治めていた先祖の歴史を背負い、シェフ雫石剛は今日も厨房に立ち続けます。FM花巻やテレビ岩手等、メディアでも紹介されるその味を、ぜひ一度。
         </p>
         <dl class="text-sm">
           <div class="flex justify-between gap-4 border-b border-stone-100 py-3"><dt class="shrink-0 text-stone-500">店名</dt><dd class="text-right">IL CUORE (イル・クオーレ)</dd></div>

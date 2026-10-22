@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>リストランテ シカザワ | 三陸ガストロノミーを体験する</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: { colors: { accent: '#d4af37', base: '#121212', slate2: '#2a2a2a' } } } };
+</script>
+<style>
+  :root { --accent:#d4af37; box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  html { scroll-padding-top:env(safe-area-inset-top,0px); background:#121212; color-scheme:dark; }
+  body { font-family:'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif; background:#121212; color:#e5e5e5; letter-spacing:.05em; line-height:1.8; overflow-x:hidden; -webkit-text-size-adjust:100%; }
+  .sans { font-family:'Montserrat','Helvetica Neue',Arial,sans-serif; }
+  .serif-v { writing-mode:vertical-rl; text-orientation:mixed; }
+  .hero-bg { background:
+      radial-gradient(ellipse at 70% 20%, rgba(212,175,55,.22), transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(30,64,90,.55), transparent 60%),
+      linear-gradient(to bottom, #0b1218, #121212); }
+  .btn-luxury { border:1px solid var(--accent); color:var(--accent); transition:all .4s; }
+  .btn-luxury:hover, .btn-luxury:active { background:var(--accent); color:#000; }
+  .gold-line { width:1px; height:80px; background:linear-gradient(to bottom, transparent, var(--accent), transparent); }
+  section { padding:80px 0; }
+  @media (min-width:768px){ section { padding:120px 0; } }
+  @media (max-width:767px){ .serif-v { writing-mode:horizontal-tb; } }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- 1. FV -->
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden !py-16 hero-bg">
+  
+  <!-- 背景画像 & グラデーションオーバーレイ -->
+  <div class="absolute inset-0 z-0">
+    <!-- imgタグで背景画像を配置 -->
+    <img src="images/main.png" alt="RISTORANTE SHIKAZAWA メインイメージ" class="w-full h-full object-cover">
+    <!-- 文字の可読性を高めるための暗めオーバーレイ（濃度は bg-black/40 や 50 等で調整可） -->
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- コンテンツ（z-10 で画像の上に表示） -->
+  <div class="relative z-10 flex flex-col items-center px-6 w-full text-white">
+    <p class="sans tracking-[0.4em] md:tracking-[0.6em] text-[10px] md:text-xs text-center text-accent mb-10 md:mb-12">RISTORANTE SHIKAZAWA</p>
+    
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <div class="serif-v text-xl md:text-4xl font-light tracking-[0.3em] md:tracking-[0.4em] leading-relaxed">岩手の風土を、一皿に。</div>
+      <div class="h-px w-24 md:h-64 md:w-px bg-white/20"></div>
+      <div class="text-center md:text-left">
+        <h1 class="text-3xl md:text-5xl font-bold mb-5 tracking-wider leading-snug">三陸の<span class="text-accent">「命」</span>を、<br>記憶に刻む。</h1>
+        <p class="text-xs md:text-base opacity-70 sans font-light tracking-widest">TOHOKU GASTRONOMY EXPERIENCE</p>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col items-center animate-bounce opacity-40">
+      <span class="sans text-[10px] tracking-widest mb-3">SCROLL</span>
+      <div class="w-px h-12 bg-accent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CTA 1 -->
+<section class="bg-white text-black !py-14 md:!py-20">
+  <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 text-center md:text-left">
+    <div>
+      <h2 class="text-xl md:text-2xl font-bold mb-2">一晩に、わずか六名。</h2>
+      <p class="text-sm text-gray-500">特別なひとときを約束する、菜園の隠れ家。</p>
+    </div>
+    <a href="tel:0196814210" class="btn-luxury w-full md:w-auto inline-flex flex-col items-center px-8 py-5 md:px-12 md:py-6">
+      <span class="sans text-xs tracking-widest mb-1">RESERVATION</span>
+      <span class="text-2xl font-bold">019-681-4210</span>
+    </a>
+  </div>
+</section>
+
+<!-- 3. Concept -->
+<section class="bg-slate2 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+    <div class="relative">
+      <div class="absolute -top-8 -left-8 w-32 h-32 border-l border-t border-accent/30 hidden md:block"></div>
+      
+      <!-- 写真を配置するコンテナ -->
+      <div class="relative aspect-[4/5] md:aspect-[3/4] max-w-sm mx-auto md:max-w-none overflow-hidden shadow-2xl bg-black flex items-center justify-center border border-white/10 rounded-sm">
+        <img 
+          src="images/fish.png" 
+          alt="三陸ムール貝の一皿のイメージ" 
+          class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+        >
+      </div>
+    </div>
+    
+    <div>
+      <span class="text-accent sans text-xs tracking-[0.4em] mb-4 block">CONCEPT</span>
+      <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 leading-relaxed">香りと温度、<br>その背景にある物語。</h3>
+      
+      <!-- !text-white を使用して強制的に白色に指定 -->
+      <p class="text-sm md:text-base leading-loose !text-white mb-8 md:mb-10">
+        一皿一皿には、生産者の想いと岩手の文化が息づいています。<br>
+        シェフ鹿澤自らが三陸の浜へ、北上の畑へ。信頼で結ばれた食材だけが、その日のインスピレーションによってクリエイティブな一皿へと昇華されます。
+      </p>
+      
+      <div class="flex items-center gap-5">
+        <div class="gold-line shrink-0"></div>
+        <p class="text-xs tracking-widest opacity-60">東北ガストロノミーを牽引する、唯一二の体験。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Chef -->
+<section class="bg-black">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-8 md:gap-12">
+    <div class="md:col-span-7">
+      <!-- シェフ写真コンテナ -->
+      <div class="w-full aspect-[4/3] md:aspect-[4/5] border border-white/10 overflow-hidden">
+        <img 
+          src="images/chef.png" 
+          alt="オーナーシェフ 鹿澤 靖幸" 
+          class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+        >
+      </div>
+    </div>
+    
+    <div class="md:col-span-5 md:-ml-20 z-10 -mt-12 md:mt-0 md:pt-40 mx-2 md:mx-0">
+      <div class="bg-[#1a1a1a] p-8 md:p-12 border border-white/5">
+        <p class="text-accent sans text-xs tracking-widest mb-4">OWNER CHEF</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">鹿澤 靖幸</h2>
+        <p class="text-sm leading-loose mb-8">1981年盛岡市生まれ。震災をきっかけに、料理の役割は「命を繋ぐこと」だと再認識。食材の質を超え、岩手の伝統・文化までもを表現する一皿を追求し続けています。</p>
+        <div class="space-y-4">
+          <p class="text-xs opacity-50 font-light border-b border-white/10 pb-2 italic">Gault &amp; Millau 2024</p>
+          <p class="text-xs opacity-50 font-light border-b border-white/10 pb-2 italic">Tabelog 2023 / 2025 イタリアン百名店</p>
+          <p class="text-xs opacity-50 font-light border-b border-white/10 pb-2 italic">岩手県食のプロフェッショナルアドバイザー</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Voices -->
+<section class="bg-white text-black !py-20 md:!py-32">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14 md:mb-20">
+      <span class="text-accent sans text-xs tracking-[0.4em] mb-4 block uppercase font-bold">The Guest Experience</span>
+      <h3 class="text-xl md:text-3xl font-bold tracking-widest leading-relaxed">「盛岡でこの料理に出会える幸せ」</h3>
+    </div>
+    <div class="space-y-12 md:space-y-16">
+      <div class="flex flex-col md:flex-row gap-2 md:gap-8 items-start">
+        <div class="text-5xl md:text-4xl text-accent leading-none">“</div>
+        <div class="flex-1">
+          <p class="text-base md:text-xl font-medium leading-relaxed mb-4">ひとつひとつのお料理にはそれぞれストーリーがあり、その背景や生産者の想いを感じ想像しながら頂ける。味はもちろんのこと、そこに込められた背景がプラスの調味料となって更に美味しいと感じる。</p>
+          <div class="flex items-center gap-4">
+            <div class="h-px w-8 bg-gray-300"></div>
+            <span class="text-xs md:text-sm text-gray-500 font-bold tracking-widest italic">VISITOR’S VOICE (★★★★★)</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-2 md:gap-8 items-start">
+        <div class="text-5xl md:text-4xl text-accent leading-none">“</div>
+        <div class="flex-1">
+          <p class="text-base md:text-xl font-medium leading-relaxed mb-4">岩手愛に溢れるお料理でした。ワインのペアリングも最高。季節を変えてまた行きたいですね。</p>
+          <div class="flex items-center gap-4">
+            <div class="h-px w-8 bg-gray-300"></div>
+            <span class="text-xs md:text-sm text-gray-500 font-bold tracking-widest italic">VISITOR’S VOICE (★★★★★)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Private Experience -->
+<section class="bg-black border-t border-white/5 !py-20 md:!py-32">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-xl md:text-2xl font-light tracking-[0.3em] md:tracking-[0.4em] mb-12 md:mb-16 uppercase">Private Experience</h2>
+    <div class="grid md:grid-cols-3 border border-white/10">
+      <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/5 transition">
+        <div class="text-3xl mb-5">🍷</div>
+        <h4 class="font-bold mb-3 tracking-widest">ペアリングの極み</h4>
+        <p class="text-xs leading-loose opacity-60 font-light text-left md:text-center">ソムリエが厳選した世界の銘酒。そして飲めない方へは自家製のノンアルコールペアリングで。</p>
+      </div>
+      <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/5 transition">
+        <div class="text-3xl mb-5">🕯️</div>
+        <h4 class="font-bold mb-3 tracking-widest">六席のプライベート</h4>
+        <p class="text-xs leading-loose opacity-60 font-light text-left md:text-center">無機質の中に居心地の良さを同居させた、ソリッドグレーの空間。大切な日、特別な方と。</p>
+      </div>
+      <div class="p-8 md:p-12 hover:bg-white/5 transition">
+        <div class="text-3xl mb-5">✨</div>
+        <h4 class="font-bold mb-3 tracking-widest">おもてなしの心</h4>
+        <p class="text-xs leading-loose opacity-60 font-light text-left md:text-center">鹿澤シェフ自らが料理の背景を語り、そのストーリーと共に味わう贅沢なひとときを。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6.5 Coming Soon -->
+<section class="bg-slate2 border-t border-white/5 !py-16 md:!py-24">
+  <div class="max-w-4xl mx-auto px-5 md:px-6">
+    <div class="border border-accent/40 p-7 pt-12 md:p-12 bg-black/50 relative overflow-hidden">
+      <div class="absolute top-4 -right-8 md:-top-1 md:-right-9 bg-accent text-black font-bold text-[10px] md:text-xs px-10 py-1.5 rotate-[35deg] tracking-widest uppercase sans">Coming Soon</div>
+      <span class="text-accent sans text-xs tracking-[0.4em] mb-3 block">NEW GUEST SERVICE</span>
+      <h3 class="text-xl md:text-3xl font-bold mb-6 tracking-wider leading-relaxed">一皿の「物語」を手元に。<br>特製ストーリーカードの提供</h3>
+      <p class="text-sm md:text-base leading-loose mb-8" style="color: #ffffff !important; opacity: 1 !important;">
+        料理に使われている食材の生産者の物語や、シェフがこだわる味付けのポイント、おすすめの味わい方をまとめた「オリジナルメニューカード」をただいま準備中です。<br>
+        お料理の余韻を深め、特別な夜の思い出としてお持ち帰りいただけます。
+      </p>
+      <div class="flex items-start gap-3 text-xs text-accent/80 tracking-widest">
+        <span class="w-2 h-2 mt-2 rounded-full bg-accent animate-ping shrink-0"></span>
+        <span>近日導入予定：お料理とともにテーブルへお持ちいたします</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CTA 2 -->
+<section class="bg-base relative overflow-hidden !py-20 md:!py-32">
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <span class="text-accent sans text-xs tracking-[0.5em] mb-4 block">RESERVATION</span>
+    <h2 class="text-3xl md:text-5xl font-bold mb-10 md:mb-12 tracking-wider">美食の旅へ。</h2>
+
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-8 md:mb-10 text-left border-t border-white/10 pt-10 md:pt-12">
+      <div class="space-y-3">
+        <h4 class="sans font-light tracking-widest opacity-50 text-xs">INFORMATION</h4>
+        <p class="text-lg">リストランテ シカザワ</p>
+        <p class="text-sm opacity-70">〒020-0827 岩手県盛岡市鉈屋町3-36</p>
+        <p class="text-sm opacity-70">定休日：月曜日</p>
+      </div>
+      <div class="space-y-3">
+       
+        <a href="https://www.instagram.com/ristorante_shikazawa/" target="_blank" rel="noopener noreferrer" class="text-accent text-sm hover:underline tracking-widest inline-block py-1">Instagram</a>
+      </div>
+    </div>
+
+    <!-- Google Map 埋め込みエリア -->
+    <div class="w-full h-64 md:h-80 mb-12 md:mb-16 rounded-lg overflow-hidden border border-white/10 shadow-2xl">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3070.055810247532!2d141.15265707486424!3d39.69344909934488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85762fc38f07e5%3A0x913457b33af7bd23!2z44Oq44K544OI44Op44Oz44OGIOOCt-OCq-OCtuODrw!5e0!3m2!1sja!2sjp!4v1792561709150!5m2!1sja!2sjp" 
+        class="w-full h-full border-0 filter grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <a href="tel:0196814210" class="btn-luxury w-full max-w-md bg-accent !text-black flex items-center justify-center gap-4 px-6 py-5 md:px-12 md:py-6 hover:opacity-90">
+        <span class="text-xs md:text-sm tracking-widest uppercase font-bold sans">Call Now</span>
+        <span class="text-xl md:text-2xl font-bold">019-681-4210</span>
+      </a>
+      <p class="mt-8 text-xs opacity-40 font-light tracking-widest">※完全予約制のため、事前のご連絡をお願い申し上げます。</p>
+    </div>
+  </div>
+  <div class="absolute bottom-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-0 pointer-events-none"></div>
+</section>
+
+<footer class="py-10 bg-black text-center border-t border-white/5 px-4">
+  <p class="sans text-[10px] tracking-[0.3em] opacity-40 uppercase">© Ristorante Shikazawa. Gastronomy of Tohoku.</p>
+</footer>
+
+</body>
+</html>
