@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>L’ORTO（ロルト）| 岩手北上の隠れ家イタリアン</title>
+<meta name="description" content="岩手・北上の静寂に佇む、野菜園のイタリアン「L’ORTO」。自家栽培野菜と手打ちパスタをご堪能ください。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: { olive: '#3d4d21', gold: '#c5a059', stone2: '#f4f1ed' } } } }
+</script>
+<style>
+  body { font-family: 'Noto Sans JP', sans-serif; color: #2d2d2d; background: #f4f1ed; overflow-x: hidden; padding-bottom: env(safe-area-inset-bottom); }
+  .serif { font-family: 'Shippori Mincho', serif; }
+  .eng { font-family: 'Playfair Display', serif; font-style: italic; }
+  .hero-bg { background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url('images/sote.jpg') center/cover; animation: zoom 20s infinite alternate; }
+  @keyframes zoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+  @media (prefers-reduced-motion: reduce) { .hero-bg { animation: none; } }
+  .title-line::after { content: ""; display: block; width: 60px; height: 1px; background: #c5a059; margin: 1.25rem auto 0; }
+  .cta-btn { background: linear-gradient(135deg, #06c755, #05a346); box-shadow: 0 12px 24px -10px rgba(6,199,85,.5); transition: transform .3s, box-shadow .3s; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 18px 32px -10px rgba(6,199,85,.6); }
+  .jp { word-break: auto-phrase; line-break: strict; }
+</style>
+</head>
+<body class="jp antialiased">
+
+<!-- Hero -->
+<header class="relative min-h-[100svh] overflow-hidden flex items-center justify-center">
+  <div class="absolute inset-0 hero-bg"></div>
+  <div class="relative z-10 text-center text-white px-5">
+    <span class="eng block text-base sm:text-xl md:text-2xl tracking-[0.2em] sm:tracking-[0.3em] mb-4">Vegetable Garden Italian</span>
+    <h1 class="serif font-bold tracking-wider leading-snug mb-6 sm:mb-8 text-[1.75rem] sm:text-5xl md:text-7xl">
+      旬を綴り、土を味わう。<br>
+      <span class="text-gold">「鯛のソテー」</span>という贅沢。
+    </h1>
+    <p class="font-light tracking-[0.12em] sm:tracking-[0.2em] text-sm sm:text-lg md:text-xl mb-10 sm:mb-12">岩手・北上の静寂に佇む、<br class="sm:hidden">大人の隠れ家「ロルト」</p>
+    <div class="flex flex-col items-center">
+      <div class="w-px h-16 sm:h-24 bg-gradient-to-b from-transparent to-white mb-3"></div>
+      <span class="text-xs tracking-widest uppercase">Scroll Down</span>
+    </div>
+  </div>
+</header>
+
+<!-- Intro -->
+<section class="py-16 sm:py-24 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="serif text-2xl sm:text-3xl md:text-4xl mb-10 sm:mb-12 leading-relaxed title-line pb-2">
+      都内で磨いた十年の感性と、<br class="hidden sm:block">故郷・岩手が育んだ「実家の野菜」。
+    </h2>
+    <p class="text-gray-600 text-[15px] sm:text-base leading-[2.1] sm:leading-[2.2]">
+      岩手県北上市の喧騒を離れ、<br class="hidden md:block">
+      住宅街の奥にひっそりと暖簾を掲げるイタリアン「L’ORTO」。<br class="hidden md:block">
+      農家の娘として生まれた女性シェフが、<br class="hidden md:block">
+      その日の朝に収穫されたばかりの瑞々しい「自家栽培野菜」を中心に、<br class="hidden md:block">
+      一皿一皿に物語を込めて腕を振るいます。
+    </p>
+  </div>
+</section>
+
+<!-- CTA 1 -->
+<section class="py-12 sm:py-16 bg-white shadow-inner">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="border border-stone-200 p-6 sm:p-10 md:p-12 rounded-lg text-center">
+      <span class="eng text-gold text-base sm:text-lg mb-2 block">Reservation &amp; Contact</span>
+      <h3 class="serif text-xl sm:text-2xl md:text-3xl mb-5">お席のご予約・お問い合わせを承っております。</h3>
+      <p class="text-gray-500 mb-8 text-sm md:text-base leading-relaxed">ご来店の際は事前のご予約がスムーズです。旬の食材をご用意してお待ちしております。</p>
+      <a href="tel:0197-62-8001" class="cta-btn flex sm:inline-flex items-center justify-center gap-2 text-white font-bold py-4 sm:py-5 px-6 sm:px-14 rounded-full text-base sm:text-xl">
+        <i class="fas fa-phone"></i>
+        <span>お電話で予約する<span class="block sm:inline text-sm sm:text-xl sm:ml-1">（0197-62-8001）</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Main dish -->
+<section class="py-16 sm:py-24 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+      <div class="flex-1 relative w-full">
+        <div class="absolute -top-5 -left-3 md:-top-10 md:-left-10 w-40 h-40 md:w-64 md:h-64 bg-stone-200 -z-10"></div>
+        <img src="images/sote.jpg" alt="鯛のソテー" loading="lazy" class="w-full h-64 sm:h-96 md:h-auto object-cover shadow-2xl grayscale-[0.2] hover:grayscale-0 transition-all duration-700">
+      </div>
+      <div class="flex-1">
+        <span class="eng text-gold text-xl sm:text-2xl mb-3 block">Recommended Dish</span>
+        <h2 class="serif text-[1.65rem] sm:text-4xl md:text-5xl mb-6 sm:mb-8 leading-tight">パリッとした皮目から溢れる、<br>鯛の芳醇な旨味。</h2>
+        <p class="text-gray-600 leading-loose mb-8 text-[15px] sm:text-base">
+          当店の看板メニュー「鯛のソテー」。表面は香ばしく焼き上げ、中は驚くほどふっくらと。シェフの実家で採れた濃厚な野菜のピューレをソースに使い、素材が持つ「力強さ」を最大限に引き出しました。
+        </p>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 border-l-2 border-gold pl-5 py-2">
+          <span class="serif text-lg sm:text-xl">野菜園のパスタランチ</span>
+          <span class="text-gray-400">/</span>
+          <span class="text-gold font-bold">満足度の高い構成</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Chef -->
+<section class="py-16 sm:py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+      <div class="order-2 md:order-1">
+        <h2 class="serif text-2xl sm:text-3xl mb-6 sm:mb-8">「本当の野菜の味を知ってほしい」</h2>
+        <div class="space-y-5 text-gray-600 leading-loose text-[15px] sm:text-base">
+          <p>都内の名店で修行した十年間、常に頭にあったのは、岩手の実家の畑で食べたあの日の野菜の味でした。</p>
+          <p>2023年7月、私は北上の地に小さなレストランを開きました。名前は「L’ORTO（ロルト）」。イタリア語で「野菜園」という意味です。</p>
+          <p>形は不揃いでも、滋味深い。そんな野菜たちの声に耳を傾けながら、今日も厨房に立ちます。</p>
+        </div>
+        <p class="serif text-lg sm:text-xl mt-8">オーナーシェフ <span class="text-2xl">後藤</span></p>
+      </div>
+      <div class="order-1 md:order-2">
+        <div class="p-3 sm:p-4 border border-stone-200">
+          <img src="images/chef.png" alt="シェフ" loading="lazy" class="w-full h-64 sm:h-96 md:h-auto object-cover grayscale-[0.5]">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- For You -->
+<section class="py-16 sm:py-24 bg-olive text-white">
+  <div class="max-w-4xl mx-auto px-5">
+    <div class="text-center mb-12 sm:mb-16">
+      <span class="eng text-gold text-lg sm:text-xl">For You</span>
+      <h2 class="serif text-2xl sm:text-3xl md:text-4xl mt-3">大切な方との、特別な時間に。</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+      <div class="border-b border-white/20 pb-6">
+        <h4 class="serif text-lg sm:text-xl mb-3 text-gold">静かな空間で語らいたい</h4>
+        <p class="text-stone-300 text-sm sm:text-base leading-relaxed">繁華街から離れた立地。個室（5〜10名）も完備しており、記念日や家族の集いにも最適です。</p>
+      </div>
+      <div class="border-b border-white/20 pb-6">
+        <h4 class="serif text-lg sm:text-xl mb-3 text-gold">心から美味しいと思えるものを</h4>
+        <p class="text-stone-300 text-sm sm:text-base leading-relaxed">素材選びに妥協はありません。自家栽培野菜、手打ちパスタ、そして厳選された魚介。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="py-16 sm:py-24 bg-stone-100">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="serif text-center text-2xl sm:text-3xl mb-10 sm:mb-16">お客様の記憶に残る一皿</h2>
+    <div class="grid md:grid-cols-3 gap-5 sm:gap-8">
+      <figure class="bg-white p-6 sm:p-8 shadow-sm">
+        <div class="flex text-gold mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote class="text-gray-600 mb-5 text-sm leading-relaxed italic">「パスタの茹で加減が絶妙でした。前菜からデザートまで、野菜の甘みに驚きっぱなし。北上に来たら必ず寄りたい店です。」</blockquote>
+        <figcaption class="text-xs text-stone-400">— T. Sato（ランチ利用）</figcaption>
+      </figure>
+      <figure class="bg-white p-6 sm:p-8 shadow-sm">
+        <div class="flex text-gold mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote class="text-gray-600 mb-5 text-sm leading-relaxed italic">「女性シェフの繊細な盛り付けに感動。鯛のソテーのソースが絶品で、パンでお皿を拭って食べたほどです。」</blockquote>
+        <figcaption class="text-xs text-stone-400">— M. Abe（記念日利用）</figcaption>
+      </figure>
+      <figure class="bg-white p-6 sm:p-8 shadow-sm">
+        <div class="flex text-gold mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <blockquote class="text-gray-700 mb-5 text-sm leading-relaxed italic">「カジュアルなのに、味は本物。一人でも気兼ねなく入れる雰囲気が嬉しいですね。次はディナーにお邪魔します。」</blockquote>
+        <figcaption class="text-xs text-stone-400">— K. Suzuki（一人ランチ）</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Coming Soon -->
+<section class="py-16 sm:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-10 sm:mb-16">
+      <span class="eng text-gold text-xl sm:text-2xl tracking-widest block mb-2">Coming Soon</span>
+      <h2 class="serif text-2xl sm:text-3xl md:text-4xl">広がる、ロルトの新しい食体験。</h2>
+      <p class="text-gray-500 mt-4 text-sm md:text-base">ロルトでは、お客様と食や畑との繋がりを深める特別な企画を準備中です。</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 sm:gap-12">
+      <article class="bg-stone-50 border border-stone-200 rounded-lg p-6 sm:p-10 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="bg-olive text-white text-xs font-bold tracking-widest px-3 py-1 rounded-full uppercase">New Menu</span>
+            <span class="eng text-gold text-sm">Seasonal Special</span>
+          </div>
+          <h3 class="serif text-xl sm:text-2xl mb-4 leading-snug">季節限定「自家栽培の採れたて旬野菜」の手打ちパスタ</h3>
+          <p class="text-gray-600 leading-relaxed text-sm mb-6">実家の畑でその日の朝に収穫されたばかりの最高の野菜をふんだんに散りばめた、四季折々の限定手打ちパスタメニューが始まります。モチモチの手打ち生地と、一番美味しい瞬間の野菜が奏でる特別なハーモニーをお楽しみください。</p>
+        </div>
+        <div class="border-t border-stone-200 pt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500">
+          <span><i class="far fa-calendar-alt mr-1 text-gold"></i>提供予定：順次リリース</span>
+          <span class="text-gold font-bold">公式Webサイトにて案内</span>
+        </div>
+      </article>
+
+      <article class="bg-stone-50 border border-stone-200 rounded-lg p-6 sm:p-10 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <span class="bg-gold text-white text-xs font-bold tracking-widest px-3 py-1 rounded-full uppercase">Workshop</span>
+            <span class="eng text-gold text-sm">Special Experience</span>
+          </div>
+          <h3 class="serif text-xl sm:text-2xl mb-4 leading-snug">シェフ直伝「手打ちパスタづくり」体験ワークショップ</h3>
+          <p class="text-gray-600 leading-relaxed text-sm mb-6">都内で実績を積んだシェフと一緒に粉から生地を仕込み、自家製パスタを作る特別な体験教室を開催。自分で作ったパスタと朝採り野菜で作るスペシャルランチ付き。少人数制で丁寧にレクチャーいたします。</p>
+        </div>
+        <div class="border-t border-stone-200 pt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-stone-500">
+          <span><i class="far fa-user mr-1 text-gold"></i>定員：各回少人数・要予約</span>
+          <span class="text-gold font-bold">事前予約受付予定</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-10 text-center bg-stone-100 p-5 sm:p-6 rounded-lg border border-dashed border-stone-300">
+      <p class="text-stone-600 text-sm leading-relaxed">※新メニューの開始日やワークショップの募集開始時期は、<span class="font-bold text-olive">店頭および公式Webサイト</span>にて順次お知らせいたします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="py-16 sm:py-24 text-center px-5">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="serif text-[1.65rem] sm:text-4xl md:text-5xl mb-6 sm:mb-8 leading-tight">心と身体を潤す、<br>野菜園のイタリアン。</h2>
+    <p class="text-gray-500 mb-10 text-sm sm:text-base">お席に限りがございます。お早めのご予約をお勧めいたします。</p>
+    
+    <!-- Google Maps 埋め込みエリア -->
+    <div class="mb-10 rounded-2xl h-64 sm:h-80 overflow-hidden border border-stone-200 shadow-lg">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.9911860440716!2d141.10685547484027!3d39.28845042353768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f4558611f5ea1%3A0xa386e26861f54498!2zTOKAmU9SVE8o44Ot44Or44OIKQ!5e0!3m2!1sja!2sjp!4v1792644782477!5m2!1sja!2sjp" 
+        class="w-full h-full border-0" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+
+    <a href="tel:0197-62-8001" class="cta-btn flex items-center justify-center gap-2 w-full text-white font-bold py-5 px-6 rounded-full text-lg sm:text-2xl">
+      <i class="fas fa-phone"></i> お電話でのお問い合わせ・ご予約
+    </a>
+    <p class="text-xs sm:text-sm text-stone-400 mt-4">※TEL：0197-62-8001（営業時間中にお気軽にお問い合わせください）</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-16 bg-stone-900 text-stone-400 px-5 pb-28 md:pb-16">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-10 border-b border-white/10 pb-10">
+      <div>
+        <h4 class="serif text-white text-2xl mb-5 italic">L’ORTO</h4>
+        <p class="text-sm leading-loose">
+          〒024-0095 岩手県北上市芳町9-12<br>
+          TEL: <a href="tel:0197-62-8001" class="underline underline-offset-2">0197-62-8001</a><br>
+          定休日：水曜日・木曜日
+        </p>
+      </div>
+      <div class="text-sm">
+        <h5 class="text-white mb-4 tracking-widest">HOURS</h5>
+        <p class="mb-2">Lunch: 11:30 - 13:30</p>
+        <p>Dinner: 17:30 - 21:00</p>
+      </div>
+      <div class="text-sm">
+        <h5 class="text-white mb-4 tracking-widest">CONNECT</h5>
+        <div class="flex gap-6 mb-5">
+          <a href="https://www.instagram.com/lorto.yasaien/" aria-label="Instagram" class="hover:text-gold transition-colors p-1"><i class="fab fa-instagram text-2xl"></i></a>
+          <a href="https://lortokitakami.com/" aria-label="公式サイト" class="hover:text-gold transition-colors p-1"><i class="fas fa-globe text-2xl"></i></a>
+        </div>
+        <p class="text-[11px] leading-relaxed">貸切・サプライズプレート等はお気軽にご相談ください</p>
+      </div>
+    </div>
+    <p class="mt-8 text-center text-xs opacity-40 italic">&copy; 2024 L’ORTO - 野菜園のイタリアン</p>
+  </div>
+</footer>
+
+<!-- スマホ用 固定電話ボタン -->
+<a href="tel:0197-62-8001" class="md:hidden fixed bottom-0 inset-x-0 z-50 flex items-center justify-center gap-2 bg-olive text-white font-bold text-base py-3.5 shadow-[0_-4px_16px_rgba(0,0,0,.2)]" style="padding-bottom: calc(0.875rem + env(safe-area-inset-bottom));">
+  <i class="fas fa-phone"></i> 電話で予約する
+</a>
+
+</body>
+</html>
