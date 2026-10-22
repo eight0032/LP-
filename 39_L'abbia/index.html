@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ラ’ビッア(L’abbia) | 宮古市の薪窯ピザと本格イタリアン</title>
+  <meta name="description" content="岩手県宮古市の薪窯ピザと海の幸パスタ。宮古駅から徒歩圏内のイタリアン L’abbia。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { wine: '#8b1d1d', gold: '#c5a059', cream: '#fdfaf6' },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            serif: ['"Shippori Mincho"', 'serif'],
+            eng: ['"Playfair Display"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+    .btn-gold {
+      background: linear-gradient(135deg, #c5a059 0%, #a37e3d 100%);
+      box-shadow: 0 4px 15px rgba(197, 160, 89, .4);
+    }
+    /* スクロール表示（軽量・外部ライブラリ不要） */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease-out, transform .8s ease-out; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+    /* 固定フッターのぶん余白を確保（スマホ） */
+    @media (max-width: 767px) { body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); } }
+  </style>
+</head>
+<body class="bg-cream font-sans text-stone-800 antialiased">
+
+ <!-- ===== FV ===== -->
+<section class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gray-900 text-white">
+  <!-- 背景画像 -->
+  <img 
+    src="images/pizza.png" 
+    alt="Ristorante L'abbia" 
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  >
+
+  <!-- 背景オーバーレイ (グラデーションと暗さを調整して文字を見やすくします) -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-stone-900/60 to-black/80"></div>
+
+  <!-- 背景SVG装飾 -->
+  <div class="absolute inset-0 opacity-20 flex items-center justify-center" aria-hidden="true">
+    <svg class="w-full h-full max-w-4xl" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="200" stroke="#c5a059" stroke-width="2" stroke-dasharray="8 8"/>
+      <circle cx="250" cy="250" r="180" fill="#2d1515" opacity="0.6"/>
+      <path d="M250 50 L250 450 M50 250 L450 250 M108 108 L392 392 M108 392 L392 108" stroke="#c5a059" stroke-width="1" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 text-center px-5 max-w-5xl mx-auto">
+    <div class="mb-5 flex justify-center items-center gap-3 reveal">
+      <span class="h-px w-8 sm:w-12 bg-amber-200/60"></span>
+      <p class="font-eng italic text-lg sm:text-2xl tracking-[0.15em] sm:tracking-[0.2em] text-gold">Ristorante L’abbia</p>
+      <span class="h-px w-8 sm:w-12 bg-amber-200/60"></span>
+    </div>
+    <h1 class="text-[2.5rem] sm:text-6xl md:text-8xl font-bold mb-6 sm:mb-8 leading-[1.25] drop-shadow-2xl text-amber-50 reveal">
+      ひと口で、<br>宮古の風土を<br>味わいつくす。
+    </h1>
+    <p class="text-base sm:text-xl md:text-2xl mb-9 tracking-widest sm:tracking-widest opacity-90 font-light text-amber-100 reveal leading-relaxed">
+      宮古産の薪窯ピザと、<br class="sm:hidden">濃厚な海の幸パスタ。
+    </p>
+    <div class="reveal">
+      <a href="#booking" class="btn-gold text-white font-bold py-4 px-10 sm:py-5 sm:px-14 rounded-full text-lg sm:text-xl active:scale-95 hover:scale-105 transition duration-300 inline-block">
+        ご予約・お問合せ
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-2 opacity-60" aria-hidden="true">
+    <span class="text-[10px] tracking-widest">SCROLL</span>
+    <div class="w-px h-8 bg-amber-200"></div>
+  </div>
+</section>
+
+  <!-- ===== CTA（電話） ===== -->
+  <section class="py-8 sm:py-10 bg-wine text-white shadow-xl">
+    <div class="container mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-5">
+      <div class="text-center md:text-left">
+        <p class="text-gold font-bold mb-1 tracking-wider text-sm sm:text-base">【本日のお席状況・ご予約】</p>
+        <h2 class="text-xl sm:text-2xl font-bold">お電話でのご予約が一番スムーズです</h2>
+      </div>
+      <a href="tel:0193773277" class="w-full md:w-auto justify-center text-2xl sm:text-4xl font-bold text-amber-200 hover:text-white transition flex items-center gap-3 bg-black/20 px-5 py-3 rounded-2xl border border-amber-500/30">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-gold shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+        0193-77-3277
+      </a>
+      <div class="hidden lg:block text-right">
+        <p class="text-sm opacity-90 leading-relaxed">岩手県宮古市大通1丁目4-13<br>定休日：月曜日</p>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== こだわり ===== -->
+  <section class="py-16 sm:py-24 overflow-hidden">
+    <div class="container mx-auto px-5">
+      <div class="text-center mb-12 sm:mb-20 reveal">
+        <span class="font-eng text-gold text-lg sm:text-xl italic mb-2 block tracking-widest">Our Specialties</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-stone-800">三つのこだわり</h2>
+        <div class="w-12 h-1 bg-gold mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <!-- ピザ -->
+        <article class="group bg-stone-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col reveal">
+          <div class="aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-stone-950">
+            <img 
+              src="images/pizza.png" 
+              alt="宮古産×薪窯のピザ" 
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+            >
+          </div>
+          <div class="p-6 sm:p-8 text-white flex-1">
+            <span class="text-gold font-eng text-sm mb-2 block tracking-[0.3em]">PIZZA</span>
+            <h3 class="text-xl sm:text-2xl font-bold mb-3">宮古産×薪窯のピザ</h3>
+            <p class="text-sm leading-relaxed text-stone-300">野田塩・宮古産を練り込んだ自家製生地。薪窯の高温で一気に焼き上げる、外はカリッ、中はモチモチの自信作。</p>
+          </div>
+        </article>
+
+        <!-- パスタ -->
+        <article class="group bg-stone-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col reveal">
+          <div class="aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-stone-950">
+            <img 
+              src="images/pasta.jpg" 
+              alt="海の幸のパスタ" 
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+            >
+          </div>
+          <div class="p-6 sm:p-8 text-white flex-1">
+            <span class="text-gold font-eng text-sm mb-2 block tracking-[0.3em]">PASTA</span>
+            <h3 class="text-xl sm:text-2xl font-bold mb-3">海の幸のパスタ</h3>
+            <p class="text-sm leading-relaxed text-stone-300">宮古産の生ウニや新鮮な海産物をふんだんに。濃厚なクリームソースとの絶妙なハーモニーを、最後の一口まで。</p>
+          </div>
+        </article>
+
+        <!-- 空間 -->
+        <article class="group bg-stone-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col reveal md:col-span-2 lg:col-span-1">
+          <div class="aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-stone-950">
+            <img 
+              src="images/store.jpg" 
+              alt="隠れ家的な安らぎ" 
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+            >
+          </div>
+          <div class="p-6 sm:p-8 text-white flex-1">
+            <span class="text-gold font-eng text-sm mb-2 block tracking-[0.3em]">SPACE</span>
+            <h3 class="text-xl sm:text-2xl font-bold mb-3">隠れ家的な安らぎ</h3>
+            <p class="text-sm leading-relaxed text-stone-300">宮古駅から徒歩圏内ながら、落ち着いた白壁のおしゃれな店内。テーブル4卓、カウンター3席のゆったりした時間。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+ <!-- ===== Coming Soon ===== -->
+  <section class="py-14 sm:py-20 bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 text-white relative overflow-hidden border-y border-gold/40">
+    <div class="container mx-auto px-5 relative z-10">
+      <div class="max-w-4xl mx-auto bg-black/40 p-6 sm:p-10 md:p-12 rounded-3xl border border-gold/30 backdrop-blur-md shadow-2xl reveal">
+        <div class="flex flex-col items-center text-center">
+          <span class="bg-gold text-stone-900 font-bold px-5 py-2 rounded-full text-xs sm:text-sm tracking-widest uppercase mb-4 shadow-lg animate-pulse">Coming Soon</span>
+          
+          <p class="text-amber-200 mb-2 text-sm tracking-wider font-bold">新サービス準備中</p>
+          <h2 class="text-2xl sm:text-4xl font-bold mb-4 text-amber-100 leading-snug">
+            ご自宅でも焼き立ての味を。<br>「本格薪窯ピザ テイクアウト」開始予定！
+          </h2>
+          <p class="text-stone-300 leading-relaxed mb-6 text-sm sm:text-base max-w-2xl mx-auto">
+            「ラ’ビッアの薪窯ピザをご自宅や職場でも味わいたい」という多くのお客様のご要望にお応えし、テイクアウトサービスを順次開始いたします。宮古塩を使った特製モチモチ生地ととろけるチーズの焼き立てピザを、専用BOXでお渡しいたします。
+          </p>
+          <p class="inline-block text-xs sm:text-sm bg-stone-800/80 px-4 py-2 rounded-lg border border-stone-700 text-amber-200 text-center max-w-xl mx-auto">
+            予約開始時期や対応メニューの詳細は、店頭およびお電話にて順次ご案内いたします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== シェフストーリー ===== -->
+  <section class="py-16 sm:py-28 bg-stone-900 text-white">
+    <div class="container mx-auto px-5">
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 items-center">
+        <!-- シェフの写真エリア -->
+        <div class="w-full md:w-1/3 flex justify-center reveal">
+          <div class="w-56 sm:w-64 rounded-2xl overflow-hidden border-2 border-gold shadow-2xl bg-stone-800">
+            <div class="aspect-[3/4] w-full overflow-hidden">
+              <img 
+                src="images/chef.png" 
+                alt="オーナーシェフ 石橋 正志" 
+                class="w-full h-full object-cover object-center"
+              >
+            </div>
+            <!-- 必要に応じて写真の下に名前を載せる場合はコメントを外してください
+            <div class="p-4 text-center bg-stone-900/90">
+              <p class="font-serif text-lg font-bold">石橋 正志</p>
+              <p class="text-xs text-stone-400">オーナーシェフ / 料理歴26年</p>
+            </div>
+            -->
+          </div>
+        </div>
+
+        <!-- テキストエリア -->
+        <div class="w-full md:w-2/3 reveal">
+          <p class="text-gold font-eng italic text-lg sm:text-xl mb-3">Chef Story</p>
+          <h2 class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 leading-snug">二度の困難を越え、<br>火を灯し続ける。</h2>
+          <div class="space-y-5 text-[15px] sm:text-lg leading-loose text-stone-300">
+            <p>2010年、北海道から移住し開業した矢先の東日本大震災。そして病。シェフ石橋正志を支えたのは「この街に、本物の美味しさを届けたい」という一心でした。</p>
+            <p>2019年、奇跡の復帰。26年の研鑽が生む一皿一皿には、宮古の復興と感謝の想いが込められています。</p>
+            <div class="pt-2">
+              <span class="font-serif border-b border-gold pb-1 text-gold">オーナーシェフ 石橋 正志</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== クチコミ ===== -->
+  <section class="py-16 sm:py-24 bg-[#f8f1e7]">
+    <div class="container mx-auto px-5">
+      <div class="text-center mb-10 sm:mb-16 reveal">
+        <h2 class="text-3xl font-bold mb-3 italic">Voices</h2>
+        <p class="text-gray-600 text-sm sm:text-base">たくさんのお客様に支えられています</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+        <figure class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 reveal">
+          <div class="flex text-gold mb-3 text-lg" aria-label="5つ星">★★★★★</div>
+          <blockquote class="text-gray-700 mb-4 leading-relaxed text-sm">「地元で一番好きなイタリアン。キノコのいい香りと、ほくほくの甘いじゃが芋がクリームソースに合わさって最高です。」</blockquote>
+          <figcaption class="text-xs font-bold text-stone-500">— 帰省中の常連様</figcaption>
+        </figure>
+        <figure class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 reveal">
+          <div class="flex text-gold mb-3 text-lg" aria-label="5つ星">★★★★★</div>
+          <blockquote class="text-gray-700 mb-4 leading-relaxed text-sm">「薪窯で焼かれた生地がモチモチ！チーズがふんだんに使われていてトロトロです。宮古駅から徒歩で行けるのも嬉しい。」</blockquote>
+          <figcaption class="text-xs font-bold text-stone-500">— 観光でお越しの女性</figcaption>
+        </figure>
+        <figure class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 reveal md:col-span-2 lg:col-span-1">
+          <div class="flex text-gold mb-3 text-lg" aria-label="5つ星">★★★★★</div>
+          <blockquote class="text-gray-700 mb-4 leading-relaxed text-sm">「デザートのパンナコッタまで手抜きなし。サラダのドレッシングから美味しいので、最初から最後まで幸せな気分になれます。」</blockquote>
+          <figcaption class="text-xs font-bold text-stone-500">— グルメな地元の方</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== 店舗情報 & 予約 ===== -->
+  <footer id="booking" class="py-16 sm:py-24 bg-[#1a1a1a] text-white scroll-mt-4">
+    <div class="container mx-auto px-5">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16">
+        <div class="lg:w-1/2 reveal">
+          <h2 class="text-3xl font-bold mb-8 sm:mb-10 font-eng tracking-widest text-gold">L’abbia !</h2>
+          <div class="space-y-5 text-base sm:text-lg">
+            <div class="flex items-start gap-4">
+              <svg class="w-5 h-5 mt-1.5 text-gold shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+              <p>〒027-0083 岩手県宮古市大通2丁目4-13<br><span class="text-sm opacity-60">宮古駅から徒歩圏内・隠れ家的な場所です</span></p>
+            </div>
+            <div class="flex items-center gap-4">
+              <svg class="w-5 h-5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <p>定休日：月曜日</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <svg class="w-5 h-5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+              <p>駐車場：店前に3台分完備</p>
+            </div>
+          </div>
+
+          <!-- Google Maps 埋め込みエリア -->
+          <div class="mt-8 sm:mt-10 rounded-2xl h-64 sm:h-80 overflow-hidden border border-stone-700 shadow-2xl">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.4223699194936!2d141.94881627486114!3d39.64020800253675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85cb714eb5ba8f%3A0x6f78959d97d3ee07!2z44Op4oCZ44OT44OD44KiKEzigJlhYmJpYSk!5e0!3m2!1sja!2sjp!4v1792642431526!5m2!1sja!2sjp" 
+              class="w-full h-full border-0" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 flex flex-col justify-center items-center text-center p-8 sm:p-12 bg-white text-black rounded-3xl reveal">
+          <p class="text-lg sm:text-xl mb-4 font-bold">お席のご予約・お問合せは</p>
+          <a href="tel:0193773277" class="text-3xl sm:text-5xl font-bold text-wine mb-6 hover:scale-105 transition block">0193-77-3277</a>
+          <p class="mb-8 text-gray-600 leading-relaxed text-sm">
+            ランチタイム（ピザ・パスタセット）<br>
+            ディナータイムのご予約も承っております。<br>
+            <span class="text-xs text-stone-500">※少人数で運営しておりますので、混雑時はお電話に出られない場合がございます。</span>
+          </p>
+
+          <!-- ボタン＆SNSリンクエリア -->
+          <div class="flex flex-wrap justify-center items-center gap-3">
+           
+            <a href="https://www.facebook.com/p/Labbia-100066503084533/" target="_blank" rel="noopener" aria-label="Facebookページを開く" class="flex items-center gap-2 border border-[#1877F2] bg-[#1877F2] text-white px-5 py-3 rounded-full hover:bg-[#166fe5] transition text-sm font-medium">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mt-16 sm:mt-24 pt-8 border-t border-stone-800 text-center text-stone-500 text-xs sm:text-sm">
+        &copy; 2026 L’abbia Ristorante. Crafted with Passion in Miyako.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== スマホ用 固定電話ボタン ===== -->
+  <a href="tel:0193773277" class="md:hidden fixed bottom-0 inset-x-0 z-50 btn-gold text-white font-bold text-center py-4 flex items-center justify-center gap-2" style="padding-bottom: calc(1rem + env(safe-area-inset-bottom));">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+    電話で予約する
+  </a>
+
+  <script>
+    // スクロールで要素をふわっと表示
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
