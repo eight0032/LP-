@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="盛岡の短角牛・白金豚・ホロホロ鳥と、シャトーヌフ・デュ・パプをはじめとするワイン。至福のひとときを。">
+  <title>ヌッフデュパプ | 岩手の最高級食材とワインが奏でる至福のひととき</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { gold: '#c5a059', wine: '#4a0404' },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            serif: ['"Noto Serif JP"', 'serif'],
+            display: ['"Playfair Display"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { background: #111; color: #eee; padding-bottom: env(safe-area-inset-bottom); word-break: auto-phrase; }
+    .gold-gradient {
+      background: linear-gradient(45deg, #a67c00, #ffbf00, #ffdc73, #ffbf00, #a67c00);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .cta-btn {
+      background: linear-gradient(to right, #c5a059, #e2c275);
+      transition: transform .4s cubic-bezier(.165,.84,.44,1), box-shadow .4s;
+    }
+    .cta-btn:hover { transform: scale(1.03); box-shadow: 0 0 25px rgba(197,160,89,.5); }
+    .cta-btn:focus-visible, a:focus-visible { outline: 2px solid #ffdc73; outline-offset: 3px; }
+    /* 画像の読み込み中表示 */
+    .img-loading { background: #222; position: relative; overflow: hidden; }
+    .img-loading::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.05), transparent);
+      animation: skeleton 1.5s infinite;
+    }
+    @keyframes skeleton { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+    .bg-photo { background-size: cover; background-position: center; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .img-loading::after, .animate-pulse { animation: none; }
+      .cta-btn, .cta-btn:hover { transition: none; transform: none; }
+    }
+  </style>
+</head>
+
+<body class="font-sans leading-relaxed antialiased">
+
+  <!-- 1. ファーストビュー -->
+  <header class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-photo px-5 py-20"
+          style="background-image: linear-gradient(to bottom, rgba(0,0,0,.65), rgba(0,0,0,.85)), url('images/main.png');">
+    <p class="absolute top-8 left-8 hidden md:block font-display italic text-gold text-2xl tracking-widest border-l-2 border-gold pl-4">Neuf du Pape</p>
+
+    <div class="max-w-5xl text-center">
+      <p class="text-gold tracking-[0.3em] font-bold text-xs sm:text-sm md:text-base mb-4">SINCE 1995 MORIOKA</p>
+      <h1 class="font-serif font-black leading-tight mb-8 text-white">
+        <span class="gold-gradient block text-[2.5rem] sm:text-6xl md:text-8xl">岩手を、喰らう。</span>
+        <span class="block mt-4 text-xl sm:text-3xl md:text-5xl font-bold">五感を揺さぶる肉とワイン。</span>
+      </h1>
+      <p class="text-sm sm:text-base md:text-xl mb-10 md:mb-12 text-gray-300 max-w-2xl mx-auto">
+        短角牛、白金豚、ホロホロ鳥。<br class="hidden sm:block">選び抜かれた生産者の情熱を、一流シェフが昇華させる。
+      </p>
+      <div class="relative inline-block group w-full sm:w-auto">
+        <div class="absolute -inset-1 bg-gold rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+        <a href="#contact" class="relative cta-btn block text-black font-black rounded-full py-4 px-8 sm:py-5 sm:px-14 text-base sm:text-lg md:text-xl">
+          至福のひとときを予約する
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. 予約セクション -->
+  <section class="bg-stone-900 border-y border-gold/30 py-12 px-5">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-serif italic font-bold text-gold text-lg sm:text-xl md:text-3xl mb-8">「美味しい」のその先にある、感動の体験を。</h2>
+      <div class="grid gap-4 md:grid-cols-2 md:gap-6">
+        <div class="bg-black/60 p-5 sm:p-6 border border-gold/20 rounded-lg">
+          <p class="text-gold text-xs mb-2 tracking-widest font-bold uppercase">Reserve by Phone</p>
+          <a href="tel:0196515050" class="block font-display text-2xl md:text-3xl font-bold text-white py-1">019-651-5050</a>
+        </div>
+        <div class="bg-black/60 p-5 sm:p-6 border border-gold/20 rounded-lg">
+          <p class="text-gold text-xs mb-2 tracking-widest font-bold uppercase">Online Contact</p>
+          <a href="http://www.neufdupape.com/contact/" target="_blank" rel="noopener noreferrer"
+             class="block text-xl md:text-2xl font-bold text-white hover:text-gold transition-colors py-1">お問い合わせフォーム</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ストーリー -->
+  <section class="py-16 md:py-24 px-5 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center gap-14 md:gap-16">
+      <div class="w-full md:w-1/2 relative group">
+        <div class="rounded-lg overflow-hidden border border-gold/30 img-loading aspect-[4/3]">
+          <img src="images/beef.png"
+               alt="岩手県産短角牛の極上グリル" loading="lazy" onload="this.parentElement.classList.remove('img-loading')"
+               class="w-full h-full object-cover md:group-hover:scale-105 transition duration-700">
+        </div>
+        <div class="absolute -bottom-6 right-2 md:-right-6 bg-black/90 p-4 sm:p-6 border border-gold shadow-2xl rounded-sm">
+          <p class="text-gold font-bold text-base sm:text-lg mb-1">生産者の声を届ける</p>
+          <p class="text-xs italic text-gray-300 opacity-80">Farm to Table Experience</p>
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2">
+        <p class="font-display italic text-gold mb-2 tracking-widest text-sm font-bold">The Passion</p>
+        <h2 class="font-serif font-bold text-white text-2xl sm:text-3xl md:text-4xl leading-snug mb-6">
+          オーナー伊東が惚れ込んだ、<br><span class="text-gold">岩手の「本物」</span>だけを。
+        </h2>
+        <div class="space-y-4 text-gray-300 text-sm md:text-base">
+          <p>かつて有楽町西武百貨店の食品課にいた伊東は、世界中の美食を知り尽くしました。しかし、彼が最終的に辿り着いたのは、故郷・岩手の素晴らしい食材たちでした。</p>
+          <p>「東京の人に、岩手の肉が美味しいと感動してもらいたい」。その一心で、25年以上もの間、生産者の元へ自ら足を運び、深い信頼関係を築き上げてきました。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- 4. 選ばれ続ける3つの理由 -->
+<section class="py-16 md:py-24 bg-zinc-950 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="font-serif font-bold text-white text-2xl sm:text-3xl md:text-5xl mb-4">選ばれ続ける3つの理由</h2>
+      <div class="w-20 h-1 bg-gold mx-auto"></div>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3 md:gap-8">
+      <!-- 01 -->
+      <article class="bg-zinc-900 p-6 sm:p-8 border border-white/5 rounded-lg hover:border-gold/40 transition duration-500">
+        <div class="w-full h-48 mb-6 rounded overflow-hidden img-loading">
+          <img src="images/main.png"
+               alt="ヌッフデュパプの落ち着いた店内空間" loading="lazy" onload="this.parentElement.classList.remove('img-loading')"
+               class="w-full h-full object-cover">
+        </div>
+        <p class="text-gold font-bold text-4xl mb-3 font-display">01</p>
+        <h3 class="font-serif font-bold text-white text-xl mb-3">食材の権威</h3>
+        <p class="text-sm text-gray-400">オーナー自ら厳選した岩手ブランド肉の数々。都内有名店でもなかなか扱えない希少な部位や新鮮な一品を愉しめます。</p>
+      </article>
+
+      <!-- 02 -->
+      <article class="bg-zinc-900 p-6 sm:p-8 border border-white/5 rounded-lg hover:border-gold/40 transition duration-500">
+        <div class="w-full h-48 mb-6 rounded overflow-hidden img-loading">
+          <img src="images/wine.png"
+               alt="ワインと地ビールの至高のペアリング" loading="lazy" onload="this.parentElement.classList.remove('img-loading')"
+               class="w-full h-full object-cover">
+        </div>
+        <p class="text-gold font-bold text-4xl mb-3 font-display">02</p>
+        <h3 class="font-serif font-bold text-white text-xl mb-3">至高のペアリング</h3>
+        <p class="text-sm text-gray-400">南仏ローヌ地方「シャトー・ヌフ・デュ・パプ」をはじめ、料理の旨みを無限大に引き立てる極上のワイン・地ビールを揃えています。</p>
+      </article>
+
+      <!-- 03 -->
+      <article class="bg-zinc-900 p-6 sm:p-8 border border-white/5 rounded-lg hover:border-gold/40 transition duration-500">
+        <div class="w-full h-48 mb-6 rounded overflow-hidden img-loading">
+          <img src="images/chef.png"
+               alt="一流シェフによる繊細な料理の提供" loading="lazy" onload="this.parentElement.classList.remove('img-loading')"
+               class="w-full h-full object-cover">
+        </div>
+        <p class="text-gold font-bold text-4xl mb-3 font-display">03</p>
+        <h3 class="font-serif font-bold text-white text-xl mb-3">一流シェフの技術</h3>
+        <p class="text-sm text-gray-400">本場イタリアや一流ホテルで培った20年以上の経験を持つシェフが、岩手の四季を表現する美しい一皿を仕立て上げます。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+  <!-- 5. Coming Soon: AIソムリエ -->
+  <section class="py-16 md:py-28 px-5 bg-photo border-y border-gold/30"
+           style="background-image: linear-gradient(to bottom, rgba(0,0,0,.65), rgba(0,0,0,.85)), url('images/paring.png');">
+    <div class="max-w-5xl mx-auto">
+      <div class="bg-black/80 backdrop-blur-md border border-gold/40 p-6 sm:p-10 md:p-14 rounded-2xl shadow-2xl text-center">
+        <span class="inline-block bg-gold/20 border border-gold text-gold text-xs md:text-sm font-bold tracking-widest px-4 py-1.5 rounded-full mb-6">
+          COMING SOON — NEW DIGITAL SERVICE
+        </span>
+        <h2 class="font-serif font-extrabold text-white text-2xl sm:text-3xl md:text-5xl mb-6 leading-tight">
+          AI × ソムリエ <br class="md:hidden">パーソナル・ペアリング診断
+        </h2>
+        <p class="text-gray-300 max-w-2xl mx-auto text-sm md:text-base mb-8 md:mb-10">
+          「今夜の気分」や「お好みの料理」を答えるだけで、ヌッフデュパプが誇る25年分のペアリングデータベースとAIが、あなたにぴったりの一杯をご提案する新ウェブサービスを準備中です。
+        </p>
+
+        <div class="grid gap-3 sm:grid-cols-3 sm:gap-4 max-w-3xl mx-auto mb-8 md:mb-10 text-left">
+          <div class="bg-zinc-900/80 p-5 rounded-lg border border-white/10">
+            <div class="text-2xl mb-2" aria-hidden="true">🍽️</div>
+            <h4 class="font-bold text-sm text-white mb-1">料理から選ぶ</h4>
+            <p class="text-xs text-gray-400">短角牛や白金豚など、メニューに合わせた最適な熟成赤ワインをご提案。</p>
+          </div>
+          <div class="bg-zinc-900/80 p-5 rounded-lg border border-white/10">
+            <div class="text-2xl mb-2" aria-hidden="true">✨</div>
+            <h4 class="font-bold text-sm text-white mb-1">気分で探す</h4>
+            <p class="text-xs text-gray-400">「重めで華やか」「爽やかで軽快」など、直感的な言葉からベストマッチを導きます。</p>
+          </div>
+          <div class="bg-zinc-900/80 p-5 rounded-lg border border-white/10">
+            <div class="text-2xl mb-2" aria-hidden="true">📦</div>
+            <h4 class="font-bold text-sm text-white mb-1">ご自宅でお取り寄せ</h4>
+            <p class="text-xs text-gray-400">診断結果のペアリングセットをそのままオンラインで購入可能な連携機能。</p>
+          </div>
+        </div>
+
+        <p class="inline-flex items-center gap-2 text-xs md:text-sm text-gray-400 bg-zinc-900/90 px-5 py-3 rounded-full border border-white/10">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+          2025年秋 リリースに向けて開発進行中
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- 7. フッター -->
+<footer id="contact" class="py-16 md:py-20 px-5 bg-black text-white border-t border-white/10">
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- メインコンテンツ（左：店舗情報 / 右：地図） -->
+    <div class="grid gap-8 md:grid-cols-2 md:gap-12 mb-12">
+      <!-- 左側：店舗情報 -->
+      <div class="flex flex-col justify-between">
+        <div>
+          <h3 class="font-display italic text-gold text-3xl md:text-4xl mb-6">Neuf du Pape</h3>
+          <dl class="space-y-4 text-gray-400 text-sm">
+            <div class="flex gap-4">
+              <dt class="w-20 shrink-0 text-gold text-xs font-bold uppercase pt-0.5">Address</dt>
+              <dd>〒020-0022 岩手県盛岡市大通1丁目7-15 101</dd>
+            </div>
+            <div class="flex gap-4">
+              <dt class="w-20 shrink-0 text-gold text-xs font-bold uppercase pt-0.5">Phone</dt>
+              <dd><a href="tel:0196515050" class="hover:text-gold transition">019-651-5050</a></dd>
+            </div>
+            <div class="flex gap-4">
+              <dt class="w-20 shrink-0 text-gold text-xs font-bold uppercase pt-0.5">Open</dt>
+              <dd>18:00 - 24:00</dd>
+            </div>
+            <div class="flex gap-4">
+              <dt class="w-20 shrink-0 text-gold text-xs font-bold uppercase pt-0.5">Closed</dt>
+              <dd>火曜日</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- 右側：地図 -->
+      <div class="w-full h-64 md:h-80 rounded-lg overflow-hidden border border-white/10 shadow-lg">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.630041600971!2d141.14608997486488!3d39.70302139877055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85763aae50b3f7%3A0x786c299b9d39ea71!2z44OM44OD44OV44OH44Ol44OR44OX!5e0!3m2!1sja!2sjp!4v1792635206663!5m2!1sja!2sjp" 
+          class="w-full h-full border-0 grayscale opacity-85 hover:grayscale-0 hover:opacity-100 transition duration-500" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- 下部：コピーライト -->
+    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-2">
+      <p class="text-xs text-gray-500 tracking-widest uppercase">&copy; 2025 NEUF DU PAPE ALL RIGHTS RESERVED.</p>
+      <p class="text-[10px] text-gray-600">All images are AI-generated / Curated visuals.</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
