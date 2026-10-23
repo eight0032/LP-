@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>イタリア料理 まつばら｜盛岡・神明町のピエモンテ料理</title>
+<meta name="description" content="北イタリア・ピエモンテで12年以上修業した松原裕樹シェフの本格イタリアン。盛岡市神明町、テーブル12席＋カウンター2席の小さなリストランテ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#5b1f2c; --wine-d:#3d1520; --ink:#232a26; --paper:#fbfaf7;
+  --linen:#efece4; --brass:#9c7f45; --mute:#6b6f69;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.9;font-size:16px;padding-bottom:64px}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(24px,4vw,34px);line-height:1.5;letter-spacing:.06em;margin-bottom:28px}
+p+p{margin-top:1em}
+.btn{display:inline-block;text-decoration:none;font-weight:700;letter-spacing:.08em;padding:15px 34px;border:1px solid var(--wine);background:var(--wine);color:#fff;transition:background .2s,color .2s}
+.btn:hover,.btn:focus-visible{background:#fff;color:var(--wine)}
+.btn.ghost{background:transparent;color:var(--wine)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--wine);color:#fff}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:var(--wine-d) url("images/hero.jpg") center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,12,20,.25) 0%,rgba(40,12,20,.78) 100%)}
+.hero .wrap{position:relative;width:100%;padding-bottom:72px;padding-top:120px}
+.hero .name{font-family:var(--serif);font-size:15px;letter-spacing:.3em;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,7vw,66px);line-height:1.45;letter-spacing:.08em}
+.hero p{margin-top:22px;max-width:30em;font-size:15px;opacity:.92}
+.hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.hero .btn{background:#fff;color:var(--wine);border-color:#fff}
+.hero .btn:hover,.hero .btn:focus-visible{background:transparent;color:#fff}
+.hero .btn.ghost{background:transparent;color:#fff}
+.hero .btn.ghost:hover,.hero .btn.ghost:focus-visible{background:#fff;color:var(--wine)}
+
+/* concept */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.photo{aspect-ratio:4/5;background:var(--linen)}
+.concept ul{list-style:none;margin-top:26px;border-top:1px solid var(--brass)}
+.concept li{padding:12px 0;border-bottom:1px solid #d9d4c6;font-size:15px}
+
+/* chef */
+.chef{background:var(--wine-d);color:#f3ece8}
+.chef .split{grid-template-columns:5fr 6fr}
+.chef .photo{aspect-ratio:1/1;background:#4a1a27}
+.chef h2{color:#fff}
+.chef .sig{margin-top:22px;font-family:var(--serif);letter-spacing:.12em;color:#d8c08c}
+
+/* menu */
+.menu-head{max-width:34em}
+.courses{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px}
+.courses h3{font-family:var(--serif);font-size:20px;letter-spacing:.1em;padding-bottom:12px;border-bottom:2px solid var(--wine);margin-bottom:6px}
+.courses article{padding:18px 0;border-bottom:1px solid #d9d4c6}
+.courses h4{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--wine)}
+.courses p{font-size:14.5px;color:#444}
+.pick{margin-top:56px;display:grid;grid-template-columns:5fr 6fr;gap:48px;align-items:center;background:var(--linen);padding:32px}
+.pick .photo{aspect-ratio:4/3}
+.pick h3{font-family:var(--serif);font-size:24px;line-height:1.5;margin-bottom:10px}
+
+/* scene */
+.scene{background:var(--linen)}
+.scene .split{grid-template-columns:6fr 5fr}
+.scene .photo{aspect-ratio:4/3;background:#e2ddd0}
+.facts{margin-top:22px;display:grid;gap:6px;font-size:15px}
+.facts b{font-weight:700;color:var(--wine)}
+
+/* voice */
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.voice{padding:28px;border:1px solid #d9d4c6;background:#fff}
+.stars{color:var(--brass);letter-spacing:.15em;font-size:18px}
+.voice p{font-size:15px;margin-top:10px}
+.note{margin-top:18px;font-size:13px;color:var(--mute)}
+
+/* access */
+.access{background:var(--linen)}
+.info{display:grid;grid-template-columns:7em 1fr;gap:10px 18px;margin-bottom:32px;font-size:15px}
+.info dt{font-weight:700;color:var(--wine)}
+.map{width:100%;height:380px;border:0;background:#ddd}
+.map-btn{margin-top:20px;text-align:center}
+
+/* reserve */
+.reserve{background:var(--wine);color:#fff;text-align:center}
+.reserve h2{color:#fff}
+.reserve .tel{display:block;font-family:var(--serif);font-size:clamp(30px,6vw,46px);letter-spacing:.08em;text-decoration:none;margin:18px 0 28px}
+.reserve .btn{background:#fff;color:var(--wine);border-color:#fff}
+.reserve .btn:hover,.reserve .btn:focus-visible{background:transparent;color:#fff}
+.reserve .small{font-size:13.5px;opacity:.85;margin-top:22px}
+
+footer{padding:44px 0 32px;text-align:center;font-size:13.5px;color:var(--mute)}
+footer .logo{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.2em;margin-bottom:8px}
+footer nav{margin:14px 0}
+footer nav a{margin:0 12px}
+
+/* fixed bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;background:var(--wine-d);box-shadow:0 -2px 10px rgba(0,0,0,.18)}
+.bar a{flex:1;text-align:center;color:#fff;text-decoration:none;font-weight:700;letter-spacing:.08em;padding:16px 8px;font-size:15px}
+.bar a+a{background:var(--brass);color:#1d1710}
+
+@media(max-width:760px){
+  section{padding:64px 0}
+  .split,.chef .split,.scene .split,.courses,.voices,.pick{grid-template-columns:1fr;gap:32px}
+  .pick{padding:20px}
+  .scene .photo{order:-1}
+  .info{grid-template-columns:5.5em 1fr}
+  .map{height:300px}
+}
+@media(min-width:761px){body{padding-bottom:0}.bar{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="name">イタリア料理 まつばら</p>
+    <h1>北イタリアの食卓を、<br>盛岡の旬で。</h1>
+    <p>ピエモンテで12年以上修業したシェフが仕立てる、手打ちパスタと郷土料理のリストランテ。盛岡市神明町、白いクロスの小さな店です。</p>
+    <div class="cta">
+      <a class="btn" href="https://www.tablecheck.com/ja/matsubara-italia" target="_blank" rel="noopener">ネットで予約する</a>
+      <a class="btn ghost" href="tel:0196135861">電話で予約する</a>
+    </div>
+  </div>
+</header>
+
+<section class="concept" id="concept">
+  <div class="wrap split">
+    <div>
+      <h2>ピエモンテの伝統と、<br>岩手の食材。</h2>
+      <p>岩手出身の松原裕樹シェフは、北イタリア・ピエモンテ州で12年以上修業。ミシュラン星付きレストラン『All'Enoteca』ではスーシェフを務めました。</p>
+      <p>「地元とイタリアを繋ぐ、独自のリストランテ」という思いから、現地仕込みの郷土料理に、旬の地元食材を合わせています。</p>
+      <ul>
+        <li>ピエモンテの伝統パスタ「タヤリン」など、手打ちのパスタ</li>
+        <li>季節と仕入れに応じて、毎回工夫するコース料理</li>
+        <li>ワインは本場アルバ産を中心に厳選</li>
+      </ul>
+    </div>
+    <div class="photo"><img src="images/pasta.png" alt="手打ちパスタの料理写真" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="chef" id="chef">
+  <div class="wrap split">
+    <div class="photo"><img src="images/chef.png" alt="松原裕樹シェフ" loading="lazy"></div>
+    <div>
+      <h2>本場で磨いた技を、<br>生まれ育った岩手へ。</h2>
+      <p>北イタリアで過ごした12年以上の経験と、ミシュラン星付きレストランで培った技術。それを、生まれ育った岩手の皿の上に重ねるのが、まつばらの料理です。</p>
+      <p>前菜の盛り合わせから、手打ちパスタ、肉・魚料理、デザートまで。季節の恵みを、手仕事で一皿ずつ仕上げています。</p>
+      <p class="sig">シェフ　松原 裕樹</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <h2>季節で変わる、コース料理。</h2>
+      <p>内容は季節や仕入れに応じて毎回工夫しています。ボリュームや食材のご希望は、ご予約時にご相談ください。</p>
+    </div>
+    <div class="courses">
+      <div>
+        <h3>ランチコース</h3>
+        <article><h4>春風のタヤリン、旬に舞う</h4><p>新緑のランチにぴったり。生パスタが季節の恵みを纏います。</p></article>
+        <article><h4>夏色オイルパスタ、爽やかランチ</h4><p>海老や野菜の鮮やかなハーモニー。軽やかな1,300円のコースです。</p></article>
+        <article><h4>秋の実りトマトソース、温もりランチ</h4><p>杜仲茶豚と旬野菜でつくる、前菜とパスタのセットです。</p></article>
+      </div>
+      <div>
+        <h3>ディナーコース</h3>
+        <article><h4>冬のラグー、手打ちタヤリンの誘惑</h4><p>北イタリアの深い味わいを、4,800円のコースでじっくりと。</p></article>
+        <article><h4>季節のトルテッリ、夜の饗宴</h4><p>パスタ2種を味わう、贅沢なコースです。</p></article>
+        <article><h4>四季折々のパスタ、記憶に刻むディナー</h4><p>日替わりの旬の味を楽しむ、予約制のコースです。</p></article>
+      </div>
+    </div>
+    <div class="pick">
+      <div class="photo"><img src="images/pasta.jpg" alt="鶏肉と茄子のトマトパスタ" loading="lazy"></div>
+      <div>
+        <h3>イチオシ<br>鶏肉と茄子のトマトパスタ</h3>
+        <p>ほっとする、まつばらの看板パスタです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="scene">
+  <div class="wrap split">
+    <div>
+      <h2>白いクロスの、<br>静かな小さな店。</h2>
+      <p>テーブル12席とカウンター2席。清潔感のある落ち着いた空間で、日常のランチから記念日まで、気負わず過ごしていただけます。</p>
+      <p>貸し切りのご相談も承ります。ご家族や少人数のグループでの集まりにどうぞ。</p>
+      <div class="facts">
+        <div><b>席数</b>　テーブル12席／カウンター2席</div>
+        <div><b>営業</b>　日曜・祝日も営業（不定休）</div>
+      </div>
+    </div>
+    <div class="photo"><img src="images/store.jpg" alt="白いクロスのかかった店内" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="voices">
+      <div class="voice">
+        <div class="stars" aria-label="5点満点中5点">★★★★★</div>
+        <p>店内はあまり広くなく、静かな音楽が流れ、落ち着いた雰囲気でした。前菜が運ばれて「この店当たりかも」と感じました。パスタも味はもちろん、量も多めです。スタッフの方も感じが良く、いいランチでした。</p>
+      </div>
+      <div class="voice">
+        <div class="stars" aria-label="5点満点中4点">★★★★<span style="color:#cfc9b8">★</span></div>
+        <p>平日ランチ。シンプルできれいな店内で、スタッフさんもてきぱきと動かれていました。お一人で調理されていたものの、提供時間は思いのほか早いと感じました。</p>
+      </div>
+    </div>
+    <p class="note">※ご来店いただいたお客様のクチコミを、要約して掲載しています。</p>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="wrap">
+    <h2>アクセス</h2>
+    <dl class="info">
+      <dt>店名</dt><dd>イタリア料理 まつばら</dd>
+      <dt>住所</dt><dd>〒020-0884 岩手県盛岡市神明町2−3</dd>
+      <dt>電話</dt><dd><a href="tel:0196135861">019-613-5861</a></dd>
+      <dt>定休日</dt><dd>不定休（日曜・祝日も営業）</dd>
+      <dt>席数</dt><dd>テーブル12席／カウンター2席</dd>
+      <dt>SNS</dt><dd><a href="https://www.instagram.com/matsubara_morioka_iwate/" target="_blank" rel="noopener">Instagram</a>　<a href="https://www.facebook.com/matsubaraitlia/" target="_blank" rel="noopener">Facebook</a></dd>
+    </dl>
+    <iframe class="map" title="イタリア料理 まつばらの地図" src="https://www.google.com/maps?q=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E7%A5%9E%E6%98%8E%E7%94%BA2-3+%E3%82%A4%E3%82%BF%E3%83%AA%E3%82%A2%E6%96%99%E7%90%86+%E3%81%BE%E3%81%A4%E3%81%B0%E3%82%89&hl=ja&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <div class="map-btn">
+      <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E7%A5%9E%E6%98%8E%E7%94%BA2-3+%E3%82%A4%E3%82%BF%E3%83%AA%E3%82%A2%E6%96%99%E7%90%86+%E3%81%BE%E3%81%A4%E3%81%B0%E3%82%89" target="_blank" rel="noopener">Googleマップで開く</a>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <h2>ご予約</h2>
+    <p>ご来店前のご予約をおすすめしています。<br>人数やボリューム、食材のご希望もお気軽にどうぞ。</p>
+    <a class="tel" href="tel:0196135861">019-613-5861</a>
+    <a class="btn" href="https://www.tablecheck.com/ja/matsubara-italia" target="_blank" rel="noopener">ネットで予約する</a>
+    <p class="small">営業時間・空席状況は、予約ページまたはお電話でご確認ください。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">イタリア料理 まつばら</div>
+  <div>〒020-0884 岩手県盛岡市神明町2−3　TEL 019-613-5861</div>
+  <nav>
+    <a href="https://www.instagram.com/matsubara_morioka_iwate/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/matsubaraitlia/" target="_blank" rel="noopener">Facebook</a>
+  </nav>
+  <small>© イタリア料理 まつばら</small>
+</footer>
+
+<div class="bar">
+  <a href="tel:0196135861">電話する</a>
+  <a href="https://www.tablecheck.com/ja/matsubara-italia" target="_blank" rel="noopener">ネット予約</a>
+</div>
+
+</body>
+</html>
