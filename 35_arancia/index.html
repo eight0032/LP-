@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アランチャ｜盛岡の本格イタリアン｜リゾット・ピザ・パスタ</title>
+<meta name="description" content="盛岡市中央通のイタリアン「アランチャ」。ワタリガニのアラビアータ、本格リゾット、ピザが人気。ランチ2,000円以内、ディナー5,000円以内。パーティー・記念日プランあり。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#E8791A;
+  --orange-dk:#B85A0B;
+  --basil:#1F3B2D;
+  --basil-2:#2E5340;
+  --paper:#FBF6EC;
+  --paper-2:#F2E9D6;
+  --ink:#2A2118;
+  --muted:#6B5E4E;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+h2{font-family:var(--serif);font-weight:800;font-size:clamp(1.6rem,4.4vw,2.2rem);line-height:1.4;color:var(--basil);margin-bottom:12px}
+.lead{color:var(--muted);max-width:40em;margin-bottom:36px}
+
+/* buttons */
+.btn{display:inline-block;padding:15px 30px;border-radius:999px;font-weight:700;text-decoration:none;font-size:1rem;transition:background .2s,transform .2s;text-align:center}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-dk)}
+.btn-ghost{border:2px solid currentColor}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:var(--basil);color:var(--paper)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-family:var(--serif);font-weight:800;font-size:1.3rem;letter-spacing:.08em;text-decoration:none}
+header .tel{font-weight:700;text-decoration:none;font-size:.95rem;background:var(--orange);color:#fff;padding:7px 16px;border-radius:999px}
+
+/* hero */
+.hero{background:var(--basil);color:var(--paper);padding:0}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:0;align-items:stretch;padding:0}
+.hero-text{padding:72px 36px 72px 20px;display:flex;flex-direction:column;justify-content:center}
+.hero-text .sub{color:#F3C48B;font-weight:700;margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.3;margin-bottom:18px}
+.hero p{max-width:30em;margin-bottom:28px;color:#E6DECB}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero-img{position:relative;min-height:440px}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;list-style:none}
+.badges li{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 14px;font-size:.85rem}
+
+/* strengths */
+.strengths{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--basil)}
+.strength{padding:26px 24px 26px 0;border-bottom:1px solid #D9CBAE}
+.strength h3{font-family:var(--serif);font-size:1.2rem;color:var(--orange-dk);margin-bottom:6px}
+.strength p{font-size:.95rem;color:var(--muted)}
+
+/* menu */
+.menu{background:var(--paper-2)}
+.menu-item{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:56px}
+.menu-item:last-child{margin-bottom:0}
+.menu-item:nth-child(even) .menu-img{order:2}
+.menu-img img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+.menu-item h3{font-family:var(--serif);font-size:1.6rem;line-height:1.45;color:var(--basil);margin-bottom:10px}
+.tag{display:inline-block;background:var(--orange);color:#fff;font-size:.8rem;font-weight:700;padding:2px 12px;border-radius:4px;margin-bottom:10px}
+.menu-item p{color:var(--muted)}
+.other{margin-top:56px;background:#fff;border-left:6px solid var(--orange);padding:22px 26px}
+.other h3{font-family:var(--serif);color:var(--basil);margin-bottom:6px}
+
+/* scenes */
+.scene-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.scene-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+.scene-list{list-style:none}
+.scene-list li{padding:16px 0;border-bottom:1px solid #D9CBAE}
+.scene-list b{display:block;font-family:var(--serif);font-size:1.1rem;color:var(--basil)}
+.scene-list span{font-size:.95rem;color:var(--muted)}
+
+/* reviews */
+.reviews{background:var(--basil);color:var(--paper)}
+.reviews h2{color:var(--paper)}
+.review-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:24px;align-items:start}
+.review{background:var(--paper);color:var(--ink);padding:28px;border-radius:6px}
+.stars{color:var(--orange);font-size:1.2rem;letter-spacing:.1em;margin-bottom:8px}
+.review p{font-size:.95rem}
+.note{font-size:.8rem;color:#C9C2AE;margin-top:16px}
+
+/* safety */
+.safety{padding:44px 0;background:var(--paper-2)}
+.safety .wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.safety h2{font-size:1.3rem;margin:0}
+.safety p{flex:1;min-width:260px;color:var(--muted);font-size:.95rem}
+
+/* info */
+.info-table{width:100%;border-collapse:collapse;background:#fff}
+.info-table th,.info-table td{padding:16px 18px;border-bottom:1px solid #E6DAC1;text-align:left;vertical-align:top}
+.info-table th{width:9em;background:var(--paper-2);color:var(--basil);font-weight:700}
+.info-table a{color:var(--orange-dk);font-weight:700}
+
+/* access */
+.map-box{border-radius:6px;overflow:hidden;border:1px solid #D9CBAE;background:#eee}
+.map-box iframe{display:block;width:100%;height:420px;border:0}
+.map-btn-wrap{text-align:center;margin-top:20px}
+.access-note{margin-top:20px;color:var(--muted);text-align:center;font-size:.95rem}
+
+/* closing */
+.closing{background:var(--orange);color:#fff;text-align:center}
+.closing h2{color:#fff}
+.closing p{margin-bottom:26px}
+.closing .btn{background:var(--basil);color:#fff;font-size:1.15rem;padding:18px 40px}
+.closing .btn:hover{background:var(--basil-2)}
+.closing .sns{display:block;margin-top:18px;color:#fff;font-weight:700}
+
+footer{background:var(--basil);color:#CFC8B4;padding:36px 0;text-align:center;font-size:.85rem}
+footer .logo{display:block;color:var(--paper);margin-bottom:6px}
+footer a{margin:0 8px}
+
+@media (max-width:760px){
+  section{padding:52px 0}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-img{min-height:260px;order:-1}
+  .hero-text{padding:36px 20px 48px}
+  .strengths{grid-template-columns:1fr}
+  .strength{padding-right:0}
+  .menu-item,.scene-grid,.review-grid{grid-template-columns:1fr;gap:20px}
+  .menu-item:nth-child(even) .menu-img{order:0}
+  .info-table th{width:6.5em;padding:12px}
+  .info-table td{padding:12px}
+  .map-box iframe{height:320px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">アランチャ</a>
+    <a class="tel" href="tel:0196256305">電話で予約</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ファーストビュー -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="sub">盛岡・中央通のイタリアン</p>
+      <h1>蟹の旨味が辛さを超える。<br>アランチャのアラビアータ</h1>
+      <p>ワタリガニの濃厚な甘みに、トマトと唐辛子の刺激。盛岡で本格イタリアンを、ランチ2,000円以内・ディナー5,000円以内で。</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="tel:0196256305">019-625-6305 に電話する</a>
+        <a class="btn btn-ghost" href="#access">アクセスを見る</a>
+      </div>
+      <ul class="badges">
+        <li>本格リゾット・ピザ・パスタ</li>
+        <li>カウンター席あり</li>
+        <li>日曜定休</li>
+      </ul>
+    </div>
+    <div class="hero-img">
+      <img src="images/dish.jpg" alt="アランチャの料理と店内の雰囲気">
+    </div>
+  </div>
+</div>
+
+<!-- 強み -->
+<section id="strength">
+  <div class="wrap">
+    <h2>アランチャが選ばれる理由</h2>
+    <p class="lead">リゾットやピザ、パスタが評判の盛岡のイタリアン。ランチもディナーも、満足度の高さが自慢です。</p>
+    <div class="strengths">
+      <div class="strength">
+        <h3>本格イタリア料理</h3>
+        <p>本格リゾットやピザ・パスタが評判。イタリアン好きからも、味と質で高く評価されています。</p>
+      </div>
+      <div class="strength">
+        <h3>リーズナブルな価格</h3>
+        <p>ランチは2,000円以内、ディナーは5,000円以内。質の高い料理をお手頃な価格でどうぞ。</p>
+      </div>
+      <div class="strength">
+        <h3>幅広い利用シーン</h3>
+        <p>ランチ、ディナー、飲み会、ご家族や友人との会食まで。幅広い世代・シーンに対応します。</p>
+      </div>
+      <div class="strength">
+        <h3>パーティー・記念日対応</h3>
+        <p>シーンに合わせて選べるコースやパーティープラン。事前予約でアニバーサリープレートも用意できます。</p>
+      </div>
+      <div class="strength">
+        <h3>落ち着いた雰囲気</h3>
+        <p>おしゃれで落ち着いた店内は、カジュアルな空間。カウンター席もあり、お一人でも気軽に入れます。</p>
+      </div>
+      <div class="strength">
+        <h3>安心・安全への配慮</h3>
+        <p>席の間隔、消毒液の配置、スタッフの衛生管理など、安心してご利用いただける取り組みをしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- メニュー -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>まず食べてほしい、人気の2品</h2>
+    <p class="lead">看板のパスタと、シェアして楽しいピザ。どちらも熱々でお出しします。</p>
+
+    <div class="menu-item">
+      <div class="menu-img"><img src="images/arabi.jpg" alt="ワタリガニのアラビアータ" loading="lazy"></div>
+      <div>
+        <span class="tag">一番人気</span>
+        <h3>ワタリガニのアラビアータ</h3>
+        <p>ワタリガニの濃厚な甘みを、トマトと唐辛子の刺激がぐっと引き立てます。熱々で、辛さの先に蟹の旨味が広がる一皿。ランチにもおすすめです。</p>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-img"><img src="images/pizza.jpg" alt="キノコとベーコンのピザ" loading="lazy"></div>
+      <div>
+        <span class="tag">イチオシ</span>
+        <h3>キノコとベーコンのピザ</h3>
+        <p>モッチリ熱々の生地に、濃厚なチーズ、きのことベーコンの旨み。みんなでシェアしたくなるピザです。アスパラとベーコンのトッピングも人気です。</p>
+      </div>
+    </div>
+
+    <div class="other">
+      <h3>リゾットやお肉料理も</h3>
+      <p>トマトのリゾットや、いわて黒毛和牛を使った一品も、お客様から好評をいただいています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 利用シーン -->
+<section id="scene">
+  <div class="wrap">
+    <div class="scene-grid">
+      <img src="images/store.jpg" alt="落ち着いた雰囲気のアランチャ店内" loading="lazy">
+      <div>
+        <h2>ひとりでも、みんなでも。</h2>
+        <ul class="scene-list">
+          <li><b>ランチ・ディナー</b><span>カウンター席があるので、お一人でも気軽にどうぞ。</span></li>
+          <li><b>飲み会・パーティー</b><span>コースやパーティープランが充実。夏のパーティープランは2時間飲み放題付きです。</span></li>
+          <li><b>記念日・誕生日</b><span>事前予約で、アニバーサリープレートをご用意します。</span></li>
+          <li><b>ご家族・友人との会食</b><span>カジュアルな雰囲気で、幅広い世代にご利用いただけます。</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section class="reviews" id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="review-grid">
+      <div class="review">
+        <div class="stars" aria-label="5段階中4">★★★★</div>
+        <p>久しぶりの来店でしたが、友人とリゾットとパスタのランチをシェアしました！特にトマトのリゾットが絶品✴デザートの盛り付け、味にも大満足しました💕</p>
+      </div>
+      <div class="review">
+        <div class="stars" aria-label="5段階中5">★★★★★</div>
+        <p>予約せずに来店したのですが、快く対応して頂けました。<br>前菜、パスタ、リゾット、お肉、ピザ(カリカリタイプ)全て美味しかったです！<br>特にいわて黒毛和牛がとっっても美味しく、一緒に炒められたであろう野菜にも肉の旨みが感じられました。<br>表面はカリカリ、中は柔らかく脂がとても甘かったです。香りも良かったです。<br>3人でシェアして食べていたのですが、店員さんが親切に小皿やトングを持ってきて下さりました。<br>また、退店の際に丁寧にお見送りして頂きました。<br>また岩手に来た際に来たいと強く思える素敵なお店でした！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 -->
+<section id="info">
+  <div class="wrap">
+    <h2>店舗情報</h2>
+    <p class="lead">&nbsp;</p>
+    <table class="info-table">
+      <tr><th>店名</th><td>アランチャ</td></tr>
+      <tr><th>住所</th><td>〒020-0021<br>岩手県盛岡市中央通2丁目1-26 第5 川田中央ビル 1F</td></tr>
+      <tr><th>電話番号</th><td><a href="tel:0196256305">019-625-6305</a></td></tr>
+      <tr><th>定休日</th><td>日曜日</td></tr>
+      <tr><th>価格帯</th><td>ランチ 2,000円以内／ディナー 5,000円以内</td></tr>
+      <tr><th>お支払い</th><td>PayPayなどのキャッシュレス決済が使えます（クレジットカードは不可）</td></tr>
+      <tr><th>駐車場</th><td>専用駐車場はありません。近隣にコインパーキングが複数あります。</td></tr>
+      <tr><th>公式サイト</th><td><a href="http://arancia.owst.jp/" target="_blank" rel="noopener">http://arancia.owst.jp/</a></td></tr>
+      <tr><th>Instagram</th><td><a href="https://www.instagram.com/arancia.morioka/" target="_blank" rel="noopener">@arancia.morioka</a></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section id="access" style="background:var(--paper-2)">
+  <div class="wrap">
+    <h2>アクセス</h2>
+    <p class="lead">盛岡中央通、秋田銀行の向かいにあります。</p>
+    <div class="map-box">
+      <iframe
+        src="https://www.google.com/maps?q=岩手県盛岡市中央通2丁目1-26&amp;output=embed&amp;hl=ja"
+        title="アランチャの地図（Googleマップ）"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+    <div class="map-btn-wrap">
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=岩手県盛岡市中央通2丁目1-26 アランチャ" target="_blank" rel="noopener">Googleマップで地図を開く</a>
+    </div>
+    <p class="access-note">近隣のコインパーキングをご利用ください。</p>
+  </div>
+</section>
+
+<!-- クロージング -->
+<section class="closing">
+  <div class="wrap">
+    <h2>ご予約・お問い合わせはお電話で</h2>
+    <p>ご宴会・記念日のご利用は、事前のご予約がおすすめです。<br>定休日は日曜日です。</p>
+    <a class="btn" href="tel:0196256305">019-625-6305 に電話する</a>
+    <a class="sns" href="https://www.instagram.com/arancia.morioka/" target="_blank" rel="noopener">Instagramで最新情報を見る</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">アランチャ</span>
+    <p>〒020-0021 岩手県盛岡市中央通2丁目1-26 第5 川田中央ビル 1F</p>
+    <p style="margin-top:10px">
+      <a href="http://arancia.owst.jp/" target="_blank" rel="noopener">公式サイト</a>
+      <a href="https://www.instagram.com/arancia.morioka/" target="_blank" rel="noopener">Instagram</a>
+    </p>
+    <p style="margin-top:10px">&copy; アランチャ</p>
+  </div>
+</footer>
+
+</body>
+</html>
