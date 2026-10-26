@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ロレオール田野畑｜田野畑ワカメ、世界一のフレンチ（完全予約制）</title>
+<meta name="description" content="岩手県田野畑村、断崖の上のフランス料理店。三陸の海・里・山の食材を使ったコース料理を、太平洋を望む席で。完全予約制。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#0f2530;--sea:#1d4452;--foam:#eef2f0;--wakame:#3f6b4f;--brass:#b99a5b;--ink:#17262d;--mute:#5a6b72}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink);background:var(--foam);line-height:1.9;padding-bottom:64px}
+h1,h2,h3{font-family:"Shippori Mincho","Yu Mincho",serif;font-weight:700;line-height:1.5}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+h2{font-size:clamp(1.5rem,4vw,2rem);margin-bottom:28px;letter-spacing:.06em}
+.btn{display:inline-block;background:var(--brass);color:var(--deep);font-weight:500;text-decoration:none;padding:15px 36px;border-radius:2px;letter-spacing:.1em}
+.btn:hover{background:#cdb078}
+.btn.line{background:transparent;color:inherit;border:1px solid currentColor}
+.btn.line:hover{background:rgba(255,255,255,.1)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;padding:0}
+.hero .bg{position:absolute;inset:0;background:var(--deep)}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,37,48,.92) 8%,rgba(15,37,48,.35) 60%,rgba(15,37,48,.2))}
+.hero .wrap{position:relative;padding-bottom:72px;padding-top:120px}
+.hero .shop{letter-spacing:.3em;font-size:.95rem;margin-bottom:20px}
+.hero h1{font-size:clamp(2.2rem,8vw,4.6rem);letter-spacing:.08em;margin-bottom:20px}
+.hero p.sub{max-width:34em;margin-bottom:36px;font-size:1.02rem}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* concept */
+.lead{max-width:36em;color:var(--mute);margin-bottom:48px}
+.points{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 48px}
+.points h3{font-size:1.15rem;margin-bottom:8px;padding-left:14px;border-left:3px solid var(--wakame)}
+.points p{color:var(--mute);font-size:.95rem}
+
+/* split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split .pic{aspect-ratio:4/5;background:var(--sea)}
+.dark{background:var(--deep);color:#e8efed}
+.dark .lead,.dark .split p{color:#b9c8cc}
+.tag{display:inline-block;border:1px solid var(--brass);color:var(--brass);padding:2px 14px;font-size:.85rem;margin-bottom:16px}
+.split h2{margin-bottom:20px}
+.split p+p{margin-top:14px}
+
+.wide{aspect-ratio:21/9;background:var(--sea);margin-bottom:36px}
+
+/* story */
+.timeline{list-style:none;border-left:1px solid var(--brass);padding-left:24px;margin-top:24px}
+.timeline li{margin-bottom:12px;font-size:.95rem}
+.timeline b{font-family:"Shippori Mincho",serif;color:var(--wakame);margin-right:10px}
+
+/* voice */
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.voice{background:#fff;padding:28px;border-top:3px solid var(--brass)}
+.voice .star{color:var(--brass);letter-spacing:.15em;margin-bottom:10px}
+.voice p{font-size:.92rem;color:#33454c}
+.voice small{display:block;margin-top:14px;color:var(--mute)}
+
+/* coming soon */
+.soon{background:var(--wakame);color:#fff;text-align:center}
+.soon .badge{display:inline-block;border:1px solid #fff;padding:2px 22px;letter-spacing:.3em;font-size:.85rem;margin-bottom:20px}
+.soon p{max-width:34em;margin:0 auto}
+.soon h2{margin-bottom:20px}
+
+/* access */
+.map{aspect-ratio:16/9;background:#dde5e2}
+.map iframe{width:100%;height:100%;border:0}
+.mapbtn{text-align:center;margin:24px 0 48px}
+.mapbtn .btn{background:var(--deep);color:#fff}
+.mapbtn .btn:hover{background:var(--sea)}
+dl{display:grid;grid-template-columns:8em 1fr;border-top:1px solid #cfd8d5}
+dt,dd{padding:14px 0;border-bottom:1px solid #cfd8d5}
+dt{font-weight:500;color:var(--wakame)}
+
+/* reserve */
+.reserve{background:var(--deep);color:#fff;text-align:center}
+.reserve p{margin-bottom:28px;color:#b9c8cc}
+.tel{display:block;font-family:"Shippori Mincho",serif;font-size:clamp(1.9rem,7vw,3rem);text-decoration:none;margin-bottom:28px;letter-spacing:.06em}
+.sns{margin-top:36px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;font-size:.9rem}
+footer{background:#0a1a22;color:#8da0a6;text-align:center;font-size:.8rem;padding:24px}
+
+.fix{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--brass);text-align:center}
+.fix a{display:block;padding:16px;color:var(--deep);font-weight:500;text-decoration:none;letter-spacing:.1em}
+
+@media(max-width:720px){
+ section{padding:64px 0}
+ .points,.split,.voices{grid-template-columns:1fr}
+ .split{gap:28px}
+ .split .pic{aspect-ratio:4/3}
+ .wide{aspect-ratio:4/3}
+ dl{grid-template-columns:6em 1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="bg"><img src="images/store.jpg" alt="断崖の上に立つロレオール田野畑と太平洋の眺め"></div>
+  <div class="wrap">
+    <p class="shop">フランス料理　ロレオール田野畑</p>
+    <h1>田野畑ワカメ、<br>世界一のフレンチ</h1>
+    <p class="sub">岩手県田野畑村、断崖の上のレストラン。三陸の海と里と山の恵みを、シェフ・伊藤勝康がフランス料理に仕立てます。完全予約制。</p>
+    <div class="cta">
+      <a class="btn" href="tel:08090149000">電話で予約する</a>
+      <a class="btn line" href="#access">アクセスを見る</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="concept">
+  <div class="wrap">
+    <h2>ここでしか味わえない、田野畑の食卓</h2>
+    <p class="lead">人口約3,000人の小さな村で、地元の食材だけで新しい食文化をつくる。その挑戦が、一皿ずつに表れています。</p>
+    <div class="points">
+      <div><h3>地元食材へのこだわり</h3><p>田野畑村の海・里・山の食材をふんだんに使い、新しい田野畑の食文化を発信しています。</p></div>
+      <div><h3>確かな腕のシェフ</h3><p>農林水産省「料理マスターズ」の受賞歴を持つシェフが、三陸の食材をフレンチベースの洗練された料理にします。</p></div>
+      <div><h3>太平洋を望む絶景</h3><p>断崖の突端に建ち、大きな窓から太平洋の雄大な景色が広がります。景色も食事の一部です。</p></div>
+      <div><h3>完全予約制の落ち着いたサービス</h3><p>ランチ・ディナーともコース料理のみ。シェフとマダムの二人三脚で、ていねいにおもてなしします。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="dish">
+  <div class="wrap split">
+    <div class="pic"><img src="images/dish.jpg" alt="三陸の食材を使ったロレオール田野畑の料理"></div>
+    <div>
+      <span class="tag">イチオシ　水だこ</span>
+      <h2>ワカメと水だこ、<br>三陸の宝石をコースで</h2>
+      <p>シェフが絶賛する田野畑のワカメを主役に、イチオシの水だこをあわせて。海の味を感じる前菜からデザートまで、季節の食材でコースを組み立てます。</p>
+      <p>南部鉄器で旨味を引き出す調理や、地元ワインの搾りかすに漬ける工夫など、食材の価値を引き出す独自の技法も特徴です。</p>
+    </div>
+  </div>
+</section>
+
+<section id="view">
+  <div class="wrap">
+    <h2>窓いっぱいの太平洋</h2>
+    <div class="wide"><img src="images/sea.jpg" alt="店内の大きな窓から見える太平洋"></div>
+    <p class="lead" style="margin-bottom:0">断崖の突端にある店内から、海を眺めながらゆっくりと食事をお楽しみいただけます。ご家族の記念日や大切な方との時間にも。</p>
+  </div>
+</section>
+
+<section class="dark" id="chef">
+  <div class="wrap split">
+    <div>
+      <h2>シェフ　伊藤勝康</h2>
+      <p>1963年千葉県生まれ。東京のレストランで修業を積み、1995年に岩手へ移住。2016年に田野畑村で「ロレオール田野畑」を開業しました。</p>
+      <p>三陸の食材に感動し、フレンチの枠にとらわれない料理で地域活性化にも取り組んでいます。「三ッ星レストランのような店」を目指し、この村で挑戦を続けています。</p>
+      <ul class="timeline">
+        <li><b>1995</b>岩手県前沢に移住。前沢牛のレストランでシェフに</li>
+        <li><b>2000</b>出張料理「ロレオール丘」を始める</li>
+        <li><b>2014</b>花巻市の石黒農場内に古民家レストランを開業</li>
+        <li><b>2016</b>田野畑村に移転し「ロレオール田野畑」を開業</li>
+        <li><b>2017</b>農林水産省「料理マスターズ」シルバー賞を受賞</li>
+      </ul>
+    </div>
+    <div class="pic"><img src="images/chef.png" alt="シェフ 伊藤勝康"></div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="voices">
+      <div class="voice">
+        <div class="star" aria-label="5段階中5">★★★★★</div>
+        <p>予約必須です。北三陸の食材を使ったフレンチ料理をいただきました。海の味を感じる前菜から始まり、初めて食べる食材もありましたが、どれも美味しくいただきました。お皿も素敵で、シェフのこだわりを感じることができました。デザートを含む全9品を堪能し、お腹も大満足でした。家族で素敵な思い出ができた場所です。</p>
+        <small>Googleマップのクチコミより</small>
+      </div>
+      <div class="voice">
+        <div class="star" aria-label="5段階中4">★★★★</div>
+        <p>お料理は、前菜からデザートまで美味しくいただきました。季節の海の物や山の物を使い、見た目も美味しく、塩麹なども使ったお味でした。予約の時に1人お肉が食べられないと伝えてあったところ、メインの鳥料理が2皿あり、お伝えすると即対応していただきました。</p>
+        <small>Googleマップのクチコミより（一部抜粋）</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soon" id="coming-soon">
+  <div class="wrap">
+    <span class="badge">COMING SOON</span>
+    <h2>地元農家での収穫体験と、お食事のセット</h2>
+    <p>田野畑の畑で収穫した野菜を、そのままコース料理でいただく。親子やご友人など、少人数のグループ向けのプランを準備しています。詳細が決まりましたら、こちらでお知らせします。</p>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap">
+    <h2>アクセス</h2>
+    <div class="map">
+      <iframe title="ロレオール田野畑の地図" src="https://www.google.com/maps?q=%E5%B2%A9%E6%89%8B%E7%9C%8C%E4%B8%8B%E9%96%89%E4%BC%8A%E9%83%A1%E7%94%B0%E9%87%8E%E7%95%91%E6%9D%91%E6%98%8E%E6%88%B8309-5%20%E3%83%AD%E3%83%AC%E3%82%AA%E3%83%BC%E3%83%AB%E7%94%B0%E9%87%8E%E7%95%91&output=embed&hl=ja" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <p class="mapbtn"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%AC%E3%82%AA%E3%83%BC%E3%83%AB%E7%94%B0%E9%87%8E%E7%95%91%20%E5%B2%A9%E6%89%8B%E7%9C%8C%E4%B8%8B%E9%96%89%E4%BC%8A%E9%83%A1%E7%94%B0%E9%87%8E%E7%95%91%E6%9D%91%E6%98%8E%E6%88%B8309-5" target="_blank" rel="noopener">Googleマップで開く</a></p>
+    <dl>
+      <dt>店名</dt><dd>ロレオール田野畑</dd>
+      <dt>住所</dt><dd>〒028-8402　岩手県下閉伊郡田野畑村明戸309-5</dd>
+      <dt>電話</dt><dd><a href="tel:08090149000">080-9014-9000</a></dd>
+      <dt>定休日</dt><dd>不定休</dd>
+      <dt>ご利用</dt><dd>完全予約制（ランチ・ディナーともコース料理のみ）</dd>
+      <dt>代表者</dt><dd>伊藤勝康（個人経営）</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <h2>ご予約はお電話で</h2>
+    <p>当店は完全予約制です。苦手な食材やアレルギーがある場合は、ご予約の際にお伝えください。</p>
+    <a class="tel" href="tel:08090149000">080-9014-9000</a>
+    <a class="btn" href="tel:08090149000">電話で予約する</a>
+    <div class="sns">
+      <a href="http://laureole7.com/" target="_blank" rel="noopener">公式サイト</a>
+      <a href="https://www.instagram.com/katsuyasuito/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/laureole.iwate" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© ロレオール田野畑</footer>
+<div class="fix"><a href="tel:08090149000">電話で予約する　080-9014-9000</a></div>
+</body>
+</html>
