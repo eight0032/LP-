@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRASSERIE Bord de mer｜盛岡・菜園の隠れ家ビストロ</title>
+<meta name="description" content="盛岡の路地裏にある、カジュアルで本格的なフレンチ＆イタリアンのビストロ。パスタと煮込みハンバーグが人気。記念日・女子会・貸切もご相談ください。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12394A;--deep:#0C2733;--brass:#B8893C;--foam:#E3EDEA;--paper:#F6F8F7;--ink:#1D2B31;--mute:#5B6B71;
+--serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;--sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.9;padding-bottom:64px}
+img{max-width:100%;display:block;background:var(--foam)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+section{padding:80px 0}
+h2{font-family:var(--serif);font-size:clamp(24px,4vw,34px);line-height:1.5;color:var(--navy);margin-bottom:28px}
+.stripe{height:10px;background:repeating-linear-gradient(90deg,var(--navy) 0 28px,var(--paper) 28px 56px)}
+.btn{display:inline-block;padding:14px 32px;background:var(--brass);color:#fff;font-weight:700;text-decoration:none;border-radius:2px;letter-spacing:.06em;transition:background .2s}
+.btn:hover{background:#9c722e}
+.btn.line{background:transparent;border:1.5px solid currentColor;color:var(--navy)}
+.btn.line:hover{background:var(--navy);color:#fff}
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;color:#fff;background:var(--deep)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,39,51,.25),rgba(12,39,51,.85))}
+.hero .wrap{position:relative;z-index:1;padding-bottom:72px}
+.hero small{display:block;letter-spacing:.2em;font-size:13px;margin-bottom:12px}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,7vw,64px);line-height:1.25;letter-spacing:.04em}
+.hero p{margin:20px 0 32px;max-width:520px;font-size:clamp(15px,2.4vw,18px)}
+.hero .btn.line{color:#fff;margin-left:8px}
+.hero .btn.line:hover{color:var(--navy);background:#fff}
+/* concept */
+.concept p{max-width:640px;margin-bottom:1em}
+.points{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-top:40px}
+.points div{border-top:3px solid var(--navy);padding-top:14px}
+.points h3{font-family:var(--serif);font-size:18px;color:var(--navy);margin-bottom:6px}
+.points p{font-size:14.5px;color:var(--mute);margin:0}
+/* menu */
+.menu{background:var(--foam)}
+.dish{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;margin-bottom:56px}
+.dish:nth-of-type(even) img{order:2}
+.dish img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.dish h3{font-family:var(--serif);font-size:clamp(20px,3vw,26px);line-height:1.5;color:var(--navy);margin-bottom:10px}
+.dish .tag{display:inline-block;font-size:12px;border:1px solid var(--brass);color:var(--brass);padding:0 10px;margin-bottom:10px}
+.dish p{font-size:15px}
+.sub{font-size:14.5px;color:var(--mute);max-width:640px}
+/* scene */
+.scenes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:28px}
+.scenes div{background:#fff;padding:22px;border-left:4px solid var(--brass)}
+.scenes h3{font-family:var(--serif);font-size:17px;color:var(--navy)}
+.scenes p{font-size:14px;color:var(--mute)}
+.interior{margin-top:40px}
+.interior img{width:100%;aspect-ratio:16/7;object-fit:cover}
+/* story */
+.story{background:var(--navy);color:#fff}
+.story h2{color:#fff}
+.story p{max-width:680px;margin-bottom:1em;font-size:15.5px}
+.story .quote{font-family:var(--serif);font-size:clamp(18px,3vw,22px);border-left:3px solid var(--brass);padding-left:18px;margin:28px 0}
+/* voice */
+.voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.voice{background:#fff;padding:28px;border-top:3px solid var(--navy)}
+.stars{color:var(--brass);letter-spacing:.15em;font-size:18px;margin-bottom:8px}
+.voice p{font-size:14.5px}
+.note{font-size:12.5px;color:var(--mute);margin-top:16px}
+/* coming soon */
+.soon{background:var(--foam)}
+.soon .box{border:2px dashed var(--brass);background:#fff;padding:40px 28px;text-align:center}
+.soon .label{display:inline-block;background:var(--brass);color:#fff;font-weight:700;letter-spacing:.15em;padding:2px 18px;margin-bottom:16px}
+.soon h3{font-family:var(--serif);font-size:clamp(21px,3.4vw,28px);color:var(--navy);margin-bottom:12px}
+.soon p{max-width:560px;margin:0 auto;font-size:15px}
+/* access */
+.info{width:100%;border-collapse:collapse;margin-bottom:36px}
+.info th,.info td{text-align:left;padding:14px 8px;border-bottom:1px solid #cfd9d6;vertical-align:top;font-size:15px}
+.info th{width:8em;color:var(--navy);font-weight:700}
+.map{aspect-ratio:16/9;min-height:300px;border:0;width:100%;background:var(--foam)}
+.mapbtn{text-align:center;margin-top:20px}
+.sns a{margin-right:18px}
+/* reserve */
+.reserve{background:var(--deep);color:#fff;text-align:center}
+.reserve h2{color:#fff}
+.reserve .tel{display:block;font-family:var(--serif);font-size:clamp(28px,6vw,44px);margin:16px 0 28px;text-decoration:none}
+footer{background:#071a23;color:#9fb1b8;text-align:center;font-size:12.5px;padding:28px 20px}
+/* fixed cta */
+.fixed{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;background:var(--deep);box-shadow:0 -2px 10px rgba(0,0,0,.2)}
+.fixed a{flex:1;text-align:center;padding:16px 8px;color:#fff;font-weight:700;text-decoration:none;font-size:15px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.fixed a+a{background:var(--brass)}
+@media(max-width:700px){section{padding:56px 0}.dish{grid-template-columns:1fr;gap:18px}.dish:nth-of-type(even) img{order:0}.hero .btn.line{margin:12px 0 0}}
+@media(min-width:900px){.fixed{display:none}body{padding-bottom:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <img src="images/hero.jpg" alt="BRASSERIE Bord de mer の料理と店内の様子">
+  <div class="wrap">
+    <small>BRASSERIE Bord de mer ／ 盛岡・菜園</small>
+    <h1>盛岡の路地裏で、<br>海辺の食卓を。</h1>
+    <p>肩肘張らずに楽しめる、本格フレンチ＆イタリアン。女性に人気の隠れ家ビストロです。</p>
+    <a class="btn" href="https://www.hotpepper.jp/strJ001239062/" target="_blank" rel="noopener">ネット予約はこちら</a>
+    <a class="btn line" href="tel:0196016702">電話で予約する</a>
+  </div>
+</header>
+<div class="stripe" aria-hidden="true"></div>
+
+<section class="concept" id="concept">
+  <div class="wrap">
+    <h2>カジュアルに、本格フレンチ＆イタリアン。</h2>
+    <p>盛岡の路地裏にひっそりと佇む、ブラッスリー。オーナーシェフが旬の素材を生かして仕立てる料理を、気軽な雰囲気の中でゆっくりお楽しみいただけます。</p>
+    <p>岩手県産の豚肉や季節の地元食材を積極的に取り入れ、地域とつながるフレンチビストロを目指しています。</p>
+    <div class="points">
+      <div><h3>シェフの料理と人柄</h3><p>旬の素材を生かした料理と、シェフの人柄が伝わる温かなサービスが魅力です。</p></div>
+      <div><h3>接客・サービス</h3><p>ご来店の95%の方から「素晴らしい接客・サービス」とご評価いただいています。</p></div>
+      <div><h3>料理の満足度</h3><p>93%の方が料理の味に満足とご回答。地元食材や季節の食材を使ったメニューが好評です。</p></div>
+      <div><h3>ワイン・カクテル</h3><p>料理に合わせて選べる、豊富なワインとカクテルをご用意しています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>当店のイチオシ</h2>
+    <div class="dish">
+      <img src="images/pasta.png" alt="貝と松藻のペペロンチーノ">
+      <div>
+        <span class="tag">イチオシのパスタ</span>
+        <h3>貝と松藻のペペロンチーノ</h3>
+        <p>岩手県産の貝と松藻が織りなす、磯の香りあふれる一品。熱々のペペロンチーノが、いつもの食事を海辺のブラッスリーに変えてくれます。</p>
+      </div>
+    </div>
+    <div class="dish">
+      <img src="images/hamburg.jpg" alt="煮込みハンバーグ">
+      <div>
+        <span class="tag">パスタと並ぶ人気</span>
+        <h3>煮込みハンバーグ</h3>
+        <p>パスタと並んでご好評をいただいている看板料理。じっくり煮込んだ、やさしくも満足感のある一皿です。</p>
+      </div>
+    </div>
+    <p class="sub">そのほか、パスタ・前菜・メイン・デザートまで、季節ごとに内容が変わります。最新のメニューやコースは、予約ページでご確認ください。</p>
+  </div>
+</section>
+
+<section id="scene">
+  <div class="wrap">
+    <h2>特別な日にも、普段使いにも。</h2>
+    <p class="sub">女性のお客様が多く、華やかで賑やかな雰囲気。友人同士やデートにも使いやすいお店です。</p>
+    <div class="scenes">
+      <div><h3>女子会・デート</h3><p>気軽に入れて、料理もお酒もしっかり楽しめます。</p></div>
+      <div><h3>記念日・お祝い</h3><p>デザートプレートのご用意やサプライズにも対応します。</p></div>
+      <div><h3>貸切パーティ</h3><p>貸切のご相談を承ります。飲み放題プランもあります。</p></div>
+      <div><h3>ネット予約</h3><p>24時間、お好きなタイミングでご予約いただけます。</p></div>
+    </div>
+    <div class="interior"><img src="images/interior.jpg" alt="BRASSERIE Bord de mer の店内"></div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <h2>シェフ・佐々木 勲のこと</h2>
+    <p>盛岡の『Comfort Dining DADA』で野崎正孝シェフの右腕として修行を積み、オープンからスーシェフとして多くのゲストの満足に貢献してきました。</p>
+    <p>長年培った経験を活かし、2020年3月末に同店を卒業。レセプション開催後に新型コロナウイルスの影響で開店の延期を余儀なくされましたが、緊急事態宣言の解除後にオープンしました。</p>
+    <p class="quote">自分の料理とサービスを通じて、カジュアルで温かいフレンチをもっと身近にしたい。</p>
+    <p>素材の味わいと自らの人柄を大切に、「盛岡の隠れ家フレンチ」として親しまれています。</p>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="voices">
+      <article class="voice">
+        <div class="stars" aria-label="5つ星のうち4">★★★★</div>
+        <p>5500円の飲み放題付きコースを頂きました。とても雰囲気と店員さんの対応が良い気持ちの良い空間でしたし、お料理も前菜とパスタは絶品でした。（中略）ただ、ボリュームは女子向けに近いので腹ペコ男子は物足りなく感じるかもしれません。</p>
+      </article>
+      <article class="voice">
+        <div class="stars" aria-label="5つ星のうち5">★★★★★</div>
+        <p>久し振りの来店でしたが、半年の変化に驚く程美味しかったです。サーモンのレアカツもグリルドパテもお任せパスタもペパロニピザも白ワイン煮込みのチキンも、注文した全てが美味しく、丁度良い温度で提供されます。（中略）遠方からですが、またすぐに食べに行きたいと思います。</p>
+      </article>
+    </div>
+    <p class="note">※ご来店いただいたお客様の口コミ（一部抜粋）です。</p>
+  </div>
+</section>
+
+<section class="soon" id="soon">
+  <div class="wrap">
+    <div class="box">
+      <span class="label">coming soon</span>
+      <h3>記念日・女子会のための<br>「選べるお祝いセット」</h3>
+      <p>選べる盛り合わせと本日のパスタ、ドリンクをセットにした、記念日や女子会向けのプランを準備しています。詳細が決まり次第、こちらでお知らせします。</p>
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap">
+    <h2>店舗情報・アクセス</h2>
+    <table class="info">
+      <tr><th>店名</th><td>BRASSERIE Bord de mer（ブラッスリー ボール ド メール）</td></tr>
+      <tr><th>住所</th><td>〒020-0024 岩手県盛岡市菜園１丁目１１−１７ 小笠原ビル 1F</td></tr>
+      <tr><th>電話番号</th><td><a href="tel:0196016702">019-601-6702</a></td></tr>
+      <tr><th>定休日</th><td>月曜日</td></tr>
+      <tr><th>予約</th><td><a href="https://www.hotpepper.jp/strJ001239062/" target="_blank" rel="noopener">ホットペッパーグルメ（ネット予約）</a></td></tr>
+      <tr><th>SNS</th><td class="sns"><a href="https://www.instagram.com/bord.de.mer_brasserie/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/BRASSERIE.Bord.de.mer/" target="_blank" rel="noopener">Facebook</a></td></tr>
+    </table>
+    <iframe class="map" title="BRASSERIE Bord de mer の地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E8%8F%9C%E5%9C%92%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%91%E2%88%92%EF%BC%91%EF%BC%97%20BRASSERIE%20Bord%20de%20mer&output=embed&hl=ja"></iframe>
+    <div class="mapbtn">
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E8%8F%9C%E5%9C%92%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%91%E2%88%92%EF%BC%91%EF%BC%97%20BRASSERIE%20Bord%20de%20mer" target="_blank" rel="noopener">地図を開く</a>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <h2>ご予約はお電話かネットで</h2>
+    <a class="tel" href="tel:0196016702">019-601-6702</a>
+    <a class="btn" href="https://www.hotpepper.jp/strJ001239062/" target="_blank" rel="noopener">ネット予約はこちら</a>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社 HAUS（ハウス）　代表者：小原 雅哉</p>
+  <p>&copy; BRASSERIE Bord de mer</p>
+</footer>
+
+<nav class="fixed" aria-label="ご予約">
+  <a href="tel:0196016702">電話で予約</a>
+  <a href="https://www.hotpepper.jp/strJ001239062/" target="_blank" rel="noopener">ネット予約</a>
+</nav>
+</body>
+</html>
