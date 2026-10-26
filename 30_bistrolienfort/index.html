@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bistro Lien Fort｜北上駅徒歩5分 本格フレンチビストロ</title>
+<meta name="description" content="北上市青柳町の本格フレンチビストロ Bistro Lien Fort。地元岩手の旬の野菜と肉・魚。ご予約はお電話で 0197-72-5222。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Shippori+Mincho:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1e2c25; --forest2:#2b3d34; --wine:#6e1f2b; --brass:#b3914f;
+  --paper:#f1efe7; --ink:#27302b; --muted:#66706a; --line:#d9d6ca;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.9;padding-bottom:72px}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,4vw,34px);line-height:1.5;margin-bottom:28px}
+.en{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--brass);font-size:20px;display:block;margin-bottom:4px}
+.btn{display:inline-block;padding:16px 34px;font-family:var(--serif);font-weight:600;font-size:17px;text-decoration:none;border:1px solid var(--brass);background:var(--brass);color:var(--forest);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--brass)}
+.btn.line{background:transparent;color:inherit}
+.btn.line:hover{background:var(--brass);color:var(--forest)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:var(--forest)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,28,24,.55) 0%,rgba(20,28,24,.25) 40%,rgba(20,28,24,.88) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:64px}
+.hero .shop{font-family:"Cormorant Garamond",serif;font-size:clamp(44px,9vw,92px);line-height:1.05;font-weight:500;letter-spacing:.02em}
+.hero .sub{font-size:14px;letter-spacing:.12em;margin:8px 0 28px;color:#e6dcc2}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(20px,3.2vw,30px);line-height:1.7;max-width:22em}
+.hero p.lead{max-width:40em;margin:16px 0 32px;font-size:15px;color:#e9e6dc}
+.hero .acts{display:flex;flex-wrap:wrap;gap:14px}
+.hero .tel{margin-top:22px;font-size:14px;color:#e6dcc2}
+.hero .tel a{font-family:var(--serif);font-size:24px;text-decoration:none;color:#fff;margin-left:8px}
+
+/* strengths */
+.intro{background:var(--paper)}
+.str{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.str div{padding:26px 0;border-top:1px solid var(--line)}
+.str h3{font-family:var(--serif);font-size:19px;line-height:1.6;margin-bottom:6px;color:var(--wine)}
+.str p{font-size:15px;color:var(--muted)}
+
+/* feature */
+.feat{background:var(--forest);color:#eeece2}
+.feat .row{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.feat.rev .row{grid-template-columns:1fr 1.1fr}
+.feat.rev .pic{order:2}
+.feat img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.feat h2{color:#fff}
+.feat p{font-size:15.5px;color:#d7d9cf}
+.feat .note{margin-top:18px;font-size:13.5px;color:#b9bfb2}
+.feat.alt{background:var(--wine)}
+.feat.alt .note,.feat.alt p{color:#ecdcd9}
+
+/* story */
+.story .row{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+.story img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.story p{margin-bottom:16px;font-size:15.5px}
+.story .name{font-family:var(--serif);font-size:18px;margin-top:22px;border-left:3px solid var(--brass);padding-left:14px}
+.story .name small{display:block;font-family:var(--sans);font-size:13px;color:var(--muted)}
+
+/* voices */
+.voices{background:#e7e5d9}
+.vg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.v{background:var(--paper);padding:30px;border-top:3px solid var(--brass)}
+.v .star{color:var(--brass);letter-spacing:.15em;font-size:18px}
+.v p{font-size:15px;margin-top:8px}
+.v cite{display:block;margin-top:12px;font-size:12.5px;color:var(--muted);font-style:normal}
+
+/* scenes */
+.scene{display:flex;flex-wrap:wrap;gap:12px;list-style:none;margin-top:8px}
+.scene li{border:1px solid var(--brass);padding:8px 20px;font-family:var(--serif);font-size:15px}
+
+/* coming soon */
+.soon{background:var(--paper);padding:72px 0}
+.soon .box{border:1px dashed var(--brass);padding:44px 32px;text-align:center;max-width:760px;margin:0 auto}
+.soon .cs{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:40px;color:var(--brass);line-height:1.2}
+.soon h3{font-family:var(--serif);font-size:21px;margin:12px 0 10px}
+.soon p{font-size:15px;color:var(--muted);max-width:34em;margin:0 auto}
+
+/* access */
+.access{background:var(--forest);color:#eeece2}
+.access h2{color:#fff}
+.map{width:100%;height:420px;border:0;display:block;filter:saturate(.85)}
+.mapbtn{margin-top:20px;text-align:center}
+.mapbtn .btn{display:block;max-width:460px;margin:0 auto;text-align:center;padding:20px}
+dl{display:grid;grid-template-columns:8em 1fr;margin-top:48px;border-top:1px solid rgba(255,255,255,.2)}
+dt,dd{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.2);font-size:15px}
+dt{font-family:var(--serif);color:var(--brass)}
+dd a{color:#fff}
+.sns{display:flex;gap:18px;flex-wrap:wrap}
+
+/* reserve */
+.reserve{background:var(--wine);color:#fff;text-align:center}
+.reserve h2{color:#fff}
+.reserve p{max-width:36em;margin:0 auto 28px;font-size:15.5px;color:#f1e4e1}
+.reserve .big{font-family:var(--serif);font-size:clamp(30px,7vw,52px);text-decoration:none;display:block;margin-bottom:12px}
+.reserve small{display:block;margin-top:18px;color:#e2cdc9;font-size:13px}
+footer{background:#141c18;color:#a9b0a8;text-align:center;padding:36px 24px;font-size:13px}
+footer b{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:500;color:#fff;display:block;margin-bottom:6px}
+
+/* sticky */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1fr;background:var(--forest);border-top:1px solid var(--brass)}
+.bar a{padding:15px 8px;text-align:center;text-decoration:none;color:#fff;font-family:var(--serif);font-size:15px}
+.bar a:first-child{background:var(--brass);color:var(--forest);font-weight:600}
+
+@media(max-width:760px){
+  section{padding:64px 0}
+  .str,.vg,.feat .row,.feat.rev .row,.story .row{grid-template-columns:1fr;gap:28px}
+  .feat.rev .pic{order:0}
+  .story img{aspect-ratio:4/3}
+  .map{height:320px}
+  dl{grid-template-columns:6.5em 1fr}
+  .hero .acts .btn{width:100%;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="images/hero.jpg" alt="Bistro Lien Fort の料理" fetchpriority="high">
+  <div class="wrap">
+    <div class="shop">Bistro Lien Fort</div>
+    <div class="sub">岩手県北上市｜北上駅から徒歩5分｜ランチ・ディナー</div>
+    <h1>野菜の誘惑から、肉の至福へ。</h1>
+    <p class="lead">新鮮な地元野菜のバーニャカウダで五感を目覚めさせ、牛や鴨のグリルなど選べる肉メインで締める。予約で味わう、本格フレンチビストロです。</p>
+    <div class="acts">
+      <a class="btn" href="tel:0197725222">電話で予約する</a>
+      <a class="btn line" href="#access">アクセスを見る</a>
+    </div>
+    <p class="tel">ご予約・お問い合わせ<a href="tel:0197725222">0197-72-5222</a></p>
+  </div>
+</header>
+
+<main>
+<section class="intro" id="concept">
+  <div class="wrap">
+    <span class="en">Our commitment</span>
+    <h2>店名の「Lien Fort」は、強い絆。<br>生産者と、地元と、お客様と。</h2>
+    <div class="str">
+      <div><h3>石田シェフが自分の足で選ぶ、岩手の旬</h3><p>農家や産直、漁場へシェフ自らが足を運び、納得した野菜や魚介だけを使います。その時期にしか味わえない美味しさです。</p></div>
+      <div><h3>ホテル・結婚式場で腕を振るったシェフ</h3><p>県内の有名ホテルや人気の結婚式場で経験を積んだ石田シェフが、地元食材の魅力を一皿ずつ丁寧に仕立てます。</p></div>
+      <div><h3>肩肘張らずに、本格フレンチを</h3><p>記念日はもちろん、日常のご褒美にも。気軽に入れるカジュアルな雰囲気で、本格的な料理をお楽しみいただけます。</p></div>
+      <div><h3>「この内容でこの価格」と言われるコース</h3><p>前菜からデザートまで手の込んだコースを、リーズナブルにご用意しています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="bagna">
+  <div class="wrap row">
+    <div class="pic"><img src="images/bagna-cauda.jpg" alt="新鮮な地元野菜のバーニャカウダ" loading="lazy"></div>
+    <div>
+      <span class="en" style="color:var(--brass)">Bagna càuda</span>
+      <h2>まずは、野菜のバーニャカウダ。</h2>
+      <p>当店イチオシは、新鮮な地元野菜をたっぷり使ったバーニャカウダ。シェフが選んだ旬の野菜を、素材の味を引き立てるソースでお楽しみください。コースの最初から、大地の恵みを実感していただけます。</p>
+      <p class="note">季節の野菜スープも人気です。使う野菜は時期によって変わります。</p>
+    </div>
+  </div>
+</section>
+
+<section class="feat alt rev" id="meat">
+  <div class="wrap row">
+    <div class="pic"><img src="images/meat.jpg" alt="牛や鴨のグリルなど、選べる肉メイン" loading="lazy"></div>
+    <div>
+      <span class="en" style="color:#e6c98a">Course</span>
+      <h2>コースの主役は、選べる肉メイン。</h2>
+      <p>ランチは前菜、季節の野菜スープ、バーニャカウダ、メイン、デザートの流れ。メインは魚や肉から選べます。ディナーは牛や鴨のグリルなど、人気の肉料理が満足のフィナーレを飾ります。</p>
+      <p class="note">ランチは席数が限られるため、ご予約をおすすめします。</p>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="chef">
+  <div class="wrap row">
+    <img src="images/interior.jpg" alt="Bistro Lien Fort の店内" loading="lazy">
+    <div>
+      <span class="en">Chef’s story</span>
+      <h2>岩手の生産者を支えたい。<br>その想いから生まれた店。</h2>
+      <p>1976年東京都生まれ。中学生の頃から岩手で暮らし、忙しい両親に代わって食事を作るうちに、料理人を志しました。県内のホテルやレストランで修業を重ね、30代で人気の結婚式場の料理長に。</p>
+      <p>和洋折衷の創作料理でも評価を得るなかで、岩手の生産者を支え、地元食材の魅力を伝えたいという想いが強くなり、2020年8月8日に独立。仕入れは今も、シェフ自身が農家や産直、漁場へ足を運んで行っています。</p>
+      <p>バースデーケーキなど、記念日のご要望にも対応します。ご予約の際にお気軽にご相談ください。</p>
+      <ul class="scene" aria-label="ご利用シーン"><li>記念日</li><li>お誕生日</li><li>ご家族との食事</li><li>友人とのランチ</li><li>自分へのご褒美</li></ul>
+      <p class="name">石田 啓明<small>オーナーシェフ</small></p>
+    </div>
+  </div>
+</section>
+
+<section class="voices" id="voice">
+  <div class="wrap">
+    <span class="en">Voices</span>
+    <h2>お客様の声</h2>
+    <div class="vg">
+      <div class="v"><div class="star" aria-label="5点中5点">★★★★★</div>
+        <p>バーニャカウダは野菜が新鮮で、3種類のソースが本当に美味しく最高でした。前菜からデザートまで美味しくいただき、またリピートしたいお店ができました。ランチは席数が多くないので、予約は必須だと思います。</p>
+        <cite>ランチ利用のお客様（口コミより要約）</cite></div>
+      <div class="v"><div class="star" aria-label="5点中4点">★★★★</div>
+        <p>お昼のコースはメインを数ある中から選べて、どれも手が込んでいます。特にカブのポタージュが気に入りました。盛り付けがきれいで野菜も豊富。手際よく料理が出てきて、お腹も心も満たされました。</p>
+        <cite>ランチ利用のお客様（口コミより要約）</cite></div>
+    </div>
+  </div>
+</section>
+
+<section class="soon" id="soon">
+  <div class="wrap">
+    <div class="box">
+      <div class="cs">coming soon</div>
+      <h3>前菜盛り合わせ・アラカルトのテイクアウト</h3>
+      <p>お店の味をご自宅でも楽しめるよう、前菜盛り合わせやアラカルトメニューのお持ち帰りを準備しています。詳細が決まり次第、お知らせします。</p>
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="wrap">
+    <span class="en">Access</span>
+    <h2>北上駅から徒歩5分。</h2>
+    <iframe class="map" title="Bistro Lien Fort の地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3088.1571966998217!2d141.1177642748402!3d39.28468542376155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f45a27e204965%3A0x704143a28268bd6f!2sBistro%20Lien%20Fort!5e0!3m2!1sja!2sjp!4v1792977773403!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div class="mapbtn"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E5%8C%97%E4%B8%8A%E5%B8%82%E9%9D%92%E6%9F%B3%E7%94%BA1%E4%B8%81%E7%9B%AE2-24%20%E8%91%B5%E3%83%93%E3%83%AB%201F%20Bistro%20Lien%20Fort" target="_blank" rel="noopener">Googleマップで地図を開く</a></div>
+    <dl>
+      <dt>店名</dt><dd>Bistro Lien Fort（ビストロ リアンフォール）</dd>
+      <dt>住所</dt><dd>〒024-0031 岩手県北上市青柳町1丁目2-24 葵ビル 1F</dd>
+      <dt>アクセス</dt><dd>北上駅から徒歩5分</dd>
+      <dt>定休日</dt><dd>日曜・月曜・火曜</dd>
+      <dt>電話番号</dt><dd><a href="tel:0197725222">0197-72-5222</a></dd>
+      <dt>駐車場</dt><dd>ランチタイムはご利用いただけます。場所はご予約の際にご案内します。</dd>
+      <dt>SNS</dt><dd class="sns"><a href="https://www.instagram.com/bistrolienfort/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/BistroLienFort/" target="_blank" rel="noopener">Facebook</a></dd>
+    </dl>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <h2>北上の隠れ家で、<br>記憶に残る一皿を。</h2>
+    <p>バーニャカウダの野菜で大地の恵みを味わい、人気の肉料理で満足のフィナーレへ。ご予約はお電話でお待ちしています。</p>
+    <a class="big" href="tel:0197725222">0197-72-5222</a>
+    <a class="btn" href="tel:0197725222">電話で予約する</a>
+    <small>定休日：日・月・火　／　記念日・バースデーケーキのご相談もお電話で承ります。</small>
+  </div>
+</section>
+</main>
+
+<footer>
+  <b>Bistro Lien Fort</b>
+  〒024-0031 岩手県北上市青柳町1丁目2-24 葵ビル 1F<br>
+  &copy; Bistro Lien Fort
+</footer>
+
+<nav class="bar" aria-label="予約とアクセス">
+  <a href="tel:0197725222">電話で予約する</a>
+  <a href="#access">アクセス</a>
+</nav>
+</body>
+</html>
