@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>エルミタージュ｜奥州市水沢の隠れ家フレンチ</title>
+<meta name="description" content="奥州市水沢の隠れ家的フレンチレストラン「エルミタージュ」。岩手県産の旬の食材を使ったコース料理と、牛ヒレステーキのランチ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --walnut:#2a1c13; --oak:#6b4528; --brass:#b3925a; --wine:#74232f;
+  --linen:#ebe6de; --paper:#f7f4ef; --ink:#2b2119;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  --pad:clamp(20px,5vw,56px);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.95;font-size:16px;padding-bottom:72px}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding:0 var(--pad)}
+section{padding:clamp(64px,9vw,112px) 0}
+h2{font-size:clamp(24px,3.4vw,34px);margin-bottom:28px;letter-spacing:.06em}
+h2::after{content:"";display:block;width:48px;height:2px;background:var(--brass);margin-top:16px}
+.btn{display:inline-block;padding:15px 34px;font-family:var(--serif);font-size:17px;letter-spacing:.08em;text-decoration:none;background:var(--wine);color:#fff;border:1px solid var(--wine);transition:background .2s}
+.btn:hover{background:#5a1a24}
+.btn.ghost{background:transparent;color:var(--walnut);border-color:var(--walnut)}
+.btn.ghost:hover{background:var(--walnut);color:#fff}
+
+/* header */
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad);color:#fff}
+.top .logo{font-family:var(--serif);font-size:20px;letter-spacing:.2em;text-decoration:none}
+.top nav{display:flex;gap:26px;font-size:14px}
+.top nav a{text-decoration:none;opacity:.92}
+.top nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+@media(max-width:760px){.top nav{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;background:var(--walnut);color:#fff;display:flex;align-items:flex-end;padding:0}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,19,12,.92) 8%,rgba(30,19,12,.1) 70%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(56px,9vw,96px);padding-top:140px}
+.hero .area{font-size:14px;letter-spacing:.18em;margin-bottom:16px;color:#e6d3b0}
+.hero h1{font-size:clamp(28px,5.2vw,52px);max-width:15em;letter-spacing:.05em;margin-bottom:22px}
+.hero p.sub{max-width:34em;font-size:clamp(15px,1.8vw,18px);margin-bottom:34px;opacity:.95}
+.hero .acts{display:flex;flex-wrap:wrap;gap:14px}
+.hero .btn.ghost{color:#fff;border-color:#fff}
+.hero .btn.ghost:hover{background:#fff;color:var(--walnut)}
+
+/* concept */
+.concept .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.concept img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--linen)}
+.concept p+p{margin-top:1.1em}
+.points{list-style:none;padding:0;margin-top:28px;border-top:1px solid var(--brass)}
+.points li{padding:14px 0;border-bottom:1px solid var(--brass);font-family:var(--serif);font-size:17px}
+@media(max-width:760px){.concept .grid{grid-template-columns:1fr}}
+
+/* menu */
+.menu{background:var(--walnut);color:#f1e9dc}
+.menu .feature{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:64px}
+.menu .feature img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--oak)}
+.price{font-family:var(--serif);font-size:clamp(34px,5vw,52px);color:#e6d3b0;line-height:1.3;margin:10px 0 4px}
+.price small{font-size:.4em;margin-left:.3em}
+.menu .note{font-size:14px;opacity:.8}
+.cols{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,4vw,48px)}
+.cols>div{border-top:1px solid var(--brass);padding-top:20px}
+.cols h3{font-size:22px;margin-bottom:10px;color:#e6d3b0}
+.cols ul{padding-left:1.2em}
+@media(max-width:760px){.menu .feature,.cols{grid-template-columns:1fr}}
+
+/* room */
+.room{background:var(--linen)}
+.room .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.room img{width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--oak)}
+.scenes{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;list-style:none;padding:0}
+.scenes li{border:1px solid var(--oak);padding:6px 16px;font-size:14px}
+@media(max-width:760px){.room .grid{grid-template-columns:1fr}}
+
+/* chef */
+.chef .grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(28px,5vw,64px);align-items:start}
+.chef .name{font-family:var(--serif);font-size:30px;line-height:1.4}
+.chef .role{font-size:14px;color:var(--oak)}
+.timeline{list-style:none;padding:0;margin-top:20px;border-left:2px solid var(--brass)}
+.timeline li{padding:0 0 18px 22px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-7px;top:11px;width:12px;height:12px;border-radius:50%;background:var(--brass)}
+.timeline b{font-family:var(--serif);font-weight:500;margin-right:.8em;color:var(--wine)}
+@media(max-width:760px){.chef .grid{grid-template-columns:1fr}}
+
+/* voice */
+.voice{background:var(--linen)}
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.voices blockquote{background:var(--paper);padding:28px;border-top:3px solid var(--brass)}
+.stars{color:var(--wine);letter-spacing:.15em;font-size:18px}
+.voices p{margin-top:8px;font-size:15px}
+.voices cite{display:block;margin-top:12px;font-size:13px;color:var(--oak);font-style:normal}
+@media(max-width:760px){.voices{grid-template-columns:1fr}}
+
+/* coming soon */
+.soon .box{border:1px dashed var(--oak);padding:clamp(28px,5vw,52px);display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center}
+.soon .tag{font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);color:var(--wine);letter-spacing:.12em;white-space:nowrap}
+.soon h3{font-size:22px;margin-bottom:8px}
+@media(max-width:760px){.soon .box{grid-template-columns:1fr}}
+
+/* access */
+.access{background:var(--walnut);color:#f1e9dc}
+.access .grid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(28px,5vw,64px)}
+dl.info{display:grid;grid-template-columns:7em 1fr;gap:0}
+dl.info dt,dl.info dd{padding:13px 0;border-bottom:1px solid rgba(179,146,90,.5)}
+dl.info dt{color:#e6d3b0}
+dl.info a{color:#fff}
+.tel{font-family:var(--serif);font-size:26px;text-decoration:none}
+.map iframe{width:100%;height:clamp(280px,40vw,400px);border:0;display:block;background:var(--oak)}
+.map .btn{margin-top:18px;width:100%;text-align:center;background:var(--brass);border-color:var(--brass);color:var(--walnut)}
+.map .btn:hover{background:#c9a76f}
+@media(max-width:760px){.access .grid{grid-template-columns:1fr}}
+
+footer{background:#1d130c;color:#cdbfa9;text-align:center;padding:40px var(--pad);font-size:14px}
+footer .sns{display:flex;justify-content:center;gap:24px;margin:14px 0}
+
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;background:var(--walnut);box-shadow:0 -2px 12px rgba(0,0,0,.25)}
+.bar a{flex:1;text-align:center;padding:16px 8px;font-family:var(--serif);font-size:16px;text-decoration:none;color:#fff;letter-spacing:.06em}
+.bar a:first-child{background:var(--wine)}
+.bar a+a{border-left:1px solid rgba(255,255,255,.2)}
+@media(min-width:900px){.bar{left:auto;right:24px;bottom:24px;width:auto;box-shadow:0 4px 18px rgba(0,0,0,.3)}.bar a{padding:15px 30px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="#top">エルミタージュ</a>
+  <nav aria-label="ページ内メニュー">
+    <a href="#menu">お料理</a><a href="#room">お店の空間</a><a href="#chef">シェフ</a><a href="#voice">お客様の声</a><a href="#access">アクセス</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- ファーストビュー -->
+<section class="hero">
+  <img src="images/hero.jpg" alt="エルミタージュの料理">
+  <div class="wrap">
+    <p class="area">岩手県奥州市水沢｜1983年創業</p>
+    <h1>手の届く非日常を、<br>木のぬくもりの隠れ家で。</h1>
+    <p class="sub">岩手県産の旬の食材を使ったフレンチ。ジューシーな牛ヒレステーキのランチは1,750円からお楽しみいただけます。</p>
+    <div class="acts">
+      <a class="btn" href="tel:0197247284">電話で予約する</a>
+      <a class="btn ghost" href="#access">地図を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- コンセプト -->
+<section class="concept" id="concept">
+  <div class="wrap grid">
+    <img src="images/concept.jpg" alt="エルミタージュのお料理と店内の雰囲気" loading="lazy">
+    <div>
+      <h2>地域に根ざした、<br>隠れ家のフレンチ</h2>
+      <p>エルミタージュは、奥州市水沢で40年以上続く本格フレンチレストランです。地元の方に支えられ、平日のランチには地域の奥様方や男性のお客様も多くいらっしゃいます。</p>
+      <p>コンセプトは「手の届く非日常」。岩手県産の旬の食材を活かし、季節の移ろいを感じるコース料理をお出ししています。</p>
+      <ul class="points">
+        <li>旬の岩手県産食材を使ったコース料理</li>
+        <li>木のぬくもりを感じる、落ち着いた店内</li>
+        <li>個室・貸切にも対応</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- お料理 -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>お料理</h2>
+    <div class="feature">
+      <img src="images/steak.jpg" alt="牛ヒレステーキ" loading="lazy">
+      <div>
+        <h3>牛ヒレステーキのランチ</h3>
+        <p class="price">1,750円<small>〜</small></p>
+        <p>ジューシーな熟成の牛ヒレステーキを主役に、前菜・スープからデザートまで。今日の気分はステーキで決まりです。</p>
+        <p class="note" style="margin-top:12px">セットメニューのデザートは、プラス200円で追加できます。</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>ランチ</h3>
+        <ul>
+          <li>前菜</li><li>スープ</li><li>主菜</li><li>デザート</li><li>コーヒーまたは紅茶</li><li>パンまたはライス</li>
+        </ul>
+        <p class="note" style="margin-top:10px">手頃な価格で本格フレンチをお楽しみいただけます。</p>
+      </div>
+      <div>
+        <h3>ディナー（予約制）</h3>
+        <p>黒毛和牛や海の幸を使った、季節感あふれるコース料理をご用意しています。記念日や大切な方との時間にどうぞ。</p>
+        <p class="note" style="margin-top:10px">ご予約はお電話で承ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店内 -->
+<section class="room" id="room">
+  <div class="wrap grid">
+    <div>
+      <h2>ご夫婦で手がけた、<br>温かみのある空間</h2>
+      <p>内装はご夫婦が手がけたもの。木のぬくもりが感じられる、おしゃれで落ち着いた店内です。個室や貸切にも対応しており、レストランウエディングやパーティーのご相談も承ります。</p>
+      <ul class="scenes">
+        <li>ランチ</li><li>記念日</li><li>ご家族の集まり</li><li>パーティー</li><li>レストランウエディング</li>
+      </ul>
+    </div>
+    <img src="images/interior.jpg" alt="木のぬくもりを感じる店内" loading="lazy">
+  </div>
+</section>
+
+<!-- シェフ -->
+<section class="chef" id="chef">
+  <div class="wrap grid">
+    <div>
+      <h2>オーナーシェフ</h2>
+      <p class="name">湯村 恵</p>
+      <p class="role">エルミタージュ 創業者</p>
+    </div>
+    <div>
+      <p>地元の高校を卒業後、東京の服部栄養専門学校で学び、卒業してすぐに渡仏。パリ商工会議所が運営する「エコール・フェランディ」でフランス料理を修めました。</p>
+      <ul class="timeline">
+        <li><b>東京</b>服部栄養専門学校で1年間学ぶ</li>
+        <li><b>パリ</b>エコール・フェランディでフランス料理を学ぶ</li>
+        <li><b>1983年</b>岩手県奥州市水沢にエルミタージュを創業</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section class="voice" id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="voices">
+      <blockquote>
+        <span class="stars" aria-label="5点満点中5点">★★★★★</span>
+        <p>ランチにコースで予約しました。お料理も雰囲気も良く、ゆっくり過ごすことが出来ました。前菜からメインまで丁寧に提供していただき、ふきのとうやタラの芽が付け合わせになっていて季節感もあって良かったです。</p>
+        <cite>ご来店のお客様（ランチコース）</cite>
+      </blockquote>
+      <blockquote>
+        <span class="stars" aria-label="5点満点中4点">★★★★</span>
+        <p>日曜日に数年ぶりのランチに伺いました。コースメニュー以外にもセットメニューあり、デザートもプラス200円で気軽に楽しめました。ムニエルセットのボリュームにビックリ、大好きなマッシュルームたくさん使ってくれてありがとうございました。チーズケーキとコーヒーも美味しかったです。また伺いたいです。</p>
+        <cite>ご来店のお客様（日曜ランチ）</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- Coming soon -->
+<section class="soon" id="soon">
+  <div class="wrap">
+    <div class="box">
+      <p class="tag">Coming soon</p>
+      <div>
+        <h3>記念日ランチプラン</h3>
+        <p>現在、記念日ディナーに加えて、昼のお時間に大切な方をお祝いできるランチプランを準備しています。詳細が決まり次第、こちらでご案内します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section class="access" id="access">
+  <div class="wrap">
+    <h2>ご予約・アクセス</h2>
+    <div class="grid">
+      <div>
+        <p style="margin-bottom:18px">ご予約はお電話で承っています。</p>
+        <a class="tel" href="tel:0197247284">0197-24-7284</a>
+        <dl class="info" style="margin-top:22px">
+          <dt>店名</dt><dd>エルミタージュ</dd>
+          <dt>住所</dt><dd>〒023-0003<br>岩手県奥州市水沢佐倉河前田17-2</dd>
+          <dt>定休日</dt><dd>月曜日</dd>
+          <dt>電話</dt><dd><a href="tel:0197247284">0197-24-7284</a></dd>
+          <dt>公式サイト</dt><dd><a href="http://ermitage1983.urdr.weblife.me/" target="_blank" rel="noopener">ermitage1983.urdr.weblife.me</a></dd>
+        </dl>
+      </div>
+      <div class="map">
+        <iframe title="エルミタージュの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2187.9152603216235!2d141.14492265715495!3d39.14790028332572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8f4a158f4eaf8d%3A0x2e7415de937e7921!2z44Ko44Or44Of44K_44O844K444Ol!5e0!3m2!1sja!2sjp!4v1793063292279!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E5%A5%A5%E5%B7%9E%E5%B8%82%E6%B0%B4%E6%B2%A2%E4%BD%90%E5%80%89%E6%B2%B3%E5%89%8D%E7%94%B017-2%20%E3%82%A8%E3%83%AB%E3%83%9F%E3%82%BF%E3%83%BC%E3%82%B8%E3%83%A5" target="_blank" rel="noopener">地図を開く</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p style="font-family:var(--serif);font-size:20px;letter-spacing:.2em;color:#fff">エルミタージュ</p>
+  <div class="sns">
+    <a href="https://www.instagram.com/ermitage1983/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/ermitage1983/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <p>〒023-0003 岩手県奥州市水沢佐倉河前田17-2｜TEL 0197-24-7284｜定休日 月曜日</p>
+  <p style="margin-top:8px">代表 湯村 恵（個人経営）</p>
+</footer>
+
+<div class="bar">
+  <a href="tel:0197247284">電話で予約する</a>
+  <a href="#access">地図を見る</a>
+</div>
+
+</body>
+</html>
