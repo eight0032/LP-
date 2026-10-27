@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>パリの食堂 シェ・ミルテイーユ｜盛岡駅前のカジュアルフレンチ</title>
+<meta name="description" content="盛岡駅前の隠れ家フレンチ。気取らない空間で味わう本格フランス料理。ランチ1,200円台〜。ご予約はお電話で。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f4f8;--ink:#2a2338;--deep:#2b2147;--wine:#8a2b4b;--brass:#b39158;--line:#ddd5e3;--white:#fff;
+--serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;--sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.9;font-size:16px;padding-bottom:72px}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+section{padding:80px 0}
+h2{font-family:var(--serif);font-size:clamp(26px,4vw,34px);line-height:1.5;margin-bottom:12px;color:var(--deep)}
+.lead{max-width:34em;margin-bottom:36px}
+.btn{display:inline-block;padding:15px 34px;border-radius:2px;text-decoration:none;font-weight:700;letter-spacing:.06em;background:var(--wine);color:var(--white);border:1px solid var(--wine);transition:background .2s}
+.btn:hover{background:#6e2039}
+.btn.ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.7)}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+.btn.line{background:var(--white);color:var(--deep);border-color:var(--deep)}
+.btn.line:hover{background:var(--deep);color:var(--white)}
+
+header{position:absolute;inset:0 0 auto;z-index:5;padding:18px 0;color:var(--white)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+header b{font-family:var(--serif);font-size:15px;letter-spacing:.08em}
+header nav{display:flex;gap:22px;font-size:14px}
+header nav a{text-decoration:none}
+@media(max-width:640px){header nav a:not(:last-child){display:none}}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:var(--white);background:var(--deep)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,22,52,.45) 0%,rgba(30,22,52,.25) 35%,rgba(30,22,52,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:72px;padding-top:140px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,6.4vw,64px);line-height:1.4;margin-bottom:18px}
+.hero p.sub{font-size:clamp(15px,2vw,18px);max-width:30em;margin-bottom:10px}
+.hero .meta{font-size:14px;opacity:.9;margin-bottom:30px}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px}
+
+.concept .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.concept ul{list-style:none;padding:0;border-top:1px solid var(--line)}
+.concept li{padding:16px 0;border-bottom:1px solid var(--line)}
+.concept li strong{display:block;font-family:var(--serif);font-size:18px;color:var(--wine)}
+@media(max-width:760px){.concept .grid{grid-template-columns:1fr;gap:28px}}
+
+.dishes{background:var(--deep);color:var(--white)}
+.dishes h2{color:var(--white)}
+.dishes .lead{color:#d9d2ea}
+.dish{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;margin-bottom:56px}
+.dish:nth-of-type(even){grid-template-columns:1fr 1.1fr}
+.dish:nth-of-type(even) .pic{order:2}
+.dish img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.dish h3{font-family:var(--serif);font-size:24px;margin-bottom:6px}
+.dish .tag{display:inline-block;font-size:13px;color:var(--deep);background:var(--brass);padding:1px 12px;margin-bottom:12px}
+.dish p{color:#e6e0f2}
+@media(max-width:760px){.dish,.dish:nth-of-type(even){grid-template-columns:1fr;gap:18px}.dish:nth-of-type(even) .pic{order:0}}
+
+.menu .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.box{background:var(--white);border:1px solid var(--line);padding:30px}
+.box h3{font-family:var(--serif);font-size:22px;color:var(--deep);margin-bottom:8px}
+.box .price{font-family:var(--serif);font-size:26px;color:var(--wine);margin-bottom:8px}
+.box small{display:block;color:#6a6277;margin-top:8px}
+@media(max-width:760px){.menu .cols{grid-template-columns:1fr}}
+
+.voice{background:#efe9f3}
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.voices blockquote{background:var(--white);padding:28px;border-left:4px solid var(--brass)}
+.stars{color:var(--brass);letter-spacing:.15em;font-size:18px;margin-bottom:8px}
+.voices cite{display:block;margin-top:10px;font-size:13px;color:#6a6277;font-style:normal}
+@media(max-width:760px){.voices{grid-template-columns:1fr}}
+
+.soon{text-align:center}
+.soon .card{max-width:680px;margin:0 auto;padding:44px 28px;border:1px dashed var(--brass);background:var(--white)}
+.soon .badge{display:inline-block;font-family:var(--serif);font-size:22px;letter-spacing:.12em;color:var(--wine);margin-bottom:10px}
+.soon h3{font-family:var(--serif);font-size:24px;color:var(--deep);margin-bottom:10px}
+
+.access dl{display:grid;grid-template-columns:7em 1fr;gap:0;margin-bottom:28px;border-top:1px solid var(--line)}
+.access dt,.access dd{padding:12px 0;border-bottom:1px solid var(--line)}
+.access dt{font-weight:700;color:var(--deep)}
+.access dd{margin:0}
+.map{position:relative;width:100%;aspect-ratio:16/9;min-height:300px;border:1px solid var(--line);background:#e5dfea}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapbtn{text-align:center;margin-top:18px}
+
+.reserve{background:var(--deep);color:var(--white);text-align:center}
+.reserve h2{color:var(--white)}
+.reserve .tel{font-family:var(--serif);font-size:clamp(34px,7vw,52px);margin:14px 0 6px;display:block;text-decoration:none}
+.reserve p{max-width:36em;margin:0 auto 10px;color:#ddd6ec}
+.reserve .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+
+footer{background:#1d1630;color:#cfc7e0;padding:36px 0;font-size:14px;text-align:center}
+footer a{margin:0 10px}
+
+.fixed{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(43,33,71,.96);padding:10px 16px;display:flex;gap:10px;justify-content:center}
+.fixed .btn{padding:11px 22px;font-size:15px}
+@media(min-width:900px){body{padding-bottom:0}.fixed{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <b>シェ・ミルテイーユ</b>
+    <nav>
+      <a href="#dishes">お料理</a>
+      <a href="#menu">メニュー</a>
+      <a href="#access">アクセス</a>
+      <a href="#reserve">ご予約</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <img src="images/hero.jpg" alt="パリの食堂 シェ・ミルテイーユの店内と料理">
+  <div class="wrap">
+    <h1>気取らない食堂で、<br>本格フレンチを。</h1>
+    <p class="sub">盛岡駅前、16席の小さな隠れ家。プロの味を、かしこまらず、ゆっくりと。</p>
+    <p class="meta">パリの食堂 シェ・ミルテイーユ／盛岡駅前通／定休日 日・月曜</p>
+    <div class="btns">
+      <a class="btn" href="tel:0196186253">電話で予約する</a>
+      <a class="btn ghost" href="#access">アクセスを見る</a>
+    </div>
+  </div>
+</div>
+
+<section class="concept" id="concept">
+  <div class="wrap grid">
+    <div>
+      <h2>かしこまらない、<br>でも味は本物。</h2>
+      <p>店名のとおり、気軽な雰囲気の中でゆっくりお食事いただける、パリの食堂のようなお店です。旬の素材を活かした丁寧なお料理を、肩の力を抜いてお楽しみください。</p>
+      <p style="margin-top:12px">席数は16席。静かに過ごしたい大人の方に向けた空間です（お子様連れはご遠慮いただいております）。</p>
+    </div>
+    <ul>
+      <li><strong>丁寧に仕立てるコース料理</strong>ディナーは3種類のコースのみ。前菜からデザートまで、素材を活かした一皿を。</li>
+      <li><strong>ランチは1,200円台〜</strong>気軽に本格フレンチを味わえる価格です。</li>
+      <li><strong>ワインにもこだわり</strong>お料理に合わせて選べるワインをご用意しています。</li>
+      <li><strong>シェフの誠実なおもてなし</strong>席数が限られるからこそ、一人ひとりに丁寧に。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="dishes" id="dishes">
+  <div class="wrap">
+    <h2>おすすめのお料理</h2>
+    <p class="lead">ガーリックの香り、地元の鶏、海老のグラタン。ワインが進む3品です。</p>
+
+    <div class="dish">
+      <div class="pic"><img src="images/escargot.jpg" alt="エスカルゴのブルギニョンソース" loading="lazy"></div>
+      <div>
+        <h3>エスカルゴのブルギニョンソース</h3>
+        <p>ガーリック香るブルギニョンソースに、エスカルゴの旨みが溶け込みます。フレンチのはじまりにふさわしい一皿。</p>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="pic"><img src="images/chicken.jpg" alt="菜彩鶏のソテー 粒マスタード" loading="lazy"></div>
+      <div>
+        <h3>菜彩鶏のソテー 粒マスタード</h3>
+        <p>柔らかくジューシーな地元の鶏に、ピリッと効いた粒マスタードを合わせました。</p>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="pic"><img src="images/gratin.jpg" alt="パナメイエビのグラタン" loading="lazy"></div>
+      <div>
+        <span class="tag">イチオシ</span>
+        <h3>パナメイエビのグラタン</h3>
+        <p>当店イチオシの一品です。熱々をぜひ、白ワインとご一緒に。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>ランチとディナー</h2>
+    <p class="lead">ご利用シーンに合わせてお選びください。</p>
+    <div class="cols">
+      <div class="box">
+        <h3>ランチ</h3>
+        <div class="price">1,200円台〜</div>
+        <p>気軽に楽しめるランチコース。本格的なフレンチを、お手頃な価格で。</p>
+        <small>内容・営業時間はご予約時またはHPでご確認ください。</small>
+      </div>
+      <div class="box">
+        <h3>ディナー</h3>
+        <div class="price">3種類のコース</div>
+        <p>素材を活かしたフランス料理を、前菜からデザートまで。特別な日にもおすすめです。</p>
+        <small>前日までのご予約をおすすめしています。</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="voice" id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <p class="lead">食べログに寄せられた口コミより。</p>
+    <div class="voices">
+      <blockquote>
+        <div class="stars" aria-label="5点満点中4点">★★★★</div>
+        <p>土日ランチ1200円税別なり。にんにくがしっかりきいた白子のブルギニヨンを一口し、我慢できずに白ワインを頼んでしまいました。店名の通り気軽な雰囲気の中でゆっくり食事が出来る良店です。</p>
+        <cite>食べログ口コミ</cite>
+      </blockquote>
+      <blockquote>
+        <div class="stars" aria-label="5点満点中5点">★★★★★</div>
+        <p>ずっと行ってみたかったが、常に電話が通じない。…しかし、メッセージで予約が取れたので行ってみたらGWのスペシャルメニューで、とても美味しく満足でした。決まったメニューではないので次回はどんなコースかな？と楽しみになります。</p>
+        <cite>食べログ口コミ</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="soon" id="soon">
+  <div class="wrap">
+    <div class="card">
+      <div class="badge">coming soon</div>
+      <h3>はじめてのワインペアリング<br>ディナーショートコース</h3>
+      <p>ワインに詳しくない方でも安心して楽しめる、わかりやすいペアリング付きのショートコースを準備中です。気軽にディナーデビューしたい方へ。</p>
+      <p style="margin-top:10px;font-size:14px;color:#6a6277">内容・料金・開始時期は決まり次第お知らせします。</p>
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="wrap">
+    <h2>アクセス</h2>
+    <p class="lead">盛岡駅前通、鷹木ビルの2階です。</p>
+    <dl>
+      <dt>店名</dt><dd>パリの食堂 シェ・ミルテイーユ</dd>
+      <dt>住所</dt><dd>〒020-0034 岩手県盛岡市盛岡駅前通15-22 鷹木ビル 2F</dd>
+      <dt>電話</dt><dd><a href="tel:0196186253">019-618-6253</a></dd>
+      <dt>定休日</dt><dd>日曜・月曜</dd>
+      <dt>席数</dt><dd>16席（お子様連れ不可）</dd>
+    </dl>
+    <div class="map">
+      <iframe title="パリの食堂 シェ・ミルテイーユの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.6089740075495!2d141.1330354748649!3d39.703494998742165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8577550d04f54b%3A0x5d6c4652209d55c1!2z44OR44Oq44Gu6aOf5aCC44K344Kn772l44Of44Or44OG44Kk44O844Om!5e0!3m2!1sja!2sjp!4v1793066588007!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="mapbtn">
+      <a class="btn line" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E7%9B%9B%E5%B2%A1%E9%A7%85%E5%89%8D%E9%80%9A15-22+%E9%B7%B2%E6%9C%A8%E3%83%93%E3%83%AB" target="_blank" rel="noopener">Googleマップで地図を開く</a>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <h2>ご予約はお電話で</h2>
+    <a class="tel" href="tel:0196186253">019-618-6253</a>
+    <p>席数が限られるため、前日までのご予約をおすすめします。</p>
+    <p>お電話がつながりにくい場合は、SNSのメッセージからもご連絡いただけます。</p>
+    <div class="btns">
+      <a class="btn" href="tel:0196186253">電話をかける</a>
+      <a class="btn ghost" href="https://www.instagram.com/taittinger0125/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn ghost" href="https://www.facebook.com/p/%E3%83%91%E3%83%AA%E3%81%AE%E9%A3%9F%E5%A0%82%E3%82%B7%E3%82%A7%E3%83%9F%E3%83%AB%E3%83%86%E3%82%A3%E3%83%BC%E3%83%A6-100063582095541/?locale=ja_JP" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>パリの食堂 シェ・ミルテイーユ／〒020-0034 岩手県盛岡市盛岡駅前通15-22 鷹木ビル 2F</p>
+  <p style="margin-top:8px">
+    <a href="https://tabelog.com/iwate/A0301/A030101/3010260/" target="_blank" rel="noopener">食べログ</a>
+    <a href="https://www.instagram.com/taittinger0125/" target="_blank" rel="noopener">Instagram</a>
+  </p>
+  <p style="margin-top:12px;opacity:.7">© パリの食堂 シェ・ミルテイーユ</p>
+</footer>
+
+<div class="fixed">
+  <a class="btn" href="tel:0196186253">電話で予約</a>
+  <a class="btn ghost" href="#access">アクセス</a>
+</div>
+
+</body>
+</html>
