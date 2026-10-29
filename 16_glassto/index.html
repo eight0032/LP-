@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>glassto｜盛岡・神明町のカジュアルフレンチ＆ワインバー</title>
+<meta name="description" content="盛岡・神明町のカジュアルフレンチ glassto。岩手の旬の食材と、ソムリエ厳選のワイン・希少な日本酒のペアリングを。個室・カウンター・ソファ席あり。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2a141d; --bg2:#351a25; --ink:#f3ebe6; --mute:#c9b8b3;
+  --gold:#d9c18f; --wine:#7d2339; --line:rgba(217,193,143,.28);
+  --serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  --disp:"Cormorant Garamond","Noto Serif JP",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:2;font-size:16px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+h2{font-weight:600;font-size:clamp(24px,4vw,34px);line-height:1.6;letter-spacing:.08em;margin-bottom:28px}
+.en{font-family:var(--disp);font-size:20px;color:var(--gold);letter-spacing:.12em;display:block;margin-bottom:6px}
+p+p{margin-top:1.2em}
+.btn{display:inline-block;padding:14px 32px;border:1px solid var(--gold);color:var(--ink);text-decoration:none;letter-spacing:.1em;font-size:15px;transition:background .25s,color .25s}
+.btn:hover{background:var(--gold);color:var(--bg)}
+.btn.fill{background:var(--gold);color:var(--bg);font-weight:600}
+.btn.fill:hover{background:var(--ink)}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:linear-gradient(rgba(42,20,29,.85),rgba(42,20,29,0))}
+.logo{font-family:var(--disp);font-size:28px;letter-spacing:.14em;text-decoration:none}
+header nav a{margin-left:24px;text-decoration:none;font-size:13px;letter-spacing:.1em}
+@media(max-width:720px){header nav a:not(.tel){display:none}}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding:0 0 72px;background:#1c0d14 url(images/hero.jpg) center/cover no-repeat;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,13,20,.35) 0%,rgba(28,13,20,.2) 40%,rgba(42,20,29,.95) 100%)}
+.hero .wrap{position:relative;width:100%}
+.hero h1{font-weight:600;font-size:clamp(30px,6vw,60px);line-height:1.5;letter-spacing:.1em;margin-bottom:20px}
+.hero .sub{color:var(--mute);max-width:34em;margin-bottom:32px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:16px}
+.hero .store{font-family:var(--disp);color:var(--gold);letter-spacing:.2em;font-size:18px;margin-bottom:12px}
+
+/* split */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.split.rev{grid-template-columns:.9fr 1.1fr}
+.split.rev .pic{order:-1}
+.pic img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--bg2)}
+@media(max-width:800px){.split,.split.rev{grid-template-columns:1fr;gap:32px}.split.rev .pic{order:0}.pic img{aspect-ratio:4/3}section{padding:72px 0}}
+
+/* points */
+.points{background:var(--bg2)}
+.points ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+.points li{padding:32px 28px 32px 0;border-bottom:1px solid var(--line)}
+.points li:nth-child(odd){border-right:1px solid var(--line);padding-right:36px}
+.points li:nth-child(even){padding-left:36px}
+.points h3{font-size:19px;font-weight:600;color:var(--gold);margin-bottom:8px;line-height:1.7}
+.points p{color:var(--mute);font-size:15px}
+@media(max-width:720px){.points ul{grid-template-columns:1fr}.points li,.points li:nth-child(n){border-right:0;padding:28px 0}}
+
+/* menu */
+.menu-list{border-top:1px solid var(--line);margin-top:24px}
+.menu-item{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:28px 0;border-bottom:1px solid var(--line)}
+.menu-item h3{font-size:19px;font-weight:600;line-height:1.7}
+.menu-item .price{font-family:var(--disp);font-size:24px;color:var(--gold);white-space:nowrap}
+.menu-item p{grid-column:1/-1;color:var(--mute);font-size:15px;margin:0}
+.menu-item .tag{font-size:12px;color:var(--bg);background:var(--gold);padding:1px 10px;margin-right:10px;letter-spacing:.08em;vertical-align:middle}
+.note{font-size:13px;color:var(--mute);margin-top:16px}
+.signature{margin-top:48px;padding:32px;border:1px solid var(--gold)}
+.signature h3{font-size:20px;margin-bottom:8px}
+
+/* coming soon */
+.soon{background:var(--bg2);text-align:center}
+.soon .box{max-width:720px;margin:0 auto;padding:56px 32px;border:1px dashed var(--gold)}
+.soon .cs{font-family:var(--disp);font-size:40px;color:var(--gold);letter-spacing:.18em;display:block;margin-bottom:8px}
+.soon h2{margin-bottom:20px}
+.soon p{color:var(--mute);text-align:left}
+
+/* voice */
+.voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px}
+.voice{padding:32px;background:var(--bg2);border-left:3px solid var(--wine)}
+.stars{color:var(--gold);letter-spacing:.2em;margin-bottom:12px}
+.voice p{font-size:15px}
+.voice small{display:block;margin-top:16px;color:var(--mute);font-size:12px}
+@media(max-width:800px){.voice-grid{grid-template-columns:1fr}}
+
+/* access */
+.access{background:var(--bg2)}
+.map{width:100%;height:380px;border:0;display:block;filter:saturate(.85)}
+.map-btn{margin-top:20px;text-align:center}
+dl{display:grid;grid-template-columns:9em 1fr;margin-top:48px;border-top:1px solid var(--line)}
+dt,dd{padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+dt{color:var(--gold)}
+dd a{text-underline-offset:4px}
+@media(max-width:560px){dl{grid-template-columns:1fr}dt{border-bottom:0;padding-bottom:0}}
+
+.reserve{text-align:center}
+.reserve .tel-big{font-family:var(--disp);font-size:clamp(34px,7vw,56px);letter-spacing:.1em;display:block;text-decoration:none;margin:16px 0 8px}
+.reserve p{color:var(--mute);max-width:34em;margin-inline:auto}
+.sns{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:28px;font-size:14px}
+
+footer{padding:40px 24px;text-align:center;font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
+footer .logo{display:block;margin-bottom:10px;color:var(--ink)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#top">glassto</a>
+  <nav>
+    <a href="#drink">お酒</a>
+    <a href="#menu">お料理</a>
+    <a href="#access">アクセス</a>
+    <a class="tel" href="tel:0196015966">019-601-5966</a>
+  </nav>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <p class="store">glassto ─ Morioka Shinmei-cho</p>
+    <h1>旬の岩手を、<br>ワインと日本酒とともに。</h1>
+    <p class="sub">盛岡・神明町の隠れ家フレンチ。地元の生産者から届く食材を使ったカジュアルフレンチと、ソムリエが選ぶワイン・希少な日本酒のペアリングをお楽しみください。</p>
+    <div class="cta">
+      <a class="btn fill" href="tel:0196015966">電話で予約する</a>
+      <a class="btn" href="#access">アクセスを見る</a>
+    </div>
+  </div>
+</div>
+
+<section class="points" id="concept">
+  <div class="wrap">
+    <span class="en">Concept</span>
+    <h2>glasstoが大切にしていること</h2>
+    <ul>
+      <li><h3>旬の地元食材 × 独創的フレンチ</h3><p>岩手の生産者から直接仕入れる四季折々の食材を、その日の持ち味を活かした一皿に。</p></li>
+      <li><h3>ソムリエ厳選ワインと希少日本酒</h3><p>ソムリエ資格を持つ店主とスタッフが選んだワインと、岩手の地酒を中心とした日本酒をご用意しています。</p></li>
+      <li><h3>特別な時間を過ごせる空間</h3><p>個室、カウンター、ソファ席、テーブル席。落ち着いた隠れ家のような雰囲気です。</p></li>
+      <li><h3>気軽に楽しめるおまかせ</h3><p>その日の仕入れで決まるおまかせ料理やセットで、初めての方も旬の味とお酒のペアリングを。</p></li>
+    </ul>
+  </div>
+</section>
+
+<section id="drink">
+  <div class="wrap split">
+    <div>
+      <span class="en">Wine &amp; Sake</span>
+      <h2>ソムリエが選ぶ、<br>ワインと日本酒。</h2>
+      <p>ワインは旬に合わせてセレクトし、ワインセラーで丁寧に管理しています。日本酒は岩手の地酒を中心に、希少なものまで取り揃えました。</p>
+      <p>料理とのペアリング（アペリアージュ）は、スタッフが丁寧にご提案します。ワインの知識がなくても、食べたい料理を選んで「これに合うワインを」とお伝えいただくだけで大丈夫です。ワインバーとして、2軒目のご利用も歓迎しています。</p>
+    </div>
+    <div class="pic"><img src="images/wine.jpg" alt="glasstoのワインと日本酒" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="menu" style="background:var(--bg2)">
+  <div class="wrap">
+    <span class="en">Cuisine</span>
+    <h2>旬の味を、気軽なフレンチで。</h2>
+    <p>内容は週替わり・日替わりです。詳しくはお問い合わせください。</p>
+
+    <div class="signature split" style="gap:32px;grid-template-columns:1fr">
+      <div>
+        <h3>イチオシ　ホヤテリーヌ</h3>
+        <p>東北らしい食材を、フレンチの技でテリーヌに仕立てた一品です。日本酒やワインとの相性もぜひお試しください。</p>
+      </div>
+    </div>
+
+    <div class="split rev" style="margin-top:56px">
+      <div class="pic"><img src="images/dish.jpg" alt="glasstoのお料理" loading="lazy"></div>
+      <div>
+        <div class="menu-list">
+          <div class="menu-item">
+            <h3>牛ハツのロティ ＋ 自家製パン ＋ バターナッツのポタージュ</h3>
+            <span class="price">¥1,650</span>
+            <p>厚切り牛ハツのロティを主役にしたランチセット。週替わりで他の肉料理に変わります。</p>
+          </div>
+          <div class="menu-item">
+            <h3><span class="tag">土曜ランチ</span>ランチコース</h3>
+            <span class="price">¥3,800</span>
+            <p>前菜、自家製ニョッキ、本日の肉料理、デザート。内容は週替わりです。</p>
+          </div>
+          <div class="menu-item">
+            <h3>日替わりのメイン</h3>
+            <span class="price"></span>
+            <p>しっとり鶏ムネロースト、スパイシーチキンロースト、仔羊のペルシヤード、クスクスなど、日替わりでご用意します。</p>
+          </div>
+        </div>
+        <p class="note">価格は税込です。メニューは仕入れにより変わります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soon" id="soon">
+  <div class="wrap">
+    <div class="box">
+      <span class="cs">coming soon</span>
+      <h2>ペアリングセット</h2>
+      <p>その日のおすすめ料理に、ソムリエが選ぶワインや日本酒を合わせる「ペアリングセット」を準備中です。料理ごとに合うお酒を一度にお楽しみいただけます。内容と提供開始時期は、決まり次第お知らせします。</p>
+    </div>
+  </div>
+</section>
+
+<section id="scene">
+  <div class="wrap split rev">
+    <div class="pic"><img src="images/interior.jpg" alt="glasstoの店内" loading="lazy"></div>
+    <div>
+      <span class="en">Scene</span>
+      <h2>仕事帰りから、記念日まで。</h2>
+      <p>個室、カウンター席、ソファ席、テーブル席をご用意しています。仕事帰りの一杯、デート、女子会、記念日、接待まで、さまざまなシーンにご利用いただけます。</p>
+      <p>お誕生日などのお祝いには、バースデープレートのご相談も承ります。ご予約時にお知らせください。</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)" id="voice">
+  <div class="wrap">
+    <span class="en">Voice</span>
+    <h2>お客様の声</h2>
+    <div class="voice-grid">
+      <div class="voice">
+        <div class="stars" aria-label="5点満点中4点">★★★★</div>
+        <p>ワインの知識が無くても、お料理とワインのペアリングが気軽に楽しめるお店です。食べたいお料理を選んだら、これに合うワインを！！とオーダーするだけで素晴らしいマリアージュを楽しむことができます🍷</p>
+        <small>口コミより</small>
+      </div>
+      <div class="voice">
+        <div class="stars" aria-label="5点満点中5点">★★★★★</div>
+        <p>友人の誕生日会をしたくて予約しました。予約の時点でバースデープレートのことについて友人の好みや予算など細かく聞いてくださって、とてもありがたかったです。初めて訪れましたが、落ち着いた雰囲気で大切な日に使いたいなあという感じです。値段もまあまあお高めですが、料理もワインも美味しくてまた行きたいと思えるお店でした。</p>
+        <small>口コミより</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <span class="en">Reservation</span>
+    <h2>ご予約・お問い合わせ</h2>
+    <a class="tel-big" href="tel:0196015966">019-601-5966</a>
+    <p>お電話でのご予約を承っています。お祝いのプレートなどのご相談もお気軽にどうぞ。定休日は日曜・月曜です。</p>
+    <div class="cta" style="margin-top:28px"><a class="btn fill" href="tel:0196015966">電話をかける</a></div>
+    <div class="sns">
+      <a href="https://www.instagram.com/glassto.morioka_official/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/people/%E3%82%B0%E3%83%A9%E3%82%B9%E3%83%88-glassto/100046135097322/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/glassto_morioka" target="_blank" rel="noopener">X</a>
+    
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="wrap">
+    <span class="en">Access</span>
+    <h2>盛岡バスセンターから徒歩1分。</h2>
+    <p>盛岡駅から車・タクシーで約5分。バスセンターのすぐそばです。</p>
+    <div style="margin-top:32px">
+      <iframe class="map" title="glasstoの地図" src="https://www.google.com/maps?q=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E7%A5%9E%E6%98%8E%E7%94%BA5-21+glassto&output=embed&hl=ja" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="map-btn"><a class="btn fill" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E7%A5%9E%E6%98%8E%E7%94%BA5-21+glassto" target="_blank" rel="noopener">Googleマップで開く</a></div>
+    </div>
+    <dl>
+      <dt>店名</dt><dd>glassto（グラスト）</dd>
+      <dt>住所</dt><dd>〒020-0884 岩手県盛岡市神明町5-21 Fフラット 1F</dd>
+      <dt>電話番号</dt><dd><a href="tel:0196015966">019-601-5966</a></dd>
+      <dt>定休日</dt><dd>日曜・月曜</dd>
+      <dt>お支払い</dt><dd>クレジットカード、各種電子決済に対応</dd>
+      <dt>運営会社</dt><dd>株式会社divan</dd>
+      <dt>代表者</dt><dd>菊池 拓</dd>
+      <dt>採用情報</dt><dd><a href="https://www.instagram.com/p/CbzUfUEhNxB/" target="_blank" rel="noopener">求人情報（Instagram）</a></dd>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span class="logo">glassto</span>
+  <p>岩手県盛岡市神明町5-21 Fフラット 1F ／ 定休日 日・月曜</p>
+  <p style="margin-top:8px">&copy; 株式会社divan</p>
+</footer>
+</body>
+</html>
