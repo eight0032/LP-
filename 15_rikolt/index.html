@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rikolt リコルト｜一ノ関駅前のビストロフレンチと地ビール</title>
+<meta name="description" content="一ノ関駅からすぐ。旬の地場野菜を使った本格フレンチと、全国の地ビール6〜8種類の生樽。rikolt（リコルト）">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#14261f; --green2:#1d352b; --ivory:#f1ebdc; --amber:#d49a3a; --amber-d:#a9731c; --wine:#6e2433; --ink:#1c1a16;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--ivory);line-height:1.9;font-size:16px;padding-bottom:64px}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(24px,4.4vw,34px);line-height:1.5;letter-spacing:.06em;margin-bottom:28px}
+p+p{margin-top:1em}
+.dark{background:var(--green);color:var(--ivory)}
+.btn{display:inline-block;padding:15px 34px;background:var(--amber);color:var(--green);font-weight:500;text-decoration:none;letter-spacing:.08em;border:1px solid var(--amber);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--amber)}
+.btn.line{background:transparent;color:inherit;border-color:currentColor}
+.btn.line:hover{background:var(--amber);color:var(--green);border-color:var(--amber)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--ivory);background:var(--green);overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,38,31,.35) 0%,rgba(20,38,31,.15) 40%,rgba(20,38,31,.85) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:56px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.catch{writing-mode:vertical-rl;font-family:var(--serif);font-weight:700;font-size:clamp(28px,6vw,52px);line-height:1.6;letter-spacing:.18em;text-shadow:0 2px 18px rgba(0,0,0,.5);height:min(62vh,420px)}
+.hero-info{max-width:380px;text-align:left}
+.logo{font-family:var(--serif);font-size:30px;letter-spacing:.14em;font-weight:700}
+.hero-info p{font-size:14px;margin:6px 0 20px;opacity:.92}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* concept */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.photo{aspect-ratio:4/5;background:var(--green2);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.story-meta{margin-top:26px;padding-left:18px;border-left:3px solid var(--amber);font-size:14.5px}
+
+/* strengths */
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(241,235,220,.3)}
+.point{padding:30px 26px 10px 0}
+.point+.point{padding-left:26px;border-left:1px solid rgba(241,235,220,.3)}
+.point h3{font-family:var(--serif);font-size:20px;line-height:1.6;margin-bottom:10px;color:var(--amber)}
+.point p{font-size:14.5px;opacity:.92}
+
+/* beer */
+.beer{background:var(--ivory)}
+.beer .split{grid-template-columns:1.05fr .95fr}
+.stat{display:flex;gap:26px;margin:26px 0;flex-wrap:wrap}
+.stat div{font-family:var(--serif);font-size:15px}
+.stat b{display:block;font-size:44px;line-height:1.1;color:var(--amber-d)}
+.pair{background:#fff;padding:20px 22px;border-left:4px solid var(--wine);font-size:15px}
+.pair b{font-family:var(--serif);color:var(--wine)}
+
+/* menu */
+.menu-list{display:grid;gap:0}
+.menu-item{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:26px 0;border-bottom:1px solid rgba(28,26,22,.2)}
+.menu-item h3{font-family:var(--serif);font-size:21px;line-height:1.5}
+.menu-item .price{font-family:var(--serif);font-size:22px;color:var(--wine);font-weight:700}
+.menu-item p{grid-column:1/-1;font-size:14.5px}
+.note{margin-top:18px;font-size:13px;opacity:.75}
+
+/* space */
+.space{padding:0}
+.space .photo{aspect-ratio:21/9}
+.space-text{padding:56px 0 0;max-width:640px}
+
+/* voices */
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.voice{border:1px solid rgba(241,235,220,.35);padding:28px 26px}
+.stars{color:var(--amber);letter-spacing:.2em;margin-bottom:10px;font-size:18px}
+.voice p{font-size:14.5px}
+
+/* coming soon */
+.soon-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:10px}
+.soon{background:#fff;padding:26px 24px;border-top:4px solid var(--amber)}
+.soon h3{font-family:var(--serif);font-size:19px;line-height:1.55;margin-bottom:8px}
+.soon p{font-size:14px}
+
+/* info */
+.info{background:#fff}
+dl{display:grid;grid-template-columns:8em 1fr;border-top:1px solid rgba(28,26,22,.2);margin-bottom:34px}
+dt,dd{padding:14px 0;border-bottom:1px solid rgba(28,26,22,.2);font-size:15px}
+dt{font-weight:500;color:var(--green2)}
+.map{aspect-ratio:16/9;background:#ddd;border:0}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.map-btn{text-align:center;margin-top:20px}
+.links{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* close */
+.close{text-align:center}
+.close h2{margin-bottom:14px}
+.tel{display:block;font-family:var(--serif);font-size:clamp(30px,7vw,46px);letter-spacing:.08em;text-decoration:none;margin:20px 0 6px;color:var(--amber)}
+.close .hero-btns{justify-content:center;margin-top:24px}
+footer{background:#0d1a15;color:rgba(241,235,220,.7);text-align:center;font-size:12.5px;padding:26px 16px 30px}
+
+/* fixed bar (mobile) */
+.fixed{position:fixed;left:0;right:0;bottom:0;z-index:20;display:none;background:var(--green);border-top:1px solid var(--amber)}
+.fixed a{flex:1;text-align:center;padding:16px 8px;text-decoration:none;color:var(--ivory);font-weight:500;font-size:15px}
+.fixed a:first-child{background:var(--amber);color:var(--green)}
+
+@media (max-width:760px){
+  section{padding:64px 0}
+  .split,.beer .split,.voices,.soon-list,.points{grid-template-columns:1fr}
+  .split{gap:30px}
+  .point,.point+.point{padding:24px 0;border-left:0;border-bottom:1px solid rgba(241,235,220,.3)}
+  .hero .wrap{flex-direction:row;align-items:flex-end}
+  .catch{height:min(48vh,340px)}
+  .space .photo{aspect-ratio:4/3}
+  dl{grid-template-columns:6.5em 1fr}
+  .fixed{display:flex}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="images/hero.jpg" alt="rikoltの料理と地ビール">
+  <div class="wrap">
+    <h1 class="catch">地ビールの一杯が、<br>旬の一皿を連れてくる。</h1>
+    <div class="hero-info">
+      <div class="logo">rikolt</div>
+      <p>リコルト｜一ノ関駅前のビストロフレンチ<br>旬の地場野菜と、全国の地ビール</p>
+      <div class="hero-btns">
+        <a class="btn" href="tel:0191484035">電話で予約する</a>
+        <a class="btn line" href="#access">アクセス</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="concept">
+  <div class="wrap split">
+    <div>
+      <h2>一関の酒屋が仕立てた、<br>地ビールのためのビストロ。</h2>
+      <p>地酒専門の酒店を37年営んできた神崎良一が、2022年に一ノ関駅前で開いたビストロです。26年にわたり「全国地ビールフェスティバルin一関」を牽引し、全国のクラフトビールが約3万人の来場者を集めるイベントに育てました。</p>
+      <p>新型コロナで祭りの灯が消えかけたとき、地元出身の柴田亮シェフと出会い、「料理とビールを一年中楽しめる場所を」とリコルトを立ち上げました。</p>
+      <p class="story-meta">創業者　神崎良一<br>料理長　柴田亮（シェフ歴28年・全日本司厨士協会 銀賞受賞）</p>
+    </div>
+    <div class="photo"><img src="images/dish.jpg" alt="旬の地場野菜を使ったシェフズ・プレート"></div>
+  </div>
+</section>
+
+<section class="dark" id="strength">
+  <div class="wrap">
+    <h2>リコルトの3つの魅力</h2>
+    <div class="points">
+      <div class="point">
+        <h3>旬の地場野菜を主役にした本格フレンチ</h3>
+        <p>季節感と鮮度にこだわった素材を、確かな技術で一皿に。伝統的なフレンチにコンテンポラリーなエッセンスを加え、五感を刺激する料理に仕上げます。</p>
+      </div>
+      <div class="point">
+        <h3>地ビール6〜8種類を生樽で</h3>
+        <p>日本各地の地ビールを季節ごとに厳選して常時提供。ワインも10種類以上そろえ、料理とのペアリングをご提案します。</p>
+      </div>
+      <div class="point">
+        <h3>カジュアルで、センスのいい空間</h3>
+        <p>デートにも仲間との時間にも、気負わず使えるリーズナブルな価格帯。一ノ関駅からすぐ、デザートはテイクアウトもできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="beer" id="beer">
+  <div class="wrap split">
+    <div class="photo"><img src="images/beer.jpg" alt="生樽の地ビール"></div>
+    <div>
+      <h2>料理に合わせて選ぶ、<br>地ビールのペアリング。</h2>
+      <div class="stat">
+        <div><b>6〜8</b>種類の地ビール（生樽）</div>
+        <div><b>10</b>種類以上のワイン</div>
+      </div>
+      <p>地ビールイベントに長く携わってきた一関出身の酒店店主が、ビールの楽しみ方まで案内します。</p>
+      <p class="pair"><b>リコルトマリアージュ</b><br>柴田シェフ考案の特製ソーセージに合わせた、地元クラフトビール。店を代表する組み合わせです。</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu" style="padding-top:0">
+  <div class="wrap">
+    <h2>おすすめのお料理</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <h3>レンズ豆の冷製スープ</h3>
+        <p>当店のイチオシ。</p>
+      </div>
+      <div class="menu-item">
+        <h3>シェフズ・プレート</h3>
+        <p>季節の野菜をたっぷり使った創作フレンチ。クラフトビールと一緒にどうぞ。</p>
+      </div>
+      <div class="menu-item">
+        <h3>リコルト・ランチ（平日限定）</h3>
+        <span class="price">4,620円</span>
+        <p>本日のお魚とお肉の2種類のメインに、デザートまで付くコースです。</p>
+      </div>
+    </div>
+    <p class="note">内容は季節や仕入れにより変わります。最新のメニューはHPをご確認ください。</p>
+  </div>
+</section>
+
+<section class="space" aria-label="店内の雰囲気">
+  <div class="photo"><img src="images/interior.jpg" alt="rikolt 店内の様子"></div>
+  <div class="wrap">
+    <div class="space-text">
+      <h2>肩肘張らない、ビストロの時間。</h2>
+      <p>カウンターでもテーブルでも、ひとりでも二人でも。シェフの料理を、ビール片手に気軽に楽しめる空間です。</p>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="voices" style="margin-top:84px">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="voices">
+      <div class="voice">
+        <div class="stars" aria-label="5点満点中5点">★★★★★</div>
+        <p>2022年に初めてお伺いしてから今回で８回目。一ノ関には何もご縁が無かったのですが、今ではこのレストランでご飯を頂くために東京から伺っています。柴田さんのお料理は毎回新しい発見があります。私にとって長野飯田市のフレールとこちらは、とても大切なフランス料理の名店。とても美味しい。</p>
+      </div>
+      <div class="voice">
+        <div class="stars" aria-label="5点満点中4点">★★★★</div>
+        <p>地ビールとかワインとか飲み物は色々あります。夜、お魚のオススメ、チーズの盛り合わせ、ワイン🍷を頂きました、カウンターでしたが一緒に行った友人と共にとても良くして頂きました✨</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="soon">
+  <div class="wrap">
+    <h2>coming soon</h2>
+    <p>これから、リコルトの楽しみ方を広げていきます。</p>
+    <div class="soon-list" style="margin-top:28px">
+      <div class="soon">
+        <h3>オンラインショップ</h3>
+        <p>準備中です。リコルトの味を、ご自宅にも。</p>
+      </div>
+      <div class="soon">
+        <h3>ビール飲み比べセット</h3>
+        <p>3ブランドをセレクトし、少量ずつ飲み比べ。選ぶ楽しさから始められます。</p>
+      </div>
+      <div class="soon">
+        <h3>今日のビールに合わせる、シェフのおつまみ便</h3>
+        <p>お料理とビールの相性をまとめたペアリングカードつきで、ご自宅でも楽しめる企画を検討中です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="access">
+  <div class="wrap">
+    <h2>店舗情報・アクセス</h2>
+    <dl>
+      <dt>店名</dt><dd>rikolt リコルト</dd>
+      <dt>住所</dt><dd>〒021-0881 岩手県一関市大町２−１</dd>
+      <dt>アクセス</dt><dd>一ノ関駅からすぐ</dd>
+      <dt>電話番号</dt><dd><a href="tel:0191484035">0191-48-4035</a></dd>
+      <dt>定休日</dt><dd>月曜日</dd>
+      <dt>営業時間</dt><dd>お電話またはHPでご確認ください</dd>
+      <dt>運営</dt><dd>個人経営　代表 神崎良一</dd>
+    </dl>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=%E5%B2%A9%E6%89%8B%E7%9C%8C%E4%B8%80%E9%96%A2%E5%B8%82%E5%A4%A7%E7%94%BA2-1&amp;output=embed&amp;hl=ja" title="rikoltの地図（Googleマップ）" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <div class="map-btn">
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E4%B8%80%E9%96%A2%E5%B8%82%E5%A4%A7%E7%94%BA2-1+rikolt" target="_blank" rel="noopener">地図を開く</a>
+    </div>
+    <div class="links">
+      <a class="btn line" style="color:var(--green)" href="https://rikolt.com/" target="_blank" rel="noopener">公式HP</a>
+      <a class="btn line" style="color:var(--green)" href="https://www.instagram.com/rikolt_/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn line" style="color:var(--green)" href="https://www.facebook.com/rikolt" target="_blank" rel="noopener">Facebook</a>
+      <a class="btn line" style="color:var(--green)" href="https://www.instagram.com/p/DOVRHhVEdGo/" target="_blank" rel="noopener">求人情報</a>
+    </div>
+  </div>
+</section>
+
+<section class="dark close" id="reserve">
+  <div class="wrap">
+    <h2>ご予約・お問い合わせ</h2>
+    <p>お電話でのご予約がスムーズです。定休日は月曜日です。</p>
+    <a class="tel" href="tel:0191484035">0191-48-4035</a>
+    <div class="hero-btns">
+      <a class="btn" href="tel:0191484035">電話で予約する</a>
+      <a class="btn line" href="https://rikolt.com/contact/" target="_blank" rel="noopener">お問い合わせフォーム</a>
+    </div>
+  </div>
+</section>
+
+<footer>© rikolt リコルト　岩手県一関市大町２−１</footer>
+
+<nav class="fixed" aria-label="予約">
+  <a href="tel:0191484035">電話で予約</a>
+  <a href="#access">アクセス</a>
+</nav>
+
+</body>
+</html>
