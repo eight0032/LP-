@@ -87,13 +87,90 @@ background:linear-gradient(180deg,#0000 25%,#1f0a12e6 100%),url("images/hero.jpg
 .soon-card p{font-size:14.5px;color:var(--mute)}
 
 /* access */
-.access{background:#fff}
-.map{aspect-ratio:16/8;min-height:300px;border:0;width:100%;background:var(--sage)}
-.map-btn{text-align:center;margin:22px 0 56px}
-dl.info{display:grid;grid-template-columns:9em 1fr;border-top:1px solid #0002}
-dl.info dt,dl.info dd{padding:14px 4px;border-bottom:1px solid #0002}
-dl.info dt{font-weight:700;color:var(--wine2)}
-.sns{display:flex;gap:18px;flex-wrap:wrap}
+.access {
+  background: #fff;
+  padding: 40px 16px; /* スマホや画面端で文字がキワキワにならないよう余白を追加 */
+  box-sizing: border-box;
+}
+
+.map {
+  aspect-ratio: 16 / 8;
+  min-height: 300px;
+  border: 0;
+  width: 100%;
+  background: var(--sage);
+  display: block;
+}
+
+.map-btn {
+  text-align: center;
+  margin: 22px 0 40px;
+}
+
+/* dl.infoのグリッド設定 */
+dl.info {
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  border-top: 1px solid #0002;
+  margin: 0; /* ブラウザ標準のmarginをリセット */
+}
+
+dl.info dt,
+dl.info dd {
+  padding: 14px 4px;
+  border-bottom: 1px solid #0002;
+  margin: 0;
+}
+
+dl.info dt {
+  font-weight: 700;
+  color: var(--wine2);
+}
+
+.sns {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+
+/* --- スマホ向けレスポンシブ対応（画面幅768px以下） --- */
+@media (max-width: 768px) {
+  .access {
+    padding: 24px 12px;
+  }
+
+  /* 地図の高さをスマホに合わせて少しコンパクトに調整する場合 */
+  .map {
+    aspect-ratio: 16 / 10;
+    min-height: 240px;
+  }
+
+  .map-btn {
+    margin: 16px 0 32px;
+  }
+
+  /* グリッドを解除して1列（縦並び）にする */
+  dl.info {
+    grid-template-columns: 1fr;
+  }
+
+  /* dt（見出し）と dd（内容）の見た目を調整 */
+  dl.info dt {
+    padding: 12px 4px 4px; /* 見出しの下パディングを詰める */
+    border-bottom: none;   /* dtとddの間のボーダーをなくす */
+    background: #fcfcfc;   /* 少し背景色をつけると見やすくなります（お好みで削除可） */
+  }
+
+  dl.info dd {
+    padding: 4px 4px 12px 8px; /* 内容のほうにインデントと下パディングを持たせる */
+  }
+
+  /* SNSリンクの隙間や折り返しを調整 */
+  .sns {
+    gap: 12px;
+  }
+}
 
 /* faq */
 .faq details{border-bottom:1px solid #0003;padding:18px 0}
@@ -248,12 +325,18 @@ dl.info{grid-template-columns:7em 1fr}
 <section class="access" id="access">
   <div class="wrap">
     <h2>アクセス・店舗情報</h2>
-    <iframe class="map" title="プチ・フランセの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.929823992841!2d141.144409274819!3d38.92558144504249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f88da919df99c2b%3A0xbde795d9de8e62cb!2z44Os44K544OI44Op44Oz77yG44Kr44OV44KnIOODl-ODgeODu-ODleODqeODs-OCuw!5e0!3m2!1sja!2sjp!4v1793249242498!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    
+    <!-- Googleマップの埋め込み（アスペクト比固定対応） -->
+    <div class="map-container">
+      <iframe class="map" title="プチ・フランセの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.929823992841!2d141.144409274819!3d38.92558144504249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f88da919df99c2b%3A0xbde795d9de8e62cb!2z44Os44K544OI44Op44Oz77yG44Kr44OV44KnIOODl-ODgeODu-ODleODqeODs-OCuw!5e0!3m2!1sja!2sjp!4v1793249242498!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
     <div class="map-btn">
       <a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E4%B8%80%E9%96%A2%E5%B8%82%E4%B8%89%E9%96%A2%E4%BB%B2%E7%94%B0%EF%BC%93%EF%BC%95%E2%88%92%EF%BC%91+%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%EF%BC%86%E3%82%AB%E3%83%95%E3%82%A7+%E3%83%97%E3%83%81%E3%83%BB%E3%83%95%E3%83%A9%E3%83%B3%E3%82%BB" target="_blank" rel="noopener">Googleマップで開く</a>
     </div>
+
     <dl class="info">
-      <dt>店名</dt><dd>[レストラン＆カフェ プチ・フランセ](http://googleusercontent.com/map_location_reference/0)</dd>
+      <dt>店名</dt><dd>レストラン＆カフェ プチ・フランセ</dd>
       <dt>住所</dt><dd>〒021-0821 岩手県一関市三関仲田35−1</dd>
       <dt>電話</dt><dd><a href="tel:0191214476">0191-21-4476</a></dd>
       <dt>定休日</dt><dd>火曜日・水曜日</dd>
@@ -261,7 +344,8 @@ dl.info{grid-template-columns:7em 1fr}
       <dt>お支払い</dt><dd>各種カード・電子マネー（Suicaなど）・QRコード決済（PayPayなど）</dd>
       <dt>代表者</dt><dd>千葉 功（個人経営）</dd>
       <dt>営業時間</dt><dd>予約ページ（ホットペッパーグルメ）をご確認ください</dd>
-      <dt>公式情報</dt><dd class="sns">
+      <dt>公式情報</dt>
+      <dd class="sns">
         <a href="https://www.hotpepper.jp/strJ000271778/" target="_blank" rel="noopener">ホットペッパー</a>
         <a href="https://www.facebook.com/petit.f1988/?locale=ja_JP" target="_blank" rel="noopener">Facebook</a>
         <a href="https://x.com/isao1954" target="_blank" rel="noopener">X</a>

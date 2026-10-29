@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ベルクール｜盛岡のフランス料理</title>
+<meta name="description" content="盛岡・本町通のフランス料理店ベルクール。岩手の四季の食材とフランスの食材を、リヨンで修業したシェフが仕立てます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#3a0f1c; --wine-deep:#27090f; --ivory:#f6efe2; --ivory-dim:#d9cfbd;
+  --brass:#c4a263; --ink:#2a1a1a; --paper:#fbf7ef;
+  --serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  --latin:"Cormorant Garamond",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:2;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+h2{font-size:clamp(24px,3.4vw,32px);font-weight:500;letter-spacing:.12em;line-height:1.6;margin-bottom:12px}
+.en{font-family:var(--latin);font-style:italic;color:var(--brass);font-size:20px;letter-spacing:.06em;display:block;margin-bottom:4px}
+.btn{display:inline-block;padding:16px 40px;background:var(--brass);color:var(--wine-deep);text-decoration:none;font-weight:700;letter-spacing:.14em;border:1px solid var(--brass);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--brass)}
+.btn.line{background:transparent;color:var(--brass)}
+.btn.line:hover{background:var(--brass);color:var(--wine-deep)}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;background:var(--wine-deep);color:var(--ivory);padding:0}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--wine-deep) 4%,rgba(39,9,15,.15) 70%)}
+.hero .wrap{position:relative;z-index:1;padding-bottom:88px;width:100%}
+.hero .brand{font-family:var(--latin);font-size:clamp(56px,11vw,120px);line-height:1;letter-spacing:.04em;color:var(--brass);font-style:italic}
+.hero h1{font-size:clamp(18px,2.8vw,28px);font-weight:500;letter-spacing:.14em;line-height:1.9;margin:20px 0 8px}
+.hero p.sub{color:var(--ivory-dim);font-size:15px;margin-bottom:32px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:16px}
+
+/* Concept */
+.concept{background:var(--paper)}
+.concept .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.concept img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.concept p{margin-top:20px}
+.concept .sign{margin-top:28px;color:#6b5a4a;font-size:14px}
+
+/* Signature */
+.signature{background:var(--wine);color:var(--ivory)}
+.signature .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.signature img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.signature h3{font-size:clamp(22px,3vw,28px);font-weight:500;letter-spacing:.1em;margin:16px 0 20px;line-height:1.7}
+.signature ul{list-style:none;margin:24px 0 32px;border-top:1px solid rgba(196,162,99,.4)}
+.signature li{padding:14px 0;border-bottom:1px solid rgba(196,162,99,.4)}
+.signature li b{display:block;color:var(--brass);font-weight:500;letter-spacing:.08em}
+.course{border:1px solid var(--brass);padding:20px 24px;margin-bottom:16px}
+.course strong{font-size:18px;font-weight:500;letter-spacing:.06em}
+.note{font-size:13px;color:var(--ivory-dim)}
+
+/* Space */
+.space{background:var(--paper)}
+.space .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.space img{width:100%;aspect-ratio:3/2;object-fit:cover}
+
+/* Voice */
+.voice{background:var(--ivory)}
+.voice-list{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;margin-top:40px}
+.voice figure{background:var(--paper);padding:32px;border-left:3px solid var(--brass)}
+.stars{color:var(--brass);letter-spacing:.2em;font-size:18px;margin-bottom:12px}
+.voice blockquote{font-size:15px;line-height:2}
+.voice figcaption{margin-top:16px;font-size:13px;color:#6b5a4a}
+
+/* Coming soon */
+.soon{background:var(--wine-deep);color:var(--ivory);text-align:center}
+.soon .box{max-width:640px;margin:0 auto;border:1px solid var(--brass);padding:56px 32px}
+.soon .tag{font-family:var(--latin);font-style:italic;font-size:clamp(36px,6vw,52px);color:var(--brass);line-height:1.2}
+.soon h3{font-size:20px;font-weight:500;letter-spacing:.12em;margin:16px 0}
+.soon p{color:var(--ivory-dim);font-size:15px}
+
+/* Access */
+.access dl{display:grid;grid-template-columns:8em 1fr;gap:0;margin:32px 0;border-top:1px solid #d8ccb6}
+.access dt,.access dd{padding:16px 0;border-bottom:1px solid #d8ccb6}
+.access dt{color:#6b5a4a;letter-spacing:.1em}
+.map{width:100%;aspect-ratio:16/9;border:0;display:block;background:#e8e0d0}
+.map-btn{text-align:center;margin-top:24px}
+.map-btn .btn{color:var(--wine-deep)}
+.map-btn .btn:hover{color:var(--wine)}
+
+/* Reserve */
+.reserve{background:var(--wine);color:var(--ivory);text-align:center}
+.reserve .tel{display:block;font-family:var(--latin);font-size:clamp(40px,8vw,64px);color:var(--brass);text-decoration:none;letter-spacing:.06em;margin:16px 0 4px;line-height:1.3}
+.reserve .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin:32px 0 24px}
+
+footer{background:var(--wine-deep);color:var(--ivory-dim);text-align:center;padding:40px 24px;font-size:13px;line-height:2}
+footer a{color:var(--brass)}
+
+@media (max-width:760px){
+  section{padding:72px 0}
+  .concept .grid,.signature .grid,.space .grid,.voice-list{grid-template-columns:1fr;gap:36px}
+  .concept img{aspect-ratio:4/3}
+  .access dl{grid-template-columns:1fr}
+  .access dt{border-bottom:0;padding-bottom:0}
+  .access dd{padding-top:4px}
+  .btn{width:100%;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="images/hero.jpg" alt="ベルクールの料理">
+  <div class="wrap">
+    <div class="brand">Bellecour</div>
+    <h1>溶けるフィレ、極上のひと口。<br>ベルクールの牛フィレステーキが、あなたを虜に。</h1>
+    <p class="sub">盛岡・本町通のフランス料理　ベルクール</p>
+    <div class="actions">
+      <a class="btn" href="tel:0196519061">電話で予約する　019-651-9061</a>
+      <a class="btn line" href="#access">アクセスを見る</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="concept" id="concept">
+  <div class="wrap grid">
+    <img src="images/chef.png" alt="シェフ 宮野" loading="lazy">
+    <div>
+      <span class="en">Our story</span>
+      <h2>リヨンで磨いた技を、<br>岩手の食材で。</h2>
+      <p>宮野シェフは、フランスを北から南へ巡り、特にリヨンで修業を積みました。各地の本場の技法を学んだのち帰国し、岩手の自然と旬を生かした料理に、フランスから厳選した食材を重ねています。</p>
+      <p>お客様の笑顔を思い描きながら、盛岡の地で30年以上、本格的なフレンチをお出ししてきました。メニューも仕入れも、シェフ自身が日々こだわっています。</p>
+      <p class="sign">シェフ　宮野</p>
+    </div>
+  </div>
+</section>
+
+<section class="signature" id="menu">
+  <div class="wrap grid">
+    <div>
+      <span class="en">Signature</span>
+      <h2>牛フィレ肉のステーキ</h2>
+      <h3>火入れとソースで、<br>素材の旨みを引き出す。</h3>
+      <p>ベルクールの料理の要は、絶妙な火入れと、なめらかで深いソースです。メインの肉や魚は、皮目は香ばしく、中はふんわりジューシーに仕上げます。ソースをバゲットにつけて、最後まで味わってください。</p>
+      <ul>
+        <li><b>岩手の四季の食材</b>佐助豚、県産の鶏モモ肉、地物の海の幸、地場の野菜</li>
+        <li><b>フランスの厳選食材</b>現地から選んだ食材を、岩手の素材に重ねます</li>
+      </ul>
+      <div class="course">
+        <strong>シェフおまかせ 季節のコース　¥8,000</strong>
+      </div>
+      <p class="note">内容や価格は変更になることがあります。詳しくはお電話でご確認ください。</p>
+    </div>
+    <img src="images/steak.jpg" alt="牛フィレ肉のステーキ" loading="lazy">
+  </div>
+</section>
+
+<section class="space" id="space">
+  <div class="wrap grid">
+    <div>
+      <span class="en">Atmosphere</span>
+      <h2>こじんまりとした、<br>温かな店内。</h2>
+      <p>街の中の小さなレストランで、ご家族のような温かさのある接客を心がけています。誕生日や記念日など、大切な日のお食事にご利用ください。</p>
+    </div>
+    <img src="images/interior.jpg" alt="ベルクールの店内" loading="lazy">
+  </div>
+</section>
+
+<section class="voice" id="voice">
+  <div class="wrap">
+    <span class="en">Voices</span>
+    <h2>お客様の声</h2>
+    <div class="voice-list">
+      <figure>
+        <div class="stars" aria-label="5点満点中4点">★★★★</div>
+        <blockquote>本日、予約をして伺いました。盛岡に行くなら、是非行ってみて！と言われて。美味しかったです。素朴なローカルのフレンチでした。</blockquote>
+        <figcaption>Googleマップの口コミより</figcaption>
+      </figure>
+      <figure>
+        <div class="stars" aria-label="5点満点中5点">★★★★★</div>
+        <blockquote>以前はランチタイムに伺いましたが、今回は誕生日記念で利用させて頂きました。盛岡で一番美味しいフランス料理フルコースを体験出来るお店です。ご家族で運営されてるのでしょうか、店内の雰囲気や接客など、随所に素敵な温かみを感じます。特別な日でしたので『シェフおまかせ季節のコース ¥8,000』を予約。お料理はどれも美味しい上に見た目も非常に美しく、運ばれてくる度に歓声を上げてしまうほど。ひと皿ごとの量も丁度よく、コース全てを食べきった時点で丁度満腹になる絶妙な按配でした。こちらに初めて訪問されるならば、是非とも最初に一番いいコースを体験するべきだと思います。最高の満足感を得られること間違いなしです。今度はランチタイムに伺います。</blockquote>
+        <figcaption>Googleマップの口コミより</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="soon" id="coming-soon">
+  <div class="wrap">
+    <div class="box">
+      <div class="tag">Coming soon</div>
+      <h3>旬のお知らせ</h3>
+      <p>旬の食材の入荷や、季節の料理のご案内を、このページでお届けする準備をしています。次のご来店のきっかけに、ご覧ください。</p>
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="wrap">
+    <span class="en">Access</span>
+    <h2>店舗情報・アクセス</h2>
+    <dl>
+      <dt>店名</dt><dd>ベルクール</dd>
+      <dt>住所</dt><dd>〒020-0015<br>岩手県盛岡市本町通1丁目8−21 トーカンキャステール上の橋</dd>
+      <dt>電話</dt><dd><a href="tel:0196519061">019-651-9061</a></dd>
+      <dt>定休日</dt><dd>月曜日</dd>
+      <dt>公式サイト</dt><dd><a href="http://www.bellecour-m.com/" target="_blank" rel="noopener">http://www.bellecour-m.com/</a></dd>
+    </dl>
+    <iframe class="map" title="ベルクールの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.521885575238!2d141.15273197486502!3d39.70545269862477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8576233c8e9979%3A0xb72cb63749cd09a0!2z44OZ44Or44Kv44O844Or!5e0!3m2!1sja!2sjp!4v1793252513955!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div class="map-btn">
+      <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E6%9C%AC%E7%94%BA%E9%80%9A1%E4%B8%81%E7%9B%AE8-21%20%E3%83%88%E3%83%BC%E3%82%AB%E3%83%B3%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%86%E3%83%BC%E3%83%AB%E4%B8%8A%E3%81%AE%E6%A9%8B" target="_blank" rel="noopener">Googleマップで地図を開く</a>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <span class="en">Reservation</span>
+    <h2>ご予約はお電話で</h2>
+    <a class="tel" href="tel:0196519061">019-651-9061</a>
+    <p>定休日：月曜日</p>
+    <div class="actions">
+      <a class="btn" href="tel:0196519061">電話で予約する</a>
+      <a class="btn line" href="https://www.bellecour-m.com/inquiry/" target="_blank" rel="noopener">お問い合わせフォーム</a>
+    </div>
+    <p class="note">アレルギーや記念日のご相談も、ご予約の際にお知らせください。</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>フランス料理　ベルクール</p>
+  <p>〒020-0015 岩手県盛岡市本町通1丁目8−21　トーカンキャステール上の橋</p>
+  <p><a href="http://www.bellecour-m.com/" target="_blank" rel="noopener">公式サイト</a></p>
+  <p>&copy; Bellecour</p>
+</footer>
+
+</body>
+</html>
