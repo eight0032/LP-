@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANTICA TRATTORIA INABA｜盛岡・中ノ橋通の隠れ家イタリアン</title>
+<meta name="description" content="盛岡・中ノ橋通のイタリア料理店。前菜盛り合わせ、手打ちパスタ、炭火焼き、厳選ワイン。ご夫婦で営む“質実剛健”のトラットリアです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1d3a2c;
+  --green-d: #13261d;
+  --sage: #edf0e6;
+  --paper: #fbfaf6;
+  --red: #b3262b;
+  --red-d: #8f1d22;
+  --gold: #c8a24a;
+  --ink: #25231f;
+  --mute: #6a665d;
+  --serif: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+section {
+  padding: 84px 0;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 15px 30px;
+  border-radius: 3px;
+  background: var(--red);
+  color: #fff;
+  border: 2px solid var(--red);
+  transition: background .2s, border-color .2s;
+  text-align: center;
+}
+
+.btn:hover {
+  background: var(--red-d);
+  border-color: var(--red-d);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, .7);
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, .12);
+}
+
+.btn.line {
+  background: #fff;
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.btn.line:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+/* header */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-weight: 900;
+  letter-spacing: .08em;
+  font-size: 15px;
+}
+
+.tel-top {
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background: var(--green) url("images/antipasto.jpg") center/cover no-repeat;
+  padding: 120px 0 90px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(14, 28, 21, .88) 0%, rgba(14, 28, 21, .62) 55%, rgba(14, 28, 21, .35) 100%);
+}
+
+.hero .wrap {
+  position: relative;
+}
+
+.hero .place {
+  font-size: 15px;
+  letter-spacing: .14em;
+  margin-bottom: 18px;
+  color: #e6d9ae;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 900;
+  line-height: 1.28;
+  font-size: clamp(34px, 7.2vw, 64px);
+  max-width: 15em;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero h1 .n {
+  display: inline;
+  font-size: 1em;
+  color: var(--gold);
+}
+
+.hero .lead {
+  margin-top: 24px;
+  max-width: 34em;
+  font-size: clamp(16px, 2.4vw, 20px);
+  line-height: 1.9;
+}
+
+.hero .sub {
+  margin-top: 14px;
+  font-family: var(--serif);
+  font-size: clamp(17px, 2.6vw, 24px);
+  font-weight: 700;
+}
+
+.cta-row {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.note {
+  font-size: 13px;
+  margin-top: 14px;
+  opacity: .85;
+}
+
+/* gingham strip */
+.gingham {
+  height: 22px;
+  background-color: #fff;
+  background-image:
+    linear-gradient(90deg, rgba(179, 38, 43, .55) 50%, transparent 50%),
+    linear-gradient(rgba(179, 38, 43, .55) 50%, transparent 50%);
+  background-size: 22px 22px;
+}
+
+/* concept */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.two img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--sage);
+}
+
+.points {
+  margin-top: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.points li {
+  list-style: none;
+  padding-left: 20px;
+  border-left: 4px solid var(--red);
+}
+
+.points b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 18px;
+}
+
+/* menu */
+.menu {
+  background: var(--green);
+  color: #fff;
+}
+
+.menu h2 {
+  color: #fff;
+}
+
+.menu .intro {
+  max-width: 40em;
+  margin-bottom: 40px;
+  color: #dfe6dc;
+}
+
+.dish {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.dish img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--green-d);
+}
+
+.dish h3 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.4vw, 32px);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green-d);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 2px 12px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+.must {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.must div {
+  border-top: 3px solid var(--gold);
+  padding-top: 14px;
+}
+
+.must h4 {
+  font-family: var(--serif);
+  font-size: 19px;
+  margin-bottom: 6px;
+}
+
+.must p {
+  font-size: 15px;
+  color: #dfe6dc;
+  line-height: 1.8;
+}
+
+/* story */
+.story .two {
+  grid-template-columns: 1fr 1.1fr;
+}
+
+.story blockquote {
+  margin-top: 18px;
+  padding: 16px 20px;
+  background: var(--sage);
+  border-radius: 3px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sign {
+  margin-top: 16px;
+  color: var(--mute);
+  font-size: 15px;
+}
+
+/* voice */
+.voice {
+  background: var(--sage);
+}
+
+.voices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.voice figure {
+  background: #fff;
+  padding: 26px 26px 22px;
+  border-radius: 3px;
+  border-top: 4px solid var(--gold);
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 20px;
+  letter-spacing: .1em;
+}
+
+.stars small {
+  color: var(--mute);
+  font-size: 13px;
+  letter-spacing: 0;
+  margin-left: 8px;
+}
+
+.voice p {
+  margin-top: 10px;
+  font-size: 15.5px;
+}
+
+.voice .src {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--mute);
+}
+
+/* coming soon */
+.soon {
+  background: var(--paper);
+}
+
+.soon-box {
+  border: 2px dashed var(--green);
+  border-radius: 4px;
+  padding: 44px 32px;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.soon-box .badge {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  padding: 3px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin-bottom: 14px;
+  letter-spacing: .06em;
+}
+
+.soon-box h2 {
+  margin-bottom: 14px;
+}
+
+.soon-box p {
+  max-width: 30em;
+  margin: 0 auto;
+  color: var(--mute);
+}
+
+/* info + access */
+.info {
+  background: #fff;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  border-top: 1px solid #d9d5c8;
+}
+
+dt, dd {
+  padding: 14px 6px;
+  border-bottom: 1px solid #d9d5c8;
+}
+
+dt {
+  font-weight: 700;
+  color: var(--green);
+}
+
+dd a {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.map {
+  margin-top: 44px;
+}
+
+.map iframe {
+  width: 100%;
+  height: 420px;
+  border: 0;
+  border-radius: 3px;
+  display: block;
+  background: var(--sage);
+}
+
+.map-btn {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.access-note {
+  margin-top: 14px;
+  color: var(--mute);
+  font-size: 15px;
+  text-align: center;
+}
+
+/* reserve */
+.reserve {
+  background: var(--green-d);
+  color: #fff;
+  text-align: center;
+}
+
+.reserve h2 {
+  color: #fff;
+}
+
+.reserve p {
+  max-width: 34em;
+  margin: 0 auto 10px;
+  color: #dfe6dc;
+}
+
+.reserve .big {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(34px, 8vw, 56px);
+  margin: 22px 0 6px;
+}
+
+.reserve .big a {
+  text-decoration: none;
+}
+
+.reserve .cta-row {
+  justify-content: center;
+}
+
+footer {
+  background: #0c1812;
+  color: #b9c2b8;
+  text-align: center;
+  padding: 34px 22px;
+  font-size: 14px;
+}
+
+footer .sns {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 12px;
+}
+
+footer a {
+  color: #fff;
+}
+
+/* mobile fixed call */
+.call-fixed {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  section {
+    padding: 60px 0;
+  }
+  
+  .two, .dish, .story .two, .voices {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  
+  .must {
+    grid-template-columns: 1fr;
+  }
+  
+  dl {
+    grid-template-columns: 7em 1fr;
+  }
+  
+  .map iframe {
+    height: 340px;
+  }
+  
+  .hero {
+    padding-top: 100px;
+  }
+  
+  .call-fixed {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px 10px calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+  
+  body {
+    padding-bottom: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .btn {
+    transition: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ANTICA TRATTORIA INABA</div>
+  <a class="tel-top" href="tel:0196813883">TEL 019-681-3883</a>
+</header>
+
+<!-- ファーストビュー -->
+<div class="hero">
+  <div class="wrap">
+    <p class="place">中ノ橋通の隠れ家イタリアン</p>
+    <h1>
+      <span>前菜だけで満足！</span>
+      <span>イナバの贅沢アンティパスト <span class="n">10種盛り</span></span>
+    </h1>
+    <p class="lead">ボリューム満点の多彩な前菜が一皿に。生ハム、サラミ、レバーペースト、煮込み野菜まで、シェアしてワインが止まらない！</p>
+    <p class="sub">一口でイタリア旅行。盛岡で味わう、コスパ抜群の前菜祭り。</p>
+    <div class="cta-row">
+      <a class="btn" href="tel:0196813883">今すぐ電話で予約する</a>
+      <a class="btn ghost" href="#access">お店の場所を見る</a>
+    </div>
+    <p class="note">ご予約はお電話で承ります。火・水曜日は定休日です。</p>
+  </div>
+</div>
+<div class="gingham" aria-hidden="true"></div>
+
+<!-- コンセプト -->
+<section id="concept">
+  <div class="wrap two">
+    <img src="images/interior.jpg" alt="ANTICA TRATTORIA INABAの店内" width="800" height="600">
+    <div>
+      <h2>質実剛健。<br>イタリアの街角にある食堂へ。</h2>
+      <p>盛岡の街中にありながら、イタリアの街角のトラットリア（大衆食堂）のような温もりと落ち着きを感じる店内です。手打ちパスタや炭火焼きなど、現地の庶民的で親しみやすい料理を丁寧に。派手さはなくても、素材の良さと調理の技術が光る“しっかりとした味”をお届けします。</p>
+      <ul class="points">
+        <li><b>ワインと料理を楽しむ</b>ワインセラーに、厳選したイタリアワインとビールをご用意しています。</li>
+        <li><b>ひとりでも、みんなでも</b>少人数から気兼ねなくご利用いただけます。デートや女子会にも。</li>
+        <li><b>ご夫婦による温かい接客</b>丁寧なご説明で、初めての方も安心してお食事いただけます。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- メニュー -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>まずは前菜と手打ちパスタを。</h2>
+    <p class="intro">ランチは前菜・パスタ・デザートが付くセットが人気です。夜はコースもアラカルトも揃っています。ボリューム、質、価格のバランスが、地元の方にも旅行の方にも選ばれる理由です。</p>
+    <div class="dish">
+      <img src="images/truffle-pasta.jpg" alt="トリュフバターパスタ" width="800" height="600">
+      <div>
+        <span class="tag">イチオシ</span>
+        <h3>トリュフバターパスタ</h3>
+        <p>手打ちパスタに、トリュフの香りとバターのコクをまとわせた一皿。素材の良さがまっすぐ伝わる、イナバの看板パスタです。</p>
+      </div>
+    </div>
+    <div class="must">
+      <div>
+        <h4>アンティパスト盛り合わせ</h4>
+        <p>生ハム、サラミ、レバーペースト、煮込み野菜など、品数も味の幅も広い名物の前菜。</p>
+      </div>
+      <div>
+        <h4>手打ちパスタ</h4>
+        <p>お客様からは「ニョッキもチーズのバランスがよく、濃厚でクリーミー」との声をいただいています。</p>
+      </div>
+      <div>
+        <h4>炭火焼きのお肉料理</h4>
+        <p>臭みがなく、歯ごたえと旨みがしっかり。辛いものが苦手な方は、加減をご相談ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ストーリー -->
+<section class="story" id="story">
+  <div class="wrap two">
+    <div>
+      <h2>ANTICA（老舗）TRATTORIA（食堂）。<br>その名に込めた想い。</h2>
+      <p>青森県出身のシェフ・稲場泰樹は、東京で経験を積み「40歳までに自分の店を持つ」ことを目標にしてきました。出店の候補は、自身の地元・青森か、妻・祥子さんの出身地である岩手。環境の良さを感じ、盛岡を選びました。</p>
+      <p style="margin-top:14px">粉もの文化や麺文化が根づく盛岡は、イタリア料理との相性も抜群と考えたそうです。</p>
+      <blockquote>地元の人が普段使いできる、アットホームで親しみやすいイタリアの味を。</blockquote>
+      <p class="sign">オーナーシェフ 稲場 泰樹</p>
+    </div>
+    <img src="images/chef.png" alt="オーナーシェフ 稲場泰樹" width="800" height="600">
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section class="voice" id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="voices">
+      <figure>
+        <div class="stars">★★★★<small>4.0</small></div>
+        <p>野菜の前菜が美味しくて、種類も豊富で楽しめました。ラム肉も臭みがなく肉の旨みを味わえました。赤ワインとも相性が良かったです。ニョッキもチーズのバランスがよく、濃厚、クリーミーでした。</p>
+        <figcaption class="src">口コミより</figcaption>
+      </figure>
+      <figure>
+        <div class="stars">★★★★★<small>5.0</small></div>
+        <p>肉料理も臭み抜きが下味つけとつながっているような、それでいて歯ごたえ抜群、旨味がぢゅわっと。美味しい。辛いのが苦手な方、加減なども相談できます。飛び込みで入れたらラッキーと言えるほど、予約を取るのが難しい。日時を決めて、1ヶ月くらい余裕を持って予約することをお勧めします。</p>
+        <figcaption class="src">口コミより</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Coming soon -->
+<section class="soon" id="soon">
+  <div class="wrap">
+    <div class="soon-box">
+      <span class="badge">Coming soon</span>
+      <h2>ライトワインペアリング</h2>
+      <p>お料理に合わせて、ソムリエ感覚で選べる“ライトなワインの組み合わせ”を準備中です。ワインにあまり詳しくない方も、気軽にイタリアワインを楽しめるご提案を目指しています。詳細が決まり次第、Instagramでお知らせします。</p>
+      <div class="cta-row" style="justify-content:center;margin-top:24px">
+        <a class="btn line" href="https://www.instagram.com/inabaanticatrattoria/?hl=ja" target="_blank" rel="noopener">Instagramで最新情報を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 + アクセス -->
+<section class="info" id="access">
+  <div class="wrap">
+    <h2>店舗情報・アクセス</h2>
+    <dl>
+      <dt>店名</dt><dd>ANTICA TRATTORIA INABA（アンティカ トラットリア イナバ）</dd>
+      <dt>代表者</dt><dd>稲場 泰樹（個人経営）</dd>
+      <dt>住所</dt><dd>〒020-0871 岩手県盛岡市中ノ橋通１丁目８−２１</dd>
+      <dt>電話番号</dt><dd><a href="tel:0196813883">019-681-3883</a></dd>
+      <dt>定休日</dt><dd>火曜日・水曜日</dd>
+      <dt>ご予約</dt><dd>お電話にて承ります（人気店のため、1ヶ月ほど余裕を持ったご予約がおすすめです）</dd>
+      <dt>SNS</dt><dd><a href="https://www.instagram.com/inabaanticatrattoria/?hl=ja" target="_blank" rel="noopener">Instagram</a> / <a href="http://twitter.com/inabaantica" target="_blank" rel="noopener">X（Twitter）</a></dd>
+    </dl>
+
+    <div class="map">
+      <iframe
+        title="ANTICA TRATTORIA INABAの地図"
+        src="https://www.google.com/maps?q=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E4%B8%AD%E3%83%8E%E6%A9%8B%E9%80%9A1%E4%B8%81%E7%9B%AE8-21%20ANTICA%20TRATTORIA%20INABA&amp;output=embed&amp;hl=ja"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="map-btn">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%9B%9B%E5%B2%A1%E5%B8%82%E4%B8%AD%E3%83%8E%E6%A9%8B%E9%80%9A1%E4%B8%81%E7%9B%AE8-21%20ANTICA%20TRATTORIA%20INABA" target="_blank" rel="noopener">Googleマップで開く</a>
+      </div>
+      <p class="access-note">盛岡の街中、中ノ橋通にあります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 予約 -->
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <h2>ご予約はお電話で。</h2>
+    <p>ランチもディナーも予約必須の人気店です。ご来店の日が決まったら、お早めにご連絡ください。</p>
+    <div class="big"><a href="tel:0196813883">019-681-3883</a></div>
+    <p style="font-size:14px">定休日：火曜日・水曜日</p>
+    <div class="cta-row">
+      <a class="btn" href="tel:0196813883">電話をかける</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sns">
+    <a href="https://www.instagram.com/inabaanticatrattoria/?hl=ja" target="_blank" rel="noopener">Instagram</a>
+    <a href="http://twitter.com/inabaantica" target="_blank" rel="noopener">X（Twitter）</a>
+  </div>
+  <p>&copy; ANTICA TRATTORIA INABA</p>
+</footer>
+
+<a class="call-fixed" href="tel:0196813883">電話で予約する 019-681-3883</a>
+</body>
+</html>
