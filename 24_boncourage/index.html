@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boncourage｜盛岡・菜園のフレンチ・ビストロ</title>
+<meta name="description" content="盛岡・菜園の隠れ家フレンチ・ビストロ Boncourage。3日漬け込みのシャルキュトリー、南フランス郷土料理カスレ、ソムリエ厳選のワインを。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1c1213; --bg2:#26181a; --ink:#f3e9dc; --mute:#c9b9a8;
+  --wine:#7a1f2e; --wine-l:#a3314a; --gold:#c9a45c; --line:rgba(201,164,92,.35);
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.9;font-size:16px;padding-bottom:72px}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);line-height:1.5;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+.alt{background:var(--bg2)}
+h2{font-size:clamp(24px,4vw,34px);font-weight:700;margin-bottom:12px}
+.lead{color:var(--mute);max-width:36em;margin:0 0 40px}
+.ph{background:linear-gradient(135deg,#3a1b21,#201214);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+
+.btn{display:inline-block;text-decoration:none;padding:15px 30px;border-radius:2px;font-weight:700;letter-spacing:.06em;border:1px solid var(--gold);transition:background .2s,color .2s}
+.btn.main{background:var(--wine);border-color:var(--wine);color:#fff}
+.btn.main:hover{background:var(--wine-l)}
+.btn.ghost{color:var(--gold)}
+.btn.ghost:hover{background:var(--gold);color:var(--bg)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;padding:0}
+.hero .bg{position:absolute;inset:0}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,18,19,.35) 0%,rgba(28,18,19,.55) 45%,rgba(28,18,19,.96) 100%)}
+.hero .wrap{position:relative;padding-bottom:64px;padding-top:120px}
+.logo{font-family:var(--serif);font-size:20px;letter-spacing:.3em;color:var(--gold);margin-bottom:28px}
+.hero h1{font-size:clamp(34px,7vw,68px);font-weight:800;letter-spacing:.02em;max-width:14em}
+.hero p{max-width:30em;color:var(--ink);margin:22px 0 32px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* concept */
+.concept{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.concept .ph{aspect-ratio:4/5}
+.points{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+.points li{padding-left:18px;border-left:2px solid var(--gold);color:var(--mute)}
+.points b{color:var(--ink);font-weight:700}
+
+/* dishes */
+.dish{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:2px;background:var(--bg)}
+.dish .ph{min-height:340px}
+.dish .txt{padding:48px 44px;display:flex;flex-direction:column;justify-content:center}
+.dish.rev .ph{order:2}
+.tag{color:var(--gold);font-size:14px;letter-spacing:.1em;margin-bottom:8px}
+.dish h3{font-size:26px;margin-bottom:14px}
+.dish p{margin:0;color:var(--mute)}
+.catch{font-family:var(--serif);font-size:15px;color:var(--ink);margin-top:18px!important;padding-top:16px;border-top:1px solid var(--line)}
+
+/* voice */
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.voice{border:1px solid var(--line);padding:30px;background:var(--bg)}
+.stars{color:var(--gold);letter-spacing:.2em;margin-bottom:10px}
+.voice p{margin:0;color:var(--mute)}
+.src{font-size:13px;margin-top:14px!important;opacity:.8}
+
+/* info */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+.feat div{border-top:1px solid var(--line);padding-top:14px}
+.feat b{display:block;font-family:var(--serif);font-size:18px;margin-bottom:4px}
+.feat span{color:var(--mute);font-size:15px}
+
+/* coming soon */
+.cs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{border:1px dashed var(--gold);padding:30px 26px;position:relative;background:var(--bg2)}
+.badge{display:inline-block;font-size:12px;letter-spacing:.14em;color:var(--bg);background:var(--gold);padding:2px 12px;margin-bottom:14px}
+.card h3{font-size:20px;margin-bottom:10px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+
+/* access */
+.map{aspect-ratio:16/9;border:1px solid var(--line);background:#111}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.mapbtn{text-align:center;margin:22px 0 48px}
+dl{margin:0;display:grid;grid-template-columns:8em 1fr;border-top:1px solid var(--line)}
+dt,dd{margin:0;padding:14px 0;border-bottom:1px solid var(--line)}
+dt{color:var(--gold);font-family:var(--serif)}
+
+.final{text-align:center}
+.final h2{margin-bottom:24px}
+footer{padding:36px 0;text-align:center;color:var(--mute);font-size:13px;border-top:1px solid var(--line)}
+
+.fixed{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;background:var(--bg);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.fixed a{flex:1;text-align:center;padding:16px 8px;text-decoration:none;font-weight:700}
+.fixed a:first-child{background:var(--wine);color:#fff}
+.fixed a:last-child{color:var(--gold)}
+
+@media(max-width:780px){
+  section{padding:60px 0}
+  .concept,.dish,.voices,.info,.cs{grid-template-columns:1fr}
+  .dish.rev .ph{order:0}
+  .dish .ph{min-height:240px}
+  .dish .txt{padding:30px 22px}
+  .feat{grid-template-columns:1fr}
+  dl{grid-template-columns:6em 1fr}
+  .hero{min-height:86vh}
+}
+@media(min-width:781px){body{padding-bottom:0}.fixed{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="bg ph"><img src="images/hero.jpg" alt="シャルキュトリーとワイングラス"></div>
+  <div class="wrap">
+    <div class="logo">Boncourage</div>
+    <h1>3日漬け込みの極上シャルキュトリーで、盛岡を贅沢に。</h1>
+    <p>菜園の隠れ家フレンチ・ビストロ。本格フランス料理と、ソムリエが選ぶワインを、気軽に。</p>
+    <div class="cta">
+      <a class="btn main" href="tel:0196813434">電話で予約する</a>
+      <a class="btn ghost" href="#access">アクセスを見る</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap concept">
+    <div>
+      <h2>盛岡で、本格フレンチを日常に。</h2>
+      <p class="lead" style="margin-bottom:0">ホテルロイヤル盛岡の裏手、知る人ぞ知る隠れ家。フランスの郷土料理とワインを、肩ひじ張らずに楽しめるビストロです。友人との食事から記念日、貸切まで、使い方は自由です。</p>
+      <ul class="points">
+        <li><b>昼から本格ビストロ。</b>塩漬け豚の旨味が、午後の力になります。</li>
+        <li><b>夜はワインとのマリアージュ。</b>シャルキュトリーを主役に、特別な夜を。</li>
+      </ul>
+    </div>
+    <div class="ph"><img src="images/interior.jpg" alt="Boncourageの店内"></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Boncourageの味</h2>
+    <p class="lead">看板のシャルキュトリー、南フランスのカスレ、そして豊富なワイン。</p>
+  </div>
+  <div class="wrap">
+    <article class="dish">
+      <div class="ph"><img src="images/hero.jpg" alt="シャルキュトリー"></div>
+      <div class="txt">
+        <div class="tag">イチオシ｜ランチ</div>
+        <h3>シャルキュトリーランチ</h3>
+        <p>3日間漬け込んだ塩漬け豚の、深い旨味。手間暇をかけた一皿が、いつものランチを変えます。</p>
+        <p class="catch">昼から本格ビストロ！ 塩漬け豚の旨味が、仕事の午後を熱くする。</p>
+      </div>
+    </article>
+    <article class="dish rev">
+      <div class="ph"><img src="images/cassoulet.jpg" alt="南フランスの郷土料理カスレ"></div>
+      <div class="txt">
+        <div class="tag">南フランス郷土料理</div>
+        <h3>カスレ</h3>
+        <p>盛岡では珍しい、南フランスの煮込み料理。旬の食材を使った多彩なフレンチも、一皿ずつ丁寧に仕上げてお出しします。</p>
+      </div>
+    </article>
+    <article class="dish">
+      <div class="ph"><img src="images/wine.jpg" alt="ワインとシャルキュトリー"></div>
+      <div class="txt">
+        <div class="tag">ディナー｜ワイン</div>
+        <h3>盛岡で一番、ワインが美味しい店へ。</h3>
+        <p>料理に合わせて選ばれたワインが、常時たっぷり。グラスでも楽しめるので、飲み比べもできます。</p>
+        <p class="catch">夜はシャルキュトリーとワインのマリアージュ。</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <p class="lead">ご来店くださった方のクチコミ（抜粋）です。</p>
+    <div class="voices">
+      <div class="voice">
+        <div class="stars">★★★★</div>
+        <p>思いのほかカジュアルで気軽に過ごせる空間。なんでも美味しい。ワインが豊富でグラスワインも充実しているので飲み比べできて嬉しい。スタッフの女性が親切で、料理とマリアージュになるワインをチョイスしてくれる。</p>
+        <p class="src">Googleマップのクチコミより</p>
+      </div>
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>厳選されたこだわりのワインが多く、グラスでオーダーできるのがワイン好きにはたまりません。料理も本格フレンチで大満足。しかも東京では決してあり得ないリーズナブルな価格。</p>
+        <p class="src">Googleマップのクチコミより</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap info">
+    <div>
+      <h2>ゆっくり過ごせる店です。</h2>
+      <p class="lead" style="margin-bottom:0">テーブル席とカウンター席あわせて約60席。落ち着いた空間で、雰囲気や景観にも定評があります。</p>
+    </div>
+    <div class="feat">
+      <div><b>ソムリエが常駐</b><span>料理に合うワインを相談できます。</span></div>
+      <div><b>サプライズ対応</b><span>記念日や誕生日のご相談をどうぞ。</span></div>
+      <div><b>貸切・宴会OK</b><span>2時間半以上の宴会にも対応します。</span></div>
+      <div><b>お支払い</b><span>各種カード・電子マネーが使えます。</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Coming soon</h2>
+    <p class="lead">準備中のサービスです。詳細が決まりましたら、Instagramでお知らせします。</p>
+    <div class="cs">
+      <div class="card">
+        <span class="badge">COMING SOON</span>
+        <h3>フレンチ×寿司 おまかせコース</h3>
+        <p>期間限定で、フレンチと寿司の発想を一つのコースに。</p>
+      </div>
+      <div class="card">
+        <span class="badge">COMING SOON</span>
+        <h3>オードブル・シャルキュトリーのテイクアウト</h3>
+        <p>看板のシャルキュトリーを、ご自宅や集まりへ。</p>
+      </div>
+      <div class="card">
+        <span class="badge">COMING SOON</span>
+        <h3>ソムリエのワイン会</h3>
+        <p>ソムリエの解説とともに、料理とワインの組み合わせを味わう夜。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="access">
+  <div class="wrap">
+    <h2>アクセス</h2>
+    <p class="lead">ホテルロイヤル盛岡の裏手にあります。</p>
+    <div class="map">
+      <iframe title="Boncourageの地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Boncourage%20%E7%9B%9B%E5%B2%A1%E5%B8%82%E8%8F%9C%E5%9C%92%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%91%E2%88%92%EF%BC%97&hl=ja&z=17&output=embed"></iframe>
+    </div>
+    <div class="mapbtn">
+      <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Boncourage%20%E7%9B%9B%E5%B2%A1%E5%B8%82%E8%8F%9C%E5%9C%92%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%91%E2%88%92%EF%BC%97" target="_blank" rel="noopener">Googleマップで開く</a>
+    </div>
+    <dl>
+      <dt>店名</dt><dd>Boncourage（ボンクラージュ）</dd>
+      <dt>代表者</dt><dd>柴田 廣実</dd>
+      <dt>住所</dt><dd>〒020-0024 岩手県盛岡市菜園1丁目11−7</dd>
+      <dt>電話</dt><dd><a href="tel:0196813434">019-681-3434</a></dd>
+      <dt>定休日</dt><dd>水曜日</dd>
+      <dt>席数</dt><dd>約60席（テーブル席・カウンター席）</dd>
+      <dt>Instagram</dt><dd><a href="https://www.instagram.com/boncourage.morioka/" target="_blank" rel="noopener">@boncourage.morioka</a></dd>
+    </dl>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>盛岡の隠れ家で、お待ちしています。</h2>
+    <a class="btn main" href="tel:0196813434">019-681-3434 に電話する</a>
+  </div>
+</section>
+
+<footer>© Boncourage</footer>
+
+<nav class="fixed" aria-label="予約">
+  <a href="tel:0196813434">電話で予約</a>
+  <a href="#access">アクセス</a>
+</nav>
+
+</body>
+</html>
