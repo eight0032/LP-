@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>レストラン＆カフェ プチ・フランセ｜一関の一軒家フレンチ</title>
+<meta name="description" content="岩手県一関市の一軒家レストラン。いわて南牛を使った本格フレンチを、ランチ約1,000〜2,000円から気軽に。ご予約は 0191-21-4476">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#3b1220;--wine2:#5a1d30;--bone:#f7f4f1;--sage:#e7e9e3;--brass:#b08d57;--ink:#231d1f;--mute:#6b6063;
+--serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;--sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bone);line-height:1.9;padding-bottom:72px}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(24px,4vw,34px);line-height:1.5;letter-spacing:.06em;margin-bottom:28px}
+h3{font-family:var(--serif);font-size:19px;letter-spacing:.05em;margin-bottom:6px}
+.lead{max-width:38em}
+.btn{display:inline-block;padding:15px 34px;border:1px solid var(--brass);background:var(--brass);color:#1b1214;font-weight:700;text-decoration:none;letter-spacing:.08em;transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--brass)}
+.btn.line{background:transparent;color:#fff;border-color:#fff8}
+.btn.line:hover{background:#fff;color:var(--wine)}
+.btn.dark{background:var(--wine);border-color:var(--wine);color:#fff}
+.btn.dark:hover{background:transparent;color:var(--wine)}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:flex-end;color:#fff;padding:0;
+background:linear-gradient(180deg,#0000 25%,#1f0a12e6 100%),url("images/hero.jpg") center/cover,var(--wine)}
+.hero .wrap{padding-bottom:72px;padding-top:140px}
+.hero small{display:block;letter-spacing:.3em;font-size:13px;margin-bottom:18px;opacity:.9}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,7.4vw,68px);line-height:1.45;letter-spacing:.08em;margin-bottom:20px}
+.hero p{max-width:30em;margin-bottom:34px;opacity:.95}
+.hero .row{display:flex;gap:14px;flex-wrap:wrap}
+.hero .name{position:absolute;top:22px;left:22px;font-family:var(--serif);font-size:15px;letter-spacing:.1em;color:#fff}
+.hero{position:relative}
+
+/* concept */
+.concept{background:var(--bone)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--sage)}
+.points{list-style:none;margin-top:24px;border-top:1px solid #0002}
+.points li{padding:12px 0;border-bottom:1px solid #0002;display:flex;gap:14px}
+.points b{color:var(--wine2);min-width:7.5em}
+
+/* menu */
+.menu{background:var(--wine);color:#f3ebe8}
+.menu h2{color:#fff}
+.menu .lead{opacity:.85;margin-bottom:40px}
+.courses{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.course{border:1px solid #ffffff38;padding:32px 28px}
+.course .tag{font-size:13px;color:var(--brass);letter-spacing:.1em}
+.course h3{color:#fff;font-size:22px;margin:4px 0 10px}
+.course .catch{font-family:var(--serif);font-size:17px;margin-bottom:14px}
+.course .price{margin-top:14px;font-family:var(--serif);color:var(--brass);font-size:20px}
+.course p{font-size:15px;opacity:.88}
+.menu .note{margin-top:28px;font-size:14px;opacity:.8}
+.signature{margin-top:56px;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.signature img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#ffffff14}
+.signature h3{color:#fff;font-size:24px}
+
+/* scene */
+.scene{background:var(--sage)}
+.scene-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.scene-grid img{width:100%;aspect-ratio:3/2;object-fit:cover;background:#d3d6cd}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:20px;list-style:none;font-size:15px}
+.facts li{padding-left:1.1em;position:relative}
+.facts li::before{content:"";position:absolute;left:0;top:.85em;width:6px;height:6px;background:var(--brass);transform:rotate(45deg)}
+
+/* voice */
+.voices{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.voice{background:#fff;padding:30px 28px;border-top:3px solid var(--brass)}
+.stars{color:var(--brass);letter-spacing:.15em;margin-bottom:10px}
+.voice p{font-size:15px}
+.voice small{display:block;margin-top:12px;color:var(--mute);font-size:13px}
+
+/* coming soon */
+.soon{background:var(--bone);border-top:1px solid #0002}
+.soon .badge{display:inline-block;border:1px solid var(--wine2);color:var(--wine2);padding:2px 14px;font-size:13px;letter-spacing:.12em;margin-bottom:14px}
+.soon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
+.soon-card{border:1px dashed #0006;padding:26px 24px}
+.soon-card p{font-size:14.5px;color:var(--mute)}
+
+/* access */
+.access{background:#fff}
+.map{aspect-ratio:16/8;min-height:300px;border:0;width:100%;background:var(--sage)}
+.map-btn{text-align:center;margin:22px 0 56px}
+dl.info{display:grid;grid-template-columns:9em 1fr;border-top:1px solid #0002}
+dl.info dt,dl.info dd{padding:14px 4px;border-bottom:1px solid #0002}
+dl.info dt{font-weight:700;color:var(--wine2)}
+.sns{display:flex;gap:18px;flex-wrap:wrap}
+
+/* faq */
+.faq details{border-bottom:1px solid #0003;padding:18px 0}
+.faq summary{cursor:pointer;font-family:var(--serif);font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"＋";color:var(--brass)}
+.faq details[open] summary::after{content:"－"}
+.faq details p{margin-top:10px;font-size:15px;color:var(--mute)}
+
+/* final */
+.final{background:var(--wine);color:#fff;text-align:center}
+.final h2{color:#fff}
+.final .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.tel{font-family:var(--serif);font-size:clamp(28px,6vw,44px);letter-spacing:.08em;text-decoration:none}
+footer{background:#220b13;color:#d9ccc9;text-align:center;padding:32px 22px;font-size:13px}
+
+/* fixed bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;background:#1f0a12;border-top:1px solid #b08d5766;padding-bottom:env(safe-area-inset-bottom,0)}
+.bar a{flex:1;text-align:center;padding:16px 8px;color:#fff;text-decoration:none;font-weight:700;letter-spacing:.06em;font-size:15px}
+.bar a:first-child{background:var(--brass);color:#1b1214}
+
+@media(max-width:780px){
+section{padding:60px 0}
+.split,.scene-grid,.signature,.courses,.voices,.soon-grid{grid-template-columns:1fr}
+.split,.scene-grid,.signature{gap:28px}
+.facts{grid-template-columns:1fr}
+dl.info{grid-template-columns:7em 1fr}
+.map{aspect-ratio:4/3}
+.points li{flex-direction:column;gap:0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="name">レストラン＆カフェ プチ・フランセ</div>
+  <div class="wrap">
+    <small>岩手県一関市 ／ 一軒家のフレンチレストラン</small>
+    <h1>ふだんの日に、<br>本格のフレンチを。</h1>
+    <p>岩手県産「いわて南牛」のローストビーフと、素材を活かした繊細な味つけ。ランチは約1,000〜2,000円から、お一人でもお気軽にどうぞ。</p>
+    <div class="row">
+      <a class="btn" href="tel:0191214476">電話で予約する</a>
+      <a class="btn line" href="https://www.hotpepper.jp/strJ000271778/" target="_blank" rel="noopener">ネットで予約する</a>
+    </div>
+  </div>
+</header>
+
+<section class="concept" id="concept">
+  <div class="wrap split">
+    <div>
+      <h2>こぢんまりと静かな、<br>一軒家のレストラン。</h2>
+      <p class="lead">地元の食材を活かし、季節ごとに表情を変える本格フレンチとイタリアン。会話を楽しみながら、ゆっくりと食事の時間をお過ごしください。</p>
+      <ul class="points">
+        <li><b>いわて南牛</b><span>岩手県産の牛肉を使った、ローストビーフなどの肉料理。</span></li>
+        <li><b>落ち着いた空間</b><span>静かな一軒家。バリアフリー・車椅子にも対応しています。</span></li>
+        <li><b>お一人でも</b><span>ご家族連れやグループも歓迎。禁煙席もあります。</span></li>
+      </ul>
+    </div>
+    <img src="images/interior.jpg" alt="プチ・フランセの店内" loading="lazy">
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>気分で選べる、<br>2つのランチコース。</h2>
+    <p class="lead">ランチの価格帯は約1,000〜2,000円。質の高い料理を、日常使いできる価格でお楽しみいただけます。</p>
+    <div class="courses">
+      <article class="course">
+        <span class="tag">ランチコースA</span>
+        <h3>肉の旨みを堪能するAランチ</h3>
+        <p class="catch">今日の気分はフレンチ上級編。</p>
+        <p>季節替わりの肉メインに、スープ・サラダ・パンorライス・コーヒーが付く、満足感のあるセットです。</p>
+      </article>
+      <article class="course">
+        <span class="tag">プチランチコース</span>
+        <h3>プチサイズの本格フレンチ</h3>
+        <p class="catch">前菜からデザートまで、幸せのプチコース。</p>
+        <p>前菜・スープ・メイン・デザートが揃うミニコース。手軽な贅沢にぴったりです。</p>
+        <p class="price">約2,000円</p>
+      </article>
+    </div>
+    <p class="note">5,000円以上のコースもご用意しています。記念日や特別な日にもご利用ください。ワイン・日本酒など、料理に合わせたドリンクも豊富です。内容・価格は時期により異なります。詳しくはお問い合わせください。</p>
+
+    <div class="signature">
+      <img src="images/potage.jpg" alt="じゃがいものポタージュ" loading="lazy">
+      <div>
+        <h3>イチオシ　じゃがいものポタージュ</h3>
+        <p>やさしい口あたりで、素材の甘みがひろがる一品。コースの最初の一杯として、多くの方に味わっていただいています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="scene">
+  <div class="wrap scene-grid">
+    <img src="images/beef.jpg" alt="いわて南牛のローストビーフ" loading="lazy">
+    <div>
+      <h2>人が集まる日にも。</h2>
+      <p>個室や貸切のご相談もできます。ご家族のお祝いや、気の置けない仲間との食事にどうぞ。</p>
+      <ul class="facts">
+        <li>個室あり（8名様）</li>
+        <li>貸切可（20名様まで）</li>
+        <li>駐車場 10台</li>
+        <li>禁煙席あり</li>
+        <li>バリアフリー・車椅子対応</li>
+        <li>カード・電子マネー・QR決済</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="voice-sec" id="voice">
+  <div class="wrap">
+    <h2>お客様の声</h2>
+    <div class="voices">
+      <figure class="voice">
+        <div class="stars" aria-label="5点中5点">★★★★★</div>
+        <p>老舗の洋食レストラン。店内こぢんまりとしていますが静かでゆっくり食事できました。2,300円のランチコースを注文、ボリュームもあり美味しかったです。ゆっくり提供して頂けるので、会話を楽しみながら食事できました。</p>
+        <small>口コミより</small>
+      </figure>
+      <figure class="voice">
+        <div class="stars" aria-label="5点中4点">★★★★☆</div>
+        <p>かなり久しぶりの土日ランチ。安定の美味しさ！ここのインドカレーは中毒性のあるおいしさ。1人でも行ける場所です。</p>
+        <small>口コミより</small>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="soon" id="soon">
+  <div class="wrap">
+    <span class="badge">Coming soon</span>
+    <h2>これから始めたいこと。</h2>
+    <p class="lead">お店をもっと身近に使っていただくための新しい取り組みを準備しています。開始時期は決まり次第お知らせします。</p>
+    <div class="soon-grid">
+      <div class="soon-card">
+        <h3>テイクアウト予約</h3>
+        <p>「何時までにご予約・何時にお受け取り」と時間を指定できる、受け取りの仕組みを検討中です。</p>
+      </div>
+      <div class="soon-card">
+        <h3>宅配サービス</h3>
+        <p>Uber Eatsなどの宅配サービスでの提供を、新たに始める予定です。</p>
+      </div>
+      <div class="soon-card">
+        <h3>ワイン・日本酒ペアリング</h3>
+        <p>コース料理の一皿ごとに合うお酒をご案内する、ペアリングプランを考えています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="wrap">
+    <h2>アクセス・店舗情報</h2>
+    <iframe class="map" title="プチ・フランセの地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.929823992841!2d141.144409274819!3d38.92558144504249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f88da919df99c2b%3A0xbde795d9de8e62cb!2z44Os44K544OI44Op44Oz77yG44Kr44OV44KnIOODl-ODgeODu-ODleODqeODs-OCuw!5e0!3m2!1sja!2sjp!4v1793249242498!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div class="map-btn">
+      <a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=%E5%B2%A9%E6%89%8B%E7%9C%8C%E4%B8%80%E9%96%A2%E5%B8%82%E4%B8%89%E9%96%A2%E4%BB%B2%E7%94%B0%EF%BC%93%EF%BC%95%E2%88%92%EF%BC%91+%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%EF%BC%86%E3%82%AB%E3%83%95%E3%82%A7+%E3%83%97%E3%83%81%E3%83%BB%E3%83%95%E3%83%A9%E3%83%B3%E3%82%BB" target="_blank" rel="noopener">Googleマップで開く</a>
+    </div>
+    <dl class="info">
+      <dt>店名</dt><dd>[レストラン＆カフェ プチ・フランセ](http://googleusercontent.com/map_location_reference/0)</dd>
+      <dt>住所</dt><dd>〒021-0821 岩手県一関市三関仲田35−1</dd>
+      <dt>電話</dt><dd><a href="tel:0191214476">0191-21-4476</a></dd>
+      <dt>定休日</dt><dd>火曜日・水曜日</dd>
+      <dt>アクセス</dt><dd>一ノ関駅から徒歩約15分／駐車場10台</dd>
+      <dt>お支払い</dt><dd>各種カード・電子マネー（Suicaなど）・QRコード決済（PayPayなど）</dd>
+      <dt>代表者</dt><dd>千葉 功（個人経営）</dd>
+      <dt>営業時間</dt><dd>予約ページ（ホットペッパーグルメ）をご確認ください</dd>
+      <dt>公式情報</dt><dd class="sns">
+        <a href="https://www.hotpepper.jp/strJ000271778/" target="_blank" rel="noopener">ホットペッパー</a>
+        <a href="https://www.facebook.com/petit.f1988/?locale=ja_JP" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://x.com/isao1954" target="_blank" rel="noopener">X</a>
+        <a href="https://www.instagram.com/petit.france.3/" target="_blank" rel="noopener">Instagram</a>
+      </dd>
+    </dl>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>よくあるご質問</h2>
+    <details><summary>一人でも利用できますか？</summary><p>はい、お一人でもお気軽にご利用いただけます。</p></details>
+    <details><summary>予約はできますか？</summary><p>お電話（0191-21-4476）またはホットペッパーグルメからご予約いただけます。</p></details>
+    <details><summary>団体や貸切は可能ですか？</summary><p>8名様までの個室、20名様までの貸切に対応しています。まずはお電話でご相談ください。</p></details>
+    <details><summary>車椅子でも入店できますか？</summary><p>バリアフリー・車椅子対応の店舗です。</p></details>
+    <details><summary>禁煙席はありますか？</summary><p>禁煙席をご用意しています。</p></details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>今日は、プチ・フランセで。</h2>
+    <a class="tel" href="tel:0191214476">0191-21-4476</a>
+    <div class="row">
+      <a class="btn" href="tel:0191214476">電話で予約する</a>
+      <a class="btn line" href="https://www.hotpepper.jp/strJ000271778/" target="_blank" rel="noopener">ネットで予約する</a>
+    </div>
+    <p style="margin-top:20px;font-size:14px;opacity:.8">定休日：火曜日・水曜日</p>
+  </div>
+</section>
+
+<footer>© レストラン＆カフェ プチ・フランセ</footer>
+
+<nav class="bar" aria-label="予約">
+  <a href="tel:0191214476">電話予約</a>
+  <a href="https://www.hotpepper.jp/strJ000271778/" target="_blank" rel="noopener">ネット予約</a>
+</nav>
+</body>
+</html>
